@@ -645,6 +645,8 @@ type AllocationPolicy struct {
 	// Describe instances that can be created by this AllocationPolicy.
 	// Only instances[0] is supported now.
 	Instances []*AllocationPolicy_InstancePolicyOrTemplate `protobuf:"bytes,8,rep,name=instances,proto3" json:"instances,omitempty"`
+	// Service account that VMs will run as.
+	ServiceAccount *ServiceAccount `protobuf:"bytes,9,opt,name=service_account,json=serviceAccount,proto3" json:"service_account,omitempty"`
 	// Labels applied to all VM instances and other resources
 	// created by AllocationPolicy.
 	// Labels could be user provided or system generated.
@@ -699,6 +701,13 @@ func (x *AllocationPolicy) GetLocation() *AllocationPolicy_LocationPolicy {
 func (x *AllocationPolicy) GetInstances() []*AllocationPolicy_InstancePolicyOrTemplate {
 	if x != nil {
 		return x.Instances
+	}
+	return nil
+}
+
+func (x *AllocationPolicy) GetServiceAccount() *ServiceAccount {
+	if x != nil {
+		return x.ServiceAccount
 	}
 	return nil
 }
@@ -850,6 +859,58 @@ func (x *TaskGroup) GetPermissiveSsh() bool {
 	return false
 }
 
+// Carries information about a Google Cloud service account.
+type ServiceAccount struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// Email address of the service account. If not specified, the default
+	// Compute Engine service account for the project will be used. If instance
+	// template is being used, the service account has to be specified in the
+	// instance template and it has to match the email field here.
+	Email string `protobuf:"bytes,1,opt,name=email,proto3" json:"email,omitempty"`
+}
+
+func (x *ServiceAccount) Reset() {
+	*x = ServiceAccount{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_google_cloud_batch_v1_job_proto_msgTypes[6]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ServiceAccount) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ServiceAccount) ProtoMessage() {}
+
+func (x *ServiceAccount) ProtoReflect() protoreflect.Message {
+	mi := &file_google_cloud_batch_v1_job_proto_msgTypes[6]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ServiceAccount.ProtoReflect.Descriptor instead.
+func (*ServiceAccount) Descriptor() ([]byte, []int) {
+	return file_google_cloud_batch_v1_job_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *ServiceAccount) GetEmail() string {
+	if x != nil {
+		return x.Email
+	}
+	return ""
+}
+
 // VM instance status.
 type JobStatus_InstanceStatus struct {
 	state         protoimpl.MessageState
@@ -867,7 +928,7 @@ type JobStatus_InstanceStatus struct {
 func (x *JobStatus_InstanceStatus) Reset() {
 	*x = JobStatus_InstanceStatus{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_google_cloud_batch_v1_job_proto_msgTypes[7]
+		mi := &file_google_cloud_batch_v1_job_proto_msgTypes[8]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -880,7 +941,7 @@ func (x *JobStatus_InstanceStatus) String() string {
 func (*JobStatus_InstanceStatus) ProtoMessage() {}
 
 func (x *JobStatus_InstanceStatus) ProtoReflect() protoreflect.Message {
-	mi := &file_google_cloud_batch_v1_job_proto_msgTypes[7]
+	mi := &file_google_cloud_batch_v1_job_proto_msgTypes[8]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -933,7 +994,7 @@ type JobStatus_TaskGroupStatus struct {
 func (x *JobStatus_TaskGroupStatus) Reset() {
 	*x = JobStatus_TaskGroupStatus{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_google_cloud_batch_v1_job_proto_msgTypes[8]
+		mi := &file_google_cloud_batch_v1_job_proto_msgTypes[9]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -946,7 +1007,7 @@ func (x *JobStatus_TaskGroupStatus) String() string {
 func (*JobStatus_TaskGroupStatus) ProtoMessage() {}
 
 func (x *JobStatus_TaskGroupStatus) ProtoReflect() protoreflect.Message {
-	mi := &file_google_cloud_batch_v1_job_proto_msgTypes[8]
+	mi := &file_google_cloud_batch_v1_job_proto_msgTypes[9]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -995,7 +1056,7 @@ type JobNotification_Message struct {
 func (x *JobNotification_Message) Reset() {
 	*x = JobNotification_Message{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_google_cloud_batch_v1_job_proto_msgTypes[11]
+		mi := &file_google_cloud_batch_v1_job_proto_msgTypes[12]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1008,7 +1069,7 @@ func (x *JobNotification_Message) String() string {
 func (*JobNotification_Message) ProtoMessage() {}
 
 func (x *JobNotification_Message) ProtoReflect() protoreflect.Message {
-	mi := &file_google_cloud_batch_v1_job_proto_msgTypes[11]
+	mi := &file_google_cloud_batch_v1_job_proto_msgTypes[12]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1068,7 +1129,7 @@ type AllocationPolicy_LocationPolicy struct {
 func (x *AllocationPolicy_LocationPolicy) Reset() {
 	*x = AllocationPolicy_LocationPolicy{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_google_cloud_batch_v1_job_proto_msgTypes[12]
+		mi := &file_google_cloud_batch_v1_job_proto_msgTypes[13]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1081,7 +1142,7 @@ func (x *AllocationPolicy_LocationPolicy) String() string {
 func (*AllocationPolicy_LocationPolicy) ProtoMessage() {}
 
 func (x *AllocationPolicy_LocationPolicy) ProtoReflect() protoreflect.Message {
-	mi := &file_google_cloud_batch_v1_job_proto_msgTypes[12]
+	mi := &file_google_cloud_batch_v1_job_proto_msgTypes[13]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1137,7 +1198,7 @@ type AllocationPolicy_Disk struct {
 func (x *AllocationPolicy_Disk) Reset() {
 	*x = AllocationPolicy_Disk{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_google_cloud_batch_v1_job_proto_msgTypes[13]
+		mi := &file_google_cloud_batch_v1_job_proto_msgTypes[14]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1150,7 +1211,7 @@ func (x *AllocationPolicy_Disk) String() string {
 func (*AllocationPolicy_Disk) ProtoMessage() {}
 
 func (x *AllocationPolicy_Disk) ProtoReflect() protoreflect.Message {
-	mi := &file_google_cloud_batch_v1_job_proto_msgTypes[13]
+	mi := &file_google_cloud_batch_v1_job_proto_msgTypes[14]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1239,14 +1300,16 @@ type AllocationPolicy_AttachedDisk struct {
 	//	*AllocationPolicy_AttachedDisk_ExistingDisk
 	Attached isAllocationPolicy_AttachedDisk_Attached `protobuf_oneof:"attached"`
 	// Device name that the guest operating system will see.
-	// If not specified, this is default to the disk name.
+	// It is used by Runnable.volumes field to mount disks. So please specify
+	// the device_name if you want Batch to help mount the disk, and it should
+	// match the device_name field in volumes.
 	DeviceName string `protobuf:"bytes,3,opt,name=device_name,json=deviceName,proto3" json:"device_name,omitempty"`
 }
 
 func (x *AllocationPolicy_AttachedDisk) Reset() {
 	*x = AllocationPolicy_AttachedDisk{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_google_cloud_batch_v1_job_proto_msgTypes[14]
+		mi := &file_google_cloud_batch_v1_job_proto_msgTypes[15]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1259,7 +1322,7 @@ func (x *AllocationPolicy_AttachedDisk) String() string {
 func (*AllocationPolicy_AttachedDisk) ProtoMessage() {}
 
 func (x *AllocationPolicy_AttachedDisk) ProtoReflect() protoreflect.Message {
-	mi := &file_google_cloud_batch_v1_job_proto_msgTypes[14]
+	mi := &file_google_cloud_batch_v1_job_proto_msgTypes[15]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1331,6 +1394,8 @@ type AllocationPolicy_Accelerator struct {
 	Type string `protobuf:"bytes,1,opt,name=type,proto3" json:"type,omitempty"`
 	// The number of accelerators of this type.
 	Count int64 `protobuf:"varint,2,opt,name=count,proto3" json:"count,omitempty"`
+	// Deprecated: please use instances[0].install_gpu_drivers instead.
+	//
 	// Deprecated: Do not use.
 	InstallGpuDrivers bool `protobuf:"varint,3,opt,name=install_gpu_drivers,json=installGpuDrivers,proto3" json:"install_gpu_drivers,omitempty"`
 }
@@ -1338,7 +1403,7 @@ type AllocationPolicy_Accelerator struct {
 func (x *AllocationPolicy_Accelerator) Reset() {
 	*x = AllocationPolicy_Accelerator{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_google_cloud_batch_v1_job_proto_msgTypes[15]
+		mi := &file_google_cloud_batch_v1_job_proto_msgTypes[16]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1351,7 +1416,7 @@ func (x *AllocationPolicy_Accelerator) String() string {
 func (*AllocationPolicy_Accelerator) ProtoMessage() {}
 
 func (x *AllocationPolicy_Accelerator) ProtoReflect() protoreflect.Message {
-	mi := &file_google_cloud_batch_v1_job_proto_msgTypes[15]
+	mi := &file_google_cloud_batch_v1_job_proto_msgTypes[16]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1416,7 +1481,7 @@ type AllocationPolicy_InstancePolicy struct {
 func (x *AllocationPolicy_InstancePolicy) Reset() {
 	*x = AllocationPolicy_InstancePolicy{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_google_cloud_batch_v1_job_proto_msgTypes[16]
+		mi := &file_google_cloud_batch_v1_job_proto_msgTypes[17]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1429,7 +1494,7 @@ func (x *AllocationPolicy_InstancePolicy) String() string {
 func (*AllocationPolicy_InstancePolicy) ProtoMessage() {}
 
 func (x *AllocationPolicy_InstancePolicy) ProtoReflect() protoreflect.Message {
-	mi := &file_google_cloud_batch_v1_job_proto_msgTypes[16]
+	mi := &file_google_cloud_batch_v1_job_proto_msgTypes[17]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1491,12 +1556,17 @@ type AllocationPolicy_InstancePolicyOrTemplate struct {
 	//	*AllocationPolicy_InstancePolicyOrTemplate_Policy
 	//	*AllocationPolicy_InstancePolicyOrTemplate_InstanceTemplate
 	PolicyTemplate isAllocationPolicy_InstancePolicyOrTemplate_PolicyTemplate `protobuf_oneof:"policy_template"`
+	// Set this field true if users want Batch to help fetch drivers from a
+	// third party location and install them for GPUs specified in
+	// policy.accelerators or instance_template on their behalf. Default is
+	// false.
+	InstallGpuDrivers bool `protobuf:"varint,3,opt,name=install_gpu_drivers,json=installGpuDrivers,proto3" json:"install_gpu_drivers,omitempty"`
 }
 
 func (x *AllocationPolicy_InstancePolicyOrTemplate) Reset() {
 	*x = AllocationPolicy_InstancePolicyOrTemplate{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_google_cloud_batch_v1_job_proto_msgTypes[17]
+		mi := &file_google_cloud_batch_v1_job_proto_msgTypes[18]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1509,7 +1579,7 @@ func (x *AllocationPolicy_InstancePolicyOrTemplate) String() string {
 func (*AllocationPolicy_InstancePolicyOrTemplate) ProtoMessage() {}
 
 func (x *AllocationPolicy_InstancePolicyOrTemplate) ProtoReflect() protoreflect.Message {
-	mi := &file_google_cloud_batch_v1_job_proto_msgTypes[17]
+	mi := &file_google_cloud_batch_v1_job_proto_msgTypes[18]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1544,6 +1614,13 @@ func (x *AllocationPolicy_InstancePolicyOrTemplate) GetInstanceTemplate() string
 		return x.InstanceTemplate
 	}
 	return ""
+}
+
+func (x *AllocationPolicy_InstancePolicyOrTemplate) GetInstallGpuDrivers() bool {
+	if x != nil {
+		return x.InstallGpuDrivers
+	}
+	return false
 }
 
 type isAllocationPolicy_InstancePolicyOrTemplate_PolicyTemplate interface {
@@ -1591,7 +1668,7 @@ type AllocationPolicy_NetworkInterface struct {
 func (x *AllocationPolicy_NetworkInterface) Reset() {
 	*x = AllocationPolicy_NetworkInterface{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_google_cloud_batch_v1_job_proto_msgTypes[18]
+		mi := &file_google_cloud_batch_v1_job_proto_msgTypes[19]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1604,7 +1681,7 @@ func (x *AllocationPolicy_NetworkInterface) String() string {
 func (*AllocationPolicy_NetworkInterface) ProtoMessage() {}
 
 func (x *AllocationPolicy_NetworkInterface) ProtoReflect() protoreflect.Message {
-	mi := &file_google_cloud_batch_v1_job_proto_msgTypes[18]
+	mi := &file_google_cloud_batch_v1_job_proto_msgTypes[19]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1654,7 +1731,7 @@ type AllocationPolicy_NetworkPolicy struct {
 func (x *AllocationPolicy_NetworkPolicy) Reset() {
 	*x = AllocationPolicy_NetworkPolicy{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_google_cloud_batch_v1_job_proto_msgTypes[19]
+		mi := &file_google_cloud_batch_v1_job_proto_msgTypes[20]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1667,7 +1744,7 @@ func (x *AllocationPolicy_NetworkPolicy) String() string {
 func (*AllocationPolicy_NetworkPolicy) ProtoMessage() {}
 
 func (x *AllocationPolicy_NetworkPolicy) ProtoReflect() protoreflect.Message {
-	mi := &file_google_cloud_batch_v1_job_proto_msgTypes[19]
+	mi := &file_google_cloud_batch_v1_job_proto_msgTypes[20]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1855,7 +1932,7 @@ var file_google_cloud_batch_v1_job_proto_rawDesc = []byte{
 	0x5f, 0x55, 0x4e, 0x53, 0x50, 0x45, 0x43, 0x49, 0x46, 0x49, 0x45, 0x44, 0x10, 0x00, 0x12, 0x15,
 	0x0a, 0x11, 0x4a, 0x4f, 0x42, 0x5f, 0x53, 0x54, 0x41, 0x54, 0x45, 0x5f, 0x43, 0x48, 0x41, 0x4e,
 	0x47, 0x45, 0x44, 0x10, 0x01, 0x12, 0x16, 0x0a, 0x12, 0x54, 0x41, 0x53, 0x4b, 0x5f, 0x53, 0x54,
-	0x41, 0x54, 0x45, 0x5f, 0x43, 0x48, 0x41, 0x4e, 0x47, 0x45, 0x44, 0x10, 0x02, 0x22, 0x9d, 0x0e,
+	0x41, 0x54, 0x45, 0x5f, 0x43, 0x48, 0x41, 0x4e, 0x47, 0x45, 0x44, 0x10, 0x02, 0x22, 0x9d, 0x0f,
 	0x0a, 0x10, 0x41, 0x6c, 0x6c, 0x6f, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x50, 0x6f, 0x6c, 0x69,
 	0x63, 0x79, 0x12, 0x52, 0x0a, 0x08, 0x6c, 0x6f, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x18, 0x01,
 	0x20, 0x01, 0x28, 0x0b, 0x32, 0x36, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x63, 0x6c,
@@ -1868,7 +1945,12 @@ var file_google_cloud_batch_v1_job_proto_rawDesc = []byte{
 	0x31, 0x2e, 0x41, 0x6c, 0x6c, 0x6f, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x50, 0x6f, 0x6c, 0x69,
 	0x63, 0x79, 0x2e, 0x49, 0x6e, 0x73, 0x74, 0x61, 0x6e, 0x63, 0x65, 0x50, 0x6f, 0x6c, 0x69, 0x63,
 	0x79, 0x4f, 0x72, 0x54, 0x65, 0x6d, 0x70, 0x6c, 0x61, 0x74, 0x65, 0x52, 0x09, 0x69, 0x6e, 0x73,
-	0x74, 0x61, 0x6e, 0x63, 0x65, 0x73, 0x12, 0x4b, 0x0a, 0x06, 0x6c, 0x61, 0x62, 0x65, 0x6c, 0x73,
+	0x74, 0x61, 0x6e, 0x63, 0x65, 0x73, 0x12, 0x4e, 0x0a, 0x0f, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63,
+	0x65, 0x5f, 0x61, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x18, 0x09, 0x20, 0x01, 0x28, 0x0b, 0x32,
+	0x25, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x62,
+	0x61, 0x74, 0x63, 0x68, 0x2e, 0x76, 0x31, 0x2e, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x41,
+	0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x52, 0x0e, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x41,
+	0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x12, 0x4b, 0x0a, 0x06, 0x6c, 0x61, 0x62, 0x65, 0x6c, 0x73,
 	0x18, 0x06, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x33, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e,
 	0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x62, 0x61, 0x74, 0x63, 0x68, 0x2e, 0x76, 0x31, 0x2e, 0x41,
 	0x6c, 0x6c, 0x6f, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x50, 0x6f, 0x6c, 0x69, 0x63, 0x79, 0x2e,
@@ -1933,7 +2015,7 @@ var file_google_cloud_batch_v1_job_proto_rawDesc = []byte{
 	0x6f, 0x75, 0x64, 0x2e, 0x62, 0x61, 0x74, 0x63, 0x68, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x6c, 0x6c,
 	0x6f, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x50, 0x6f, 0x6c, 0x69, 0x63, 0x79, 0x2e, 0x41, 0x74,
 	0x74, 0x61, 0x63, 0x68, 0x65, 0x64, 0x44, 0x69, 0x73, 0x6b, 0x52, 0x05, 0x64, 0x69, 0x73, 0x6b,
-	0x73, 0x1a, 0xae, 0x01, 0x0a, 0x18, 0x49, 0x6e, 0x73, 0x74, 0x61, 0x6e, 0x63, 0x65, 0x50, 0x6f,
+	0x73, 0x1a, 0xde, 0x01, 0x0a, 0x18, 0x49, 0x6e, 0x73, 0x74, 0x61, 0x6e, 0x63, 0x65, 0x50, 0x6f,
 	0x6c, 0x69, 0x63, 0x79, 0x4f, 0x72, 0x54, 0x65, 0x6d, 0x70, 0x6c, 0x61, 0x74, 0x65, 0x12, 0x50,
 	0x0a, 0x06, 0x70, 0x6f, 0x6c, 0x69, 0x63, 0x79, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x36,
 	0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x62, 0x61,
@@ -1942,7 +2024,10 @@ var file_google_cloud_batch_v1_job_proto_rawDesc = []byte{
 	0x50, 0x6f, 0x6c, 0x69, 0x63, 0x79, 0x48, 0x00, 0x52, 0x06, 0x70, 0x6f, 0x6c, 0x69, 0x63, 0x79,
 	0x12, 0x2d, 0x0a, 0x11, 0x69, 0x6e, 0x73, 0x74, 0x61, 0x6e, 0x63, 0x65, 0x5f, 0x74, 0x65, 0x6d,
 	0x70, 0x6c, 0x61, 0x74, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x48, 0x00, 0x52, 0x10, 0x69,
-	0x6e, 0x73, 0x74, 0x61, 0x6e, 0x63, 0x65, 0x54, 0x65, 0x6d, 0x70, 0x6c, 0x61, 0x74, 0x65, 0x42,
+	0x6e, 0x73, 0x74, 0x61, 0x6e, 0x63, 0x65, 0x54, 0x65, 0x6d, 0x70, 0x6c, 0x61, 0x74, 0x65, 0x12,
+	0x2e, 0x0a, 0x13, 0x69, 0x6e, 0x73, 0x74, 0x61, 0x6c, 0x6c, 0x5f, 0x67, 0x70, 0x75, 0x5f, 0x64,
+	0x72, 0x69, 0x76, 0x65, 0x72, 0x73, 0x18, 0x03, 0x20, 0x01, 0x28, 0x08, 0x52, 0x11, 0x69, 0x6e,
+	0x73, 0x74, 0x61, 0x6c, 0x6c, 0x47, 0x70, 0x75, 0x44, 0x72, 0x69, 0x76, 0x65, 0x72, 0x73, 0x42,
 	0x11, 0x0a, 0x0f, 0x70, 0x6f, 0x6c, 0x69, 0x63, 0x79, 0x5f, 0x74, 0x65, 0x6d, 0x70, 0x6c, 0x61,
 	0x74, 0x65, 0x1a, 0x81, 0x01, 0x0a, 0x10, 0x4e, 0x65, 0x74, 0x77, 0x6f, 0x72, 0x6b, 0x49, 0x6e,
 	0x74, 0x65, 0x72, 0x66, 0x61, 0x63, 0x65, 0x12, 0x18, 0x0a, 0x07, 0x6e, 0x65, 0x74, 0x77, 0x6f,
@@ -2000,19 +2085,22 @@ var file_google_cloud_batch_v1_job_proto_rawDesc = []byte{
 	0x6f, 0x6a, 0x65, 0x63, 0x74, 0x7d, 0x2f, 0x6c, 0x6f, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x73,
 	0x2f, 0x7b, 0x6c, 0x6f, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x7d, 0x2f, 0x6a, 0x6f, 0x62, 0x73,
 	0x2f, 0x7b, 0x6a, 0x6f, 0x62, 0x7d, 0x2f, 0x74, 0x61, 0x73, 0x6b, 0x47, 0x72, 0x6f, 0x75, 0x70,
-	0x73, 0x2f, 0x7b, 0x74, 0x61, 0x73, 0x6b, 0x5f, 0x67, 0x72, 0x6f, 0x75, 0x70, 0x7d, 0x42, 0xb4,
-	0x01, 0x0a, 0x19, 0x63, 0x6f, 0x6d, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x63, 0x6c,
-	0x6f, 0x75, 0x64, 0x2e, 0x62, 0x61, 0x74, 0x63, 0x68, 0x2e, 0x76, 0x31, 0x42, 0x08, 0x4a, 0x6f,
-	0x62, 0x50, 0x72, 0x6f, 0x74, 0x6f, 0x50, 0x01, 0x5a, 0x3a, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65,
-	0x2e, 0x67, 0x6f, 0x6c, 0x61, 0x6e, 0x67, 0x2e, 0x6f, 0x72, 0x67, 0x2f, 0x67, 0x65, 0x6e, 0x70,
-	0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x61, 0x70, 0x69, 0x73, 0x2f,
-	0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2f, 0x62, 0x61, 0x74, 0x63, 0x68, 0x2f, 0x76, 0x31, 0x3b, 0x62,
-	0x61, 0x74, 0x63, 0x68, 0xa2, 0x02, 0x03, 0x47, 0x43, 0x42, 0xaa, 0x02, 0x15, 0x47, 0x6f, 0x6f,
-	0x67, 0x6c, 0x65, 0x2e, 0x43, 0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x42, 0x61, 0x74, 0x63, 0x68, 0x2e,
-	0x56, 0x31, 0xca, 0x02, 0x15, 0x47, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x5c, 0x43, 0x6c, 0x6f, 0x75,
-	0x64, 0x5c, 0x42, 0x61, 0x74, 0x63, 0x68, 0x5c, 0x56, 0x31, 0xea, 0x02, 0x18, 0x47, 0x6f, 0x6f,
-	0x67, 0x6c, 0x65, 0x3a, 0x3a, 0x43, 0x6c, 0x6f, 0x75, 0x64, 0x3a, 0x3a, 0x42, 0x61, 0x74, 0x63,
-	0x68, 0x3a, 0x3a, 0x56, 0x31, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x73, 0x2f, 0x7b, 0x74, 0x61, 0x73, 0x6b, 0x5f, 0x67, 0x72, 0x6f, 0x75, 0x70, 0x7d, 0x22, 0x26,
+	0x0a, 0x0e, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x41, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74,
+	0x12, 0x14, 0x0a, 0x05, 0x65, 0x6d, 0x61, 0x69, 0x6c, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52,
+	0x05, 0x65, 0x6d, 0x61, 0x69, 0x6c, 0x42, 0xb4, 0x01, 0x0a, 0x19, 0x63, 0x6f, 0x6d, 0x2e, 0x67,
+	0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x62, 0x61, 0x74, 0x63,
+	0x68, 0x2e, 0x76, 0x31, 0x42, 0x08, 0x4a, 0x6f, 0x62, 0x50, 0x72, 0x6f, 0x74, 0x6f, 0x50, 0x01,
+	0x5a, 0x3a, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x67, 0x6f, 0x6c, 0x61, 0x6e, 0x67, 0x2e,
+	0x6f, 0x72, 0x67, 0x2f, 0x67, 0x65, 0x6e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x67, 0x6f, 0x6f,
+	0x67, 0x6c, 0x65, 0x61, 0x70, 0x69, 0x73, 0x2f, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2f, 0x62, 0x61,
+	0x74, 0x63, 0x68, 0x2f, 0x76, 0x31, 0x3b, 0x62, 0x61, 0x74, 0x63, 0x68, 0xa2, 0x02, 0x03, 0x47,
+	0x43, 0x42, 0xaa, 0x02, 0x15, 0x47, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x43, 0x6c, 0x6f, 0x75,
+	0x64, 0x2e, 0x42, 0x61, 0x74, 0x63, 0x68, 0x2e, 0x56, 0x31, 0xca, 0x02, 0x15, 0x47, 0x6f, 0x6f,
+	0x67, 0x6c, 0x65, 0x5c, 0x43, 0x6c, 0x6f, 0x75, 0x64, 0x5c, 0x42, 0x61, 0x74, 0x63, 0x68, 0x5c,
+	0x56, 0x31, 0xea, 0x02, 0x18, 0x47, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x3a, 0x3a, 0x43, 0x6c, 0x6f,
+	0x75, 0x64, 0x3a, 0x3a, 0x42, 0x61, 0x74, 0x63, 0x68, 0x3a, 0x3a, 0x56, 0x31, 0x62, 0x06, 0x70,
+	0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -2028,7 +2116,7 @@ func file_google_cloud_batch_v1_job_proto_rawDescGZIP() []byte {
 }
 
 var file_google_cloud_batch_v1_job_proto_enumTypes = make([]protoimpl.EnumInfo, 4)
-var file_google_cloud_batch_v1_job_proto_msgTypes = make([]protoimpl.MessageInfo, 21)
+var file_google_cloud_batch_v1_job_proto_msgTypes = make([]protoimpl.MessageInfo, 22)
 var file_google_cloud_batch_v1_job_proto_goTypes = []interface{}{
 	(LogsPolicy_Destination)(0),             // 0: google.cloud.batch.v1.LogsPolicy.Destination
 	(JobStatus_State)(0),                    // 1: google.cloud.batch.v1.JobStatus.State
@@ -2040,67 +2128,69 @@ var file_google_cloud_batch_v1_job_proto_goTypes = []interface{}{
 	(*JobNotification)(nil),                 // 7: google.cloud.batch.v1.JobNotification
 	(*AllocationPolicy)(nil),                // 8: google.cloud.batch.v1.AllocationPolicy
 	(*TaskGroup)(nil),                       // 9: google.cloud.batch.v1.TaskGroup
-	nil,                                     // 10: google.cloud.batch.v1.Job.LabelsEntry
-	(*JobStatus_InstanceStatus)(nil),        // 11: google.cloud.batch.v1.JobStatus.InstanceStatus
-	(*JobStatus_TaskGroupStatus)(nil),       // 12: google.cloud.batch.v1.JobStatus.TaskGroupStatus
-	nil,                                     // 13: google.cloud.batch.v1.JobStatus.TaskGroupsEntry
-	nil,                                     // 14: google.cloud.batch.v1.JobStatus.TaskGroupStatus.CountsEntry
-	(*JobNotification_Message)(nil),         // 15: google.cloud.batch.v1.JobNotification.Message
-	(*AllocationPolicy_LocationPolicy)(nil), // 16: google.cloud.batch.v1.AllocationPolicy.LocationPolicy
-	(*AllocationPolicy_Disk)(nil),           // 17: google.cloud.batch.v1.AllocationPolicy.Disk
-	(*AllocationPolicy_AttachedDisk)(nil),   // 18: google.cloud.batch.v1.AllocationPolicy.AttachedDisk
-	(*AllocationPolicy_Accelerator)(nil),    // 19: google.cloud.batch.v1.AllocationPolicy.Accelerator
-	(*AllocationPolicy_InstancePolicy)(nil), // 20: google.cloud.batch.v1.AllocationPolicy.InstancePolicy
-	(*AllocationPolicy_InstancePolicyOrTemplate)(nil), // 21: google.cloud.batch.v1.AllocationPolicy.InstancePolicyOrTemplate
-	(*AllocationPolicy_NetworkInterface)(nil),         // 22: google.cloud.batch.v1.AllocationPolicy.NetworkInterface
-	(*AllocationPolicy_NetworkPolicy)(nil),            // 23: google.cloud.batch.v1.AllocationPolicy.NetworkPolicy
-	nil,                                               // 24: google.cloud.batch.v1.AllocationPolicy.LabelsEntry
-	(*timestamppb.Timestamp)(nil),                     // 25: google.protobuf.Timestamp
-	(*StatusEvent)(nil),                               // 26: google.cloud.batch.v1.StatusEvent
-	(*durationpb.Duration)(nil),                       // 27: google.protobuf.Duration
-	(*TaskSpec)(nil),                                  // 28: google.cloud.batch.v1.TaskSpec
-	(*Environment)(nil),                               // 29: google.cloud.batch.v1.Environment
-	(TaskStatus_State)(0),                             // 30: google.cloud.batch.v1.TaskStatus.State
+	(*ServiceAccount)(nil),                  // 10: google.cloud.batch.v1.ServiceAccount
+	nil,                                     // 11: google.cloud.batch.v1.Job.LabelsEntry
+	(*JobStatus_InstanceStatus)(nil),        // 12: google.cloud.batch.v1.JobStatus.InstanceStatus
+	(*JobStatus_TaskGroupStatus)(nil),       // 13: google.cloud.batch.v1.JobStatus.TaskGroupStatus
+	nil,                                     // 14: google.cloud.batch.v1.JobStatus.TaskGroupsEntry
+	nil,                                     // 15: google.cloud.batch.v1.JobStatus.TaskGroupStatus.CountsEntry
+	(*JobNotification_Message)(nil),         // 16: google.cloud.batch.v1.JobNotification.Message
+	(*AllocationPolicy_LocationPolicy)(nil), // 17: google.cloud.batch.v1.AllocationPolicy.LocationPolicy
+	(*AllocationPolicy_Disk)(nil),           // 18: google.cloud.batch.v1.AllocationPolicy.Disk
+	(*AllocationPolicy_AttachedDisk)(nil),   // 19: google.cloud.batch.v1.AllocationPolicy.AttachedDisk
+	(*AllocationPolicy_Accelerator)(nil),    // 20: google.cloud.batch.v1.AllocationPolicy.Accelerator
+	(*AllocationPolicy_InstancePolicy)(nil), // 21: google.cloud.batch.v1.AllocationPolicy.InstancePolicy
+	(*AllocationPolicy_InstancePolicyOrTemplate)(nil), // 22: google.cloud.batch.v1.AllocationPolicy.InstancePolicyOrTemplate
+	(*AllocationPolicy_NetworkInterface)(nil),         // 23: google.cloud.batch.v1.AllocationPolicy.NetworkInterface
+	(*AllocationPolicy_NetworkPolicy)(nil),            // 24: google.cloud.batch.v1.AllocationPolicy.NetworkPolicy
+	nil,                                               // 25: google.cloud.batch.v1.AllocationPolicy.LabelsEntry
+	(*timestamppb.Timestamp)(nil),                     // 26: google.protobuf.Timestamp
+	(*StatusEvent)(nil),                               // 27: google.cloud.batch.v1.StatusEvent
+	(*durationpb.Duration)(nil),                       // 28: google.protobuf.Duration
+	(*TaskSpec)(nil),                                  // 29: google.cloud.batch.v1.TaskSpec
+	(*Environment)(nil),                               // 30: google.cloud.batch.v1.Environment
+	(TaskStatus_State)(0),                             // 31: google.cloud.batch.v1.TaskStatus.State
 }
 var file_google_cloud_batch_v1_job_proto_depIdxs = []int32{
 	9,  // 0: google.cloud.batch.v1.Job.task_groups:type_name -> google.cloud.batch.v1.TaskGroup
 	8,  // 1: google.cloud.batch.v1.Job.allocation_policy:type_name -> google.cloud.batch.v1.AllocationPolicy
-	10, // 2: google.cloud.batch.v1.Job.labels:type_name -> google.cloud.batch.v1.Job.LabelsEntry
+	11, // 2: google.cloud.batch.v1.Job.labels:type_name -> google.cloud.batch.v1.Job.LabelsEntry
 	6,  // 3: google.cloud.batch.v1.Job.status:type_name -> google.cloud.batch.v1.JobStatus
-	25, // 4: google.cloud.batch.v1.Job.create_time:type_name -> google.protobuf.Timestamp
-	25, // 5: google.cloud.batch.v1.Job.update_time:type_name -> google.protobuf.Timestamp
+	26, // 4: google.cloud.batch.v1.Job.create_time:type_name -> google.protobuf.Timestamp
+	26, // 5: google.cloud.batch.v1.Job.update_time:type_name -> google.protobuf.Timestamp
 	5,  // 6: google.cloud.batch.v1.Job.logs_policy:type_name -> google.cloud.batch.v1.LogsPolicy
 	7,  // 7: google.cloud.batch.v1.Job.notifications:type_name -> google.cloud.batch.v1.JobNotification
 	0,  // 8: google.cloud.batch.v1.LogsPolicy.destination:type_name -> google.cloud.batch.v1.LogsPolicy.Destination
 	1,  // 9: google.cloud.batch.v1.JobStatus.state:type_name -> google.cloud.batch.v1.JobStatus.State
-	26, // 10: google.cloud.batch.v1.JobStatus.status_events:type_name -> google.cloud.batch.v1.StatusEvent
-	13, // 11: google.cloud.batch.v1.JobStatus.task_groups:type_name -> google.cloud.batch.v1.JobStatus.TaskGroupsEntry
-	27, // 12: google.cloud.batch.v1.JobStatus.run_duration:type_name -> google.protobuf.Duration
-	15, // 13: google.cloud.batch.v1.JobNotification.message:type_name -> google.cloud.batch.v1.JobNotification.Message
-	16, // 14: google.cloud.batch.v1.AllocationPolicy.location:type_name -> google.cloud.batch.v1.AllocationPolicy.LocationPolicy
-	21, // 15: google.cloud.batch.v1.AllocationPolicy.instances:type_name -> google.cloud.batch.v1.AllocationPolicy.InstancePolicyOrTemplate
-	24, // 16: google.cloud.batch.v1.AllocationPolicy.labels:type_name -> google.cloud.batch.v1.AllocationPolicy.LabelsEntry
-	23, // 17: google.cloud.batch.v1.AllocationPolicy.network:type_name -> google.cloud.batch.v1.AllocationPolicy.NetworkPolicy
-	28, // 18: google.cloud.batch.v1.TaskGroup.task_spec:type_name -> google.cloud.batch.v1.TaskSpec
-	29, // 19: google.cloud.batch.v1.TaskGroup.task_environments:type_name -> google.cloud.batch.v1.Environment
-	3,  // 20: google.cloud.batch.v1.JobStatus.InstanceStatus.provisioning_model:type_name -> google.cloud.batch.v1.AllocationPolicy.ProvisioningModel
-	14, // 21: google.cloud.batch.v1.JobStatus.TaskGroupStatus.counts:type_name -> google.cloud.batch.v1.JobStatus.TaskGroupStatus.CountsEntry
-	11, // 22: google.cloud.batch.v1.JobStatus.TaskGroupStatus.instances:type_name -> google.cloud.batch.v1.JobStatus.InstanceStatus
-	12, // 23: google.cloud.batch.v1.JobStatus.TaskGroupsEntry.value:type_name -> google.cloud.batch.v1.JobStatus.TaskGroupStatus
-	2,  // 24: google.cloud.batch.v1.JobNotification.Message.type:type_name -> google.cloud.batch.v1.JobNotification.Type
-	1,  // 25: google.cloud.batch.v1.JobNotification.Message.new_job_state:type_name -> google.cloud.batch.v1.JobStatus.State
-	30, // 26: google.cloud.batch.v1.JobNotification.Message.new_task_state:type_name -> google.cloud.batch.v1.TaskStatus.State
-	17, // 27: google.cloud.batch.v1.AllocationPolicy.AttachedDisk.new_disk:type_name -> google.cloud.batch.v1.AllocationPolicy.Disk
-	3,  // 28: google.cloud.batch.v1.AllocationPolicy.InstancePolicy.provisioning_model:type_name -> google.cloud.batch.v1.AllocationPolicy.ProvisioningModel
-	19, // 29: google.cloud.batch.v1.AllocationPolicy.InstancePolicy.accelerators:type_name -> google.cloud.batch.v1.AllocationPolicy.Accelerator
-	18, // 30: google.cloud.batch.v1.AllocationPolicy.InstancePolicy.disks:type_name -> google.cloud.batch.v1.AllocationPolicy.AttachedDisk
-	20, // 31: google.cloud.batch.v1.AllocationPolicy.InstancePolicyOrTemplate.policy:type_name -> google.cloud.batch.v1.AllocationPolicy.InstancePolicy
-	22, // 32: google.cloud.batch.v1.AllocationPolicy.NetworkPolicy.network_interfaces:type_name -> google.cloud.batch.v1.AllocationPolicy.NetworkInterface
-	33, // [33:33] is the sub-list for method output_type
-	33, // [33:33] is the sub-list for method input_type
-	33, // [33:33] is the sub-list for extension type_name
-	33, // [33:33] is the sub-list for extension extendee
-	0,  // [0:33] is the sub-list for field type_name
+	27, // 10: google.cloud.batch.v1.JobStatus.status_events:type_name -> google.cloud.batch.v1.StatusEvent
+	14, // 11: google.cloud.batch.v1.JobStatus.task_groups:type_name -> google.cloud.batch.v1.JobStatus.TaskGroupsEntry
+	28, // 12: google.cloud.batch.v1.JobStatus.run_duration:type_name -> google.protobuf.Duration
+	16, // 13: google.cloud.batch.v1.JobNotification.message:type_name -> google.cloud.batch.v1.JobNotification.Message
+	17, // 14: google.cloud.batch.v1.AllocationPolicy.location:type_name -> google.cloud.batch.v1.AllocationPolicy.LocationPolicy
+	22, // 15: google.cloud.batch.v1.AllocationPolicy.instances:type_name -> google.cloud.batch.v1.AllocationPolicy.InstancePolicyOrTemplate
+	10, // 16: google.cloud.batch.v1.AllocationPolicy.service_account:type_name -> google.cloud.batch.v1.ServiceAccount
+	25, // 17: google.cloud.batch.v1.AllocationPolicy.labels:type_name -> google.cloud.batch.v1.AllocationPolicy.LabelsEntry
+	24, // 18: google.cloud.batch.v1.AllocationPolicy.network:type_name -> google.cloud.batch.v1.AllocationPolicy.NetworkPolicy
+	29, // 19: google.cloud.batch.v1.TaskGroup.task_spec:type_name -> google.cloud.batch.v1.TaskSpec
+	30, // 20: google.cloud.batch.v1.TaskGroup.task_environments:type_name -> google.cloud.batch.v1.Environment
+	3,  // 21: google.cloud.batch.v1.JobStatus.InstanceStatus.provisioning_model:type_name -> google.cloud.batch.v1.AllocationPolicy.ProvisioningModel
+	15, // 22: google.cloud.batch.v1.JobStatus.TaskGroupStatus.counts:type_name -> google.cloud.batch.v1.JobStatus.TaskGroupStatus.CountsEntry
+	12, // 23: google.cloud.batch.v1.JobStatus.TaskGroupStatus.instances:type_name -> google.cloud.batch.v1.JobStatus.InstanceStatus
+	13, // 24: google.cloud.batch.v1.JobStatus.TaskGroupsEntry.value:type_name -> google.cloud.batch.v1.JobStatus.TaskGroupStatus
+	2,  // 25: google.cloud.batch.v1.JobNotification.Message.type:type_name -> google.cloud.batch.v1.JobNotification.Type
+	1,  // 26: google.cloud.batch.v1.JobNotification.Message.new_job_state:type_name -> google.cloud.batch.v1.JobStatus.State
+	31, // 27: google.cloud.batch.v1.JobNotification.Message.new_task_state:type_name -> google.cloud.batch.v1.TaskStatus.State
+	18, // 28: google.cloud.batch.v1.AllocationPolicy.AttachedDisk.new_disk:type_name -> google.cloud.batch.v1.AllocationPolicy.Disk
+	3,  // 29: google.cloud.batch.v1.AllocationPolicy.InstancePolicy.provisioning_model:type_name -> google.cloud.batch.v1.AllocationPolicy.ProvisioningModel
+	20, // 30: google.cloud.batch.v1.AllocationPolicy.InstancePolicy.accelerators:type_name -> google.cloud.batch.v1.AllocationPolicy.Accelerator
+	19, // 31: google.cloud.batch.v1.AllocationPolicy.InstancePolicy.disks:type_name -> google.cloud.batch.v1.AllocationPolicy.AttachedDisk
+	21, // 32: google.cloud.batch.v1.AllocationPolicy.InstancePolicyOrTemplate.policy:type_name -> google.cloud.batch.v1.AllocationPolicy.InstancePolicy
+	23, // 33: google.cloud.batch.v1.AllocationPolicy.NetworkPolicy.network_interfaces:type_name -> google.cloud.batch.v1.AllocationPolicy.NetworkInterface
+	34, // [34:34] is the sub-list for method output_type
+	34, // [34:34] is the sub-list for method input_type
+	34, // [34:34] is the sub-list for extension type_name
+	34, // [34:34] is the sub-list for extension extendee
+	0,  // [0:34] is the sub-list for field type_name
 }
 
 func init() { file_google_cloud_batch_v1_job_proto_init() }
@@ -2182,8 +2272,8 @@ func file_google_cloud_batch_v1_job_proto_init() {
 				return nil
 			}
 		}
-		file_google_cloud_batch_v1_job_proto_msgTypes[7].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*JobStatus_InstanceStatus); i {
+		file_google_cloud_batch_v1_job_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*ServiceAccount); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2195,6 +2285,18 @@ func file_google_cloud_batch_v1_job_proto_init() {
 			}
 		}
 		file_google_cloud_batch_v1_job_proto_msgTypes[8].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*JobStatus_InstanceStatus); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_google_cloud_batch_v1_job_proto_msgTypes[9].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*JobStatus_TaskGroupStatus); i {
 			case 0:
 				return &v.state
@@ -2206,7 +2308,7 @@ func file_google_cloud_batch_v1_job_proto_init() {
 				return nil
 			}
 		}
-		file_google_cloud_batch_v1_job_proto_msgTypes[11].Exporter = func(v interface{}, i int) interface{} {
+		file_google_cloud_batch_v1_job_proto_msgTypes[12].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*JobNotification_Message); i {
 			case 0:
 				return &v.state
@@ -2218,7 +2320,7 @@ func file_google_cloud_batch_v1_job_proto_init() {
 				return nil
 			}
 		}
-		file_google_cloud_batch_v1_job_proto_msgTypes[12].Exporter = func(v interface{}, i int) interface{} {
+		file_google_cloud_batch_v1_job_proto_msgTypes[13].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*AllocationPolicy_LocationPolicy); i {
 			case 0:
 				return &v.state
@@ -2230,7 +2332,7 @@ func file_google_cloud_batch_v1_job_proto_init() {
 				return nil
 			}
 		}
-		file_google_cloud_batch_v1_job_proto_msgTypes[13].Exporter = func(v interface{}, i int) interface{} {
+		file_google_cloud_batch_v1_job_proto_msgTypes[14].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*AllocationPolicy_Disk); i {
 			case 0:
 				return &v.state
@@ -2242,7 +2344,7 @@ func file_google_cloud_batch_v1_job_proto_init() {
 				return nil
 			}
 		}
-		file_google_cloud_batch_v1_job_proto_msgTypes[14].Exporter = func(v interface{}, i int) interface{} {
+		file_google_cloud_batch_v1_job_proto_msgTypes[15].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*AllocationPolicy_AttachedDisk); i {
 			case 0:
 				return &v.state
@@ -2254,7 +2356,7 @@ func file_google_cloud_batch_v1_job_proto_init() {
 				return nil
 			}
 		}
-		file_google_cloud_batch_v1_job_proto_msgTypes[15].Exporter = func(v interface{}, i int) interface{} {
+		file_google_cloud_batch_v1_job_proto_msgTypes[16].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*AllocationPolicy_Accelerator); i {
 			case 0:
 				return &v.state
@@ -2266,7 +2368,7 @@ func file_google_cloud_batch_v1_job_proto_init() {
 				return nil
 			}
 		}
-		file_google_cloud_batch_v1_job_proto_msgTypes[16].Exporter = func(v interface{}, i int) interface{} {
+		file_google_cloud_batch_v1_job_proto_msgTypes[17].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*AllocationPolicy_InstancePolicy); i {
 			case 0:
 				return &v.state
@@ -2278,7 +2380,7 @@ func file_google_cloud_batch_v1_job_proto_init() {
 				return nil
 			}
 		}
-		file_google_cloud_batch_v1_job_proto_msgTypes[17].Exporter = func(v interface{}, i int) interface{} {
+		file_google_cloud_batch_v1_job_proto_msgTypes[18].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*AllocationPolicy_InstancePolicyOrTemplate); i {
 			case 0:
 				return &v.state
@@ -2290,7 +2392,7 @@ func file_google_cloud_batch_v1_job_proto_init() {
 				return nil
 			}
 		}
-		file_google_cloud_batch_v1_job_proto_msgTypes[18].Exporter = func(v interface{}, i int) interface{} {
+		file_google_cloud_batch_v1_job_proto_msgTypes[19].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*AllocationPolicy_NetworkInterface); i {
 			case 0:
 				return &v.state
@@ -2302,7 +2404,7 @@ func file_google_cloud_batch_v1_job_proto_init() {
 				return nil
 			}
 		}
-		file_google_cloud_batch_v1_job_proto_msgTypes[19].Exporter = func(v interface{}, i int) interface{} {
+		file_google_cloud_batch_v1_job_proto_msgTypes[20].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*AllocationPolicy_NetworkPolicy); i {
 			case 0:
 				return &v.state
@@ -2315,15 +2417,15 @@ func file_google_cloud_batch_v1_job_proto_init() {
 			}
 		}
 	}
-	file_google_cloud_batch_v1_job_proto_msgTypes[13].OneofWrappers = []interface{}{
+	file_google_cloud_batch_v1_job_proto_msgTypes[14].OneofWrappers = []interface{}{
 		(*AllocationPolicy_Disk_Image)(nil),
 		(*AllocationPolicy_Disk_Snapshot)(nil),
 	}
-	file_google_cloud_batch_v1_job_proto_msgTypes[14].OneofWrappers = []interface{}{
+	file_google_cloud_batch_v1_job_proto_msgTypes[15].OneofWrappers = []interface{}{
 		(*AllocationPolicy_AttachedDisk_NewDisk)(nil),
 		(*AllocationPolicy_AttachedDisk_ExistingDisk)(nil),
 	}
-	file_google_cloud_batch_v1_job_proto_msgTypes[17].OneofWrappers = []interface{}{
+	file_google_cloud_batch_v1_job_proto_msgTypes[18].OneofWrappers = []interface{}{
 		(*AllocationPolicy_InstancePolicyOrTemplate_Policy)(nil),
 		(*AllocationPolicy_InstancePolicyOrTemplate_InstanceTemplate)(nil),
 	}
@@ -2333,7 +2435,7 @@ func file_google_cloud_batch_v1_job_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_google_cloud_batch_v1_job_proto_rawDesc,
 			NumEnums:      4,
-			NumMessages:   21,
+			NumMessages:   22,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
