@@ -191,12 +191,10 @@ const (
 	// Unspecified.
 	TimeseriesParams_AGGREGATION_METHOD_UNSPECIFIED TimeseriesParams_AggregationMethod = 0
 	// Aggregate multiple events by summing up the values found in the
-	// [metric][google.cloud.timeseriesinsights.v1.TimeseriesParams.metric]
-	// dimension.
+	// [metric][google.cloud.timeseriesinsights.v1.TimeseriesParams.metric] dimension.
 	TimeseriesParams_SUM TimeseriesParams_AggregationMethod = 1
 	// Aggregate multiple events by averaging out the values found in the
-	// [metric][google.cloud.timeseriesinsights.v1.TimeseriesParams.metric]
-	// dimension.
+	// [metric][google.cloud.timeseriesinsights.v1.TimeseriesParams.metric] dimension.
 	TimeseriesParams_AVERAGE TimeseriesParams_AggregationMethod = 2
 )
 
@@ -316,7 +314,7 @@ func (x *BigqueryMapping) GetDimensionColumn() []string {
 	return nil
 }
 
-// A data source consists of multiple [Event] stored on
+// A data source consists of multiple [Event][google.cloud.timeseriesinsights.v1.Event] objects stored on
 // Cloud Storage.  Each Event should be in JSON format, with one Event
 // per line, also known as JSON Lines format.
 type DataSource struct {
@@ -390,9 +388,7 @@ type DataSet struct {
 	// The dataset name, which will be used for querying, status and unload
 	// requests. This must be unique within a project.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	// [Data dimension
-	// names][google.cloud.timeseriesinsights.v1.EventDimension.name] allowed for
-	// this DataSet.
+	// [Data dimension names][google.cloud.timeseriesinsights.v1.EventDimension.name] allowed for this `DataSet`.
 	//
 	// If left empty, all dimension names are included. This field works as a
 	// filter to avoid regenerating the data.
@@ -403,8 +399,9 @@ type DataSet struct {
 	State DataSet_State `protobuf:"varint,4,opt,name=state,proto3,enum=google.cloud.timeseriesinsights.v1.DataSet_State" json:"state,omitempty"`
 	// Dataset processing status.
 	Status *status.Status `protobuf:"bytes,5,opt,name=status,proto3" json:"status,omitempty"`
-	// Periodically we discard dataset [Event] that have timestamps older than
-	// 'ttl'.  Omitting this field or a zero value means no events are discarded.
+	// Periodically we discard dataset [Event][google.cloud.timeseriesinsights.v1.Event] objects that have
+	// timestamps older than 'ttl'.  Omitting this field or a zero value means no
+	// events are discarded.
 	Ttl *durationpb.Duration `protobuf:"bytes,6,opt,name=ttl,proto3" json:"ttl,omitempty"`
 }
 
@@ -490,9 +487,9 @@ type EventDimension struct {
 
 	// Dimension name.
 	//
-	// **NOTE**: EventDimension names must be composed of alphanumeric characters
-	// only, and are case insensitive. Unicode characters are *not* supported. The
-	// underscore '_' is also allowed.
+	// **NOTE**: `EventDimension` names must be composed of alphanumeric
+	// characters only, and are case insensitive. Unicode characters are *not*
+	// supported. The underscore '_' is also allowed.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// Dimension value.
 	//
@@ -715,24 +712,20 @@ type AppendEventsRequest struct {
 
 	// Events to be appended.
 	//
-	// **NOTE**:
+	// Note:
 	//
-	//  0. The [DataSet] must be shown in a `LOADED` state
-	//     in the results of [list method][ListDataSet]; otherwise, all events from
+	//  0. The [DataSet][google.cloud.timeseriesinsights.v1.DataSet] must be shown in a `LOADED` state
+	//     in the results of `list` method; otherwise, all events from
 	//     the append request will be dropped, and a `NOT_FOUND` status will be
 	//     returned.
 	//  0. All events in a single request must have the same
-	//     [groupId][google.cloud.timeseriesinsights.v1.Event.group_id] if set;
-	//     otherwise, an `INVALID_ARGUMENT` status will be returned.
-	//  0. If [groupId][google.cloud.timeseriesinsights.v1.Event.group_id] is not
-	//
-	// set (or 0), there
-	//
-	//	should be only 1 event; otherwise, an `INVALID_ARGUMENT` status will be
-	//	returned.
+	//     [groupId][google.cloud.timeseriesinsights.v1.Event.group_id] if set; otherwise, an
+	//     `INVALID_ARGUMENT` status will be returned.
+	//  0. If [groupId][google.cloud.timeseriesinsights.v1.Event.group_id] is not set (or 0), there
+	//     should be only 1 event; otherwise, an `INVALID_ARGUMENT` status will be
+	//     returned.
 	//  0. The events must be newer than the current time minus
-	//     [DataSet TTL][google.cloud.timeseriesinsights.v1.DataSet.ttl] or they
-	//     will be dropped.
+	//     [DataSet TTL][google.cloud.timeseriesinsights.v1.DataSet.ttl] or they will be dropped.
 	Events []*Event `protobuf:"bytes,1,rep,name=events,proto3" json:"events,omitempty"`
 	// Required. The DataSet to which we want to append to in the format of
 	// "projects/{project}/datasets/{dataset}"
@@ -843,7 +836,7 @@ type CreateDataSetRequest struct {
 	// Required. Client project name which will own this DataSet in the format of
 	// 'projects/{project}'.
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
-	// Required. Data set to be loaded.
+	// Required. Dataset to be loaded.
 	Dataset *DataSet `protobuf:"bytes,2,opt,name=dataset,proto3" json:"dataset,omitempty"`
 }
 
@@ -899,8 +892,7 @@ type DeleteDataSetRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. Data set name in the format of
-	// "projects/{project}/datasets/{dataset}"
+	// Required. Dataset name in the format of "projects/{project}/datasets/{dataset}"
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 }
 
@@ -1153,18 +1145,14 @@ type isPinnedDimension_Value interface {
 }
 
 type PinnedDimension_StringVal struct {
-	// A string value. This can be used for
-	// [dimensions][google.cloud.timeseriesinsights.v1.EventDimension] which
-	// have their value field set to
-	// [string_val][google.cloud.timeseriesinsights.v1.EventDimension.string_val].
+	// A string value. This can be used for [dimensions][google.cloud.timeseriesinsights.v1.EventDimension], which
+	// have their value field set to [string_val][google.cloud.timeseriesinsights.v1.EventDimension.string_val].
 	StringVal string `protobuf:"bytes,2,opt,name=string_val,json=stringVal,proto3,oneof"`
 }
 
 type PinnedDimension_BoolVal struct {
-	// A bool value. This can be used for
-	// [dimensions][google.cloud.timeseriesinsights.v1.EventDimension] which
-	// have their value field set to
-	// [bool_val][google.cloud.timeseriesinsights.v1.EventDimension.bool_val].
+	// A bool value. This can be used for [dimensions][google.cloud.timeseriesinsights.v1.EventDimension], which
+	// have their value field set to [bool_val][google.cloud.timeseriesinsights.v1.EventDimension.bool_val].
 	BoolVal bool `protobuf:"varint,3,opt,name=bool_val,json=boolVal,proto3,oneof"`
 }
 
@@ -1179,9 +1167,9 @@ type ForecastParams struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Optional. Penalize variations between the actual and forecasted values
-	// smaller than this. See the [anomalyScore](EvaluatedSlice.anomaly_score)
-	// formula for details on how this parameter impacts the score.
+	// Optional. Penalize variations between the actual and forecasted values smaller than
+	// this. For more information about how this parameter affects the score, see
+	// the [anomalyScore](EvaluatedSlice.anomaly_score) formula.
 	//
 	// Intuitively, anomaly scores summarize how statistically significant the
 	// change between the actual and forecasted value is compared with what we
@@ -1212,12 +1200,12 @@ type ForecastParams struct {
 	// [granularity][google.cloud.timeseriesinsights.v1.TimeseriesParams.granularity].
 	//
 	// Example: If the detection point is set to "2020-12-27T00:00:00Z", the
-	// [granularity][google.cloud.timeseriesinsights.v1.TimeseriesParams.granularity]
-	// to "3600s" and the horizon_duration to "10800s", then we will generate 3
-	// time series points (from "2020-12-27T01:00:00Z" to "2020-12-27T04:00:00Z"),
-	// for which we will return their forecasted values.
+	// [granularity][google.cloud.timeseriesinsights.v1.TimeseriesParams.granularity] to "3600s" and the
+	// horizon_duration to "10800s", then we will generate 3 time
+	// series points (from "2020-12-27T01:00:00Z" to "2020-12-27T04:00:00Z"), for
+	// which we will return their forecasted values.
 	//
-	// **NOTE**: The horizon time is only used for forecasting not for anormaly
+	// Note: The horizon time is only used for forecasting not for anormaly
 	// detection. To detect anomalies for multiple points of time,
 	// simply send multiple queries with those as
 	// [detectionTime][google.cloud.timeseriesinsights.v1.QueryDataSetRequest.detection_time].
@@ -1288,9 +1276,8 @@ type TimeseriesPoint struct {
 	// The value for this point.
 	//
 	// It is computed by aggregating all events in the associated slice that are
-	// in the [time, time + granularity] range (see
-	// [granularity][google.cloud.timeseriesinsights.v1.TimeseriesParams.granularity])
-	// using the specified
+	// in the `[time, time + granularity]` range (see
+	// [granularity][google.cloud.timeseriesinsights.v1.TimeseriesParams.granularity]) using the specified
 	// [metric][google.cloud.timeseriesinsights.v1.TimeseriesParams.metric].
 	Value *float64 `protobuf:"fixed64,2,opt,name=value,proto3,oneof" json:"value,omitempty"`
 }
@@ -1421,72 +1408,63 @@ type EvaluatedSlice struct {
 	ExpectedDeviation *float64 `protobuf:"fixed64,16,opt,name=expected_deviation,json=expectedDeviation,proto3,oneof" json:"expected_deviation,omitempty"`
 	// Summarizes how significant the change between the actual and forecasted
 	// detection points are compared with the historical patterns observed on the
-	// [history][google.cloud.timeseriesinsights.v1.EvaluatedSlice.history] time
-	// series.
+	// [history][google.cloud.timeseriesinsights.v1.EvaluatedSlice.history] time series.
 	//
-	// Defined as `|a - f| / (e + nt)`, where:
+	// Defined as *|a - f| / (e + nt)*, where:
 	//
-	// - `a` is the
-	// [detectionPointActual][google.cloud.timeseriesinsights.v1.EvaluatedSlice.detection_point_actual].
-	// - `f` is the
-	// [detectionPointForecast][google.cloud.timeseriesinsights.v1.EvaluatedSlice.detection_point_forecast].
-	// - `e` is the
-	// [expectedDeviation][google.cloud.timeseriesinsights.v1.EvaluatedSlice.expected_deviation].
-	// - `nt` is the
-	// [noiseThreshold][google.cloud.timeseriesinsights.v1.ForecastParams.noise_threshold].
+	// - *a* is the [detectionPointActual][google.cloud.timeseriesinsights.v1.EvaluatedSlice.detection_point_actual].
+	// - *f* is the [detectionPointForecast][google.cloud.timeseriesinsights.v1.EvaluatedSlice.detection_point_forecast].
+	// - *e* is the [expectedDeviation][google.cloud.timeseriesinsights.v1.EvaluatedSlice.expected_deviation].
+	// - *nt` is the [noiseThreshold][google.cloud.timeseriesinsights.v1.ForecastParams.noise_threshold].
 	//
-	// Anomaly scores between different requests and data sets are comparable. As
+	// Anomaly scores between different requests and datasets are comparable. As
 	// a guideline, the risk of a slice being an anomaly based on the anomaly
 	// score is:
 	//
-	// - **Very High** if anomaly_score > 5.
-	// - **High** if the anomaly_score is in the [2, 5] range.
-	// - **Medium** if the anomaly_score is in the [1, 2) range.
-	// - **Low** if the anomaly_score is < 1.
+	// - **Very High** if `anomalyScore` > 5.
+	// - **High** if the `anomalyScore` is in the [2, 5] range.
+	// - **Medium** if the `anomalyScore` is in the [1, 2) range.
+	// - **Low** if the `anomalyScore` is < 1.
 	//
 	// If there were issues evaluating this slice, then the anomaly score will be
-	// set to -1.0 and the
-	// [status][google.cloud.timeseriesinsights.v1.EvaluatedSlice.status] field
-	// will contain details on what went wrong.
+	// set to -1.0 and the [status][google.cloud.timeseriesinsights.v1.EvaluatedSlice.status] field will contain details on what
+	// went wrong.
 	AnomalyScore *float64 `protobuf:"fixed64,17,opt,name=anomaly_score,json=anomalyScore,proto3,oneof" json:"anomaly_score,omitempty"`
 	// The actual values in the `[`
-	// [detectionTime][google.cloud.timeseriesinsights.v1.QueryDataSetRequest.detection_time]
-	// `-`
+	// [detectionTime][google.cloud.timeseriesinsights.v1.QueryDataSetRequest.detection_time] `-`
 	// [forecastHistory][google.cloud.timeseriesinsights.v1.TimeseriesParams.forecast_history]`,`
-	// [detectionTime][google.cloud.timeseriesinsights.v1.QueryDataSetRequest.detection_time]
-	// `]` time range.
-	//
-	// **NOTE**: This field is only populated
-	// https://old.reddit.com/r/nba?utm_source=reddit&utm_medium=usertext&utm_name=nba&utm_content=t5_2qo4sif
-	// [returnTimeseries][google.cloud.timeseriesinsights.v1.QueryDataSetRequest.return_timeseries]
-	// is true.
-	History *Timeseries `protobuf:"bytes,5,opt,name=history,proto3" json:"history,omitempty"`
-	// The forecasted values in the `[`
-	// [detectionTime][google.cloud.timeseriesinsights.v1.QueryDataSetRequest.detection_time]
-	// `+`
-	// [granularity][google.cloud.timeseriesinsights.v1.TimeseriesParams.granularity]`,`
-	// [forecastParams.horizonTime][google.cloud.timeseriesinsights.v1.QueryDataSetRequest.forecast_params]
-	// `]` time range.
+	// [detectionTime][google.cloud.timeseriesinsights.v1.QueryDataSetRequest.detection_time] `]` time
+	// range.
 	//
 	// **NOTE**: This field is only populated if
-	// [returnTimeseries][google.cloud.timeseriesinsights.v1.QueryDataSetRequest.return_timeseries]
-	// is true.
+	// [returnTimeseries][google.cloud.timeseriesinsights.v1.QueryDataSetRequest.return_timeseries] is true.
+	History *Timeseries `protobuf:"bytes,5,opt,name=history,proto3" json:"history,omitempty"`
+	// The forecasted values in the `[`
+	// [detectionTime][google.cloud.timeseriesinsights.v1.QueryDataSetRequest.detection_time] `+`
+	// [granularity][google.cloud.timeseriesinsights.v1.TimeseriesParams.granularity]`,`
+	// [forecastParams.horizonTime][google.cloud.timeseriesinsights.v1.QueryDataSetRequest.forecast_params] `]` time
+	// range.
+	//
+	// **NOTE**: This field is only populated if
+	// [returnTimeseries][google.cloud.timeseriesinsights.v1.QueryDataSetRequest.return_timeseries] is true.
 	Forecast *Timeseries `protobuf:"bytes,10,opt,name=forecast,proto3" json:"forecast,omitempty"`
-	// Evaluation status. Contains an error message if the anomaly_score is < 0.
+	// Evaluation status. Contains an error message if the `anomalyScore` is < 0.
 	//
 	// Possible error messages:
-	// - "Time series too sparse": The returned time series for this slice did not
-	// contain enough data points (we require a minimum of 10).
-	// - "Not enough recent time series points": The time series contains the
+	//
+	// - **"Time series too sparse"**: The returned time series for this slice did
+	// not contain enough data points (we require a minimum of 10).
+	// - **"Not enough recent time series points"**: The time series contains the
 	// minimum of 10 points, but there are not enough close in time to the
 	// detection point.
-	// - "Missing detection point data": There were not events to be aggregated
-	// within the [detectionTime + granularity] time interval, so we don't have an
-	// actual value with which we can compare our prediction.
-	// - "Data retrieval error": We failed to retrieve the time series data for
-	// this slice and could not evaluate it successfully. Should be a transient
-	// error.
-	// - "Internal server error": Internal unexpected error.
+	// - **"Missing detection point data"**: There were not events to be
+	// aggregated within the `[detectionTime, detectionTime + granularity]` time
+	// interval, so we don't have an actual value with which we can compare our
+	// prediction.
+	// - **"Data retrieval error"**: We failed to retrieve the time series data
+	// for this slice and could not evaluate it successfully. Should be a
+	// transient error.
+	// - **"Internal server error"**: Internal unexpected error.
 	Status *status.Status `protobuf:"bytes,18,opt,name=status,proto3" json:"status,omitempty"`
 }
 
@@ -1578,31 +1556,29 @@ func (x *EvaluatedSlice) GetStatus() *status.Status {
 	return nil
 }
 
-// Parameters that control how we slice the data set and, optionally, filter
+// Parameters that control how we slice the dataset and, optionally, filter
 // slices that have some specific values on some dimensions (pinned dimensions).
 type SlicingParams struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. Dimensions over which we will group the events in slices. The
-	// names specified here come from the
-	// [EventDimension.name][google.cloud.timeseriesinsights.v1.EventDimension.name]
-	// field. At least one dimension name must be specified. All dimension names
-	// that do not exist in the queried DataSet will be ignored.
+	// Required. Dimensions over which we will group the events in slices. The names
+	// specified here come from the
+	// [EventDimension.name][google.cloud.timeseriesinsights.v1.EventDimension.name] field. At least
+	// one dimension name must be specified. All dimension names that do not exist
+	// in the queried `DataSet` will be ignored.
 	//
 	// Currently only dimensions that hold string values can be specified here.
 	DimensionNames []string `protobuf:"bytes,1,rep,name=dimension_names,json=dimensionNames,proto3" json:"dimension_names,omitempty"`
 	// Optional. We will only analyze slices for which
-	// [ForecastSlice.dimensions][ForecastSlice.dimensions] contain all of the
+	// [EvaluatedSlice.dimensions][google.cloud.timeseriesinsights.v1.EvaluatedSlice.dimensions] contain all of the
 	// following pinned dimensions. A query with a pinned dimension `{ name: "d3"
 	// stringVal: "v3" }` will only analyze events which contain the dimension `{
 	// name: "d3" stringVal: "v3" }`.
-	// The
-	// [pinnedDimensions][google.cloud.timeseriesinsights.v1.SlicingParams.pinned_dimensions]
-	// and
-	// [dimensionNames][google.cloud.timeseriesinsights.v1.SlicingParams.dimension_names]
-	// fields can **not** share the same dimension names.
+	// The [pinnedDimensions][google.cloud.timeseriesinsights.v1.SlicingParams.pinned_dimensions] and
+	// [dimensionNames][google.cloud.timeseriesinsights.v1.SlicingParams.dimension_names] fields can **not**
+	// share the same dimension names.
 	//
 	// Example a valid specification:
 	//
@@ -1618,7 +1594,7 @@ type SlicingParams struct {
 	//
 	// ```
 	//
-	// In the previous example we will slice the data set by dimensions "d1",
+	// In the previous example we will slice the dataset by dimensions "d1",
 	// "d2", "d3" and "d4", but we will only analyze slices for which "d3=v3" and
 	// "d4=v4".
 	//
@@ -1691,32 +1667,28 @@ type TimeseriesParams struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. How long should we go in the past when fetching the timeline used
-	// for forecasting each slice.
+	// Required. How long should we go in the past when fetching the timeline used for
+	// forecasting each slice.
 	//
 	// This is used in combination with the
-	// [detectionTime][google.cloud.timeseriesinsights.v1.QueryDataSetRequest.detection_time]
-	// parameter. The time series we construct will have the following time range:
-	// [detectionTime - forecastHistory, detectionTime + granularity].
+	// [detectionTime][google.cloud.timeseriesinsights.v1.QueryDataSetRequest.detection_time] parameter.
+	// The time series we construct will have the following time range:
+	// `[detectionTime - forecastHistory, detectionTime + granularity]`.
 	//
 	// The forecast history might be rounded up, so that a multiple of
 	// `granularity` is used to process the query.
 	//
-	// **NOTE**: Make sure there are enough events in the data set to cover the
-	// time interval: if the `detectionTime` is set to T, the data set should
-	// have enough events from "T - forecastHistory" to allow forecasting and
-	// anomaly detection.  If too few events are found in this range, no anomaly
-	// will be reported.  Users can use [EvaluateSlice][EvaluateSlice] to
-	// check the (approximate) count of events for each point of time in the
-	// range, by not setting `metric`.
+	// Note: If there are not enough events in the
+	// `[detectionTime - forecastHistory, detectionTime + granularity]` time
+	// interval, the slice evaluation can fail. For more information, see
+	// [EvaluatedSlice.status][google.cloud.timeseriesinsights.v1.EvaluatedSlice.status].
 	ForecastHistory *durationpb.Duration `protobuf:"bytes,1,opt,name=forecast_history,json=forecastHistory,proto3" json:"forecast_history,omitempty"`
-	// Required. The time granularity of the time series (on the x-axis). Each
-	// time series point starting at time T will aggregate all events for a
-	// particular slice in [T, T + granularity) time windows.
+	// Required. The time granularity of the time series (on the x-axis). Each time series
+	// point starting at time T will aggregate all events for a particular slice
+	// in *[T, T + granularity)* time windows.
 	//
-	// **NOTE**: The aggregation is decided based on the
-	// [metric][google.cloud.timeseriesinsights.v1.TimeseriesParams.metric]
-	// parameter.
+	// Note: The aggregation is decided based on the
+	// [metric][google.cloud.timeseriesinsights.v1.TimeseriesParams.metric] parameter.
 	//
 	// This granularity defines the query-time aggregation windows and is not
 	// necessarily related to any event time granularity in the raw data (though
@@ -1725,24 +1697,24 @@ type TimeseriesParams struct {
 	//
 	// Currently, the minimal supported granularity is 10 seconds.
 	Granularity *durationpb.Duration `protobuf:"bytes,2,opt,name=granularity,proto3" json:"granularity,omitempty"`
-	// Optional. Denotes the
-	// [name][google.cloud.timeseriesinsights.v1.EventDimension.name] of a
-	// numerical dimension that will have its values aggregated to compute the
-	// y-axis of the time series.
+	// Optional. Denotes the [name][google.cloud.timeseriesinsights.v1.EventDimension.name] of a numerical
+	// dimension that will have its values aggregated to compute the y-axis of the
+	// time series.
 	//
 	// The aggregation method must also be specified by setting the
-	// [metricAggregationMethod][TimeseriesParams.metricAggregationMethod] field.
+	// [metricAggregationMethod][google.cloud.timeseriesinsights.v1.TimeseriesParams.metric_aggregation_method]
+	// field.
 	//
-	// **Note**: Currently, if the aggregation method is unspecified, we will
-	// default to SUM for backwards compatibility reasons, but new implementations
+	// Note: Currently, if the aggregation method is unspecified, we will
+	// default to SUM for backward compatibility reasons, but new implementations
 	// should set the
-	// [metricAggregationMethod][TimeseriesParams.metricAggregationMethod]
+	// [metricAggregationMethod][google.cloud.timeseriesinsights.v1.TimeseriesParams.metric_aggregation_method]
 	// explicitly.
 	//
 	// If the metric is unspecified, we will use the number of events that each
 	// time series point contains as the point value.
 	//
-	// Example: Let's assume we have the following three events in our data set:
+	// Example: Let's assume we have the following three events in our dataset:
 	// ```json
 	//
 	//	{
@@ -1778,20 +1750,15 @@ type TimeseriesParams struct {
 	// ```
 	//
 	// These events are all within the same hour, spaced 10 minutes between each
-	// of them. Assuming our
-	// [QueryDataSetRequest][google.cloud.timeseriesinsights.v1.QueryDataSetRequest]
-	// had set
-	// [slicingParams.dimensionNames][google.cloud.timeseriesinsights.v1.SlicingParams.dimension_names]
-	// to ["d1", "d2"] and
-	// [timeseries_params.granularity][google.cloud.timeseriesinsights.v1.TimeseriesParams.granularity]
-	// to "3600s", then all the previous events will be aggregated into the same
+	// of them. Assuming our [QueryDataSetRequest][google.cloud.timeseriesinsights.v1.QueryDataSetRequest] had set
+	// [slicingParams.dimensionNames][google.cloud.timeseriesinsights.v1.SlicingParams.dimension_names] to ["d1",
+	// "d2"] and [timeseries_params.granularity][google.cloud.timeseriesinsights.v1.TimeseriesParams.granularity] to
+	// "3600s", then all the previous events will be aggregated into the same
 	// [timeseries point][google.cloud.timeseriesinsights.v1.TimeseriesPoint].
 	//
-	// The time series point which they are all part of will have the
-	// [time][google.cloud.timeseriesinsights.v1.TimeseriesPoint.time] set to
-	// "2020-12-27T00:00:00Z" and the
-	// [value][google.cloud.timeseriesinsights.v1.TimeseriesPoint.value] populated
-	// based on this metric field:
+	// The time series point that they're all part of will have the
+	// [time][google.cloud.timeseriesinsights.v1.TimeseriesPoint.time] set to "2020-12-27T00:00:00Z" and the
+	// [value][google.cloud.timeseriesinsights.v1.TimeseriesPoint.value] populated based on this metric field:
 	//
 	// - If the metric is set to "m1" and metric_aggregation_method to SUM, then
 	// the value of the point will be 600.
@@ -1804,12 +1771,10 @@ type TimeseriesParams struct {
 	// - If the metric field is "" or unspecified, then the value of the point
 	// will be 3, as we will simply count the events.
 	Metric *string `protobuf:"bytes,4,opt,name=metric,proto3,oneof" json:"metric,omitempty"`
-	// Optional. Together with the
-	// [metric][google.cloud.timeseriesinsights.v1.TimeseriesParams.metric] field,
-	// specifies how we will aggregate multiple events to obtain the value of a
-	// time series point. See the
-	// [metric][google.cloud.timeseriesinsights.v1.TimeseriesParams.metric]
-	// documentation for more details.
+	// Optional. Together with the [metric][google.cloud.timeseriesinsights.v1.TimeseriesParams.metric] field, specifies how
+	// we will aggregate multiple events to obtain the value of a time series
+	// point. See the [metric][google.cloud.timeseriesinsights.v1.TimeseriesParams.metric] documentation for more
+	// details.
 	//
 	// If the metric is not specified or "", then this field will be ignored.
 	MetricAggregationMethod TimeseriesParams_AggregationMethod `protobuf:"varint,5,opt,name=metric_aggregation_method,json=metricAggregationMethod,proto3,enum=google.cloud.timeseriesinsights.v1.TimeseriesParams_AggregationMethod" json:"metric_aggregation_method,omitempty"`
@@ -1884,38 +1849,34 @@ type QueryDataSetRequest struct {
 	// Required. Loaded DataSet to be queried in the format of
 	// "projects/{project}/datasets/{dataset}"
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	// Required. This is the point in time which we want to probe for anomalies.
+	// Required. This is the point in time that we want to probe for anomalies.
 	//
-	// The corresponding
-	// [TimeseriesPoint][google.cloud.timeseriesinsights.v1.TimeseriesPoint] is
-	// referred to as the detection point.
+	// The corresponding [TimeseriesPoint][google.cloud.timeseriesinsights.v1.TimeseriesPoint] is referred to as the
+	// detection point.
 	//
 	// **NOTE**: As with any other time series point, the value is given by
 	// aggregating all events in the slice that are in the
 	// [detectionTime, detectionTime + granularity) time interval, where
 	// the granularity is specified in the
-	// [timeseriesParams.granularity][google.cloud.timeseriesinsights.v1.TimeseriesParams.granularity]
-	// field.
+	// [timeseriesParams.granularity][google.cloud.timeseriesinsights.v1.TimeseriesParams.granularity] field.
 	DetectionTime *timestamppb.Timestamp `protobuf:"bytes,11,opt,name=detection_time,json=detectionTime,proto3" json:"detection_time,omitempty"`
 	// How many slices are returned in
 	// [QueryDataSetResponse.slices][google.cloud.timeseriesinsights.v1.QueryDataSetResponse.slices].
 	//
-	// The returned slices are tentatively the ones with the highest [anomaly
-	// scores][EvaluatedSlice.anomaly_score] in the data set that match the query,
-	// but it is not guaranteed.
+	// The returned slices are tentatively the ones with the highest
+	// [anomaly scores][google.cloud.timeseriesinsights.v1.EvaluatedSlice.anomaly_score] in the dataset that match
+	// the query, but it is not guaranteed.
 	//
 	// Reducing this number will improve query performance, both in terms of
 	// latency and resource usage.
 	//
 	// Defaults to 50.
 	NumReturnedSlices *int32 `protobuf:"varint,13,opt,name=num_returned_slices,json=numReturnedSlices,proto3,oneof" json:"num_returned_slices,omitempty"`
-	// Parameters controlling how we will split the data set into the slices that
+	// Parameters controlling how we will split the dataset into the slices that
 	// we will analyze.
 	SlicingParams *SlicingParams `protobuf:"bytes,9,opt,name=slicing_params,json=slicingParams,proto3" json:"slicing_params,omitempty"`
 	// Parameters controlling how we will build the time series used to predict
-	// the
-	// [detectionTime][google.cloud.timeseriesinsights.v1.QueryDataSetRequest.detection_time]
-	// value for each slice.
+	// the [detectionTime][google.cloud.timeseriesinsights.v1.QueryDataSetRequest.detection_time] value for each slice.
 	TimeseriesParams *TimeseriesParams `protobuf:"bytes,10,opt,name=timeseries_params,json=timeseriesParams,proto3" json:"timeseries_params,omitempty"`
 	// Parameters that control the time series forecasting models, such as the
 	// sensitivity of the anomaly detection.
@@ -1924,10 +1885,8 @@ type QueryDataSetRequest struct {
 	// returned slices.
 	//
 	// The time series are returned in the
-	// [EvaluatedSlice.history][google.cloud.timeseriesinsights.v1.EvaluatedSlice.history]
-	// and
-	// [EvaluatedSlice.forecast][google.cloud.timeseriesinsights.v1.EvaluatedSlice.forecast]
-	// fields.
+	// [EvaluatedSlice.history][google.cloud.timeseriesinsights.v1.EvaluatedSlice.history] and
+	// [EvaluatedSlice.forecast][google.cloud.timeseriesinsights.v1.EvaluatedSlice.forecast] fields.
 	ReturnTimeseries bool `protobuf:"varint,8,opt,name=return_timeseries,json=returnTimeseries,proto3" json:"return_timeseries,omitempty"`
 }
 
@@ -2023,8 +1982,7 @@ type QueryDataSetResponse struct {
 	// Slices sorted in descending order by their
 	// [anomalyScore][google.cloud.timeseriesinsights.v1.EvaluatedSlice.anomaly_score].
 	//
-	// At most
-	// [numReturnedSlices][google.cloud.timeseriesinsights.v1.QueryDataSetRequest.num_returned_slices]
+	// At most [numReturnedSlices][google.cloud.timeseriesinsights.v1.QueryDataSetRequest.num_returned_slices]
 	// slices are present in this field.
 	Slices []*EvaluatedSlice `protobuf:"bytes,3,rep,name=slices,proto3" json:"slices,omitempty"`
 }
@@ -2084,18 +2042,16 @@ type EvaluateSliceRequest struct {
 	// Required. Loaded DataSet to be queried in the format of
 	// "projects/{project}/datasets/{dataset}"
 	Dataset string `protobuf:"bytes,1,opt,name=dataset,proto3" json:"dataset,omitempty"`
-	// Required. Dimensions with pinned values that specify the slice for which we
-	// will fetch the time series.
+	// Required. Dimensions with pinned values that specify the slice for which we will
+	// fetch the time series.
 	PinnedDimensions []*PinnedDimension `protobuf:"bytes,2,rep,name=pinned_dimensions,json=pinnedDimensions,proto3" json:"pinned_dimensions,omitempty"`
-	// Required. This is the point in time which we want to probe for anomalies.
+	// Required. This is the point in time that we want to probe for anomalies.
 	//
 	// See documentation for
-	// [QueryDataSetRequest.detectionPoint][QueryDataSetRequest.detection_point].
+	// [QueryDataSetRequest.detectionTime][google.cloud.timeseriesinsights.v1.QueryDataSetRequest.detection_time].
 	DetectionTime *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=detection_time,json=detectionTime,proto3" json:"detection_time,omitempty"`
 	// Parameters controlling how we will build the time series used to predict
-	// the
-	// [detectionTime][google.cloud.timeseriesinsights.v1.EvaluateSliceRequest.detection_time]
-	// value for this slice.
+	// the [detectionTime][google.cloud.timeseriesinsights.v1.EvaluateSliceRequest.detection_time] value for this slice.
 	TimeseriesParams *TimeseriesParams `protobuf:"bytes,4,opt,name=timeseries_params,json=timeseriesParams,proto3" json:"timeseries_params,omitempty"`
 	// Parameters that control the time series forecasting models, such as the
 	// sensitivity of the anomaly detection.
@@ -2163,6 +2119,99 @@ func (x *EvaluateSliceRequest) GetTimeseriesParams() *TimeseriesParams {
 }
 
 func (x *EvaluateSliceRequest) GetForecastParams() *ForecastParams {
+	if x != nil {
+		return x.ForecastParams
+	}
+	return nil
+}
+
+// Request for evaluateTimeseries.
+type EvaluateTimeseriesRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// Required. Client project name in the format of 'projects/{project}'.
+	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
+	// Evaluate this time series without requiring it was previously loaded in
+	// a data set.
+	//
+	// The evaluated time series point is the last one, analogous to calling
+	// evaluateSlice or query with
+	// [detectionTime][google.cloud.timeseriesinsights.v1.EvaluateSliceRequest.detection_time] set to
+	// `timeseries.point(timeseries.point_size() - 1).time`.
+	//
+	// The length of the time series must be at least 10.
+	//
+	// All points must have the same time offset relative to the granularity. For
+	// example, if the [granularity][google.cloud.timeseriesinsights.v1.EvaluateTimeseriesRequest.granularity] is "5s", then the following
+	// point.time sequences are valid:
+	// - "100s", "105s", "120s", "125s" (no offset)
+	// - "102s", "107s", "122s", "127s" (offset is "2s")
+	// However, the following sequence is invalid as it has inconsistent offsets:
+	// - "100s", "105s", "122s", "127s" (offsets are either "0s" or "2s")
+	Timeseries *Timeseries `protobuf:"bytes,2,opt,name=timeseries,proto3" json:"timeseries,omitempty"`
+	// The granularity of the time series (time distance between two consecutive
+	// points).
+	Granularity *durationpb.Duration `protobuf:"bytes,3,opt,name=granularity,proto3" json:"granularity,omitempty"`
+	// The forecast parameters.
+	ForecastParams *ForecastParams `protobuf:"bytes,4,opt,name=forecast_params,json=forecastParams,proto3" json:"forecast_params,omitempty"`
+}
+
+func (x *EvaluateTimeseriesRequest) Reset() {
+	*x = EvaluateTimeseriesRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_google_cloud_timeseriesinsights_v1_timeseries_insights_proto_msgTypes[21]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *EvaluateTimeseriesRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*EvaluateTimeseriesRequest) ProtoMessage() {}
+
+func (x *EvaluateTimeseriesRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_google_cloud_timeseriesinsights_v1_timeseries_insights_proto_msgTypes[21]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use EvaluateTimeseriesRequest.ProtoReflect.Descriptor instead.
+func (*EvaluateTimeseriesRequest) Descriptor() ([]byte, []int) {
+	return file_google_cloud_timeseriesinsights_v1_timeseries_insights_proto_rawDescGZIP(), []int{21}
+}
+
+func (x *EvaluateTimeseriesRequest) GetParent() string {
+	if x != nil {
+		return x.Parent
+	}
+	return ""
+}
+
+func (x *EvaluateTimeseriesRequest) GetTimeseries() *Timeseries {
+	if x != nil {
+		return x.Timeseries
+	}
+	return nil
+}
+
+func (x *EvaluateTimeseriesRequest) GetGranularity() *durationpb.Duration {
+	if x != nil {
+		return x.Granularity
+	}
+	return nil
+}
+
+func (x *EvaluateTimeseriesRequest) GetForecastParams() *ForecastParams {
 	if x != nil {
 		return x.ForecastParams
 	}
@@ -2509,116 +2558,154 @@ var file_google_cloud_timeseriesinsights_v1_timeseries_insights_proto_rawDesc = 
 	0x65, 0x2e, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x74, 0x69, 0x6d, 0x65, 0x73, 0x65, 0x72, 0x69,
 	0x65, 0x73, 0x69, 0x6e, 0x73, 0x69, 0x67, 0x68, 0x74, 0x73, 0x2e, 0x76, 0x31, 0x2e, 0x46, 0x6f,
 	0x72, 0x65, 0x63, 0x61, 0x73, 0x74, 0x50, 0x61, 0x72, 0x61, 0x6d, 0x73, 0x52, 0x0e, 0x66, 0x6f,
-	0x72, 0x65, 0x63, 0x61, 0x73, 0x74, 0x50, 0x61, 0x72, 0x61, 0x6d, 0x73, 0x32, 0xa0, 0x0c, 0x0a,
-	0x1c, 0x54, 0x69, 0x6d, 0x65, 0x73, 0x65, 0x72, 0x69, 0x65, 0x73, 0x49, 0x6e, 0x73, 0x69, 0x67,
-	0x68, 0x74, 0x73, 0x43, 0x6f, 0x6e, 0x74, 0x72, 0x6f, 0x6c, 0x6c, 0x65, 0x72, 0x12, 0xe4, 0x01,
-	0x0a, 0x0c, 0x4c, 0x69, 0x73, 0x74, 0x44, 0x61, 0x74, 0x61, 0x53, 0x65, 0x74, 0x73, 0x12, 0x37,
-	0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x74, 0x69,
-	0x6d, 0x65, 0x73, 0x65, 0x72, 0x69, 0x65, 0x73, 0x69, 0x6e, 0x73, 0x69, 0x67, 0x68, 0x74, 0x73,
-	0x2e, 0x76, 0x31, 0x2e, 0x4c, 0x69, 0x73, 0x74, 0x44, 0x61, 0x74, 0x61, 0x53, 0x65, 0x74, 0x73,
-	0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x38, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65,
-	0x2e, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x74, 0x69, 0x6d, 0x65, 0x73, 0x65, 0x72, 0x69, 0x65,
-	0x73, 0x69, 0x6e, 0x73, 0x69, 0x67, 0x68, 0x74, 0x73, 0x2e, 0x76, 0x31, 0x2e, 0x4c, 0x69, 0x73,
-	0x74, 0x44, 0x61, 0x74, 0x61, 0x53, 0x65, 0x74, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73,
-	0x65, 0x22, 0x61, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x52, 0x12, 0x2c, 0x2f, 0x76, 0x31, 0x2f, 0x7b,
-	0x70, 0x61, 0x72, 0x65, 0x6e, 0x74, 0x3d, 0x70, 0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74, 0x73, 0x2f,
-	0x2a, 0x2f, 0x6c, 0x6f, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x2f, 0x2a, 0x7d, 0x2f, 0x64,
-	0x61, 0x74, 0x61, 0x73, 0x65, 0x74, 0x73, 0x5a, 0x22, 0x12, 0x20, 0x2f, 0x76, 0x31, 0x2f, 0x7b,
-	0x70, 0x61, 0x72, 0x65, 0x6e, 0x74, 0x3d, 0x70, 0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74, 0x73, 0x2f,
-	0x2a, 0x7d, 0x2f, 0x64, 0x61, 0x74, 0x61, 0x73, 0x65, 0x74, 0x73, 0xda, 0x41, 0x06, 0x70, 0x61,
-	0x72, 0x65, 0x6e, 0x74, 0x12, 0xf3, 0x01, 0x0a, 0x0d, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x44,
-	0x61, 0x74, 0x61, 0x53, 0x65, 0x74, 0x12, 0x38, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e,
-	0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x74, 0x69, 0x6d, 0x65, 0x73, 0x65, 0x72, 0x69, 0x65, 0x73,
-	0x69, 0x6e, 0x73, 0x69, 0x67, 0x68, 0x74, 0x73, 0x2e, 0x76, 0x31, 0x2e, 0x43, 0x72, 0x65, 0x61,
-	0x74, 0x65, 0x44, 0x61, 0x74, 0x61, 0x53, 0x65, 0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74,
-	0x1a, 0x2b, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2e,
-	0x74, 0x69, 0x6d, 0x65, 0x73, 0x65, 0x72, 0x69, 0x65, 0x73, 0x69, 0x6e, 0x73, 0x69, 0x67, 0x68,
-	0x74, 0x73, 0x2e, 0x76, 0x31, 0x2e, 0x44, 0x61, 0x74, 0x61, 0x53, 0x65, 0x74, 0x22, 0x7b, 0x82,
-	0xd3, 0xe4, 0x93, 0x02, 0x64, 0x22, 0x2c, 0x2f, 0x76, 0x31, 0x2f, 0x7b, 0x70, 0x61, 0x72, 0x65,
-	0x6e, 0x74, 0x3d, 0x70, 0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74, 0x73, 0x2f, 0x2a, 0x2f, 0x6c, 0x6f,
-	0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x2f, 0x2a, 0x7d, 0x2f, 0x64, 0x61, 0x74, 0x61, 0x73,
-	0x65, 0x74, 0x73, 0x3a, 0x07, 0x64, 0x61, 0x74, 0x61, 0x73, 0x65, 0x74, 0x5a, 0x2b, 0x22, 0x20,
-	0x2f, 0x76, 0x31, 0x2f, 0x7b, 0x70, 0x61, 0x72, 0x65, 0x6e, 0x74, 0x3d, 0x70, 0x72, 0x6f, 0x6a,
-	0x65, 0x63, 0x74, 0x73, 0x2f, 0x2a, 0x7d, 0x2f, 0x64, 0x61, 0x74, 0x61, 0x73, 0x65, 0x74, 0x73,
-	0x3a, 0x07, 0x64, 0x61, 0x74, 0x61, 0x73, 0x65, 0x74, 0xda, 0x41, 0x0e, 0x70, 0x61, 0x72, 0x65,
-	0x6e, 0x74, 0x2c, 0x64, 0x61, 0x74, 0x61, 0x73, 0x65, 0x74, 0x12, 0xc2, 0x01, 0x0a, 0x0d, 0x44,
-	0x65, 0x6c, 0x65, 0x74, 0x65, 0x44, 0x61, 0x74, 0x61, 0x53, 0x65, 0x74, 0x12, 0x38, 0x2e, 0x67,
+	0x72, 0x65, 0x63, 0x61, 0x73, 0x74, 0x50, 0x61, 0x72, 0x61, 0x6d, 0x73, 0x22, 0xd2, 0x02, 0x0a,
+	0x19, 0x45, 0x76, 0x61, 0x6c, 0x75, 0x61, 0x74, 0x65, 0x54, 0x69, 0x6d, 0x65, 0x73, 0x65, 0x72,
+	0x69, 0x65, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x4b, 0x0a, 0x06, 0x70, 0x61,
+	0x72, 0x65, 0x6e, 0x74, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x42, 0x33, 0xe0, 0x41, 0x02, 0xfa,
+	0x41, 0x2d, 0x0a, 0x2b, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x72, 0x65, 0x73, 0x6f, 0x75, 0x72, 0x63,
+	0x65, 0x6d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x61,
+	0x70, 0x69, 0x73, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x50, 0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74, 0x52,
+	0x06, 0x70, 0x61, 0x72, 0x65, 0x6e, 0x74, 0x12, 0x4e, 0x0a, 0x0a, 0x74, 0x69, 0x6d, 0x65, 0x73,
+	0x65, 0x72, 0x69, 0x65, 0x73, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x2e, 0x2e, 0x67, 0x6f,
+	0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x74, 0x69, 0x6d, 0x65, 0x73,
+	0x65, 0x72, 0x69, 0x65, 0x73, 0x69, 0x6e, 0x73, 0x69, 0x67, 0x68, 0x74, 0x73, 0x2e, 0x76, 0x31,
+	0x2e, 0x54, 0x69, 0x6d, 0x65, 0x73, 0x65, 0x72, 0x69, 0x65, 0x73, 0x52, 0x0a, 0x74, 0x69, 0x6d,
+	0x65, 0x73, 0x65, 0x72, 0x69, 0x65, 0x73, 0x12, 0x3b, 0x0a, 0x0b, 0x67, 0x72, 0x61, 0x6e, 0x75,
+	0x6c, 0x61, 0x72, 0x69, 0x74, 0x79, 0x18, 0x03, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x19, 0x2e, 0x67,
+	0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x44,
+	0x75, 0x72, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x0b, 0x67, 0x72, 0x61, 0x6e, 0x75, 0x6c, 0x61,
+	0x72, 0x69, 0x74, 0x79, 0x12, 0x5b, 0x0a, 0x0f, 0x66, 0x6f, 0x72, 0x65, 0x63, 0x61, 0x73, 0x74,
+	0x5f, 0x70, 0x61, 0x72, 0x61, 0x6d, 0x73, 0x18, 0x04, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x32, 0x2e,
+	0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x74, 0x69, 0x6d,
+	0x65, 0x73, 0x65, 0x72, 0x69, 0x65, 0x73, 0x69, 0x6e, 0x73, 0x69, 0x67, 0x68, 0x74, 0x73, 0x2e,
+	0x76, 0x31, 0x2e, 0x46, 0x6f, 0x72, 0x65, 0x63, 0x61, 0x73, 0x74, 0x50, 0x61, 0x72, 0x61, 0x6d,
+	0x73, 0x52, 0x0e, 0x66, 0x6f, 0x72, 0x65, 0x63, 0x61, 0x73, 0x74, 0x50, 0x61, 0x72, 0x61, 0x6d,
+	0x73, 0x32, 0xb1, 0x0e, 0x0a, 0x1c, 0x54, 0x69, 0x6d, 0x65, 0x73, 0x65, 0x72, 0x69, 0x65, 0x73,
+	0x49, 0x6e, 0x73, 0x69, 0x67, 0x68, 0x74, 0x73, 0x43, 0x6f, 0x6e, 0x74, 0x72, 0x6f, 0x6c, 0x6c,
+	0x65, 0x72, 0x12, 0xe4, 0x01, 0x0a, 0x0c, 0x4c, 0x69, 0x73, 0x74, 0x44, 0x61, 0x74, 0x61, 0x53,
+	0x65, 0x74, 0x73, 0x12, 0x37, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x63, 0x6c, 0x6f,
+	0x75, 0x64, 0x2e, 0x74, 0x69, 0x6d, 0x65, 0x73, 0x65, 0x72, 0x69, 0x65, 0x73, 0x69, 0x6e, 0x73,
+	0x69, 0x67, 0x68, 0x74, 0x73, 0x2e, 0x76, 0x31, 0x2e, 0x4c, 0x69, 0x73, 0x74, 0x44, 0x61, 0x74,
+	0x61, 0x53, 0x65, 0x74, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x38, 0x2e, 0x67,
 	0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x74, 0x69, 0x6d, 0x65,
 	0x73, 0x65, 0x72, 0x69, 0x65, 0x73, 0x69, 0x6e, 0x73, 0x69, 0x67, 0x68, 0x74, 0x73, 0x2e, 0x76,
-	0x31, 0x2e, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x44, 0x61, 0x74, 0x61, 0x53, 0x65, 0x74, 0x52,
-	0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x16, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e,
-	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x22, 0x5f,
-	0x82, 0xd3, 0xe4, 0x93, 0x02, 0x52, 0x2a, 0x2c, 0x2f, 0x76, 0x31, 0x2f, 0x7b, 0x6e, 0x61, 0x6d,
+	0x31, 0x2e, 0x4c, 0x69, 0x73, 0x74, 0x44, 0x61, 0x74, 0x61, 0x53, 0x65, 0x74, 0x73, 0x52, 0x65,
+	0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x61, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x52, 0x12, 0x2c,
+	0x2f, 0x76, 0x31, 0x2f, 0x7b, 0x70, 0x61, 0x72, 0x65, 0x6e, 0x74, 0x3d, 0x70, 0x72, 0x6f, 0x6a,
+	0x65, 0x63, 0x74, 0x73, 0x2f, 0x2a, 0x2f, 0x6c, 0x6f, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x73,
+	0x2f, 0x2a, 0x7d, 0x2f, 0x64, 0x61, 0x74, 0x61, 0x73, 0x65, 0x74, 0x73, 0x5a, 0x22, 0x12, 0x20,
+	0x2f, 0x76, 0x31, 0x2f, 0x7b, 0x70, 0x61, 0x72, 0x65, 0x6e, 0x74, 0x3d, 0x70, 0x72, 0x6f, 0x6a,
+	0x65, 0x63, 0x74, 0x73, 0x2f, 0x2a, 0x7d, 0x2f, 0x64, 0x61, 0x74, 0x61, 0x73, 0x65, 0x74, 0x73,
+	0xda, 0x41, 0x06, 0x70, 0x61, 0x72, 0x65, 0x6e, 0x74, 0x12, 0xf3, 0x01, 0x0a, 0x0d, 0x43, 0x72,
+	0x65, 0x61, 0x74, 0x65, 0x44, 0x61, 0x74, 0x61, 0x53, 0x65, 0x74, 0x12, 0x38, 0x2e, 0x67, 0x6f,
+	0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x74, 0x69, 0x6d, 0x65, 0x73,
+	0x65, 0x72, 0x69, 0x65, 0x73, 0x69, 0x6e, 0x73, 0x69, 0x67, 0x68, 0x74, 0x73, 0x2e, 0x76, 0x31,
+	0x2e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x44, 0x61, 0x74, 0x61, 0x53, 0x65, 0x74, 0x52, 0x65,
+	0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x2b, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x63,
+	0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x74, 0x69, 0x6d, 0x65, 0x73, 0x65, 0x72, 0x69, 0x65, 0x73, 0x69,
+	0x6e, 0x73, 0x69, 0x67, 0x68, 0x74, 0x73, 0x2e, 0x76, 0x31, 0x2e, 0x44, 0x61, 0x74, 0x61, 0x53,
+	0x65, 0x74, 0x22, 0x7b, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x64, 0x22, 0x2c, 0x2f, 0x76, 0x31, 0x2f,
+	0x7b, 0x70, 0x61, 0x72, 0x65, 0x6e, 0x74, 0x3d, 0x70, 0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74, 0x73,
+	0x2f, 0x2a, 0x2f, 0x6c, 0x6f, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x2f, 0x2a, 0x7d, 0x2f,
+	0x64, 0x61, 0x74, 0x61, 0x73, 0x65, 0x74, 0x73, 0x3a, 0x07, 0x64, 0x61, 0x74, 0x61, 0x73, 0x65,
+	0x74, 0x5a, 0x2b, 0x22, 0x20, 0x2f, 0x76, 0x31, 0x2f, 0x7b, 0x70, 0x61, 0x72, 0x65, 0x6e, 0x74,
+	0x3d, 0x70, 0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74, 0x73, 0x2f, 0x2a, 0x7d, 0x2f, 0x64, 0x61, 0x74,
+	0x61, 0x73, 0x65, 0x74, 0x73, 0x3a, 0x07, 0x64, 0x61, 0x74, 0x61, 0x73, 0x65, 0x74, 0xda, 0x41,
+	0x0e, 0x70, 0x61, 0x72, 0x65, 0x6e, 0x74, 0x2c, 0x64, 0x61, 0x74, 0x61, 0x73, 0x65, 0x74, 0x12,
+	0xc2, 0x01, 0x0a, 0x0d, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x44, 0x61, 0x74, 0x61, 0x53, 0x65,
+	0x74, 0x12, 0x38, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x63, 0x6c, 0x6f, 0x75, 0x64,
+	0x2e, 0x74, 0x69, 0x6d, 0x65, 0x73, 0x65, 0x72, 0x69, 0x65, 0x73, 0x69, 0x6e, 0x73, 0x69, 0x67,
+	0x68, 0x74, 0x73, 0x2e, 0x76, 0x31, 0x2e, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x44, 0x61, 0x74,
+	0x61, 0x53, 0x65, 0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x16, 0x2e, 0x67, 0x6f,
+	0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x45, 0x6d,
+	0x70, 0x74, 0x79, 0x22, 0x5f, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x52, 0x2a, 0x2c, 0x2f, 0x76, 0x31,
+	0x2f, 0x7b, 0x6e, 0x61, 0x6d, 0x65, 0x3d, 0x70, 0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74, 0x73, 0x2f,
+	0x2a, 0x2f, 0x6c, 0x6f, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x2f, 0x2a, 0x2f, 0x64, 0x61,
+	0x74, 0x61, 0x73, 0x65, 0x74, 0x73, 0x2f, 0x2a, 0x7d, 0x5a, 0x22, 0x2a, 0x20, 0x2f, 0x76, 0x31,
+	0x2f, 0x7b, 0x6e, 0x61, 0x6d, 0x65, 0x3d, 0x70, 0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74, 0x73, 0x2f,
+	0x2a, 0x2f, 0x64, 0x61, 0x74, 0x61, 0x73, 0x65, 0x74, 0x73, 0x2f, 0x2a, 0x7d, 0xda, 0x41, 0x04,
+	0x6e, 0x61, 0x6d, 0x65, 0x12, 0x93, 0x02, 0x0a, 0x0c, 0x41, 0x70, 0x70, 0x65, 0x6e, 0x64, 0x45,
+	0x76, 0x65, 0x6e, 0x74, 0x73, 0x12, 0x37, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x63,
+	0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x74, 0x69, 0x6d, 0x65, 0x73, 0x65, 0x72, 0x69, 0x65, 0x73, 0x69,
+	0x6e, 0x73, 0x69, 0x67, 0x68, 0x74, 0x73, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x70, 0x70, 0x65, 0x6e,
+	0x64, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x38,
+	0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x74, 0x69,
+	0x6d, 0x65, 0x73, 0x65, 0x72, 0x69, 0x65, 0x73, 0x69, 0x6e, 0x73, 0x69, 0x67, 0x68, 0x74, 0x73,
+	0x2e, 0x76, 0x31, 0x2e, 0x41, 0x70, 0x70, 0x65, 0x6e, 0x64, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x73,
+	0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x8f, 0x01, 0x82, 0xd3, 0xe4, 0x93, 0x02,
+	0x78, 0x22, 0x3c, 0x2f, 0x76, 0x31, 0x2f, 0x7b, 0x64, 0x61, 0x74, 0x61, 0x73, 0x65, 0x74, 0x3d,
+	0x70, 0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74, 0x73, 0x2f, 0x2a, 0x2f, 0x6c, 0x6f, 0x63, 0x61, 0x74,
+	0x69, 0x6f, 0x6e, 0x73, 0x2f, 0x2a, 0x2f, 0x64, 0x61, 0x74, 0x61, 0x73, 0x65, 0x74, 0x73, 0x2f,
+	0x2a, 0x7d, 0x3a, 0x61, 0x70, 0x70, 0x65, 0x6e, 0x64, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x73, 0x3a,
+	0x01, 0x2a, 0x5a, 0x35, 0x22, 0x30, 0x2f, 0x76, 0x31, 0x2f, 0x7b, 0x64, 0x61, 0x74, 0x61, 0x73,
+	0x65, 0x74, 0x3d, 0x70, 0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74, 0x73, 0x2f, 0x2a, 0x2f, 0x64, 0x61,
+	0x74, 0x61, 0x73, 0x65, 0x74, 0x73, 0x2f, 0x2a, 0x7d, 0x3a, 0x61, 0x70, 0x70, 0x65, 0x6e, 0x64,
+	0x45, 0x76, 0x65, 0x6e, 0x74, 0x73, 0x3a, 0x01, 0x2a, 0xda, 0x41, 0x0e, 0x64, 0x61, 0x74, 0x61,
+	0x73, 0x65, 0x74, 0x2c, 0x65, 0x76, 0x65, 0x6e, 0x74, 0x73, 0x12, 0xed, 0x01, 0x0a, 0x0c, 0x51,
+	0x75, 0x65, 0x72, 0x79, 0x44, 0x61, 0x74, 0x61, 0x53, 0x65, 0x74, 0x12, 0x37, 0x2e, 0x67, 0x6f,
+	0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x74, 0x69, 0x6d, 0x65, 0x73,
+	0x65, 0x72, 0x69, 0x65, 0x73, 0x69, 0x6e, 0x73, 0x69, 0x67, 0x68, 0x74, 0x73, 0x2e, 0x76, 0x31,
+	0x2e, 0x51, 0x75, 0x65, 0x72, 0x79, 0x44, 0x61, 0x74, 0x61, 0x53, 0x65, 0x74, 0x52, 0x65, 0x71,
+	0x75, 0x65, 0x73, 0x74, 0x1a, 0x38, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x63, 0x6c,
+	0x6f, 0x75, 0x64, 0x2e, 0x74, 0x69, 0x6d, 0x65, 0x73, 0x65, 0x72, 0x69, 0x65, 0x73, 0x69, 0x6e,
+	0x73, 0x69, 0x67, 0x68, 0x74, 0x73, 0x2e, 0x76, 0x31, 0x2e, 0x51, 0x75, 0x65, 0x72, 0x79, 0x44,
+	0x61, 0x74, 0x61, 0x53, 0x65, 0x74, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x6a,
+	0x82, 0xd3, 0xe4, 0x93, 0x02, 0x64, 0x22, 0x32, 0x2f, 0x76, 0x31, 0x2f, 0x7b, 0x6e, 0x61, 0x6d,
 	0x65, 0x3d, 0x70, 0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74, 0x73, 0x2f, 0x2a, 0x2f, 0x6c, 0x6f, 0x63,
 	0x61, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x2f, 0x2a, 0x2f, 0x64, 0x61, 0x74, 0x61, 0x73, 0x65, 0x74,
-	0x73, 0x2f, 0x2a, 0x7d, 0x5a, 0x22, 0x2a, 0x20, 0x2f, 0x76, 0x31, 0x2f, 0x7b, 0x6e, 0x61, 0x6d,
-	0x65, 0x3d, 0x70, 0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74, 0x73, 0x2f, 0x2a, 0x2f, 0x64, 0x61, 0x74,
-	0x61, 0x73, 0x65, 0x74, 0x73, 0x2f, 0x2a, 0x7d, 0xda, 0x41, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x12,
-	0x93, 0x02, 0x0a, 0x0c, 0x41, 0x70, 0x70, 0x65, 0x6e, 0x64, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x73,
-	0x12, 0x37, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2e,
-	0x74, 0x69, 0x6d, 0x65, 0x73, 0x65, 0x72, 0x69, 0x65, 0x73, 0x69, 0x6e, 0x73, 0x69, 0x67, 0x68,
-	0x74, 0x73, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x70, 0x70, 0x65, 0x6e, 0x64, 0x45, 0x76, 0x65, 0x6e,
-	0x74, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x38, 0x2e, 0x67, 0x6f, 0x6f, 0x67,
-	0x6c, 0x65, 0x2e, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x74, 0x69, 0x6d, 0x65, 0x73, 0x65, 0x72,
-	0x69, 0x65, 0x73, 0x69, 0x6e, 0x73, 0x69, 0x67, 0x68, 0x74, 0x73, 0x2e, 0x76, 0x31, 0x2e, 0x41,
-	0x70, 0x70, 0x65, 0x6e, 0x64, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f,
-	0x6e, 0x73, 0x65, 0x22, 0x8f, 0x01, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x78, 0x22, 0x3c, 0x2f, 0x76,
-	0x31, 0x2f, 0x7b, 0x64, 0x61, 0x74, 0x61, 0x73, 0x65, 0x74, 0x3d, 0x70, 0x72, 0x6f, 0x6a, 0x65,
-	0x63, 0x74, 0x73, 0x2f, 0x2a, 0x2f, 0x6c, 0x6f, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x2f,
-	0x2a, 0x2f, 0x64, 0x61, 0x74, 0x61, 0x73, 0x65, 0x74, 0x73, 0x2f, 0x2a, 0x7d, 0x3a, 0x61, 0x70,
-	0x70, 0x65, 0x6e, 0x64, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x73, 0x3a, 0x01, 0x2a, 0x5a, 0x35, 0x22,
-	0x30, 0x2f, 0x76, 0x31, 0x2f, 0x7b, 0x64, 0x61, 0x74, 0x61, 0x73, 0x65, 0x74, 0x3d, 0x70, 0x72,
-	0x6f, 0x6a, 0x65, 0x63, 0x74, 0x73, 0x2f, 0x2a, 0x2f, 0x64, 0x61, 0x74, 0x61, 0x73, 0x65, 0x74,
-	0x73, 0x2f, 0x2a, 0x7d, 0x3a, 0x61, 0x70, 0x70, 0x65, 0x6e, 0x64, 0x45, 0x76, 0x65, 0x6e, 0x74,
-	0x73, 0x3a, 0x01, 0x2a, 0xda, 0x41, 0x0e, 0x64, 0x61, 0x74, 0x61, 0x73, 0x65, 0x74, 0x2c, 0x65,
-	0x76, 0x65, 0x6e, 0x74, 0x73, 0x12, 0xed, 0x01, 0x0a, 0x0c, 0x51, 0x75, 0x65, 0x72, 0x79, 0x44,
-	0x61, 0x74, 0x61, 0x53, 0x65, 0x74, 0x12, 0x37, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e,
+	0x73, 0x2f, 0x2a, 0x7d, 0x3a, 0x71, 0x75, 0x65, 0x72, 0x79, 0x3a, 0x01, 0x2a, 0x5a, 0x2b, 0x22,
+	0x26, 0x2f, 0x76, 0x31, 0x2f, 0x7b, 0x6e, 0x61, 0x6d, 0x65, 0x3d, 0x70, 0x72, 0x6f, 0x6a, 0x65,
+	0x63, 0x74, 0x73, 0x2f, 0x2a, 0x2f, 0x64, 0x61, 0x74, 0x61, 0x73, 0x65, 0x74, 0x73, 0x2f, 0x2a,
+	0x7d, 0x3a, 0x71, 0x75, 0x65, 0x72, 0x79, 0x3a, 0x01, 0x2a, 0x12, 0x80, 0x02, 0x0a, 0x0d, 0x45,
+	0x76, 0x61, 0x6c, 0x75, 0x61, 0x74, 0x65, 0x53, 0x6c, 0x69, 0x63, 0x65, 0x12, 0x38, 0x2e, 0x67,
+	0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x74, 0x69, 0x6d, 0x65,
+	0x73, 0x65, 0x72, 0x69, 0x65, 0x73, 0x69, 0x6e, 0x73, 0x69, 0x67, 0x68, 0x74, 0x73, 0x2e, 0x76,
+	0x31, 0x2e, 0x45, 0x76, 0x61, 0x6c, 0x75, 0x61, 0x74, 0x65, 0x53, 0x6c, 0x69, 0x63, 0x65, 0x52,
+	0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x32, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e,
 	0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x74, 0x69, 0x6d, 0x65, 0x73, 0x65, 0x72, 0x69, 0x65, 0x73,
-	0x69, 0x6e, 0x73, 0x69, 0x67, 0x68, 0x74, 0x73, 0x2e, 0x76, 0x31, 0x2e, 0x51, 0x75, 0x65, 0x72,
-	0x79, 0x44, 0x61, 0x74, 0x61, 0x53, 0x65, 0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a,
-	0x38, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x74,
+	0x69, 0x6e, 0x73, 0x69, 0x67, 0x68, 0x74, 0x73, 0x2e, 0x76, 0x31, 0x2e, 0x45, 0x76, 0x61, 0x6c,
+	0x75, 0x61, 0x74, 0x65, 0x64, 0x53, 0x6c, 0x69, 0x63, 0x65, 0x22, 0x80, 0x01, 0x82, 0xd3, 0xe4,
+	0x93, 0x02, 0x7a, 0x22, 0x3d, 0x2f, 0x76, 0x31, 0x2f, 0x7b, 0x64, 0x61, 0x74, 0x61, 0x73, 0x65,
+	0x74, 0x3d, 0x70, 0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74, 0x73, 0x2f, 0x2a, 0x2f, 0x6c, 0x6f, 0x63,
+	0x61, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x2f, 0x2a, 0x2f, 0x64, 0x61, 0x74, 0x61, 0x73, 0x65, 0x74,
+	0x73, 0x2f, 0x2a, 0x7d, 0x3a, 0x65, 0x76, 0x61, 0x6c, 0x75, 0x61, 0x74, 0x65, 0x53, 0x6c, 0x69,
+	0x63, 0x65, 0x3a, 0x01, 0x2a, 0x5a, 0x36, 0x22, 0x31, 0x2f, 0x76, 0x31, 0x2f, 0x7b, 0x64, 0x61,
+	0x74, 0x61, 0x73, 0x65, 0x74, 0x3d, 0x70, 0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74, 0x73, 0x2f, 0x2a,
+	0x2f, 0x64, 0x61, 0x74, 0x61, 0x73, 0x65, 0x74, 0x73, 0x2f, 0x2a, 0x7d, 0x3a, 0x65, 0x76, 0x61,
+	0x6c, 0x75, 0x61, 0x74, 0x65, 0x53, 0x6c, 0x69, 0x63, 0x65, 0x3a, 0x01, 0x2a, 0x12, 0x8e, 0x02,
+	0x0a, 0x12, 0x45, 0x76, 0x61, 0x6c, 0x75, 0x61, 0x74, 0x65, 0x54, 0x69, 0x6d, 0x65, 0x73, 0x65,
+	0x72, 0x69, 0x65, 0x73, 0x12, 0x3d, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x63, 0x6c,
+	0x6f, 0x75, 0x64, 0x2e, 0x74, 0x69, 0x6d, 0x65, 0x73, 0x65, 0x72, 0x69, 0x65, 0x73, 0x69, 0x6e,
+	0x73, 0x69, 0x67, 0x68, 0x74, 0x73, 0x2e, 0x76, 0x31, 0x2e, 0x45, 0x76, 0x61, 0x6c, 0x75, 0x61,
+	0x74, 0x65, 0x54, 0x69, 0x6d, 0x65, 0x73, 0x65, 0x72, 0x69, 0x65, 0x73, 0x52, 0x65, 0x71, 0x75,
+	0x65, 0x73, 0x74, 0x1a, 0x32, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x63, 0x6c, 0x6f,
+	0x75, 0x64, 0x2e, 0x74, 0x69, 0x6d, 0x65, 0x73, 0x65, 0x72, 0x69, 0x65, 0x73, 0x69, 0x6e, 0x73,
+	0x69, 0x67, 0x68, 0x74, 0x73, 0x2e, 0x76, 0x31, 0x2e, 0x45, 0x76, 0x61, 0x6c, 0x75, 0x61, 0x74,
+	0x65, 0x64, 0x53, 0x6c, 0x69, 0x63, 0x65, 0x22, 0x84, 0x01, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x7e,
+	0x22, 0x3f, 0x2f, 0x76, 0x31, 0x2f, 0x7b, 0x70, 0x61, 0x72, 0x65, 0x6e, 0x74, 0x3d, 0x70, 0x72,
+	0x6f, 0x6a, 0x65, 0x63, 0x74, 0x73, 0x2f, 0x2a, 0x2f, 0x6c, 0x6f, 0x63, 0x61, 0x74, 0x69, 0x6f,
+	0x6e, 0x73, 0x2f, 0x2a, 0x7d, 0x2f, 0x64, 0x61, 0x74, 0x61, 0x73, 0x65, 0x74, 0x73, 0x3a, 0x65,
+	0x76, 0x61, 0x6c, 0x75, 0x61, 0x74, 0x65, 0x54, 0x69, 0x6d, 0x65, 0x73, 0x65, 0x72, 0x69, 0x65,
+	0x73, 0x3a, 0x01, 0x2a, 0x5a, 0x38, 0x22, 0x33, 0x2f, 0x76, 0x31, 0x2f, 0x7b, 0x70, 0x61, 0x72,
+	0x65, 0x6e, 0x74, 0x3d, 0x70, 0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74, 0x73, 0x2f, 0x2a, 0x7d, 0x2f,
+	0x64, 0x61, 0x74, 0x61, 0x73, 0x65, 0x74, 0x73, 0x3a, 0x65, 0x76, 0x61, 0x6c, 0x75, 0x61, 0x74,
+	0x65, 0x54, 0x69, 0x6d, 0x65, 0x73, 0x65, 0x72, 0x69, 0x65, 0x73, 0x3a, 0x01, 0x2a, 0x1a, 0x55,
+	0xca, 0x41, 0x21, 0x74, 0x69, 0x6d, 0x65, 0x73, 0x65, 0x72, 0x69, 0x65, 0x73, 0x69, 0x6e, 0x73,
+	0x69, 0x67, 0x68, 0x74, 0x73, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x61, 0x70, 0x69, 0x73,
+	0x2e, 0x63, 0x6f, 0x6d, 0xd2, 0x41, 0x2e, 0x68, 0x74, 0x74, 0x70, 0x73, 0x3a, 0x2f, 0x2f, 0x77,
+	0x77, 0x77, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x61, 0x70, 0x69, 0x73, 0x2e, 0x63, 0x6f,
+	0x6d, 0x2f, 0x61, 0x75, 0x74, 0x68, 0x2f, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2d, 0x70, 0x6c, 0x61,
+	0x74, 0x66, 0x6f, 0x72, 0x6d, 0x42, 0x9c, 0x01, 0x0a, 0x26, 0x63, 0x6f, 0x6d, 0x2e, 0x67, 0x6f,
+	0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x74, 0x69, 0x6d, 0x65, 0x73,
+	0x65, 0x72, 0x69, 0x65, 0x73, 0x69, 0x6e, 0x73, 0x69, 0x67, 0x68, 0x74, 0x73, 0x2e, 0x76, 0x31,
+	0x42, 0x17, 0x54, 0x69, 0x6d, 0x65, 0x73, 0x65, 0x72, 0x69, 0x65, 0x73, 0x49, 0x6e, 0x73, 0x69,
+	0x67, 0x68, 0x74, 0x73, 0x50, 0x72, 0x6f, 0x74, 0x6f, 0x50, 0x01, 0x5a, 0x54, 0x67, 0x6f, 0x6f,
+	0x67, 0x6c, 0x65, 0x2e, 0x67, 0x6f, 0x6c, 0x61, 0x6e, 0x67, 0x2e, 0x6f, 0x72, 0x67, 0x2f, 0x67,
+	0x65, 0x6e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x61, 0x70,
+	0x69, 0x73, 0x2f, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2f, 0x74, 0x69, 0x6d, 0x65, 0x73, 0x65, 0x72,
+	0x69, 0x65, 0x73, 0x69, 0x6e, 0x73, 0x69, 0x67, 0x68, 0x74, 0x73, 0x2f, 0x76, 0x31, 0x3b, 0x74,
 	0x69, 0x6d, 0x65, 0x73, 0x65, 0x72, 0x69, 0x65, 0x73, 0x69, 0x6e, 0x73, 0x69, 0x67, 0x68, 0x74,
-	0x73, 0x2e, 0x76, 0x31, 0x2e, 0x51, 0x75, 0x65, 0x72, 0x79, 0x44, 0x61, 0x74, 0x61, 0x53, 0x65,
-	0x74, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x6a, 0x82, 0xd3, 0xe4, 0x93, 0x02,
-	0x64, 0x22, 0x32, 0x2f, 0x76, 0x31, 0x2f, 0x7b, 0x6e, 0x61, 0x6d, 0x65, 0x3d, 0x70, 0x72, 0x6f,
-	0x6a, 0x65, 0x63, 0x74, 0x73, 0x2f, 0x2a, 0x2f, 0x6c, 0x6f, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e,
-	0x73, 0x2f, 0x2a, 0x2f, 0x64, 0x61, 0x74, 0x61, 0x73, 0x65, 0x74, 0x73, 0x2f, 0x2a, 0x7d, 0x3a,
-	0x71, 0x75, 0x65, 0x72, 0x79, 0x3a, 0x01, 0x2a, 0x5a, 0x2b, 0x22, 0x26, 0x2f, 0x76, 0x31, 0x2f,
-	0x7b, 0x6e, 0x61, 0x6d, 0x65, 0x3d, 0x70, 0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74, 0x73, 0x2f, 0x2a,
-	0x2f, 0x64, 0x61, 0x74, 0x61, 0x73, 0x65, 0x74, 0x73, 0x2f, 0x2a, 0x7d, 0x3a, 0x71, 0x75, 0x65,
-	0x72, 0x79, 0x3a, 0x01, 0x2a, 0x12, 0x80, 0x02, 0x0a, 0x0d, 0x45, 0x76, 0x61, 0x6c, 0x75, 0x61,
-	0x74, 0x65, 0x53, 0x6c, 0x69, 0x63, 0x65, 0x12, 0x38, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65,
-	0x2e, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x74, 0x69, 0x6d, 0x65, 0x73, 0x65, 0x72, 0x69, 0x65,
-	0x73, 0x69, 0x6e, 0x73, 0x69, 0x67, 0x68, 0x74, 0x73, 0x2e, 0x76, 0x31, 0x2e, 0x45, 0x76, 0x61,
-	0x6c, 0x75, 0x61, 0x74, 0x65, 0x53, 0x6c, 0x69, 0x63, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73,
-	0x74, 0x1a, 0x32, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x63, 0x6c, 0x6f, 0x75, 0x64,
-	0x2e, 0x74, 0x69, 0x6d, 0x65, 0x73, 0x65, 0x72, 0x69, 0x65, 0x73, 0x69, 0x6e, 0x73, 0x69, 0x67,
-	0x68, 0x74, 0x73, 0x2e, 0x76, 0x31, 0x2e, 0x45, 0x76, 0x61, 0x6c, 0x75, 0x61, 0x74, 0x65, 0x64,
-	0x53, 0x6c, 0x69, 0x63, 0x65, 0x22, 0x80, 0x01, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x7a, 0x22, 0x3d,
-	0x2f, 0x76, 0x31, 0x2f, 0x7b, 0x64, 0x61, 0x74, 0x61, 0x73, 0x65, 0x74, 0x3d, 0x70, 0x72, 0x6f,
-	0x6a, 0x65, 0x63, 0x74, 0x73, 0x2f, 0x2a, 0x2f, 0x6c, 0x6f, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e,
-	0x73, 0x2f, 0x2a, 0x2f, 0x64, 0x61, 0x74, 0x61, 0x73, 0x65, 0x74, 0x73, 0x2f, 0x2a, 0x7d, 0x3a,
-	0x65, 0x76, 0x61, 0x6c, 0x75, 0x61, 0x74, 0x65, 0x53, 0x6c, 0x69, 0x63, 0x65, 0x3a, 0x01, 0x2a,
-	0x5a, 0x36, 0x22, 0x31, 0x2f, 0x76, 0x31, 0x2f, 0x7b, 0x64, 0x61, 0x74, 0x61, 0x73, 0x65, 0x74,
-	0x3d, 0x70, 0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74, 0x73, 0x2f, 0x2a, 0x2f, 0x64, 0x61, 0x74, 0x61,
-	0x73, 0x65, 0x74, 0x73, 0x2f, 0x2a, 0x7d, 0x3a, 0x65, 0x76, 0x61, 0x6c, 0x75, 0x61, 0x74, 0x65,
-	0x53, 0x6c, 0x69, 0x63, 0x65, 0x3a, 0x01, 0x2a, 0x1a, 0x55, 0xca, 0x41, 0x21, 0x74, 0x69, 0x6d,
-	0x65, 0x73, 0x65, 0x72, 0x69, 0x65, 0x73, 0x69, 0x6e, 0x73, 0x69, 0x67, 0x68, 0x74, 0x73, 0x2e,
-	0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x61, 0x70, 0x69, 0x73, 0x2e, 0x63, 0x6f, 0x6d, 0xd2, 0x41,
-	0x2e, 0x68, 0x74, 0x74, 0x70, 0x73, 0x3a, 0x2f, 0x2f, 0x77, 0x77, 0x77, 0x2e, 0x67, 0x6f, 0x6f,
-	0x67, 0x6c, 0x65, 0x61, 0x70, 0x69, 0x73, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x61, 0x75, 0x74, 0x68,
-	0x2f, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2d, 0x70, 0x6c, 0x61, 0x74, 0x66, 0x6f, 0x72, 0x6d, 0x42,
-	0x9c, 0x01, 0x0a, 0x26, 0x63, 0x6f, 0x6d, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x63,
-	0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x74, 0x69, 0x6d, 0x65, 0x73, 0x65, 0x72, 0x69, 0x65, 0x73, 0x69,
-	0x6e, 0x73, 0x69, 0x67, 0x68, 0x74, 0x73, 0x2e, 0x76, 0x31, 0x42, 0x17, 0x54, 0x69, 0x6d, 0x65,
-	0x73, 0x65, 0x72, 0x69, 0x65, 0x73, 0x49, 0x6e, 0x73, 0x69, 0x67, 0x68, 0x74, 0x73, 0x50, 0x72,
-	0x6f, 0x74, 0x6f, 0x50, 0x01, 0x5a, 0x54, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x67, 0x6f,
-	0x6c, 0x61, 0x6e, 0x67, 0x2e, 0x6f, 0x72, 0x67, 0x2f, 0x67, 0x65, 0x6e, 0x70, 0x72, 0x6f, 0x74,
-	0x6f, 0x2f, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x61, 0x70, 0x69, 0x73, 0x2f, 0x63, 0x6c, 0x6f,
-	0x75, 0x64, 0x2f, 0x74, 0x69, 0x6d, 0x65, 0x73, 0x65, 0x72, 0x69, 0x65, 0x73, 0x69, 0x6e, 0x73,
-	0x69, 0x67, 0x68, 0x74, 0x73, 0x2f, 0x76, 0x31, 0x3b, 0x74, 0x69, 0x6d, 0x65, 0x73, 0x65, 0x72,
-	0x69, 0x65, 0x73, 0x69, 0x6e, 0x73, 0x69, 0x67, 0x68, 0x74, 0x73, 0xf8, 0x01, 0x01, 0x62, 0x06,
-	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x73, 0xf8, 0x01, 0x01, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -2634,7 +2721,7 @@ func file_google_cloud_timeseriesinsights_v1_timeseries_insights_proto_rawDescGZ
 }
 
 var file_google_cloud_timeseriesinsights_v1_timeseries_insights_proto_enumTypes = make([]protoimpl.EnumInfo, 3)
-var file_google_cloud_timeseriesinsights_v1_timeseries_insights_proto_msgTypes = make([]protoimpl.MessageInfo, 21)
+var file_google_cloud_timeseriesinsights_v1_timeseries_insights_proto_msgTypes = make([]protoimpl.MessageInfo, 22)
 var file_google_cloud_timeseriesinsights_v1_timeseries_insights_proto_goTypes = []interface{}{
 	(DataSet_State)(0),                      // 0: google.cloud.timeseriesinsights.v1.DataSet.State
 	(ForecastParams_Period)(0),              // 1: google.cloud.timeseriesinsights.v1.ForecastParams.Period
@@ -2660,61 +2747,67 @@ var file_google_cloud_timeseriesinsights_v1_timeseries_insights_proto_goTypes = 
 	(*QueryDataSetRequest)(nil),             // 21: google.cloud.timeseriesinsights.v1.QueryDataSetRequest
 	(*QueryDataSetResponse)(nil),            // 22: google.cloud.timeseriesinsights.v1.QueryDataSetResponse
 	(*EvaluateSliceRequest)(nil),            // 23: google.cloud.timeseriesinsights.v1.EvaluateSliceRequest
-	(*status.Status)(nil),                   // 24: google.rpc.Status
-	(*durationpb.Duration)(nil),             // 25: google.protobuf.Duration
-	(*timestamppb.Timestamp)(nil),           // 26: google.protobuf.Timestamp
-	(*emptypb.Empty)(nil),                   // 27: google.protobuf.Empty
+	(*EvaluateTimeseriesRequest)(nil),       // 24: google.cloud.timeseriesinsights.v1.EvaluateTimeseriesRequest
+	(*status.Status)(nil),                   // 25: google.rpc.Status
+	(*durationpb.Duration)(nil),             // 26: google.protobuf.Duration
+	(*timestamppb.Timestamp)(nil),           // 27: google.protobuf.Timestamp
+	(*emptypb.Empty)(nil),                   // 28: google.protobuf.Empty
 }
 var file_google_cloud_timeseriesinsights_v1_timeseries_insights_proto_depIdxs = []int32{
 	3,  // 0: google.cloud.timeseriesinsights.v1.DataSource.bq_mapping:type_name -> google.cloud.timeseriesinsights.v1.BigqueryMapping
 	4,  // 1: google.cloud.timeseriesinsights.v1.DataSet.data_sources:type_name -> google.cloud.timeseriesinsights.v1.DataSource
 	0,  // 2: google.cloud.timeseriesinsights.v1.DataSet.state:type_name -> google.cloud.timeseriesinsights.v1.DataSet.State
-	24, // 3: google.cloud.timeseriesinsights.v1.DataSet.status:type_name -> google.rpc.Status
-	25, // 4: google.cloud.timeseriesinsights.v1.DataSet.ttl:type_name -> google.protobuf.Duration
+	25, // 3: google.cloud.timeseriesinsights.v1.DataSet.status:type_name -> google.rpc.Status
+	26, // 4: google.cloud.timeseriesinsights.v1.DataSet.ttl:type_name -> google.protobuf.Duration
 	6,  // 5: google.cloud.timeseriesinsights.v1.Event.dimensions:type_name -> google.cloud.timeseriesinsights.v1.EventDimension
-	26, // 6: google.cloud.timeseriesinsights.v1.Event.event_time:type_name -> google.protobuf.Timestamp
+	27, // 6: google.cloud.timeseriesinsights.v1.Event.event_time:type_name -> google.protobuf.Timestamp
 	7,  // 7: google.cloud.timeseriesinsights.v1.AppendEventsRequest.events:type_name -> google.cloud.timeseriesinsights.v1.Event
 	7,  // 8: google.cloud.timeseriesinsights.v1.AppendEventsResponse.dropped_events:type_name -> google.cloud.timeseriesinsights.v1.Event
 	5,  // 9: google.cloud.timeseriesinsights.v1.CreateDataSetRequest.dataset:type_name -> google.cloud.timeseriesinsights.v1.DataSet
 	5,  // 10: google.cloud.timeseriesinsights.v1.ListDataSetsResponse.datasets:type_name -> google.cloud.timeseriesinsights.v1.DataSet
 	1,  // 11: google.cloud.timeseriesinsights.v1.ForecastParams.seasonality_hint:type_name -> google.cloud.timeseriesinsights.v1.ForecastParams.Period
-	25, // 12: google.cloud.timeseriesinsights.v1.ForecastParams.horizon_duration:type_name -> google.protobuf.Duration
-	26, // 13: google.cloud.timeseriesinsights.v1.TimeseriesPoint.time:type_name -> google.protobuf.Timestamp
+	26, // 12: google.cloud.timeseriesinsights.v1.ForecastParams.horizon_duration:type_name -> google.protobuf.Duration
+	27, // 13: google.cloud.timeseriesinsights.v1.TimeseriesPoint.time:type_name -> google.protobuf.Timestamp
 	16, // 14: google.cloud.timeseriesinsights.v1.Timeseries.point:type_name -> google.cloud.timeseriesinsights.v1.TimeseriesPoint
 	14, // 15: google.cloud.timeseriesinsights.v1.EvaluatedSlice.dimensions:type_name -> google.cloud.timeseriesinsights.v1.PinnedDimension
 	17, // 16: google.cloud.timeseriesinsights.v1.EvaluatedSlice.history:type_name -> google.cloud.timeseriesinsights.v1.Timeseries
 	17, // 17: google.cloud.timeseriesinsights.v1.EvaluatedSlice.forecast:type_name -> google.cloud.timeseriesinsights.v1.Timeseries
-	24, // 18: google.cloud.timeseriesinsights.v1.EvaluatedSlice.status:type_name -> google.rpc.Status
+	25, // 18: google.cloud.timeseriesinsights.v1.EvaluatedSlice.status:type_name -> google.rpc.Status
 	14, // 19: google.cloud.timeseriesinsights.v1.SlicingParams.pinned_dimensions:type_name -> google.cloud.timeseriesinsights.v1.PinnedDimension
-	25, // 20: google.cloud.timeseriesinsights.v1.TimeseriesParams.forecast_history:type_name -> google.protobuf.Duration
-	25, // 21: google.cloud.timeseriesinsights.v1.TimeseriesParams.granularity:type_name -> google.protobuf.Duration
+	26, // 20: google.cloud.timeseriesinsights.v1.TimeseriesParams.forecast_history:type_name -> google.protobuf.Duration
+	26, // 21: google.cloud.timeseriesinsights.v1.TimeseriesParams.granularity:type_name -> google.protobuf.Duration
 	2,  // 22: google.cloud.timeseriesinsights.v1.TimeseriesParams.metric_aggregation_method:type_name -> google.cloud.timeseriesinsights.v1.TimeseriesParams.AggregationMethod
-	26, // 23: google.cloud.timeseriesinsights.v1.QueryDataSetRequest.detection_time:type_name -> google.protobuf.Timestamp
+	27, // 23: google.cloud.timeseriesinsights.v1.QueryDataSetRequest.detection_time:type_name -> google.protobuf.Timestamp
 	19, // 24: google.cloud.timeseriesinsights.v1.QueryDataSetRequest.slicing_params:type_name -> google.cloud.timeseriesinsights.v1.SlicingParams
 	20, // 25: google.cloud.timeseriesinsights.v1.QueryDataSetRequest.timeseries_params:type_name -> google.cloud.timeseriesinsights.v1.TimeseriesParams
 	15, // 26: google.cloud.timeseriesinsights.v1.QueryDataSetRequest.forecast_params:type_name -> google.cloud.timeseriesinsights.v1.ForecastParams
 	18, // 27: google.cloud.timeseriesinsights.v1.QueryDataSetResponse.slices:type_name -> google.cloud.timeseriesinsights.v1.EvaluatedSlice
 	14, // 28: google.cloud.timeseriesinsights.v1.EvaluateSliceRequest.pinned_dimensions:type_name -> google.cloud.timeseriesinsights.v1.PinnedDimension
-	26, // 29: google.cloud.timeseriesinsights.v1.EvaluateSliceRequest.detection_time:type_name -> google.protobuf.Timestamp
+	27, // 29: google.cloud.timeseriesinsights.v1.EvaluateSliceRequest.detection_time:type_name -> google.protobuf.Timestamp
 	20, // 30: google.cloud.timeseriesinsights.v1.EvaluateSliceRequest.timeseries_params:type_name -> google.cloud.timeseriesinsights.v1.TimeseriesParams
 	15, // 31: google.cloud.timeseriesinsights.v1.EvaluateSliceRequest.forecast_params:type_name -> google.cloud.timeseriesinsights.v1.ForecastParams
-	12, // 32: google.cloud.timeseriesinsights.v1.TimeseriesInsightsController.ListDataSets:input_type -> google.cloud.timeseriesinsights.v1.ListDataSetsRequest
-	10, // 33: google.cloud.timeseriesinsights.v1.TimeseriesInsightsController.CreateDataSet:input_type -> google.cloud.timeseriesinsights.v1.CreateDataSetRequest
-	11, // 34: google.cloud.timeseriesinsights.v1.TimeseriesInsightsController.DeleteDataSet:input_type -> google.cloud.timeseriesinsights.v1.DeleteDataSetRequest
-	8,  // 35: google.cloud.timeseriesinsights.v1.TimeseriesInsightsController.AppendEvents:input_type -> google.cloud.timeseriesinsights.v1.AppendEventsRequest
-	21, // 36: google.cloud.timeseriesinsights.v1.TimeseriesInsightsController.QueryDataSet:input_type -> google.cloud.timeseriesinsights.v1.QueryDataSetRequest
-	23, // 37: google.cloud.timeseriesinsights.v1.TimeseriesInsightsController.EvaluateSlice:input_type -> google.cloud.timeseriesinsights.v1.EvaluateSliceRequest
-	13, // 38: google.cloud.timeseriesinsights.v1.TimeseriesInsightsController.ListDataSets:output_type -> google.cloud.timeseriesinsights.v1.ListDataSetsResponse
-	5,  // 39: google.cloud.timeseriesinsights.v1.TimeseriesInsightsController.CreateDataSet:output_type -> google.cloud.timeseriesinsights.v1.DataSet
-	27, // 40: google.cloud.timeseriesinsights.v1.TimeseriesInsightsController.DeleteDataSet:output_type -> google.protobuf.Empty
-	9,  // 41: google.cloud.timeseriesinsights.v1.TimeseriesInsightsController.AppendEvents:output_type -> google.cloud.timeseriesinsights.v1.AppendEventsResponse
-	22, // 42: google.cloud.timeseriesinsights.v1.TimeseriesInsightsController.QueryDataSet:output_type -> google.cloud.timeseriesinsights.v1.QueryDataSetResponse
-	18, // 43: google.cloud.timeseriesinsights.v1.TimeseriesInsightsController.EvaluateSlice:output_type -> google.cloud.timeseriesinsights.v1.EvaluatedSlice
-	38, // [38:44] is the sub-list for method output_type
-	32, // [32:38] is the sub-list for method input_type
-	32, // [32:32] is the sub-list for extension type_name
-	32, // [32:32] is the sub-list for extension extendee
-	0,  // [0:32] is the sub-list for field type_name
+	17, // 32: google.cloud.timeseriesinsights.v1.EvaluateTimeseriesRequest.timeseries:type_name -> google.cloud.timeseriesinsights.v1.Timeseries
+	26, // 33: google.cloud.timeseriesinsights.v1.EvaluateTimeseriesRequest.granularity:type_name -> google.protobuf.Duration
+	15, // 34: google.cloud.timeseriesinsights.v1.EvaluateTimeseriesRequest.forecast_params:type_name -> google.cloud.timeseriesinsights.v1.ForecastParams
+	12, // 35: google.cloud.timeseriesinsights.v1.TimeseriesInsightsController.ListDataSets:input_type -> google.cloud.timeseriesinsights.v1.ListDataSetsRequest
+	10, // 36: google.cloud.timeseriesinsights.v1.TimeseriesInsightsController.CreateDataSet:input_type -> google.cloud.timeseriesinsights.v1.CreateDataSetRequest
+	11, // 37: google.cloud.timeseriesinsights.v1.TimeseriesInsightsController.DeleteDataSet:input_type -> google.cloud.timeseriesinsights.v1.DeleteDataSetRequest
+	8,  // 38: google.cloud.timeseriesinsights.v1.TimeseriesInsightsController.AppendEvents:input_type -> google.cloud.timeseriesinsights.v1.AppendEventsRequest
+	21, // 39: google.cloud.timeseriesinsights.v1.TimeseriesInsightsController.QueryDataSet:input_type -> google.cloud.timeseriesinsights.v1.QueryDataSetRequest
+	23, // 40: google.cloud.timeseriesinsights.v1.TimeseriesInsightsController.EvaluateSlice:input_type -> google.cloud.timeseriesinsights.v1.EvaluateSliceRequest
+	24, // 41: google.cloud.timeseriesinsights.v1.TimeseriesInsightsController.EvaluateTimeseries:input_type -> google.cloud.timeseriesinsights.v1.EvaluateTimeseriesRequest
+	13, // 42: google.cloud.timeseriesinsights.v1.TimeseriesInsightsController.ListDataSets:output_type -> google.cloud.timeseriesinsights.v1.ListDataSetsResponse
+	5,  // 43: google.cloud.timeseriesinsights.v1.TimeseriesInsightsController.CreateDataSet:output_type -> google.cloud.timeseriesinsights.v1.DataSet
+	28, // 44: google.cloud.timeseriesinsights.v1.TimeseriesInsightsController.DeleteDataSet:output_type -> google.protobuf.Empty
+	9,  // 45: google.cloud.timeseriesinsights.v1.TimeseriesInsightsController.AppendEvents:output_type -> google.cloud.timeseriesinsights.v1.AppendEventsResponse
+	22, // 46: google.cloud.timeseriesinsights.v1.TimeseriesInsightsController.QueryDataSet:output_type -> google.cloud.timeseriesinsights.v1.QueryDataSetResponse
+	18, // 47: google.cloud.timeseriesinsights.v1.TimeseriesInsightsController.EvaluateSlice:output_type -> google.cloud.timeseriesinsights.v1.EvaluatedSlice
+	18, // 48: google.cloud.timeseriesinsights.v1.TimeseriesInsightsController.EvaluateTimeseries:output_type -> google.cloud.timeseriesinsights.v1.EvaluatedSlice
+	42, // [42:49] is the sub-list for method output_type
+	35, // [35:42] is the sub-list for method input_type
+	35, // [35:35] is the sub-list for extension type_name
+	35, // [35:35] is the sub-list for extension extendee
+	0,  // [0:35] is the sub-list for field type_name
 }
 
 func init() { file_google_cloud_timeseriesinsights_v1_timeseries_insights_proto_init() }
@@ -2975,6 +3068,18 @@ func file_google_cloud_timeseriesinsights_v1_timeseries_insights_proto_init() {
 				return nil
 			}
 		}
+		file_google_cloud_timeseriesinsights_v1_timeseries_insights_proto_msgTypes[21].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*EvaluateTimeseriesRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
 	}
 	file_google_cloud_timeseriesinsights_v1_timeseries_insights_proto_msgTypes[3].OneofWrappers = []interface{}{
 		(*EventDimension_StringVal)(nil),
@@ -2997,7 +3102,7 @@ func file_google_cloud_timeseriesinsights_v1_timeseries_insights_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_google_cloud_timeseriesinsights_v1_timeseries_insights_proto_rawDesc,
 			NumEnums:      3,
-			NumMessages:   21,
+			NumMessages:   22,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
@@ -3024,36 +3129,33 @@ const _ = grpc.SupportPackageIsVersion6
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type TimeseriesInsightsControllerClient interface {
-	// Lists [DataSets][google.cloud.timeseriesinsights.v1.DataSet] under the
-	// project.
+	// Lists [DataSets][google.cloud.timeseriesinsights.v1.DataSet] under the project.
 	//
 	// The order of the results is unspecified but deterministic. Newly created
-	// [DataSets][google.cloud.timeseriesinsights.v1.DataSet] will not necessarily
-	// be added to the end of this list.
+	// [DataSets][google.cloud.timeseriesinsights.v1.DataSet] will not necessarily be added to the end
+	// of this list.
 	ListDataSets(ctx context.Context, in *ListDataSetsRequest, opts ...grpc.CallOption) (*ListDataSetsResponse, error)
-	// Create a [DataSet][google.cloud.timeseriesinsights.v1.DataSet] from data
-	// stored on Cloud Storage.
+	// Create a [DataSet][google.cloud.timeseriesinsights.v1.DataSet] from data stored on Cloud
+	// Storage.
 	//
 	// The data must stay immutable while we process the
-	// [DataSet][google.cloud.timeseriesinsights.v1.DataSet] creation; otherwise,
-	// undefined outcomes might result.  For more information, see
-	// [DataSet][google.cloud.timeseriesinsights.v1.DataSet].
+	// [DataSet][google.cloud.timeseriesinsights.v1.DataSet] creation; otherwise, undefined outcomes
+	// might result.  For more information, see [DataSet][google.cloud.timeseriesinsights.v1.DataSet].
 	CreateDataSet(ctx context.Context, in *CreateDataSetRequest, opts ...grpc.CallOption) (*DataSet, error)
-	// Delete a [DataSet][google.cloud.timeseriesinsights.v1.DataSet] from the
-	// system.
+	// Delete a [DataSet][google.cloud.timeseriesinsights.v1.DataSet] from the system.
 	//
-	// **NOTE**: If the [DataSet][google.cloud.timeseriesinsights.v1.DataSet] is
-	// still being processed, it will be aborted and deleted.
+	// **NOTE**: If the [DataSet][google.cloud.timeseriesinsights.v1.DataSet] is still being
+	// processed, it will be aborted and deleted.
 	DeleteDataSet(ctx context.Context, in *DeleteDataSetRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
-	// Append events to a `LOADED`
-	// [DataSet][google.cloud.timeseriesinsights.v1.DataSet].
+	// Append events to a `LOADED` [DataSet][google.cloud.timeseriesinsights.v1.DataSet].
 	AppendEvents(ctx context.Context, in *AppendEventsRequest, opts ...grpc.CallOption) (*AppendEventsResponse, error)
 	// Execute a Timeseries Insights query over a loaded
 	// [DataSet][google.cloud.timeseriesinsights.v1.DataSet].
 	QueryDataSet(ctx context.Context, in *QueryDataSetRequest, opts ...grpc.CallOption) (*QueryDataSetResponse, error)
-	// Evaluate an explicit slice from a loaded
-	// [DataSet][google.cloud.timeseriesinsights.v1.DataSet].
+	// Evaluate an explicit slice from a loaded [DataSet][google.cloud.timeseriesinsights.v1.DataSet].
 	EvaluateSlice(ctx context.Context, in *EvaluateSliceRequest, opts ...grpc.CallOption) (*EvaluatedSlice, error)
+	// Evaluate an explicit timeseries.
+	EvaluateTimeseries(ctx context.Context, in *EvaluateTimeseriesRequest, opts ...grpc.CallOption) (*EvaluatedSlice, error)
 }
 
 type timeseriesInsightsControllerClient struct {
@@ -3118,38 +3220,44 @@ func (c *timeseriesInsightsControllerClient) EvaluateSlice(ctx context.Context, 
 	return out, nil
 }
 
+func (c *timeseriesInsightsControllerClient) EvaluateTimeseries(ctx context.Context, in *EvaluateTimeseriesRequest, opts ...grpc.CallOption) (*EvaluatedSlice, error) {
+	out := new(EvaluatedSlice)
+	err := c.cc.Invoke(ctx, "/google.cloud.timeseriesinsights.v1.TimeseriesInsightsController/EvaluateTimeseries", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // TimeseriesInsightsControllerServer is the server API for TimeseriesInsightsController service.
 type TimeseriesInsightsControllerServer interface {
-	// Lists [DataSets][google.cloud.timeseriesinsights.v1.DataSet] under the
-	// project.
+	// Lists [DataSets][google.cloud.timeseriesinsights.v1.DataSet] under the project.
 	//
 	// The order of the results is unspecified but deterministic. Newly created
-	// [DataSets][google.cloud.timeseriesinsights.v1.DataSet] will not necessarily
-	// be added to the end of this list.
+	// [DataSets][google.cloud.timeseriesinsights.v1.DataSet] will not necessarily be added to the end
+	// of this list.
 	ListDataSets(context.Context, *ListDataSetsRequest) (*ListDataSetsResponse, error)
-	// Create a [DataSet][google.cloud.timeseriesinsights.v1.DataSet] from data
-	// stored on Cloud Storage.
+	// Create a [DataSet][google.cloud.timeseriesinsights.v1.DataSet] from data stored on Cloud
+	// Storage.
 	//
 	// The data must stay immutable while we process the
-	// [DataSet][google.cloud.timeseriesinsights.v1.DataSet] creation; otherwise,
-	// undefined outcomes might result.  For more information, see
-	// [DataSet][google.cloud.timeseriesinsights.v1.DataSet].
+	// [DataSet][google.cloud.timeseriesinsights.v1.DataSet] creation; otherwise, undefined outcomes
+	// might result.  For more information, see [DataSet][google.cloud.timeseriesinsights.v1.DataSet].
 	CreateDataSet(context.Context, *CreateDataSetRequest) (*DataSet, error)
-	// Delete a [DataSet][google.cloud.timeseriesinsights.v1.DataSet] from the
-	// system.
+	// Delete a [DataSet][google.cloud.timeseriesinsights.v1.DataSet] from the system.
 	//
-	// **NOTE**: If the [DataSet][google.cloud.timeseriesinsights.v1.DataSet] is
-	// still being processed, it will be aborted and deleted.
+	// **NOTE**: If the [DataSet][google.cloud.timeseriesinsights.v1.DataSet] is still being
+	// processed, it will be aborted and deleted.
 	DeleteDataSet(context.Context, *DeleteDataSetRequest) (*emptypb.Empty, error)
-	// Append events to a `LOADED`
-	// [DataSet][google.cloud.timeseriesinsights.v1.DataSet].
+	// Append events to a `LOADED` [DataSet][google.cloud.timeseriesinsights.v1.DataSet].
 	AppendEvents(context.Context, *AppendEventsRequest) (*AppendEventsResponse, error)
 	// Execute a Timeseries Insights query over a loaded
 	// [DataSet][google.cloud.timeseriesinsights.v1.DataSet].
 	QueryDataSet(context.Context, *QueryDataSetRequest) (*QueryDataSetResponse, error)
-	// Evaluate an explicit slice from a loaded
-	// [DataSet][google.cloud.timeseriesinsights.v1.DataSet].
+	// Evaluate an explicit slice from a loaded [DataSet][google.cloud.timeseriesinsights.v1.DataSet].
 	EvaluateSlice(context.Context, *EvaluateSliceRequest) (*EvaluatedSlice, error)
+	// Evaluate an explicit timeseries.
+	EvaluateTimeseries(context.Context, *EvaluateTimeseriesRequest) (*EvaluatedSlice, error)
 }
 
 // UnimplementedTimeseriesInsightsControllerServer can be embedded to have forward compatible implementations.
@@ -3173,6 +3281,9 @@ func (*UnimplementedTimeseriesInsightsControllerServer) QueryDataSet(context.Con
 }
 func (*UnimplementedTimeseriesInsightsControllerServer) EvaluateSlice(context.Context, *EvaluateSliceRequest) (*EvaluatedSlice, error) {
 	return nil, status1.Errorf(codes.Unimplemented, "method EvaluateSlice not implemented")
+}
+func (*UnimplementedTimeseriesInsightsControllerServer) EvaluateTimeseries(context.Context, *EvaluateTimeseriesRequest) (*EvaluatedSlice, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method EvaluateTimeseries not implemented")
 }
 
 func RegisterTimeseriesInsightsControllerServer(s *grpc.Server, srv TimeseriesInsightsControllerServer) {
@@ -3287,6 +3398,24 @@ func _TimeseriesInsightsController_EvaluateSlice_Handler(srv interface{}, ctx co
 	return interceptor(ctx, in, info, handler)
 }
 
+func _TimeseriesInsightsController_EvaluateTimeseries_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(EvaluateTimeseriesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TimeseriesInsightsControllerServer).EvaluateTimeseries(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/google.cloud.timeseriesinsights.v1.TimeseriesInsightsController/EvaluateTimeseries",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TimeseriesInsightsControllerServer).EvaluateTimeseries(ctx, req.(*EvaluateTimeseriesRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _TimeseriesInsightsController_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "google.cloud.timeseriesinsights.v1.TimeseriesInsightsController",
 	HandlerType: (*TimeseriesInsightsControllerServer)(nil),
@@ -3314,6 +3443,10 @@ var _TimeseriesInsightsController_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "EvaluateSlice",
 			Handler:    _TimeseriesInsightsController_EvaluateSlice_Handler,
+		},
+		{
+			MethodName: "EvaluateTimeseries",
+			Handler:    _TimeseriesInsightsController_EvaluateTimeseries_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

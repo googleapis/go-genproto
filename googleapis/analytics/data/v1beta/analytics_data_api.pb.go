@@ -1,4 +1,4 @@
-// Copyright 2021 Google LLC
+// Copyright 2022 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -307,8 +307,8 @@ type RunReportRequest struct {
 	// Filters](https://developers.google.com/analytics/devguides/reporting/data/v1/basics#dimension_filters)
 	// for examples. Metrics cannot be used in this filter.
 	DimensionFilter *FilterExpression `protobuf:"bytes,5,opt,name=dimension_filter,json=dimensionFilter,proto3" json:"dimension_filter,omitempty"`
-	// The filter clause of metrics. Applied at post aggregation phase, similar to
-	// SQL having-clause. Dimensions cannot be used in this filter.
+	// The filter clause of metrics. Applied after aggregating the report's rows,
+	// similar to SQL having-clause. Dimensions cannot be used in this filter.
 	MetricFilter *FilterExpression `protobuf:"bytes,6,opt,name=metric_filter,json=metricFilter,proto3" json:"metric_filter,omitempty"`
 	// The row count of the start row. The first row is counted as row 0.
 	//
@@ -798,38 +798,38 @@ type RunPivotReportResponse struct {
 	// request produces one header in the response. If we have a request like
 	// this:
 	//
-	//     "pivots": [{
-	//       "fieldNames": ["country",
-	//         "city"]
-	//     },
-	//     {
-	//       "fieldNames": "eventName"
-	//     }]
+	//	"pivots": [{
+	//	  "fieldNames": ["country",
+	//	    "city"]
+	//	},
+	//	{
+	//	  "fieldNames": "eventName"
+	//	}]
 	//
 	// We will have the following `pivotHeaders` in the response:
 	//
-	//     "pivotHeaders" : [{
-	//       "dimensionHeaders": [{
-	//         "dimensionValues": [
-	//            { "value": "United Kingdom" },
-	//            { "value": "London" }
-	//          ]
-	//       },
-	//       {
-	//         "dimensionValues": [
-	//         { "value": "Japan" },
-	//         { "value": "Osaka" }
-	//         ]
-	//       }]
-	//     },
-	//     {
-	//       "dimensionHeaders": [{
-	//         "dimensionValues": [{ "value": "session_start" }]
-	//       },
-	//       {
-	//         "dimensionValues": [{ "value": "scroll" }]
-	//       }]
-	//     }]
+	//	"pivotHeaders" : [{
+	//	  "dimensionHeaders": [{
+	//	    "dimensionValues": [
+	//	       { "value": "United Kingdom" },
+	//	       { "value": "London" }
+	//	     ]
+	//	  },
+	//	  {
+	//	    "dimensionValues": [
+	//	    { "value": "Japan" },
+	//	    { "value": "Osaka" }
+	//	    ]
+	//	  }]
+	//	},
+	//	{
+	//	  "dimensionHeaders": [{
+	//	    "dimensionValues": [{ "value": "session_start" }]
+	//	  },
+	//	  {
+	//	    "dimensionValues": [{ "value": "scroll" }]
+	//	  }]
+	//	}]
 	PivotHeaders []*PivotHeader `protobuf:"bytes,1,rep,name=pivot_headers,json=pivotHeaders,proto3" json:"pivot_headers,omitempty"`
 	// Describes dimension columns. The number of DimensionHeaders and ordering of
 	// DimensionHeaders matches the dimensions present in rows.
@@ -1272,12 +1272,10 @@ type RunRealtimeReportRequest struct {
 	Dimensions []*Dimension `protobuf:"bytes,2,rep,name=dimensions,proto3" json:"dimensions,omitempty"`
 	// The metrics requested and displayed.
 	Metrics []*Metric `protobuf:"bytes,3,rep,name=metrics,proto3" json:"metrics,omitempty"`
-	// The filter clause of dimensions. Dimensions must be requested to be used in
-	// this filter. Metrics cannot be used in this filter.
+	// The filter clause of dimensions. Metrics cannot be used in this filter.
 	DimensionFilter *FilterExpression `protobuf:"bytes,4,opt,name=dimension_filter,json=dimensionFilter,proto3" json:"dimension_filter,omitempty"`
 	// The filter clause of metrics. Applied at post aggregation phase, similar to
-	// SQL having-clause. Metrics must be requested to be used in this filter.
-	// Dimensions cannot be used in this filter.
+	// SQL having-clause. Dimensions cannot be used in this filter.
 	MetricFilter *FilterExpression `protobuf:"bytes,5,opt,name=metric_filter,json=metricFilter,proto3" json:"metric_filter,omitempty"`
 	// The number of rows to return. If unspecified, 10,000 rows are returned. The
 	// API returns a maximum of 100,000 rows per request, no matter how many you
@@ -2353,6 +2351,10 @@ type BetaAnalyticsDataClient interface {
 	// measurements of user activity on your property, such as active users or
 	// event count. Dimensions break down metrics across some common criteria,
 	// such as country or event name.
+	//
+	// For a guide to constructing requests & understanding responses, see
+	// [Creating a
+	// Report](https://developers.google.com/analytics/devguides/reporting/data/v1/basics).
 	RunReport(ctx context.Context, in *RunReportRequest, opts ...grpc.CallOption) (*RunReportResponse, error)
 	// Returns a customized pivot report of your Google Analytics event data.
 	// Pivot reports are more advanced and expressive formats than regular
@@ -2377,9 +2379,15 @@ type BetaAnalyticsDataClient interface {
 	// `customEvent:levels_unlocked`. Universal metadata are dimensions and
 	// metrics applicable to any property such as `country` and `totalUsers`.
 	GetMetadata(ctx context.Context, in *GetMetadataRequest, opts ...grpc.CallOption) (*Metadata, error)
-	// The Google Analytics Realtime API returns a customized report of realtime
-	// event data for your property. These reports show events and usage from the
-	// last 30 minutes.
+	// Returns a customized report of realtime event data for your property.
+	// Events appear in realtime reports seconds after they have been sent to
+	// the Google Analytics. Realtime reports show events and usage data for the
+	// periods of time ranging from the present moment to 30 minutes ago (up to
+	// 60 minutes for Google Analytics 360 properties).
+	//
+	// For a guide to constructing realtime requests & understanding responses,
+	// see [Creating a Realtime
+	// Report](https://developers.google.com/analytics/devguides/reporting/data/v1/realtime-basics).
 	RunRealtimeReport(ctx context.Context, in *RunRealtimeReportRequest, opts ...grpc.CallOption) (*RunRealtimeReportResponse, error)
 	// This compatibility method lists dimensions and metrics that can be added to
 	// a report request and maintain compatibility. This method fails if the
@@ -2474,6 +2482,10 @@ type BetaAnalyticsDataServer interface {
 	// measurements of user activity on your property, such as active users or
 	// event count. Dimensions break down metrics across some common criteria,
 	// such as country or event name.
+	//
+	// For a guide to constructing requests & understanding responses, see
+	// [Creating a
+	// Report](https://developers.google.com/analytics/devguides/reporting/data/v1/basics).
 	RunReport(context.Context, *RunReportRequest) (*RunReportResponse, error)
 	// Returns a customized pivot report of your Google Analytics event data.
 	// Pivot reports are more advanced and expressive formats than regular
@@ -2498,9 +2510,15 @@ type BetaAnalyticsDataServer interface {
 	// `customEvent:levels_unlocked`. Universal metadata are dimensions and
 	// metrics applicable to any property such as `country` and `totalUsers`.
 	GetMetadata(context.Context, *GetMetadataRequest) (*Metadata, error)
-	// The Google Analytics Realtime API returns a customized report of realtime
-	// event data for your property. These reports show events and usage from the
-	// last 30 minutes.
+	// Returns a customized report of realtime event data for your property.
+	// Events appear in realtime reports seconds after they have been sent to
+	// the Google Analytics. Realtime reports show events and usage data for the
+	// periods of time ranging from the present moment to 30 minutes ago (up to
+	// 60 minutes for Google Analytics 360 properties).
+	//
+	// For a guide to constructing realtime requests & understanding responses,
+	// see [Creating a Realtime
+	// Report](https://developers.google.com/analytics/devguides/reporting/data/v1/realtime-basics).
 	RunRealtimeReport(context.Context, *RunRealtimeReportRequest) (*RunRealtimeReportResponse, error)
 	// This compatibility method lists dimensions and metrics that can be added to
 	// a report request and maintain compatibility. This method fails if the

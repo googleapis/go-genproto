@@ -103,11 +103,11 @@ type SuggestionFeature_Type int32
 const (
 	// Unspecified feature type.
 	SuggestionFeature_TYPE_UNSPECIFIED SuggestionFeature_Type = 0
-	// Run article suggestion model.
+	// Run article suggestion model for chat.
 	SuggestionFeature_ARTICLE_SUGGESTION SuggestionFeature_Type = 1
-	// Run FAQ model.
+	// Run FAQ model for chat.
 	SuggestionFeature_FAQ SuggestionFeature_Type = 2
-	// Run smart reply model.
+	// Run smart reply model for chat.
 	SuggestionFeature_SMART_REPLY SuggestionFeature_Type = 3
 )
 
@@ -842,6 +842,7 @@ type HumanAgentHandoffConfig struct {
 	// Required. Specifies which agent service to connect for human agent handoff.
 	//
 	// Types that are assignable to AgentService:
+	//
 	//	*HumanAgentHandoffConfig_LivePersonConfig_
 	//	*HumanAgentHandoffConfig_SalesforceLiveAgentConfig_
 	AgentService isHumanAgentHandoffConfig_AgentService `protobuf_oneof:"agent_service"`
@@ -1629,6 +1630,7 @@ type HumanAgentAssistantConfig_SuggestionQueryConfig struct {
 	// Source of query.
 	//
 	// Types that are assignable to QuerySource:
+	//
 	//	*HumanAgentAssistantConfig_SuggestionQueryConfig_KnowledgeBaseQuerySource_
 	//	*HumanAgentAssistantConfig_SuggestionQueryConfig_DocumentQuerySource_
 	//	*HumanAgentAssistantConfig_SuggestionQueryConfig_DialogflowQuerySource_

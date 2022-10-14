@@ -798,9 +798,9 @@ type SearchVehiclesRequest struct {
 	// ```
 	//
 	// Restricts the search to only those vehicles with the specified attributes.
-	// This field is a conjunction/AND operation. Your app can specify up to 100
-	// attributes; however, the combined key:value string length cannot exceed
-	// 1024 characters.
+	// This field is a conjunction/AND operation. A max of 50 required_attributes
+	// is allowed. This matches the maximum number of attributes allowed on a
+	// vehicle.
 	RequiredAttributes []*VehicleAttribute `protobuf:"bytes,12,rep,name=required_attributes,json=requiredAttributes,proto3" json:"required_attributes,omitempty"`
 	// Restricts the search to only those vehicles with at least one of
 	// the specified attributes in each `VehicleAttributeList`. Within each
@@ -1109,17 +1109,17 @@ type ListVehiclesRequest struct {
 	// ```
 	//
 	// Restrict the response to vehicles with the specified attributes. This field
-	// is a conjunction/AND operation. Your app can specify up to 100 attributes;
-	// however, the combined key:value string length cannot exceed 1024
-	// characters.
+	// is a conjunction/AND operation. A max of 50 required_attributes is allowed.
+	// This matches the maximum number of attributes allowed on a vehicle. Each
+	// repeated string should be of the format "key:value".
 	RequiredAttributes []string `protobuf:"bytes,10,rep,name=required_attributes,json=requiredAttributes,proto3" json:"required_attributes,omitempty"`
 	// Restrict the response to vehicles with at least one
 	// of the specified attributes in each `VehicleAttributeList`.
 	// Within each list, a vehicle must match at least one of the attributes.
 	// This field is an inclusive disjunction/OR operation in each
 	// `VehicleAttributeList` and a conjunction/AND operation across the
-	// collection of `VehicleAttributeList`. Format:
-	// key1:value1|key2:value2|key3:value3...
+	// collection of `VehicleAttributeList`. Each repeated string should be of the
+	// format "key1:value1|key2:value2|key3:value3".
 	RequiredOneOfAttributes []string `protobuf:"bytes,13,rep,name=required_one_of_attributes,json=requiredOneOfAttributes,proto3" json:"required_one_of_attributes,omitempty"`
 	// `required_one_of_attribute_sets` provides additional functionality.
 	//
@@ -1141,8 +1141,8 @@ type ListVehiclesRequest struct {
 	// `VehicleAttributeList`. Within each list, a vehicle must match all of the
 	// attributes. This field is a conjunction/AND operation in each
 	// `VehicleAttributeList` and inclusive disjunction/OR operation across the
-	// collection of `VehicleAttributeList`. Format:
-	// key1:value1|key2:value2|key3:value3...
+	// collection of `VehicleAttributeList`. Each repeated string should be of the
+	// format "key1:value1|key2:value2|key3:value3".
 	RequiredOneOfAttributeSets []string `protobuf:"bytes,15,rep,name=required_one_of_attribute_sets,json=requiredOneOfAttributeSets,proto3" json:"required_one_of_attribute_sets,omitempty"`
 	// Restrict the response to vehicles that have this vehicle state.
 	VehicleState VehicleState `protobuf:"varint,11,opt,name=vehicle_state,json=vehicleState,proto3,enum=maps.fleetengine.v1.VehicleState" json:"vehicle_state,omitempty"`
