@@ -7,8 +7,8 @@ require (
 	cloud.google.com/go/analytics v0.12.0
 	cloud.google.com/go/area120 v0.6.0
 	cloud.google.com/go/artifactregistry v1.7.0
-	cloud.google.com/go/asset v1.7.0
-	cloud.google.com/go/assuredworkloads v1.6.0
+	cloud.google.com/go/asset v1.8.0
+	cloud.google.com/go/assuredworkloads v1.7.0
 	cloud.google.com/go/automl v1.6.0
 	cloud.google.com/go/bigquery v1.42.0
 	cloud.google.com/go/billing v1.5.0
@@ -21,10 +21,10 @@ require (
 	cloud.google.com/go/datalabeling v0.6.0
 	cloud.google.com/go/dataqna v0.6.0
 	cloud.google.com/go/datastream v1.3.0
-	cloud.google.com/go/dialogflow v1.16.1
+	cloud.google.com/go/dialogflow v1.17.0
 	cloud.google.com/go/documentai v1.8.0
 	cloud.google.com/go/domains v0.7.0
-	cloud.google.com/go/edgecontainer v0.1.0
+	cloud.google.com/go/edgecontainer v0.2.0
 	cloud.google.com/go/functions v1.7.0
 	cloud.google.com/go/gaming v1.6.0
 	cloud.google.com/go/gkeconnect v0.6.0
@@ -41,13 +41,13 @@ require (
 	cloud.google.com/go/oslogin v1.5.0
 	cloud.google.com/go/phishingprotection v0.6.0
 	cloud.google.com/go/privatecatalog v0.6.0
-	cloud.google.com/go/recaptchaenterprise/v2 v2.2.0
+	cloud.google.com/go/recaptchaenterprise/v2 v2.3.0
 	cloud.google.com/go/recommendationengine v0.6.0
 	cloud.google.com/go/recommender v1.6.0
 	cloud.google.com/go/redis v1.8.0
 	cloud.google.com/go/retail v1.9.0
 	cloud.google.com/go/scheduler v1.5.0
-	cloud.google.com/go/secretmanager v1.6.0
+	cloud.google.com/go/secretmanager v1.7.0
 	cloud.google.com/go/security v1.8.0
 	cloud.google.com/go/securitycenter v1.14.0
 	cloud.google.com/go/servicedirectory v1.5.0
@@ -58,7 +58,7 @@ require (
 	cloud.google.com/go/webrisk v1.5.0
 	cloud.google.com/go/workflows v1.7.0
 	github.com/golang/protobuf v1.5.2
-	google.golang.org/grpc v1.50.0
+	google.golang.org/grpc v1.50.1
 	google.golang.org/protobuf v1.28.1
 )
 
