@@ -231,6 +231,11 @@ type ListDeliveryVehiclesRequest struct {
 	// boolean values, the values must be explicitly quoted to be treated as
 	// strings (for example, `attributes.<key> = "10"` or
 	// `attributes.<key> = "true"`).
+	//
+	// The maximum number of restrictions allowed in a filter query is 50. A
+	// restriction is a part of the query of the form
+	// `attribute.<KEY> <COMPARATOR> <VALUE>`, for example `attributes.foo = bar`
+	// is 1 restriction.
 	Filter string `protobuf:"bytes,6,opt,name=filter,proto3" json:"filter,omitempty"`
 	// Optional. A filter that limits the search area to a rectangle defined by the
 	// northeast and southwest corner points.
