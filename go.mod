@@ -47,7 +47,6 @@ require (
 	cloud.google.com/go/redis v1.8.0
 	cloud.google.com/go/retail v1.9.0
 	cloud.google.com/go/scheduler v1.5.0
-	cloud.google.com/go/secretmanager v1.6.0
 	cloud.google.com/go/security v1.8.0
 	cloud.google.com/go/securitycenter v1.14.0
 	cloud.google.com/go/servicedirectory v1.5.0
