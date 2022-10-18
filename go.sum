@@ -86,8 +86,6 @@ cloud.google.com/go/retail v1.9.0 h1:Q3W/JsQupZWaoFxUOugZd1Eq590R+Dk6dhacLK2h7+w
 cloud.google.com/go/retail v1.9.0/go.mod h1:g6jb6mKuCS1QKnH/dpu7isX253absFl6iE92nHwlBUY=
 cloud.google.com/go/scheduler v1.5.0 h1:Fe1Upic/q4cwqXbInCzgAW35QSerj8JlNwATIxDdfOI=
 cloud.google.com/go/scheduler v1.5.0/go.mod h1:ri073ym49NW3AfT6DZi21vLZrG07GXr5p3H1KxN5QlI=
-cloud.google.com/go/secretmanager v1.6.0 h1:5v0zegRMlytVnN7J+bg5Ipqah3I2RZ67ysy00mvA+lA=
-cloud.google.com/go/secretmanager v1.6.0/go.mod h1:awVa/OXF6IiyaU1wQ34inzQNc4ISIDIrId8qE5QGgKA=
 cloud.google.com/go/security v1.8.0 h1:linnRc3/gJYDfKbAtNixVQ52+66DpOx5MmCz0NNxal8=
 cloud.google.com/go/security v1.8.0/go.mod h1:hAQOwgmaHhztFhiQ41CjDODdWP0+AE1B3sX4OFlq+GU=
 cloud.google.com/go/securitycenter v1.14.0 h1:hKIggnv2eCAPjsVnFcZbytMOsFOk6p4ut0iAUDoNsNA=
