@@ -136,7 +136,7 @@ type InputConfig struct {
 	EntityType InputConfig_EntityType `protobuf:"varint,2,opt,name=entity_type,json=entityType,proto3,enum=google.cloud.enterpriseknowledgegraph.v1.InputConfig_EntityType" json:"entity_type,omitempty"`
 	// Optional. Provide the bigquery table containing the previous results if
 	// cluster ID stability is desired. Format is
-	// “projects/*/datasets/*/tables/*".
+	// `projects/*/datasets/*/tables/*`.
 	PreviousResultBigqueryTable string `protobuf:"bytes,3,opt,name=previous_result_bigquery_table,json=previousResultBigqueryTable,proto3" json:"previous_result_bigquery_table,omitempty"`
 }
 
@@ -199,7 +199,7 @@ type BigQueryInputConfig struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. Format is “projects/*/datasets/*/tables/*”.
+	// Required. Format is `projects/*/datasets/*/tables/*`.
 	BigqueryTable string `protobuf:"bytes,1,opt,name=bigquery_table,json=bigqueryTable,proto3" json:"bigquery_table,omitempty"`
 	// Required. Schema mapping file
 	GcsUri string `protobuf:"bytes,2,opt,name=gcs_uri,json=gcsUri,proto3" json:"gcs_uri,omitempty"`
@@ -1036,10 +1036,10 @@ type ReconConfig_Options struct {
 
 	// If true, separate clusters by their geographic region (from geocoding).
 	// Uses the following entity features:
-	//   - schema.org/addressLocality
-	//   - schema.org/addressRegion
-	//   - schema.org/addressCountry
 	//
+	// - schema.org/addressLocality
+	// - schema.org/addressRegion
+	// - schema.org/addressCountry
 	// Warning: processing will no longer be regionalized!
 	EnableGeocodingSeparation bool `protobuf:"varint,100,opt,name=enable_geocoding_separation,json=enableGeocodingSeparation,proto3" json:"enable_geocoding_separation,omitempty"`
 }
