@@ -259,8 +259,8 @@ type CreateVehicleRequest struct {
 	// * May not contain any of the following ASCII characters: '/', ':', '?',
 	// ',', or '#'.
 	VehicleId string `protobuf:"bytes,4,opt,name=vehicle_id,json=vehicleId,proto3" json:"vehicle_id,omitempty"`
-	// Required. The Vehicle entity to create. When creating a Vehicle, the following
-	// fields are required:
+	// Required. The Vehicle entity to create. When creating a Vehicle, the
+	// following fields are required:
 	//
 	// * `vehicleState`
 	// * `supportedTripTypes`
@@ -547,8 +547,8 @@ type UpdateVehicleLocationRequest struct {
 	// of the Google Cloud Project of which the service account making
 	// this call is a member.
 	Name string `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
-	// Required. The vehicle's most recent location.  The `location` and `update_time`
-	// subfields are required.
+	// Required. The vehicle's most recent location.  The `location` and
+	// `update_time` subfields are required.
 	CurrentLocation *VehicleLocation `protobuf:"bytes,4,opt,name=current_location,json=currentLocation,proto3" json:"current_location,omitempty"`
 	// Set the vehicle's state to either `ONLINE` or `OFFLINE`.
 	// If set to `UNKNOWN_VEHICLE_STATE`, the vehicle's state will not be altered.
@@ -628,8 +628,8 @@ type UpdateVehicleAttributesRequest struct {
 	// of the Google Cloud Project of which the service account making
 	// this call is a member.
 	Name string `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
-	// Required. The vehicle attributes to update. Unmentioned attributes will not be
-	// altered or removed.
+	// Required. The vehicle attributes to update. Unmentioned attributes will not
+	// be altered or removed.
 	Attributes []*VehicleAttribute `protobuf:"bytes,4,rep,name=attributes,proto3" json:"attributes,omitempty"`
 }
 
@@ -761,9 +761,9 @@ type SearchVehiclesRequest struct {
 	// Required. Specifies the maximum number of vehicles to return. The value
 	// must be between 1 and 50 (inclusive).
 	Count int32 `protobuf:"varint,7,opt,name=count,proto3" json:"count,omitempty"`
-	// Required. Specifies the number of passengers being considered for a trip. The
-	// value must be greater than or equal to one. The driver is not considered in
-	// the capacity value.
+	// Required. Specifies the number of passengers being considered for a trip.
+	// The value must be greater than or equal to one. The driver is not
+	// considered in the capacity value.
 	MinimumCapacity int32 `protobuf:"varint,8,opt,name=minimum_capacity,json=minimumCapacity,proto3" json:"minimum_capacity,omitempty"`
 	// Required. Represents the type of proposed trip. Eligible vehicles are those
 	// that can support at least one of the specified trip type.
@@ -1286,7 +1286,8 @@ type ListVehiclesResponse struct {
 	// Token to retrieve the next page of vehicles, or empty if there are no
 	// more vehicles that meet the request criteria.
 	NextPageToken string `protobuf:"bytes,2,opt,name=next_page_token,json=nextPageToken,proto3" json:"next_page_token,omitempty"`
-	// Required. Total number of vehicles matching the request criteria across all pages.
+	// Required. Total number of vehicles matching the request criteria across all
+	// pages.
 	TotalSize int64 `protobuf:"varint,3,opt,name=total_size,json=totalSize,proto3" json:"total_size,omitempty"`
 }
 
@@ -1424,8 +1425,8 @@ type VehicleMatch struct {
 	// navigation end point and the requested pickup point is typically small.) An
 	// empty value indicates an error in calculating the distance.
 	VehiclePickupDistanceMeters *wrapperspb.Int32Value `protobuf:"bytes,3,opt,name=vehicle_pickup_distance_meters,json=vehiclePickupDistanceMeters,proto3" json:"vehicle_pickup_distance_meters,omitempty"`
-	// Required. The straight-line distance between the vehicle and the pickup point
-	// specified in the request.
+	// Required. The straight-line distance between the vehicle and the pickup
+	// point specified in the request.
 	VehiclePickupStraightLineDistanceMeters *wrapperspb.Int32Value `protobuf:"bytes,11,opt,name=vehicle_pickup_straight_line_distance_meters,json=vehiclePickupStraightLineDistanceMeters,proto3" json:"vehicle_pickup_straight_line_distance_meters,omitempty"`
 	// The complete vehicle's driving ETA to the drop off point specified in the
 	// request. The ETA includes stopping at any waypoints before the
@@ -1446,8 +1447,8 @@ type VehicleMatch struct {
 	// to the pickup point.
 	TripType TripType `protobuf:"varint,6,opt,name=trip_type,json=tripType,proto3,enum=maps.fleetengine.v1.TripType" json:"trip_type,omitempty"`
 	// The ordered list of waypoints used to calculate the ETA. The list
-	// includes vehicle location, the pickup/drop off points of active
-	// trips for the vehicle, and the pickup/drop off points provided in the
+	// includes vehicle location, the pickup points of active
+	// trips for the vehicle, and the pickup points provided in the
 	// request. An empty list indicates a failure in calculating ETA for the
 	// vehicle.
 	VehicleTripsWaypoints []*Waypoint `protobuf:"bytes,7,rep,name=vehicle_trips_waypoints,json=vehicleTripsWaypoints,proto3" json:"vehicle_trips_waypoints,omitempty"`
