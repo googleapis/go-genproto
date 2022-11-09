@@ -638,7 +638,8 @@ type ListArtifactsRequest struct {
 	//     `in_context("projects/<project_number>/locations/<location>/metadataStores/<metadatastore_name>/contexts/<context-id>")`
 	//
 	// Each of the above supported filter types can be combined together using
-	// logical operators (`AND` & `OR`).
+	// logical operators (`AND` & `OR`). Maximum nested expression depth allowed
+	// is 5.
 	//
 	// For example: `display_name = "test" AND metadata.field1.bool_value = true`.
 	Filter string `protobuf:"bytes,4,opt,name=filter,proto3" json:"filter,omitempty"`
@@ -1272,7 +1273,8 @@ type ListContextsRequest struct {
 	//     ```
 	//
 	// Each of the above supported filters can be combined together using
-	// logical operators (`AND` & `OR`).
+	// logical operators (`AND` & `OR`). Maximum nested expression depth allowed
+	// is 5.
 	//
 	// For example: `display_name = "test" AND metadata.field1.bool_value = true`.
 	Filter string `protobuf:"bytes,4,opt,name=filter,proto3" json:"filter,omitempty"`
@@ -2284,7 +2286,9 @@ type ListExecutionsRequest struct {
 	//     `in_context("projects/<project_number>/locations/<location>/metadataStores/<metadatastore_name>/contexts/<context-id>")`
 	//
 	// Each of the above supported filters can be combined together using
-	// logical operators (`AND` & `OR`).
+	// logical operators (`AND` & `OR`). Maximum nested expression depth allowed
+	// is 5.
+	//
 	// For example: `display_name = "test" AND metadata.field1.bool_value = true`.
 	Filter string `protobuf:"bytes,4,opt,name=filter,proto3" json:"filter,omitempty"`
 	// How the list of messages is ordered. Specify the values to order by and an
@@ -3206,7 +3210,8 @@ type QueryArtifactLineageSubgraphRequest struct {
 	//     For example: `metadata.field_1.number_value = 10.0`
 	//
 	// Each of the above supported filter types can be combined together using
-	// logical operators (`AND` & `OR`).
+	// logical operators (`AND` & `OR`). Maximum nested expression depth allowed
+	// is 5.
 	//
 	// For example: `display_name = "test" AND metadata.field1.bool_value = true`.
 	Filter string `protobuf:"bytes,3,opt,name=filter,proto3" json:"filter,omitempty"`

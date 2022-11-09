@@ -822,6 +822,10 @@ type BatchReadFeatureValuesRequest struct {
 	// specifying entity IDs in the EntityType in
 	// [BatchReadFeatureValuesRequest.request][] .
 	EntityTypeSpecs []*BatchReadFeatureValuesRequest_EntityTypeSpec `protobuf:"bytes,7,rep,name=entity_type_specs,json=entityTypeSpecs,proto3" json:"entity_type_specs,omitempty"`
+	// Optional. Excludes Feature values with feature generation timestamp before this
+	// timestamp. If not set, retrieve oldest values kept in Feature Store.
+	// Timestamp, if present, must not have higher than millisecond precision.
+	StartTime *timestamppb.Timestamp `protobuf:"bytes,11,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
 }
 
 func (x *BatchReadFeatureValuesRequest) Reset() {
@@ -901,6 +905,13 @@ func (x *BatchReadFeatureValuesRequest) GetPassThroughFields() []*BatchReadFeatu
 func (x *BatchReadFeatureValuesRequest) GetEntityTypeSpecs() []*BatchReadFeatureValuesRequest_EntityTypeSpec {
 	if x != nil {
 		return x.EntityTypeSpecs
+	}
+	return nil
+}
+
+func (x *BatchReadFeatureValuesRequest) GetStartTime() *timestamppb.Timestamp {
+	if x != nil {
+		return x.StartTime
 	}
 	return nil
 }
@@ -1792,7 +1803,7 @@ type CreateFeatureRequest struct {
 	// Required. The ID to use for the Feature, which will become the final component of
 	// the Feature's resource name.
 	//
-	// This value may be up to 60 characters, and valid characters are
+	// This value may be up to 128 characters, and valid characters are
 	// `[a-z0-9_]`. The first character cannot be a number.
 	//
 	// The value must be unique within an EntityType.
@@ -3467,7 +3478,7 @@ var file_google_cloud_aiplatform_v1_featurestore_service_proto_rawDesc = []byte{
 	0x74, 0x69, 0x6f, 0x6e, 0x5f, 0x72, 0x6f, 0x77, 0x73, 0x5f, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x18,
 	0x04, 0x20, 0x01, 0x28, 0x03, 0x52, 0x22, 0x74, 0x69, 0x6d, 0x65, 0x73, 0x74, 0x61, 0x6d, 0x70,
 	0x4f, 0x75, 0x74, 0x73, 0x69, 0x64, 0x65, 0x52, 0x65, 0x74, 0x65, 0x6e, 0x74, 0x69, 0x6f, 0x6e,
-	0x52, 0x6f, 0x77, 0x73, 0x43, 0x6f, 0x75, 0x6e, 0x74, 0x22, 0xb8, 0x07, 0x0a, 0x1d, 0x42, 0x61,
+	0x52, 0x6f, 0x77, 0x73, 0x43, 0x6f, 0x75, 0x6e, 0x74, 0x22, 0xf8, 0x07, 0x0a, 0x1d, 0x42, 0x61,
 	0x74, 0x63, 0x68, 0x52, 0x65, 0x61, 0x64, 0x46, 0x65, 0x61, 0x74, 0x75, 0x72, 0x65, 0x56, 0x61,
 	0x6c, 0x75, 0x65, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x55, 0x0a, 0x12, 0x63,
 	0x73, 0x76, 0x5f, 0x72, 0x65, 0x61, 0x64, 0x5f, 0x69, 0x6e, 0x73, 0x74, 0x61, 0x6e, 0x63, 0x65,
@@ -3507,7 +3518,11 @@ var file_google_cloud_aiplatform_v1_featurestore_service_proto_rawDesc = []byte{
 	0x63, 0x68, 0x52, 0x65, 0x61, 0x64, 0x46, 0x65, 0x61, 0x74, 0x75, 0x72, 0x65, 0x56, 0x61, 0x6c,
 	0x75, 0x65, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x2e, 0x45, 0x6e, 0x74, 0x69, 0x74,
 	0x79, 0x54, 0x79, 0x70, 0x65, 0x53, 0x70, 0x65, 0x63, 0x42, 0x03, 0xe0, 0x41, 0x02, 0x52, 0x0f,
-	0x65, 0x6e, 0x74, 0x69, 0x74, 0x79, 0x54, 0x79, 0x70, 0x65, 0x53, 0x70, 0x65, 0x63, 0x73, 0x1a,
+	0x65, 0x6e, 0x74, 0x69, 0x74, 0x79, 0x54, 0x79, 0x70, 0x65, 0x53, 0x70, 0x65, 0x63, 0x73, 0x12,
+	0x3e, 0x0a, 0x0a, 0x73, 0x74, 0x61, 0x72, 0x74, 0x5f, 0x74, 0x69, 0x6d, 0x65, 0x18, 0x0b, 0x20,
+	0x01, 0x28, 0x0b, 0x32, 0x1a, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f,
+	0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x54, 0x69, 0x6d, 0x65, 0x73, 0x74, 0x61, 0x6d, 0x70, 0x42,
+	0x03, 0xe0, 0x41, 0x01, 0x52, 0x09, 0x73, 0x74, 0x61, 0x72, 0x74, 0x54, 0x69, 0x6d, 0x65, 0x1a,
 	0x36, 0x0a, 0x10, 0x50, 0x61, 0x73, 0x73, 0x54, 0x68, 0x72, 0x6f, 0x75, 0x67, 0x68, 0x46, 0x69,
 	0x65, 0x6c, 0x64, 0x12, 0x22, 0x0a, 0x0a, 0x66, 0x69, 0x65, 0x6c, 0x64, 0x5f, 0x6e, 0x61, 0x6d,
 	0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x42, 0x03, 0xe0, 0x41, 0x02, 0x52, 0x09, 0x66, 0x69,
@@ -4277,86 +4292,87 @@ var file_google_cloud_aiplatform_v1_featurestore_service_proto_depIdxs = []int32
 	11, // 12: google.cloud.aiplatform.v1.BatchReadFeatureValuesRequest.destination:type_name -> google.cloud.aiplatform.v1.FeatureValueDestination
 	39, // 13: google.cloud.aiplatform.v1.BatchReadFeatureValuesRequest.pass_through_fields:type_name -> google.cloud.aiplatform.v1.BatchReadFeatureValuesRequest.PassThroughField
 	40, // 14: google.cloud.aiplatform.v1.BatchReadFeatureValuesRequest.entity_type_specs:type_name -> google.cloud.aiplatform.v1.BatchReadFeatureValuesRequest.EntityTypeSpec
-	41, // 15: google.cloud.aiplatform.v1.ExportFeatureValuesRequest.snapshot_export:type_name -> google.cloud.aiplatform.v1.ExportFeatureValuesRequest.SnapshotExport
-	42, // 16: google.cloud.aiplatform.v1.ExportFeatureValuesRequest.full_export:type_name -> google.cloud.aiplatform.v1.ExportFeatureValuesRequest.FullExport
-	11, // 17: google.cloud.aiplatform.v1.ExportFeatureValuesRequest.destination:type_name -> google.cloud.aiplatform.v1.FeatureValueDestination
-	49, // 18: google.cloud.aiplatform.v1.ExportFeatureValuesRequest.feature_selector:type_name -> google.cloud.aiplatform.v1.FeatureSelector
-	10, // 19: google.cloud.aiplatform.v1.ExportFeatureValuesRequest.settings:type_name -> google.cloud.aiplatform.v1.DestinationFeatureSetting
-	50, // 20: google.cloud.aiplatform.v1.FeatureValueDestination.bigquery_destination:type_name -> google.cloud.aiplatform.v1.BigQueryDestination
-	51, // 21: google.cloud.aiplatform.v1.FeatureValueDestination.tfrecord_destination:type_name -> google.cloud.aiplatform.v1.TFRecordDestination
-	52, // 22: google.cloud.aiplatform.v1.FeatureValueDestination.csv_destination:type_name -> google.cloud.aiplatform.v1.CsvDestination
-	53, // 23: google.cloud.aiplatform.v1.CreateEntityTypeRequest.entity_type:type_name -> google.cloud.aiplatform.v1.EntityType
-	44, // 24: google.cloud.aiplatform.v1.ListEntityTypesRequest.read_mask:type_name -> google.protobuf.FieldMask
-	53, // 25: google.cloud.aiplatform.v1.ListEntityTypesResponse.entity_types:type_name -> google.cloud.aiplatform.v1.EntityType
-	53, // 26: google.cloud.aiplatform.v1.UpdateEntityTypeRequest.entity_type:type_name -> google.cloud.aiplatform.v1.EntityType
-	44, // 27: google.cloud.aiplatform.v1.UpdateEntityTypeRequest.update_mask:type_name -> google.protobuf.FieldMask
-	54, // 28: google.cloud.aiplatform.v1.CreateFeatureRequest.feature:type_name -> google.cloud.aiplatform.v1.Feature
-	20, // 29: google.cloud.aiplatform.v1.BatchCreateFeaturesRequest.requests:type_name -> google.cloud.aiplatform.v1.CreateFeatureRequest
-	54, // 30: google.cloud.aiplatform.v1.BatchCreateFeaturesResponse.features:type_name -> google.cloud.aiplatform.v1.Feature
-	44, // 31: google.cloud.aiplatform.v1.ListFeaturesRequest.read_mask:type_name -> google.protobuf.FieldMask
-	54, // 32: google.cloud.aiplatform.v1.ListFeaturesResponse.features:type_name -> google.cloud.aiplatform.v1.Feature
-	54, // 33: google.cloud.aiplatform.v1.SearchFeaturesResponse.features:type_name -> google.cloud.aiplatform.v1.Feature
-	54, // 34: google.cloud.aiplatform.v1.UpdateFeatureRequest.feature:type_name -> google.cloud.aiplatform.v1.Feature
-	44, // 35: google.cloud.aiplatform.v1.UpdateFeatureRequest.update_mask:type_name -> google.protobuf.FieldMask
-	55, // 36: google.cloud.aiplatform.v1.CreateFeaturestoreOperationMetadata.generic_metadata:type_name -> google.cloud.aiplatform.v1.GenericOperationMetadata
-	55, // 37: google.cloud.aiplatform.v1.UpdateFeaturestoreOperationMetadata.generic_metadata:type_name -> google.cloud.aiplatform.v1.GenericOperationMetadata
-	55, // 38: google.cloud.aiplatform.v1.ImportFeatureValuesOperationMetadata.generic_metadata:type_name -> google.cloud.aiplatform.v1.GenericOperationMetadata
-	55, // 39: google.cloud.aiplatform.v1.ExportFeatureValuesOperationMetadata.generic_metadata:type_name -> google.cloud.aiplatform.v1.GenericOperationMetadata
-	55, // 40: google.cloud.aiplatform.v1.BatchReadFeatureValuesOperationMetadata.generic_metadata:type_name -> google.cloud.aiplatform.v1.GenericOperationMetadata
-	55, // 41: google.cloud.aiplatform.v1.CreateEntityTypeOperationMetadata.generic_metadata:type_name -> google.cloud.aiplatform.v1.GenericOperationMetadata
-	55, // 42: google.cloud.aiplatform.v1.CreateFeatureOperationMetadata.generic_metadata:type_name -> google.cloud.aiplatform.v1.GenericOperationMetadata
-	55, // 43: google.cloud.aiplatform.v1.BatchCreateFeaturesOperationMetadata.generic_metadata:type_name -> google.cloud.aiplatform.v1.GenericOperationMetadata
-	49, // 44: google.cloud.aiplatform.v1.BatchReadFeatureValuesRequest.EntityTypeSpec.feature_selector:type_name -> google.cloud.aiplatform.v1.FeatureSelector
-	10, // 45: google.cloud.aiplatform.v1.BatchReadFeatureValuesRequest.EntityTypeSpec.settings:type_name -> google.cloud.aiplatform.v1.DestinationFeatureSetting
-	48, // 46: google.cloud.aiplatform.v1.ExportFeatureValuesRequest.SnapshotExport.snapshot_time:type_name -> google.protobuf.Timestamp
-	48, // 47: google.cloud.aiplatform.v1.ExportFeatureValuesRequest.SnapshotExport.start_time:type_name -> google.protobuf.Timestamp
-	48, // 48: google.cloud.aiplatform.v1.ExportFeatureValuesRequest.FullExport.start_time:type_name -> google.protobuf.Timestamp
-	48, // 49: google.cloud.aiplatform.v1.ExportFeatureValuesRequest.FullExport.end_time:type_name -> google.protobuf.Timestamp
-	0,  // 50: google.cloud.aiplatform.v1.FeaturestoreService.CreateFeaturestore:input_type -> google.cloud.aiplatform.v1.CreateFeaturestoreRequest
-	1,  // 51: google.cloud.aiplatform.v1.FeaturestoreService.GetFeaturestore:input_type -> google.cloud.aiplatform.v1.GetFeaturestoreRequest
-	2,  // 52: google.cloud.aiplatform.v1.FeaturestoreService.ListFeaturestores:input_type -> google.cloud.aiplatform.v1.ListFeaturestoresRequest
-	4,  // 53: google.cloud.aiplatform.v1.FeaturestoreService.UpdateFeaturestore:input_type -> google.cloud.aiplatform.v1.UpdateFeaturestoreRequest
-	5,  // 54: google.cloud.aiplatform.v1.FeaturestoreService.DeleteFeaturestore:input_type -> google.cloud.aiplatform.v1.DeleteFeaturestoreRequest
-	14, // 55: google.cloud.aiplatform.v1.FeaturestoreService.CreateEntityType:input_type -> google.cloud.aiplatform.v1.CreateEntityTypeRequest
-	15, // 56: google.cloud.aiplatform.v1.FeaturestoreService.GetEntityType:input_type -> google.cloud.aiplatform.v1.GetEntityTypeRequest
-	16, // 57: google.cloud.aiplatform.v1.FeaturestoreService.ListEntityTypes:input_type -> google.cloud.aiplatform.v1.ListEntityTypesRequest
-	18, // 58: google.cloud.aiplatform.v1.FeaturestoreService.UpdateEntityType:input_type -> google.cloud.aiplatform.v1.UpdateEntityTypeRequest
-	19, // 59: google.cloud.aiplatform.v1.FeaturestoreService.DeleteEntityType:input_type -> google.cloud.aiplatform.v1.DeleteEntityTypeRequest
-	20, // 60: google.cloud.aiplatform.v1.FeaturestoreService.CreateFeature:input_type -> google.cloud.aiplatform.v1.CreateFeatureRequest
-	21, // 61: google.cloud.aiplatform.v1.FeaturestoreService.BatchCreateFeatures:input_type -> google.cloud.aiplatform.v1.BatchCreateFeaturesRequest
-	23, // 62: google.cloud.aiplatform.v1.FeaturestoreService.GetFeature:input_type -> google.cloud.aiplatform.v1.GetFeatureRequest
-	24, // 63: google.cloud.aiplatform.v1.FeaturestoreService.ListFeatures:input_type -> google.cloud.aiplatform.v1.ListFeaturesRequest
-	28, // 64: google.cloud.aiplatform.v1.FeaturestoreService.UpdateFeature:input_type -> google.cloud.aiplatform.v1.UpdateFeatureRequest
-	29, // 65: google.cloud.aiplatform.v1.FeaturestoreService.DeleteFeature:input_type -> google.cloud.aiplatform.v1.DeleteFeatureRequest
-	6,  // 66: google.cloud.aiplatform.v1.FeaturestoreService.ImportFeatureValues:input_type -> google.cloud.aiplatform.v1.ImportFeatureValuesRequest
-	8,  // 67: google.cloud.aiplatform.v1.FeaturestoreService.BatchReadFeatureValues:input_type -> google.cloud.aiplatform.v1.BatchReadFeatureValuesRequest
-	9,  // 68: google.cloud.aiplatform.v1.FeaturestoreService.ExportFeatureValues:input_type -> google.cloud.aiplatform.v1.ExportFeatureValuesRequest
-	26, // 69: google.cloud.aiplatform.v1.FeaturestoreService.SearchFeatures:input_type -> google.cloud.aiplatform.v1.SearchFeaturesRequest
-	56, // 70: google.cloud.aiplatform.v1.FeaturestoreService.CreateFeaturestore:output_type -> google.longrunning.Operation
-	43, // 71: google.cloud.aiplatform.v1.FeaturestoreService.GetFeaturestore:output_type -> google.cloud.aiplatform.v1.Featurestore
-	3,  // 72: google.cloud.aiplatform.v1.FeaturestoreService.ListFeaturestores:output_type -> google.cloud.aiplatform.v1.ListFeaturestoresResponse
-	56, // 73: google.cloud.aiplatform.v1.FeaturestoreService.UpdateFeaturestore:output_type -> google.longrunning.Operation
-	56, // 74: google.cloud.aiplatform.v1.FeaturestoreService.DeleteFeaturestore:output_type -> google.longrunning.Operation
-	56, // 75: google.cloud.aiplatform.v1.FeaturestoreService.CreateEntityType:output_type -> google.longrunning.Operation
-	53, // 76: google.cloud.aiplatform.v1.FeaturestoreService.GetEntityType:output_type -> google.cloud.aiplatform.v1.EntityType
-	17, // 77: google.cloud.aiplatform.v1.FeaturestoreService.ListEntityTypes:output_type -> google.cloud.aiplatform.v1.ListEntityTypesResponse
-	53, // 78: google.cloud.aiplatform.v1.FeaturestoreService.UpdateEntityType:output_type -> google.cloud.aiplatform.v1.EntityType
-	56, // 79: google.cloud.aiplatform.v1.FeaturestoreService.DeleteEntityType:output_type -> google.longrunning.Operation
-	56, // 80: google.cloud.aiplatform.v1.FeaturestoreService.CreateFeature:output_type -> google.longrunning.Operation
-	56, // 81: google.cloud.aiplatform.v1.FeaturestoreService.BatchCreateFeatures:output_type -> google.longrunning.Operation
-	54, // 82: google.cloud.aiplatform.v1.FeaturestoreService.GetFeature:output_type -> google.cloud.aiplatform.v1.Feature
-	25, // 83: google.cloud.aiplatform.v1.FeaturestoreService.ListFeatures:output_type -> google.cloud.aiplatform.v1.ListFeaturesResponse
-	54, // 84: google.cloud.aiplatform.v1.FeaturestoreService.UpdateFeature:output_type -> google.cloud.aiplatform.v1.Feature
-	56, // 85: google.cloud.aiplatform.v1.FeaturestoreService.DeleteFeature:output_type -> google.longrunning.Operation
-	56, // 86: google.cloud.aiplatform.v1.FeaturestoreService.ImportFeatureValues:output_type -> google.longrunning.Operation
-	56, // 87: google.cloud.aiplatform.v1.FeaturestoreService.BatchReadFeatureValues:output_type -> google.longrunning.Operation
-	56, // 88: google.cloud.aiplatform.v1.FeaturestoreService.ExportFeatureValues:output_type -> google.longrunning.Operation
-	27, // 89: google.cloud.aiplatform.v1.FeaturestoreService.SearchFeatures:output_type -> google.cloud.aiplatform.v1.SearchFeaturesResponse
-	70, // [70:90] is the sub-list for method output_type
-	50, // [50:70] is the sub-list for method input_type
-	50, // [50:50] is the sub-list for extension type_name
-	50, // [50:50] is the sub-list for extension extendee
-	0,  // [0:50] is the sub-list for field type_name
+	48, // 15: google.cloud.aiplatform.v1.BatchReadFeatureValuesRequest.start_time:type_name -> google.protobuf.Timestamp
+	41, // 16: google.cloud.aiplatform.v1.ExportFeatureValuesRequest.snapshot_export:type_name -> google.cloud.aiplatform.v1.ExportFeatureValuesRequest.SnapshotExport
+	42, // 17: google.cloud.aiplatform.v1.ExportFeatureValuesRequest.full_export:type_name -> google.cloud.aiplatform.v1.ExportFeatureValuesRequest.FullExport
+	11, // 18: google.cloud.aiplatform.v1.ExportFeatureValuesRequest.destination:type_name -> google.cloud.aiplatform.v1.FeatureValueDestination
+	49, // 19: google.cloud.aiplatform.v1.ExportFeatureValuesRequest.feature_selector:type_name -> google.cloud.aiplatform.v1.FeatureSelector
+	10, // 20: google.cloud.aiplatform.v1.ExportFeatureValuesRequest.settings:type_name -> google.cloud.aiplatform.v1.DestinationFeatureSetting
+	50, // 21: google.cloud.aiplatform.v1.FeatureValueDestination.bigquery_destination:type_name -> google.cloud.aiplatform.v1.BigQueryDestination
+	51, // 22: google.cloud.aiplatform.v1.FeatureValueDestination.tfrecord_destination:type_name -> google.cloud.aiplatform.v1.TFRecordDestination
+	52, // 23: google.cloud.aiplatform.v1.FeatureValueDestination.csv_destination:type_name -> google.cloud.aiplatform.v1.CsvDestination
+	53, // 24: google.cloud.aiplatform.v1.CreateEntityTypeRequest.entity_type:type_name -> google.cloud.aiplatform.v1.EntityType
+	44, // 25: google.cloud.aiplatform.v1.ListEntityTypesRequest.read_mask:type_name -> google.protobuf.FieldMask
+	53, // 26: google.cloud.aiplatform.v1.ListEntityTypesResponse.entity_types:type_name -> google.cloud.aiplatform.v1.EntityType
+	53, // 27: google.cloud.aiplatform.v1.UpdateEntityTypeRequest.entity_type:type_name -> google.cloud.aiplatform.v1.EntityType
+	44, // 28: google.cloud.aiplatform.v1.UpdateEntityTypeRequest.update_mask:type_name -> google.protobuf.FieldMask
+	54, // 29: google.cloud.aiplatform.v1.CreateFeatureRequest.feature:type_name -> google.cloud.aiplatform.v1.Feature
+	20, // 30: google.cloud.aiplatform.v1.BatchCreateFeaturesRequest.requests:type_name -> google.cloud.aiplatform.v1.CreateFeatureRequest
+	54, // 31: google.cloud.aiplatform.v1.BatchCreateFeaturesResponse.features:type_name -> google.cloud.aiplatform.v1.Feature
+	44, // 32: google.cloud.aiplatform.v1.ListFeaturesRequest.read_mask:type_name -> google.protobuf.FieldMask
+	54, // 33: google.cloud.aiplatform.v1.ListFeaturesResponse.features:type_name -> google.cloud.aiplatform.v1.Feature
+	54, // 34: google.cloud.aiplatform.v1.SearchFeaturesResponse.features:type_name -> google.cloud.aiplatform.v1.Feature
+	54, // 35: google.cloud.aiplatform.v1.UpdateFeatureRequest.feature:type_name -> google.cloud.aiplatform.v1.Feature
+	44, // 36: google.cloud.aiplatform.v1.UpdateFeatureRequest.update_mask:type_name -> google.protobuf.FieldMask
+	55, // 37: google.cloud.aiplatform.v1.CreateFeaturestoreOperationMetadata.generic_metadata:type_name -> google.cloud.aiplatform.v1.GenericOperationMetadata
+	55, // 38: google.cloud.aiplatform.v1.UpdateFeaturestoreOperationMetadata.generic_metadata:type_name -> google.cloud.aiplatform.v1.GenericOperationMetadata
+	55, // 39: google.cloud.aiplatform.v1.ImportFeatureValuesOperationMetadata.generic_metadata:type_name -> google.cloud.aiplatform.v1.GenericOperationMetadata
+	55, // 40: google.cloud.aiplatform.v1.ExportFeatureValuesOperationMetadata.generic_metadata:type_name -> google.cloud.aiplatform.v1.GenericOperationMetadata
+	55, // 41: google.cloud.aiplatform.v1.BatchReadFeatureValuesOperationMetadata.generic_metadata:type_name -> google.cloud.aiplatform.v1.GenericOperationMetadata
+	55, // 42: google.cloud.aiplatform.v1.CreateEntityTypeOperationMetadata.generic_metadata:type_name -> google.cloud.aiplatform.v1.GenericOperationMetadata
+	55, // 43: google.cloud.aiplatform.v1.CreateFeatureOperationMetadata.generic_metadata:type_name -> google.cloud.aiplatform.v1.GenericOperationMetadata
+	55, // 44: google.cloud.aiplatform.v1.BatchCreateFeaturesOperationMetadata.generic_metadata:type_name -> google.cloud.aiplatform.v1.GenericOperationMetadata
+	49, // 45: google.cloud.aiplatform.v1.BatchReadFeatureValuesRequest.EntityTypeSpec.feature_selector:type_name -> google.cloud.aiplatform.v1.FeatureSelector
+	10, // 46: google.cloud.aiplatform.v1.BatchReadFeatureValuesRequest.EntityTypeSpec.settings:type_name -> google.cloud.aiplatform.v1.DestinationFeatureSetting
+	48, // 47: google.cloud.aiplatform.v1.ExportFeatureValuesRequest.SnapshotExport.snapshot_time:type_name -> google.protobuf.Timestamp
+	48, // 48: google.cloud.aiplatform.v1.ExportFeatureValuesRequest.SnapshotExport.start_time:type_name -> google.protobuf.Timestamp
+	48, // 49: google.cloud.aiplatform.v1.ExportFeatureValuesRequest.FullExport.start_time:type_name -> google.protobuf.Timestamp
+	48, // 50: google.cloud.aiplatform.v1.ExportFeatureValuesRequest.FullExport.end_time:type_name -> google.protobuf.Timestamp
+	0,  // 51: google.cloud.aiplatform.v1.FeaturestoreService.CreateFeaturestore:input_type -> google.cloud.aiplatform.v1.CreateFeaturestoreRequest
+	1,  // 52: google.cloud.aiplatform.v1.FeaturestoreService.GetFeaturestore:input_type -> google.cloud.aiplatform.v1.GetFeaturestoreRequest
+	2,  // 53: google.cloud.aiplatform.v1.FeaturestoreService.ListFeaturestores:input_type -> google.cloud.aiplatform.v1.ListFeaturestoresRequest
+	4,  // 54: google.cloud.aiplatform.v1.FeaturestoreService.UpdateFeaturestore:input_type -> google.cloud.aiplatform.v1.UpdateFeaturestoreRequest
+	5,  // 55: google.cloud.aiplatform.v1.FeaturestoreService.DeleteFeaturestore:input_type -> google.cloud.aiplatform.v1.DeleteFeaturestoreRequest
+	14, // 56: google.cloud.aiplatform.v1.FeaturestoreService.CreateEntityType:input_type -> google.cloud.aiplatform.v1.CreateEntityTypeRequest
+	15, // 57: google.cloud.aiplatform.v1.FeaturestoreService.GetEntityType:input_type -> google.cloud.aiplatform.v1.GetEntityTypeRequest
+	16, // 58: google.cloud.aiplatform.v1.FeaturestoreService.ListEntityTypes:input_type -> google.cloud.aiplatform.v1.ListEntityTypesRequest
+	18, // 59: google.cloud.aiplatform.v1.FeaturestoreService.UpdateEntityType:input_type -> google.cloud.aiplatform.v1.UpdateEntityTypeRequest
+	19, // 60: google.cloud.aiplatform.v1.FeaturestoreService.DeleteEntityType:input_type -> google.cloud.aiplatform.v1.DeleteEntityTypeRequest
+	20, // 61: google.cloud.aiplatform.v1.FeaturestoreService.CreateFeature:input_type -> google.cloud.aiplatform.v1.CreateFeatureRequest
+	21, // 62: google.cloud.aiplatform.v1.FeaturestoreService.BatchCreateFeatures:input_type -> google.cloud.aiplatform.v1.BatchCreateFeaturesRequest
+	23, // 63: google.cloud.aiplatform.v1.FeaturestoreService.GetFeature:input_type -> google.cloud.aiplatform.v1.GetFeatureRequest
+	24, // 64: google.cloud.aiplatform.v1.FeaturestoreService.ListFeatures:input_type -> google.cloud.aiplatform.v1.ListFeaturesRequest
+	28, // 65: google.cloud.aiplatform.v1.FeaturestoreService.UpdateFeature:input_type -> google.cloud.aiplatform.v1.UpdateFeatureRequest
+	29, // 66: google.cloud.aiplatform.v1.FeaturestoreService.DeleteFeature:input_type -> google.cloud.aiplatform.v1.DeleteFeatureRequest
+	6,  // 67: google.cloud.aiplatform.v1.FeaturestoreService.ImportFeatureValues:input_type -> google.cloud.aiplatform.v1.ImportFeatureValuesRequest
+	8,  // 68: google.cloud.aiplatform.v1.FeaturestoreService.BatchReadFeatureValues:input_type -> google.cloud.aiplatform.v1.BatchReadFeatureValuesRequest
+	9,  // 69: google.cloud.aiplatform.v1.FeaturestoreService.ExportFeatureValues:input_type -> google.cloud.aiplatform.v1.ExportFeatureValuesRequest
+	26, // 70: google.cloud.aiplatform.v1.FeaturestoreService.SearchFeatures:input_type -> google.cloud.aiplatform.v1.SearchFeaturesRequest
+	56, // 71: google.cloud.aiplatform.v1.FeaturestoreService.CreateFeaturestore:output_type -> google.longrunning.Operation
+	43, // 72: google.cloud.aiplatform.v1.FeaturestoreService.GetFeaturestore:output_type -> google.cloud.aiplatform.v1.Featurestore
+	3,  // 73: google.cloud.aiplatform.v1.FeaturestoreService.ListFeaturestores:output_type -> google.cloud.aiplatform.v1.ListFeaturestoresResponse
+	56, // 74: google.cloud.aiplatform.v1.FeaturestoreService.UpdateFeaturestore:output_type -> google.longrunning.Operation
+	56, // 75: google.cloud.aiplatform.v1.FeaturestoreService.DeleteFeaturestore:output_type -> google.longrunning.Operation
+	56, // 76: google.cloud.aiplatform.v1.FeaturestoreService.CreateEntityType:output_type -> google.longrunning.Operation
+	53, // 77: google.cloud.aiplatform.v1.FeaturestoreService.GetEntityType:output_type -> google.cloud.aiplatform.v1.EntityType
+	17, // 78: google.cloud.aiplatform.v1.FeaturestoreService.ListEntityTypes:output_type -> google.cloud.aiplatform.v1.ListEntityTypesResponse
+	53, // 79: google.cloud.aiplatform.v1.FeaturestoreService.UpdateEntityType:output_type -> google.cloud.aiplatform.v1.EntityType
+	56, // 80: google.cloud.aiplatform.v1.FeaturestoreService.DeleteEntityType:output_type -> google.longrunning.Operation
+	56, // 81: google.cloud.aiplatform.v1.FeaturestoreService.CreateFeature:output_type -> google.longrunning.Operation
+	56, // 82: google.cloud.aiplatform.v1.FeaturestoreService.BatchCreateFeatures:output_type -> google.longrunning.Operation
+	54, // 83: google.cloud.aiplatform.v1.FeaturestoreService.GetFeature:output_type -> google.cloud.aiplatform.v1.Feature
+	25, // 84: google.cloud.aiplatform.v1.FeaturestoreService.ListFeatures:output_type -> google.cloud.aiplatform.v1.ListFeaturesResponse
+	54, // 85: google.cloud.aiplatform.v1.FeaturestoreService.UpdateFeature:output_type -> google.cloud.aiplatform.v1.Feature
+	56, // 86: google.cloud.aiplatform.v1.FeaturestoreService.DeleteFeature:output_type -> google.longrunning.Operation
+	56, // 87: google.cloud.aiplatform.v1.FeaturestoreService.ImportFeatureValues:output_type -> google.longrunning.Operation
+	56, // 88: google.cloud.aiplatform.v1.FeaturestoreService.BatchReadFeatureValues:output_type -> google.longrunning.Operation
+	56, // 89: google.cloud.aiplatform.v1.FeaturestoreService.ExportFeatureValues:output_type -> google.longrunning.Operation
+	27, // 90: google.cloud.aiplatform.v1.FeaturestoreService.SearchFeatures:output_type -> google.cloud.aiplatform.v1.SearchFeaturesResponse
+	71, // [71:91] is the sub-list for method output_type
+	51, // [51:71] is the sub-list for method input_type
+	51, // [51:51] is the sub-list for extension type_name
+	51, // [51:51] is the sub-list for extension extendee
+	0,  // [0:51] is the sub-list for field type_name
 }
 
 func init() { file_google_cloud_aiplatform_v1_featurestore_service_proto_init() }
