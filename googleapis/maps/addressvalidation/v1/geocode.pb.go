@@ -69,7 +69,7 @@ type Geocode struct {
 	PlaceId string `protobuf:"bytes,6,opt,name=place_id,json=placeId,proto3" json:"place_id,omitempty"`
 	// The type(s) of place that the input geocoded to. For example,
 	// `['locality', 'political']`. The full list of types can be found
-	// [here](https://developers.google.com/maps/documentation/geocoding/overview#Types).
+	// [here](https://developers.google.com/maps/documentation/geocoding/requests-geocoding#Types).
 	PlaceTypes []string `protobuf:"bytes,7,rep,name=place_types,json=placeTypes,proto3" json:"place_types,omitempty"`
 }
 
