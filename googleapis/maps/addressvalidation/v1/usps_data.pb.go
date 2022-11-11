@@ -221,8 +221,8 @@ type UspsData struct {
 	// * `N`: The address is active
 	DpvNoStat string `protobuf:"bytes,8,opt,name=dpv_no_stat,json=dpvNoStat,proto3" json:"dpv_no_stat,omitempty"`
 	// The carrier route code.
-	// A four character code--a one letter prefix and a three digit route
-	// designator.
+	// A four character code consisting of a one letter prefix and a three digit
+	// route designator.
 	//
 	// Prefixes:
 	//
@@ -288,7 +288,7 @@ type UspsData struct {
 	// processing is suspended because of the detection of artificially created
 	// addresses.
 	//
-	// The USPS data fields may not be populated when this error is present.
+	// The USPS data fields might not be populated when this error is present.
 	ErrorMessage string `protobuf:"bytes,27,opt,name=error_message,json=errorMessage,proto3" json:"error_message,omitempty"`
 	// Indicator that the request has been CASS processed.
 	CassProcessed bool `protobuf:"varint,28,opt,name=cass_processed,json=cassProcessed,proto3" json:"cass_processed,omitempty"`

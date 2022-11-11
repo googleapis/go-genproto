@@ -109,11 +109,11 @@ type Address struct {
 	FormattedAddress string `protobuf:"bytes,2,opt,name=formatted_address,json=formattedAddress,proto3" json:"formatted_address,omitempty"`
 	// The validated address represented as a postal address.
 	PostalAddress *postaladdress.PostalAddress `protobuf:"bytes,3,opt,name=postal_address,json=postalAddress,proto3" json:"postal_address,omitempty"`
-	// The individual address components of the formatted and corrected address,
+	// Unordered list. The individual address components of the formatted and corrected address,
 	// along with validation information. This provides information on the
 	// validation status of the individual components.
 	//
-	// Address components are not ordered in a particular way. DO NOT make any
+	// Address components are not ordered in a particular way. Do not make any
 	// assumptions on the ordering of the address components in the list.
 	AddressComponents []*AddressComponent `protobuf:"bytes,4,rep,name=address_components,json=addressComponents,proto3" json:"address_components,omitempty"`
 	// The types of components that were expected to be present in a correctly
@@ -121,8 +121,8 @@ type Address struct {
 	// not be inferred. Components of this type are not present in
 	// `formatted_address`, `postal_address`, or `address_components`. An
 	// example might be `['street_number', 'route']` for an input like
-	// "Boulder, Colorado, 80301, USA." The list of possible types can be found
-	// [here](https://developers.google.com/maps/documentation/geocoding/overview#Types).
+	// "Boulder, Colorado, 80301, USA". The list of possible types can be found
+	// [here](https://developers.google.com/maps/documentation/geocoding/requests-geocoding#Types).
 	MissingComponentTypes []string `protobuf:"bytes,5,rep,name=missing_component_types,json=missingComponentTypes,proto3" json:"missing_component_types,omitempty"`
 	// The types of the components that are present in the `address_components`
 	// but could not be confirmed to be correct. This field is provided for the
@@ -133,8 +133,8 @@ type Address struct {
 	// [CONFIRMED][google.maps.addressvalidation.v1.AddressComponent.ConfirmationLevel.CONFIRMED]
 	// or the
 	// [inferred][google.maps.addressvalidation.v1.AddressComponent.inferred]
-	// flag is not set to `true`.The list of possible types can be found
-	// [here](https://developers.google.com/maps/documentation/geocoding/overview#Types).
+	// flag is not set to `true`. The list of possible types can be found
+	// [here](https://developers.google.com/maps/documentation/geocoding/requests-geocoding#Types).
 	UnconfirmedComponentTypes []string `protobuf:"bytes,6,rep,name=unconfirmed_component_types,json=unconfirmedComponentTypes,proto3" json:"unconfirmed_component_types,omitempty"`
 	// Any tokens in the input that could not be resolved. This might be an
 	// input that was not recognized as a valid part of an address (for example
