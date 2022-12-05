@@ -59,7 +59,7 @@ require (
 	cloud.google.com/go/gkehub v0.10.0
 	cloud.google.com/go/gkemulticloud v0.4.0
 	cloud.google.com/go/gsuiteaddons v1.4.0
-	cloud.google.com/go/iam v0.7.0
+	cloud.google.com/go/iam v0.8.0
 	cloud.google.com/go/iap v1.5.0
 	cloud.google.com/go/ids v1.2.0
 	cloud.google.com/go/iot v1.4.0
