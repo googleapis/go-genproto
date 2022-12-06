@@ -179,8 +179,8 @@ type CreateDataPolicyRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. Resource name of the project that the data policy will belong to. The
-	// format is `projects/{project_number}/locations/{location_id}`.
+	// Required. Resource name of the project that the data policy will belong to.
+	// The format is `projects/{project_number}/locations/{location_id}`.
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// Required. The data policy to create. The `name` field does not need to be
 	// provided for the data policy creation.
@@ -464,8 +464,8 @@ type ListDataPoliciesRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. Resource name of the project for which to list data policies. Format is
-	// `projects/{project_number}/locations/{location_id}`.
+	// Required. Resource name of the project for which to list data policies.
+	// Format is `projects/{project_number}/locations/{location_id}`.
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// The maximum number of data policies to return. Must be a value between 1
 	// and 1000.
@@ -478,9 +478,9 @@ type ListDataPoliciesRequest struct {
 	// are associated with. Currently filter only supports
 	// "policy<span></span>_tag" based filtering and OR based predicates. Sample
 	// filter can be "policy<span></span>_tag:
-	// 'projects/1/locations/us/taxonomies/2/policyTags/3'". You may use wildcard
-	// such as "policy<span></span>_tag:
-	// 'projects/1/locations/us/taxonomies/2/*'".
+	// `'projects/1/locations/us/taxonomies/2/policyTags/3'`". You may use
+	// wildcard such as "policy<span></span>_tag:
+	// `'projects/1/locations/us/taxonomies/2/*'`".
 	Filter string `protobuf:"bytes,4,opt,name=filter,proto3" json:"filter,omitempty"`
 }
 
