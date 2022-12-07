@@ -69,6 +69,7 @@ require (
 	cloud.google.com/go/logging v1.6.1
 	cloud.google.com/go/longrunning v0.3.0
 	cloud.google.com/go/managedidentities v1.4.0
+	cloud.google.com/go/maps v0.1.0
 	cloud.google.com/go/mediatranslation v0.6.0
 	cloud.google.com/go/memcache v1.7.0
 	cloud.google.com/go/metastore v1.8.0
@@ -116,12 +117,13 @@ require (
 	cloud.google.com/go/videointelligence v1.9.0
 	cloud.google.com/go/vision/v2 v2.5.0
 	cloud.google.com/go/vmmigration v1.3.0
+	cloud.google.com/go/vmwareengine v0.1.0
 	cloud.google.com/go/vpcaccess v1.5.0
 	cloud.google.com/go/webrisk v1.7.0
 	cloud.google.com/go/websecurityscanner v1.4.0
 	cloud.google.com/go/workflows v1.9.0
 	github.com/golang/protobuf v1.5.2
-	google.golang.org/grpc v1.50.1
+	google.golang.org/grpc v1.51.0
 	google.golang.org/protobuf v1.28.1
 )
 
