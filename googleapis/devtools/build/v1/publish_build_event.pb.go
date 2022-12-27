@@ -1,4 +1,4 @@
-// Copyright 2020 Google LLC
+// Copyright 2022 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -107,8 +107,8 @@ type PublishLifecycleEventRequest struct {
 
 	// The interactivity of this build.
 	ServiceLevel PublishLifecycleEventRequest_ServiceLevel `protobuf:"varint,1,opt,name=service_level,json=serviceLevel,proto3,enum=google.devtools.build.v1.PublishLifecycleEventRequest_ServiceLevel" json:"service_level,omitempty"`
-	// Required. The lifecycle build event. If this is a build tool event, the RPC
-	// will fail with INVALID_REQUEST.
+	// Required. The lifecycle build event. If this is a build tool event, the RPC will fail
+	// with INVALID_REQUEST.
 	BuildEvent *OrderedBuildEvent `protobuf:"bytes,2,opt,name=build_event,json=buildEvent,proto3" json:"build_event,omitempty"`
 	// If the next event for this build or invocation (depending on the event
 	// type) hasn't been published after this duration from when {build_event}
@@ -706,7 +706,7 @@ type PublishBuildEventClient interface {
 	// jobs immediately without batching.
 	//
 	// The commit status of the request is reported by the RPC's util_status()
-	// function. The error code is the canoncial error code defined in
+	// function. The error code is the canonical error code defined in
 	// //util/task/codes.proto.
 	PublishLifecycleEvent(ctx context.Context, in *PublishLifecycleEventRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Publish build tool events belonging to the same stream to a backend job
@@ -772,7 +772,7 @@ type PublishBuildEventServer interface {
 	// jobs immediately without batching.
 	//
 	// The commit status of the request is reported by the RPC's util_status()
-	// function. The error code is the canoncial error code defined in
+	// function. The error code is the canonical error code defined in
 	// //util/task/codes.proto.
 	PublishLifecycleEvent(context.Context, *PublishLifecycleEventRequest) (*emptypb.Empty, error)
 	// Publish build tool events belonging to the same stream to a backend job
