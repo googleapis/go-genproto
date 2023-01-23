@@ -5685,7 +5685,8 @@ type IPAllocationPolicy struct {
 	StackType IPAllocationPolicy_StackType `protobuf:"varint,16,opt,name=stack_type,json=stackType,proto3,enum=google.container.v1beta1.IPAllocationPolicy_StackType" json:"stack_type,omitempty"`
 	// The ipv6 access type (internal or external) when create_subnetwork is true
 	Ipv6AccessType IPAllocationPolicy_IPv6AccessType `protobuf:"varint,17,opt,name=ipv6_access_type,json=ipv6AccessType,proto3,enum=google.container.v1beta1.IPAllocationPolicy_IPv6AccessType" json:"ipv6_access_type,omitempty"`
-	// Output only. [Output only] The subnet's IPv6 CIDR block used by nodes and pods.
+	// Output only. [Output only] The subnet's IPv6 CIDR block used by nodes and
+	// pods.
 	SubnetIpv6CidrBlock string `protobuf:"bytes,22,opt,name=subnet_ipv6_cidr_block,json=subnetIpv6CidrBlock,proto3" json:"subnet_ipv6_cidr_block,omitempty"`
 	// Output only. [Output only] The services IPv6 CIDR block for the cluster.
 	ServicesIpv6CidrBlock string `protobuf:"bytes,23,opt,name=services_ipv6_cidr_block,json=servicesIpv6CidrBlock,proto3" json:"services_ipv6_cidr_block,omitempty"`
@@ -8955,8 +8956,8 @@ type SetAddonsConfigRequest struct {
 	//
 	// Deprecated: Do not use.
 	ClusterId string `protobuf:"bytes,3,opt,name=cluster_id,json=clusterId,proto3" json:"cluster_id,omitempty"`
-	// Required. The desired configurations for the various addons available to run in the
-	// cluster.
+	// Required. The desired configurations for the various addons available to
+	// run in the cluster.
 	AddonsConfig *AddonsConfig `protobuf:"bytes,4,opt,name=addons_config,json=addonsConfig,proto3" json:"addons_config,omitempty"`
 	// The name (project, location, cluster) of the cluster to set addons.
 	// Specified in the format `projects/*/locations/*/clusters/*`.
@@ -10724,8 +10725,8 @@ type NodePool struct {
 	UpgradeSettings *NodePool_UpgradeSettings `protobuf:"bytes,107,opt,name=upgrade_settings,json=upgradeSettings,proto3" json:"upgrade_settings,omitempty"`
 	// Specifies the node placement policy.
 	PlacementPolicy *NodePool_PlacementPolicy `protobuf:"bytes,108,opt,name=placement_policy,json=placementPolicy,proto3" json:"placement_policy,omitempty"`
-	// Output only. [Output only] Update info contains relevant information during a node
-	// pool update.
+	// Output only. [Output only] Update info contains relevant information during
+	// a node pool update.
 	UpdateInfo *NodePool_UpdateInfo `protobuf:"bytes,109,opt,name=update_info,json=updateInfo,proto3" json:"update_info,omitempty"`
 	// This checksum is computed by the server based on the value of node pool
 	// fields, and may be sent on update requests to ensure the client has an

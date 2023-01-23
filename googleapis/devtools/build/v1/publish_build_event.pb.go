@@ -107,8 +107,8 @@ type PublishLifecycleEventRequest struct {
 
 	// The interactivity of this build.
 	ServiceLevel PublishLifecycleEventRequest_ServiceLevel `protobuf:"varint,1,opt,name=service_level,json=serviceLevel,proto3,enum=google.devtools.build.v1.PublishLifecycleEventRequest_ServiceLevel" json:"service_level,omitempty"`
-	// Required. The lifecycle build event. If this is a build tool event, the RPC will fail
-	// with INVALID_REQUEST.
+	// Required. The lifecycle build event. If this is a build tool event, the RPC
+	// will fail with INVALID_REQUEST.
 	BuildEvent *OrderedBuildEvent `protobuf:"bytes,2,opt,name=build_event,json=buildEvent,proto3" json:"build_event,omitempty"`
 	// If the next event for this build or invocation (depending on the event
 	// type) hasn't been published after this duration from when {build_event}
