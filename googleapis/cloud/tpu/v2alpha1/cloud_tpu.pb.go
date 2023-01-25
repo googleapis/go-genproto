@@ -2290,7 +2290,7 @@ type CreateQueuedResourceRequest struct {
 
 	// Required. The parent resource name.
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
-	// The unqualified resource name. Should follow the `^[A-Za-z0-9_.~+%-]+$`
+	// The unqualified resource name. Should follow the ^[A-Za-z0-9_.~+%-]+$
 	// regex format.
 	QueuedResourceId string `protobuf:"bytes,2,opt,name=queued_resource_id,json=queuedResourceId,proto3" json:"queued_resource_id,omitempty"`
 	// Required. The queued resource.
