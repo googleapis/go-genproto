@@ -965,8 +965,8 @@ type Node struct {
 	AcceleratorType string `protobuf:"bytes,5,opt,name=accelerator_type,json=acceleratorType,proto3" json:"accelerator_type,omitempty"`
 	// Output only. The current state for the TPU Node.
 	State Node_State `protobuf:"varint,9,opt,name=state,proto3,enum=google.cloud.tpu.v2.Node_State" json:"state,omitempty"`
-	// Output only. If this field is populated, it contains a description of why the TPU Node
-	// is unhealthy.
+	// Output only. If this field is populated, it contains a description of why
+	// the TPU Node is unhealthy.
 	HealthDescription string `protobuf:"bytes,10,opt,name=health_description,json=healthDescription,proto3" json:"health_description,omitempty"`
 	// Required. The runtime version running in the Node.
 	RuntimeVersion string `protobuf:"bytes,11,opt,name=runtime_version,json=runtimeVersion,proto3" json:"runtime_version,omitempty"`
@@ -1699,7 +1699,8 @@ func (x *ServiceIdentity) GetEmail() string {
 	return ""
 }
 
-// Request for [GenerateServiceIdentity][google.cloud.tpu.v2.Tpu.GenerateServiceIdentity].
+// Request for
+// [GenerateServiceIdentity][google.cloud.tpu.v2.Tpu.GenerateServiceIdentity].
 type GenerateServiceIdentityRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -1748,7 +1749,8 @@ func (x *GenerateServiceIdentityRequest) GetParent() string {
 	return ""
 }
 
-// Response for [GenerateServiceIdentity][google.cloud.tpu.v2.Tpu.GenerateServiceIdentity].
+// Response for
+// [GenerateServiceIdentity][google.cloud.tpu.v2.Tpu.GenerateServiceIdentity].
 type GenerateServiceIdentityResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -1904,7 +1906,8 @@ func (x *GetAcceleratorTypeRequest) GetName() string {
 	return ""
 }
 
-// Request for [ListAcceleratorTypes][google.cloud.tpu.v2.Tpu.ListAcceleratorTypes].
+// Request for
+// [ListAcceleratorTypes][google.cloud.tpu.v2.Tpu.ListAcceleratorTypes].
 type ListAcceleratorTypesRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -1989,7 +1992,8 @@ func (x *ListAcceleratorTypesRequest) GetOrderBy() string {
 	return ""
 }
 
-// Response for [ListAcceleratorTypes][google.cloud.tpu.v2.Tpu.ListAcceleratorTypes].
+// Response for
+// [ListAcceleratorTypes][google.cloud.tpu.v2.Tpu.ListAcceleratorTypes].
 type ListAcceleratorTypesResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -2163,7 +2167,8 @@ func (x *GetRuntimeVersionRequest) GetName() string {
 	return ""
 }
 
-// Request for [ListRuntimeVersions][google.cloud.tpu.v2.Tpu.ListRuntimeVersions].
+// Request for
+// [ListRuntimeVersions][google.cloud.tpu.v2.Tpu.ListRuntimeVersions].
 type ListRuntimeVersionsRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -2248,7 +2253,8 @@ func (x *ListRuntimeVersionsRequest) GetOrderBy() string {
 	return ""
 }
 
-// Response for [ListRuntimeVersions][google.cloud.tpu.v2.Tpu.ListRuntimeVersions].
+// Response for
+// [ListRuntimeVersions][google.cloud.tpu.v2.Tpu.ListRuntimeVersions].
 type ListRuntimeVersionsResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -2563,7 +2569,8 @@ func (x *GetGuestAttributesRequest) GetWorkerIds() []string {
 	return nil
 }
 
-// Response for [GetGuestAttributes][google.cloud.tpu.v2.Tpu.GetGuestAttributes].
+// Response for
+// [GetGuestAttributes][google.cloud.tpu.v2.Tpu.GetGuestAttributes].
 type GetGuestAttributesResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
