@@ -11,3 +11,7 @@ jobs:
     if: "!contains(github.event.pull_request.labels.*.name, 'breaking_change_allowed')"
       run: |
         echo "true"
+    - name: current branch2
+    if: "!contains(github.event.pull_request.labels.*.name, 'breaking_change_allowed')"
+      run: |
+        echo "false"
