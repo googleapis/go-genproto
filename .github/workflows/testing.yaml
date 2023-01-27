@@ -1,0 +1,13 @@
+---
+name: testing
+on:
+  pull_request:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: current branch
+      run: |
+        array = ${{ github.event.pull_request.labels }}
+        echo "${array[*]}"
