@@ -3,13 +3,15 @@ module google.golang.org/genproto
 go 1.19
 
 require (
-	cloud.google.com/go v0.105.0
+	cloud.google.com/go v0.107.0
 	cloud.google.com/go/accessapproval v1.5.0
 	cloud.google.com/go/accesscontextmanager v1.4.0
 	cloud.google.com/go/aiplatform v1.27.0
 	cloud.google.com/go/analytics v0.12.0
 	cloud.google.com/go/apigateway v1.4.0
 	cloud.google.com/go/apigeeconnect v1.4.0
+	cloud.google.com/go/apigeeregistry v0.4.0
+	cloud.google.com/go/apikeys v0.4.0
 	cloud.google.com/go/appengine v1.5.0
 	cloud.google.com/go/area120 v0.6.0
 	cloud.google.com/go/artifactregistry v1.9.0
@@ -27,7 +29,7 @@ require (
 	cloud.google.com/go/cloudbuild v1.4.0
 	cloud.google.com/go/clouddms v1.4.0
 	cloud.google.com/go/cloudtasks v1.8.0
-	cloud.google.com/go/compute v1.13.0
+	cloud.google.com/go/compute v1.18.0
 	cloud.google.com/go/contactcenterinsights v1.4.0
 	cloud.google.com/go/container v1.7.0
 	cloud.google.com/go/containeranalysis v0.6.0
@@ -42,7 +44,7 @@ require (
 	cloud.google.com/go/datastore v1.10.0
 	cloud.google.com/go/datastream v1.5.0
 	cloud.google.com/go/deploy v1.5.0
-	cloud.google.com/go/dialogflow v1.19.0
+	cloud.google.com/go/dialogflow v1.29.0
 	cloud.google.com/go/dlp v1.7.0
 	cloud.google.com/go/documentai v1.10.0
 	cloud.google.com/go/domains v0.7.0
@@ -59,7 +61,7 @@ require (
 	cloud.google.com/go/gkehub v0.10.0
 	cloud.google.com/go/gkemulticloud v0.4.0
 	cloud.google.com/go/gsuiteaddons v1.4.0
-	cloud.google.com/go/iam v0.8.0
+	cloud.google.com/go/iam v0.11.0
 	cloud.google.com/go/iap v1.5.0
 	cloud.google.com/go/ids v1.2.0
 	cloud.google.com/go/iot v1.4.0
@@ -123,12 +125,12 @@ require (
 	cloud.google.com/go/websecurityscanner v1.4.0
 	cloud.google.com/go/workflows v1.9.0
 	github.com/golang/protobuf v1.5.2
-	google.golang.org/grpc v1.51.0
+	google.golang.org/grpc v1.53.0
 	google.golang.org/protobuf v1.28.1
 )
 
 require (
-	golang.org/x/net v0.0.0-20221014081412-f15817d10f9b // indirect
-	golang.org/x/sys v0.0.0-20220728004956-3c1f35247d10 // indirect
-	golang.org/x/text v0.4.0 // indirect
+	golang.org/x/net v0.7.0 // indirect
+	golang.org/x/sys v0.5.0 // indirect
+	golang.org/x/text v0.7.0 // indirect
 )
