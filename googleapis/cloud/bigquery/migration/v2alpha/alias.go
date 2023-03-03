@@ -29,51 +29,46 @@ import (
 
 // Deprecated: Please use consts in: cloud.google.com/go/bigquery/migration/apiv2alpha/migrationpb
 const (
-	IdentifierSettings_IDENTIFIER_CASE_UNSPECIFIED                   = src.IdentifierSettings_IDENTIFIER_CASE_UNSPECIFIED
-	IdentifierSettings_IDENTIFIER_REWRITE_MODE_UNSPECIFIED           = src.IdentifierSettings_IDENTIFIER_REWRITE_MODE_UNSPECIFIED
-	IdentifierSettings_LOWER                                         = src.IdentifierSettings_LOWER
-	IdentifierSettings_NONE                                          = src.IdentifierSettings_NONE
-	IdentifierSettings_ORIGINAL                                      = src.IdentifierSettings_ORIGINAL
-	IdentifierSettings_REWRITE_ALL                                   = src.IdentifierSettings_REWRITE_ALL
-	IdentifierSettings_UPPER                                         = src.IdentifierSettings_UPPER
-	MigrationSubtask_ACTIVE                                          = src.MigrationSubtask_ACTIVE
-	MigrationSubtask_FAILED                                          = src.MigrationSubtask_FAILED
-	MigrationSubtask_PAUSED                                          = src.MigrationSubtask_PAUSED
-	MigrationSubtask_RUNNING                                         = src.MigrationSubtask_RUNNING
-	MigrationSubtask_STATE_UNSPECIFIED                               = src.MigrationSubtask_STATE_UNSPECIFIED
-	MigrationSubtask_SUCCEEDED                                       = src.MigrationSubtask_SUCCEEDED
-	MigrationTask_FAILED                                             = src.MigrationTask_FAILED
-	MigrationTask_ORCHESTRATING                                      = src.MigrationTask_ORCHESTRATING
-	MigrationTask_PAUSED                                             = src.MigrationTask_PAUSED
-	MigrationTask_PENDING                                            = src.MigrationTask_PENDING
-	MigrationTask_RUNNING                                            = src.MigrationTask_RUNNING
-	MigrationTask_STATE_UNSPECIFIED                                  = src.MigrationTask_STATE_UNSPECIFIED
-	MigrationTask_SUCCEEDED                                          = src.MigrationTask_SUCCEEDED
-	MigrationWorkflow_COMPLETED                                      = src.MigrationWorkflow_COMPLETED
-	MigrationWorkflow_DRAFT                                          = src.MigrationWorkflow_DRAFT
-	MigrationWorkflow_PAUSED                                         = src.MigrationWorkflow_PAUSED
-	MigrationWorkflow_RUNNING                                        = src.MigrationWorkflow_RUNNING
-	MigrationWorkflow_STATE_UNSPECIFIED                              = src.MigrationWorkflow_STATE_UNSPECIFIED
-	SqlTranslationError_SQL_PARSE_ERROR                              = src.SqlTranslationError_SQL_PARSE_ERROR
-	SqlTranslationError_SQL_TRANSLATION_ERROR_TYPE_UNSPECIFIED       = src.SqlTranslationError_SQL_TRANSLATION_ERROR_TYPE_UNSPECIFIED
-	SqlTranslationError_UNSUPPORTED_SQL_FUNCTION                     = src.SqlTranslationError_UNSUPPORTED_SQL_FUNCTION
-	TranslateQueryRequest_SQL_TRANSLATION_SOURCE_DIALECT_UNSPECIFIED = src.TranslateQueryRequest_SQL_TRANSLATION_SOURCE_DIALECT_UNSPECIFIED
-	TranslateQueryRequest_TERADATA                                   = src.TranslateQueryRequest_TERADATA
-	TranslationTaskDetails_BOOL                                      = src.TranslationTaskDetails_BOOL
-	TranslationTaskDetails_DATE                                      = src.TranslationTaskDetails_DATE
-	TranslationTaskDetails_FILE_ENCODING_UNSPECIFIED                 = src.TranslationTaskDetails_FILE_ENCODING_UNSPECIFIED
-	TranslationTaskDetails_FLOAT64                                   = src.TranslationTaskDetails_FLOAT64
-	TranslationTaskDetails_INT64                                     = src.TranslationTaskDetails_INT64
-	TranslationTaskDetails_ISO_8859_1                                = src.TranslationTaskDetails_ISO_8859_1
-	TranslationTaskDetails_NUMERIC                                   = src.TranslationTaskDetails_NUMERIC
-	TranslationTaskDetails_STRING                                    = src.TranslationTaskDetails_STRING
-	TranslationTaskDetails_TIMESTAMP                                 = src.TranslationTaskDetails_TIMESTAMP
-	TranslationTaskDetails_TOKEN_TYPE_UNSPECIFIED                    = src.TranslationTaskDetails_TOKEN_TYPE_UNSPECIFIED
-	TranslationTaskDetails_US_ASCII                                  = src.TranslationTaskDetails_US_ASCII
-	TranslationTaskDetails_UTF_16                                    = src.TranslationTaskDetails_UTF_16
-	TranslationTaskDetails_UTF_16BE                                  = src.TranslationTaskDetails_UTF_16BE
-	TranslationTaskDetails_UTF_16LE                                  = src.TranslationTaskDetails_UTF_16LE
-	TranslationTaskDetails_UTF_8                                     = src.TranslationTaskDetails_UTF_8
+	IdentifierSettings_IDENTIFIER_CASE_UNSPECIFIED         = src.IdentifierSettings_IDENTIFIER_CASE_UNSPECIFIED
+	IdentifierSettings_IDENTIFIER_REWRITE_MODE_UNSPECIFIED = src.IdentifierSettings_IDENTIFIER_REWRITE_MODE_UNSPECIFIED
+	IdentifierSettings_LOWER                               = src.IdentifierSettings_LOWER
+	IdentifierSettings_NONE                                = src.IdentifierSettings_NONE
+	IdentifierSettings_ORIGINAL                            = src.IdentifierSettings_ORIGINAL
+	IdentifierSettings_REWRITE_ALL                         = src.IdentifierSettings_REWRITE_ALL
+	IdentifierSettings_UPPER                               = src.IdentifierSettings_UPPER
+	MigrationSubtask_ACTIVE                                = src.MigrationSubtask_ACTIVE
+	MigrationSubtask_FAILED                                = src.MigrationSubtask_FAILED
+	MigrationSubtask_PAUSED                                = src.MigrationSubtask_PAUSED
+	MigrationSubtask_RUNNING                               = src.MigrationSubtask_RUNNING
+	MigrationSubtask_STATE_UNSPECIFIED                     = src.MigrationSubtask_STATE_UNSPECIFIED
+	MigrationSubtask_SUCCEEDED                             = src.MigrationSubtask_SUCCEEDED
+	MigrationTask_FAILED                                   = src.MigrationTask_FAILED
+	MigrationTask_ORCHESTRATING                            = src.MigrationTask_ORCHESTRATING
+	MigrationTask_PAUSED                                   = src.MigrationTask_PAUSED
+	MigrationTask_PENDING                                  = src.MigrationTask_PENDING
+	MigrationTask_RUNNING                                  = src.MigrationTask_RUNNING
+	MigrationTask_STATE_UNSPECIFIED                        = src.MigrationTask_STATE_UNSPECIFIED
+	MigrationTask_SUCCEEDED                                = src.MigrationTask_SUCCEEDED
+	MigrationWorkflow_COMPLETED                            = src.MigrationWorkflow_COMPLETED
+	MigrationWorkflow_DRAFT                                = src.MigrationWorkflow_DRAFT
+	MigrationWorkflow_PAUSED                               = src.MigrationWorkflow_PAUSED
+	MigrationWorkflow_RUNNING                              = src.MigrationWorkflow_RUNNING
+	MigrationWorkflow_STATE_UNSPECIFIED                    = src.MigrationWorkflow_STATE_UNSPECIFIED
+	TranslationTaskDetails_BOOL                            = src.TranslationTaskDetails_BOOL
+	TranslationTaskDetails_DATE                            = src.TranslationTaskDetails_DATE
+	TranslationTaskDetails_FILE_ENCODING_UNSPECIFIED       = src.TranslationTaskDetails_FILE_ENCODING_UNSPECIFIED
+	TranslationTaskDetails_FLOAT64                         = src.TranslationTaskDetails_FLOAT64
+	TranslationTaskDetails_INT64                           = src.TranslationTaskDetails_INT64
+	TranslationTaskDetails_ISO_8859_1                      = src.TranslationTaskDetails_ISO_8859_1
+	TranslationTaskDetails_NUMERIC                         = src.TranslationTaskDetails_NUMERIC
+	TranslationTaskDetails_STRING                          = src.TranslationTaskDetails_STRING
+	TranslationTaskDetails_TIMESTAMP                       = src.TranslationTaskDetails_TIMESTAMP
+	TranslationTaskDetails_TOKEN_TYPE_UNSPECIFIED          = src.TranslationTaskDetails_TOKEN_TYPE_UNSPECIFIED
+	TranslationTaskDetails_US_ASCII                        = src.TranslationTaskDetails_US_ASCII
+	TranslationTaskDetails_UTF_16                          = src.TranslationTaskDetails_UTF_16
+	TranslationTaskDetails_UTF_16BE                        = src.TranslationTaskDetails_UTF_16BE
+	TranslationTaskDetails_UTF_16LE                        = src.TranslationTaskDetails_UTF_16LE
+	TranslationTaskDetails_UTF_8                           = src.TranslationTaskDetails_UTF_8
 )
 
 // Deprecated: Please use vars in: cloud.google.com/go/bigquery/migration/apiv2alpha/migrationpb
@@ -83,7 +78,6 @@ var (
 	File_google_cloud_bigquery_migration_v2alpha_migration_error_details_proto = src.File_google_cloud_bigquery_migration_v2alpha_migration_error_details_proto
 	File_google_cloud_bigquery_migration_v2alpha_migration_metrics_proto       = src.File_google_cloud_bigquery_migration_v2alpha_migration_metrics_proto
 	File_google_cloud_bigquery_migration_v2alpha_migration_service_proto       = src.File_google_cloud_bigquery_migration_v2alpha_migration_service_proto
-	File_google_cloud_bigquery_migration_v2alpha_translation_service_proto     = src.File_google_cloud_bigquery_migration_v2alpha_translation_service_proto
 	File_google_cloud_bigquery_migration_v2alpha_translation_task_proto        = src.File_google_cloud_bigquery_migration_v2alpha_translation_task_proto
 	IdentifierSettings_IdentifierCase_name                                     = src.IdentifierSettings_IdentifierCase_name
 	IdentifierSettings_IdentifierCase_value                                    = src.IdentifierSettings_IdentifierCase_value
@@ -95,10 +89,6 @@ var (
 	MigrationTask_State_value                                                  = src.MigrationTask_State_value
 	MigrationWorkflow_State_name                                               = src.MigrationWorkflow_State_name
 	MigrationWorkflow_State_value                                              = src.MigrationWorkflow_State_value
-	SqlTranslationError_SqlTranslationErrorType_name                           = src.SqlTranslationError_SqlTranslationErrorType_name
-	SqlTranslationError_SqlTranslationErrorType_value                          = src.SqlTranslationError_SqlTranslationErrorType_value
-	TranslateQueryRequest_SqlTranslationSourceDialect_name                     = src.TranslateQueryRequest_SqlTranslationSourceDialect_name
-	TranslateQueryRequest_SqlTranslationSourceDialect_value                    = src.TranslateQueryRequest_SqlTranslationSourceDialect_value
 	TranslationTaskDetails_FileEncoding_name                                   = src.TranslationTaskDetails_FileEncoding_name
 	TranslationTaskDetails_FileEncoding_value                                  = src.TranslationTaskDetails_FileEncoding_value
 	TranslationTaskDetails_TokenType_name                                      = src.TranslationTaskDetails_TokenType_name
@@ -261,42 +251,6 @@ type Point = src.Point
 // Deprecated: Please use types in: cloud.google.com/go/bigquery/migration/apiv2alpha/migrationpb
 type ResourceErrorDetail = src.ResourceErrorDetail
 
-// The detailed error object if the SQL translation job fails.
-//
-// Deprecated: Please use types in: cloud.google.com/go/bigquery/migration/apiv2alpha/migrationpb
-type SqlTranslationError = src.SqlTranslationError
-
-// Structured error object capturing the error message and the location in the
-// source text where the error occurs.
-//
-// Deprecated: Please use types in: cloud.google.com/go/bigquery/migration/apiv2alpha/migrationpb
-type SqlTranslationErrorDetail = src.SqlTranslationErrorDetail
-
-// The error type of the SQL translation job.
-//
-// Deprecated: Please use types in: cloud.google.com/go/bigquery/migration/apiv2alpha/migrationpb
-type SqlTranslationError_SqlTranslationErrorType = src.SqlTranslationError_SqlTranslationErrorType
-
-// SqlTranslationServiceClient is the client API for SqlTranslationService
-// service. For semantics around ctx use and closing/ending streaming RPCs,
-// please refer to
-// https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-//
-// Deprecated: Please use types in: cloud.google.com/go/bigquery/migration/apiv2alpha/migrationpb
-type SqlTranslationServiceClient = src.SqlTranslationServiceClient
-
-// SqlTranslationServiceServer is the server API for SqlTranslationService
-// service.
-//
-// Deprecated: Please use types in: cloud.google.com/go/bigquery/migration/apiv2alpha/migrationpb
-type SqlTranslationServiceServer = src.SqlTranslationServiceServer
-
-// The detailed warning object if the SQL translation job is completed but not
-// semantically correct.
-//
-// Deprecated: Please use types in: cloud.google.com/go/bigquery/migration/apiv2alpha/migrationpb
-type SqlTranslationWarning = src.SqlTranslationWarning
-
 // A request to start a previously created migration workflow.
 //
 // Deprecated: Please use types in: cloud.google.com/go/bigquery/migration/apiv2alpha/migrationpb
@@ -318,21 +272,6 @@ type TimeInterval = src.TimeInterval
 //
 // Deprecated: Please use types in: cloud.google.com/go/bigquery/migration/apiv2alpha/migrationpb
 type TimeSeries = src.TimeSeries
-
-// The request of translating a SQL query to Standard SQL.
-//
-// Deprecated: Please use types in: cloud.google.com/go/bigquery/migration/apiv2alpha/migrationpb
-type TranslateQueryRequest = src.TranslateQueryRequest
-
-// Supported SQL translation source dialects.
-//
-// Deprecated: Please use types in: cloud.google.com/go/bigquery/migration/apiv2alpha/migrationpb
-type TranslateQueryRequest_SqlTranslationSourceDialect = src.TranslateQueryRequest_SqlTranslationSourceDialect
-
-// The response of translating a SQL query to Standard SQL.
-//
-// Deprecated: Please use types in: cloud.google.com/go/bigquery/migration/apiv2alpha/migrationpb
-type TranslateQueryResponse = src.TranslateQueryResponse
 
 // Mapping between an input and output file to be translated in a subtask.
 //
@@ -373,28 +312,12 @@ type TypedValue_StringValue = src.TypedValue_StringValue
 // Deprecated: Please use types in: cloud.google.com/go/bigquery/migration/apiv2alpha/migrationpb
 type UnimplementedMigrationServiceServer = src.UnimplementedMigrationServiceServer
 
-// UnimplementedSqlTranslationServiceServer can be embedded to have forward
-// compatible implementations.
-//
-// Deprecated: Please use types in: cloud.google.com/go/bigquery/migration/apiv2alpha/migrationpb
-type UnimplementedSqlTranslationServiceServer = src.UnimplementedSqlTranslationServiceServer
-
 // Deprecated: Please use funcs in: cloud.google.com/go/bigquery/migration/apiv2alpha/migrationpb
 func NewMigrationServiceClient(cc grpc.ClientConnInterface) MigrationServiceClient {
 	return src.NewMigrationServiceClient(cc)
 }
 
 // Deprecated: Please use funcs in: cloud.google.com/go/bigquery/migration/apiv2alpha/migrationpb
-func NewSqlTranslationServiceClient(cc grpc.ClientConnInterface) SqlTranslationServiceClient {
-	return src.NewSqlTranslationServiceClient(cc)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/bigquery/migration/apiv2alpha/migrationpb
 func RegisterMigrationServiceServer(s *grpc.Server, srv MigrationServiceServer) {
 	src.RegisterMigrationServiceServer(s, srv)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/bigquery/migration/apiv2alpha/migrationpb
-func RegisterSqlTranslationServiceServer(s *grpc.Server, srv SqlTranslationServiceServer) {
-	src.RegisterSqlTranslationServiceServer(s, srv)
 }

@@ -71,9 +71,7 @@ const (
 	AttributionSettings_REPORTING_ATTRIBUTION_MODEL_UNSPECIFIED                  = src.AttributionSettings_REPORTING_ATTRIBUTION_MODEL_UNSPECIFIED
 	AudienceDimensionOrMetricFilter_NumericFilter_EQUAL                          = src.AudienceDimensionOrMetricFilter_NumericFilter_EQUAL
 	AudienceDimensionOrMetricFilter_NumericFilter_GREATER_THAN                   = src.AudienceDimensionOrMetricFilter_NumericFilter_GREATER_THAN
-	AudienceDimensionOrMetricFilter_NumericFilter_GREATER_THAN_OR_EQUAL          = src.AudienceDimensionOrMetricFilter_NumericFilter_GREATER_THAN_OR_EQUAL
 	AudienceDimensionOrMetricFilter_NumericFilter_LESS_THAN                      = src.AudienceDimensionOrMetricFilter_NumericFilter_LESS_THAN
-	AudienceDimensionOrMetricFilter_NumericFilter_LESS_THAN_OR_EQUAL             = src.AudienceDimensionOrMetricFilter_NumericFilter_LESS_THAN_OR_EQUAL
 	AudienceDimensionOrMetricFilter_NumericFilter_OPERATION_UNSPECIFIED          = src.AudienceDimensionOrMetricFilter_NumericFilter_OPERATION_UNSPECIFIED
 	AudienceDimensionOrMetricFilter_StringFilter_BEGINS_WITH                     = src.AudienceDimensionOrMetricFilter_StringFilter_BEGINS_WITH
 	AudienceDimensionOrMetricFilter_StringFilter_CONTAINS                        = src.AudienceDimensionOrMetricFilter_StringFilter_CONTAINS
@@ -81,7 +79,6 @@ const (
 	AudienceDimensionOrMetricFilter_StringFilter_EXACT                           = src.AudienceDimensionOrMetricFilter_StringFilter_EXACT
 	AudienceDimensionOrMetricFilter_StringFilter_FULL_REGEXP                     = src.AudienceDimensionOrMetricFilter_StringFilter_FULL_REGEXP
 	AudienceDimensionOrMetricFilter_StringFilter_MATCH_TYPE_UNSPECIFIED          = src.AudienceDimensionOrMetricFilter_StringFilter_MATCH_TYPE_UNSPECIFIED
-	AudienceDimensionOrMetricFilter_StringFilter_PARTIAL_REGEXP                  = src.AudienceDimensionOrMetricFilter_StringFilter_PARTIAL_REGEXP
 	AudienceEventTrigger_AUDIENCE_JOINED                                         = src.AudienceEventTrigger_AUDIENCE_JOINED
 	AudienceEventTrigger_AUDIENCE_MEMBERSHIP_RENEWED                             = src.AudienceEventTrigger_AUDIENCE_MEMBERSHIP_RENEWED
 	AudienceEventTrigger_LOG_CONDITION_UNSPECIFIED                               = src.AudienceEventTrigger_LOG_CONDITION_UNSPECIFIED
