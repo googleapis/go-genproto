@@ -58,7 +58,7 @@ const (
 	PrivateIPv6GoogleAccess_PRIVATE_IPV6_GOOGLE_ACCESS_DISABLED PrivateIPv6GoogleAccess = 1
 	// Enables private IPv6 access to Google Services from GKE
 	PrivateIPv6GoogleAccess_PRIVATE_IPV6_GOOGLE_ACCESS_TO_GOOGLE PrivateIPv6GoogleAccess = 2
-	// Enables priate IPv6 access to and from Google Services
+	// Enables private IPv6 access to and from Google Services
 	PrivateIPv6GoogleAccess_PRIVATE_IPV6_GOOGLE_ACCESS_BIDIRECTIONAL PrivateIPv6GoogleAccess = 3
 )
 
