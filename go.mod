@@ -7,26 +7,26 @@ require (
 	cloud.google.com/go/accessapproval v1.6.0
 	cloud.google.com/go/accesscontextmanager v1.6.0
 	cloud.google.com/go/aiplatform v1.35.0
-	cloud.google.com/go/analytics v0.17.0
+	cloud.google.com/go/analytics v0.18.0
 	cloud.google.com/go/apigateway v1.5.0
 	cloud.google.com/go/apigeeconnect v1.5.0
 	cloud.google.com/go/apigeeregistry v0.5.0
 	cloud.google.com/go/apikeys v0.5.0
 	cloud.google.com/go/appengine v1.6.0
-	cloud.google.com/go/area120 v0.7.0
-	cloud.google.com/go/artifactregistry v1.11.1
+	cloud.google.com/go/area120 v0.7.1
+	cloud.google.com/go/artifactregistry v1.11.2
 	cloud.google.com/go/asset v1.11.1
 	cloud.google.com/go/assuredworkloads v1.10.0
 	cloud.google.com/go/automl v1.12.0
 	cloud.google.com/go/baremetalsolution v0.5.0
 	cloud.google.com/go/batch v0.7.0
 	cloud.google.com/go/beyondcorp v0.4.0
-	cloud.google.com/go/bigquery v1.47.0
+	cloud.google.com/go/bigquery v1.48.0
 	cloud.google.com/go/billing v1.12.0
 	cloud.google.com/go/binaryauthorization v1.5.0
 	cloud.google.com/go/certificatemanager v1.6.0
 	cloud.google.com/go/channel v1.11.0
-	cloud.google.com/go/cloudbuild v1.6.0
+	cloud.google.com/go/cloudbuild v1.7.0
 	cloud.google.com/go/clouddms v1.5.0
 	cloud.google.com/go/cloudtasks v1.9.0
 	cloud.google.com/go/compute v1.18.0
@@ -65,7 +65,7 @@ require (
 	cloud.google.com/go/iap v1.6.0
 	cloud.google.com/go/ids v1.3.0
 	cloud.google.com/go/iot v1.5.0
-	cloud.google.com/go/kms v1.8.0
+	cloud.google.com/go/kms v1.9.0
 	cloud.google.com/go/language v1.9.0
 	cloud.google.com/go/lifesciences v0.8.0
 	cloud.google.com/go/logging v1.7.0
@@ -102,7 +102,7 @@ require (
 	cloud.google.com/go/secretmanager v1.10.0
 	cloud.google.com/go/security v1.12.0
 	cloud.google.com/go/securitycenter v1.18.1
-	cloud.google.com/go/servicecontrol v1.10.0
+	cloud.google.com/go/servicecontrol v1.11.0
 	cloud.google.com/go/servicedirectory v1.8.0
 	cloud.google.com/go/servicemanagement v1.6.0
 	cloud.google.com/go/serviceusage v1.5.0
@@ -114,8 +114,8 @@ require (
 	cloud.google.com/go/texttospeech v1.6.0
 	cloud.google.com/go/tpu v1.5.0
 	cloud.google.com/go/trace v1.8.0
-	cloud.google.com/go/translate v1.5.0
-	cloud.google.com/go/video v1.12.0
+	cloud.google.com/go/translate v1.6.0
+	cloud.google.com/go/video v1.13.0
 	cloud.google.com/go/videointelligence v1.10.0
 	cloud.google.com/go/vision/v2 v2.6.0
 	cloud.google.com/go/vmmigration v1.5.0
