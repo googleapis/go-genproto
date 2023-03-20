@@ -1,4 +1,4 @@
-// Copyright 2022 Google LLC
+// Copyright 2023 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -237,10 +237,8 @@ type ListDeliveryVehiclesRequest struct {
 	// `attribute.<KEY> <COMPARATOR> <VALUE>`, for example `attributes.foo = bar`
 	// is 1 restriction.
 	Filter string `protobuf:"bytes,6,opt,name=filter,proto3" json:"filter,omitempty"`
-	// Optional. A filter that limits the search area to a rectangle defined by
-	// the northeast and southwest corner points.
-	//
-	// When defined, only vehicles located within the search area are returned.
+	// Optional. A filter that limits the vehicles returned to those whose last
+	// known location was in the rectangular area defined by the viewport.
 	Viewport *viewport.Viewport `protobuf:"bytes,7,opt,name=viewport,proto3" json:"viewport,omitempty"`
 }
 
