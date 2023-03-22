@@ -90,6 +90,8 @@ cloud.google.com/go/domains v0.8.0 h1:2ti/o9tlWL4N+wIuWUNH+LbfgpwxPr8J1sv9RHA4bY
 cloud.google.com/go/domains v0.8.0/go.mod h1:M9i3MMDzGFXsydri9/vW+EWz9sWb4I6WyHqdlAk0idE=
 cloud.google.com/go/edgecontainer v0.3.0 h1:i57Q4zg9j8h4UQoKTD7buXbLCvofmmV8+8owwSmM3ew=
 cloud.google.com/go/edgecontainer v0.3.0/go.mod h1:FLDpP4nykgwwIfcLt6zInhprzw0lEi2P1fjO6Ie0qbc=
+cloud.google.com/go/edgecontainer v1.0.0 h1:O0YVE5v+O0Q/ODXYsQHmHb+sYM8KNjGZw2pjX2Ws41c=
+cloud.google.com/go/edgecontainer v1.0.0/go.mod h1:cttArqZpBB2q58W/upSG++ooo6EsblxDIolxa3jSjbY=
 cloud.google.com/go/errorreporting v0.3.0 h1:kj1XEWMu8P0qlLhm3FwcaFsUvXChV/OraZwA70trRR0=
 cloud.google.com/go/errorreporting v0.3.0/go.mod h1:xsP2yaAp+OAW4OIm60An2bbLpqIhKXdWR/tawvl7QzU=
 cloud.google.com/go/essentialcontacts v1.5.0 h1:gIzEhCoOT7bi+6QZqZIzX1Erj4SswMPIteNvYVlu+pM=
