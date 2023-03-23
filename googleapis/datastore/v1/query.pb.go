@@ -1,4 +1,4 @@
-// Copyright 2022 Google LLC
+// Copyright 2023 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -503,6 +503,11 @@ type Query struct {
 	// The properties to make distinct. The query results will contain the first
 	// result for each distinct combination of values for the given properties
 	// (if empty, all results are returned).
+	//
+	// Requires:
+	//
+	// * If `order` is specified, the set of distinct on properties must appear
+	// before the non-distinct on properties in `order`.
 	DistinctOn []*PropertyReference `protobuf:"bytes,6,rep,name=distinct_on,json=distinctOn,proto3" json:"distinct_on,omitempty"`
 	// A starting point for the query results. Query cursors are
 	// returned in query result batches and
@@ -1432,7 +1437,7 @@ func (x *QueryResultBatch) GetReadTime() *timestamppb.Timestamp {
 	return nil
 }
 
-// Defines a aggregation that produces a single result.
+// Defines an aggregation that produces a single result.
 type AggregationQuery_Aggregation struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -1456,7 +1461,7 @@ type AggregationQuery_Aggregation struct {
 	//	COUNT_UP_TO(1) AS count_up_to_1,
 	//	COUNT_UP_TO(2),
 	//	COUNT_UP_TO(3) AS count_up_to_3,
-	//	COUNT_UP_TO(4)
+	//	COUNT(*)
 	//
 	// OVER (
 	//
@@ -1473,7 +1478,7 @@ type AggregationQuery_Aggregation struct {
 	//	COUNT_UP_TO(1) AS count_up_to_1,
 	//	COUNT_UP_TO(2) AS property_1,
 	//	COUNT_UP_TO(3) AS count_up_to_3,
-	//	COUNT_UP_TO(4) AS property_2
+	//	COUNT(*) AS property_2
 	//
 	// OVER (
 	//
@@ -1567,7 +1572,7 @@ type AggregationQuery_Aggregation_Count struct {
 	// count.
 	//
 	// This provides a way to set an upper bound on the number of entities
-	// to scan, limiting latency and cost.
+	// to scan, limiting latency, and cost.
 	//
 	// Unspecified is interpreted as no bound.
 	//
