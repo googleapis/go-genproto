@@ -46,38 +46,11 @@ type ContainerAnalysisV1Beta1Client = src.ContainerAnalysisV1Beta1Client
 // Deprecated: Please use types in: cloud.google.com/go/containeranalysis/apiv1beta1/containeranalysispb
 type ContainerAnalysisV1Beta1Server = src.ContainerAnalysisV1Beta1Server
 
-// Request to get a scan configuration.
-//
-// Deprecated: Please use types in: cloud.google.com/go/containeranalysis/apiv1beta1/containeranalysispb
-type GetScanConfigRequest = src.GetScanConfigRequest
-
-// Request to list scan configurations.
-//
-// Deprecated: Please use types in: cloud.google.com/go/containeranalysis/apiv1beta1/containeranalysispb
-type ListScanConfigsRequest = src.ListScanConfigsRequest
-
-// Response for listing scan configurations.
-//
-// Deprecated: Please use types in: cloud.google.com/go/containeranalysis/apiv1beta1/containeranalysispb
-type ListScanConfigsResponse = src.ListScanConfigsResponse
-
-// A scan configuration specifies whether Cloud components in a project have a
-// particular type of analysis being run. For example, it can configure whether
-// vulnerability scanning is being done on Docker images or not.
-//
-// Deprecated: Please use types in: cloud.google.com/go/containeranalysis/apiv1beta1/containeranalysispb
-type ScanConfig = src.ScanConfig
-
 // UnimplementedContainerAnalysisV1Beta1Server can be embedded to have forward
 // compatible implementations.
 //
 // Deprecated: Please use types in: cloud.google.com/go/containeranalysis/apiv1beta1/containeranalysispb
 type UnimplementedContainerAnalysisV1Beta1Server = src.UnimplementedContainerAnalysisV1Beta1Server
-
-// A request to update a scan configuration.
-//
-// Deprecated: Please use types in: cloud.google.com/go/containeranalysis/apiv1beta1/containeranalysispb
-type UpdateScanConfigRequest = src.UpdateScanConfigRequest
 
 // Deprecated: Please use funcs in: cloud.google.com/go/containeranalysis/apiv1beta1/containeranalysispb
 func NewContainerAnalysisV1Beta1Client(cc grpc.ClientConnInterface) ContainerAnalysisV1Beta1Client {
