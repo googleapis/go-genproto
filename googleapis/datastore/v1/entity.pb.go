@@ -1,4 +1,4 @@
-// Copyright 2022 Google LLC
+// Copyright 2023 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -530,8 +530,8 @@ type Entity struct {
 	// The map's keys are property names.
 	// A property name matching regex `__.*__` is reserved.
 	// A reserved property name is forbidden in certain documented contexts.
-	// The name must not contain more than 500 characters.
-	// The name cannot be `""`.
+	// The map keys, represented as UTF-8, must not exceed 1,500 bytes and cannot
+	// be empty.
 	Properties map[string]*Value `protobuf:"bytes,3,rep,name=properties,proto3" json:"properties,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 }
 
