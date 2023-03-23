@@ -48,7 +48,7 @@ require (
 	cloud.google.com/go/dlp v1.9.0
 	cloud.google.com/go/documentai v1.16.0
 	cloud.google.com/go/domains v0.8.0
-	cloud.google.com/go/edgecontainer v0.3.0
+	cloud.google.com/go/edgecontainer v1.0.0
 	cloud.google.com/go/errorreporting v0.3.0
 	cloud.google.com/go/essentialcontacts v1.5.0
 	cloud.google.com/go/eventarc v1.10.0
