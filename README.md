@@ -7,9 +7,9 @@ Go generated proto packages
 go get google.golang.org/genproto/...
 ```
 
-> **IMPORTANT** This repository is currently experimental. The structure
-> of the contained packages is subject to change. Please see the original
-> source repositories (listed below) to find out the status of the each
+> **IMPORTANT** This repository is unversioned and lives on head of its sources.
+> The structure of the contained packages is subject to change. Please see the
+> original source repositories (listed below) to find out the status of the each
 > protocol buffer's associated service.
 
 This repository contains the generated Go packages for common protocol buffer
