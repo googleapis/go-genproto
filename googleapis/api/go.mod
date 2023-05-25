@@ -3,7 +3,8 @@ module google.golang.org/genproto/googleapis/api
 go 1.19
 
 require (
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20230525153123-4ab324cd7291
+	google.golang.org/genproto v0.0.0-20230525153125-c99c1f876d47
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20230525153128-2a005b7cb9a0
 	google.golang.org/grpc v1.54.0
 	google.golang.org/protobuf v1.30.0
 )
