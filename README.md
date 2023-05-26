@@ -6,6 +6,10 @@ Go generated proto packages
 ```
 go get google.golang.org/genproto/...
 ```
+> **WARNING(2023-05-26):** New submodules: upgrade before 2024-03-01 to avoid
+> ambiguous import errors with
+> [google.golang.org/genproto](https://pkg.go.dev/google.golang.org/genproto).
+> See [#1015](https://github.com/googleapis/go-genproto/issues/1015) for more information.
 
 > **IMPORTANT** This repository is currently experimental. The structure
 > of the contained packages is subject to change. Please see the original
