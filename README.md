@@ -1,7 +1,3 @@
-
-
-
-
 Go generated proto packages
 ===========================
 
