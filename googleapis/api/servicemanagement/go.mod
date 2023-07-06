@@ -3,9 +3,9 @@ module google.golang.org/genproto/googleapis/api/servicemanagement
 go 1.19
 
 require (
-	cloud.google.com/go/servicemanagement v1.8.0
-	google.golang.org/genproto v0.0.0-20230525234025-438c736192d0
-	google.golang.org/grpc v1.54.0
+	cloud.google.com/go/servicemanagement v1.9.2
+	google.golang.org/genproto 9506855d4529
+	google.golang.org/grpc v1.56.2
 )
 
 require (

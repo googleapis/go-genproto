@@ -3,11 +3,11 @@ module google.golang.org/genproto/googleapis/api/serviceusage
 go 1.19
 
 require (
-	cloud.google.com/go/serviceusage v1.6.0
-	google.golang.org/genproto v0.0.0-20230525234025-438c736192d0
-	google.golang.org/genproto/googleapis/api v0.0.0-20230525234035-dd9d682886f9
-	google.golang.org/grpc v1.54.0
-	google.golang.org/protobuf v1.30.0
+	cloud.google.com/go/serviceusage v1.7.1
+	google.golang.org/genproto 9506855d4529
+	google.golang.org/genproto/googleapis/api 9506855d4529
+	google.golang.org/grpc v1.56.2
+	google.golang.org/protobuf v1.31.0
 )
 
 require (
