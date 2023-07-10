@@ -40,7 +40,7 @@ require (
 	cloud.google.com/go/dataplex v1.8.1
 	cloud.google.com/go/dataproc v1.12.0
 	cloud.google.com/go/dataqna v0.8.1
-	cloud.google.com/go/datastore v1.12.0
+	cloud.google.com/go/datastore v1.12.1
 	cloud.google.com/go/datastream v1.9.1
 	cloud.google.com/go/deploy v1.11.0
 	cloud.google.com/go/dialogflow v1.38.0
@@ -60,7 +60,7 @@ require (
 	cloud.google.com/go/gkehub v0.14.1
 	cloud.google.com/go/gkemulticloud v0.6.1
 	cloud.google.com/go/gsuiteaddons v1.6.1
-	cloud.google.com/go/iam v1.1.0
+	cloud.google.com/go/iam v1.1.1
 	cloud.google.com/go/iap v1.8.1
 	cloud.google.com/go/ids v1.4.1
 	cloud.google.com/go/iot v1.7.1
@@ -121,8 +121,8 @@ require (
 	cloud.google.com/go/websecurityscanner v1.6.1
 	cloud.google.com/go/workflows v1.11.1
 	github.com/golang/protobuf v1.5.3
-	google.golang.org/genproto/googleapis/api v0.0.0-20230629202037-9506855d4529
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20230629202037-9506855d4529
+	google.golang.org/genproto/googleapis/api ccb25ca9f130
+	google.golang.org/genproto/googleapis/rpc ccb25ca9f130
 	google.golang.org/grpc v1.56.2
 	google.golang.org/protobuf v1.31.0
 )
