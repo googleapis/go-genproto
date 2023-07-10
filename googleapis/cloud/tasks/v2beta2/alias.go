@@ -47,7 +47,6 @@ const (
 // Deprecated: Please use vars in: cloud.google.com/go/cloudtasks/apiv2beta2/cloudtaskspb
 var (
 	File_google_cloud_tasks_v2beta2_cloudtasks_proto = src.File_google_cloud_tasks_v2beta2_cloudtasks_proto
-	File_google_cloud_tasks_v2beta2_old_target_proto = src.File_google_cloud_tasks_v2beta2_old_target_proto
 	File_google_cloud_tasks_v2beta2_queue_proto      = src.File_google_cloud_tasks_v2beta2_queue_proto
 	File_google_cloud_tasks_v2beta2_target_proto     = src.File_google_cloud_tasks_v2beta2_target_proto
 	File_google_cloud_tasks_v2beta2_task_proto       = src.File_google_cloud_tasks_v2beta2_task_proto
