@@ -100,8 +100,6 @@ cloud.google.com/go/firestore v1.11.0 h1:PPgtwcYUOXV2jFe1bV3nda3RCrOa8cvBjTOn2MQ
 cloud.google.com/go/firestore v1.11.0/go.mod h1:b38dKhgzlmNNGTNZZwe7ZRFEuRab1Hay3/DBsIGKKy4=
 cloud.google.com/go/functions v1.15.1 h1:LtAyqvO1TFmNLcROzHZhV0agEJfBi+zfMZsF4RT/a7U=
 cloud.google.com/go/functions v1.15.1/go.mod h1:P5yNWUTkyU+LvW/S9O6V+V423VZooALQlqoXdoPz5AE=
-cloud.google.com/go/gaming v1.10.1 h1:5qZmZEWzMf8GEFgm9NeC3bjFRpt7x4S6U7oLbxaf7N8=
-cloud.google.com/go/gaming v1.10.1/go.mod h1:XQQvtfP8Rb9Rxnxm5wFVpAp9zCQkJi2bLIb7iHGwB3s=
 cloud.google.com/go/gkebackup v0.4.0 h1:za3QZvw6ujR0uyqkhomKKKNoXDyqYGPJies3voUK8DA=
 cloud.google.com/go/gkebackup v0.4.0/go.mod h1:byAyBGUwYGEEww7xsbnUTBHIYcOPy/PgUWUtOeRm9Vg=
 cloud.google.com/go/gkeconnect v0.8.1 h1:a1ckRvVznnuvDWESM2zZDzSVFvggeBaVY5+BVB8tbT0=

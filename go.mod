@@ -54,7 +54,6 @@ require (
 	cloud.google.com/go/filestore v1.7.1
 	cloud.google.com/go/firestore v1.11.0
 	cloud.google.com/go/functions v1.15.1
-	cloud.google.com/go/gaming v1.10.1
 	cloud.google.com/go/gkebackup v0.4.0
 	cloud.google.com/go/gkeconnect v0.8.1
 	cloud.google.com/go/gkehub v0.14.1
