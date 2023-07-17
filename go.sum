@@ -26,12 +26,8 @@ cloud.google.com/go/assuredworkloads v1.11.1 h1:yaO0kwS+SnhVSTF7BqTyVGt3DTocI6Jq
 cloud.google.com/go/assuredworkloads v1.11.1/go.mod h1:+F04I52Pgn5nmPG36CWFtxmav6+7Q+c5QyJoL18Lry0=
 cloud.google.com/go/automl v1.13.1 h1:iP9iQurb0qbz+YOOMfKSEjhONA/WcoOIjt6/m+6pIgo=
 cloud.google.com/go/automl v1.13.1/go.mod h1:1aowgAHWYZU27MybSCFiukPO7xnyawv7pt3zK4bheQE=
-cloud.google.com/go/baremetalsolution v0.5.0 h1:2AipdYXL0VxMboelTTw8c1UJ7gYu35LZYUbuRv9Q28s=
-cloud.google.com/go/baremetalsolution v0.5.0/go.mod h1:dXGxEkmR9BMwxhzBhV0AioD0ULBmuLZI8CdwalUxuss=
 cloud.google.com/go/baremetalsolution v1.1.1 h1:0Ge9PQAy6cZ1tRrkc44UVgYV15nw2TVnzJzYsMHXF+E=
 cloud.google.com/go/baremetalsolution v1.1.1/go.mod h1:D1AV6xwOksJMV4OSlWHtWuFNZZYujJknMAP4Qa27QIA=
-cloud.google.com/go/batch v0.7.0 h1:YbMt0E6BtqeD5FvSv1d56jbVsWEzlGm55lYte+M6Mzs=
-cloud.google.com/go/batch v0.7.0/go.mod h1:vLZN95s6teRUqRQ4s3RLDsH8PvboqBK+rn1oevL159g=
 cloud.google.com/go/batch v1.3.1 h1:uE0Q//W7FOGPjf7nuPiP0zoE8wOT3ngoIO2HIet0ilY=
 cloud.google.com/go/batch v1.3.1/go.mod h1:VguXeQKXIYaeeIYbuozUmBR13AfL4SJP7IltNPS+A4A=
 cloud.google.com/go/beyondcorp v0.6.1 h1:doSatyJyIY1ffqsHuv5DiPSYoXZRIUrJYLArWLZqE/E=
@@ -74,7 +70,6 @@ cloud.google.com/go/dataplex v1.8.1 h1:RvUH/k3Qi5AOXUAmQVsNCcND9qwJJq3biMSPngO0T
 cloud.google.com/go/dataplex v1.8.1/go.mod h1:7TyrDT6BCdI8/38Uvp0/ZxBslOslP2X2MPDucliyvSE=
 cloud.google.com/go/dataproc v1.12.0 h1:W47qHL3W4BPkAIbk4SWmIERwsWBaNnWm0P2sdx3YgGU=
 cloud.google.com/go/dataproc v1.12.0/go.mod h1:zrF3aX0uV3ikkMz6z4uBbIKyhRITnxvr4i3IjKsKrw4=
-cloud.google.com/go/dataproc/v2 v2.0.1/go.mod h1:7Ez3KRHdFGcfY7GcevBbvozX+zyWGcwLJvvAMwCaoZ4=
 cloud.google.com/go/dataqna v0.8.1 h1:ITpUJep04hC9V7C+gcK390HO++xesQFSUJ7S4nSnF3U=
 cloud.google.com/go/dataqna v0.8.1/go.mod h1:zxZM0Bl6liMePWsHA8RMGAfmTG34vJMapbHAxQ5+WA8=
 cloud.google.com/go/datastore v1.12.1 h1:i8HMKsqg/Sl3ZlOTGl471Z8j2uKtbRDT9VXJUIVlMik=
@@ -105,8 +100,6 @@ cloud.google.com/go/firestore v1.11.0 h1:PPgtwcYUOXV2jFe1bV3nda3RCrOa8cvBjTOn2MQ
 cloud.google.com/go/firestore v1.11.0/go.mod h1:b38dKhgzlmNNGTNZZwe7ZRFEuRab1Hay3/DBsIGKKy4=
 cloud.google.com/go/functions v1.15.1 h1:LtAyqvO1TFmNLcROzHZhV0agEJfBi+zfMZsF4RT/a7U=
 cloud.google.com/go/functions v1.15.1/go.mod h1:P5yNWUTkyU+LvW/S9O6V+V423VZooALQlqoXdoPz5AE=
-cloud.google.com/go/gkebackup v0.4.0 h1:za3QZvw6ujR0uyqkhomKKKNoXDyqYGPJies3voUK8DA=
-cloud.google.com/go/gkebackup v0.4.0/go.mod h1:byAyBGUwYGEEww7xsbnUTBHIYcOPy/PgUWUtOeRm9Vg=
 cloud.google.com/go/gkebackup v1.3.0 h1:lgyrpdhtJKV7l1GM15YFt+OCyHMxsQZuSydyNmS0Pxo=
 cloud.google.com/go/gkebackup v1.3.0/go.mod h1:vUDOu++N0U5qs4IhG1pcOnD1Mac79xWy6GoBFlWCWBU=
 cloud.google.com/go/gkeconnect v0.8.1 h1:a1ckRvVznnuvDWESM2zZDzSVFvggeBaVY5+BVB8tbT0=
@@ -137,8 +130,6 @@ cloud.google.com/go/longrunning v0.5.1 h1:Fr7TXftcqTudoyRJa113hyaqlGdiBQkp0Gq7tE
 cloud.google.com/go/longrunning v0.5.1/go.mod h1:spvimkwdz6SPWKEt/XBij79E9fiTkHSQl/fRUUQJYJc=
 cloud.google.com/go/managedidentities v1.6.1 h1:2/qZuOeLgUHorSdxSQGtnOu9xQkBn37+j+oZQv/KHJY=
 cloud.google.com/go/managedidentities v1.6.1/go.mod h1:h/irGhTN2SkZ64F43tfGPMbHnypMbu4RB3yl8YcuEak=
-cloud.google.com/go/maps v0.7.0 h1:mv9YaczD4oZBZkM5XJl6fXQ984IkJNHPwkc8MUsdkBo=
-cloud.google.com/go/maps v0.7.0/go.mod h1:3GnvVl3cqeSvgMcpRlQidXsPYuDGQ8naBis7MVzpXsY=
 cloud.google.com/go/maps v1.3.0 h1:m4BlGu0qnPwuq5aToT3atcVckS+hf40jsRXveJhusJI=
 cloud.google.com/go/maps v1.3.0/go.mod h1:6mWTUv+WhnOwAgjVsSW2QPPECmW+s3PcRyOa9vgG/5s=
 cloud.google.com/go/mediatranslation v0.8.1 h1:50cF7c1l3BanfKrpnTCaTvhf+Fo6kdF21DG0byG7gYU=
@@ -191,8 +182,6 @@ cloud.google.com/go/resourcesettings v1.6.1 h1:Fdyq418U69LhvNPFdlEO29w+DRRjwDA4/
 cloud.google.com/go/resourcesettings v1.6.1/go.mod h1:M7mk9PIZrC5Fgsu1kZJci6mpgN8o0IUzVx3eJU3y4Jw=
 cloud.google.com/go/retail v1.14.1 h1:gYBrb9u/Hc5s5lUTFXX1Vsbc/9BEvgtioY6ZKaK0DK8=
 cloud.google.com/go/retail v1.14.1/go.mod h1:y3Wv3Vr2k54dLNIrCzenyKG8g8dhvhncT2NcNjb/6gE=
-cloud.google.com/go/run v0.9.0 h1:ydJQo+k+MShYnBfhaRHSZYeD/SQKZzZLAROyfpeD9zw=
-cloud.google.com/go/run v0.9.0/go.mod h1:Wwu+/vvg8Y+JUApMwEDfVfhetv30hCG4ZwDR/IXl2Qg=
 cloud.google.com/go/run v1.2.0 h1:kHeIG8q+N6Zv0nDkBjSOYfK2eWqa5FnaiDPH/7/HirE=
 cloud.google.com/go/run v1.2.0/go.mod h1:36V1IlDzQ0XxbQjUx6IYbw8H3TJnWvhii963WW3B/bo=
 cloud.google.com/go/scheduler v1.10.1 h1:yoZbZR8880KgPGLmACOMCiY2tPk+iX4V/dkxqTirlz8=

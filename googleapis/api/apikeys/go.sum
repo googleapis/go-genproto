@@ -1,5 +1,3 @@
-cloud.google.com/go/apikeys v0.6.0 h1:B9CdHFZTFjVti89tmyXXrO+7vSNo2jvZuHG8zD5trdQ=
-cloud.google.com/go/apikeys v0.6.0/go.mod h1:kbpXu5upyiAlGkKrJgQl8A0rKNNJ7dQ377pdroRSSi8=
 cloud.google.com/go/apikeys v1.1.1 h1:KPy3MPCamLjXupPsP/+yHzUVV6Ot4lh59TnpByzwfrk=
 cloud.google.com/go/apikeys v1.1.1/go.mod h1:kjKFkD9Ybz9HntqHPbe/Kp8vFWsmk1vZt2n8NXY0pkE=
 cloud.google.com/go/longrunning v0.5.1 h1:Fr7TXftcqTudoyRJa113hyaqlGdiBQkp0Gq7tErFDWI=
