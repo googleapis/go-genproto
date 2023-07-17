@@ -17,8 +17,8 @@ require (
 	cloud.google.com/go/asset v1.14.1
 	cloud.google.com/go/assuredworkloads v1.11.1
 	cloud.google.com/go/automl v1.13.1
-	cloud.google.com/go/baremetalsolution v0.5.0
-	cloud.google.com/go/batch v0.7.0
+	cloud.google.com/go/baremetalsolution v1.1.1
+	cloud.google.com/go/batch v1.3.1
 	cloud.google.com/go/beyondcorp v0.6.1
 	cloud.google.com/go/bigquery v1.52.0
 	cloud.google.com/go/billing v1.16.0
@@ -54,7 +54,7 @@ require (
 	cloud.google.com/go/filestore v1.7.1
 	cloud.google.com/go/firestore v1.11.0
 	cloud.google.com/go/functions v1.15.1
-	cloud.google.com/go/gkebackup v0.4.0
+	cloud.google.com/go/gkebackup v1.3.0
 	cloud.google.com/go/gkeconnect v0.8.1
 	cloud.google.com/go/gkehub v0.14.1
 	cloud.google.com/go/gkemulticloud v0.6.1
@@ -69,7 +69,7 @@ require (
 	cloud.google.com/go/logging v1.7.0
 	cloud.google.com/go/longrunning v0.5.1
 	cloud.google.com/go/managedidentities v1.6.1
-	cloud.google.com/go/maps v0.7.0
+	cloud.google.com/go/maps v1.3.0
 	cloud.google.com/go/mediatranslation v0.8.1
 	cloud.google.com/go/memcache v1.10.1
 	cloud.google.com/go/metastore v1.11.1
@@ -95,7 +95,7 @@ require (
 	cloud.google.com/go/resourcemanager v1.9.1
 	cloud.google.com/go/resourcesettings v1.6.1
 	cloud.google.com/go/retail v1.14.1
-	cloud.google.com/go/run v0.9.0
+	cloud.google.com/go/run v1.2.0
 	cloud.google.com/go/scheduler v1.10.1
 	cloud.google.com/go/secretmanager v1.11.1
 	cloud.google.com/go/security v1.15.1
