@@ -19,7 +19,7 @@ require (
 	cloud.google.com/go/automl v1.13.1
 	cloud.google.com/go/baremetalsolution v1.1.1
 	cloud.google.com/go/batch v1.3.1
-	cloud.google.com/go/beyondcorp v0.6.1
+	cloud.google.com/go/beyondcorp v1.0.0
 	cloud.google.com/go/bigquery v1.52.0
 	cloud.google.com/go/billing v1.16.0
 	cloud.google.com/go/binaryauthorization v1.6.1
