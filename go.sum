@@ -70,6 +70,7 @@ cloud.google.com/go/dataplex v1.8.1 h1:RvUH/k3Qi5AOXUAmQVsNCcND9qwJJq3biMSPngO0T
 cloud.google.com/go/dataplex v1.8.1/go.mod h1:7TyrDT6BCdI8/38Uvp0/ZxBslOslP2X2MPDucliyvSE=
 cloud.google.com/go/dataproc v1.12.0 h1:W47qHL3W4BPkAIbk4SWmIERwsWBaNnWm0P2sdx3YgGU=
 cloud.google.com/go/dataproc v1.12.0/go.mod h1:zrF3aX0uV3ikkMz6z4uBbIKyhRITnxvr4i3IjKsKrw4=
+cloud.google.com/go/dataproc/v2 v2.0.1/go.mod h1:7Ez3KRHdFGcfY7GcevBbvozX+zyWGcwLJvvAMwCaoZ4=
 cloud.google.com/go/dataqna v0.8.1 h1:ITpUJep04hC9V7C+gcK390HO++xesQFSUJ7S4nSnF3U=
 cloud.google.com/go/dataqna v0.8.1/go.mod h1:zxZM0Bl6liMePWsHA8RMGAfmTG34vJMapbHAxQ5+WA8=
 cloud.google.com/go/datastore v1.12.1 h1:i8HMKsqg/Sl3ZlOTGl471Z8j2uKtbRDT9VXJUIVlMik=
@@ -108,6 +109,8 @@ cloud.google.com/go/gkehub v0.14.1 h1:2BLSb8i+Co1P05IYCKATXy5yaaIw/ZqGvVSBTLdzCQ
 cloud.google.com/go/gkehub v0.14.1/go.mod h1:VEXKIJZ2avzrbd7u+zeMtW00Y8ddk/4V9511C9CQGTY=
 cloud.google.com/go/gkemulticloud v0.6.1 h1:vg81EW3GQ4RO4PT1MdNHE8aF87EiohZp/WwMWfUTTR0=
 cloud.google.com/go/gkemulticloud v0.6.1/go.mod h1:kbZ3HKyTsiwqKX7Yw56+wUGwwNZViRnxWK2DVknXWfw=
+cloud.google.com/go/gkemulticloud v1.0.0 h1:MluqhtPVZReoriP5+adGIw+ij/RIeRik8KApCW2WMTw=
+cloud.google.com/go/gkemulticloud v1.0.0/go.mod h1:kbZ3HKyTsiwqKX7Yw56+wUGwwNZViRnxWK2DVknXWfw=
 cloud.google.com/go/gsuiteaddons v1.6.1 h1:mi9jxZpzVjLQibTS/XfPZvl+Jr6D5Bs8pGqUjllRb00=
 cloud.google.com/go/gsuiteaddons v1.6.1/go.mod h1:CodrdOqRZcLp5WOwejHWYBjZvfY0kOphkAKpF/3qdZY=
 cloud.google.com/go/iam v1.1.1 h1:lW7fzj15aVIXYHREOqjRBV9PsH0Z6u8Y46a1YGvQP4Y=
@@ -222,6 +225,8 @@ cloud.google.com/go/vmmigration v1.7.1 h1:gnjIclgqbEMc+cF5IJuPxp53wjBIlqZ8h9hE8R
 cloud.google.com/go/vmmigration v1.7.1/go.mod h1:WD+5z7a/IpZ5bKK//YmT9E047AD+rjycCAvyMxGJbro=
 cloud.google.com/go/vmwareengine v0.4.1 h1:roQrCAkaysVvXxFMuK26lORi+gablOY54htDtDDow0w=
 cloud.google.com/go/vmwareengine v0.4.1/go.mod h1:Px64x+BvjPZwWuc4HdmVhoygcXqEkGHXoa7uyfTgSI0=
+cloud.google.com/go/vmwareengine v1.0.0 h1:qsJ0CPlOQu/3MFBGklu752v3AkD+Pdu091UmXJ+EjTA=
+cloud.google.com/go/vmwareengine v1.0.0/go.mod h1:Px64x+BvjPZwWuc4HdmVhoygcXqEkGHXoa7uyfTgSI0=
 cloud.google.com/go/vpcaccess v1.7.1 h1:ram0GzjNWElmbxXMIzeOZUkQ9J8ZAahD6V8ilPGqX0Y=
 cloud.google.com/go/vpcaccess v1.7.1/go.mod h1:FogoD46/ZU+JUBX9D606X21EnxiszYi2tArQwLY4SXs=
 cloud.google.com/go/webrisk v1.9.1 h1:Ssy3MkOMOnyRV5H2bkMQ13Umv7CwB/kugo3qkAX83Fk=
