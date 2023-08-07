@@ -3,7 +3,7 @@ module google.golang.org/genproto
 go 1.19
 
 require (
-	cloud.google.com/go v0.110.6
+	cloud.google.com/go v0.110.7
 	cloud.google.com/go/accessapproval v1.7.1
 	cloud.google.com/go/accesscontextmanager v1.8.1
 	cloud.google.com/go/aiplatform v1.48.0
@@ -52,7 +52,7 @@ require (
 	cloud.google.com/go/essentialcontacts v1.6.2
 	cloud.google.com/go/eventarc v1.13.0
 	cloud.google.com/go/filestore v1.7.1
-	cloud.google.com/go/firestore v1.11.0
+	cloud.google.com/go/firestore v1.12.0
 	cloud.google.com/go/functions v1.15.1
 	cloud.google.com/go/gkebackup v1.3.0
 	cloud.google.com/go/gkeconnect v0.8.1
@@ -120,8 +120,8 @@ require (
 	cloud.google.com/go/websecurityscanner v1.6.1
 	cloud.google.com/go/workflows v1.11.1
 	github.com/golang/protobuf v1.5.3
-	google.golang.org/genproto/googleapis/api v0.0.0-20230726155614-23370e0ffb3e
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20230731190214-cbb8c96f2d6d
+	google.golang.org/genproto/googleapis/api f966b187b2e5
+	google.golang.org/genproto/googleapis/rpc f966b187b2e5
 	google.golang.org/grpc v1.57.0
 	google.golang.org/protobuf v1.31.0
 )
