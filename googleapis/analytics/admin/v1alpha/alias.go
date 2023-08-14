@@ -57,13 +57,6 @@ const (
 	AttributionSettings_ACQUISITION_CONVERSION_EVENT_LOOKBACK_WINDOW_30_DAYS     = src.AttributionSettings_ACQUISITION_CONVERSION_EVENT_LOOKBACK_WINDOW_30_DAYS
 	AttributionSettings_ACQUISITION_CONVERSION_EVENT_LOOKBACK_WINDOW_7_DAYS      = src.AttributionSettings_ACQUISITION_CONVERSION_EVENT_LOOKBACK_WINDOW_7_DAYS
 	AttributionSettings_ACQUISITION_CONVERSION_EVENT_LOOKBACK_WINDOW_UNSPECIFIED = src.AttributionSettings_ACQUISITION_CONVERSION_EVENT_LOOKBACK_WINDOW_UNSPECIFIED
-	AttributionSettings_ADS_PREFERRED_LAST_CLICK                                 = src.AttributionSettings_ADS_PREFERRED_LAST_CLICK
-	AttributionSettings_CROSS_CHANNEL_DATA_DRIVEN                                = src.AttributionSettings_CROSS_CHANNEL_DATA_DRIVEN
-	AttributionSettings_CROSS_CHANNEL_FIRST_CLICK                                = src.AttributionSettings_CROSS_CHANNEL_FIRST_CLICK
-	AttributionSettings_CROSS_CHANNEL_LAST_CLICK                                 = src.AttributionSettings_CROSS_CHANNEL_LAST_CLICK
-	AttributionSettings_CROSS_CHANNEL_LINEAR                                     = src.AttributionSettings_CROSS_CHANNEL_LINEAR
-	AttributionSettings_CROSS_CHANNEL_POSITION_BASED                             = src.AttributionSettings_CROSS_CHANNEL_POSITION_BASED
-	AttributionSettings_CROSS_CHANNEL_TIME_DECAY                                 = src.AttributionSettings_CROSS_CHANNEL_TIME_DECAY
 	AttributionSettings_OTHER_CONVERSION_EVENT_LOOKBACK_WINDOW_30_DAYS           = src.AttributionSettings_OTHER_CONVERSION_EVENT_LOOKBACK_WINDOW_30_DAYS
 	AttributionSettings_OTHER_CONVERSION_EVENT_LOOKBACK_WINDOW_60_DAYS           = src.AttributionSettings_OTHER_CONVERSION_EVENT_LOOKBACK_WINDOW_60_DAYS
 	AttributionSettings_OTHER_CONVERSION_EVENT_LOOKBACK_WINDOW_90_DAYS           = src.AttributionSettings_OTHER_CONVERSION_EVENT_LOOKBACK_WINDOW_90_DAYS
