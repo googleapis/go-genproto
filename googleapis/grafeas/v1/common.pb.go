@@ -463,8 +463,8 @@ type License struct {
 	// Often a single license can be used to represent the licensing terms.
 	// Sometimes it is necessary to include a choice of one or more licenses
 	// or some combination of license identifiers.
-	// Examples: "LGPL-2.1-only OR MIT", "LGPL-2.1-only AND MIT",
-	// "GPL-2.0-or-later WITH Bison-exception-2.2".
+	// Examples: "LICENSE-2.1-only OR LICENSE", "LICENSE-2.1-only AND LICENSE",
+	// "LICENSE-2.0-or-later WITH License-exception-2.2".
 	Expression string `protobuf:"bytes,1,opt,name=expression,proto3" json:"expression,omitempty"`
 	// Comments
 	Comments string `protobuf:"bytes,2,opt,name=comments,proto3" json:"comments,omitempty"`
