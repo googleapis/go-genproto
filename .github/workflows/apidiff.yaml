@@ -7,13 +7,13 @@ jobs:
   scan_changes:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
       with:
         ref: main
     - name: Get main commit
       id: main
       run: echo "hash=$(git rev-parse HEAD)" >> $GITHUB_OUTPUT
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - uses: actions/setup-go@v4
       with:
         go-version: '1.20.1'
@@ -47,7 +47,7 @@ jobs:
         go-version: '1.20.1'
     - name: Install latest apidiff
       run: go install golang.org/x/exp/cmd/apidiff@latest
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
       with:
         ref: main
     - name: Create baseline
@@ -63,7 +63,7 @@ jobs:
         name: ${{ steps.baseline.outputs.pkg }}
         path: ${{ matrix.changed }}/${{ steps.baseline.outputs.pkg }}
         retention-days: 1
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Download baseline package data
       uses: actions/download-artifact@v3
       with:
