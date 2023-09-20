@@ -4,7 +4,7 @@ go 1.19
 
 require (
 	cloud.google.com/go/servicemanagement v1.9.2
-	google.golang.org/genproto v0.0.0-20230803162519-f966b187b2e5
+	google.golang.org/genproto 007df8e322eb
 	google.golang.org/grpc v1.57.0
 )
 
