@@ -164,12 +164,6 @@ type ContinuousValidationEvent_ContinuousValidationPodEvent_ImageDetails_AuditRe
 type ContinuousValidationEvent_ContinuousValidationPodEvent_PolicyConformanceVerdict = src.ContinuousValidationEvent_ContinuousValidationPodEvent_PolicyConformanceVerdict
 type ContinuousValidationEvent_PodEvent = src.ContinuousValidationEvent_PodEvent
 
-// An event describing that the project policy is unsupported by CV.
-//
-// Deprecated: Please use types in: cloud.google.com/go/binaryauthorization/apiv1beta1/binaryauthorizationpb
-type ContinuousValidationEvent_UnsupportedPolicyEvent = src.ContinuousValidationEvent_UnsupportedPolicyEvent
-type ContinuousValidationEvent_UnsupportedPolicyEvent_ = src.ContinuousValidationEvent_UnsupportedPolicyEvent_
-
 // Request message for [BinauthzManagementService.CreateAttestor][].
 //
 // Deprecated: Please use types in: cloud.google.com/go/binaryauthorization/apiv1beta1/binaryauthorizationpb
