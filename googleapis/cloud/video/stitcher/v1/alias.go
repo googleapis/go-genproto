@@ -58,9 +58,6 @@ const (
 	Event_START                                  = src.Event_START
 	Event_THIRD_QUARTILE                         = src.Event_THIRD_QUARTILE
 	Event_UNMUTE                                 = src.Event_UNMUTE
-	LiveSession_COMPLETE_AD                      = src.LiveSession_COMPLETE_AD
-	LiveSession_CUT_CURRENT                      = src.LiveSession_CUT_CURRENT
-	LiveSession_STITCHING_POLICY_UNSPECIFIED     = src.LiveSession_STITCHING_POLICY_UNSPECIFIED
 	ManifestOptions_ASCENDING                    = src.ManifestOptions_ASCENDING
 	ManifestOptions_DESCENDING                   = src.ManifestOptions_DESCENDING
 	ManifestOptions_ORDER_POLICY_UNSPECIFIED     = src.ManifestOptions_ORDER_POLICY_UNSPECIFIED
@@ -80,8 +77,6 @@ var (
 	File_google_cloud_video_stitcher_v1_slates_proto                 = src.File_google_cloud_video_stitcher_v1_slates_proto
 	File_google_cloud_video_stitcher_v1_stitch_details_proto         = src.File_google_cloud_video_stitcher_v1_stitch_details_proto
 	File_google_cloud_video_stitcher_v1_video_stitcher_service_proto = src.File_google_cloud_video_stitcher_v1_video_stitcher_service_proto
-	LiveSession_StitchingPolicy_name                                 = src.LiveSession_StitchingPolicy_name
-	LiveSession_StitchingPolicy_value                                = src.LiveSession_StitchingPolicy_value
 	ManifestOptions_OrderPolicy_name                                 = src.ManifestOptions_OrderPolicy_name
 	ManifestOptions_OrderPolicy_value                                = src.ManifestOptions_OrderPolicy_value
 )
@@ -95,11 +90,6 @@ type AdRequest = src.AdRequest
 //
 // Deprecated: Please use types in: cloud.google.com/go/video/stitcher/apiv1/stitcherpb
 type AdStitchDetail = src.AdStitchDetail
-
-// Metadata of an ad tag.
-//
-// Deprecated: Please use types in: cloud.google.com/go/video/stitcher/apiv1/stitcherpb
-type AdTag = src.AdTag
 
 // Configuration for an Akamai CDN key.
 //
@@ -286,12 +276,6 @@ type LiveAdTagDetail = src.LiveAdTagDetail
 //
 // Deprecated: Please use types in: cloud.google.com/go/video/stitcher/apiv1/stitcherpb
 type LiveSession = src.LiveSession
-
-// Defines the stitcher behavior in case an ad does not align exactly with the
-// ad break boundaries. If not specified, the default is COMPLETE_AD.
-//
-// Deprecated: Please use types in: cloud.google.com/go/video/stitcher/apiv1/stitcherpb
-type LiveSession_StitchingPolicy = src.LiveSession_StitchingPolicy
 
 // Options for manifest generation.
 //
