@@ -4,9 +4,9 @@ go 1.19
 
 require (
 	cloud.google.com/go/servicecontrol v1.12.4
-	google.golang.org/genproto v0.0.0-20231030173426-d783a09b4405
-	google.golang.org/genproto/googleapis/api v0.0.0-20231030173426-d783a09b4405
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20231030173426-d783a09b4405
+	google.golang.org/genproto v0.0.0-20231106174013-bbf56f31fb17
+	google.golang.org/genproto/googleapis/api v0.0.0-20231106174013-bbf56f31fb17
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20231106174013-bbf56f31fb17
 	google.golang.org/grpc v1.59.0
 	google.golang.org/protobuf v1.31.0
 )
