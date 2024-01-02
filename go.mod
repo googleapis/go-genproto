@@ -6,7 +6,7 @@ require (
 	cloud.google.com/go v0.111.0
 	cloud.google.com/go/accessapproval v1.7.4
 	cloud.google.com/go/accesscontextmanager v1.8.4
-	cloud.google.com/go/aiplatform v1.57.0
+	cloud.google.com/go/aiplatform v1.58.0
 	cloud.google.com/go/analytics v0.21.6
 	cloud.google.com/go/apigateway v1.6.4
 	cloud.google.com/go/apigeeconnect v1.6.4
@@ -14,7 +14,7 @@ require (
 	cloud.google.com/go/appengine v1.8.4
 	cloud.google.com/go/area120 v0.8.4
 	cloud.google.com/go/artifactregistry v1.14.6
-	cloud.google.com/go/asset v1.15.3
+	cloud.google.com/go/asset v1.16.0
 	cloud.google.com/go/assuredworkloads v1.11.4
 	cloud.google.com/go/automl v1.13.4
 	cloud.google.com/go/baremetalsolution v1.2.3
@@ -45,7 +45,7 @@ require (
 	cloud.google.com/go/deploy v1.16.0
 	cloud.google.com/go/dialogflow v1.47.0
 	cloud.google.com/go/dlp v1.11.1
-	cloud.google.com/go/documentai v1.23.6
+	cloud.google.com/go/documentai v1.23.7
 	cloud.google.com/go/domains v0.9.4
 	cloud.google.com/go/edgecontainer v1.1.4
 	cloud.google.com/go/errorreporting v0.3.0
@@ -66,14 +66,14 @@ require (
 	cloud.google.com/go/kms v1.15.5
 	cloud.google.com/go/language v1.12.2
 	cloud.google.com/go/lifesciences v0.9.4
-	cloud.google.com/go/logging v1.8.1
+	cloud.google.com/go/logging v1.9.0
 	cloud.google.com/go/longrunning v0.5.4
 	cloud.google.com/go/managedidentities v1.6.4
 	cloud.google.com/go/maps v1.6.2
 	cloud.google.com/go/mediatranslation v0.8.4
 	cloud.google.com/go/memcache v1.10.4
 	cloud.google.com/go/metastore v1.13.3
-	cloud.google.com/go/monitoring v1.16.3
+	cloud.google.com/go/monitoring v1.17.0
 	cloud.google.com/go/networkconnectivity v1.14.3
 	cloud.google.com/go/networkmanagement v1.9.3
 	cloud.google.com/go/networksecurity v0.9.4
@@ -90,7 +90,7 @@ require (
 	cloud.google.com/go/pubsublite v1.8.1
 	cloud.google.com/go/recaptchaenterprise/v2 v2.9.0
 	cloud.google.com/go/recommendationengine v0.8.4
-	cloud.google.com/go/recommender v1.11.3
+	cloud.google.com/go/recommender v1.12.0
 	cloud.google.com/go/redis v1.14.1
 	cloud.google.com/go/resourcemanager v1.9.4
 	cloud.google.com/go/resourcesettings v1.6.4
@@ -102,7 +102,7 @@ require (
 	cloud.google.com/go/securitycenter v1.24.3
 	cloud.google.com/go/servicedirectory v1.11.3
 	cloud.google.com/go/shell v1.7.4
-	cloud.google.com/go/spanner v1.53.1
+	cloud.google.com/go/spanner v1.54.0
 	cloud.google.com/go/speech v1.21.0
 	cloud.google.com/go/storagetransfer v1.10.3
 	cloud.google.com/go/talent v1.6.5
@@ -120,10 +120,10 @@ require (
 	cloud.google.com/go/websecurityscanner v1.6.4
 	cloud.google.com/go/workflows v1.12.3
 	github.com/golang/protobuf v1.5.3
-	google.golang.org/genproto/googleapis/api v0.0.0-20231211222908-989df2bf70f3
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20231211222908-989df2bf70f3
-	google.golang.org/grpc v1.60.0
-	google.golang.org/protobuf v1.31.0
+	google.golang.org/genproto/googleapis/api v0.0.0-20231212172506-995d672761c0
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20231212172506-995d672761c0
+	google.golang.org/grpc v1.60.1
+	google.golang.org/protobuf v1.32.0
 )
 
 require (
