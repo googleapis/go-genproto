@@ -611,56 +611,6 @@ type AudienceSimpleFilter = src.AudienceSimpleFilter
 // Deprecated: Please use types in: cloud.google.com/go/analytics/admin/apiv1alpha/adminpb
 type Audience_AudienceExclusionDurationMode = src.Audience_AudienceExclusionDurationMode
 
-// Read-only resource used to summarize a principal's effective roles.
-//
-// Deprecated: Please use types in: cloud.google.com/go/analytics/admin/apiv1alpha/adminpb
-type AuditUserLink = src.AuditUserLink
-
-// Request message for AuditUserLinks RPC.
-//
-// Deprecated: Please use types in: cloud.google.com/go/analytics/admin/apiv1alpha/adminpb
-type AuditUserLinksRequest = src.AuditUserLinksRequest
-
-// Response message for AuditUserLinks RPC.
-//
-// Deprecated: Please use types in: cloud.google.com/go/analytics/admin/apiv1alpha/adminpb
-type AuditUserLinksResponse = src.AuditUserLinksResponse
-
-// Request message for BatchCreateUserLinks RPC.
-//
-// Deprecated: Please use types in: cloud.google.com/go/analytics/admin/apiv1alpha/adminpb
-type BatchCreateUserLinksRequest = src.BatchCreateUserLinksRequest
-
-// Response message for BatchCreateUserLinks RPC.
-//
-// Deprecated: Please use types in: cloud.google.com/go/analytics/admin/apiv1alpha/adminpb
-type BatchCreateUserLinksResponse = src.BatchCreateUserLinksResponse
-
-// Request message for BatchDeleteUserLinks RPC.
-//
-// Deprecated: Please use types in: cloud.google.com/go/analytics/admin/apiv1alpha/adminpb
-type BatchDeleteUserLinksRequest = src.BatchDeleteUserLinksRequest
-
-// Request message for BatchGetUserLinks RPC.
-//
-// Deprecated: Please use types in: cloud.google.com/go/analytics/admin/apiv1alpha/adminpb
-type BatchGetUserLinksRequest = src.BatchGetUserLinksRequest
-
-// Response message for BatchGetUserLinks RPC.
-//
-// Deprecated: Please use types in: cloud.google.com/go/analytics/admin/apiv1alpha/adminpb
-type BatchGetUserLinksResponse = src.BatchGetUserLinksResponse
-
-// Request message for BatchUpdateUserLinks RPC.
-//
-// Deprecated: Please use types in: cloud.google.com/go/analytics/admin/apiv1alpha/adminpb
-type BatchUpdateUserLinksRequest = src.BatchUpdateUserLinksRequest
-
-// Response message for BatchUpdateUserLinks RPC.
-//
-// Deprecated: Please use types in: cloud.google.com/go/analytics/admin/apiv1alpha/adminpb
-type BatchUpdateUserLinksResponse = src.BatchUpdateUserLinksResponse
-
 // Request message for CancelDisplayVideo360AdvertiserLinkProposal RPC.
 //
 // Deprecated: Please use types in: cloud.google.com/go/analytics/admin/apiv1alpha/adminpb
@@ -763,16 +713,6 @@ type CreateMeasurementProtocolSecretRequest = src.CreateMeasurementProtocolSecre
 //
 // Deprecated: Please use types in: cloud.google.com/go/analytics/admin/apiv1alpha/adminpb
 type CreatePropertyRequest = src.CreatePropertyRequest
-
-// Request message for CreateUserLink RPC. Users can have multiple email
-// addresses associated with their Google account, and one of these email
-// addresses is the "primary" email address. Any of the email addresses
-// associated with a Google account may be used for a new UserLink, but the
-// returned UserLink will always contain the "primary" email address. As a
-// result, the input and output email address for this request may differ.
-//
-// Deprecated: Please use types in: cloud.google.com/go/analytics/admin/apiv1alpha/adminpb
-type CreateUserLinkRequest = src.CreateUserLinkRequest
 
 // A definition for a CustomDimension.
 //
@@ -895,11 +835,6 @@ type DeleteMeasurementProtocolSecretRequest = src.DeleteMeasurementProtocolSecre
 // Deprecated: Please use types in: cloud.google.com/go/analytics/admin/apiv1alpha/adminpb
 type DeletePropertyRequest = src.DeletePropertyRequest
 
-// Request message for DeleteUserLink RPC.
-//
-// Deprecated: Please use types in: cloud.google.com/go/analytics/admin/apiv1alpha/adminpb
-type DeleteUserLinkRequest = src.DeleteUserLinkRequest
-
 // A link between a GA4 property and a Display & Video 360 advertiser.
 //
 // Deprecated: Please use types in: cloud.google.com/go/analytics/admin/apiv1alpha/adminpb
@@ -992,11 +927,6 @@ type GetMeasurementProtocolSecretRequest = src.GetMeasurementProtocolSecretReque
 //
 // Deprecated: Please use types in: cloud.google.com/go/analytics/admin/apiv1alpha/adminpb
 type GetPropertyRequest = src.GetPropertyRequest
-
-// Request message for GetUserLink RPC.
-//
-// Deprecated: Please use types in: cloud.google.com/go/analytics/admin/apiv1alpha/adminpb
-type GetUserLinkRequest = src.GetUserLinkRequest
 
 // Read-only resource with the tag for sending data from a website to a
 // DataStream. Only present for web DataStream resources.
@@ -1176,16 +1106,6 @@ type ListPropertiesRequest = src.ListPropertiesRequest
 // Deprecated: Please use types in: cloud.google.com/go/analytics/admin/apiv1alpha/adminpb
 type ListPropertiesResponse = src.ListPropertiesResponse
 
-// Request message for ListUserLinks RPC.
-//
-// Deprecated: Please use types in: cloud.google.com/go/analytics/admin/apiv1alpha/adminpb
-type ListUserLinksRequest = src.ListUserLinksRequest
-
-// Response message for ListUserLinks RPC.
-//
-// Deprecated: Please use types in: cloud.google.com/go/analytics/admin/apiv1alpha/adminpb
-type ListUserLinksResponse = src.ListUserLinksResponse
-
 // A secret value used for sending hits to Measurement Protocol.
 //
 // Deprecated: Please use types in: cloud.google.com/go/analytics/admin/apiv1alpha/adminpb
@@ -1313,17 +1233,6 @@ type UpdateMeasurementProtocolSecretRequest = src.UpdateMeasurementProtocolSecre
 //
 // Deprecated: Please use types in: cloud.google.com/go/analytics/admin/apiv1alpha/adminpb
 type UpdatePropertyRequest = src.UpdatePropertyRequest
-
-// Request message for UpdateUserLink RPC.
-//
-// Deprecated: Please use types in: cloud.google.com/go/analytics/admin/apiv1alpha/adminpb
-type UpdateUserLinkRequest = src.UpdateUserLinkRequest
-
-// A resource message representing a user's permissions on an Account or
-// Property resource.
-//
-// Deprecated: Please use types in: cloud.google.com/go/analytics/admin/apiv1alpha/adminpb
-type UserLink = src.UserLink
 
 // Deprecated: Please use funcs in: cloud.google.com/go/analytics/admin/apiv1alpha/adminpb
 func NewAnalyticsAdminServiceClient(cc grpc.ClientConnInterface) AnalyticsAdminServiceClient {
