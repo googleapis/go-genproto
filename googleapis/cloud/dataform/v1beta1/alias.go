@@ -134,11 +134,6 @@ type CompilationResultAction_Relation_IncrementalTableConfig = src.CompilationRe
 // Deprecated: Please use types in: cloud.google.com/go/dataform/apiv1beta1/dataformpb
 type CompilationResultAction_Relation_RelationType = src.CompilationResultAction_Relation_RelationType
 
-// Configures various aspects of Dataform code compilation.
-//
-// Deprecated: Please use types in: cloud.google.com/go/dataform/apiv1beta1/dataformpb
-type CompilationResult_CodeCompilationConfig = src.CompilationResult_CodeCompilationConfig
-
 // An error encountered when attempting to compile a Dataform project.
 //
 // Deprecated: Please use types in: cloud.google.com/go/dataform/apiv1beta1/dataformpb
@@ -373,13 +368,6 @@ type QueryDirectoryContentsRequest = src.QueryDirectoryContentsRequest
 // Deprecated: Please use types in: cloud.google.com/go/dataform/apiv1beta1/dataformpb
 type QueryDirectoryContentsResponse = src.QueryDirectoryContentsResponse
 
-// Represents a single entry in a workspace directory.
-//
-// Deprecated: Please use types in: cloud.google.com/go/dataform/apiv1beta1/dataformpb
-type QueryDirectoryContentsResponse_DirectoryEntry = src.QueryDirectoryContentsResponse_DirectoryEntry
-type QueryDirectoryContentsResponse_DirectoryEntry_Directory = src.QueryDirectoryContentsResponse_DirectoryEntry_Directory
-type QueryDirectoryContentsResponse_DirectoryEntry_File = src.QueryDirectoryContentsResponse_DirectoryEntry_File
-
 // `QueryWorkflowInvocationActions` request message.
 //
 // Deprecated: Please use types in: cloud.google.com/go/dataform/apiv1beta1/dataformpb
@@ -476,13 +464,6 @@ type WorkflowInvocationAction_BigQueryAction = src.WorkflowInvocationAction_BigQ
 //
 // Deprecated: Please use types in: cloud.google.com/go/dataform/apiv1beta1/dataformpb
 type WorkflowInvocationAction_State = src.WorkflowInvocationAction_State
-
-// Includes various configuration options for this workflow invocation. If
-// both `included_targets` and `included_tags` are unset, all actions will be
-// included.
-//
-// Deprecated: Please use types in: cloud.google.com/go/dataform/apiv1beta1/dataformpb
-type WorkflowInvocation_InvocationConfig = src.WorkflowInvocation_InvocationConfig
 
 // Represents the current state of a workflow invocation.
 //
