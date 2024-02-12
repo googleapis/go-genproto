@@ -6,7 +6,7 @@ require (
 	cloud.google.com/go v0.112.0
 	cloud.google.com/go/accessapproval v1.7.5
 	cloud.google.com/go/accesscontextmanager v1.8.5
-	cloud.google.com/go/aiplatform v1.58.2
+	cloud.google.com/go/aiplatform v1.60.0
 	cloud.google.com/go/analytics v0.23.0
 	cloud.google.com/go/apigateway v1.6.5
 	cloud.google.com/go/apigeeconnect v1.6.5
@@ -14,13 +14,13 @@ require (
 	cloud.google.com/go/appengine v1.8.5
 	cloud.google.com/go/area120 v0.8.5
 	cloud.google.com/go/artifactregistry v1.14.7
-	cloud.google.com/go/asset v1.17.1
+	cloud.google.com/go/asset v1.17.2
 	cloud.google.com/go/assuredworkloads v1.11.5
 	cloud.google.com/go/automl v1.13.5
 	cloud.google.com/go/baremetalsolution v1.2.4
 	cloud.google.com/go/batch v1.8.0
 	cloud.google.com/go/beyondcorp v1.0.4
-	cloud.google.com/go/bigquery v1.58.0
+	cloud.google.com/go/bigquery v1.59.1
 	cloud.google.com/go/billing v1.18.2
 	cloud.google.com/go/binaryauthorization v1.8.1
 	cloud.google.com/go/certificatemanager v1.7.5
@@ -28,24 +28,24 @@ require (
 	cloud.google.com/go/cloudbuild v1.15.1
 	cloud.google.com/go/clouddms v1.7.4
 	cloud.google.com/go/cloudtasks v1.12.6
-	cloud.google.com/go/compute v1.23.4
+	cloud.google.com/go/compute v1.24.0
 	cloud.google.com/go/contactcenterinsights v1.13.0
-	cloud.google.com/go/container v1.30.1
+	cloud.google.com/go/container v1.31.0
 	cloud.google.com/go/containeranalysis v0.11.4
 	cloud.google.com/go/datacatalog v1.19.3
 	cloud.google.com/go/dataflow v0.9.5
 	cloud.google.com/go/dataform v0.9.2
 	cloud.google.com/go/datafusion v1.7.5
 	cloud.google.com/go/datalabeling v0.8.5
-	cloud.google.com/go/dataplex v1.14.1
+	cloud.google.com/go/dataplex v1.14.2
 	cloud.google.com/go/dataproc/v2 v2.4.0
 	cloud.google.com/go/dataqna v0.8.5
 	cloud.google.com/go/datastore v1.15.0
 	cloud.google.com/go/datastream v1.10.4
 	cloud.google.com/go/deploy v1.17.1
-	cloud.google.com/go/dialogflow v1.48.2
+	cloud.google.com/go/dialogflow v1.49.0
 	cloud.google.com/go/dlp v1.11.2
-	cloud.google.com/go/documentai v1.23.8
+	cloud.google.com/go/documentai v1.25.0
 	cloud.google.com/go/domains v0.9.5
 	cloud.google.com/go/edgecontainer v1.1.5
 	cloud.google.com/go/errorreporting v0.3.0
@@ -63,7 +63,7 @@ require (
 	cloud.google.com/go/iap v1.9.4
 	cloud.google.com/go/ids v1.4.5
 	cloud.google.com/go/iot v1.7.5
-	cloud.google.com/go/kms v1.15.6
+	cloud.google.com/go/kms v1.15.7
 	cloud.google.com/go/language v1.12.3
 	cloud.google.com/go/lifesciences v0.9.5
 	cloud.google.com/go/logging v1.9.0
@@ -73,7 +73,7 @@ require (
 	cloud.google.com/go/mediatranslation v0.8.5
 	cloud.google.com/go/memcache v1.10.5
 	cloud.google.com/go/metastore v1.13.4
-	cloud.google.com/go/monitoring v1.17.1
+	cloud.google.com/go/monitoring v1.18.0
 	cloud.google.com/go/networkconnectivity v1.14.4
 	cloud.google.com/go/networkmanagement v1.9.4
 	cloud.google.com/go/networksecurity v0.9.5
@@ -94,7 +94,7 @@ require (
 	cloud.google.com/go/redis v1.14.2
 	cloud.google.com/go/resourcemanager v1.9.5
 	cloud.google.com/go/resourcesettings v1.6.5
-	cloud.google.com/go/retail v1.15.1
+	cloud.google.com/go/retail v1.16.0
 	cloud.google.com/go/run v1.3.4
 	cloud.google.com/go/scheduler v1.10.6
 	cloud.google.com/go/secretmanager v1.11.5
@@ -112,7 +112,7 @@ require (
 	cloud.google.com/go/translate v1.10.1
 	cloud.google.com/go/video v1.20.4
 	cloud.google.com/go/videointelligence v1.11.5
-	cloud.google.com/go/vision/v2 v2.7.6
+	cloud.google.com/go/vision/v2 v2.8.0
 	cloud.google.com/go/vmmigration v1.7.5
 	cloud.google.com/go/vmwareengine v1.1.1
 	cloud.google.com/go/vpcaccess v1.7.5
@@ -120,8 +120,8 @@ require (
 	cloud.google.com/go/websecurityscanner v1.6.5
 	cloud.google.com/go/workflows v1.12.4
 	github.com/golang/protobuf v1.5.3
-	google.golang.org/genproto/googleapis/api v0.0.0-20240125205218-1f4bbc51befe
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20240125205218-1f4bbc51befe
+	google.golang.org/genproto/googleapis/api v0.0.0-20240205150955-31a09d347014
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20240205150955-31a09d347014
 	google.golang.org/grpc v1.61.0
 	google.golang.org/protobuf v1.32.0
 )
