@@ -102,7 +102,7 @@ require (
 	cloud.google.com/go/securitycenter v1.24.4
 	cloud.google.com/go/servicedirectory v1.11.4
 	cloud.google.com/go/shell v1.7.5
-	cloud.google.com/go/spanner v1.56.0
+	cloud.google.com/go/spanner v1.57.0
 	cloud.google.com/go/speech v1.21.1
 	cloud.google.com/go/storagetransfer v1.10.4
 	cloud.google.com/go/talent v1.6.6
@@ -120,9 +120,9 @@ require (
 	cloud.google.com/go/websecurityscanner v1.6.5
 	cloud.google.com/go/workflows v1.12.4
 	github.com/golang/protobuf v1.5.3
-	google.golang.org/genproto/googleapis/api v0.0.0-20240205150955-31a09d347014
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20240205150955-31a09d347014
-	google.golang.org/grpc v1.61.0
+	google.golang.org/genproto/googleapis/api v0.0.0-20240213162025-012b6fc9bca9
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20240213162025-012b6fc9bca9
+	google.golang.org/grpc v1.61.1
 	google.golang.org/protobuf v1.32.0
 )
 
