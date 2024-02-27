@@ -6,7 +6,7 @@ set -eo
 # Display commands being run
 set -x
 
-if [[ $(go version) != *"go1.22"* ]]; then
+if [[ $KOKORO_JOB_NAME != *"latest-version"* ]]; then
   exit 0
 fi
 
