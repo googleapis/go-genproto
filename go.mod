@@ -6,7 +6,7 @@ require (
 	cloud.google.com/go v0.112.2
 	cloud.google.com/go/accessapproval v1.7.6
 	cloud.google.com/go/accesscontextmanager v1.8.6
-	cloud.google.com/go/aiplatform v1.66.0
+	cloud.google.com/go/aiplatform v1.67.0
 	cloud.google.com/go/analytics v0.23.1
 	cloud.google.com/go/apigateway v1.6.6
 	cloud.google.com/go/apigeeconnect v1.6.6
@@ -103,7 +103,7 @@ require (
 	cloud.google.com/go/servicedirectory v1.11.5
 	cloud.google.com/go/shell v1.7.6
 	cloud.google.com/go/spanner v1.60.0
-	cloud.google.com/go/speech v1.22.1
+	cloud.google.com/go/speech v1.23.0
 	cloud.google.com/go/storagetransfer v1.10.5
 	cloud.google.com/go/talent v1.6.7
 	cloud.google.com/go/texttospeech v1.7.6
@@ -120,9 +120,9 @@ require (
 	cloud.google.com/go/websecurityscanner v1.6.6
 	cloud.google.com/go/workflows v1.12.5
 	github.com/golang/protobuf v1.5.4
-	google.golang.org/genproto/googleapis/api v0.0.0-20240325203815-454cdb8f5daa
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20240325203815-454cdb8f5daa
-	google.golang.org/grpc v1.62.1
+	google.golang.org/genproto/googleapis/api v0.0.0-20240401170217-c3f982113cda
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20240401170217-c3f982113cda
+	google.golang.org/grpc v1.63.2
 	google.golang.org/protobuf v1.33.0
 )
 
