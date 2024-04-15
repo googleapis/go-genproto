@@ -4,12 +4,11 @@ go 1.19
 
 require (
 	cloud.google.com/go/servicemanagement v1.9.7
-	google.golang.org/grpc v1.62.1
+	google.golang.org/grpc v1.63.2
 )
 
 require (
 	cloud.google.com/go/longrunning v0.5.5 // indirect
-	github.com/golang/protobuf v1.5.3 // indirect
 	golang.org/x/net v0.21.0 // indirect
 	golang.org/x/sys v0.17.0 // indirect
 	golang.org/x/text v0.14.0 // indirect
