@@ -3,7 +3,7 @@ module google.golang.org/genproto
 go 1.19
 
 require (
-	cloud.google.com/go v0.112.2
+	cloud.google.com/go v0.113.0
 	cloud.google.com/go/accessapproval v1.7.7
 	cloud.google.com/go/accesscontextmanager v1.8.7
 	cloud.google.com/go/aiplatform v1.67.0
@@ -37,14 +37,14 @@ require (
 	cloud.google.com/go/dataform v0.9.4
 	cloud.google.com/go/datafusion v1.7.7
 	cloud.google.com/go/datalabeling v0.8.7
-	cloud.google.com/go/dataplex v1.15.1
+	cloud.google.com/go/dataplex v1.16.0
 	cloud.google.com/go/dataproc/v2 v2.4.2
 	cloud.google.com/go/dataqna v0.8.7
-	cloud.google.com/go/datastore v1.16.0
+	cloud.google.com/go/datastore v1.17.0
 	cloud.google.com/go/datastream v1.10.6
-	cloud.google.com/go/deploy v1.18.0
+	cloud.google.com/go/deploy v1.18.1
 	cloud.google.com/go/dialogflow v1.53.0
-	cloud.google.com/go/dlp v1.12.2
+	cloud.google.com/go/dlp v1.13.0
 	cloud.google.com/go/documentai v1.28.0
 	cloud.google.com/go/domains v0.9.7
 	cloud.google.com/go/edgecontainer v1.2.1
@@ -63,13 +63,13 @@ require (
 	cloud.google.com/go/iap v1.9.6
 	cloud.google.com/go/ids v1.4.7
 	cloud.google.com/go/iot v1.7.7
-	cloud.google.com/go/kms v1.15.9
+	cloud.google.com/go/kms v1.16.0
 	cloud.google.com/go/language v1.12.5
 	cloud.google.com/go/lifesciences v0.9.7
 	cloud.google.com/go/logging v1.9.0
 	cloud.google.com/go/longrunning v0.5.7
 	cloud.google.com/go/managedidentities v1.6.7
-	cloud.google.com/go/maps v1.7.3
+	cloud.google.com/go/maps v1.8.0
 	cloud.google.com/go/mediatranslation v0.8.7
 	cloud.google.com/go/memcache v1.10.7
 	cloud.google.com/go/metastore v1.13.6
@@ -86,7 +86,7 @@ require (
 	cloud.google.com/go/phishingprotection v0.8.7
 	cloud.google.com/go/policytroubleshooter v1.10.5
 	cloud.google.com/go/privatecatalog v0.9.7
-	cloud.google.com/go/pubsub v1.37.0
+	cloud.google.com/go/pubsub v1.38.0
 	cloud.google.com/go/pubsublite v1.8.1
 	cloud.google.com/go/recaptchaenterprise/v2 v2.13.0
 	cloud.google.com/go/recommendationengine v0.8.7
@@ -120,8 +120,8 @@ require (
 	cloud.google.com/go/websecurityscanner v1.6.7
 	cloud.google.com/go/workflows v1.12.6
 	github.com/golang/protobuf v1.5.4
-	google.golang.org/genproto/googleapis/api v0.0.0-20240429193739-8cf5692501f6
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20240429193739-8cf5692501f6
+	google.golang.org/genproto/googleapis/api v0.0.0-20240509183442-62759503f434
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20240509183442-62759503f434
 	google.golang.org/grpc v1.63.2
 	google.golang.org/protobuf v1.34.1
 )
