@@ -1,3 +1,3 @@
 module cloud.google.com/go/internal/actions
 
-go 1.19
+go 1.20
