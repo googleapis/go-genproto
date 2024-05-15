@@ -1,6 +1,6 @@
 module google.golang.org/genproto/googleapis/api/apikeys
 
-go 1.19
+go 1.20
 
 require (
 	cloud.google.com/go/apikeys v1.1.7
