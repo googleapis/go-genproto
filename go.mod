@@ -44,8 +44,8 @@ require (
 	cloud.google.com/go/datastream v1.10.6
 	cloud.google.com/go/deploy v1.19.0
 	cloud.google.com/go/dialogflow v1.53.0
-	cloud.google.com/go/dlp v1.13.0
-	cloud.google.com/go/documentai v1.28.1
+	cloud.google.com/go/dlp v1.14.0
+	cloud.google.com/go/documentai v1.29.0
 	cloud.google.com/go/domains v0.9.7
 	cloud.google.com/go/edgecontainer v1.2.1
 	cloud.google.com/go/errorreporting v0.3.0
@@ -69,7 +69,7 @@ require (
 	cloud.google.com/go/logging v1.10.0
 	cloud.google.com/go/longrunning v0.5.7
 	cloud.google.com/go/managedidentities v1.6.7
-	cloud.google.com/go/maps v1.10.0
+	cloud.google.com/go/maps v1.11.0
 	cloud.google.com/go/mediatranslation v0.8.7
 	cloud.google.com/go/memcache v1.10.7
 	cloud.google.com/go/metastore v1.13.6
@@ -110,7 +110,7 @@ require (
 	cloud.google.com/go/tpu v1.6.7
 	cloud.google.com/go/trace v1.10.7
 	cloud.google.com/go/translate v1.10.3
-	cloud.google.com/go/video v1.20.6
+	cloud.google.com/go/video v1.21.0
 	cloud.google.com/go/videointelligence v1.11.7
 	cloud.google.com/go/vision/v2 v2.8.2
 	cloud.google.com/go/vmmigration v1.7.7
@@ -120,8 +120,8 @@ require (
 	cloud.google.com/go/websecurityscanner v1.6.7
 	cloud.google.com/go/workflows v1.12.6
 	github.com/golang/protobuf v1.5.4
-	google.golang.org/genproto/googleapis/api v0.0.0-20240521202816-d264139d666e
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20240521202816-d264139d666e
+	google.golang.org/genproto/googleapis/api v0.0.0-20240528184218-531527333157
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20240528184218-531527333157
 	google.golang.org/grpc v1.64.0
 	google.golang.org/protobuf v1.34.1
 )
