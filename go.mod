@@ -18,7 +18,7 @@ require (
 	cloud.google.com/go/assuredworkloads v1.11.7
 	cloud.google.com/go/automl v1.13.7
 	cloud.google.com/go/baremetalsolution v1.2.6
-	cloud.google.com/go/batch v1.8.6
+	cloud.google.com/go/batch v1.8.7
 	cloud.google.com/go/beyondcorp v1.0.6
 	cloud.google.com/go/bigquery v1.61.0
 	cloud.google.com/go/billing v1.18.5
@@ -45,7 +45,7 @@ require (
 	cloud.google.com/go/deploy v1.19.0
 	cloud.google.com/go/dialogflow v1.53.0
 	cloud.google.com/go/dlp v1.14.0
-	cloud.google.com/go/documentai v1.29.0
+	cloud.google.com/go/documentai v1.30.0
 	cloud.google.com/go/domains v0.9.7
 	cloud.google.com/go/edgecontainer v1.2.1
 	cloud.google.com/go/errorreporting v0.3.0
@@ -87,13 +87,13 @@ require (
 	cloud.google.com/go/policytroubleshooter v1.10.5
 	cloud.google.com/go/privatecatalog v0.9.7
 	cloud.google.com/go/pubsub v1.38.0
-	cloud.google.com/go/pubsublite v1.8.1
+	cloud.google.com/go/pubsublite v1.8.2
 	cloud.google.com/go/recaptchaenterprise/v2 v2.13.0
 	cloud.google.com/go/recommendationengine v0.8.7
 	cloud.google.com/go/recommender v1.12.3
-	cloud.google.com/go/redis v1.15.0
+	cloud.google.com/go/redis v1.16.0
 	cloud.google.com/go/resourcemanager v1.9.7
-	cloud.google.com/go/resourcesettings v1.6.7
+	cloud.google.com/go/resourcesettings v1.7.0
 	cloud.google.com/go/retail v1.16.2
 	cloud.google.com/go/run v1.3.7
 	cloud.google.com/go/scheduler v1.10.8
@@ -120,8 +120,8 @@ require (
 	cloud.google.com/go/websecurityscanner v1.6.7
 	cloud.google.com/go/workflows v1.12.6
 	github.com/golang/protobuf v1.5.4
-	google.golang.org/genproto/googleapis/api v0.0.0-20240528184218-531527333157
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20240528184218-531527333157
+	google.golang.org/genproto/googleapis/api v0.0.0-20240604185151-ef581f913117
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20240604185151-ef581f913117
 	google.golang.org/grpc v1.64.0
 	google.golang.org/protobuf v1.34.1
 )
