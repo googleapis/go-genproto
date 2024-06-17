@@ -3,10 +3,10 @@ module google.golang.org/genproto
 go 1.20
 
 require (
-	cloud.google.com/go v0.114.0
+	cloud.google.com/go v0.115.0
 	cloud.google.com/go/accessapproval v1.7.7
 	cloud.google.com/go/accesscontextmanager v1.8.7
-	cloud.google.com/go/aiplatform v1.67.0
+	cloud.google.com/go/aiplatform v1.68.0
 	cloud.google.com/go/analytics v0.23.2
 	cloud.google.com/go/apigateway v1.6.7
 	cloud.google.com/go/apigeeconnect v1.6.7
@@ -30,7 +30,7 @@ require (
 	cloud.google.com/go/cloudtasks v1.12.8
 	cloud.google.com/go/compute v1.27.0
 	cloud.google.com/go/contactcenterinsights v1.13.2
-	cloud.google.com/go/container v1.35.1
+	cloud.google.com/go/container v1.37.0
 	cloud.google.com/go/containeranalysis v0.11.6
 	cloud.google.com/go/datacatalog v1.20.1
 	cloud.google.com/go/dataflow v0.9.7
@@ -40,10 +40,10 @@ require (
 	cloud.google.com/go/dataplex v1.16.0
 	cloud.google.com/go/dataproc/v2 v2.4.2
 	cloud.google.com/go/dataqna v0.8.7
-	cloud.google.com/go/datastore v1.17.0
+	cloud.google.com/go/datastore v1.17.1
 	cloud.google.com/go/datastream v1.10.6
 	cloud.google.com/go/deploy v1.19.0
-	cloud.google.com/go/dialogflow v1.53.0
+	cloud.google.com/go/dialogflow v1.54.0
 	cloud.google.com/go/dlp v1.14.0
 	cloud.google.com/go/documentai v1.30.0
 	cloud.google.com/go/domains v0.9.7
@@ -69,7 +69,7 @@ require (
 	cloud.google.com/go/logging v1.10.0
 	cloud.google.com/go/longrunning v0.5.7
 	cloud.google.com/go/managedidentities v1.6.7
-	cloud.google.com/go/maps v1.11.0
+	cloud.google.com/go/maps v1.11.1
 	cloud.google.com/go/mediatranslation v0.8.7
 	cloud.google.com/go/memcache v1.10.7
 	cloud.google.com/go/metastore v1.13.6
@@ -94,7 +94,7 @@ require (
 	cloud.google.com/go/redis v1.16.0
 	cloud.google.com/go/resourcemanager v1.9.7
 	cloud.google.com/go/resourcesettings v1.7.0
-	cloud.google.com/go/retail v1.16.2
+	cloud.google.com/go/retail v1.17.0
 	cloud.google.com/go/run v1.3.7
 	cloud.google.com/go/scheduler v1.10.8
 	cloud.google.com/go/secretmanager v1.13.1
@@ -120,10 +120,10 @@ require (
 	cloud.google.com/go/websecurityscanner v1.6.7
 	cloud.google.com/go/workflows v1.12.6
 	github.com/golang/protobuf v1.5.4
-	google.golang.org/genproto/googleapis/api v0.0.0-20240604185151-ef581f913117
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20240604185151-ef581f913117
+	google.golang.org/genproto/googleapis/api v0.0.0-20240610135401-a8a62080eff3
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20240610135401-a8a62080eff3
 	google.golang.org/grpc v1.64.0
-	google.golang.org/protobuf v1.34.1
+	google.golang.org/protobuf v1.34.2
 )
 
 require (
