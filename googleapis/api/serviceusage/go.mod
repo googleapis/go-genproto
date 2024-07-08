@@ -6,7 +6,7 @@ require (
 	cloud.google.com/go/serviceusage v1.8.8
 	google.golang.org/genproto v0.0.0-20240701130421-f6361c86f094
 	google.golang.org/genproto/googleapis/api v0.0.0-20240701130421-f6361c86f094
-	google.golang.org/grpc v1.65.0
+	google.golang.org/grpc v1.64.1
 	google.golang.org/protobuf v1.34.2
 )
 
