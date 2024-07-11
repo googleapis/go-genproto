@@ -2226,6 +2226,61 @@ type ResultSetMetadata_ProtoSchema struct {
 
 func (*ResultSetMetadata_ProtoSchema) isResultSetMetadata_Schema() {}
 
+// Rows represented in proto format.
+//
+// This should be constructed by concatenating the `batch_data` from each
+// of the relevant `ProtoRowsBatch` messages and parsing the result as a
+// `ProtoRows` message.
+type ProtoRows struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// A proto rows message consists of a list of values. Every N complete values
+	// defines a row, where N is equal to the  number of entries in the
+	// `metadata.proto_schema.columns` value received in the first response.
+	Values []*Value `protobuf:"bytes,2,rep,name=values,proto3" json:"values,omitempty"`
+}
+
+func (x *ProtoRows) Reset() {
+	*x = ProtoRows{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_google_bigtable_v2_data_proto_msgTypes[21]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ProtoRows) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ProtoRows) ProtoMessage() {}
+
+func (x *ProtoRows) ProtoReflect() protoreflect.Message {
+	mi := &file_google_bigtable_v2_data_proto_msgTypes[21]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ProtoRows.ProtoReflect.Descriptor instead.
+func (*ProtoRows) Descriptor() ([]byte, []int) {
+	return file_google_bigtable_v2_data_proto_rawDescGZIP(), []int{21}
+}
+
+func (x *ProtoRows) GetValues() []*Value {
+	if x != nil {
+		return x.Values
+	}
+	return nil
+}
+
 // Batch of serialized ProtoRows.
 type ProtoRowsBatch struct {
 	state         protoimpl.MessageState
@@ -2240,7 +2295,7 @@ type ProtoRowsBatch struct {
 func (x *ProtoRowsBatch) Reset() {
 	*x = ProtoRowsBatch{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_google_bigtable_v2_data_proto_msgTypes[21]
+		mi := &file_google_bigtable_v2_data_proto_msgTypes[22]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2253,7 +2308,7 @@ func (x *ProtoRowsBatch) String() string {
 func (*ProtoRowsBatch) ProtoMessage() {}
 
 func (x *ProtoRowsBatch) ProtoReflect() protoreflect.Message {
-	mi := &file_google_bigtable_v2_data_proto_msgTypes[21]
+	mi := &file_google_bigtable_v2_data_proto_msgTypes[22]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2266,7 +2321,7 @@ func (x *ProtoRowsBatch) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ProtoRowsBatch.ProtoReflect.Descriptor instead.
 func (*ProtoRowsBatch) Descriptor() ([]byte, []int) {
-	return file_google_bigtable_v2_data_proto_rawDescGZIP(), []int{21}
+	return file_google_bigtable_v2_data_proto_rawDescGZIP(), []int{22}
 }
 
 func (x *ProtoRowsBatch) GetBatchData() []byte {
@@ -2327,7 +2382,7 @@ type PartialResultSet struct {
 func (x *PartialResultSet) Reset() {
 	*x = PartialResultSet{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_google_bigtable_v2_data_proto_msgTypes[22]
+		mi := &file_google_bigtable_v2_data_proto_msgTypes[23]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2340,7 +2395,7 @@ func (x *PartialResultSet) String() string {
 func (*PartialResultSet) ProtoMessage() {}
 
 func (x *PartialResultSet) ProtoReflect() protoreflect.Message {
-	mi := &file_google_bigtable_v2_data_proto_msgTypes[22]
+	mi := &file_google_bigtable_v2_data_proto_msgTypes[23]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2353,7 +2408,7 @@ func (x *PartialResultSet) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PartialResultSet.ProtoReflect.Descriptor instead.
 func (*PartialResultSet) Descriptor() ([]byte, []int) {
-	return file_google_bigtable_v2_data_proto_rawDescGZIP(), []int{22}
+	return file_google_bigtable_v2_data_proto_rawDescGZIP(), []int{23}
 }
 
 func (m *PartialResultSet) GetPartialRows() isPartialResultSet_PartialRows {
@@ -2410,7 +2465,7 @@ type RowFilter_Chain struct {
 func (x *RowFilter_Chain) Reset() {
 	*x = RowFilter_Chain{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_google_bigtable_v2_data_proto_msgTypes[23]
+		mi := &file_google_bigtable_v2_data_proto_msgTypes[24]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2423,7 +2478,7 @@ func (x *RowFilter_Chain) String() string {
 func (*RowFilter_Chain) ProtoMessage() {}
 
 func (x *RowFilter_Chain) ProtoReflect() protoreflect.Message {
-	mi := &file_google_bigtable_v2_data_proto_msgTypes[23]
+	mi := &file_google_bigtable_v2_data_proto_msgTypes[24]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2484,7 +2539,7 @@ type RowFilter_Interleave struct {
 func (x *RowFilter_Interleave) Reset() {
 	*x = RowFilter_Interleave{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_google_bigtable_v2_data_proto_msgTypes[24]
+		mi := &file_google_bigtable_v2_data_proto_msgTypes[25]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2497,7 +2552,7 @@ func (x *RowFilter_Interleave) String() string {
 func (*RowFilter_Interleave) ProtoMessage() {}
 
 func (x *RowFilter_Interleave) ProtoReflect() protoreflect.Message {
-	mi := &file_google_bigtable_v2_data_proto_msgTypes[24]
+	mi := &file_google_bigtable_v2_data_proto_msgTypes[25]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2547,7 +2602,7 @@ type RowFilter_Condition struct {
 func (x *RowFilter_Condition) Reset() {
 	*x = RowFilter_Condition{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_google_bigtable_v2_data_proto_msgTypes[25]
+		mi := &file_google_bigtable_v2_data_proto_msgTypes[26]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2560,7 +2615,7 @@ func (x *RowFilter_Condition) String() string {
 func (*RowFilter_Condition) ProtoMessage() {}
 
 func (x *RowFilter_Condition) ProtoReflect() protoreflect.Message {
-	mi := &file_google_bigtable_v2_data_proto_msgTypes[25]
+	mi := &file_google_bigtable_v2_data_proto_msgTypes[26]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2622,7 +2677,7 @@ type Mutation_SetCell struct {
 func (x *Mutation_SetCell) Reset() {
 	*x = Mutation_SetCell{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_google_bigtable_v2_data_proto_msgTypes[26]
+		mi := &file_google_bigtable_v2_data_proto_msgTypes[27]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2635,7 +2690,7 @@ func (x *Mutation_SetCell) String() string {
 func (*Mutation_SetCell) ProtoMessage() {}
 
 func (x *Mutation_SetCell) ProtoReflect() protoreflect.Message {
-	mi := &file_google_bigtable_v2_data_proto_msgTypes[26]
+	mi := &file_google_bigtable_v2_data_proto_msgTypes[27]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2703,7 +2758,7 @@ type Mutation_AddToCell struct {
 func (x *Mutation_AddToCell) Reset() {
 	*x = Mutation_AddToCell{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_google_bigtable_v2_data_proto_msgTypes[27]
+		mi := &file_google_bigtable_v2_data_proto_msgTypes[28]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2716,7 +2771,7 @@ func (x *Mutation_AddToCell) String() string {
 func (*Mutation_AddToCell) ProtoMessage() {}
 
 func (x *Mutation_AddToCell) ProtoReflect() protoreflect.Message {
-	mi := &file_google_bigtable_v2_data_proto_msgTypes[27]
+	mi := &file_google_bigtable_v2_data_proto_msgTypes[28]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2780,7 +2835,7 @@ type Mutation_DeleteFromColumn struct {
 func (x *Mutation_DeleteFromColumn) Reset() {
 	*x = Mutation_DeleteFromColumn{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_google_bigtable_v2_data_proto_msgTypes[28]
+		mi := &file_google_bigtable_v2_data_proto_msgTypes[29]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2793,7 +2848,7 @@ func (x *Mutation_DeleteFromColumn) String() string {
 func (*Mutation_DeleteFromColumn) ProtoMessage() {}
 
 func (x *Mutation_DeleteFromColumn) ProtoReflect() protoreflect.Message {
-	mi := &file_google_bigtable_v2_data_proto_msgTypes[28]
+	mi := &file_google_bigtable_v2_data_proto_msgTypes[29]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2844,7 +2899,7 @@ type Mutation_DeleteFromFamily struct {
 func (x *Mutation_DeleteFromFamily) Reset() {
 	*x = Mutation_DeleteFromFamily{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_google_bigtable_v2_data_proto_msgTypes[29]
+		mi := &file_google_bigtable_v2_data_proto_msgTypes[30]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2857,7 +2912,7 @@ func (x *Mutation_DeleteFromFamily) String() string {
 func (*Mutation_DeleteFromFamily) ProtoMessage() {}
 
 func (x *Mutation_DeleteFromFamily) ProtoReflect() protoreflect.Message {
-	mi := &file_google_bigtable_v2_data_proto_msgTypes[29]
+	mi := &file_google_bigtable_v2_data_proto_msgTypes[30]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2890,7 +2945,7 @@ type Mutation_DeleteFromRow struct {
 func (x *Mutation_DeleteFromRow) Reset() {
 	*x = Mutation_DeleteFromRow{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_google_bigtable_v2_data_proto_msgTypes[30]
+		mi := &file_google_bigtable_v2_data_proto_msgTypes[31]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2903,7 +2958,7 @@ func (x *Mutation_DeleteFromRow) String() string {
 func (*Mutation_DeleteFromRow) ProtoMessage() {}
 
 func (x *Mutation_DeleteFromRow) ProtoReflect() protoreflect.Message {
-	mi := &file_google_bigtable_v2_data_proto_msgTypes[30]
+	mi := &file_google_bigtable_v2_data_proto_msgTypes[31]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3257,7 +3312,11 @@ var file_google_bigtable_v2_data_proto_rawDesc = []byte{
 	0x32, 0x1f, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x62, 0x69, 0x67, 0x74, 0x61, 0x62,
 	0x6c, 0x65, 0x2e, 0x76, 0x32, 0x2e, 0x50, 0x72, 0x6f, 0x74, 0x6f, 0x53, 0x63, 0x68, 0x65, 0x6d,
 	0x61, 0x48, 0x00, 0x52, 0x0b, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x53, 0x63, 0x68, 0x65, 0x6d, 0x61,
-	0x42, 0x08, 0x0a, 0x06, 0x73, 0x63, 0x68, 0x65, 0x6d, 0x61, 0x22, 0x2f, 0x0a, 0x0e, 0x50, 0x72,
+	0x42, 0x08, 0x0a, 0x06, 0x73, 0x63, 0x68, 0x65, 0x6d, 0x61, 0x22, 0x3e, 0x0a, 0x09, 0x50, 0x72,
+	0x6f, 0x74, 0x6f, 0x52, 0x6f, 0x77, 0x73, 0x12, 0x31, 0x0a, 0x06, 0x76, 0x61, 0x6c, 0x75, 0x65,
+	0x73, 0x18, 0x02, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x19, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65,
+	0x2e, 0x62, 0x69, 0x67, 0x74, 0x61, 0x62, 0x6c, 0x65, 0x2e, 0x76, 0x32, 0x2e, 0x56, 0x61, 0x6c,
+	0x75, 0x65, 0x52, 0x06, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x73, 0x22, 0x2f, 0x0a, 0x0e, 0x50, 0x72,
 	0x6f, 0x74, 0x6f, 0x52, 0x6f, 0x77, 0x73, 0x42, 0x61, 0x74, 0x63, 0x68, 0x12, 0x1d, 0x0a, 0x0a,
 	0x62, 0x61, 0x74, 0x63, 0x68, 0x5f, 0x64, 0x61, 0x74, 0x61, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0c,
 	0x52, 0x09, 0x62, 0x61, 0x74, 0x63, 0x68, 0x44, 0x61, 0x74, 0x61, 0x22, 0xc7, 0x01, 0x0a, 0x10,
@@ -3300,7 +3359,7 @@ func file_google_bigtable_v2_data_proto_rawDescGZIP() []byte {
 	return file_google_bigtable_v2_data_proto_rawDescData
 }
 
-var file_google_bigtable_v2_data_proto_msgTypes = make([]protoimpl.MessageInfo, 31)
+var file_google_bigtable_v2_data_proto_msgTypes = make([]protoimpl.MessageInfo, 32)
 var file_google_bigtable_v2_data_proto_goTypes = []interface{}{
 	(*Row)(nil),                       // 0: google.bigtable.v2.Row
 	(*Family)(nil),                    // 1: google.bigtable.v2.Family
@@ -3323,62 +3382,64 @@ var file_google_bigtable_v2_data_proto_goTypes = []interface{}{
 	(*ColumnMetadata)(nil),            // 18: google.bigtable.v2.ColumnMetadata
 	(*ProtoSchema)(nil),               // 19: google.bigtable.v2.ProtoSchema
 	(*ResultSetMetadata)(nil),         // 20: google.bigtable.v2.ResultSetMetadata
-	(*ProtoRowsBatch)(nil),            // 21: google.bigtable.v2.ProtoRowsBatch
-	(*PartialResultSet)(nil),          // 22: google.bigtable.v2.PartialResultSet
-	(*RowFilter_Chain)(nil),           // 23: google.bigtable.v2.RowFilter.Chain
-	(*RowFilter_Interleave)(nil),      // 24: google.bigtable.v2.RowFilter.Interleave
-	(*RowFilter_Condition)(nil),       // 25: google.bigtable.v2.RowFilter.Condition
-	(*Mutation_SetCell)(nil),          // 26: google.bigtable.v2.Mutation.SetCell
-	(*Mutation_AddToCell)(nil),        // 27: google.bigtable.v2.Mutation.AddToCell
-	(*Mutation_DeleteFromColumn)(nil), // 28: google.bigtable.v2.Mutation.DeleteFromColumn
-	(*Mutation_DeleteFromFamily)(nil), // 29: google.bigtable.v2.Mutation.DeleteFromFamily
-	(*Mutation_DeleteFromRow)(nil),    // 30: google.bigtable.v2.Mutation.DeleteFromRow
-	(*Type)(nil),                      // 31: google.bigtable.v2.Type
-	(*timestamppb.Timestamp)(nil),     // 32: google.protobuf.Timestamp
-	(*date.Date)(nil),                 // 33: google.type.Date
+	(*ProtoRows)(nil),                 // 21: google.bigtable.v2.ProtoRows
+	(*ProtoRowsBatch)(nil),            // 22: google.bigtable.v2.ProtoRowsBatch
+	(*PartialResultSet)(nil),          // 23: google.bigtable.v2.PartialResultSet
+	(*RowFilter_Chain)(nil),           // 24: google.bigtable.v2.RowFilter.Chain
+	(*RowFilter_Interleave)(nil),      // 25: google.bigtable.v2.RowFilter.Interleave
+	(*RowFilter_Condition)(nil),       // 26: google.bigtable.v2.RowFilter.Condition
+	(*Mutation_SetCell)(nil),          // 27: google.bigtable.v2.Mutation.SetCell
+	(*Mutation_AddToCell)(nil),        // 28: google.bigtable.v2.Mutation.AddToCell
+	(*Mutation_DeleteFromColumn)(nil), // 29: google.bigtable.v2.Mutation.DeleteFromColumn
+	(*Mutation_DeleteFromFamily)(nil), // 30: google.bigtable.v2.Mutation.DeleteFromFamily
+	(*Mutation_DeleteFromRow)(nil),    // 31: google.bigtable.v2.Mutation.DeleteFromRow
+	(*Type)(nil),                      // 32: google.bigtable.v2.Type
+	(*timestamppb.Timestamp)(nil),     // 33: google.protobuf.Timestamp
+	(*date.Date)(nil),                 // 34: google.type.Date
 }
 var file_google_bigtable_v2_data_proto_depIdxs = []int32{
 	1,  // 0: google.bigtable.v2.Row.families:type_name -> google.bigtable.v2.Family
 	2,  // 1: google.bigtable.v2.Family.columns:type_name -> google.bigtable.v2.Column
 	3,  // 2: google.bigtable.v2.Column.cells:type_name -> google.bigtable.v2.Cell
-	31, // 3: google.bigtable.v2.Value.type:type_name -> google.bigtable.v2.Type
-	32, // 4: google.bigtable.v2.Value.timestamp_value:type_name -> google.protobuf.Timestamp
-	33, // 5: google.bigtable.v2.Value.date_value:type_name -> google.type.Date
+	32, // 3: google.bigtable.v2.Value.type:type_name -> google.bigtable.v2.Type
+	33, // 4: google.bigtable.v2.Value.timestamp_value:type_name -> google.protobuf.Timestamp
+	34, // 5: google.bigtable.v2.Value.date_value:type_name -> google.type.Date
 	5,  // 6: google.bigtable.v2.Value.array_value:type_name -> google.bigtable.v2.ArrayValue
 	4,  // 7: google.bigtable.v2.ArrayValue.values:type_name -> google.bigtable.v2.Value
 	6,  // 8: google.bigtable.v2.RowSet.row_ranges:type_name -> google.bigtable.v2.RowRange
-	23, // 9: google.bigtable.v2.RowFilter.chain:type_name -> google.bigtable.v2.RowFilter.Chain
-	24, // 10: google.bigtable.v2.RowFilter.interleave:type_name -> google.bigtable.v2.RowFilter.Interleave
-	25, // 11: google.bigtable.v2.RowFilter.condition:type_name -> google.bigtable.v2.RowFilter.Condition
+	24, // 9: google.bigtable.v2.RowFilter.chain:type_name -> google.bigtable.v2.RowFilter.Chain
+	25, // 10: google.bigtable.v2.RowFilter.interleave:type_name -> google.bigtable.v2.RowFilter.Interleave
+	26, // 11: google.bigtable.v2.RowFilter.condition:type_name -> google.bigtable.v2.RowFilter.Condition
 	8,  // 12: google.bigtable.v2.RowFilter.column_range_filter:type_name -> google.bigtable.v2.ColumnRange
 	9,  // 13: google.bigtable.v2.RowFilter.timestamp_range_filter:type_name -> google.bigtable.v2.TimestampRange
 	10, // 14: google.bigtable.v2.RowFilter.value_range_filter:type_name -> google.bigtable.v2.ValueRange
-	26, // 15: google.bigtable.v2.Mutation.set_cell:type_name -> google.bigtable.v2.Mutation.SetCell
-	27, // 16: google.bigtable.v2.Mutation.add_to_cell:type_name -> google.bigtable.v2.Mutation.AddToCell
-	28, // 17: google.bigtable.v2.Mutation.delete_from_column:type_name -> google.bigtable.v2.Mutation.DeleteFromColumn
-	29, // 18: google.bigtable.v2.Mutation.delete_from_family:type_name -> google.bigtable.v2.Mutation.DeleteFromFamily
-	30, // 19: google.bigtable.v2.Mutation.delete_from_row:type_name -> google.bigtable.v2.Mutation.DeleteFromRow
+	27, // 15: google.bigtable.v2.Mutation.set_cell:type_name -> google.bigtable.v2.Mutation.SetCell
+	28, // 16: google.bigtable.v2.Mutation.add_to_cell:type_name -> google.bigtable.v2.Mutation.AddToCell
+	29, // 17: google.bigtable.v2.Mutation.delete_from_column:type_name -> google.bigtable.v2.Mutation.DeleteFromColumn
+	30, // 18: google.bigtable.v2.Mutation.delete_from_family:type_name -> google.bigtable.v2.Mutation.DeleteFromFamily
+	31, // 19: google.bigtable.v2.Mutation.delete_from_row:type_name -> google.bigtable.v2.Mutation.DeleteFromRow
 	6,  // 20: google.bigtable.v2.StreamPartition.row_range:type_name -> google.bigtable.v2.RowRange
 	16, // 21: google.bigtable.v2.StreamContinuationTokens.tokens:type_name -> google.bigtable.v2.StreamContinuationToken
 	14, // 22: google.bigtable.v2.StreamContinuationToken.partition:type_name -> google.bigtable.v2.StreamPartition
-	31, // 23: google.bigtable.v2.ColumnMetadata.type:type_name -> google.bigtable.v2.Type
+	32, // 23: google.bigtable.v2.ColumnMetadata.type:type_name -> google.bigtable.v2.Type
 	18, // 24: google.bigtable.v2.ProtoSchema.columns:type_name -> google.bigtable.v2.ColumnMetadata
 	19, // 25: google.bigtable.v2.ResultSetMetadata.proto_schema:type_name -> google.bigtable.v2.ProtoSchema
-	21, // 26: google.bigtable.v2.PartialResultSet.proto_rows_batch:type_name -> google.bigtable.v2.ProtoRowsBatch
-	11, // 27: google.bigtable.v2.RowFilter.Chain.filters:type_name -> google.bigtable.v2.RowFilter
-	11, // 28: google.bigtable.v2.RowFilter.Interleave.filters:type_name -> google.bigtable.v2.RowFilter
-	11, // 29: google.bigtable.v2.RowFilter.Condition.predicate_filter:type_name -> google.bigtable.v2.RowFilter
-	11, // 30: google.bigtable.v2.RowFilter.Condition.true_filter:type_name -> google.bigtable.v2.RowFilter
-	11, // 31: google.bigtable.v2.RowFilter.Condition.false_filter:type_name -> google.bigtable.v2.RowFilter
-	4,  // 32: google.bigtable.v2.Mutation.AddToCell.column_qualifier:type_name -> google.bigtable.v2.Value
-	4,  // 33: google.bigtable.v2.Mutation.AddToCell.timestamp:type_name -> google.bigtable.v2.Value
-	4,  // 34: google.bigtable.v2.Mutation.AddToCell.input:type_name -> google.bigtable.v2.Value
-	9,  // 35: google.bigtable.v2.Mutation.DeleteFromColumn.time_range:type_name -> google.bigtable.v2.TimestampRange
-	36, // [36:36] is the sub-list for method output_type
-	36, // [36:36] is the sub-list for method input_type
-	36, // [36:36] is the sub-list for extension type_name
-	36, // [36:36] is the sub-list for extension extendee
-	0,  // [0:36] is the sub-list for field type_name
+	4,  // 26: google.bigtable.v2.ProtoRows.values:type_name -> google.bigtable.v2.Value
+	22, // 27: google.bigtable.v2.PartialResultSet.proto_rows_batch:type_name -> google.bigtable.v2.ProtoRowsBatch
+	11, // 28: google.bigtable.v2.RowFilter.Chain.filters:type_name -> google.bigtable.v2.RowFilter
+	11, // 29: google.bigtable.v2.RowFilter.Interleave.filters:type_name -> google.bigtable.v2.RowFilter
+	11, // 30: google.bigtable.v2.RowFilter.Condition.predicate_filter:type_name -> google.bigtable.v2.RowFilter
+	11, // 31: google.bigtable.v2.RowFilter.Condition.true_filter:type_name -> google.bigtable.v2.RowFilter
+	11, // 32: google.bigtable.v2.RowFilter.Condition.false_filter:type_name -> google.bigtable.v2.RowFilter
+	4,  // 33: google.bigtable.v2.Mutation.AddToCell.column_qualifier:type_name -> google.bigtable.v2.Value
+	4,  // 34: google.bigtable.v2.Mutation.AddToCell.timestamp:type_name -> google.bigtable.v2.Value
+	4,  // 35: google.bigtable.v2.Mutation.AddToCell.input:type_name -> google.bigtable.v2.Value
+	9,  // 36: google.bigtable.v2.Mutation.DeleteFromColumn.time_range:type_name -> google.bigtable.v2.TimestampRange
+	37, // [37:37] is the sub-list for method output_type
+	37, // [37:37] is the sub-list for method input_type
+	37, // [37:37] is the sub-list for extension type_name
+	37, // [37:37] is the sub-list for extension extendee
+	0,  // [0:37] is the sub-list for field type_name
 }
 
 func init() { file_google_bigtable_v2_data_proto_init() }
@@ -3641,7 +3702,7 @@ func file_google_bigtable_v2_data_proto_init() {
 			}
 		}
 		file_google_bigtable_v2_data_proto_msgTypes[21].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ProtoRowsBatch); i {
+			switch v := v.(*ProtoRows); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -3653,7 +3714,7 @@ func file_google_bigtable_v2_data_proto_init() {
 			}
 		}
 		file_google_bigtable_v2_data_proto_msgTypes[22].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*PartialResultSet); i {
+			switch v := v.(*ProtoRowsBatch); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -3665,7 +3726,7 @@ func file_google_bigtable_v2_data_proto_init() {
 			}
 		}
 		file_google_bigtable_v2_data_proto_msgTypes[23].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*RowFilter_Chain); i {
+			switch v := v.(*PartialResultSet); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -3677,7 +3738,7 @@ func file_google_bigtable_v2_data_proto_init() {
 			}
 		}
 		file_google_bigtable_v2_data_proto_msgTypes[24].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*RowFilter_Interleave); i {
+			switch v := v.(*RowFilter_Chain); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -3689,7 +3750,7 @@ func file_google_bigtable_v2_data_proto_init() {
 			}
 		}
 		file_google_bigtable_v2_data_proto_msgTypes[25].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*RowFilter_Condition); i {
+			switch v := v.(*RowFilter_Interleave); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -3701,7 +3762,7 @@ func file_google_bigtable_v2_data_proto_init() {
 			}
 		}
 		file_google_bigtable_v2_data_proto_msgTypes[26].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*Mutation_SetCell); i {
+			switch v := v.(*RowFilter_Condition); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -3713,7 +3774,7 @@ func file_google_bigtable_v2_data_proto_init() {
 			}
 		}
 		file_google_bigtable_v2_data_proto_msgTypes[27].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*Mutation_AddToCell); i {
+			switch v := v.(*Mutation_SetCell); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -3725,7 +3786,7 @@ func file_google_bigtable_v2_data_proto_init() {
 			}
 		}
 		file_google_bigtable_v2_data_proto_msgTypes[28].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*Mutation_DeleteFromColumn); i {
+			switch v := v.(*Mutation_AddToCell); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -3737,7 +3798,7 @@ func file_google_bigtable_v2_data_proto_init() {
 			}
 		}
 		file_google_bigtable_v2_data_proto_msgTypes[29].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*Mutation_DeleteFromFamily); i {
+			switch v := v.(*Mutation_DeleteFromColumn); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -3749,6 +3810,18 @@ func file_google_bigtable_v2_data_proto_init() {
 			}
 		}
 		file_google_bigtable_v2_data_proto_msgTypes[30].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*Mutation_DeleteFromFamily); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_google_bigtable_v2_data_proto_msgTypes[31].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*Mutation_DeleteFromRow); i {
 			case 0:
 				return &v.state
@@ -3826,7 +3899,7 @@ func file_google_bigtable_v2_data_proto_init() {
 	file_google_bigtable_v2_data_proto_msgTypes[20].OneofWrappers = []interface{}{
 		(*ResultSetMetadata_ProtoSchema)(nil),
 	}
-	file_google_bigtable_v2_data_proto_msgTypes[22].OneofWrappers = []interface{}{
+	file_google_bigtable_v2_data_proto_msgTypes[23].OneofWrappers = []interface{}{
 		(*PartialResultSet_ProtoRowsBatch)(nil),
 	}
 	type x struct{}
@@ -3835,7 +3908,7 @@ func file_google_bigtable_v2_data_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_google_bigtable_v2_data_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   31,
+			NumMessages:   32,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
