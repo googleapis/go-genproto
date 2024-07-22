@@ -133,9 +133,11 @@ type ContextRule struct {
 	// Refer to [selector][google.api.DocumentationRule.selector] for syntax
 	// details.
 	Selector string `protobuf:"bytes,1,opt,name=selector,proto3" json:"selector,omitempty"`
-	// A list of full type names of requested contexts.
+	// A list of full type names of requested contexts, only the requested context
+	// will be made available to the backend.
 	Requested []string `protobuf:"bytes,2,rep,name=requested,proto3" json:"requested,omitempty"`
-	// A list of full type names of provided contexts.
+	// A list of full type names of provided contexts. It is used to support
+	// propagating HTTP headers and ETags from the response extension.
 	Provided []string `protobuf:"bytes,3,rep,name=provided,proto3" json:"provided,omitempty"`
 	// A list of full type names or extension IDs of extensions allowed in grpc
 	// side channel from client to backend.
