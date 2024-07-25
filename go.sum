@@ -34,8 +34,8 @@ cloud.google.com/go/beyondcorp v1.0.9 h1:1UeDTSkNGk0XaXoQ9Z76PxtB8cJPmBZRnW2HzeK
 cloud.google.com/go/beyondcorp v1.0.9/go.mod h1:xa0eU8tIbYVraMOpRh5V9PirdYROvTUcPayJW9UlSNs=
 cloud.google.com/go/bigquery v1.62.0 h1:SYEA2f7fKqbSRRBHb7g0iHTtZvtPSPYdXfmqsjpsBwo=
 cloud.google.com/go/bigquery v1.62.0/go.mod h1:5ee+ZkF1x/ntgCsFQJAQTM3QkAZOecfCmvxhkJsWRSA=
-cloud.google.com/go/bigtable v1.27.1 h1:SFKsPZF+ddGmUFcwsHsajVRP1gg8JfvEe7ExqZ4SQ+c=
-cloud.google.com/go/bigtable v1.27.1/go.mod h1:AMREzzQzYjiWYan7JvJXINc8dfqemnNBWDHlYONtPLw=
+cloud.google.com/go/bigtable v1.27.2-0.20240725222120-ce31365acc54 h1:KOjHlKEA0UzDD9asy7vFmv/mOwj/UH8IDjKl5LfEJXU=
+cloud.google.com/go/bigtable v1.27.2-0.20240725222120-ce31365acc54/go.mod h1:NmJ2jfoB34NxQyk4w7UCchopqE9r+a186ewvGrM79TI=
 cloud.google.com/go/billing v1.18.8 h1:F0QnYXQ/o86zkuLMwJe+yLlPj/kgfrNCukH+bOhAT2I=
 cloud.google.com/go/billing v1.18.8/go.mod h1:oFsuKhKiuxK7dDQ4a8tt5/1cScEo4IzhssWj6TTdi6k=
 cloud.google.com/go/binaryauthorization v1.8.6 h1:eMjakmqpE0UPmyki0eGZQfyBSyfNRhGzb64lE32T+ik=

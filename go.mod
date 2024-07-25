@@ -21,7 +21,7 @@ require (
 	cloud.google.com/go/batch v1.9.1
 	cloud.google.com/go/beyondcorp v1.0.9
 	cloud.google.com/go/bigquery v1.62.0
-	cloud.google.com/go/bigtable v1.27.1
+	cloud.google.com/go/bigtable v1.27.2-0.20240725222120-ce31365acc54
 	cloud.google.com/go/billing v1.18.8
 	cloud.google.com/go/binaryauthorization v1.8.6
 	cloud.google.com/go/certificatemanager v1.8.4
