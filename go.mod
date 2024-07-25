@@ -21,6 +21,7 @@ require (
 	cloud.google.com/go/batch v1.8.8
 	cloud.google.com/go/beyondcorp v1.0.7
 	cloud.google.com/go/bigquery v1.61.0
+	cloud.google.com/go/bigtable v1.27.1
 	cloud.google.com/go/billing v1.18.6
 	cloud.google.com/go/binaryauthorization v1.8.4
 	cloud.google.com/go/certificatemanager v1.8.2
@@ -59,7 +60,7 @@ require (
 	cloud.google.com/go/gkehub v0.14.8
 	cloud.google.com/go/gkemulticloud v1.2.1
 	cloud.google.com/go/gsuiteaddons v1.6.8
-	cloud.google.com/go/iam v1.1.9
+	cloud.google.com/go/iam v1.1.10
 	cloud.google.com/go/iap v1.9.7
 	cloud.google.com/go/ids v1.4.8
 	cloud.google.com/go/iot v1.7.8
@@ -67,13 +68,13 @@ require (
 	cloud.google.com/go/language v1.12.6
 	cloud.google.com/go/lifesciences v0.9.8
 	cloud.google.com/go/logging v1.10.0
-	cloud.google.com/go/longrunning v0.5.8
+	cloud.google.com/go/longrunning v0.5.9
 	cloud.google.com/go/managedidentities v1.6.8
 	cloud.google.com/go/maps v1.11.2
 	cloud.google.com/go/mediatranslation v0.8.8
 	cloud.google.com/go/memcache v1.10.8
 	cloud.google.com/go/metastore v1.13.7
-	cloud.google.com/go/monitoring v1.20.0
+	cloud.google.com/go/monitoring v1.20.1
 	cloud.google.com/go/networkconnectivity v1.14.7
 	cloud.google.com/go/networkmanagement v1.13.3
 	cloud.google.com/go/networksecurity v0.9.8
@@ -120,14 +121,14 @@ require (
 	cloud.google.com/go/websecurityscanner v1.6.8
 	cloud.google.com/go/workflows v1.12.7
 	github.com/golang/protobuf v1.5.4
-	google.golang.org/genproto/googleapis/api v0.0.0-20240624140628-dc46fd24d27d
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20240624140628-dc46fd24d27d
-	google.golang.org/grpc v1.64.0
+	google.golang.org/genproto/googleapis/api v0.0.0-20240722135656-d784300faade
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20240722135656-d784300faade
+	google.golang.org/grpc v1.64.1
 	google.golang.org/protobuf v1.34.2
 )
 
 require (
-	golang.org/x/net v0.26.0 // indirect
-	golang.org/x/sys v0.21.0 // indirect
+	golang.org/x/net v0.27.0 // indirect
+	golang.org/x/sys v0.22.0 // indirect
 	golang.org/x/text v0.16.0 // indirect
 )
