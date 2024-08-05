@@ -21,7 +21,7 @@ require (
 	cloud.google.com/go/batch v1.9.2
 	cloud.google.com/go/beyondcorp v1.0.10
 	cloud.google.com/go/bigquery v1.62.0
-	cloud.google.com/go/bigtable v1.27.2-0.20240730134218-123c88616251
+	cloud.google.com/go/bigtable v1.27.2-0.20240802230159-f371928b558f
 	cloud.google.com/go/billing v1.18.9
 	cloud.google.com/go/binaryauthorization v1.8.7
 	cloud.google.com/go/certificatemanager v1.8.5
@@ -33,7 +33,7 @@ require (
 	cloud.google.com/go/contactcenterinsights v1.13.6
 	cloud.google.com/go/container v1.38.0
 	cloud.google.com/go/containeranalysis v0.12.1
-	cloud.google.com/go/datacatalog v1.20.5
+	cloud.google.com/go/datacatalog v1.21.0
 	cloud.google.com/go/dataflow v0.9.11
 	cloud.google.com/go/dataform v0.9.8
 	cloud.google.com/go/datafusion v1.7.11
@@ -43,10 +43,10 @@ require (
 	cloud.google.com/go/dataqna v0.8.11
 	cloud.google.com/go/datastore v1.17.1
 	cloud.google.com/go/datastream v1.10.10
-	cloud.google.com/go/deploy v1.20.0
+	cloud.google.com/go/deploy v1.21.0
 	cloud.google.com/go/dialogflow v1.55.0
-	cloud.google.com/go/dlp v1.15.0
-	cloud.google.com/go/documentai v1.30.5
+	cloud.google.com/go/dlp v1.16.0
+	cloud.google.com/go/documentai v1.31.0
 	cloud.google.com/go/domains v0.9.11
 	cloud.google.com/go/edgecontainer v1.2.5
 	cloud.google.com/go/errorreporting v0.3.1
@@ -65,12 +65,12 @@ require (
 	cloud.google.com/go/ids v1.4.11
 	cloud.google.com/go/iot v1.7.11
 	cloud.google.com/go/kms v1.18.4
-	cloud.google.com/go/language v1.12.9
+	cloud.google.com/go/language v1.13.0
 	cloud.google.com/go/lifesciences v0.9.11
 	cloud.google.com/go/logging v1.11.0
 	cloud.google.com/go/longrunning v0.5.11
 	cloud.google.com/go/managedidentities v1.6.11
-	cloud.google.com/go/maps v1.11.5
+	cloud.google.com/go/maps v1.11.6
 	cloud.google.com/go/mediatranslation v0.8.11
 	cloud.google.com/go/memcache v1.10.11
 	cloud.google.com/go/metastore v1.13.10
@@ -87,7 +87,7 @@ require (
 	cloud.google.com/go/phishingprotection v0.8.11
 	cloud.google.com/go/policytroubleshooter v1.10.9
 	cloud.google.com/go/privatecatalog v0.9.11
-	cloud.google.com/go/pubsub v1.40.0
+	cloud.google.com/go/pubsub v1.41.0
 	cloud.google.com/go/pubsublite v1.8.2
 	cloud.google.com/go/recaptchaenterprise/v2 v2.14.2
 	cloud.google.com/go/recommendationengine v0.8.11
@@ -121,8 +121,8 @@ require (
 	cloud.google.com/go/websecurityscanner v1.6.11
 	cloud.google.com/go/workflows v1.12.10
 	github.com/golang/protobuf v1.5.4
-	google.golang.org/genproto/googleapis/api v0.0.0-20240725223205-93522f1f2a9f
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20240725223205-93522f1f2a9f
+	google.golang.org/genproto/googleapis/api v0.0.0-20240730163845-b1a4ccb954bf
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20240730163845-b1a4ccb954bf
 	google.golang.org/grpc v1.64.1
 	google.golang.org/protobuf v1.34.2
 )
