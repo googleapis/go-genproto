@@ -3,9 +3,9 @@ module google.golang.org/genproto/googleapis/api/serviceusage
 go 1.21
 
 require (
-	cloud.google.com/go/serviceusage v1.8.10
-	google.golang.org/genproto v0.0.0-20240730163845-b1a4ccb954bf
-	google.golang.org/genproto/googleapis/api v0.0.0-20240730163845-b1a4ccb954bf
+	cloud.google.com/go/serviceusage v1.8.11
+	google.golang.org/genproto ddb44dafa142
+	google.golang.org/genproto/googleapis/api ddb44dafa142
 	google.golang.org/grpc v1.64.1
 	google.golang.org/protobuf v1.34.2
 )

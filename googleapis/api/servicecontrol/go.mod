@@ -3,9 +3,9 @@ module google.golang.org/genproto/googleapis/api/servicecontrol
 go 1.21
 
 require (
-	cloud.google.com/go/servicecontrol v1.13.6
-	google.golang.org/genproto/googleapis/api v0.0.0-20240730163845-b1a4ccb954bf
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20240730163845-b1a4ccb954bf
+	cloud.google.com/go/servicecontrol v1.13.7
+	google.golang.org/genproto/googleapis/api ddb44dafa142
+	google.golang.org/genproto/googleapis/rpc ddb44dafa142
 	google.golang.org/grpc v1.64.1
 	google.golang.org/protobuf v1.34.2
 )
