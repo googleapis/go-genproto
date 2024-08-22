@@ -41,7 +41,7 @@ require (
 	cloud.google.com/go/dataplex v1.18.3
 	cloud.google.com/go/dataproc/v2 v2.5.4
 	cloud.google.com/go/dataqna v0.8.12
-	cloud.google.com/go/datastore v1.17.1
+	cloud.google.com/go/datastore v1.18.1-0.20240822134219-d8887df4a12f
 	cloud.google.com/go/datastream v1.10.11
 	cloud.google.com/go/deploy v1.21.2
 	cloud.google.com/go/dialogflow v1.56.0
@@ -123,12 +123,12 @@ require (
 	github.com/golang/protobuf v1.5.4
 	google.golang.org/genproto/googleapis/api v0.0.0-20240814211410-ddb44dafa142
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20240814211410-ddb44dafa142
-	google.golang.org/grpc v1.64.1
+	google.golang.org/grpc v1.65.0
 	google.golang.org/protobuf v1.34.2
 )
 
 require (
-	golang.org/x/net v0.27.0 // indirect
-	golang.org/x/sys v0.22.0 // indirect
-	golang.org/x/text v0.16.0 // indirect
+	golang.org/x/net v0.28.0 // indirect
+	golang.org/x/sys v0.24.0 // indirect
+	golang.org/x/text v0.17.0 // indirect
 )
