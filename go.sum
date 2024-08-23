@@ -34,8 +34,8 @@ cloud.google.com/go/beyondcorp v1.0.11 h1:oBXJtKP2J7VLqYQf6l5i2Cqm/qjFJPngnGKbze
 cloud.google.com/go/beyondcorp v1.0.11/go.mod h1:V0EIXuYoyqKkHfnNCYZrNv6M+WYWJGIr5h019LurF3I=
 cloud.google.com/go/bigquery v1.62.0 h1:SYEA2f7fKqbSRRBHb7g0iHTtZvtPSPYdXfmqsjpsBwo=
 cloud.google.com/go/bigquery v1.62.0/go.mod h1:5ee+ZkF1x/ntgCsFQJAQTM3QkAZOecfCmvxhkJsWRSA=
-cloud.google.com/go/bigtable v1.27.2-0.20240802230159-f371928b558f h1:UR2/6M/bSN8PPQlhaq+57w21VZLcEvq4ujsHd1p/G2s=
-cloud.google.com/go/bigtable v1.27.2-0.20240802230159-f371928b558f/go.mod h1:avmXcmxVbLJAo9moICRYMgDyTTPoV0MA0lHKnyqV4fQ=
+cloud.google.com/go/bigtable v1.29.0 h1:2CnFjKPwjpZMZdTi2RpppvxzD80zKzDYrLYEQw/NnAs=
+cloud.google.com/go/bigtable v1.29.0/go.mod h1:5p909nNdWaNUcWs6KGZO8mI5HUovstlmrIi7+eA5PTQ=
 cloud.google.com/go/billing v1.18.10 h1:Hguzxohg+0U/qMFmB0hyK/rM1yH1VSARMgZ8fM1K5as=
 cloud.google.com/go/billing v1.18.10/go.mod h1:Lt+Qrjqsde38l/h1+9fzu44Pv9t+Suyf/p973mrg+xU=
 cloud.google.com/go/binaryauthorization v1.8.8 h1:Gxcy5/ydfTg2CviIxnZPVCNcFoDmQRbjzfAKg8bDJAU=
@@ -74,8 +74,8 @@ cloud.google.com/go/dataproc/v2 v2.5.4 h1:otFEJPOxzbAniKw4Aa1GVJlxjejR4/qHBlmU+x
 cloud.google.com/go/dataproc/v2 v2.5.4/go.mod h1:rpxihxKtWjPl8MDwjGiYgMva8nEWQSyzvl3e0p4ATt4=
 cloud.google.com/go/dataqna v0.8.12 h1:bTiS9ppeA86EnJnXqZZLiQWXglFpyaF2TK/iPkZ/ga0=
 cloud.google.com/go/dataqna v0.8.12/go.mod h1:86JdVMqh3521atZY1P7waaa50vzIbErTLY7gsio+umg=
-cloud.google.com/go/datastore v1.18.1-0.20240822134219-d8887df4a12f h1:m/o3ihw43N1INoltvl5eeO8iHF6uevlR+/46hAk6DeI=
-cloud.google.com/go/datastore v1.18.1-0.20240822134219-d8887df4a12f/go.mod h1:XvmGl5dNXQvk9Xm0fwdA4YYicMtB9Gmxgc1g9gxMu18=
+cloud.google.com/go/datastore v1.19.0 h1:p5H3bUQltOa26GcMRAxPoNwoqGkq5v8ftx9/ZBB35MI=
+cloud.google.com/go/datastore v1.19.0/go.mod h1:KGzkszuj87VT8tJe67GuB+qLolfsOt6bZq/KFuWaahc=
 cloud.google.com/go/datastream v1.10.11 h1:LpJhP4g8+JGO5dKwhVSblnpB1hk/qA2/+rq68ppkVF8=
 cloud.google.com/go/datastream v1.10.11/go.mod h1:0d9em/ERaof15lY5JU3pWKF7ZJOHiPKcNJsTCBz6TX8=
 cloud.google.com/go/deploy v1.21.2 h1:sperWx8Nk3AFnonH8XXxCdarZfeXZYR7dgmDFoBkuCc=

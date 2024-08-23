@@ -21,7 +21,7 @@ require (
 	cloud.google.com/go/batch v1.9.4
 	cloud.google.com/go/beyondcorp v1.0.11
 	cloud.google.com/go/bigquery v1.62.0
-	cloud.google.com/go/bigtable v1.27.2-0.20240802230159-f371928b558f
+	cloud.google.com/go/bigtable v1.29.0
 	cloud.google.com/go/billing v1.18.10
 	cloud.google.com/go/binaryauthorization v1.8.8
 	cloud.google.com/go/certificatemanager v1.8.6
@@ -41,7 +41,7 @@ require (
 	cloud.google.com/go/dataplex v1.18.3
 	cloud.google.com/go/dataproc/v2 v2.5.4
 	cloud.google.com/go/dataqna v0.8.12
-	cloud.google.com/go/datastore v1.18.1-0.20240822134219-d8887df4a12f
+	cloud.google.com/go/datastore v1.19.0
 	cloud.google.com/go/datastream v1.10.11
 	cloud.google.com/go/deploy v1.21.2
 	cloud.google.com/go/dialogflow v1.56.0
