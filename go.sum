@@ -104,8 +104,8 @@ cloud.google.com/go/functions v1.18.0 h1:50K2iLtj7xj6xqrhdNOL+aVaHwKi4h7qgNWP9ie
 cloud.google.com/go/functions v1.18.0/go.mod h1:r8uxxI35hdP2slfTjGJvx04NRy8sP/EXUMZ0NYfBd+w=
 cloud.google.com/go/gkebackup v1.5.5 h1:ITiOPDl0Q1vgDHdbMvRk0Yk6uEcP8Kq875m6IMJJu6Y=
 cloud.google.com/go/gkebackup v1.5.5/go.mod h1:C/XZ2LoG+V97xGc18oCPniO754E0iHt0OXqKatawBMM=
-cloud.google.com/go/gkeconnect v0.8.12 h1:0n3xfOvU+SN2LJRWex81U3xCNfQtPpxjSkrI3XBdudM=
-cloud.google.com/go/gkeconnect v0.8.12/go.mod h1:+SpnnnUx4Xs/mWBJbqC7Mlu9Vv7riQlHSDS1T1ek2+U=
+cloud.google.com/go/gkeconnect v0.10.0 h1:RGapX7lIq57kZfQY7WwkfUxuj6/YPJOiMjOvjMg8ohg=
+cloud.google.com/go/gkeconnect v0.10.0/go.mod h1:d8TE+YAlX7mvq8pWy1Q4yOnmxbN0SimmcQdtJwBdUHk=
 cloud.google.com/go/gkehub v0.14.12 h1:twVZpPzRnwJQ9UwU3M/Mwn356qboSRo+UxsTmlMtKiM=
 cloud.google.com/go/gkehub v0.14.12/go.mod h1:CNYNBCqjIkE9L70gzbRxZOsc++Wcp2oCLkfuytOFqRM=
 cloud.google.com/go/gkemulticloud v1.2.5 h1:OREoK+FO+5j6eVXdvGsiXHvoFkUZxxoS8WBWk6zWThA=
