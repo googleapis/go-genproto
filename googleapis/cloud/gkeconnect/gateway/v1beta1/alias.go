@@ -1,4 +1,4 @@
-// Copyright 2022 Google LLC
+// Copyright 2024 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -27,35 +27,58 @@ import (
 	grpc "google.golang.org/grpc"
 )
 
-// Deprecated: Please use vars in: cloud.google.com/go/gkeconnect/gateway/apiv1beta1/gatewaypb
-var (
-	File_google_cloud_gkeconnect_gateway_v1beta1_gateway_proto = src.File_google_cloud_gkeconnect_gateway_v1beta1_gateway_proto
+// Deprecated: Please use consts in: cloud.google.com/go/gkeconnect/gateway/apiv1beta1/gatewaypb
+const (
+	GenerateCredentialsRequest_OPERATING_SYSTEM_UNSPECIFIED = src.GenerateCredentialsRequest_OPERATING_SYSTEM_UNSPECIFIED
+	GenerateCredentialsRequest_OPERATING_SYSTEM_WINDOWS     = src.GenerateCredentialsRequest_OPERATING_SYSTEM_WINDOWS
 )
 
-// GatewayServiceClient is the client API for GatewayService service. For
+// Deprecated: Please use vars in: cloud.google.com/go/gkeconnect/gateway/apiv1beta1/gatewaypb
+var (
+	File_google_cloud_gkeconnect_gateway_v1beta1_control_proto = src.File_google_cloud_gkeconnect_gateway_v1beta1_control_proto
+	GenerateCredentialsRequest_OperatingSystem_name            = src.GenerateCredentialsRequest_OperatingSystem_name
+	GenerateCredentialsRequest_OperatingSystem_value           = src.GenerateCredentialsRequest_OperatingSystem_value
+)
+
+// GatewayControlClient is the client API for GatewayControl service. For
 // semantics around ctx use and closing/ending streaming RPCs, please refer to
 // https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 //
 // Deprecated: Please use types in: cloud.google.com/go/gkeconnect/gateway/apiv1beta1/gatewaypb
-type GatewayServiceClient = src.GatewayServiceClient
+type GatewayControlClient = src.GatewayControlClient
 
-// GatewayServiceServer is the server API for GatewayService service.
+// GatewayControlServer is the server API for GatewayControl service.
 //
 // Deprecated: Please use types in: cloud.google.com/go/gkeconnect/gateway/apiv1beta1/gatewaypb
-type GatewayServiceServer = src.GatewayServiceServer
+type GatewayControlServer = src.GatewayControlServer
 
-// UnimplementedGatewayServiceServer can be embedded to have forward
+// A request for connection information for a particular membership.
+//
+// Deprecated: Please use types in: cloud.google.com/go/gkeconnect/gateway/apiv1beta1/gatewaypb
+type GenerateCredentialsRequest = src.GenerateCredentialsRequest
+
+// Operating systems requiring specialized kubeconfigs.
+//
+// Deprecated: Please use types in: cloud.google.com/go/gkeconnect/gateway/apiv1beta1/gatewaypb
+type GenerateCredentialsRequest_OperatingSystem = src.GenerateCredentialsRequest_OperatingSystem
+
+// Connection information for a particular membership.
+//
+// Deprecated: Please use types in: cloud.google.com/go/gkeconnect/gateway/apiv1beta1/gatewaypb
+type GenerateCredentialsResponse = src.GenerateCredentialsResponse
+
+// UnimplementedGatewayControlServer can be embedded to have forward
 // compatible implementations.
 //
 // Deprecated: Please use types in: cloud.google.com/go/gkeconnect/gateway/apiv1beta1/gatewaypb
-type UnimplementedGatewayServiceServer = src.UnimplementedGatewayServiceServer
+type UnimplementedGatewayControlServer = src.UnimplementedGatewayControlServer
 
 // Deprecated: Please use funcs in: cloud.google.com/go/gkeconnect/gateway/apiv1beta1/gatewaypb
-func NewGatewayServiceClient(cc grpc.ClientConnInterface) GatewayServiceClient {
-	return src.NewGatewayServiceClient(cc)
+func NewGatewayControlClient(cc grpc.ClientConnInterface) GatewayControlClient {
+	return src.NewGatewayControlClient(cc)
 }
 
 // Deprecated: Please use funcs in: cloud.google.com/go/gkeconnect/gateway/apiv1beta1/gatewaypb
-func RegisterGatewayServiceServer(s *grpc.Server, srv GatewayServiceServer) {
-	src.RegisterGatewayServiceServer(s, srv)
+func RegisterGatewayControlServer(s *grpc.Server, srv GatewayControlServer) {
+	src.RegisterGatewayControlServer(s, srv)
 }

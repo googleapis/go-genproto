@@ -56,7 +56,7 @@ require (
 	cloud.google.com/go/firestore v1.16.0
 	cloud.google.com/go/functions v1.18.0
 	cloud.google.com/go/gkebackup v1.5.5
-	cloud.google.com/go/gkeconnect v0.8.12
+	cloud.google.com/go/gkeconnect v0.10.0
 	cloud.google.com/go/gkehub v0.14.12
 	cloud.google.com/go/gkemulticloud v1.2.5
 	cloud.google.com/go/gsuiteaddons v1.6.12
