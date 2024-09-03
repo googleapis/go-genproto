@@ -21,7 +21,7 @@ require (
 	cloud.google.com/go/batch v1.10.0
 	cloud.google.com/go/beyondcorp v1.1.0
 	cloud.google.com/go/bigquery v1.62.0
-	cloud.google.com/go/bigtable v1.29.0
+	cloud.google.com/go/bigtable v1.31.0
 	cloud.google.com/go/billing v1.19.0
 	cloud.google.com/go/binaryauthorization v1.9.0
 	cloud.google.com/go/certificatemanager v1.9.0
@@ -56,7 +56,7 @@ require (
 	cloud.google.com/go/firestore v1.16.0
 	cloud.google.com/go/functions v1.19.0
 	cloud.google.com/go/gkebackup v1.6.0
-	cloud.google.com/go/gkeconnect v0.10.0
+	cloud.google.com/go/gkeconnect v0.11.0
 	cloud.google.com/go/gkehub v0.15.0
 	cloud.google.com/go/gkemulticloud v1.3.0
 	cloud.google.com/go/gsuiteaddons v1.7.0
@@ -89,7 +89,7 @@ require (
 	cloud.google.com/go/privatecatalog v0.10.0
 	cloud.google.com/go/pubsub v1.42.0
 	cloud.google.com/go/pubsublite v1.8.2
-	cloud.google.com/go/recaptchaenterprise/v2 v2.16.0
+	cloud.google.com/go/recaptchaenterprise/v2 v2.17.0
 	cloud.google.com/go/recommendationengine v0.9.0
 	cloud.google.com/go/recommender v1.13.0
 	cloud.google.com/go/redis v1.17.0
@@ -121,9 +121,9 @@ require (
 	cloud.google.com/go/websecurityscanner v1.7.0
 	cloud.google.com/go/workflows v1.13.0
 	github.com/golang/protobuf v1.5.4
-	google.golang.org/genproto/googleapis/api v0.0.0-20240823204242-4ba0660f739c
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20240823204242-4ba0660f739c
-	google.golang.org/grpc v1.65.0
+	google.golang.org/genproto/googleapis/api v0.0.0-20240827150818-7e3bb234dfed
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20240827150818-7e3bb234dfed
+	google.golang.org/grpc v1.66.0
 	google.golang.org/protobuf v1.34.2
 )
 
