@@ -26,7 +26,7 @@ require (
 	cloud.google.com/go/binaryauthorization v1.9.1
 	cloud.google.com/go/certificatemanager v1.9.1
 	cloud.google.com/go/channel v1.18.1
-	cloud.google.com/go/cloudbuild v1.17.1
+	cloud.google.com/go/cloudbuild v1.18.0
 	cloud.google.com/go/clouddms v1.8.1
 	cloud.google.com/go/cloudtasks v1.13.1
 	cloud.google.com/go/compute v1.28.1
@@ -39,12 +39,12 @@ require (
 	cloud.google.com/go/datafusion v1.8.1
 	cloud.google.com/go/datalabeling v0.9.1
 	cloud.google.com/go/dataplex v1.19.1
-	cloud.google.com/go/dataproc/v2 v2.8.0
+	cloud.google.com/go/dataproc/v2 v2.9.0
 	cloud.google.com/go/dataqna v0.9.1
 	cloud.google.com/go/datastore v1.19.0
 	cloud.google.com/go/datastream v1.11.1
 	cloud.google.com/go/deploy v1.22.1
-	cloud.google.com/go/dialogflow v1.57.1
+	cloud.google.com/go/dialogflow v1.58.0
 	cloud.google.com/go/dlp v1.19.0
 	cloud.google.com/go/documentai v1.34.0
 	cloud.google.com/go/domains v0.10.1
@@ -70,7 +70,7 @@ require (
 	cloud.google.com/go/logging v1.11.0
 	cloud.google.com/go/longrunning v0.6.1
 	cloud.google.com/go/managedidentities v1.7.1
-	cloud.google.com/go/maps v1.13.0
+	cloud.google.com/go/maps v1.14.0
 	cloud.google.com/go/mediatranslation v0.9.1
 	cloud.google.com/go/memcache v1.11.1
 	cloud.google.com/go/metastore v1.14.1
@@ -103,7 +103,7 @@ require (
 	cloud.google.com/go/securitycenter v1.35.1
 	cloud.google.com/go/servicedirectory v1.12.1
 	cloud.google.com/go/shell v1.8.1
-	cloud.google.com/go/spanner v1.67.0
+	cloud.google.com/go/spanner v1.68.0
 	cloud.google.com/go/speech v1.25.1
 	cloud.google.com/go/storagetransfer v1.11.1
 	cloud.google.com/go/talent v1.7.1
@@ -121,8 +121,8 @@ require (
 	cloud.google.com/go/websecurityscanner v1.7.1
 	cloud.google.com/go/workflows v1.13.1
 	github.com/golang/protobuf v1.5.4
-	google.golang.org/genproto/googleapis/api v0.0.0-20240903143218-8af14fe29dc1
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20240903143218-8af14fe29dc1
+	google.golang.org/genproto/googleapis/api v0.0.0-20240924160255-9d4c2d233b61
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20240924160255-9d4c2d233b61
 	google.golang.org/grpc v1.67.0
 	google.golang.org/protobuf v1.34.2
 )
