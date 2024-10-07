@@ -4,7 +4,7 @@ go 1.21
 
 require (
 	cloud.google.com/go/apikeys v1.2.1
-	google.golang.org/grpc v1.67.0
+	google.golang.org/grpc v1.67.1
 )
 
 require (
