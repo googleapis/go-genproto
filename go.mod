@@ -3,7 +3,7 @@ module google.golang.org/genproto
 go 1.21
 
 require (
-	cloud.google.com/go v0.115.1
+	cloud.google.com/go v0.116.0
 	cloud.google.com/go/accessapproval v1.8.1
 	cloud.google.com/go/accesscontextmanager v1.9.1
 	cloud.google.com/go/aiplatform v1.68.0
@@ -18,19 +18,19 @@ require (
 	cloud.google.com/go/assuredworkloads v1.12.1
 	cloud.google.com/go/automl v1.14.1
 	cloud.google.com/go/baremetalsolution v1.3.1
-	cloud.google.com/go/batch v1.11.0
+	cloud.google.com/go/batch v1.11.1
 	cloud.google.com/go/beyondcorp v1.1.1
 	cloud.google.com/go/bigquery v1.63.1
 	cloud.google.com/go/bigtable v1.33.0
 	cloud.google.com/go/billing v1.19.1
 	cloud.google.com/go/binaryauthorization v1.9.1
 	cloud.google.com/go/certificatemanager v1.9.1
-	cloud.google.com/go/channel v1.18.1
+	cloud.google.com/go/channel v1.19.0
 	cloud.google.com/go/cloudbuild v1.18.0
 	cloud.google.com/go/clouddms v1.8.1
 	cloud.google.com/go/cloudtasks v1.13.1
 	cloud.google.com/go/compute v1.28.1
-	cloud.google.com/go/contactcenterinsights v1.14.1
+	cloud.google.com/go/contactcenterinsights v1.15.0
 	cloud.google.com/go/container v1.40.0
 	cloud.google.com/go/containeranalysis v0.13.1
 	cloud.google.com/go/datacatalog v1.22.1
@@ -43,7 +43,7 @@ require (
 	cloud.google.com/go/dataqna v0.9.1
 	cloud.google.com/go/datastore v1.19.0
 	cloud.google.com/go/datastream v1.11.1
-	cloud.google.com/go/deploy v1.22.1
+	cloud.google.com/go/deploy v1.23.0
 	cloud.google.com/go/dialogflow v1.58.0
 	cloud.google.com/go/dlp v1.19.0
 	cloud.google.com/go/documentai v1.34.0
@@ -87,23 +87,23 @@ require (
 	cloud.google.com/go/phishingprotection v0.9.1
 	cloud.google.com/go/policytroubleshooter v1.11.1
 	cloud.google.com/go/privatecatalog v0.10.1
-	cloud.google.com/go/pubsub v1.43.0
+	cloud.google.com/go/pubsub v1.44.0
 	cloud.google.com/go/pubsublite v1.8.2
-	cloud.google.com/go/recaptchaenterprise/v2 v2.17.1
+	cloud.google.com/go/recaptchaenterprise/v2 v2.17.2
 	cloud.google.com/go/recommendationengine v0.9.1
 	cloud.google.com/go/recommender v1.13.1
 	cloud.google.com/go/redis v1.17.1
 	cloud.google.com/go/resourcemanager v1.10.1
 	cloud.google.com/go/resourcesettings v1.8.1
-	cloud.google.com/go/retail v1.18.1
-	cloud.google.com/go/run v1.5.1
+	cloud.google.com/go/retail v1.19.0
+	cloud.google.com/go/run v1.6.0
 	cloud.google.com/go/scheduler v1.11.1
 	cloud.google.com/go/secretmanager v1.14.1
 	cloud.google.com/go/security v1.18.1
 	cloud.google.com/go/securitycenter v1.35.1
 	cloud.google.com/go/servicedirectory v1.12.1
 	cloud.google.com/go/shell v1.8.1
-	cloud.google.com/go/spanner v1.69.0
+	cloud.google.com/go/spanner v1.70.0
 	cloud.google.com/go/speech v1.25.1
 	cloud.google.com/go/storagetransfer v1.11.1
 	cloud.google.com/go/talent v1.7.1
@@ -121,8 +121,8 @@ require (
 	cloud.google.com/go/websecurityscanner v1.7.1
 	cloud.google.com/go/workflows v1.13.1
 	github.com/golang/protobuf v1.5.4
-	google.golang.org/genproto/googleapis/api v0.0.0-20240930140551-af27646dc61f
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20240930140551-af27646dc61f
+	google.golang.org/genproto/googleapis/api v0.0.0-20241007155032-5fefd90f89a9
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20241007155032-5fefd90f89a9
 	google.golang.org/grpc v1.67.1
 	google.golang.org/protobuf v1.35.1
 )
