@@ -8,6 +8,7 @@ set -x
 
 # cd to project dir on Kokoro instance
 cd github/go-genproto
+git config --global --add safe.directory "$(pwd)/./.git"
 
 go version
 
