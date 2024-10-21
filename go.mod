@@ -67,7 +67,7 @@ require (
 	cloud.google.com/go/kms v1.20.0
 	cloud.google.com/go/language v1.14.1
 	cloud.google.com/go/lifesciences v0.10.1
-	cloud.google.com/go/logging v1.11.0
+	cloud.google.com/go/logging v1.12.0
 	cloud.google.com/go/longrunning v0.6.1
 	cloud.google.com/go/managedidentities v1.7.1
 	cloud.google.com/go/maps v1.14.0
@@ -121,8 +121,8 @@ require (
 	cloud.google.com/go/websecurityscanner v1.7.1
 	cloud.google.com/go/workflows v1.13.1
 	github.com/golang/protobuf v1.5.4
-	google.golang.org/genproto/googleapis/api v0.0.0-20241007155032-5fefd90f89a9
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20241007155032-5fefd90f89a9
+	google.golang.org/genproto/googleapis/api v0.0.0-20241015192408-796eee8c2d53
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20241015192408-796eee8c2d53
 	google.golang.org/grpc v1.67.1
 	google.golang.org/protobuf v1.35.1
 )
