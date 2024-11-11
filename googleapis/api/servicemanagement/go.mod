@@ -4,7 +4,7 @@ go 1.21
 
 require (
 	cloud.google.com/go/servicemanagement v1.10.2
-	google.golang.org/grpc v1.67.1
+	google.golang.org/grpc v1.68.0
 )
 
 require (
