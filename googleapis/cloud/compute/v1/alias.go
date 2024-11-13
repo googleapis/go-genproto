@@ -1,4 +1,4 @@
-// Copyright 2022 Google LLC
+// Copyright 2024 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -24,1923 +24,2368 @@ package compute
 
 import (
 	src "cloud.google.com/go/compute/apiv1/computepb"
-	grpc "google.golang.org/grpc"
 )
 
 // Deprecated: Please use consts in: cloud.google.com/go/compute/apiv1/computepb
 const (
-	AccessConfig_DIRECT_IPV6                                                                           = src.AccessConfig_DIRECT_IPV6
-	AccessConfig_FIXED_STANDARD                                                                        = src.AccessConfig_FIXED_STANDARD
-	AccessConfig_ONE_TO_ONE_NAT                                                                        = src.AccessConfig_ONE_TO_ONE_NAT
-	AccessConfig_PREMIUM                                                                               = src.AccessConfig_PREMIUM
-	AccessConfig_STANDARD                                                                              = src.AccessConfig_STANDARD
-	AccessConfig_STANDARD_OVERRIDES_FIXED_STANDARD                                                     = src.AccessConfig_STANDARD_OVERRIDES_FIXED_STANDARD
-	AccessConfig_UNDEFINED_NETWORK_TIER                                                                = src.AccessConfig_UNDEFINED_NETWORK_TIER
-	AccessConfig_UNDEFINED_TYPE                                                                        = src.AccessConfig_UNDEFINED_TYPE
-	Address_DNS_RESOLVER                                                                               = src.Address_DNS_RESOLVER
-	Address_EXTERNAL                                                                                   = src.Address_EXTERNAL
-	Address_FIXED_STANDARD                                                                             = src.Address_FIXED_STANDARD
-	Address_GCE_ENDPOINT                                                                               = src.Address_GCE_ENDPOINT
-	Address_INTERNAL                                                                                   = src.Address_INTERNAL
-	Address_IN_USE                                                                                     = src.Address_IN_USE
-	Address_IPSEC_INTERCONNECT                                                                         = src.Address_IPSEC_INTERCONNECT
-	Address_IPV4                                                                                       = src.Address_IPV4
-	Address_IPV6                                                                                       = src.Address_IPV6
-	Address_NAT_AUTO                                                                                   = src.Address_NAT_AUTO
-	Address_NETLB                                                                                      = src.Address_NETLB
-	Address_PREMIUM                                                                                    = src.Address_PREMIUM
-	Address_PRIVATE_SERVICE_CONNECT                                                                    = src.Address_PRIVATE_SERVICE_CONNECT
-	Address_RESERVED                                                                                   = src.Address_RESERVED
-	Address_RESERVING                                                                                  = src.Address_RESERVING
-	Address_SERVERLESS                                                                                 = src.Address_SERVERLESS
-	Address_SHARED_LOADBALANCER_VIP                                                                    = src.Address_SHARED_LOADBALANCER_VIP
-	Address_STANDARD                                                                                   = src.Address_STANDARD
-	Address_STANDARD_OVERRIDES_FIXED_STANDARD                                                          = src.Address_STANDARD_OVERRIDES_FIXED_STANDARD
-	Address_UNDEFINED_ADDRESS_TYPE                                                                     = src.Address_UNDEFINED_ADDRESS_TYPE
-	Address_UNDEFINED_IPV6_ENDPOINT_TYPE                                                               = src.Address_UNDEFINED_IPV6_ENDPOINT_TYPE
-	Address_UNDEFINED_IP_VERSION                                                                       = src.Address_UNDEFINED_IP_VERSION
-	Address_UNDEFINED_NETWORK_TIER                                                                     = src.Address_UNDEFINED_NETWORK_TIER
-	Address_UNDEFINED_PURPOSE                                                                          = src.Address_UNDEFINED_PURPOSE
-	Address_UNDEFINED_STATUS                                                                           = src.Address_UNDEFINED_STATUS
-	Address_UNSPECIFIED_TYPE                                                                           = src.Address_UNSPECIFIED_TYPE
-	Address_UNSPECIFIED_VERSION                                                                        = src.Address_UNSPECIFIED_VERSION
-	Address_VM                                                                                         = src.Address_VM
-	Address_VPC_PEERING                                                                                = src.Address_VPC_PEERING
-	AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDisk_NVME                        = src.AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDisk_NVME
-	AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDisk_SCSI                        = src.AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDisk_SCSI
-	AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDisk_UNDEFINED_INTERFACE         = src.AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDisk_UNDEFINED_INTERFACE
-	AttachedDiskInitializeParams_ARCHITECTURE_UNSPECIFIED                                              = src.AttachedDiskInitializeParams_ARCHITECTURE_UNSPECIFIED
-	AttachedDiskInitializeParams_ARM64                                                                 = src.AttachedDiskInitializeParams_ARM64
-	AttachedDiskInitializeParams_RECREATE_DISK                                                         = src.AttachedDiskInitializeParams_RECREATE_DISK
-	AttachedDiskInitializeParams_RECREATE_DISK_IF_SOURCE_CHANGED                                       = src.AttachedDiskInitializeParams_RECREATE_DISK_IF_SOURCE_CHANGED
-	AttachedDiskInitializeParams_UNDEFINED_ARCHITECTURE                                                = src.AttachedDiskInitializeParams_UNDEFINED_ARCHITECTURE
-	AttachedDiskInitializeParams_UNDEFINED_ON_UPDATE_ACTION                                            = src.AttachedDiskInitializeParams_UNDEFINED_ON_UPDATE_ACTION
-	AttachedDiskInitializeParams_USE_EXISTING_DISK                                                     = src.AttachedDiskInitializeParams_USE_EXISTING_DISK
-	AttachedDiskInitializeParams_X86_64                                                                = src.AttachedDiskInitializeParams_X86_64
-	AttachedDisk_ARCHITECTURE_UNSPECIFIED                                                              = src.AttachedDisk_ARCHITECTURE_UNSPECIFIED
-	AttachedDisk_ARM64                                                                                 = src.AttachedDisk_ARM64
-	AttachedDisk_NVME                                                                                  = src.AttachedDisk_NVME
-	AttachedDisk_PERSISTENT                                                                            = src.AttachedDisk_PERSISTENT
-	AttachedDisk_READ_ONLY                                                                             = src.AttachedDisk_READ_ONLY
-	AttachedDisk_READ_WRITE                                                                            = src.AttachedDisk_READ_WRITE
-	AttachedDisk_SCRATCH                                                                               = src.AttachedDisk_SCRATCH
-	AttachedDisk_SCSI                                                                                  = src.AttachedDisk_SCSI
-	AttachedDisk_UNDEFINED_ARCHITECTURE                                                                = src.AttachedDisk_UNDEFINED_ARCHITECTURE
-	AttachedDisk_UNDEFINED_INTERFACE                                                                   = src.AttachedDisk_UNDEFINED_INTERFACE
-	AttachedDisk_UNDEFINED_MODE                                                                        = src.AttachedDisk_UNDEFINED_MODE
-	AttachedDisk_UNDEFINED_TYPE                                                                        = src.AttachedDisk_UNDEFINED_TYPE
-	AttachedDisk_X86_64                                                                                = src.AttachedDisk_X86_64
-	AuditLogConfig_ADMIN_READ                                                                          = src.AuditLogConfig_ADMIN_READ
-	AuditLogConfig_DATA_READ                                                                           = src.AuditLogConfig_DATA_READ
-	AuditLogConfig_DATA_WRITE                                                                          = src.AuditLogConfig_DATA_WRITE
-	AuditLogConfig_LOG_TYPE_UNSPECIFIED                                                                = src.AuditLogConfig_LOG_TYPE_UNSPECIFIED
-	AuditLogConfig_UNDEFINED_LOG_TYPE                                                                  = src.AuditLogConfig_UNDEFINED_LOG_TYPE
-	AuthorizationLoggingOptions_ADMIN_READ                                                             = src.AuthorizationLoggingOptions_ADMIN_READ
-	AuthorizationLoggingOptions_ADMIN_WRITE                                                            = src.AuthorizationLoggingOptions_ADMIN_WRITE
-	AuthorizationLoggingOptions_DATA_READ                                                              = src.AuthorizationLoggingOptions_DATA_READ
-	AuthorizationLoggingOptions_DATA_WRITE                                                             = src.AuthorizationLoggingOptions_DATA_WRITE
-	AuthorizationLoggingOptions_PERMISSION_TYPE_UNSPECIFIED                                            = src.AuthorizationLoggingOptions_PERMISSION_TYPE_UNSPECIFIED
-	AuthorizationLoggingOptions_UNDEFINED_PERMISSION_TYPE                                              = src.AuthorizationLoggingOptions_UNDEFINED_PERMISSION_TYPE
-	AutoscalerStatusDetails_ALL_INSTANCES_UNHEALTHY                                                    = src.AutoscalerStatusDetails_ALL_INSTANCES_UNHEALTHY
-	AutoscalerStatusDetails_BACKEND_SERVICE_DOES_NOT_EXIST                                             = src.AutoscalerStatusDetails_BACKEND_SERVICE_DOES_NOT_EXIST
-	AutoscalerStatusDetails_CAPPED_AT_MAX_NUM_REPLICAS                                                 = src.AutoscalerStatusDetails_CAPPED_AT_MAX_NUM_REPLICAS
-	AutoscalerStatusDetails_CUSTOM_METRIC_DATA_POINTS_TOO_SPARSE                                       = src.AutoscalerStatusDetails_CUSTOM_METRIC_DATA_POINTS_TOO_SPARSE
-	AutoscalerStatusDetails_CUSTOM_METRIC_INVALID                                                      = src.AutoscalerStatusDetails_CUSTOM_METRIC_INVALID
-	AutoscalerStatusDetails_MIN_EQUALS_MAX                                                             = src.AutoscalerStatusDetails_MIN_EQUALS_MAX
-	AutoscalerStatusDetails_MISSING_CUSTOM_METRIC_DATA_POINTS                                          = src.AutoscalerStatusDetails_MISSING_CUSTOM_METRIC_DATA_POINTS
-	AutoscalerStatusDetails_MISSING_LOAD_BALANCING_DATA_POINTS                                         = src.AutoscalerStatusDetails_MISSING_LOAD_BALANCING_DATA_POINTS
-	AutoscalerStatusDetails_MODE_OFF                                                                   = src.AutoscalerStatusDetails_MODE_OFF
-	AutoscalerStatusDetails_MODE_ONLY_SCALE_OUT                                                        = src.AutoscalerStatusDetails_MODE_ONLY_SCALE_OUT
-	AutoscalerStatusDetails_MODE_ONLY_UP                                                               = src.AutoscalerStatusDetails_MODE_ONLY_UP
-	AutoscalerStatusDetails_MORE_THAN_ONE_BACKEND_SERVICE                                              = src.AutoscalerStatusDetails_MORE_THAN_ONE_BACKEND_SERVICE
-	AutoscalerStatusDetails_NOT_ENOUGH_QUOTA_AVAILABLE                                                 = src.AutoscalerStatusDetails_NOT_ENOUGH_QUOTA_AVAILABLE
-	AutoscalerStatusDetails_REGION_RESOURCE_STOCKOUT                                                   = src.AutoscalerStatusDetails_REGION_RESOURCE_STOCKOUT
-	AutoscalerStatusDetails_SCALING_TARGET_DOES_NOT_EXIST                                              = src.AutoscalerStatusDetails_SCALING_TARGET_DOES_NOT_EXIST
-	AutoscalerStatusDetails_SCHEDULED_INSTANCES_GREATER_THAN_AUTOSCALER_MAX                            = src.AutoscalerStatusDetails_SCHEDULED_INSTANCES_GREATER_THAN_AUTOSCALER_MAX
-	AutoscalerStatusDetails_SCHEDULED_INSTANCES_LESS_THAN_AUTOSCALER_MIN                               = src.AutoscalerStatusDetails_SCHEDULED_INSTANCES_LESS_THAN_AUTOSCALER_MIN
-	AutoscalerStatusDetails_UNDEFINED_TYPE                                                             = src.AutoscalerStatusDetails_UNDEFINED_TYPE
-	AutoscalerStatusDetails_UNKNOWN                                                                    = src.AutoscalerStatusDetails_UNKNOWN
-	AutoscalerStatusDetails_UNSUPPORTED_MAX_RATE_LOAD_BALANCING_CONFIGURATION                          = src.AutoscalerStatusDetails_UNSUPPORTED_MAX_RATE_LOAD_BALANCING_CONFIGURATION
-	AutoscalerStatusDetails_ZONE_RESOURCE_STOCKOUT                                                     = src.AutoscalerStatusDetails_ZONE_RESOURCE_STOCKOUT
-	Autoscaler_ACTIVE                                                                                  = src.Autoscaler_ACTIVE
-	Autoscaler_DELETING                                                                                = src.Autoscaler_DELETING
-	Autoscaler_ERROR                                                                                   = src.Autoscaler_ERROR
-	Autoscaler_PENDING                                                                                 = src.Autoscaler_PENDING
-	Autoscaler_UNDEFINED_STATUS                                                                        = src.Autoscaler_UNDEFINED_STATUS
-	AutoscalingPolicyCpuUtilization_NONE                                                               = src.AutoscalingPolicyCpuUtilization_NONE
-	AutoscalingPolicyCpuUtilization_OPTIMIZE_AVAILABILITY                                              = src.AutoscalingPolicyCpuUtilization_OPTIMIZE_AVAILABILITY
-	AutoscalingPolicyCpuUtilization_UNDEFINED_PREDICTIVE_METHOD                                        = src.AutoscalingPolicyCpuUtilization_UNDEFINED_PREDICTIVE_METHOD
-	AutoscalingPolicyCustomMetricUtilization_DELTA_PER_MINUTE                                          = src.AutoscalingPolicyCustomMetricUtilization_DELTA_PER_MINUTE
-	AutoscalingPolicyCustomMetricUtilization_DELTA_PER_SECOND                                          = src.AutoscalingPolicyCustomMetricUtilization_DELTA_PER_SECOND
-	AutoscalingPolicyCustomMetricUtilization_GAUGE                                                     = src.AutoscalingPolicyCustomMetricUtilization_GAUGE
-	AutoscalingPolicyCustomMetricUtilization_UNDEFINED_UTILIZATION_TARGET_TYPE                         = src.AutoscalingPolicyCustomMetricUtilization_UNDEFINED_UTILIZATION_TARGET_TYPE
-	AutoscalingPolicy_OFF                                                                              = src.AutoscalingPolicy_OFF
-	AutoscalingPolicy_ON                                                                               = src.AutoscalingPolicy_ON
-	AutoscalingPolicy_ONLY_SCALE_OUT                                                                   = src.AutoscalingPolicy_ONLY_SCALE_OUT
-	AutoscalingPolicy_ONLY_UP                                                                          = src.AutoscalingPolicy_ONLY_UP
-	AutoscalingPolicy_UNDEFINED_MODE                                                                   = src.AutoscalingPolicy_UNDEFINED_MODE
-	BackendBucketCdnPolicy_CACHE_ALL_STATIC                                                            = src.BackendBucketCdnPolicy_CACHE_ALL_STATIC
-	BackendBucketCdnPolicy_FORCE_CACHE_ALL                                                             = src.BackendBucketCdnPolicy_FORCE_CACHE_ALL
-	BackendBucketCdnPolicy_INVALID_CACHE_MODE                                                          = src.BackendBucketCdnPolicy_INVALID_CACHE_MODE
-	BackendBucketCdnPolicy_UNDEFINED_CACHE_MODE                                                        = src.BackendBucketCdnPolicy_UNDEFINED_CACHE_MODE
-	BackendBucketCdnPolicy_USE_ORIGIN_HEADERS                                                          = src.BackendBucketCdnPolicy_USE_ORIGIN_HEADERS
-	BackendBucket_AUTOMATIC                                                                            = src.BackendBucket_AUTOMATIC
-	BackendBucket_DISABLED                                                                             = src.BackendBucket_DISABLED
-	BackendBucket_UNDEFINED_COMPRESSION_MODE                                                           = src.BackendBucket_UNDEFINED_COMPRESSION_MODE
-	BackendServiceCdnPolicy_CACHE_ALL_STATIC                                                           = src.BackendServiceCdnPolicy_CACHE_ALL_STATIC
-	BackendServiceCdnPolicy_FORCE_CACHE_ALL                                                            = src.BackendServiceCdnPolicy_FORCE_CACHE_ALL
-	BackendServiceCdnPolicy_INVALID_CACHE_MODE                                                         = src.BackendServiceCdnPolicy_INVALID_CACHE_MODE
-	BackendServiceCdnPolicy_UNDEFINED_CACHE_MODE                                                       = src.BackendServiceCdnPolicy_UNDEFINED_CACHE_MODE
-	BackendServiceCdnPolicy_USE_ORIGIN_HEADERS                                                         = src.BackendServiceCdnPolicy_USE_ORIGIN_HEADERS
-	BackendServiceConnectionTrackingPolicy_ALWAYS_PERSIST                                              = src.BackendServiceConnectionTrackingPolicy_ALWAYS_PERSIST
-	BackendServiceConnectionTrackingPolicy_DEFAULT_FOR_PROTOCOL                                        = src.BackendServiceConnectionTrackingPolicy_DEFAULT_FOR_PROTOCOL
-	BackendServiceConnectionTrackingPolicy_INVALID_TRACKING_MODE                                       = src.BackendServiceConnectionTrackingPolicy_INVALID_TRACKING_MODE
-	BackendServiceConnectionTrackingPolicy_NEVER_PERSIST                                               = src.BackendServiceConnectionTrackingPolicy_NEVER_PERSIST
-	BackendServiceConnectionTrackingPolicy_PER_CONNECTION                                              = src.BackendServiceConnectionTrackingPolicy_PER_CONNECTION
-	BackendServiceConnectionTrackingPolicy_PER_SESSION                                                 = src.BackendServiceConnectionTrackingPolicy_PER_SESSION
-	BackendServiceConnectionTrackingPolicy_UNDEFINED_CONNECTION_PERSISTENCE_ON_UNHEALTHY_BACKENDS      = src.BackendServiceConnectionTrackingPolicy_UNDEFINED_CONNECTION_PERSISTENCE_ON_UNHEALTHY_BACKENDS
-	BackendServiceConnectionTrackingPolicy_UNDEFINED_TRACKING_MODE                                     = src.BackendServiceConnectionTrackingPolicy_UNDEFINED_TRACKING_MODE
-	BackendServiceLocalityLoadBalancingPolicyConfigPolicy_INVALID_LB_POLICY                            = src.BackendServiceLocalityLoadBalancingPolicyConfigPolicy_INVALID_LB_POLICY
-	BackendServiceLocalityLoadBalancingPolicyConfigPolicy_LEAST_REQUEST                                = src.BackendServiceLocalityLoadBalancingPolicyConfigPolicy_LEAST_REQUEST
-	BackendServiceLocalityLoadBalancingPolicyConfigPolicy_MAGLEV                                       = src.BackendServiceLocalityLoadBalancingPolicyConfigPolicy_MAGLEV
-	BackendServiceLocalityLoadBalancingPolicyConfigPolicy_ORIGINAL_DESTINATION                         = src.BackendServiceLocalityLoadBalancingPolicyConfigPolicy_ORIGINAL_DESTINATION
-	BackendServiceLocalityLoadBalancingPolicyConfigPolicy_RANDOM                                       = src.BackendServiceLocalityLoadBalancingPolicyConfigPolicy_RANDOM
-	BackendServiceLocalityLoadBalancingPolicyConfigPolicy_RING_HASH                                    = src.BackendServiceLocalityLoadBalancingPolicyConfigPolicy_RING_HASH
-	BackendServiceLocalityLoadBalancingPolicyConfigPolicy_ROUND_ROBIN                                  = src.BackendServiceLocalityLoadBalancingPolicyConfigPolicy_ROUND_ROBIN
-	BackendServiceLocalityLoadBalancingPolicyConfigPolicy_UNDEFINED_NAME                               = src.BackendServiceLocalityLoadBalancingPolicyConfigPolicy_UNDEFINED_NAME
-	BackendService_AUTOMATIC                                                                           = src.BackendService_AUTOMATIC
-	BackendService_CLIENT_IP                                                                           = src.BackendService_CLIENT_IP
-	BackendService_CLIENT_IP_NO_DESTINATION                                                            = src.BackendService_CLIENT_IP_NO_DESTINATION
-	BackendService_CLIENT_IP_PORT_PROTO                                                                = src.BackendService_CLIENT_IP_PORT_PROTO
-	BackendService_CLIENT_IP_PROTO                                                                     = src.BackendService_CLIENT_IP_PROTO
-	BackendService_DISABLED                                                                            = src.BackendService_DISABLED
-	BackendService_EXTERNAL                                                                            = src.BackendService_EXTERNAL
-	BackendService_EXTERNAL_MANAGED                                                                    = src.BackendService_EXTERNAL_MANAGED
-	BackendService_GENERATED_COOKIE                                                                    = src.BackendService_GENERATED_COOKIE
-	BackendService_GRPC                                                                                = src.BackendService_GRPC
-	BackendService_HEADER_FIELD                                                                        = src.BackendService_HEADER_FIELD
-	BackendService_HTTP                                                                                = src.BackendService_HTTP
-	BackendService_HTTP2                                                                               = src.BackendService_HTTP2
-	BackendService_HTTPS                                                                               = src.BackendService_HTTPS
-	BackendService_HTTP_COOKIE                                                                         = src.BackendService_HTTP_COOKIE
-	BackendService_INTERNAL                                                                            = src.BackendService_INTERNAL
-	BackendService_INTERNAL_MANAGED                                                                    = src.BackendService_INTERNAL_MANAGED
-	BackendService_INTERNAL_SELF_MANAGED                                                               = src.BackendService_INTERNAL_SELF_MANAGED
-	BackendService_INVALID_LB_POLICY                                                                   = src.BackendService_INVALID_LB_POLICY
-	BackendService_INVALID_LOAD_BALANCING_SCHEME                                                       = src.BackendService_INVALID_LOAD_BALANCING_SCHEME
-	BackendService_LEAST_REQUEST                                                                       = src.BackendService_LEAST_REQUEST
-	BackendService_MAGLEV                                                                              = src.BackendService_MAGLEV
-	BackendService_NONE                                                                                = src.BackendService_NONE
-	BackendService_ORIGINAL_DESTINATION                                                                = src.BackendService_ORIGINAL_DESTINATION
-	BackendService_RANDOM                                                                              = src.BackendService_RANDOM
-	BackendService_RING_HASH                                                                           = src.BackendService_RING_HASH
-	BackendService_ROUND_ROBIN                                                                         = src.BackendService_ROUND_ROBIN
-	BackendService_SSL                                                                                 = src.BackendService_SSL
-	BackendService_TCP                                                                                 = src.BackendService_TCP
-	BackendService_UDP                                                                                 = src.BackendService_UDP
-	BackendService_UNDEFINED_COMPRESSION_MODE                                                          = src.BackendService_UNDEFINED_COMPRESSION_MODE
-	BackendService_UNDEFINED_LOAD_BALANCING_SCHEME                                                     = src.BackendService_UNDEFINED_LOAD_BALANCING_SCHEME
-	BackendService_UNDEFINED_LOCALITY_LB_POLICY                                                        = src.BackendService_UNDEFINED_LOCALITY_LB_POLICY
-	BackendService_UNDEFINED_PROTOCOL                                                                  = src.BackendService_UNDEFINED_PROTOCOL
-	BackendService_UNDEFINED_SESSION_AFFINITY                                                          = src.BackendService_UNDEFINED_SESSION_AFFINITY
-	BackendService_UNSPECIFIED                                                                         = src.BackendService_UNSPECIFIED
-	Backend_CONNECTION                                                                                 = src.Backend_CONNECTION
-	Backend_RATE                                                                                       = src.Backend_RATE
-	Backend_UNDEFINED_BALANCING_MODE                                                                   = src.Backend_UNDEFINED_BALANCING_MODE
-	Backend_UTILIZATION                                                                                = src.Backend_UTILIZATION
-	BfdPacket_ADMINISTRATIVELY_DOWN                                                                    = src.BfdPacket_ADMINISTRATIVELY_DOWN
-	BfdPacket_ADMIN_DOWN                                                                               = src.BfdPacket_ADMIN_DOWN
-	BfdPacket_CONCATENATED_PATH_DOWN                                                                   = src.BfdPacket_CONCATENATED_PATH_DOWN
-	BfdPacket_CONTROL_DETECTION_TIME_EXPIRED                                                           = src.BfdPacket_CONTROL_DETECTION_TIME_EXPIRED
-	BfdPacket_DIAGNOSTIC_UNSPECIFIED                                                                   = src.BfdPacket_DIAGNOSTIC_UNSPECIFIED
-	BfdPacket_DOWN                                                                                     = src.BfdPacket_DOWN
-	BfdPacket_ECHO_FUNCTION_FAILED                                                                     = src.BfdPacket_ECHO_FUNCTION_FAILED
-	BfdPacket_FORWARDING_PLANE_RESET                                                                   = src.BfdPacket_FORWARDING_PLANE_RESET
-	BfdPacket_INIT                                                                                     = src.BfdPacket_INIT
-	BfdPacket_NEIGHBOR_SIGNALED_SESSION_DOWN                                                           = src.BfdPacket_NEIGHBOR_SIGNALED_SESSION_DOWN
-	BfdPacket_NO_DIAGNOSTIC                                                                            = src.BfdPacket_NO_DIAGNOSTIC
-	BfdPacket_PATH_DOWN                                                                                = src.BfdPacket_PATH_DOWN
-	BfdPacket_REVERSE_CONCATENATED_PATH_DOWN                                                           = src.BfdPacket_REVERSE_CONCATENATED_PATH_DOWN
-	BfdPacket_STATE_UNSPECIFIED                                                                        = src.BfdPacket_STATE_UNSPECIFIED
-	BfdPacket_UNDEFINED_DIAGNOSTIC                                                                     = src.BfdPacket_UNDEFINED_DIAGNOSTIC
-	BfdPacket_UNDEFINED_STATE                                                                          = src.BfdPacket_UNDEFINED_STATE
-	BfdPacket_UP                                                                                       = src.BfdPacket_UP
-	BfdStatus_ACTIVE                                                                                   = src.BfdStatus_ACTIVE
-	BfdStatus_ADMINISTRATIVELY_DOWN                                                                    = src.BfdStatus_ADMINISTRATIVELY_DOWN
-	BfdStatus_ADMIN_DOWN                                                                               = src.BfdStatus_ADMIN_DOWN
-	BfdStatus_CONCATENATED_PATH_DOWN                                                                   = src.BfdStatus_CONCATENATED_PATH_DOWN
-	BfdStatus_CONTROL_DETECTION_TIME_EXPIRED                                                           = src.BfdStatus_CONTROL_DETECTION_TIME_EXPIRED
-	BfdStatus_DIAGNOSTIC_UNSPECIFIED                                                                   = src.BfdStatus_DIAGNOSTIC_UNSPECIFIED
-	BfdStatus_DISABLED                                                                                 = src.BfdStatus_DISABLED
-	BfdStatus_DOWN                                                                                     = src.BfdStatus_DOWN
-	BfdStatus_ECHO_FUNCTION_FAILED                                                                     = src.BfdStatus_ECHO_FUNCTION_FAILED
-	BfdStatus_FORWARDING_PLANE_RESET                                                                   = src.BfdStatus_FORWARDING_PLANE_RESET
-	BfdStatus_INIT                                                                                     = src.BfdStatus_INIT
-	BfdStatus_NEIGHBOR_SIGNALED_SESSION_DOWN                                                           = src.BfdStatus_NEIGHBOR_SIGNALED_SESSION_DOWN
-	BfdStatus_NO_DIAGNOSTIC                                                                            = src.BfdStatus_NO_DIAGNOSTIC
-	BfdStatus_PASSIVE                                                                                  = src.BfdStatus_PASSIVE
-	BfdStatus_PATH_DOWN                                                                                = src.BfdStatus_PATH_DOWN
-	BfdStatus_REVERSE_CONCATENATED_PATH_DOWN                                                           = src.BfdStatus_REVERSE_CONCATENATED_PATH_DOWN
-	BfdStatus_STATE_UNSPECIFIED                                                                        = src.BfdStatus_STATE_UNSPECIFIED
-	BfdStatus_UNDEFINED_BFD_SESSION_INITIALIZATION_MODE                                                = src.BfdStatus_UNDEFINED_BFD_SESSION_INITIALIZATION_MODE
-	BfdStatus_UNDEFINED_LOCAL_DIAGNOSTIC                                                               = src.BfdStatus_UNDEFINED_LOCAL_DIAGNOSTIC
-	BfdStatus_UNDEFINED_LOCAL_STATE                                                                    = src.BfdStatus_UNDEFINED_LOCAL_STATE
-	BfdStatus_UP                                                                                       = src.BfdStatus_UP
-	Commitment_ACCELERATOR_OPTIMIZED                                                                   = src.Commitment_ACCELERATOR_OPTIMIZED
-	Commitment_ACTIVE                                                                                  = src.Commitment_ACTIVE
-	Commitment_CANCELLED                                                                               = src.Commitment_CANCELLED
-	Commitment_CATEGORY_UNSPECIFIED                                                                    = src.Commitment_CATEGORY_UNSPECIFIED
-	Commitment_COMPUTE_OPTIMIZED                                                                       = src.Commitment_COMPUTE_OPTIMIZED
-	Commitment_COMPUTE_OPTIMIZED_C2D                                                                   = src.Commitment_COMPUTE_OPTIMIZED_C2D
-	Commitment_CREATING                                                                                = src.Commitment_CREATING
-	Commitment_EXPIRED                                                                                 = src.Commitment_EXPIRED
-	Commitment_GENERAL_PURPOSE                                                                         = src.Commitment_GENERAL_PURPOSE
-	Commitment_GENERAL_PURPOSE_E2                                                                      = src.Commitment_GENERAL_PURPOSE_E2
-	Commitment_GENERAL_PURPOSE_N2                                                                      = src.Commitment_GENERAL_PURPOSE_N2
-	Commitment_GENERAL_PURPOSE_N2D                                                                     = src.Commitment_GENERAL_PURPOSE_N2D
-	Commitment_GENERAL_PURPOSE_T2D                                                                     = src.Commitment_GENERAL_PURPOSE_T2D
-	Commitment_INVALID                                                                                 = src.Commitment_INVALID
-	Commitment_LICENSE                                                                                 = src.Commitment_LICENSE
-	Commitment_MACHINE                                                                                 = src.Commitment_MACHINE
-	Commitment_MEMORY_OPTIMIZED                                                                        = src.Commitment_MEMORY_OPTIMIZED
-	Commitment_MEMORY_OPTIMIZED_M3                                                                     = src.Commitment_MEMORY_OPTIMIZED_M3
-	Commitment_NOT_YET_ACTIVE                                                                          = src.Commitment_NOT_YET_ACTIVE
-	Commitment_THIRTY_SIX_MONTH                                                                        = src.Commitment_THIRTY_SIX_MONTH
-	Commitment_TWELVE_MONTH                                                                            = src.Commitment_TWELVE_MONTH
-	Commitment_TYPE_UNSPECIFIED                                                                        = src.Commitment_TYPE_UNSPECIFIED
-	Commitment_UNDEFINED_CATEGORY                                                                      = src.Commitment_UNDEFINED_CATEGORY
-	Commitment_UNDEFINED_PLAN                                                                          = src.Commitment_UNDEFINED_PLAN
-	Commitment_UNDEFINED_STATUS                                                                        = src.Commitment_UNDEFINED_STATUS
-	Commitment_UNDEFINED_TYPE                                                                          = src.Commitment_UNDEFINED_TYPE
-	Condition_APPROVER                                                                                 = src.Condition_APPROVER
-	Condition_ATTRIBUTION                                                                              = src.Condition_ATTRIBUTION
-	Condition_AUTHORITY                                                                                = src.Condition_AUTHORITY
-	Condition_CREDENTIALS_TYPE                                                                         = src.Condition_CREDENTIALS_TYPE
-	Condition_CREDS_ASSERTION                                                                          = src.Condition_CREDS_ASSERTION
-	Condition_DISCHARGED                                                                               = src.Condition_DISCHARGED
-	Condition_EQUALS                                                                                   = src.Condition_EQUALS
-	Condition_IN                                                                                       = src.Condition_IN
-	Condition_IP                                                                                       = src.Condition_IP
-	Condition_JUSTIFICATION_TYPE                                                                       = src.Condition_JUSTIFICATION_TYPE
-	Condition_NAME                                                                                     = src.Condition_NAME
-	Condition_NOT_EQUALS                                                                               = src.Condition_NOT_EQUALS
-	Condition_NOT_IN                                                                                   = src.Condition_NOT_IN
-	Condition_NO_OP                                                                                    = src.Condition_NO_OP
-	Condition_REGION                                                                                   = src.Condition_REGION
-	Condition_SECURITY_REALM                                                                           = src.Condition_SECURITY_REALM
-	Condition_SERVICE                                                                                  = src.Condition_SERVICE
-	Condition_UNDEFINED_IAM                                                                            = src.Condition_UNDEFINED_IAM
-	Condition_UNDEFINED_OP                                                                             = src.Condition_UNDEFINED_OP
-	Condition_UNDEFINED_SYS                                                                            = src.Condition_UNDEFINED_SYS
-	DeprecationStatus_ACTIVE                                                                           = src.DeprecationStatus_ACTIVE
-	DeprecationStatus_DELETED                                                                          = src.DeprecationStatus_DELETED
-	DeprecationStatus_DEPRECATED                                                                       = src.DeprecationStatus_DEPRECATED
-	DeprecationStatus_OBSOLETE                                                                         = src.DeprecationStatus_OBSOLETE
-	DeprecationStatus_UNDEFINED_STATE                                                                  = src.DeprecationStatus_UNDEFINED_STATE
-	DiskInstantiationConfig_ATTACH_READ_ONLY                                                           = src.DiskInstantiationConfig_ATTACH_READ_ONLY
-	DiskInstantiationConfig_BLANK                                                                      = src.DiskInstantiationConfig_BLANK
-	DiskInstantiationConfig_CUSTOM_IMAGE                                                               = src.DiskInstantiationConfig_CUSTOM_IMAGE
-	DiskInstantiationConfig_DEFAULT                                                                    = src.DiskInstantiationConfig_DEFAULT
-	DiskInstantiationConfig_DO_NOT_INCLUDE                                                             = src.DiskInstantiationConfig_DO_NOT_INCLUDE
-	DiskInstantiationConfig_SOURCE_IMAGE                                                               = src.DiskInstantiationConfig_SOURCE_IMAGE
-	DiskInstantiationConfig_SOURCE_IMAGE_FAMILY                                                        = src.DiskInstantiationConfig_SOURCE_IMAGE_FAMILY
-	DiskInstantiationConfig_UNDEFINED_INSTANTIATE_FROM                                                 = src.DiskInstantiationConfig_UNDEFINED_INSTANTIATE_FROM
-	Disk_ARCHITECTURE_UNSPECIFIED                                                                      = src.Disk_ARCHITECTURE_UNSPECIFIED
-	Disk_ARM64                                                                                         = src.Disk_ARM64
-	Disk_CREATING                                                                                      = src.Disk_CREATING
-	Disk_DELETING                                                                                      = src.Disk_DELETING
-	Disk_FAILED                                                                                        = src.Disk_FAILED
-	Disk_READY                                                                                         = src.Disk_READY
-	Disk_RESTORING                                                                                     = src.Disk_RESTORING
-	Disk_UNDEFINED_ARCHITECTURE                                                                        = src.Disk_UNDEFINED_ARCHITECTURE
-	Disk_UNDEFINED_STATUS                                                                              = src.Disk_UNDEFINED_STATUS
-	Disk_X86_64                                                                                        = src.Disk_X86_64
-	DistributionPolicy_ANY                                                                             = src.DistributionPolicy_ANY
-	DistributionPolicy_BALANCED                                                                        = src.DistributionPolicy_BALANCED
-	DistributionPolicy_EVEN                                                                            = src.DistributionPolicy_EVEN
-	DistributionPolicy_UNDEFINED_TARGET_SHAPE                                                          = src.DistributionPolicy_UNDEFINED_TARGET_SHAPE
-	ExchangedPeeringRoute_DYNAMIC_PEERING_ROUTE                                                        = src.ExchangedPeeringRoute_DYNAMIC_PEERING_ROUTE
-	ExchangedPeeringRoute_STATIC_PEERING_ROUTE                                                         = src.ExchangedPeeringRoute_STATIC_PEERING_ROUTE
-	ExchangedPeeringRoute_SUBNET_PEERING_ROUTE                                                         = src.ExchangedPeeringRoute_SUBNET_PEERING_ROUTE
-	ExchangedPeeringRoute_UNDEFINED_TYPE                                                               = src.ExchangedPeeringRoute_UNDEFINED_TYPE
-	ExternalVpnGateway_FOUR_IPS_REDUNDANCY                                                             = src.ExternalVpnGateway_FOUR_IPS_REDUNDANCY
-	ExternalVpnGateway_SINGLE_IP_INTERNALLY_REDUNDANT                                                  = src.ExternalVpnGateway_SINGLE_IP_INTERNALLY_REDUNDANT
-	ExternalVpnGateway_TWO_IPS_REDUNDANCY                                                              = src.ExternalVpnGateway_TWO_IPS_REDUNDANCY
-	ExternalVpnGateway_UNDEFINED_REDUNDANCY_TYPE                                                       = src.ExternalVpnGateway_UNDEFINED_REDUNDANCY_TYPE
-	FileContentBuffer_BIN                                                                              = src.FileContentBuffer_BIN
-	FileContentBuffer_UNDEFINED                                                                        = src.FileContentBuffer_UNDEFINED
-	FileContentBuffer_UNDEFINED_FILE_TYPE                                                              = src.FileContentBuffer_UNDEFINED_FILE_TYPE
-	FileContentBuffer_X509                                                                             = src.FileContentBuffer_X509
-	FirewallLogConfig_EXCLUDE_ALL_METADATA                                                             = src.FirewallLogConfig_EXCLUDE_ALL_METADATA
-	FirewallLogConfig_INCLUDE_ALL_METADATA                                                             = src.FirewallLogConfig_INCLUDE_ALL_METADATA
-	FirewallLogConfig_UNDEFINED_METADATA                                                               = src.FirewallLogConfig_UNDEFINED_METADATA
-	FirewallPolicyRuleSecureTag_EFFECTIVE                                                              = src.FirewallPolicyRuleSecureTag_EFFECTIVE
-	FirewallPolicyRuleSecureTag_INEFFECTIVE                                                            = src.FirewallPolicyRuleSecureTag_INEFFECTIVE
-	FirewallPolicyRuleSecureTag_UNDEFINED_STATE                                                        = src.FirewallPolicyRuleSecureTag_UNDEFINED_STATE
-	FirewallPolicyRule_EGRESS                                                                          = src.FirewallPolicyRule_EGRESS
-	FirewallPolicyRule_INGRESS                                                                         = src.FirewallPolicyRule_INGRESS
-	FirewallPolicyRule_UNDEFINED_DIRECTION                                                             = src.FirewallPolicyRule_UNDEFINED_DIRECTION
-	Firewall_EGRESS                                                                                    = src.Firewall_EGRESS
-	Firewall_INGRESS                                                                                   = src.Firewall_INGRESS
-	Firewall_UNDEFINED_DIRECTION                                                                       = src.Firewall_UNDEFINED_DIRECTION
-	ForwardingRule_ACCEPTED                                                                            = src.ForwardingRule_ACCEPTED
-	ForwardingRule_AH                                                                                  = src.ForwardingRule_AH
-	ForwardingRule_CLOSED                                                                              = src.ForwardingRule_CLOSED
-	ForwardingRule_ESP                                                                                 = src.ForwardingRule_ESP
-	ForwardingRule_EXTERNAL                                                                            = src.ForwardingRule_EXTERNAL
-	ForwardingRule_EXTERNAL_MANAGED                                                                    = src.ForwardingRule_EXTERNAL_MANAGED
-	ForwardingRule_FIXED_STANDARD                                                                      = src.ForwardingRule_FIXED_STANDARD
-	ForwardingRule_ICMP                                                                                = src.ForwardingRule_ICMP
-	ForwardingRule_INTERNAL                                                                            = src.ForwardingRule_INTERNAL
-	ForwardingRule_INTERNAL_MANAGED                                                                    = src.ForwardingRule_INTERNAL_MANAGED
-	ForwardingRule_INTERNAL_SELF_MANAGED                                                               = src.ForwardingRule_INTERNAL_SELF_MANAGED
-	ForwardingRule_INVALID                                                                             = src.ForwardingRule_INVALID
-	ForwardingRule_IPV4                                                                                = src.ForwardingRule_IPV4
-	ForwardingRule_IPV6                                                                                = src.ForwardingRule_IPV6
-	ForwardingRule_L3_DEFAULT                                                                          = src.ForwardingRule_L3_DEFAULT
-	ForwardingRule_NEEDS_ATTENTION                                                                     = src.ForwardingRule_NEEDS_ATTENTION
-	ForwardingRule_PENDING                                                                             = src.ForwardingRule_PENDING
-	ForwardingRule_PREMIUM                                                                             = src.ForwardingRule_PREMIUM
-	ForwardingRule_REJECTED                                                                            = src.ForwardingRule_REJECTED
-	ForwardingRule_SCTP                                                                                = src.ForwardingRule_SCTP
-	ForwardingRule_STANDARD                                                                            = src.ForwardingRule_STANDARD
-	ForwardingRule_STANDARD_OVERRIDES_FIXED_STANDARD                                                   = src.ForwardingRule_STANDARD_OVERRIDES_FIXED_STANDARD
-	ForwardingRule_STATUS_UNSPECIFIED                                                                  = src.ForwardingRule_STATUS_UNSPECIFIED
-	ForwardingRule_TCP                                                                                 = src.ForwardingRule_TCP
-	ForwardingRule_UDP                                                                                 = src.ForwardingRule_UDP
-	ForwardingRule_UNDEFINED_IP_VERSION                                                                = src.ForwardingRule_UNDEFINED_IP_VERSION
-	ForwardingRule_UNDEFINED_I_P_PROTOCOL_ENUM                                                         = src.ForwardingRule_UNDEFINED_I_P_PROTOCOL_ENUM
-	ForwardingRule_UNDEFINED_LOAD_BALANCING_SCHEME                                                     = src.ForwardingRule_UNDEFINED_LOAD_BALANCING_SCHEME
-	ForwardingRule_UNDEFINED_NETWORK_TIER                                                              = src.ForwardingRule_UNDEFINED_NETWORK_TIER
-	ForwardingRule_UNDEFINED_PSC_CONNECTION_STATUS                                                     = src.ForwardingRule_UNDEFINED_PSC_CONNECTION_STATUS
-	ForwardingRule_UNSPECIFIED_VERSION                                                                 = src.ForwardingRule_UNSPECIFIED_VERSION
-	GRPCHealthCheck_UNDEFINED_PORT_SPECIFICATION                                                       = src.GRPCHealthCheck_UNDEFINED_PORT_SPECIFICATION
-	GRPCHealthCheck_USE_FIXED_PORT                                                                     = src.GRPCHealthCheck_USE_FIXED_PORT
-	GRPCHealthCheck_USE_NAMED_PORT                                                                     = src.GRPCHealthCheck_USE_NAMED_PORT
-	GRPCHealthCheck_USE_SERVING_PORT                                                                   = src.GRPCHealthCheck_USE_SERVING_PORT
-	GuestOsFeature_FEATURE_TYPE_UNSPECIFIED                                                            = src.GuestOsFeature_FEATURE_TYPE_UNSPECIFIED
-	GuestOsFeature_GVNIC                                                                               = src.GuestOsFeature_GVNIC
-	GuestOsFeature_MULTI_IP_SUBNET                                                                     = src.GuestOsFeature_MULTI_IP_SUBNET
-	GuestOsFeature_SECURE_BOOT                                                                         = src.GuestOsFeature_SECURE_BOOT
-	GuestOsFeature_SEV_CAPABLE                                                                         = src.GuestOsFeature_SEV_CAPABLE
-	GuestOsFeature_UEFI_COMPATIBLE                                                                     = src.GuestOsFeature_UEFI_COMPATIBLE
-	GuestOsFeature_UNDEFINED_TYPE                                                                      = src.GuestOsFeature_UNDEFINED_TYPE
-	GuestOsFeature_VIRTIO_SCSI_MULTIQUEUE                                                              = src.GuestOsFeature_VIRTIO_SCSI_MULTIQUEUE
-	GuestOsFeature_WINDOWS                                                                             = src.GuestOsFeature_WINDOWS
-	HTTP2HealthCheck_NONE                                                                              = src.HTTP2HealthCheck_NONE
-	HTTP2HealthCheck_PROXY_V1                                                                          = src.HTTP2HealthCheck_PROXY_V1
-	HTTP2HealthCheck_UNDEFINED_PORT_SPECIFICATION                                                      = src.HTTP2HealthCheck_UNDEFINED_PORT_SPECIFICATION
-	HTTP2HealthCheck_UNDEFINED_PROXY_HEADER                                                            = src.HTTP2HealthCheck_UNDEFINED_PROXY_HEADER
-	HTTP2HealthCheck_USE_FIXED_PORT                                                                    = src.HTTP2HealthCheck_USE_FIXED_PORT
-	HTTP2HealthCheck_USE_NAMED_PORT                                                                    = src.HTTP2HealthCheck_USE_NAMED_PORT
-	HTTP2HealthCheck_USE_SERVING_PORT                                                                  = src.HTTP2HealthCheck_USE_SERVING_PORT
-	HTTPHealthCheck_NONE                                                                               = src.HTTPHealthCheck_NONE
-	HTTPHealthCheck_PROXY_V1                                                                           = src.HTTPHealthCheck_PROXY_V1
-	HTTPHealthCheck_UNDEFINED_PORT_SPECIFICATION                                                       = src.HTTPHealthCheck_UNDEFINED_PORT_SPECIFICATION
-	HTTPHealthCheck_UNDEFINED_PROXY_HEADER                                                             = src.HTTPHealthCheck_UNDEFINED_PROXY_HEADER
-	HTTPHealthCheck_USE_FIXED_PORT                                                                     = src.HTTPHealthCheck_USE_FIXED_PORT
-	HTTPHealthCheck_USE_NAMED_PORT                                                                     = src.HTTPHealthCheck_USE_NAMED_PORT
-	HTTPHealthCheck_USE_SERVING_PORT                                                                   = src.HTTPHealthCheck_USE_SERVING_PORT
-	HTTPSHealthCheck_NONE                                                                              = src.HTTPSHealthCheck_NONE
-	HTTPSHealthCheck_PROXY_V1                                                                          = src.HTTPSHealthCheck_PROXY_V1
-	HTTPSHealthCheck_UNDEFINED_PORT_SPECIFICATION                                                      = src.HTTPSHealthCheck_UNDEFINED_PORT_SPECIFICATION
-	HTTPSHealthCheck_UNDEFINED_PROXY_HEADER                                                            = src.HTTPSHealthCheck_UNDEFINED_PROXY_HEADER
-	HTTPSHealthCheck_USE_FIXED_PORT                                                                    = src.HTTPSHealthCheck_USE_FIXED_PORT
-	HTTPSHealthCheck_USE_NAMED_PORT                                                                    = src.HTTPSHealthCheck_USE_NAMED_PORT
-	HTTPSHealthCheck_USE_SERVING_PORT                                                                  = src.HTTPSHealthCheck_USE_SERVING_PORT
-	HealthCheckService_AND                                                                             = src.HealthCheckService_AND
-	HealthCheckService_NO_AGGREGATION                                                                  = src.HealthCheckService_NO_AGGREGATION
-	HealthCheckService_UNDEFINED_HEALTH_STATUS_AGGREGATION_POLICY                                      = src.HealthCheckService_UNDEFINED_HEALTH_STATUS_AGGREGATION_POLICY
-	HealthCheck_GRPC                                                                                   = src.HealthCheck_GRPC
-	HealthCheck_HTTP                                                                                   = src.HealthCheck_HTTP
-	HealthCheck_HTTP2                                                                                  = src.HealthCheck_HTTP2
-	HealthCheck_HTTPS                                                                                  = src.HealthCheck_HTTPS
-	HealthCheck_INVALID                                                                                = src.HealthCheck_INVALID
-	HealthCheck_SSL                                                                                    = src.HealthCheck_SSL
-	HealthCheck_TCP                                                                                    = src.HealthCheck_TCP
-	HealthCheck_UNDEFINED_TYPE                                                                         = src.HealthCheck_UNDEFINED_TYPE
-	HealthStatusForNetworkEndpoint_DRAINING                                                            = src.HealthStatusForNetworkEndpoint_DRAINING
-	HealthStatusForNetworkEndpoint_HEALTHY                                                             = src.HealthStatusForNetworkEndpoint_HEALTHY
-	HealthStatusForNetworkEndpoint_UNDEFINED_HEALTH_STATE                                              = src.HealthStatusForNetworkEndpoint_UNDEFINED_HEALTH_STATE
-	HealthStatusForNetworkEndpoint_UNHEALTHY                                                           = src.HealthStatusForNetworkEndpoint_UNHEALTHY
-	HealthStatusForNetworkEndpoint_UNKNOWN                                                             = src.HealthStatusForNetworkEndpoint_UNKNOWN
-	HealthStatus_HEALTHY                                                                               = src.HealthStatus_HEALTHY
-	HealthStatus_INVALID_WEIGHT                                                                        = src.HealthStatus_INVALID_WEIGHT
-	HealthStatus_MISSING_WEIGHT                                                                        = src.HealthStatus_MISSING_WEIGHT
-	HealthStatus_UNAVAILABLE_WEIGHT                                                                    = src.HealthStatus_UNAVAILABLE_WEIGHT
-	HealthStatus_UNDEFINED_HEALTH_STATE                                                                = src.HealthStatus_UNDEFINED_HEALTH_STATE
-	HealthStatus_UNDEFINED_WEIGHT_ERROR                                                                = src.HealthStatus_UNDEFINED_WEIGHT_ERROR
-	HealthStatus_UNHEALTHY                                                                             = src.HealthStatus_UNHEALTHY
-	HealthStatus_WEIGHT_NONE                                                                           = src.HealthStatus_WEIGHT_NONE
-	HttpRedirectAction_FOUND                                                                           = src.HttpRedirectAction_FOUND
-	HttpRedirectAction_MOVED_PERMANENTLY_DEFAULT                                                       = src.HttpRedirectAction_MOVED_PERMANENTLY_DEFAULT
-	HttpRedirectAction_PERMANENT_REDIRECT                                                              = src.HttpRedirectAction_PERMANENT_REDIRECT
-	HttpRedirectAction_SEE_OTHER                                                                       = src.HttpRedirectAction_SEE_OTHER
-	HttpRedirectAction_TEMPORARY_REDIRECT                                                              = src.HttpRedirectAction_TEMPORARY_REDIRECT
-	HttpRedirectAction_UNDEFINED_REDIRECT_RESPONSE_CODE                                                = src.HttpRedirectAction_UNDEFINED_REDIRECT_RESPONSE_CODE
-	Image_ARCHITECTURE_UNSPECIFIED                                                                     = src.Image_ARCHITECTURE_UNSPECIFIED
-	Image_ARM64                                                                                        = src.Image_ARM64
-	Image_DELETING                                                                                     = src.Image_DELETING
-	Image_FAILED                                                                                       = src.Image_FAILED
-	Image_PENDING                                                                                      = src.Image_PENDING
-	Image_RAW                                                                                          = src.Image_RAW
-	Image_READY                                                                                        = src.Image_READY
-	Image_UNDEFINED_ARCHITECTURE                                                                       = src.Image_UNDEFINED_ARCHITECTURE
-	Image_UNDEFINED_SOURCE_TYPE                                                                        = src.Image_UNDEFINED_SOURCE_TYPE
-	Image_UNDEFINED_STATUS                                                                             = src.Image_UNDEFINED_STATUS
-	Image_X86_64                                                                                       = src.Image_X86_64
-	InstanceGroupManagerUpdatePolicy_OPPORTUNISTIC                                                     = src.InstanceGroupManagerUpdatePolicy_OPPORTUNISTIC
-	InstanceGroupManagerUpdatePolicy_RECREATE                                                          = src.InstanceGroupManagerUpdatePolicy_RECREATE
-	InstanceGroupManagerUpdatePolicy_SUBSTITUTE                                                        = src.InstanceGroupManagerUpdatePolicy_SUBSTITUTE
-	InstanceGroupManagerUpdatePolicy_UNDEFINED_INSTANCE_REDISTRIBUTION_TYPE                            = src.InstanceGroupManagerUpdatePolicy_UNDEFINED_INSTANCE_REDISTRIBUTION_TYPE
-	InstanceGroupManagerUpdatePolicy_UNDEFINED_MINIMAL_ACTION                                          = src.InstanceGroupManagerUpdatePolicy_UNDEFINED_MINIMAL_ACTION
-	InstanceGroupManagerUpdatePolicy_UNDEFINED_MOST_DISRUPTIVE_ALLOWED_ACTION                          = src.InstanceGroupManagerUpdatePolicy_UNDEFINED_MOST_DISRUPTIVE_ALLOWED_ACTION
-	InstanceGroupManagerUpdatePolicy_UNDEFINED_REPLACEMENT_METHOD                                      = src.InstanceGroupManagerUpdatePolicy_UNDEFINED_REPLACEMENT_METHOD
-	InstanceGroupManagerUpdatePolicy_UNDEFINED_TYPE                                                    = src.InstanceGroupManagerUpdatePolicy_UNDEFINED_TYPE
-	InstanceGroupManager_PAGELESS                                                                      = src.InstanceGroupManager_PAGELESS
-	InstanceGroupManager_PAGINATED                                                                     = src.InstanceGroupManager_PAGINATED
-	InstanceGroupManager_UNDEFINED_LIST_MANAGED_INSTANCES_RESULTS                                      = src.InstanceGroupManager_UNDEFINED_LIST_MANAGED_INSTANCES_RESULTS
-	InstanceGroupManagersApplyUpdatesRequest_UNDEFINED_MINIMAL_ACTION                                  = src.InstanceGroupManagersApplyUpdatesRequest_UNDEFINED_MINIMAL_ACTION
-	InstanceGroupManagersApplyUpdatesRequest_UNDEFINED_MOST_DISRUPTIVE_ALLOWED_ACTION                  = src.InstanceGroupManagersApplyUpdatesRequest_UNDEFINED_MOST_DISRUPTIVE_ALLOWED_ACTION
-	InstanceGroupsListInstancesRequest_ALL                                                             = src.InstanceGroupsListInstancesRequest_ALL
-	InstanceGroupsListInstancesRequest_RUNNING                                                         = src.InstanceGroupsListInstancesRequest_RUNNING
-	InstanceGroupsListInstancesRequest_UNDEFINED_INSTANCE_STATE                                        = src.InstanceGroupsListInstancesRequest_UNDEFINED_INSTANCE_STATE
-	InstanceManagedByIgmErrorInstanceActionDetails_ABANDONING                                          = src.InstanceManagedByIgmErrorInstanceActionDetails_ABANDONING
-	InstanceManagedByIgmErrorInstanceActionDetails_CREATING                                            = src.InstanceManagedByIgmErrorInstanceActionDetails_CREATING
-	InstanceManagedByIgmErrorInstanceActionDetails_CREATING_WITHOUT_RETRIES                            = src.InstanceManagedByIgmErrorInstanceActionDetails_CREATING_WITHOUT_RETRIES
-	InstanceManagedByIgmErrorInstanceActionDetails_DELETING                                            = src.InstanceManagedByIgmErrorInstanceActionDetails_DELETING
-	InstanceManagedByIgmErrorInstanceActionDetails_NONE                                                = src.InstanceManagedByIgmErrorInstanceActionDetails_NONE
-	InstanceManagedByIgmErrorInstanceActionDetails_RECREATING                                          = src.InstanceManagedByIgmErrorInstanceActionDetails_RECREATING
-	InstanceManagedByIgmErrorInstanceActionDetails_REFRESHING                                          = src.InstanceManagedByIgmErrorInstanceActionDetails_REFRESHING
-	InstanceManagedByIgmErrorInstanceActionDetails_RESTARTING                                          = src.InstanceManagedByIgmErrorInstanceActionDetails_RESTARTING
-	InstanceManagedByIgmErrorInstanceActionDetails_RESUMING                                            = src.InstanceManagedByIgmErrorInstanceActionDetails_RESUMING
-	InstanceManagedByIgmErrorInstanceActionDetails_STARTING                                            = src.InstanceManagedByIgmErrorInstanceActionDetails_STARTING
-	InstanceManagedByIgmErrorInstanceActionDetails_STOPPING                                            = src.InstanceManagedByIgmErrorInstanceActionDetails_STOPPING
-	InstanceManagedByIgmErrorInstanceActionDetails_SUSPENDING                                          = src.InstanceManagedByIgmErrorInstanceActionDetails_SUSPENDING
-	InstanceManagedByIgmErrorInstanceActionDetails_UNDEFINED_ACTION                                    = src.InstanceManagedByIgmErrorInstanceActionDetails_UNDEFINED_ACTION
-	InstanceManagedByIgmErrorInstanceActionDetails_VERIFYING                                           = src.InstanceManagedByIgmErrorInstanceActionDetails_VERIFYING
-	InstanceProperties_ENABLE_BIDIRECTIONAL_ACCESS_TO_GOOGLE                                           = src.InstanceProperties_ENABLE_BIDIRECTIONAL_ACCESS_TO_GOOGLE
-	InstanceProperties_ENABLE_OUTBOUND_VM_ACCESS_TO_GOOGLE                                             = src.InstanceProperties_ENABLE_OUTBOUND_VM_ACCESS_TO_GOOGLE
-	InstanceProperties_INHERIT_FROM_SUBNETWORK                                                         = src.InstanceProperties_INHERIT_FROM_SUBNETWORK
-	InstanceProperties_KEY_REVOCATION_ACTION_TYPE_UNSPECIFIED                                          = src.InstanceProperties_KEY_REVOCATION_ACTION_TYPE_UNSPECIFIED
-	InstanceProperties_NONE                                                                            = src.InstanceProperties_NONE
-	InstanceProperties_STOP                                                                            = src.InstanceProperties_STOP
-	InstanceProperties_UNDEFINED_KEY_REVOCATION_ACTION_TYPE                                            = src.InstanceProperties_UNDEFINED_KEY_REVOCATION_ACTION_TYPE
-	InstanceProperties_UNDEFINED_PRIVATE_IPV6_GOOGLE_ACCESS                                            = src.InstanceProperties_UNDEFINED_PRIVATE_IPV6_GOOGLE_ACCESS
-	InstanceWithNamedPorts_DEPROVISIONING                                                              = src.InstanceWithNamedPorts_DEPROVISIONING
-	InstanceWithNamedPorts_PROVISIONING                                                                = src.InstanceWithNamedPorts_PROVISIONING
-	InstanceWithNamedPorts_REPAIRING                                                                   = src.InstanceWithNamedPorts_REPAIRING
-	InstanceWithNamedPorts_RUNNING                                                                     = src.InstanceWithNamedPorts_RUNNING
-	InstanceWithNamedPorts_STAGING                                                                     = src.InstanceWithNamedPorts_STAGING
-	InstanceWithNamedPorts_STOPPED                                                                     = src.InstanceWithNamedPorts_STOPPED
-	InstanceWithNamedPorts_STOPPING                                                                    = src.InstanceWithNamedPorts_STOPPING
-	InstanceWithNamedPorts_SUSPENDED                                                                   = src.InstanceWithNamedPorts_SUSPENDED
-	InstanceWithNamedPorts_SUSPENDING                                                                  = src.InstanceWithNamedPorts_SUSPENDING
-	InstanceWithNamedPorts_TERMINATED                                                                  = src.InstanceWithNamedPorts_TERMINATED
-	InstanceWithNamedPorts_UNDEFINED_STATUS                                                            = src.InstanceWithNamedPorts_UNDEFINED_STATUS
-	Instance_DEPROVISIONING                                                                            = src.Instance_DEPROVISIONING
-	Instance_ENABLE_BIDIRECTIONAL_ACCESS_TO_GOOGLE                                                     = src.Instance_ENABLE_BIDIRECTIONAL_ACCESS_TO_GOOGLE
-	Instance_ENABLE_OUTBOUND_VM_ACCESS_TO_GOOGLE                                                       = src.Instance_ENABLE_OUTBOUND_VM_ACCESS_TO_GOOGLE
-	Instance_INHERIT_FROM_SUBNETWORK                                                                   = src.Instance_INHERIT_FROM_SUBNETWORK
-	Instance_KEY_REVOCATION_ACTION_TYPE_UNSPECIFIED                                                    = src.Instance_KEY_REVOCATION_ACTION_TYPE_UNSPECIFIED
-	Instance_NONE                                                                                      = src.Instance_NONE
-	Instance_PROVISIONING                                                                              = src.Instance_PROVISIONING
-	Instance_REPAIRING                                                                                 = src.Instance_REPAIRING
-	Instance_RUNNING                                                                                   = src.Instance_RUNNING
-	Instance_STAGING                                                                                   = src.Instance_STAGING
-	Instance_STOP                                                                                      = src.Instance_STOP
-	Instance_STOPPED                                                                                   = src.Instance_STOPPED
-	Instance_STOPPING                                                                                  = src.Instance_STOPPING
-	Instance_SUSPENDED                                                                                 = src.Instance_SUSPENDED
-	Instance_SUSPENDING                                                                                = src.Instance_SUSPENDING
-	Instance_TERMINATED                                                                                = src.Instance_TERMINATED
-	Instance_UNDEFINED_KEY_REVOCATION_ACTION_TYPE                                                      = src.Instance_UNDEFINED_KEY_REVOCATION_ACTION_TYPE
-	Instance_UNDEFINED_PRIVATE_IPV6_GOOGLE_ACCESS                                                      = src.Instance_UNDEFINED_PRIVATE_IPV6_GOOGLE_ACCESS
-	Instance_UNDEFINED_STATUS                                                                          = src.Instance_UNDEFINED_STATUS
-	InstancesGetEffectiveFirewallsResponseEffectiveFirewallPolicy_HIERARCHY                            = src.InstancesGetEffectiveFirewallsResponseEffectiveFirewallPolicy_HIERARCHY
-	InstancesGetEffectiveFirewallsResponseEffectiveFirewallPolicy_NETWORK                              = src.InstancesGetEffectiveFirewallsResponseEffectiveFirewallPolicy_NETWORK
-	InstancesGetEffectiveFirewallsResponseEffectiveFirewallPolicy_NETWORK_REGIONAL                     = src.InstancesGetEffectiveFirewallsResponseEffectiveFirewallPolicy_NETWORK_REGIONAL
-	InstancesGetEffectiveFirewallsResponseEffectiveFirewallPolicy_UNDEFINED_TYPE                       = src.InstancesGetEffectiveFirewallsResponseEffectiveFirewallPolicy_UNDEFINED_TYPE
-	InstancesGetEffectiveFirewallsResponseEffectiveFirewallPolicy_UNSPECIFIED                          = src.InstancesGetEffectiveFirewallsResponseEffectiveFirewallPolicy_UNSPECIFIED
-	InterconnectAttachment_ACTIVE                                                                      = src.InterconnectAttachment_ACTIVE
-	InterconnectAttachment_AVAILABILITY_DOMAIN_1                                                       = src.InterconnectAttachment_AVAILABILITY_DOMAIN_1
-	InterconnectAttachment_AVAILABILITY_DOMAIN_2                                                       = src.InterconnectAttachment_AVAILABILITY_DOMAIN_2
-	InterconnectAttachment_AVAILABILITY_DOMAIN_ANY                                                     = src.InterconnectAttachment_AVAILABILITY_DOMAIN_ANY
-	InterconnectAttachment_BPS_100M                                                                    = src.InterconnectAttachment_BPS_100M
-	InterconnectAttachment_BPS_10G                                                                     = src.InterconnectAttachment_BPS_10G
-	InterconnectAttachment_BPS_1G                                                                      = src.InterconnectAttachment_BPS_1G
-	InterconnectAttachment_BPS_200M                                                                    = src.InterconnectAttachment_BPS_200M
-	InterconnectAttachment_BPS_20G                                                                     = src.InterconnectAttachment_BPS_20G
-	InterconnectAttachment_BPS_2G                                                                      = src.InterconnectAttachment_BPS_2G
-	InterconnectAttachment_BPS_300M                                                                    = src.InterconnectAttachment_BPS_300M
-	InterconnectAttachment_BPS_400M                                                                    = src.InterconnectAttachment_BPS_400M
-	InterconnectAttachment_BPS_500M                                                                    = src.InterconnectAttachment_BPS_500M
-	InterconnectAttachment_BPS_50G                                                                     = src.InterconnectAttachment_BPS_50G
-	InterconnectAttachment_BPS_50M                                                                     = src.InterconnectAttachment_BPS_50M
-	InterconnectAttachment_BPS_5G                                                                      = src.InterconnectAttachment_BPS_5G
-	InterconnectAttachment_DEDICATED                                                                   = src.InterconnectAttachment_DEDICATED
-	InterconnectAttachment_DEFUNCT                                                                     = src.InterconnectAttachment_DEFUNCT
-	InterconnectAttachment_IPSEC                                                                       = src.InterconnectAttachment_IPSEC
-	InterconnectAttachment_IPV4_IPV6                                                                   = src.InterconnectAttachment_IPV4_IPV6
-	InterconnectAttachment_IPV4_ONLY                                                                   = src.InterconnectAttachment_IPV4_ONLY
-	InterconnectAttachment_NONE                                                                        = src.InterconnectAttachment_NONE
-	InterconnectAttachment_OS_ACTIVE                                                                   = src.InterconnectAttachment_OS_ACTIVE
-	InterconnectAttachment_OS_UNPROVISIONED                                                            = src.InterconnectAttachment_OS_UNPROVISIONED
-	InterconnectAttachment_PARTNER                                                                     = src.InterconnectAttachment_PARTNER
-	InterconnectAttachment_PARTNER_PROVIDER                                                            = src.InterconnectAttachment_PARTNER_PROVIDER
-	InterconnectAttachment_PARTNER_REQUEST_RECEIVED                                                    = src.InterconnectAttachment_PARTNER_REQUEST_RECEIVED
-	InterconnectAttachment_PENDING_CUSTOMER                                                            = src.InterconnectAttachment_PENDING_CUSTOMER
-	InterconnectAttachment_PENDING_PARTNER                                                             = src.InterconnectAttachment_PENDING_PARTNER
-	InterconnectAttachment_STATE_UNSPECIFIED                                                           = src.InterconnectAttachment_STATE_UNSPECIFIED
-	InterconnectAttachment_UNDEFINED_BANDWIDTH                                                         = src.InterconnectAttachment_UNDEFINED_BANDWIDTH
-	InterconnectAttachment_UNDEFINED_EDGE_AVAILABILITY_DOMAIN                                          = src.InterconnectAttachment_UNDEFINED_EDGE_AVAILABILITY_DOMAIN
-	InterconnectAttachment_UNDEFINED_ENCRYPTION                                                        = src.InterconnectAttachment_UNDEFINED_ENCRYPTION
-	InterconnectAttachment_UNDEFINED_OPERATIONAL_STATUS                                                = src.InterconnectAttachment_UNDEFINED_OPERATIONAL_STATUS
-	InterconnectAttachment_UNDEFINED_STACK_TYPE                                                        = src.InterconnectAttachment_UNDEFINED_STACK_TYPE
-	InterconnectAttachment_UNDEFINED_STATE                                                             = src.InterconnectAttachment_UNDEFINED_STATE
-	InterconnectAttachment_UNDEFINED_TYPE                                                              = src.InterconnectAttachment_UNDEFINED_TYPE
-	InterconnectAttachment_UNPROVISIONED                                                               = src.InterconnectAttachment_UNPROVISIONED
-	InterconnectDiagnosticsLinkLACPStatus_ACTIVE                                                       = src.InterconnectDiagnosticsLinkLACPStatus_ACTIVE
-	InterconnectDiagnosticsLinkLACPStatus_DETACHED                                                     = src.InterconnectDiagnosticsLinkLACPStatus_DETACHED
-	InterconnectDiagnosticsLinkLACPStatus_UNDEFINED_STATE                                              = src.InterconnectDiagnosticsLinkLACPStatus_UNDEFINED_STATE
-	InterconnectDiagnosticsLinkOpticalPower_HIGH_ALARM                                                 = src.InterconnectDiagnosticsLinkOpticalPower_HIGH_ALARM
-	InterconnectDiagnosticsLinkOpticalPower_HIGH_WARNING                                               = src.InterconnectDiagnosticsLinkOpticalPower_HIGH_WARNING
-	InterconnectDiagnosticsLinkOpticalPower_LOW_ALARM                                                  = src.InterconnectDiagnosticsLinkOpticalPower_LOW_ALARM
-	InterconnectDiagnosticsLinkOpticalPower_LOW_WARNING                                                = src.InterconnectDiagnosticsLinkOpticalPower_LOW_WARNING
-	InterconnectDiagnosticsLinkOpticalPower_OK                                                         = src.InterconnectDiagnosticsLinkOpticalPower_OK
-	InterconnectDiagnosticsLinkOpticalPower_UNDEFINED_STATE                                            = src.InterconnectDiagnosticsLinkOpticalPower_UNDEFINED_STATE
-	InterconnectLocationRegionInfo_GLOBAL                                                              = src.InterconnectLocationRegionInfo_GLOBAL
-	InterconnectLocationRegionInfo_LOCAL_REGION                                                        = src.InterconnectLocationRegionInfo_LOCAL_REGION
-	InterconnectLocationRegionInfo_LP_GLOBAL                                                           = src.InterconnectLocationRegionInfo_LP_GLOBAL
-	InterconnectLocationRegionInfo_LP_LOCAL_REGION                                                     = src.InterconnectLocationRegionInfo_LP_LOCAL_REGION
-	InterconnectLocationRegionInfo_UNDEFINED_LOCATION_PRESENCE                                         = src.InterconnectLocationRegionInfo_UNDEFINED_LOCATION_PRESENCE
-	InterconnectLocation_AFRICA                                                                        = src.InterconnectLocation_AFRICA
-	InterconnectLocation_ASIA_PAC                                                                      = src.InterconnectLocation_ASIA_PAC
-	InterconnectLocation_AVAILABLE                                                                     = src.InterconnectLocation_AVAILABLE
-	InterconnectLocation_CLOSED                                                                        = src.InterconnectLocation_CLOSED
-	InterconnectLocation_C_AFRICA                                                                      = src.InterconnectLocation_C_AFRICA
-	InterconnectLocation_C_ASIA_PAC                                                                    = src.InterconnectLocation_C_ASIA_PAC
-	InterconnectLocation_C_EUROPE                                                                      = src.InterconnectLocation_C_EUROPE
-	InterconnectLocation_C_NORTH_AMERICA                                                               = src.InterconnectLocation_C_NORTH_AMERICA
-	InterconnectLocation_C_SOUTH_AMERICA                                                               = src.InterconnectLocation_C_SOUTH_AMERICA
-	InterconnectLocation_EUROPE                                                                        = src.InterconnectLocation_EUROPE
-	InterconnectLocation_NORTH_AMERICA                                                                 = src.InterconnectLocation_NORTH_AMERICA
-	InterconnectLocation_SOUTH_AMERICA                                                                 = src.InterconnectLocation_SOUTH_AMERICA
-	InterconnectLocation_UNDEFINED_CONTINENT                                                           = src.InterconnectLocation_UNDEFINED_CONTINENT
-	InterconnectLocation_UNDEFINED_STATUS                                                              = src.InterconnectLocation_UNDEFINED_STATUS
-	InterconnectOutageNotification_ACTIVE                                                              = src.InterconnectOutageNotification_ACTIVE
-	InterconnectOutageNotification_CANCELLED                                                           = src.InterconnectOutageNotification_CANCELLED
-	InterconnectOutageNotification_COMPLETED                                                           = src.InterconnectOutageNotification_COMPLETED
-	InterconnectOutageNotification_GOOGLE                                                              = src.InterconnectOutageNotification_GOOGLE
-	InterconnectOutageNotification_IT_OUTAGE                                                           = src.InterconnectOutageNotification_IT_OUTAGE
-	InterconnectOutageNotification_IT_PARTIAL_OUTAGE                                                   = src.InterconnectOutageNotification_IT_PARTIAL_OUTAGE
-	InterconnectOutageNotification_NSRC_GOOGLE                                                         = src.InterconnectOutageNotification_NSRC_GOOGLE
-	InterconnectOutageNotification_NS_ACTIVE                                                           = src.InterconnectOutageNotification_NS_ACTIVE
-	InterconnectOutageNotification_NS_CANCELED                                                         = src.InterconnectOutageNotification_NS_CANCELED
-	InterconnectOutageNotification_OUTAGE                                                              = src.InterconnectOutageNotification_OUTAGE
-	InterconnectOutageNotification_PARTIAL_OUTAGE                                                      = src.InterconnectOutageNotification_PARTIAL_OUTAGE
-	InterconnectOutageNotification_UNDEFINED_ISSUE_TYPE                                                = src.InterconnectOutageNotification_UNDEFINED_ISSUE_TYPE
-	InterconnectOutageNotification_UNDEFINED_SOURCE                                                    = src.InterconnectOutageNotification_UNDEFINED_SOURCE
-	InterconnectOutageNotification_UNDEFINED_STATE                                                     = src.InterconnectOutageNotification_UNDEFINED_STATE
-	Interconnect_ACTIVE                                                                                = src.Interconnect_ACTIVE
-	Interconnect_DEDICATED                                                                             = src.Interconnect_DEDICATED
-	Interconnect_IT_PRIVATE                                                                            = src.Interconnect_IT_PRIVATE
-	Interconnect_LINK_TYPE_ETHERNET_100G_LR                                                            = src.Interconnect_LINK_TYPE_ETHERNET_100G_LR
-	Interconnect_LINK_TYPE_ETHERNET_10G_LR                                                             = src.Interconnect_LINK_TYPE_ETHERNET_10G_LR
-	Interconnect_OS_ACTIVE                                                                             = src.Interconnect_OS_ACTIVE
-	Interconnect_OS_UNPROVISIONED                                                                      = src.Interconnect_OS_UNPROVISIONED
-	Interconnect_PARTNER                                                                               = src.Interconnect_PARTNER
-	Interconnect_UNDEFINED_INTERCONNECT_TYPE                                                           = src.Interconnect_UNDEFINED_INTERCONNECT_TYPE
-	Interconnect_UNDEFINED_LINK_TYPE                                                                   = src.Interconnect_UNDEFINED_LINK_TYPE
-	Interconnect_UNDEFINED_OPERATIONAL_STATUS                                                          = src.Interconnect_UNDEFINED_OPERATIONAL_STATUS
-	Interconnect_UNDEFINED_STATE                                                                       = src.Interconnect_UNDEFINED_STATE
-	Interconnect_UNPROVISIONED                                                                         = src.Interconnect_UNPROVISIONED
-	LicenseCode_DISABLED                                                                               = src.LicenseCode_DISABLED
-	LicenseCode_ENABLED                                                                                = src.LicenseCode_ENABLED
-	LicenseCode_RESTRICTED                                                                             = src.LicenseCode_RESTRICTED
-	LicenseCode_STATE_UNSPECIFIED                                                                      = src.LicenseCode_STATE_UNSPECIFIED
-	LicenseCode_TERMINATED                                                                             = src.LicenseCode_TERMINATED
-	LicenseCode_UNDEFINED_STATE                                                                        = src.LicenseCode_UNDEFINED_STATE
-	ListPeeringRoutesNetworksRequest_INCOMING                                                          = src.ListPeeringRoutesNetworksRequest_INCOMING
-	ListPeeringRoutesNetworksRequest_OUTGOING                                                          = src.ListPeeringRoutesNetworksRequest_OUTGOING
-	ListPeeringRoutesNetworksRequest_UNDEFINED_DIRECTION                                               = src.ListPeeringRoutesNetworksRequest_UNDEFINED_DIRECTION
-	LocationPolicyLocation_ALLOW                                                                       = src.LocationPolicyLocation_ALLOW
-	LocationPolicyLocation_DENY                                                                        = src.LocationPolicyLocation_DENY
-	LocationPolicyLocation_PREFERENCE_UNSPECIFIED                                                      = src.LocationPolicyLocation_PREFERENCE_UNSPECIFIED
-	LocationPolicyLocation_UNDEFINED_PREFERENCE                                                        = src.LocationPolicyLocation_UNDEFINED_PREFERENCE
-	LocationPolicy_ANY                                                                                 = src.LocationPolicy_ANY
-	LocationPolicy_ANY_SINGLE_ZONE                                                                     = src.LocationPolicy_ANY_SINGLE_ZONE
-	LocationPolicy_BALANCED                                                                            = src.LocationPolicy_BALANCED
-	LocationPolicy_UNDEFINED_TARGET_SHAPE                                                              = src.LocationPolicy_UNDEFINED_TARGET_SHAPE
-	LogConfigCloudAuditOptions_ADMIN_ACTIVITY                                                          = src.LogConfigCloudAuditOptions_ADMIN_ACTIVITY
-	LogConfigCloudAuditOptions_DATA_ACCESS                                                             = src.LogConfigCloudAuditOptions_DATA_ACCESS
-	LogConfigCloudAuditOptions_UNDEFINED_LOG_NAME                                                      = src.LogConfigCloudAuditOptions_UNDEFINED_LOG_NAME
-	LogConfigCloudAuditOptions_UNSPECIFIED_LOG_NAME                                                    = src.LogConfigCloudAuditOptions_UNSPECIFIED_LOG_NAME
-	LogConfigDataAccessOptions_LOG_FAIL_CLOSED                                                         = src.LogConfigDataAccessOptions_LOG_FAIL_CLOSED
-	LogConfigDataAccessOptions_LOG_MODE_UNSPECIFIED                                                    = src.LogConfigDataAccessOptions_LOG_MODE_UNSPECIFIED
-	LogConfigDataAccessOptions_UNDEFINED_LOG_MODE                                                      = src.LogConfigDataAccessOptions_UNDEFINED_LOG_MODE
-	MachineImage_CREATING                                                                              = src.MachineImage_CREATING
-	MachineImage_DELETING                                                                              = src.MachineImage_DELETING
-	MachineImage_INVALID                                                                               = src.MachineImage_INVALID
-	MachineImage_READY                                                                                 = src.MachineImage_READY
-	MachineImage_UNDEFINED_STATUS                                                                      = src.MachineImage_UNDEFINED_STATUS
-	MachineImage_UPLOADING                                                                             = src.MachineImage_UPLOADING
-	ManagedInstanceInstanceHealth_DRAINING                                                             = src.ManagedInstanceInstanceHealth_DRAINING
-	ManagedInstanceInstanceHealth_HEALTHY                                                              = src.ManagedInstanceInstanceHealth_HEALTHY
-	ManagedInstanceInstanceHealth_TIMEOUT                                                              = src.ManagedInstanceInstanceHealth_TIMEOUT
-	ManagedInstanceInstanceHealth_UNDEFINED_DETAILED_HEALTH_STATE                                      = src.ManagedInstanceInstanceHealth_UNDEFINED_DETAILED_HEALTH_STATE
-	ManagedInstanceInstanceHealth_UNHEALTHY                                                            = src.ManagedInstanceInstanceHealth_UNHEALTHY
-	ManagedInstanceInstanceHealth_UNKNOWN                                                              = src.ManagedInstanceInstanceHealth_UNKNOWN
-	ManagedInstance_ABANDONING                                                                         = src.ManagedInstance_ABANDONING
-	ManagedInstance_CREATING                                                                           = src.ManagedInstance_CREATING
-	ManagedInstance_CREATING_WITHOUT_RETRIES                                                           = src.ManagedInstance_CREATING_WITHOUT_RETRIES
-	ManagedInstance_DELETING                                                                           = src.ManagedInstance_DELETING
-	ManagedInstance_DEPROVISIONING                                                                     = src.ManagedInstance_DEPROVISIONING
-	ManagedInstance_NONE                                                                               = src.ManagedInstance_NONE
-	ManagedInstance_PROVISIONING                                                                       = src.ManagedInstance_PROVISIONING
-	ManagedInstance_RECREATING                                                                         = src.ManagedInstance_RECREATING
-	ManagedInstance_REFRESHING                                                                         = src.ManagedInstance_REFRESHING
-	ManagedInstance_REPAIRING                                                                          = src.ManagedInstance_REPAIRING
-	ManagedInstance_RESTARTING                                                                         = src.ManagedInstance_RESTARTING
-	ManagedInstance_RESUMING                                                                           = src.ManagedInstance_RESUMING
-	ManagedInstance_RUNNING                                                                            = src.ManagedInstance_RUNNING
-	ManagedInstance_STAGING                                                                            = src.ManagedInstance_STAGING
-	ManagedInstance_STARTING                                                                           = src.ManagedInstance_STARTING
-	ManagedInstance_STOPPED                                                                            = src.ManagedInstance_STOPPED
-	ManagedInstance_STOPPING                                                                           = src.ManagedInstance_STOPPING
-	ManagedInstance_SUSPENDED                                                                          = src.ManagedInstance_SUSPENDED
-	ManagedInstance_SUSPENDING                                                                         = src.ManagedInstance_SUSPENDING
-	ManagedInstance_TERMINATED                                                                         = src.ManagedInstance_TERMINATED
-	ManagedInstance_UNDEFINED_CURRENT_ACTION                                                           = src.ManagedInstance_UNDEFINED_CURRENT_ACTION
-	ManagedInstance_UNDEFINED_INSTANCE_STATUS                                                          = src.ManagedInstance_UNDEFINED_INSTANCE_STATUS
-	ManagedInstance_VERIFYING                                                                          = src.ManagedInstance_VERIFYING
-	MetadataFilter_MATCH_ALL                                                                           = src.MetadataFilter_MATCH_ALL
-	MetadataFilter_MATCH_ANY                                                                           = src.MetadataFilter_MATCH_ANY
-	MetadataFilter_NOT_SET                                                                             = src.MetadataFilter_NOT_SET
-	MetadataFilter_UNDEFINED_FILTER_MATCH_CRITERIA                                                     = src.MetadataFilter_UNDEFINED_FILTER_MATCH_CRITERIA
-	NetworkEndpointGroupPscData_ACCEPTED                                                               = src.NetworkEndpointGroupPscData_ACCEPTED
-	NetworkEndpointGroupPscData_CLOSED                                                                 = src.NetworkEndpointGroupPscData_CLOSED
-	NetworkEndpointGroupPscData_NEEDS_ATTENTION                                                        = src.NetworkEndpointGroupPscData_NEEDS_ATTENTION
-	NetworkEndpointGroupPscData_PENDING                                                                = src.NetworkEndpointGroupPscData_PENDING
-	NetworkEndpointGroupPscData_REJECTED                                                               = src.NetworkEndpointGroupPscData_REJECTED
-	NetworkEndpointGroupPscData_STATUS_UNSPECIFIED                                                     = src.NetworkEndpointGroupPscData_STATUS_UNSPECIFIED
-	NetworkEndpointGroupPscData_UNDEFINED_PSC_CONNECTION_STATUS                                        = src.NetworkEndpointGroupPscData_UNDEFINED_PSC_CONNECTION_STATUS
-	NetworkEndpointGroup_GCE_VM_IP                                                                     = src.NetworkEndpointGroup_GCE_VM_IP
-	NetworkEndpointGroup_GCE_VM_IP_PORT                                                                = src.NetworkEndpointGroup_GCE_VM_IP_PORT
-	NetworkEndpointGroup_INTERNET_FQDN_PORT                                                            = src.NetworkEndpointGroup_INTERNET_FQDN_PORT
-	NetworkEndpointGroup_INTERNET_IP_PORT                                                              = src.NetworkEndpointGroup_INTERNET_IP_PORT
-	NetworkEndpointGroup_NON_GCP_PRIVATE_IP_PORT                                                       = src.NetworkEndpointGroup_NON_GCP_PRIVATE_IP_PORT
-	NetworkEndpointGroup_PRIVATE_SERVICE_CONNECT                                                       = src.NetworkEndpointGroup_PRIVATE_SERVICE_CONNECT
-	NetworkEndpointGroup_SERVERLESS                                                                    = src.NetworkEndpointGroup_SERVERLESS
-	NetworkEndpointGroup_UNDEFINED_NETWORK_ENDPOINT_TYPE                                               = src.NetworkEndpointGroup_UNDEFINED_NETWORK_ENDPOINT_TYPE
-	NetworkEndpointGroupsListEndpointsRequest_SHOW                                                     = src.NetworkEndpointGroupsListEndpointsRequest_SHOW
-	NetworkEndpointGroupsListEndpointsRequest_SKIP                                                     = src.NetworkEndpointGroupsListEndpointsRequest_SKIP
-	NetworkEndpointGroupsListEndpointsRequest_UNDEFINED_HEALTH_STATUS                                  = src.NetworkEndpointGroupsListEndpointsRequest_UNDEFINED_HEALTH_STATUS
-	NetworkInterface_EXTERNAL                                                                          = src.NetworkInterface_EXTERNAL
-	NetworkInterface_GVNIC                                                                             = src.NetworkInterface_GVNIC
-	NetworkInterface_INTERNAL                                                                          = src.NetworkInterface_INTERNAL
-	NetworkInterface_IPV4_IPV6                                                                         = src.NetworkInterface_IPV4_IPV6
-	NetworkInterface_IPV4_ONLY                                                                         = src.NetworkInterface_IPV4_ONLY
-	NetworkInterface_UNDEFINED_IPV6_ACCESS_TYPE                                                        = src.NetworkInterface_UNDEFINED_IPV6_ACCESS_TYPE
-	NetworkInterface_UNDEFINED_NIC_TYPE                                                                = src.NetworkInterface_UNDEFINED_NIC_TYPE
-	NetworkInterface_UNDEFINED_STACK_TYPE                                                              = src.NetworkInterface_UNDEFINED_STACK_TYPE
-	NetworkInterface_UNSPECIFIED_IPV6_ACCESS_TYPE                                                      = src.NetworkInterface_UNSPECIFIED_IPV6_ACCESS_TYPE
-	NetworkInterface_UNSPECIFIED_NIC_TYPE                                                              = src.NetworkInterface_UNSPECIFIED_NIC_TYPE
-	NetworkInterface_UNSPECIFIED_STACK_TYPE                                                            = src.NetworkInterface_UNSPECIFIED_STACK_TYPE
-	NetworkInterface_VIRTIO_NET                                                                        = src.NetworkInterface_VIRTIO_NET
-	NetworkPeering_ACTIVE                                                                              = src.NetworkPeering_ACTIVE
-	NetworkPeering_INACTIVE                                                                            = src.NetworkPeering_INACTIVE
-	NetworkPeering_IPV4_IPV6                                                                           = src.NetworkPeering_IPV4_IPV6
-	NetworkPeering_IPV4_ONLY                                                                           = src.NetworkPeering_IPV4_ONLY
-	NetworkPeering_UNDEFINED_STACK_TYPE                                                                = src.NetworkPeering_UNDEFINED_STACK_TYPE
-	NetworkPeering_UNDEFINED_STATE                                                                     = src.NetworkPeering_UNDEFINED_STATE
-	NetworkPerformanceConfig_DEFAULT                                                                   = src.NetworkPerformanceConfig_DEFAULT
-	NetworkPerformanceConfig_TIER_1                                                                    = src.NetworkPerformanceConfig_TIER_1
-	NetworkPerformanceConfig_UNDEFINED_TOTAL_EGRESS_BANDWIDTH_TIER                                     = src.NetworkPerformanceConfig_UNDEFINED_TOTAL_EGRESS_BANDWIDTH_TIER
-	NetworkRoutingConfig_GLOBAL                                                                        = src.NetworkRoutingConfig_GLOBAL
-	NetworkRoutingConfig_REGIONAL                                                                      = src.NetworkRoutingConfig_REGIONAL
-	NetworkRoutingConfig_UNDEFINED_ROUTING_MODE                                                        = src.NetworkRoutingConfig_UNDEFINED_ROUTING_MODE
-	Network_AFTER_CLASSIC_FIREWALL                                                                     = src.Network_AFTER_CLASSIC_FIREWALL
-	Network_BEFORE_CLASSIC_FIREWALL                                                                    = src.Network_BEFORE_CLASSIC_FIREWALL
-	Network_UNDEFINED_NETWORK_FIREWALL_POLICY_ENFORCEMENT_ORDER                                        = src.Network_UNDEFINED_NETWORK_FIREWALL_POLICY_ENFORCEMENT_ORDER
-	NetworksGetEffectiveFirewallsResponseEffectiveFirewallPolicy_HIERARCHY                             = src.NetworksGetEffectiveFirewallsResponseEffectiveFirewallPolicy_HIERARCHY
-	NetworksGetEffectiveFirewallsResponseEffectiveFirewallPolicy_NETWORK                               = src.NetworksGetEffectiveFirewallsResponseEffectiveFirewallPolicy_NETWORK
-	NetworksGetEffectiveFirewallsResponseEffectiveFirewallPolicy_UNDEFINED_TYPE                        = src.NetworksGetEffectiveFirewallsResponseEffectiveFirewallPolicy_UNDEFINED_TYPE
-	NetworksGetEffectiveFirewallsResponseEffectiveFirewallPolicy_UNSPECIFIED                           = src.NetworksGetEffectiveFirewallsResponseEffectiveFirewallPolicy_UNSPECIFIED
-	NodeGroupAutoscalingPolicy_MODE_UNSPECIFIED                                                        = src.NodeGroupAutoscalingPolicy_MODE_UNSPECIFIED
-	NodeGroupAutoscalingPolicy_OFF                                                                     = src.NodeGroupAutoscalingPolicy_OFF
-	NodeGroupAutoscalingPolicy_ON                                                                      = src.NodeGroupAutoscalingPolicy_ON
-	NodeGroupAutoscalingPolicy_ONLY_SCALE_OUT                                                          = src.NodeGroupAutoscalingPolicy_ONLY_SCALE_OUT
-	NodeGroupAutoscalingPolicy_UNDEFINED_MODE                                                          = src.NodeGroupAutoscalingPolicy_UNDEFINED_MODE
-	NodeGroupNode_CPU_OVERCOMMIT_TYPE_UNSPECIFIED                                                      = src.NodeGroupNode_CPU_OVERCOMMIT_TYPE_UNSPECIFIED
-	NodeGroupNode_CREATING                                                                             = src.NodeGroupNode_CREATING
-	NodeGroupNode_DELETING                                                                             = src.NodeGroupNode_DELETING
-	NodeGroupNode_ENABLED                                                                              = src.NodeGroupNode_ENABLED
-	NodeGroupNode_INVALID                                                                              = src.NodeGroupNode_INVALID
-	NodeGroupNode_NONE                                                                                 = src.NodeGroupNode_NONE
-	NodeGroupNode_READY                                                                                = src.NodeGroupNode_READY
-	NodeGroupNode_REPAIRING                                                                            = src.NodeGroupNode_REPAIRING
-	NodeGroupNode_UNDEFINED_CPU_OVERCOMMIT_TYPE                                                        = src.NodeGroupNode_UNDEFINED_CPU_OVERCOMMIT_TYPE
-	NodeGroupNode_UNDEFINED_STATUS                                                                     = src.NodeGroupNode_UNDEFINED_STATUS
-	NodeGroup_CREATING                                                                                 = src.NodeGroup_CREATING
-	NodeGroup_DEFAULT                                                                                  = src.NodeGroup_DEFAULT
-	NodeGroup_DELETING                                                                                 = src.NodeGroup_DELETING
-	NodeGroup_INVALID                                                                                  = src.NodeGroup_INVALID
-	NodeGroup_MAINTENANCE_POLICY_UNSPECIFIED                                                           = src.NodeGroup_MAINTENANCE_POLICY_UNSPECIFIED
-	NodeGroup_MIGRATE_WITHIN_NODE_GROUP                                                                = src.NodeGroup_MIGRATE_WITHIN_NODE_GROUP
-	NodeGroup_READY                                                                                    = src.NodeGroup_READY
-	NodeGroup_RESTART_IN_PLACE                                                                         = src.NodeGroup_RESTART_IN_PLACE
-	NodeGroup_UNDEFINED_MAINTENANCE_POLICY                                                             = src.NodeGroup_UNDEFINED_MAINTENANCE_POLICY
-	NodeGroup_UNDEFINED_STATUS                                                                         = src.NodeGroup_UNDEFINED_STATUS
-	NodeTemplate_CPU_OVERCOMMIT_TYPE_UNSPECIFIED                                                       = src.NodeTemplate_CPU_OVERCOMMIT_TYPE_UNSPECIFIED
-	NodeTemplate_CREATING                                                                              = src.NodeTemplate_CREATING
-	NodeTemplate_DELETING                                                                              = src.NodeTemplate_DELETING
-	NodeTemplate_ENABLED                                                                               = src.NodeTemplate_ENABLED
-	NodeTemplate_INVALID                                                                               = src.NodeTemplate_INVALID
-	NodeTemplate_NONE                                                                                  = src.NodeTemplate_NONE
-	NodeTemplate_READY                                                                                 = src.NodeTemplate_READY
-	NodeTemplate_UNDEFINED_CPU_OVERCOMMIT_TYPE                                                         = src.NodeTemplate_UNDEFINED_CPU_OVERCOMMIT_TYPE
-	NodeTemplate_UNDEFINED_STATUS                                                                      = src.NodeTemplate_UNDEFINED_STATUS
-	Operation_DONE                                                                                     = src.Operation_DONE
-	Operation_PENDING                                                                                  = src.Operation_PENDING
-	Operation_RUNNING                                                                                  = src.Operation_RUNNING
-	Operation_UNDEFINED_STATUS                                                                         = src.Operation_UNDEFINED_STATUS
-	PacketIntervals_DURATION_UNSPECIFIED                                                               = src.PacketIntervals_DURATION_UNSPECIFIED
-	PacketIntervals_HOUR                                                                               = src.PacketIntervals_HOUR
-	PacketIntervals_LOOPBACK                                                                           = src.PacketIntervals_LOOPBACK
-	PacketIntervals_MAX                                                                                = src.PacketIntervals_MAX
-	PacketIntervals_MINUTE                                                                             = src.PacketIntervals_MINUTE
-	PacketIntervals_RECEIVE                                                                            = src.PacketIntervals_RECEIVE
-	PacketIntervals_TRANSMIT                                                                           = src.PacketIntervals_TRANSMIT
-	PacketIntervals_TYPE_UNSPECIFIED                                                                   = src.PacketIntervals_TYPE_UNSPECIFIED
-	PacketIntervals_UNDEFINED_DURATION                                                                 = src.PacketIntervals_UNDEFINED_DURATION
-	PacketIntervals_UNDEFINED_TYPE                                                                     = src.PacketIntervals_UNDEFINED_TYPE
-	PacketMirroringFilter_BOTH                                                                         = src.PacketMirroringFilter_BOTH
-	PacketMirroringFilter_EGRESS                                                                       = src.PacketMirroringFilter_EGRESS
-	PacketMirroringFilter_INGRESS                                                                      = src.PacketMirroringFilter_INGRESS
-	PacketMirroringFilter_UNDEFINED_DIRECTION                                                          = src.PacketMirroringFilter_UNDEFINED_DIRECTION
-	PacketMirroring_FALSE                                                                              = src.PacketMirroring_FALSE
-	PacketMirroring_TRUE                                                                               = src.PacketMirroring_TRUE
-	PacketMirroring_UNDEFINED_ENABLE                                                                   = src.PacketMirroring_UNDEFINED_ENABLE
-	PerInstanceConfig_APPLYING                                                                         = src.PerInstanceConfig_APPLYING
-	PerInstanceConfig_DELETING                                                                         = src.PerInstanceConfig_DELETING
-	PerInstanceConfig_EFFECTIVE                                                                        = src.PerInstanceConfig_EFFECTIVE
-	PerInstanceConfig_NONE                                                                             = src.PerInstanceConfig_NONE
-	PerInstanceConfig_UNAPPLIED                                                                        = src.PerInstanceConfig_UNAPPLIED
-	PerInstanceConfig_UNAPPLIED_DELETION                                                               = src.PerInstanceConfig_UNAPPLIED_DELETION
-	PerInstanceConfig_UNDEFINED_STATUS                                                                 = src.PerInstanceConfig_UNDEFINED_STATUS
-	PreservedStatePreservedDisk_NEVER                                                                  = src.PreservedStatePreservedDisk_NEVER
-	PreservedStatePreservedDisk_ON_PERMANENT_INSTANCE_DELETION                                         = src.PreservedStatePreservedDisk_ON_PERMANENT_INSTANCE_DELETION
-	PreservedStatePreservedDisk_READ_ONLY                                                              = src.PreservedStatePreservedDisk_READ_ONLY
-	PreservedStatePreservedDisk_READ_WRITE                                                             = src.PreservedStatePreservedDisk_READ_WRITE
-	PreservedStatePreservedDisk_UNDEFINED_AUTO_DELETE                                                  = src.PreservedStatePreservedDisk_UNDEFINED_AUTO_DELETE
-	PreservedStatePreservedDisk_UNDEFINED_MODE                                                         = src.PreservedStatePreservedDisk_UNDEFINED_MODE
-	Project_FIXED_STANDARD                                                                             = src.Project_FIXED_STANDARD
-	Project_HOST                                                                                       = src.Project_HOST
-	Project_PREMIUM                                                                                    = src.Project_PREMIUM
-	Project_STANDARD                                                                                   = src.Project_STANDARD
-	Project_STANDARD_OVERRIDES_FIXED_STANDARD                                                          = src.Project_STANDARD_OVERRIDES_FIXED_STANDARD
-	Project_UNDEFINED_DEFAULT_NETWORK_TIER                                                             = src.Project_UNDEFINED_DEFAULT_NETWORK_TIER
-	Project_UNDEFINED_XPN_PROJECT_STATUS                                                               = src.Project_UNDEFINED_XPN_PROJECT_STATUS
-	Project_UNSPECIFIED_XPN_PROJECT_STATUS                                                             = src.Project_UNSPECIFIED_XPN_PROJECT_STATUS
-	ProjectsSetDefaultNetworkTierRequest_FIXED_STANDARD                                                = src.ProjectsSetDefaultNetworkTierRequest_FIXED_STANDARD
-	ProjectsSetDefaultNetworkTierRequest_PREMIUM                                                       = src.ProjectsSetDefaultNetworkTierRequest_PREMIUM
-	ProjectsSetDefaultNetworkTierRequest_STANDARD                                                      = src.ProjectsSetDefaultNetworkTierRequest_STANDARD
-	ProjectsSetDefaultNetworkTierRequest_STANDARD_OVERRIDES_FIXED_STANDARD                             = src.ProjectsSetDefaultNetworkTierRequest_STANDARD_OVERRIDES_FIXED_STANDARD
-	ProjectsSetDefaultNetworkTierRequest_UNDEFINED_NETWORK_TIER                                        = src.ProjectsSetDefaultNetworkTierRequest_UNDEFINED_NETWORK_TIER
-	PublicAdvertisedPrefix_INITIAL                                                                     = src.PublicAdvertisedPrefix_INITIAL
-	PublicAdvertisedPrefix_PREFIX_CONFIGURATION_COMPLETE                                               = src.PublicAdvertisedPrefix_PREFIX_CONFIGURATION_COMPLETE
-	PublicAdvertisedPrefix_PREFIX_CONFIGURATION_IN_PROGRESS                                            = src.PublicAdvertisedPrefix_PREFIX_CONFIGURATION_IN_PROGRESS
-	PublicAdvertisedPrefix_PREFIX_REMOVAL_IN_PROGRESS                                                  = src.PublicAdvertisedPrefix_PREFIX_REMOVAL_IN_PROGRESS
-	PublicAdvertisedPrefix_PTR_CONFIGURED                                                              = src.PublicAdvertisedPrefix_PTR_CONFIGURED
-	PublicAdvertisedPrefix_REVERSE_DNS_LOOKUP_FAILED                                                   = src.PublicAdvertisedPrefix_REVERSE_DNS_LOOKUP_FAILED
-	PublicAdvertisedPrefix_UNDEFINED_STATUS                                                            = src.PublicAdvertisedPrefix_UNDEFINED_STATUS
-	PublicAdvertisedPrefix_VALIDATED                                                                   = src.PublicAdvertisedPrefix_VALIDATED
-	PublicDelegatedPrefixPublicDelegatedSubPrefix_ACTIVE                                               = src.PublicDelegatedPrefixPublicDelegatedSubPrefix_ACTIVE
-	PublicDelegatedPrefixPublicDelegatedSubPrefix_INACTIVE                                             = src.PublicDelegatedPrefixPublicDelegatedSubPrefix_INACTIVE
-	PublicDelegatedPrefixPublicDelegatedSubPrefix_UNDEFINED_STATUS                                     = src.PublicDelegatedPrefixPublicDelegatedSubPrefix_UNDEFINED_STATUS
-	PublicDelegatedPrefix_ANNOUNCED                                                                    = src.PublicDelegatedPrefix_ANNOUNCED
-	PublicDelegatedPrefix_DELETING                                                                     = src.PublicDelegatedPrefix_DELETING
-	PublicDelegatedPrefix_INITIALIZING                                                                 = src.PublicDelegatedPrefix_INITIALIZING
-	PublicDelegatedPrefix_READY_TO_ANNOUNCE                                                            = src.PublicDelegatedPrefix_READY_TO_ANNOUNCE
-	PublicDelegatedPrefix_UNDEFINED_STATUS                                                             = src.PublicDelegatedPrefix_UNDEFINED_STATUS
-	Quota_A2_CPUS                                                                                      = src.Quota_A2_CPUS
-	Quota_AFFINITY_GROUPS                                                                              = src.Quota_AFFINITY_GROUPS
-	Quota_AUTOSCALERS                                                                                  = src.Quota_AUTOSCALERS
-	Quota_BACKEND_BUCKETS                                                                              = src.Quota_BACKEND_BUCKETS
-	Quota_BACKEND_SERVICES                                                                             = src.Quota_BACKEND_SERVICES
-	Quota_C2D_CPUS                                                                                     = src.Quota_C2D_CPUS
-	Quota_C2_CPUS                                                                                      = src.Quota_C2_CPUS
-	Quota_C3_CPUS                                                                                      = src.Quota_C3_CPUS
-	Quota_COMMITMENTS                                                                                  = src.Quota_COMMITMENTS
-	Quota_COMMITTED_A2_CPUS                                                                            = src.Quota_COMMITTED_A2_CPUS
-	Quota_COMMITTED_C2D_CPUS                                                                           = src.Quota_COMMITTED_C2D_CPUS
-	Quota_COMMITTED_C2_CPUS                                                                            = src.Quota_COMMITTED_C2_CPUS
-	Quota_COMMITTED_C3_CPUS                                                                            = src.Quota_COMMITTED_C3_CPUS
-	Quota_COMMITTED_CPUS                                                                               = src.Quota_COMMITTED_CPUS
-	Quota_COMMITTED_E2_CPUS                                                                            = src.Quota_COMMITTED_E2_CPUS
-	Quota_COMMITTED_LICENSES                                                                           = src.Quota_COMMITTED_LICENSES
-	Quota_COMMITTED_LOCAL_SSD_TOTAL_GB                                                                 = src.Quota_COMMITTED_LOCAL_SSD_TOTAL_GB
-	Quota_COMMITTED_M3_CPUS                                                                            = src.Quota_COMMITTED_M3_CPUS
-	Quota_COMMITTED_MEMORY_OPTIMIZED_CPUS                                                              = src.Quota_COMMITTED_MEMORY_OPTIMIZED_CPUS
-	Quota_COMMITTED_N2A_CPUS                                                                           = src.Quota_COMMITTED_N2A_CPUS
-	Quota_COMMITTED_N2D_CPUS                                                                           = src.Quota_COMMITTED_N2D_CPUS
-	Quota_COMMITTED_N2_CPUS                                                                            = src.Quota_COMMITTED_N2_CPUS
-	Quota_COMMITTED_NVIDIA_A100_80GB_GPUS                                                              = src.Quota_COMMITTED_NVIDIA_A100_80GB_GPUS
-	Quota_COMMITTED_NVIDIA_A100_GPUS                                                                   = src.Quota_COMMITTED_NVIDIA_A100_GPUS
-	Quota_COMMITTED_NVIDIA_K80_GPUS                                                                    = src.Quota_COMMITTED_NVIDIA_K80_GPUS
-	Quota_COMMITTED_NVIDIA_P100_GPUS                                                                   = src.Quota_COMMITTED_NVIDIA_P100_GPUS
-	Quota_COMMITTED_NVIDIA_P4_GPUS                                                                     = src.Quota_COMMITTED_NVIDIA_P4_GPUS
-	Quota_COMMITTED_NVIDIA_T4_GPUS                                                                     = src.Quota_COMMITTED_NVIDIA_T4_GPUS
-	Quota_COMMITTED_NVIDIA_V100_GPUS                                                                   = src.Quota_COMMITTED_NVIDIA_V100_GPUS
-	Quota_COMMITTED_T2A_CPUS                                                                           = src.Quota_COMMITTED_T2A_CPUS
-	Quota_COMMITTED_T2D_CPUS                                                                           = src.Quota_COMMITTED_T2D_CPUS
-	Quota_CPUS                                                                                         = src.Quota_CPUS
-	Quota_CPUS_ALL_REGIONS                                                                             = src.Quota_CPUS_ALL_REGIONS
-	Quota_DISKS_TOTAL_GB                                                                               = src.Quota_DISKS_TOTAL_GB
-	Quota_E2_CPUS                                                                                      = src.Quota_E2_CPUS
-	Quota_EXTERNAL_MANAGED_FORWARDING_RULES                                                            = src.Quota_EXTERNAL_MANAGED_FORWARDING_RULES
-	Quota_EXTERNAL_NETWORK_LB_FORWARDING_RULES                                                         = src.Quota_EXTERNAL_NETWORK_LB_FORWARDING_RULES
-	Quota_EXTERNAL_PROTOCOL_FORWARDING_RULES                                                           = src.Quota_EXTERNAL_PROTOCOL_FORWARDING_RULES
-	Quota_EXTERNAL_VPN_GATEWAYS                                                                        = src.Quota_EXTERNAL_VPN_GATEWAYS
-	Quota_FIREWALLS                                                                                    = src.Quota_FIREWALLS
-	Quota_FORWARDING_RULES                                                                             = src.Quota_FORWARDING_RULES
-	Quota_GLOBAL_EXTERNAL_MANAGED_FORWARDING_RULES                                                     = src.Quota_GLOBAL_EXTERNAL_MANAGED_FORWARDING_RULES
-	Quota_GLOBAL_INTERNAL_ADDRESSES                                                                    = src.Quota_GLOBAL_INTERNAL_ADDRESSES
-	Quota_GPUS_ALL_REGIONS                                                                             = src.Quota_GPUS_ALL_REGIONS
-	Quota_HEALTH_CHECKS                                                                                = src.Quota_HEALTH_CHECKS
-	Quota_IMAGES                                                                                       = src.Quota_IMAGES
-	Quota_INSTANCES                                                                                    = src.Quota_INSTANCES
-	Quota_INSTANCE_GROUPS                                                                              = src.Quota_INSTANCE_GROUPS
-	Quota_INSTANCE_GROUP_MANAGERS                                                                      = src.Quota_INSTANCE_GROUP_MANAGERS
-	Quota_INSTANCE_TEMPLATES                                                                           = src.Quota_INSTANCE_TEMPLATES
-	Quota_INTERCONNECTS                                                                                = src.Quota_INTERCONNECTS
-	Quota_INTERCONNECT_ATTACHMENTS_PER_REGION                                                          = src.Quota_INTERCONNECT_ATTACHMENTS_PER_REGION
-	Quota_INTERCONNECT_ATTACHMENTS_TOTAL_MBPS                                                          = src.Quota_INTERCONNECT_ATTACHMENTS_TOTAL_MBPS
-	Quota_INTERCONNECT_TOTAL_GBPS                                                                      = src.Quota_INTERCONNECT_TOTAL_GBPS
-	Quota_INTERNAL_ADDRESSES                                                                           = src.Quota_INTERNAL_ADDRESSES
-	Quota_INTERNAL_TRAFFIC_DIRECTOR_FORWARDING_RULES                                                   = src.Quota_INTERNAL_TRAFFIC_DIRECTOR_FORWARDING_RULES
-	Quota_IN_PLACE_SNAPSHOTS                                                                           = src.Quota_IN_PLACE_SNAPSHOTS
-	Quota_IN_USE_ADDRESSES                                                                             = src.Quota_IN_USE_ADDRESSES
-	Quota_IN_USE_BACKUP_SCHEDULES                                                                      = src.Quota_IN_USE_BACKUP_SCHEDULES
-	Quota_IN_USE_SNAPSHOT_SCHEDULES                                                                    = src.Quota_IN_USE_SNAPSHOT_SCHEDULES
-	Quota_LOCAL_SSD_TOTAL_GB                                                                           = src.Quota_LOCAL_SSD_TOTAL_GB
-	Quota_M1_CPUS                                                                                      = src.Quota_M1_CPUS
-	Quota_M2_CPUS                                                                                      = src.Quota_M2_CPUS
-	Quota_M3_CPUS                                                                                      = src.Quota_M3_CPUS
-	Quota_MACHINE_IMAGES                                                                               = src.Quota_MACHINE_IMAGES
-	Quota_N2A_CPUS                                                                                     = src.Quota_N2A_CPUS
-	Quota_N2D_CPUS                                                                                     = src.Quota_N2D_CPUS
-	Quota_N2_CPUS                                                                                      = src.Quota_N2_CPUS
-	Quota_NETWORKS                                                                                     = src.Quota_NETWORKS
-	Quota_NETWORK_ENDPOINT_GROUPS                                                                      = src.Quota_NETWORK_ENDPOINT_GROUPS
-	Quota_NETWORK_FIREWALL_POLICIES                                                                    = src.Quota_NETWORK_FIREWALL_POLICIES
-	Quota_NODE_GROUPS                                                                                  = src.Quota_NODE_GROUPS
-	Quota_NODE_TEMPLATES                                                                               = src.Quota_NODE_TEMPLATES
-	Quota_NVIDIA_A100_80GB_GPUS                                                                        = src.Quota_NVIDIA_A100_80GB_GPUS
-	Quota_NVIDIA_A100_GPUS                                                                             = src.Quota_NVIDIA_A100_GPUS
-	Quota_NVIDIA_K80_GPUS                                                                              = src.Quota_NVIDIA_K80_GPUS
-	Quota_NVIDIA_P100_GPUS                                                                             = src.Quota_NVIDIA_P100_GPUS
-	Quota_NVIDIA_P100_VWS_GPUS                                                                         = src.Quota_NVIDIA_P100_VWS_GPUS
-	Quota_NVIDIA_P4_GPUS                                                                               = src.Quota_NVIDIA_P4_GPUS
-	Quota_NVIDIA_P4_VWS_GPUS                                                                           = src.Quota_NVIDIA_P4_VWS_GPUS
-	Quota_NVIDIA_T4_GPUS                                                                               = src.Quota_NVIDIA_T4_GPUS
-	Quota_NVIDIA_T4_VWS_GPUS                                                                           = src.Quota_NVIDIA_T4_VWS_GPUS
-	Quota_NVIDIA_V100_GPUS                                                                             = src.Quota_NVIDIA_V100_GPUS
-	Quota_PACKET_MIRRORINGS                                                                            = src.Quota_PACKET_MIRRORINGS
-	Quota_PD_EXTREME_TOTAL_PROVISIONED_IOPS                                                            = src.Quota_PD_EXTREME_TOTAL_PROVISIONED_IOPS
-	Quota_PREEMPTIBLE_CPUS                                                                             = src.Quota_PREEMPTIBLE_CPUS
-	Quota_PREEMPTIBLE_LOCAL_SSD_GB                                                                     = src.Quota_PREEMPTIBLE_LOCAL_SSD_GB
-	Quota_PREEMPTIBLE_NVIDIA_A100_80GB_GPUS                                                            = src.Quota_PREEMPTIBLE_NVIDIA_A100_80GB_GPUS
-	Quota_PREEMPTIBLE_NVIDIA_A100_GPUS                                                                 = src.Quota_PREEMPTIBLE_NVIDIA_A100_GPUS
-	Quota_PREEMPTIBLE_NVIDIA_K80_GPUS                                                                  = src.Quota_PREEMPTIBLE_NVIDIA_K80_GPUS
-	Quota_PREEMPTIBLE_NVIDIA_P100_GPUS                                                                 = src.Quota_PREEMPTIBLE_NVIDIA_P100_GPUS
-	Quota_PREEMPTIBLE_NVIDIA_P100_VWS_GPUS                                                             = src.Quota_PREEMPTIBLE_NVIDIA_P100_VWS_GPUS
-	Quota_PREEMPTIBLE_NVIDIA_P4_GPUS                                                                   = src.Quota_PREEMPTIBLE_NVIDIA_P4_GPUS
-	Quota_PREEMPTIBLE_NVIDIA_P4_VWS_GPUS                                                               = src.Quota_PREEMPTIBLE_NVIDIA_P4_VWS_GPUS
-	Quota_PREEMPTIBLE_NVIDIA_T4_GPUS                                                                   = src.Quota_PREEMPTIBLE_NVIDIA_T4_GPUS
-	Quota_PREEMPTIBLE_NVIDIA_T4_VWS_GPUS                                                               = src.Quota_PREEMPTIBLE_NVIDIA_T4_VWS_GPUS
-	Quota_PREEMPTIBLE_NVIDIA_V100_GPUS                                                                 = src.Quota_PREEMPTIBLE_NVIDIA_V100_GPUS
-	Quota_PSC_ILB_CONSUMER_FORWARDING_RULES_PER_PRODUCER_NETWORK                                       = src.Quota_PSC_ILB_CONSUMER_FORWARDING_RULES_PER_PRODUCER_NETWORK
-	Quota_PSC_INTERNAL_LB_FORWARDING_RULES                                                             = src.Quota_PSC_INTERNAL_LB_FORWARDING_RULES
-	Quota_PUBLIC_ADVERTISED_PREFIXES                                                                   = src.Quota_PUBLIC_ADVERTISED_PREFIXES
-	Quota_PUBLIC_DELEGATED_PREFIXES                                                                    = src.Quota_PUBLIC_DELEGATED_PREFIXES
-	Quota_REGIONAL_AUTOSCALERS                                                                         = src.Quota_REGIONAL_AUTOSCALERS
-	Quota_REGIONAL_INSTANCE_GROUP_MANAGERS                                                             = src.Quota_REGIONAL_INSTANCE_GROUP_MANAGERS
-	Quota_RESERVATIONS                                                                                 = src.Quota_RESERVATIONS
-	Quota_RESOURCE_POLICIES                                                                            = src.Quota_RESOURCE_POLICIES
-	Quota_ROUTERS                                                                                      = src.Quota_ROUTERS
-	Quota_ROUTES                                                                                       = src.Quota_ROUTES
-	Quota_SECURITY_POLICIES                                                                            = src.Quota_SECURITY_POLICIES
-	Quota_SECURITY_POLICIES_PER_REGION                                                                 = src.Quota_SECURITY_POLICIES_PER_REGION
-	Quota_SECURITY_POLICY_CEVAL_RULES                                                                  = src.Quota_SECURITY_POLICY_CEVAL_RULES
-	Quota_SECURITY_POLICY_RULES                                                                        = src.Quota_SECURITY_POLICY_RULES
-	Quota_SECURITY_POLICY_RULES_PER_REGION                                                             = src.Quota_SECURITY_POLICY_RULES_PER_REGION
-	Quota_SERVICE_ATTACHMENTS                                                                          = src.Quota_SERVICE_ATTACHMENTS
-	Quota_SNAPSHOTS                                                                                    = src.Quota_SNAPSHOTS
-	Quota_SSD_TOTAL_GB                                                                                 = src.Quota_SSD_TOTAL_GB
-	Quota_SSL_CERTIFICATES                                                                             = src.Quota_SSL_CERTIFICATES
-	Quota_STATIC_ADDRESSES                                                                             = src.Quota_STATIC_ADDRESSES
-	Quota_STATIC_BYOIP_ADDRESSES                                                                       = src.Quota_STATIC_BYOIP_ADDRESSES
-	Quota_STATIC_EXTERNAL_IPV6_ADDRESS_RANGES                                                          = src.Quota_STATIC_EXTERNAL_IPV6_ADDRESS_RANGES
-	Quota_SUBNETWORKS                                                                                  = src.Quota_SUBNETWORKS
-	Quota_T2A_CPUS                                                                                     = src.Quota_T2A_CPUS
-	Quota_T2D_CPUS                                                                                     = src.Quota_T2D_CPUS
-	Quota_TARGET_HTTPS_PROXIES                                                                         = src.Quota_TARGET_HTTPS_PROXIES
-	Quota_TARGET_HTTP_PROXIES                                                                          = src.Quota_TARGET_HTTP_PROXIES
-	Quota_TARGET_INSTANCES                                                                             = src.Quota_TARGET_INSTANCES
-	Quota_TARGET_POOLS                                                                                 = src.Quota_TARGET_POOLS
-	Quota_TARGET_SSL_PROXIES                                                                           = src.Quota_TARGET_SSL_PROXIES
-	Quota_TARGET_TCP_PROXIES                                                                           = src.Quota_TARGET_TCP_PROXIES
-	Quota_TARGET_VPN_GATEWAYS                                                                          = src.Quota_TARGET_VPN_GATEWAYS
-	Quota_UNDEFINED_METRIC                                                                             = src.Quota_UNDEFINED_METRIC
-	Quota_URL_MAPS                                                                                     = src.Quota_URL_MAPS
-	Quota_VPN_GATEWAYS                                                                                 = src.Quota_VPN_GATEWAYS
-	Quota_VPN_TUNNELS                                                                                  = src.Quota_VPN_TUNNELS
-	Quota_XPN_SERVICE_PROJECTS                                                                         = src.Quota_XPN_SERVICE_PROJECTS
-	RawDisk_TAR                                                                                        = src.RawDisk_TAR
-	RawDisk_UNDEFINED_CONTAINER_TYPE                                                                   = src.RawDisk_UNDEFINED_CONTAINER_TYPE
-	RegionInstanceGroupManagersApplyUpdatesRequest_UNDEFINED_MINIMAL_ACTION                            = src.RegionInstanceGroupManagersApplyUpdatesRequest_UNDEFINED_MINIMAL_ACTION
-	RegionInstanceGroupManagersApplyUpdatesRequest_UNDEFINED_MOST_DISRUPTIVE_ALLOWED_ACTION            = src.RegionInstanceGroupManagersApplyUpdatesRequest_UNDEFINED_MOST_DISRUPTIVE_ALLOWED_ACTION
-	RegionInstanceGroupsListInstancesRequest_ALL                                                       = src.RegionInstanceGroupsListInstancesRequest_ALL
-	RegionInstanceGroupsListInstancesRequest_RUNNING                                                   = src.RegionInstanceGroupsListInstancesRequest_RUNNING
-	RegionInstanceGroupsListInstancesRequest_UNDEFINED_INSTANCE_STATE                                  = src.RegionInstanceGroupsListInstancesRequest_UNDEFINED_INSTANCE_STATE
-	RegionNetworkFirewallPoliciesGetEffectiveFirewallsResponseEffectiveFirewallPolicy_HIERARCHY        = src.RegionNetworkFirewallPoliciesGetEffectiveFirewallsResponseEffectiveFirewallPolicy_HIERARCHY
-	RegionNetworkFirewallPoliciesGetEffectiveFirewallsResponseEffectiveFirewallPolicy_NETWORK          = src.RegionNetworkFirewallPoliciesGetEffectiveFirewallsResponseEffectiveFirewallPolicy_NETWORK
-	RegionNetworkFirewallPoliciesGetEffectiveFirewallsResponseEffectiveFirewallPolicy_NETWORK_REGIONAL = src.RegionNetworkFirewallPoliciesGetEffectiveFirewallsResponseEffectiveFirewallPolicy_NETWORK_REGIONAL
-	RegionNetworkFirewallPoliciesGetEffectiveFirewallsResponseEffectiveFirewallPolicy_UNDEFINED_TYPE   = src.RegionNetworkFirewallPoliciesGetEffectiveFirewallsResponseEffectiveFirewallPolicy_UNDEFINED_TYPE
-	RegionNetworkFirewallPoliciesGetEffectiveFirewallsResponseEffectiveFirewallPolicy_UNSPECIFIED      = src.RegionNetworkFirewallPoliciesGetEffectiveFirewallsResponseEffectiveFirewallPolicy_UNSPECIFIED
-	Region_DOWN                                                                                        = src.Region_DOWN
-	Region_UNDEFINED_STATUS                                                                            = src.Region_UNDEFINED_STATUS
-	Region_UP                                                                                          = src.Region_UP
-	ReservationAffinity_ANY_RESERVATION                                                                = src.ReservationAffinity_ANY_RESERVATION
-	ReservationAffinity_NO_RESERVATION                                                                 = src.ReservationAffinity_NO_RESERVATION
-	ReservationAffinity_SPECIFIC_RESERVATION                                                           = src.ReservationAffinity_SPECIFIC_RESERVATION
-	ReservationAffinity_UNDEFINED_CONSUME_RESERVATION_TYPE                                             = src.ReservationAffinity_UNDEFINED_CONSUME_RESERVATION_TYPE
-	ReservationAffinity_UNSPECIFIED                                                                    = src.ReservationAffinity_UNSPECIFIED
-	Reservation_CREATING                                                                               = src.Reservation_CREATING
-	Reservation_DELETING                                                                               = src.Reservation_DELETING
-	Reservation_INVALID                                                                                = src.Reservation_INVALID
-	Reservation_READY                                                                                  = src.Reservation_READY
-	Reservation_UNDEFINED_STATUS                                                                       = src.Reservation_UNDEFINED_STATUS
-	Reservation_UPDATING                                                                               = src.Reservation_UPDATING
-	ResourceCommitment_ACCELERATOR                                                                     = src.ResourceCommitment_ACCELERATOR
-	ResourceCommitment_LOCAL_SSD                                                                       = src.ResourceCommitment_LOCAL_SSD
-	ResourceCommitment_MEMORY                                                                          = src.ResourceCommitment_MEMORY
-	ResourceCommitment_UNDEFINED_TYPE                                                                  = src.ResourceCommitment_UNDEFINED_TYPE
-	ResourceCommitment_UNSPECIFIED                                                                     = src.ResourceCommitment_UNSPECIFIED
-	ResourceCommitment_VCPU                                                                            = src.ResourceCommitment_VCPU
-	ResourcePolicyGroupPlacementPolicy_COLLOCATED                                                      = src.ResourcePolicyGroupPlacementPolicy_COLLOCATED
-	ResourcePolicyGroupPlacementPolicy_UNDEFINED_COLLOCATION                                           = src.ResourcePolicyGroupPlacementPolicy_UNDEFINED_COLLOCATION
-	ResourcePolicyGroupPlacementPolicy_UNSPECIFIED_COLLOCATION                                         = src.ResourcePolicyGroupPlacementPolicy_UNSPECIFIED_COLLOCATION
-	ResourcePolicySnapshotSchedulePolicyRetentionPolicy_APPLY_RETENTION_POLICY                         = src.ResourcePolicySnapshotSchedulePolicyRetentionPolicy_APPLY_RETENTION_POLICY
-	ResourcePolicySnapshotSchedulePolicyRetentionPolicy_KEEP_AUTO_SNAPSHOTS                            = src.ResourcePolicySnapshotSchedulePolicyRetentionPolicy_KEEP_AUTO_SNAPSHOTS
-	ResourcePolicySnapshotSchedulePolicyRetentionPolicy_UNDEFINED_ON_SOURCE_DISK_DELETE                = src.ResourcePolicySnapshotSchedulePolicyRetentionPolicy_UNDEFINED_ON_SOURCE_DISK_DELETE
-	ResourcePolicySnapshotSchedulePolicyRetentionPolicy_UNSPECIFIED_ON_SOURCE_DISK_DELETE              = src.ResourcePolicySnapshotSchedulePolicyRetentionPolicy_UNSPECIFIED_ON_SOURCE_DISK_DELETE
-	ResourcePolicyWeeklyCycleDayOfWeek_FRIDAY                                                          = src.ResourcePolicyWeeklyCycleDayOfWeek_FRIDAY
-	ResourcePolicyWeeklyCycleDayOfWeek_INVALID                                                         = src.ResourcePolicyWeeklyCycleDayOfWeek_INVALID
-	ResourcePolicyWeeklyCycleDayOfWeek_MONDAY                                                          = src.ResourcePolicyWeeklyCycleDayOfWeek_MONDAY
-	ResourcePolicyWeeklyCycleDayOfWeek_SATURDAY                                                        = src.ResourcePolicyWeeklyCycleDayOfWeek_SATURDAY
-	ResourcePolicyWeeklyCycleDayOfWeek_SUNDAY                                                          = src.ResourcePolicyWeeklyCycleDayOfWeek_SUNDAY
-	ResourcePolicyWeeklyCycleDayOfWeek_THURSDAY                                                        = src.ResourcePolicyWeeklyCycleDayOfWeek_THURSDAY
-	ResourcePolicyWeeklyCycleDayOfWeek_TUESDAY                                                         = src.ResourcePolicyWeeklyCycleDayOfWeek_TUESDAY
-	ResourcePolicyWeeklyCycleDayOfWeek_UNDEFINED_DAY                                                   = src.ResourcePolicyWeeklyCycleDayOfWeek_UNDEFINED_DAY
-	ResourcePolicyWeeklyCycleDayOfWeek_WEDNESDAY                                                       = src.ResourcePolicyWeeklyCycleDayOfWeek_WEDNESDAY
-	ResourcePolicy_CREATING                                                                            = src.ResourcePolicy_CREATING
-	ResourcePolicy_DELETING                                                                            = src.ResourcePolicy_DELETING
-	ResourcePolicy_EXPIRED                                                                             = src.ResourcePolicy_EXPIRED
-	ResourcePolicy_INVALID                                                                             = src.ResourcePolicy_INVALID
-	ResourcePolicy_READY                                                                               = src.ResourcePolicy_READY
-	ResourcePolicy_UNDEFINED_STATUS                                                                    = src.ResourcePolicy_UNDEFINED_STATUS
-	RouteAsPath_AS_CONFED_SEQUENCE                                                                     = src.RouteAsPath_AS_CONFED_SEQUENCE
-	RouteAsPath_AS_CONFED_SET                                                                          = src.RouteAsPath_AS_CONFED_SET
-	RouteAsPath_AS_SEQUENCE                                                                            = src.RouteAsPath_AS_SEQUENCE
-	RouteAsPath_AS_SET                                                                                 = src.RouteAsPath_AS_SET
-	RouteAsPath_UNDEFINED_PATH_SEGMENT_TYPE                                                            = src.RouteAsPath_UNDEFINED_PATH_SEGMENT_TYPE
-	Route_ACTIVE                                                                                       = src.Route_ACTIVE
-	Route_BGP                                                                                          = src.Route_BGP
-	Route_DROPPED                                                                                      = src.Route_DROPPED
-	Route_INACTIVE                                                                                     = src.Route_INACTIVE
-	Route_PENDING                                                                                      = src.Route_PENDING
-	Route_STATIC                                                                                       = src.Route_STATIC
-	Route_SUBNET                                                                                       = src.Route_SUBNET
-	Route_TRANSIT                                                                                      = src.Route_TRANSIT
-	Route_UNDEFINED_ROUTE_STATUS                                                                       = src.Route_UNDEFINED_ROUTE_STATUS
-	Route_UNDEFINED_ROUTE_TYPE                                                                         = src.Route_UNDEFINED_ROUTE_TYPE
-	RouterBgpPeerBfd_ACTIVE                                                                            = src.RouterBgpPeerBfd_ACTIVE
-	RouterBgpPeerBfd_DISABLED                                                                          = src.RouterBgpPeerBfd_DISABLED
-	RouterBgpPeerBfd_PASSIVE                                                                           = src.RouterBgpPeerBfd_PASSIVE
-	RouterBgpPeerBfd_UNDEFINED_SESSION_INITIALIZATION_MODE                                             = src.RouterBgpPeerBfd_UNDEFINED_SESSION_INITIALIZATION_MODE
-	RouterBgpPeer_ALL_SUBNETS                                                                          = src.RouterBgpPeer_ALL_SUBNETS
-	RouterBgpPeer_CUSTOM                                                                               = src.RouterBgpPeer_CUSTOM
-	RouterBgpPeer_DEFAULT                                                                              = src.RouterBgpPeer_DEFAULT
-	RouterBgpPeer_FALSE                                                                                = src.RouterBgpPeer_FALSE
-	RouterBgpPeer_MANAGED_BY_ATTACHMENT                                                                = src.RouterBgpPeer_MANAGED_BY_ATTACHMENT
-	RouterBgpPeer_MANAGED_BY_USER                                                                      = src.RouterBgpPeer_MANAGED_BY_USER
-	RouterBgpPeer_TRUE                                                                                 = src.RouterBgpPeer_TRUE
-	RouterBgpPeer_UNDEFINED_ADVERTISED_GROUPS                                                          = src.RouterBgpPeer_UNDEFINED_ADVERTISED_GROUPS
-	RouterBgpPeer_UNDEFINED_ADVERTISE_MODE                                                             = src.RouterBgpPeer_UNDEFINED_ADVERTISE_MODE
-	RouterBgpPeer_UNDEFINED_ENABLE                                                                     = src.RouterBgpPeer_UNDEFINED_ENABLE
-	RouterBgpPeer_UNDEFINED_MANAGEMENT_TYPE                                                            = src.RouterBgpPeer_UNDEFINED_MANAGEMENT_TYPE
-	RouterBgp_ALL_SUBNETS                                                                              = src.RouterBgp_ALL_SUBNETS
-	RouterBgp_CUSTOM                                                                                   = src.RouterBgp_CUSTOM
-	RouterBgp_DEFAULT                                                                                  = src.RouterBgp_DEFAULT
-	RouterBgp_UNDEFINED_ADVERTISED_GROUPS                                                              = src.RouterBgp_UNDEFINED_ADVERTISED_GROUPS
-	RouterBgp_UNDEFINED_ADVERTISE_MODE                                                                 = src.RouterBgp_UNDEFINED_ADVERTISE_MODE
-	RouterInterface_MANAGED_BY_ATTACHMENT                                                              = src.RouterInterface_MANAGED_BY_ATTACHMENT
-	RouterInterface_MANAGED_BY_USER                                                                    = src.RouterInterface_MANAGED_BY_USER
-	RouterInterface_UNDEFINED_MANAGEMENT_TYPE                                                          = src.RouterInterface_UNDEFINED_MANAGEMENT_TYPE
-	RouterNatLogConfig_ALL                                                                             = src.RouterNatLogConfig_ALL
-	RouterNatLogConfig_ERRORS_ONLY                                                                     = src.RouterNatLogConfig_ERRORS_ONLY
-	RouterNatLogConfig_TRANSLATIONS_ONLY                                                               = src.RouterNatLogConfig_TRANSLATIONS_ONLY
-	RouterNatLogConfig_UNDEFINED_FILTER                                                                = src.RouterNatLogConfig_UNDEFINED_FILTER
-	RouterNatSubnetworkToNat_ALL_IP_RANGES                                                             = src.RouterNatSubnetworkToNat_ALL_IP_RANGES
-	RouterNatSubnetworkToNat_LIST_OF_SECONDARY_IP_RANGES                                               = src.RouterNatSubnetworkToNat_LIST_OF_SECONDARY_IP_RANGES
-	RouterNatSubnetworkToNat_PRIMARY_IP_RANGE                                                          = src.RouterNatSubnetworkToNat_PRIMARY_IP_RANGE
-	RouterNatSubnetworkToNat_UNDEFINED_SOURCE_IP_RANGES_TO_NAT                                         = src.RouterNatSubnetworkToNat_UNDEFINED_SOURCE_IP_RANGES_TO_NAT
-	RouterNat_ALL_SUBNETWORKS_ALL_IP_RANGES                                                            = src.RouterNat_ALL_SUBNETWORKS_ALL_IP_RANGES
-	RouterNat_ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES                                                    = src.RouterNat_ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES
-	RouterNat_AUTO_ONLY                                                                                = src.RouterNat_AUTO_ONLY
-	RouterNat_ENDPOINT_TYPE_SWG                                                                        = src.RouterNat_ENDPOINT_TYPE_SWG
-	RouterNat_ENDPOINT_TYPE_VM                                                                         = src.RouterNat_ENDPOINT_TYPE_VM
-	RouterNat_LIST_OF_SUBNETWORKS                                                                      = src.RouterNat_LIST_OF_SUBNETWORKS
-	RouterNat_MANUAL_ONLY                                                                              = src.RouterNat_MANUAL_ONLY
-	RouterNat_UNDEFINED_ENDPOINT_TYPES                                                                 = src.RouterNat_UNDEFINED_ENDPOINT_TYPES
-	RouterNat_UNDEFINED_NAT_IP_ALLOCATE_OPTION                                                         = src.RouterNat_UNDEFINED_NAT_IP_ALLOCATE_OPTION
-	RouterNat_UNDEFINED_SOURCE_SUBNETWORK_IP_RANGES_TO_NAT                                             = src.RouterNat_UNDEFINED_SOURCE_SUBNETWORK_IP_RANGES_TO_NAT
-	RouterStatusBgpPeerStatus_DOWN                                                                     = src.RouterStatusBgpPeerStatus_DOWN
-	RouterStatusBgpPeerStatus_MD5_AUTH_INTERNAL_PROBLEM                                                = src.RouterStatusBgpPeerStatus_MD5_AUTH_INTERNAL_PROBLEM
-	RouterStatusBgpPeerStatus_STATUS_REASON_UNSPECIFIED                                                = src.RouterStatusBgpPeerStatus_STATUS_REASON_UNSPECIFIED
-	RouterStatusBgpPeerStatus_UNDEFINED_STATUS                                                         = src.RouterStatusBgpPeerStatus_UNDEFINED_STATUS
-	RouterStatusBgpPeerStatus_UNDEFINED_STATUS_REASON                                                  = src.RouterStatusBgpPeerStatus_UNDEFINED_STATUS_REASON
-	RouterStatusBgpPeerStatus_UNKNOWN                                                                  = src.RouterStatusBgpPeerStatus_UNKNOWN
-	RouterStatusBgpPeerStatus_UP                                                                       = src.RouterStatusBgpPeerStatus_UP
-	Rule_ALLOW                                                                                         = src.Rule_ALLOW
-	Rule_ALLOW_WITH_LOG                                                                                = src.Rule_ALLOW_WITH_LOG
-	Rule_DENY                                                                                          = src.Rule_DENY
-	Rule_DENY_WITH_LOG                                                                                 = src.Rule_DENY_WITH_LOG
-	Rule_LOG                                                                                           = src.Rule_LOG
-	Rule_NO_ACTION                                                                                     = src.Rule_NO_ACTION
-	Rule_UNDEFINED_ACTION                                                                              = src.Rule_UNDEFINED_ACTION
-	SSLHealthCheck_NONE                                                                                = src.SSLHealthCheck_NONE
-	SSLHealthCheck_PROXY_V1                                                                            = src.SSLHealthCheck_PROXY_V1
-	SSLHealthCheck_UNDEFINED_PORT_SPECIFICATION                                                        = src.SSLHealthCheck_UNDEFINED_PORT_SPECIFICATION
-	SSLHealthCheck_UNDEFINED_PROXY_HEADER                                                              = src.SSLHealthCheck_UNDEFINED_PROXY_HEADER
-	SSLHealthCheck_USE_FIXED_PORT                                                                      = src.SSLHealthCheck_USE_FIXED_PORT
-	SSLHealthCheck_USE_NAMED_PORT                                                                      = src.SSLHealthCheck_USE_NAMED_PORT
-	SSLHealthCheck_USE_SERVING_PORT                                                                    = src.SSLHealthCheck_USE_SERVING_PORT
-	SavedAttachedDisk_NVME                                                                             = src.SavedAttachedDisk_NVME
-	SavedAttachedDisk_PERSISTENT                                                                       = src.SavedAttachedDisk_PERSISTENT
-	SavedAttachedDisk_READ_ONLY                                                                        = src.SavedAttachedDisk_READ_ONLY
-	SavedAttachedDisk_READ_WRITE                                                                       = src.SavedAttachedDisk_READ_WRITE
-	SavedAttachedDisk_SCRATCH                                                                          = src.SavedAttachedDisk_SCRATCH
-	SavedAttachedDisk_SCSI                                                                             = src.SavedAttachedDisk_SCSI
-	SavedAttachedDisk_UNDEFINED_INTERFACE                                                              = src.SavedAttachedDisk_UNDEFINED_INTERFACE
-	SavedAttachedDisk_UNDEFINED_MODE                                                                   = src.SavedAttachedDisk_UNDEFINED_MODE
-	SavedAttachedDisk_UNDEFINED_STORAGE_BYTES_STATUS                                                   = src.SavedAttachedDisk_UNDEFINED_STORAGE_BYTES_STATUS
-	SavedAttachedDisk_UNDEFINED_TYPE                                                                   = src.SavedAttachedDisk_UNDEFINED_TYPE
-	SavedAttachedDisk_UPDATING                                                                         = src.SavedAttachedDisk_UPDATING
-	SavedAttachedDisk_UP_TO_DATE                                                                       = src.SavedAttachedDisk_UP_TO_DATE
-	SavedDisk_ARCHITECTURE_UNSPECIFIED                                                                 = src.SavedDisk_ARCHITECTURE_UNSPECIFIED
-	SavedDisk_ARM64                                                                                    = src.SavedDisk_ARM64
-	SavedDisk_UNDEFINED_ARCHITECTURE                                                                   = src.SavedDisk_UNDEFINED_ARCHITECTURE
-	SavedDisk_UNDEFINED_STORAGE_BYTES_STATUS                                                           = src.SavedDisk_UNDEFINED_STORAGE_BYTES_STATUS
-	SavedDisk_UPDATING                                                                                 = src.SavedDisk_UPDATING
-	SavedDisk_UP_TO_DATE                                                                               = src.SavedDisk_UP_TO_DATE
-	SavedDisk_X86_64                                                                                   = src.SavedDisk_X86_64
-	ScalingScheduleStatus_ACTIVE                                                                       = src.ScalingScheduleStatus_ACTIVE
-	ScalingScheduleStatus_DISABLED                                                                     = src.ScalingScheduleStatus_DISABLED
-	ScalingScheduleStatus_OBSOLETE                                                                     = src.ScalingScheduleStatus_OBSOLETE
-	ScalingScheduleStatus_READY                                                                        = src.ScalingScheduleStatus_READY
-	ScalingScheduleStatus_UNDEFINED_STATE                                                              = src.ScalingScheduleStatus_UNDEFINED_STATE
-	SchedulingNodeAffinity_IN                                                                          = src.SchedulingNodeAffinity_IN
-	SchedulingNodeAffinity_NOT_IN                                                                      = src.SchedulingNodeAffinity_NOT_IN
-	SchedulingNodeAffinity_OPERATOR_UNSPECIFIED                                                        = src.SchedulingNodeAffinity_OPERATOR_UNSPECIFIED
-	SchedulingNodeAffinity_UNDEFINED_OPERATOR                                                          = src.SchedulingNodeAffinity_UNDEFINED_OPERATOR
-	Scheduling_DELETE                                                                                  = src.Scheduling_DELETE
-	Scheduling_INSTANCE_TERMINATION_ACTION_UNSPECIFIED                                                 = src.Scheduling_INSTANCE_TERMINATION_ACTION_UNSPECIFIED
-	Scheduling_MIGRATE                                                                                 = src.Scheduling_MIGRATE
-	Scheduling_SPOT                                                                                    = src.Scheduling_SPOT
-	Scheduling_STANDARD                                                                                = src.Scheduling_STANDARD
-	Scheduling_STOP                                                                                    = src.Scheduling_STOP
-	Scheduling_TERMINATE                                                                               = src.Scheduling_TERMINATE
-	Scheduling_UNDEFINED_INSTANCE_TERMINATION_ACTION                                                   = src.Scheduling_UNDEFINED_INSTANCE_TERMINATION_ACTION
-	Scheduling_UNDEFINED_ON_HOST_MAINTENANCE                                                           = src.Scheduling_UNDEFINED_ON_HOST_MAINTENANCE
-	Scheduling_UNDEFINED_PROVISIONING_MODEL                                                            = src.Scheduling_UNDEFINED_PROVISIONING_MODEL
-	SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig_PREMIUM                              = src.SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig_PREMIUM
-	SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig_STANDARD                             = src.SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig_STANDARD
-	SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig_UNDEFINED_RULE_VISIBILITY            = src.SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig_UNDEFINED_RULE_VISIBILITY
-	SecurityPolicyAdvancedOptionsConfig_DISABLED                                                       = src.SecurityPolicyAdvancedOptionsConfig_DISABLED
-	SecurityPolicyAdvancedOptionsConfig_NORMAL                                                         = src.SecurityPolicyAdvancedOptionsConfig_NORMAL
-	SecurityPolicyAdvancedOptionsConfig_STANDARD                                                       = src.SecurityPolicyAdvancedOptionsConfig_STANDARD
-	SecurityPolicyAdvancedOptionsConfig_UNDEFINED_JSON_PARSING                                         = src.SecurityPolicyAdvancedOptionsConfig_UNDEFINED_JSON_PARSING
-	SecurityPolicyAdvancedOptionsConfig_UNDEFINED_LOG_LEVEL                                            = src.SecurityPolicyAdvancedOptionsConfig_UNDEFINED_LOG_LEVEL
-	SecurityPolicyAdvancedOptionsConfig_VERBOSE                                                        = src.SecurityPolicyAdvancedOptionsConfig_VERBOSE
-	SecurityPolicyDdosProtectionConfig_ADVANCED                                                        = src.SecurityPolicyDdosProtectionConfig_ADVANCED
-	SecurityPolicyDdosProtectionConfig_STANDARD                                                        = src.SecurityPolicyDdosProtectionConfig_STANDARD
-	SecurityPolicyDdosProtectionConfig_UNDEFINED_DDOS_PROTECTION                                       = src.SecurityPolicyDdosProtectionConfig_UNDEFINED_DDOS_PROTECTION
-	SecurityPolicyRuleMatcher_SRC_IPS_V1                                                               = src.SecurityPolicyRuleMatcher_SRC_IPS_V1
-	SecurityPolicyRuleMatcher_UNDEFINED_VERSIONED_EXPR                                                 = src.SecurityPolicyRuleMatcher_UNDEFINED_VERSIONED_EXPR
-	SecurityPolicyRuleRateLimitOptions_ALL                                                             = src.SecurityPolicyRuleRateLimitOptions_ALL
-	SecurityPolicyRuleRateLimitOptions_HTTP_COOKIE                                                     = src.SecurityPolicyRuleRateLimitOptions_HTTP_COOKIE
-	SecurityPolicyRuleRateLimitOptions_HTTP_HEADER                                                     = src.SecurityPolicyRuleRateLimitOptions_HTTP_HEADER
-	SecurityPolicyRuleRateLimitOptions_HTTP_PATH                                                       = src.SecurityPolicyRuleRateLimitOptions_HTTP_PATH
-	SecurityPolicyRuleRateLimitOptions_IP                                                              = src.SecurityPolicyRuleRateLimitOptions_IP
-	SecurityPolicyRuleRateLimitOptions_REGION_CODE                                                     = src.SecurityPolicyRuleRateLimitOptions_REGION_CODE
-	SecurityPolicyRuleRateLimitOptions_SNI                                                             = src.SecurityPolicyRuleRateLimitOptions_SNI
-	SecurityPolicyRuleRateLimitOptions_UNDEFINED_ENFORCE_ON_KEY                                        = src.SecurityPolicyRuleRateLimitOptions_UNDEFINED_ENFORCE_ON_KEY
-	SecurityPolicyRuleRateLimitOptions_XFF_IP                                                          = src.SecurityPolicyRuleRateLimitOptions_XFF_IP
-	SecurityPolicyRuleRedirectOptions_EXTERNAL_302                                                     = src.SecurityPolicyRuleRedirectOptions_EXTERNAL_302
-	SecurityPolicyRuleRedirectOptions_GOOGLE_RECAPTCHA                                                 = src.SecurityPolicyRuleRedirectOptions_GOOGLE_RECAPTCHA
-	SecurityPolicyRuleRedirectOptions_UNDEFINED_TYPE                                                   = src.SecurityPolicyRuleRedirectOptions_UNDEFINED_TYPE
-	SecurityPolicy_CLOUD_ARMOR                                                                         = src.SecurityPolicy_CLOUD_ARMOR
-	SecurityPolicy_CLOUD_ARMOR_EDGE                                                                    = src.SecurityPolicy_CLOUD_ARMOR_EDGE
-	SecurityPolicy_CLOUD_ARMOR_NETWORK                                                                 = src.SecurityPolicy_CLOUD_ARMOR_NETWORK
-	SecurityPolicy_UNDEFINED_TYPE                                                                      = src.SecurityPolicy_UNDEFINED_TYPE
-	ServerBinding_RESTART_NODE_ON_ANY_SERVER                                                           = src.ServerBinding_RESTART_NODE_ON_ANY_SERVER
-	ServerBinding_RESTART_NODE_ON_MINIMAL_SERVERS                                                      = src.ServerBinding_RESTART_NODE_ON_MINIMAL_SERVERS
-	ServerBinding_SERVER_BINDING_TYPE_UNSPECIFIED                                                      = src.ServerBinding_SERVER_BINDING_TYPE_UNSPECIFIED
-	ServerBinding_UNDEFINED_TYPE                                                                       = src.ServerBinding_UNDEFINED_TYPE
-	ServiceAttachmentConnectedEndpoint_ACCEPTED                                                        = src.ServiceAttachmentConnectedEndpoint_ACCEPTED
-	ServiceAttachmentConnectedEndpoint_CLOSED                                                          = src.ServiceAttachmentConnectedEndpoint_CLOSED
-	ServiceAttachmentConnectedEndpoint_NEEDS_ATTENTION                                                 = src.ServiceAttachmentConnectedEndpoint_NEEDS_ATTENTION
-	ServiceAttachmentConnectedEndpoint_PENDING                                                         = src.ServiceAttachmentConnectedEndpoint_PENDING
-	ServiceAttachmentConnectedEndpoint_REJECTED                                                        = src.ServiceAttachmentConnectedEndpoint_REJECTED
-	ServiceAttachmentConnectedEndpoint_STATUS_UNSPECIFIED                                              = src.ServiceAttachmentConnectedEndpoint_STATUS_UNSPECIFIED
-	ServiceAttachmentConnectedEndpoint_UNDEFINED_STATUS                                                = src.ServiceAttachmentConnectedEndpoint_UNDEFINED_STATUS
-	ServiceAttachment_ACCEPT_AUTOMATIC                                                                 = src.ServiceAttachment_ACCEPT_AUTOMATIC
-	ServiceAttachment_ACCEPT_MANUAL                                                                    = src.ServiceAttachment_ACCEPT_MANUAL
-	ServiceAttachment_CONNECTION_PREFERENCE_UNSPECIFIED                                                = src.ServiceAttachment_CONNECTION_PREFERENCE_UNSPECIFIED
-	ServiceAttachment_UNDEFINED_CONNECTION_PREFERENCE                                                  = src.ServiceAttachment_UNDEFINED_CONNECTION_PREFERENCE
-	ShareSettings_LOCAL                                                                                = src.ShareSettings_LOCAL
-	ShareSettings_ORGANIZATION                                                                         = src.ShareSettings_ORGANIZATION
-	ShareSettings_SHARE_TYPE_UNSPECIFIED                                                               = src.ShareSettings_SHARE_TYPE_UNSPECIFIED
-	ShareSettings_SPECIFIC_PROJECTS                                                                    = src.ShareSettings_SPECIFIC_PROJECTS
-	ShareSettings_UNDEFINED_SHARE_TYPE                                                                 = src.ShareSettings_UNDEFINED_SHARE_TYPE
-	Snapshot_ARCHITECTURE_UNSPECIFIED                                                                  = src.Snapshot_ARCHITECTURE_UNSPECIFIED
-	Snapshot_ARCHIVE                                                                                   = src.Snapshot_ARCHIVE
-	Snapshot_ARM64                                                                                     = src.Snapshot_ARM64
-	Snapshot_CREATING                                                                                  = src.Snapshot_CREATING
-	Snapshot_DELETING                                                                                  = src.Snapshot_DELETING
-	Snapshot_FAILED                                                                                    = src.Snapshot_FAILED
-	Snapshot_READY                                                                                     = src.Snapshot_READY
-	Snapshot_STANDARD                                                                                  = src.Snapshot_STANDARD
-	Snapshot_UNDEFINED_ARCHITECTURE                                                                    = src.Snapshot_UNDEFINED_ARCHITECTURE
-	Snapshot_UNDEFINED_SNAPSHOT_TYPE                                                                   = src.Snapshot_UNDEFINED_SNAPSHOT_TYPE
-	Snapshot_UNDEFINED_STATUS                                                                          = src.Snapshot_UNDEFINED_STATUS
-	Snapshot_UNDEFINED_STORAGE_BYTES_STATUS                                                            = src.Snapshot_UNDEFINED_STORAGE_BYTES_STATUS
-	Snapshot_UPDATING                                                                                  = src.Snapshot_UPDATING
-	Snapshot_UPLOADING                                                                                 = src.Snapshot_UPLOADING
-	Snapshot_UP_TO_DATE                                                                                = src.Snapshot_UP_TO_DATE
-	Snapshot_X86_64                                                                                    = src.Snapshot_X86_64
-	SourceInstanceProperties_KEY_REVOCATION_ACTION_TYPE_UNSPECIFIED                                    = src.SourceInstanceProperties_KEY_REVOCATION_ACTION_TYPE_UNSPECIFIED
-	SourceInstanceProperties_NONE                                                                      = src.SourceInstanceProperties_NONE
-	SourceInstanceProperties_STOP                                                                      = src.SourceInstanceProperties_STOP
-	SourceInstanceProperties_UNDEFINED_KEY_REVOCATION_ACTION_TYPE                                      = src.SourceInstanceProperties_UNDEFINED_KEY_REVOCATION_ACTION_TYPE
-	SslCertificateManagedSslCertificate_ACTIVE                                                         = src.SslCertificateManagedSslCertificate_ACTIVE
-	SslCertificateManagedSslCertificate_MANAGED_CERTIFICATE_STATUS_UNSPECIFIED                         = src.SslCertificateManagedSslCertificate_MANAGED_CERTIFICATE_STATUS_UNSPECIFIED
-	SslCertificateManagedSslCertificate_PROVISIONING                                                   = src.SslCertificateManagedSslCertificate_PROVISIONING
-	SslCertificateManagedSslCertificate_PROVISIONING_FAILED                                            = src.SslCertificateManagedSslCertificate_PROVISIONING_FAILED
-	SslCertificateManagedSslCertificate_PROVISIONING_FAILED_PERMANENTLY                                = src.SslCertificateManagedSslCertificate_PROVISIONING_FAILED_PERMANENTLY
-	SslCertificateManagedSslCertificate_RENEWAL_FAILED                                                 = src.SslCertificateManagedSslCertificate_RENEWAL_FAILED
-	SslCertificateManagedSslCertificate_UNDEFINED_STATUS                                               = src.SslCertificateManagedSslCertificate_UNDEFINED_STATUS
-	SslCertificate_MANAGED                                                                             = src.SslCertificate_MANAGED
-	SslCertificate_SELF_MANAGED                                                                        = src.SslCertificate_SELF_MANAGED
-	SslCertificate_TYPE_UNSPECIFIED                                                                    = src.SslCertificate_TYPE_UNSPECIFIED
-	SslCertificate_UNDEFINED_TYPE                                                                      = src.SslCertificate_UNDEFINED_TYPE
-	SslPolicy_COMPATIBLE                                                                               = src.SslPolicy_COMPATIBLE
-	SslPolicy_CUSTOM                                                                                   = src.SslPolicy_CUSTOM
-	SslPolicy_MODERN                                                                                   = src.SslPolicy_MODERN
-	SslPolicy_RESTRICTED                                                                               = src.SslPolicy_RESTRICTED
-	SslPolicy_TLS_1_0                                                                                  = src.SslPolicy_TLS_1_0
-	SslPolicy_TLS_1_1                                                                                  = src.SslPolicy_TLS_1_1
-	SslPolicy_TLS_1_2                                                                                  = src.SslPolicy_TLS_1_2
-	SslPolicy_UNDEFINED_MIN_TLS_VERSION                                                                = src.SslPolicy_UNDEFINED_MIN_TLS_VERSION
-	SslPolicy_UNDEFINED_PROFILE                                                                        = src.SslPolicy_UNDEFINED_PROFILE
-	StatefulPolicyPreservedStateDiskDevice_NEVER                                                       = src.StatefulPolicyPreservedStateDiskDevice_NEVER
-	StatefulPolicyPreservedStateDiskDevice_ON_PERMANENT_INSTANCE_DELETION                              = src.StatefulPolicyPreservedStateDiskDevice_ON_PERMANENT_INSTANCE_DELETION
-	StatefulPolicyPreservedStateDiskDevice_UNDEFINED_AUTO_DELETE                                       = src.StatefulPolicyPreservedStateDiskDevice_UNDEFINED_AUTO_DELETE
-	SubnetworkLogConfig_CUSTOM_METADATA                                                                = src.SubnetworkLogConfig_CUSTOM_METADATA
-	SubnetworkLogConfig_EXCLUDE_ALL_METADATA                                                           = src.SubnetworkLogConfig_EXCLUDE_ALL_METADATA
-	SubnetworkLogConfig_INCLUDE_ALL_METADATA                                                           = src.SubnetworkLogConfig_INCLUDE_ALL_METADATA
-	SubnetworkLogConfig_INTERVAL_10_MIN                                                                = src.SubnetworkLogConfig_INTERVAL_10_MIN
-	SubnetworkLogConfig_INTERVAL_15_MIN                                                                = src.SubnetworkLogConfig_INTERVAL_15_MIN
-	SubnetworkLogConfig_INTERVAL_1_MIN                                                                 = src.SubnetworkLogConfig_INTERVAL_1_MIN
-	SubnetworkLogConfig_INTERVAL_30_SEC                                                                = src.SubnetworkLogConfig_INTERVAL_30_SEC
-	SubnetworkLogConfig_INTERVAL_5_MIN                                                                 = src.SubnetworkLogConfig_INTERVAL_5_MIN
-	SubnetworkLogConfig_INTERVAL_5_SEC                                                                 = src.SubnetworkLogConfig_INTERVAL_5_SEC
-	SubnetworkLogConfig_UNDEFINED_AGGREGATION_INTERVAL                                                 = src.SubnetworkLogConfig_UNDEFINED_AGGREGATION_INTERVAL
-	SubnetworkLogConfig_UNDEFINED_METADATA                                                             = src.SubnetworkLogConfig_UNDEFINED_METADATA
-	Subnetwork_ACTIVE                                                                                  = src.Subnetwork_ACTIVE
-	Subnetwork_BACKUP                                                                                  = src.Subnetwork_BACKUP
-	Subnetwork_DISABLE_GOOGLE_ACCESS                                                                   = src.Subnetwork_DISABLE_GOOGLE_ACCESS
-	Subnetwork_DRAINING                                                                                = src.Subnetwork_DRAINING
-	Subnetwork_ENABLE_BIDIRECTIONAL_ACCESS_TO_GOOGLE                                                   = src.Subnetwork_ENABLE_BIDIRECTIONAL_ACCESS_TO_GOOGLE
-	Subnetwork_ENABLE_OUTBOUND_VM_ACCESS_TO_GOOGLE                                                     = src.Subnetwork_ENABLE_OUTBOUND_VM_ACCESS_TO_GOOGLE
-	Subnetwork_EXTERNAL                                                                                = src.Subnetwork_EXTERNAL
-	Subnetwork_INTERNAL                                                                                = src.Subnetwork_INTERNAL
-	Subnetwork_INTERNAL_HTTPS_LOAD_BALANCER                                                            = src.Subnetwork_INTERNAL_HTTPS_LOAD_BALANCER
-	Subnetwork_IPV4_IPV6                                                                               = src.Subnetwork_IPV4_IPV6
-	Subnetwork_IPV4_ONLY                                                                               = src.Subnetwork_IPV4_ONLY
-	Subnetwork_PRIVATE                                                                                 = src.Subnetwork_PRIVATE
-	Subnetwork_PRIVATE_RFC_1918                                                                        = src.Subnetwork_PRIVATE_RFC_1918
-	Subnetwork_PRIVATE_SERVICE_CONNECT                                                                 = src.Subnetwork_PRIVATE_SERVICE_CONNECT
-	Subnetwork_READY                                                                                   = src.Subnetwork_READY
-	Subnetwork_REGIONAL_MANAGED_PROXY                                                                  = src.Subnetwork_REGIONAL_MANAGED_PROXY
-	Subnetwork_UNDEFINED_IPV6_ACCESS_TYPE                                                              = src.Subnetwork_UNDEFINED_IPV6_ACCESS_TYPE
-	Subnetwork_UNDEFINED_PRIVATE_IPV6_GOOGLE_ACCESS                                                    = src.Subnetwork_UNDEFINED_PRIVATE_IPV6_GOOGLE_ACCESS
-	Subnetwork_UNDEFINED_PURPOSE                                                                       = src.Subnetwork_UNDEFINED_PURPOSE
-	Subnetwork_UNDEFINED_ROLE                                                                          = src.Subnetwork_UNDEFINED_ROLE
-	Subnetwork_UNDEFINED_STACK_TYPE                                                                    = src.Subnetwork_UNDEFINED_STACK_TYPE
-	Subnetwork_UNDEFINED_STATE                                                                         = src.Subnetwork_UNDEFINED_STATE
-	Subnetwork_UNSPECIFIED_IPV6_ACCESS_TYPE                                                            = src.Subnetwork_UNSPECIFIED_IPV6_ACCESS_TYPE
-	Subnetwork_UNSPECIFIED_STACK_TYPE                                                                  = src.Subnetwork_UNSPECIFIED_STACK_TYPE
-	Subsetting_CONSISTENT_HASH_SUBSETTING                                                              = src.Subsetting_CONSISTENT_HASH_SUBSETTING
-	Subsetting_NONE                                                                                    = src.Subsetting_NONE
-	Subsetting_UNDEFINED_POLICY                                                                        = src.Subsetting_UNDEFINED_POLICY
-	TCPHealthCheck_NONE                                                                                = src.TCPHealthCheck_NONE
-	TCPHealthCheck_PROXY_V1                                                                            = src.TCPHealthCheck_PROXY_V1
-	TCPHealthCheck_UNDEFINED_PORT_SPECIFICATION                                                        = src.TCPHealthCheck_UNDEFINED_PORT_SPECIFICATION
-	TCPHealthCheck_UNDEFINED_PROXY_HEADER                                                              = src.TCPHealthCheck_UNDEFINED_PROXY_HEADER
-	TCPHealthCheck_USE_FIXED_PORT                                                                      = src.TCPHealthCheck_USE_FIXED_PORT
-	TCPHealthCheck_USE_NAMED_PORT                                                                      = src.TCPHealthCheck_USE_NAMED_PORT
-	TCPHealthCheck_USE_SERVING_PORT                                                                    = src.TCPHealthCheck_USE_SERVING_PORT
-	TargetHttpsProxiesSetQuicOverrideRequest_DISABLE                                                   = src.TargetHttpsProxiesSetQuicOverrideRequest_DISABLE
-	TargetHttpsProxiesSetQuicOverrideRequest_ENABLE                                                    = src.TargetHttpsProxiesSetQuicOverrideRequest_ENABLE
-	TargetHttpsProxiesSetQuicOverrideRequest_NONE                                                      = src.TargetHttpsProxiesSetQuicOverrideRequest_NONE
-	TargetHttpsProxiesSetQuicOverrideRequest_UNDEFINED_QUIC_OVERRIDE                                   = src.TargetHttpsProxiesSetQuicOverrideRequest_UNDEFINED_QUIC_OVERRIDE
-	TargetHttpsProxy_DISABLE                                                                           = src.TargetHttpsProxy_DISABLE
-	TargetHttpsProxy_ENABLE                                                                            = src.TargetHttpsProxy_ENABLE
-	TargetHttpsProxy_NONE                                                                              = src.TargetHttpsProxy_NONE
-	TargetHttpsProxy_UNDEFINED_QUIC_OVERRIDE                                                           = src.TargetHttpsProxy_UNDEFINED_QUIC_OVERRIDE
-	TargetInstance_NO_NAT                                                                              = src.TargetInstance_NO_NAT
-	TargetInstance_UNDEFINED_NAT_POLICY                                                                = src.TargetInstance_UNDEFINED_NAT_POLICY
-	TargetPool_CLIENT_IP                                                                               = src.TargetPool_CLIENT_IP
-	TargetPool_CLIENT_IP_NO_DESTINATION                                                                = src.TargetPool_CLIENT_IP_NO_DESTINATION
-	TargetPool_CLIENT_IP_PORT_PROTO                                                                    = src.TargetPool_CLIENT_IP_PORT_PROTO
-	TargetPool_CLIENT_IP_PROTO                                                                         = src.TargetPool_CLIENT_IP_PROTO
-	TargetPool_GENERATED_COOKIE                                                                        = src.TargetPool_GENERATED_COOKIE
-	TargetPool_HEADER_FIELD                                                                            = src.TargetPool_HEADER_FIELD
-	TargetPool_HTTP_COOKIE                                                                             = src.TargetPool_HTTP_COOKIE
-	TargetPool_NONE                                                                                    = src.TargetPool_NONE
-	TargetPool_UNDEFINED_SESSION_AFFINITY                                                              = src.TargetPool_UNDEFINED_SESSION_AFFINITY
-	TargetSslProxiesSetProxyHeaderRequest_NONE                                                         = src.TargetSslProxiesSetProxyHeaderRequest_NONE
-	TargetSslProxiesSetProxyHeaderRequest_PROXY_V1                                                     = src.TargetSslProxiesSetProxyHeaderRequest_PROXY_V1
-	TargetSslProxiesSetProxyHeaderRequest_UNDEFINED_PROXY_HEADER                                       = src.TargetSslProxiesSetProxyHeaderRequest_UNDEFINED_PROXY_HEADER
-	TargetSslProxy_NONE                                                                                = src.TargetSslProxy_NONE
-	TargetSslProxy_PROXY_V1                                                                            = src.TargetSslProxy_PROXY_V1
-	TargetSslProxy_UNDEFINED_PROXY_HEADER                                                              = src.TargetSslProxy_UNDEFINED_PROXY_HEADER
-	TargetTcpProxiesSetProxyHeaderRequest_NONE                                                         = src.TargetTcpProxiesSetProxyHeaderRequest_NONE
-	TargetTcpProxiesSetProxyHeaderRequest_PROXY_V1                                                     = src.TargetTcpProxiesSetProxyHeaderRequest_PROXY_V1
-	TargetTcpProxiesSetProxyHeaderRequest_UNDEFINED_PROXY_HEADER                                       = src.TargetTcpProxiesSetProxyHeaderRequest_UNDEFINED_PROXY_HEADER
-	TargetTcpProxy_NONE                                                                                = src.TargetTcpProxy_NONE
-	TargetTcpProxy_PROXY_V1                                                                            = src.TargetTcpProxy_PROXY_V1
-	TargetTcpProxy_UNDEFINED_PROXY_HEADER                                                              = src.TargetTcpProxy_UNDEFINED_PROXY_HEADER
-	TargetVpnGateway_CREATING                                                                          = src.TargetVpnGateway_CREATING
-	TargetVpnGateway_DELETING                                                                          = src.TargetVpnGateway_DELETING
-	TargetVpnGateway_FAILED                                                                            = src.TargetVpnGateway_FAILED
-	TargetVpnGateway_READY                                                                             = src.TargetVpnGateway_READY
-	TargetVpnGateway_UNDEFINED_STATUS                                                                  = src.TargetVpnGateway_UNDEFINED_STATUS
-	UpdateInstanceRequest_UNDEFINED_MINIMAL_ACTION                                                     = src.UpdateInstanceRequest_UNDEFINED_MINIMAL_ACTION
-	UpdateInstanceRequest_UNDEFINED_MOST_DISRUPTIVE_ALLOWED_ACTION                                     = src.UpdateInstanceRequest_UNDEFINED_MOST_DISRUPTIVE_ALLOWED_ACTION
-	UrlMapsValidateRequest_EXTERNAL                                                                    = src.UrlMapsValidateRequest_EXTERNAL
-	UrlMapsValidateRequest_EXTERNAL_MANAGED                                                            = src.UrlMapsValidateRequest_EXTERNAL_MANAGED
-	UrlMapsValidateRequest_LOAD_BALANCING_SCHEME_UNSPECIFIED                                           = src.UrlMapsValidateRequest_LOAD_BALANCING_SCHEME_UNSPECIFIED
-	UrlMapsValidateRequest_UNDEFINED_LOAD_BALANCING_SCHEMES                                            = src.UrlMapsValidateRequest_UNDEFINED_LOAD_BALANCING_SCHEMES
-	UsableSubnetwork_ACTIVE                                                                            = src.UsableSubnetwork_ACTIVE
-	UsableSubnetwork_BACKUP                                                                            = src.UsableSubnetwork_BACKUP
-	UsableSubnetwork_EXTERNAL                                                                          = src.UsableSubnetwork_EXTERNAL
-	UsableSubnetwork_INTERNAL                                                                          = src.UsableSubnetwork_INTERNAL
-	UsableSubnetwork_INTERNAL_HTTPS_LOAD_BALANCER                                                      = src.UsableSubnetwork_INTERNAL_HTTPS_LOAD_BALANCER
-	UsableSubnetwork_IPV4_IPV6                                                                         = src.UsableSubnetwork_IPV4_IPV6
-	UsableSubnetwork_IPV4_ONLY                                                                         = src.UsableSubnetwork_IPV4_ONLY
-	UsableSubnetwork_PRIVATE                                                                           = src.UsableSubnetwork_PRIVATE
-	UsableSubnetwork_PRIVATE_RFC_1918                                                                  = src.UsableSubnetwork_PRIVATE_RFC_1918
-	UsableSubnetwork_PRIVATE_SERVICE_CONNECT                                                           = src.UsableSubnetwork_PRIVATE_SERVICE_CONNECT
-	UsableSubnetwork_REGIONAL_MANAGED_PROXY                                                            = src.UsableSubnetwork_REGIONAL_MANAGED_PROXY
-	UsableSubnetwork_UNDEFINED_IPV6_ACCESS_TYPE                                                        = src.UsableSubnetwork_UNDEFINED_IPV6_ACCESS_TYPE
-	UsableSubnetwork_UNDEFINED_PURPOSE                                                                 = src.UsableSubnetwork_UNDEFINED_PURPOSE
-	UsableSubnetwork_UNDEFINED_ROLE                                                                    = src.UsableSubnetwork_UNDEFINED_ROLE
-	UsableSubnetwork_UNDEFINED_STACK_TYPE                                                              = src.UsableSubnetwork_UNDEFINED_STACK_TYPE
-	VpnGatewayStatusHighAvailabilityRequirementState_CONNECTION_REDUNDANCY_MET                         = src.VpnGatewayStatusHighAvailabilityRequirementState_CONNECTION_REDUNDANCY_MET
-	VpnGatewayStatusHighAvailabilityRequirementState_CONNECTION_REDUNDANCY_NOT_MET                     = src.VpnGatewayStatusHighAvailabilityRequirementState_CONNECTION_REDUNDANCY_NOT_MET
-	VpnGatewayStatusHighAvailabilityRequirementState_INCOMPLETE_TUNNELS_COVERAGE                       = src.VpnGatewayStatusHighAvailabilityRequirementState_INCOMPLETE_TUNNELS_COVERAGE
-	VpnGatewayStatusHighAvailabilityRequirementState_UNDEFINED_STATE                                   = src.VpnGatewayStatusHighAvailabilityRequirementState_UNDEFINED_STATE
-	VpnGatewayStatusHighAvailabilityRequirementState_UNDEFINED_UNSATISFIED_REASON                      = src.VpnGatewayStatusHighAvailabilityRequirementState_UNDEFINED_UNSATISFIED_REASON
-	VpnGateway_IPV4_IPV6                                                                               = src.VpnGateway_IPV4_IPV6
-	VpnGateway_IPV4_ONLY                                                                               = src.VpnGateway_IPV4_ONLY
-	VpnGateway_UNDEFINED_STACK_TYPE                                                                    = src.VpnGateway_UNDEFINED_STACK_TYPE
-	VpnTunnel_ALLOCATING_RESOURCES                                                                     = src.VpnTunnel_ALLOCATING_RESOURCES
-	VpnTunnel_AUTHORIZATION_ERROR                                                                      = src.VpnTunnel_AUTHORIZATION_ERROR
-	VpnTunnel_DEPROVISIONING                                                                           = src.VpnTunnel_DEPROVISIONING
-	VpnTunnel_ESTABLISHED                                                                              = src.VpnTunnel_ESTABLISHED
-	VpnTunnel_FAILED                                                                                   = src.VpnTunnel_FAILED
-	VpnTunnel_FIRST_HANDSHAKE                                                                          = src.VpnTunnel_FIRST_HANDSHAKE
-	VpnTunnel_NEGOTIATION_FAILURE                                                                      = src.VpnTunnel_NEGOTIATION_FAILURE
-	VpnTunnel_NETWORK_ERROR                                                                            = src.VpnTunnel_NETWORK_ERROR
-	VpnTunnel_NO_INCOMING_PACKETS                                                                      = src.VpnTunnel_NO_INCOMING_PACKETS
-	VpnTunnel_PROVISIONING                                                                             = src.VpnTunnel_PROVISIONING
-	VpnTunnel_REJECTED                                                                                 = src.VpnTunnel_REJECTED
-	VpnTunnel_STOPPED                                                                                  = src.VpnTunnel_STOPPED
-	VpnTunnel_UNDEFINED_STATUS                                                                         = src.VpnTunnel_UNDEFINED_STATUS
-	VpnTunnel_WAITING_FOR_FULL_CONFIG                                                                  = src.VpnTunnel_WAITING_FOR_FULL_CONFIG
-	Warning_CLEANUP_FAILED                                                                             = src.Warning_CLEANUP_FAILED
-	Warning_DEPRECATED_RESOURCE_USED                                                                   = src.Warning_DEPRECATED_RESOURCE_USED
-	Warning_DEPRECATED_TYPE_USED                                                                       = src.Warning_DEPRECATED_TYPE_USED
-	Warning_DISK_SIZE_LARGER_THAN_IMAGE_SIZE                                                           = src.Warning_DISK_SIZE_LARGER_THAN_IMAGE_SIZE
-	Warning_EXPERIMENTAL_TYPE_USED                                                                     = src.Warning_EXPERIMENTAL_TYPE_USED
-	Warning_EXTERNAL_API_WARNING                                                                       = src.Warning_EXTERNAL_API_WARNING
-	Warning_FIELD_VALUE_OVERRIDEN                                                                      = src.Warning_FIELD_VALUE_OVERRIDEN
-	Warning_INJECTED_KERNELS_DEPRECATED                                                                = src.Warning_INJECTED_KERNELS_DEPRECATED
-	Warning_INVALID_HEALTH_CHECK_FOR_DYNAMIC_WIEGHTED_LB                                               = src.Warning_INVALID_HEALTH_CHECK_FOR_DYNAMIC_WIEGHTED_LB
-	Warning_LARGE_DEPLOYMENT_WARNING                                                                   = src.Warning_LARGE_DEPLOYMENT_WARNING
-	Warning_MISSING_TYPE_DEPENDENCY                                                                    = src.Warning_MISSING_TYPE_DEPENDENCY
-	Warning_NEXT_HOP_ADDRESS_NOT_ASSIGNED                                                              = src.Warning_NEXT_HOP_ADDRESS_NOT_ASSIGNED
-	Warning_NEXT_HOP_CANNOT_IP_FORWARD                                                                 = src.Warning_NEXT_HOP_CANNOT_IP_FORWARD
-	Warning_NEXT_HOP_INSTANCE_HAS_NO_IPV6_INTERFACE                                                    = src.Warning_NEXT_HOP_INSTANCE_HAS_NO_IPV6_INTERFACE
-	Warning_NEXT_HOP_INSTANCE_NOT_FOUND                                                                = src.Warning_NEXT_HOP_INSTANCE_NOT_FOUND
-	Warning_NEXT_HOP_INSTANCE_NOT_ON_NETWORK                                                           = src.Warning_NEXT_HOP_INSTANCE_NOT_ON_NETWORK
-	Warning_NEXT_HOP_NOT_RUNNING                                                                       = src.Warning_NEXT_HOP_NOT_RUNNING
-	Warning_NOT_CRITICAL_ERROR                                                                         = src.Warning_NOT_CRITICAL_ERROR
-	Warning_NO_RESULTS_ON_PAGE                                                                         = src.Warning_NO_RESULTS_ON_PAGE
-	Warning_PARTIAL_SUCCESS                                                                            = src.Warning_PARTIAL_SUCCESS
-	Warning_REQUIRED_TOS_AGREEMENT                                                                     = src.Warning_REQUIRED_TOS_AGREEMENT
-	Warning_RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING                                                  = src.Warning_RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING
-	Warning_RESOURCE_NOT_DELETED                                                                       = src.Warning_RESOURCE_NOT_DELETED
-	Warning_SCHEMA_VALIDATION_IGNORED                                                                  = src.Warning_SCHEMA_VALIDATION_IGNORED
-	Warning_SINGLE_INSTANCE_PROPERTY_TEMPLATE                                                          = src.Warning_SINGLE_INSTANCE_PROPERTY_TEMPLATE
-	Warning_UNDECLARED_PROPERTIES                                                                      = src.Warning_UNDECLARED_PROPERTIES
-	Warning_UNDEFINED_CODE                                                                             = src.Warning_UNDEFINED_CODE
-	Warning_UNREACHABLE                                                                                = src.Warning_UNREACHABLE
-	Warnings_CLEANUP_FAILED                                                                            = src.Warnings_CLEANUP_FAILED
-	Warnings_DEPRECATED_RESOURCE_USED                                                                  = src.Warnings_DEPRECATED_RESOURCE_USED
-	Warnings_DEPRECATED_TYPE_USED                                                                      = src.Warnings_DEPRECATED_TYPE_USED
-	Warnings_DISK_SIZE_LARGER_THAN_IMAGE_SIZE                                                          = src.Warnings_DISK_SIZE_LARGER_THAN_IMAGE_SIZE
-	Warnings_EXPERIMENTAL_TYPE_USED                                                                    = src.Warnings_EXPERIMENTAL_TYPE_USED
-	Warnings_EXTERNAL_API_WARNING                                                                      = src.Warnings_EXTERNAL_API_WARNING
-	Warnings_FIELD_VALUE_OVERRIDEN                                                                     = src.Warnings_FIELD_VALUE_OVERRIDEN
-	Warnings_INJECTED_KERNELS_DEPRECATED                                                               = src.Warnings_INJECTED_KERNELS_DEPRECATED
-	Warnings_INVALID_HEALTH_CHECK_FOR_DYNAMIC_WIEGHTED_LB                                              = src.Warnings_INVALID_HEALTH_CHECK_FOR_DYNAMIC_WIEGHTED_LB
-	Warnings_LARGE_DEPLOYMENT_WARNING                                                                  = src.Warnings_LARGE_DEPLOYMENT_WARNING
-	Warnings_MISSING_TYPE_DEPENDENCY                                                                   = src.Warnings_MISSING_TYPE_DEPENDENCY
-	Warnings_NEXT_HOP_ADDRESS_NOT_ASSIGNED                                                             = src.Warnings_NEXT_HOP_ADDRESS_NOT_ASSIGNED
-	Warnings_NEXT_HOP_CANNOT_IP_FORWARD                                                                = src.Warnings_NEXT_HOP_CANNOT_IP_FORWARD
-	Warnings_NEXT_HOP_INSTANCE_HAS_NO_IPV6_INTERFACE                                                   = src.Warnings_NEXT_HOP_INSTANCE_HAS_NO_IPV6_INTERFACE
-	Warnings_NEXT_HOP_INSTANCE_NOT_FOUND                                                               = src.Warnings_NEXT_HOP_INSTANCE_NOT_FOUND
-	Warnings_NEXT_HOP_INSTANCE_NOT_ON_NETWORK                                                          = src.Warnings_NEXT_HOP_INSTANCE_NOT_ON_NETWORK
-	Warnings_NEXT_HOP_NOT_RUNNING                                                                      = src.Warnings_NEXT_HOP_NOT_RUNNING
-	Warnings_NOT_CRITICAL_ERROR                                                                        = src.Warnings_NOT_CRITICAL_ERROR
-	Warnings_NO_RESULTS_ON_PAGE                                                                        = src.Warnings_NO_RESULTS_ON_PAGE
-	Warnings_PARTIAL_SUCCESS                                                                           = src.Warnings_PARTIAL_SUCCESS
-	Warnings_REQUIRED_TOS_AGREEMENT                                                                    = src.Warnings_REQUIRED_TOS_AGREEMENT
-	Warnings_RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING                                                 = src.Warnings_RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING
-	Warnings_RESOURCE_NOT_DELETED                                                                      = src.Warnings_RESOURCE_NOT_DELETED
-	Warnings_SCHEMA_VALIDATION_IGNORED                                                                 = src.Warnings_SCHEMA_VALIDATION_IGNORED
-	Warnings_SINGLE_INSTANCE_PROPERTY_TEMPLATE                                                         = src.Warnings_SINGLE_INSTANCE_PROPERTY_TEMPLATE
-	Warnings_UNDECLARED_PROPERTIES                                                                     = src.Warnings_UNDECLARED_PROPERTIES
-	Warnings_UNDEFINED_CODE                                                                            = src.Warnings_UNDEFINED_CODE
-	Warnings_UNREACHABLE                                                                               = src.Warnings_UNREACHABLE
-	XpnResourceId_PROJECT                                                                              = src.XpnResourceId_PROJECT
-	XpnResourceId_UNDEFINED_TYPE                                                                       = src.XpnResourceId_UNDEFINED_TYPE
-	XpnResourceId_XPN_RESOURCE_TYPE_UNSPECIFIED                                                        = src.XpnResourceId_XPN_RESOURCE_TYPE_UNSPECIFIED
-	Zone_DOWN                                                                                          = src.Zone_DOWN
-	Zone_UNDEFINED_STATUS                                                                              = src.Zone_UNDEFINED_STATUS
-	Zone_UP                                                                                            = src.Zone_UP
+	AccessConfig_DIRECT_IPV6                                                                                              = src.AccessConfig_DIRECT_IPV6
+	AccessConfig_FIXED_STANDARD                                                                                           = src.AccessConfig_FIXED_STANDARD
+	AccessConfig_ONE_TO_ONE_NAT                                                                                           = src.AccessConfig_ONE_TO_ONE_NAT
+	AccessConfig_PREMIUM                                                                                                  = src.AccessConfig_PREMIUM
+	AccessConfig_STANDARD                                                                                                 = src.AccessConfig_STANDARD
+	AccessConfig_STANDARD_OVERRIDES_FIXED_STANDARD                                                                        = src.AccessConfig_STANDARD_OVERRIDES_FIXED_STANDARD
+	AccessConfig_UNDEFINED_NETWORK_TIER                                                                                   = src.AccessConfig_UNDEFINED_NETWORK_TIER
+	AccessConfig_UNDEFINED_TYPE                                                                                           = src.AccessConfig_UNDEFINED_TYPE
+	Address_DNS_RESOLVER                                                                                                  = src.Address_DNS_RESOLVER
+	Address_EXTERNAL                                                                                                      = src.Address_EXTERNAL
+	Address_FIXED_STANDARD                                                                                                = src.Address_FIXED_STANDARD
+	Address_GCE_ENDPOINT                                                                                                  = src.Address_GCE_ENDPOINT
+	Address_INTERNAL                                                                                                      = src.Address_INTERNAL
+	Address_IN_USE                                                                                                        = src.Address_IN_USE
+	Address_IPSEC_INTERCONNECT                                                                                            = src.Address_IPSEC_INTERCONNECT
+	Address_IPV4                                                                                                          = src.Address_IPV4
+	Address_IPV6                                                                                                          = src.Address_IPV6
+	Address_NAT_AUTO                                                                                                      = src.Address_NAT_AUTO
+	Address_NETLB                                                                                                         = src.Address_NETLB
+	Address_PREMIUM                                                                                                       = src.Address_PREMIUM
+	Address_PRIVATE_SERVICE_CONNECT                                                                                       = src.Address_PRIVATE_SERVICE_CONNECT
+	Address_RESERVED                                                                                                      = src.Address_RESERVED
+	Address_RESERVING                                                                                                     = src.Address_RESERVING
+	Address_SERVERLESS                                                                                                    = src.Address_SERVERLESS
+	Address_SHARED_LOADBALANCER_VIP                                                                                       = src.Address_SHARED_LOADBALANCER_VIP
+	Address_STANDARD                                                                                                      = src.Address_STANDARD
+	Address_STANDARD_OVERRIDES_FIXED_STANDARD                                                                             = src.Address_STANDARD_OVERRIDES_FIXED_STANDARD
+	Address_UNDEFINED_ADDRESS_TYPE                                                                                        = src.Address_UNDEFINED_ADDRESS_TYPE
+	Address_UNDEFINED_IPV6_ENDPOINT_TYPE                                                                                  = src.Address_UNDEFINED_IPV6_ENDPOINT_TYPE
+	Address_UNDEFINED_IP_VERSION                                                                                          = src.Address_UNDEFINED_IP_VERSION
+	Address_UNDEFINED_NETWORK_TIER                                                                                        = src.Address_UNDEFINED_NETWORK_TIER
+	Address_UNDEFINED_PURPOSE                                                                                             = src.Address_UNDEFINED_PURPOSE
+	Address_UNDEFINED_STATUS                                                                                              = src.Address_UNDEFINED_STATUS
+	Address_UNSPECIFIED_TYPE                                                                                              = src.Address_UNSPECIFIED_TYPE
+	Address_UNSPECIFIED_VERSION                                                                                           = src.Address_UNSPECIFIED_VERSION
+	Address_VM                                                                                                            = src.Address_VM
+	Address_VPC_PEERING                                                                                                   = src.Address_VPC_PEERING
+	AdvancedMachineFeatures_ARCHITECTURAL                                                                                 = src.AdvancedMachineFeatures_ARCHITECTURAL
+	AdvancedMachineFeatures_ENHANCED                                                                                      = src.AdvancedMachineFeatures_ENHANCED
+	AdvancedMachineFeatures_PERFORMANCE_MONITORING_UNIT_UNSPECIFIED                                                       = src.AdvancedMachineFeatures_PERFORMANCE_MONITORING_UNIT_UNSPECIFIED
+	AdvancedMachineFeatures_STANDARD                                                                                      = src.AdvancedMachineFeatures_STANDARD
+	AdvancedMachineFeatures_UNDEFINED_PERFORMANCE_MONITORING_UNIT                                                         = src.AdvancedMachineFeatures_UNDEFINED_PERFORMANCE_MONITORING_UNIT
+	AllocationAggregateReservation_BATCH                                                                                  = src.AllocationAggregateReservation_BATCH
+	AllocationAggregateReservation_SERVING                                                                                = src.AllocationAggregateReservation_SERVING
+	AllocationAggregateReservation_UNDEFINED_VM_FAMILY                                                                    = src.AllocationAggregateReservation_UNDEFINED_VM_FAMILY
+	AllocationAggregateReservation_UNDEFINED_WORKLOAD_TYPE                                                                = src.AllocationAggregateReservation_UNDEFINED_WORKLOAD_TYPE
+	AllocationAggregateReservation_UNSPECIFIED                                                                            = src.AllocationAggregateReservation_UNSPECIFIED
+	AllocationAggregateReservation_VM_FAMILY_CLOUD_TPU_DEVICE_CT3                                                         = src.AllocationAggregateReservation_VM_FAMILY_CLOUD_TPU_DEVICE_CT3
+	AllocationAggregateReservation_VM_FAMILY_CLOUD_TPU_LITE_DEVICE_CT5L                                                   = src.AllocationAggregateReservation_VM_FAMILY_CLOUD_TPU_LITE_DEVICE_CT5L
+	AllocationAggregateReservation_VM_FAMILY_CLOUD_TPU_LITE_POD_SLICE_CT5LP                                               = src.AllocationAggregateReservation_VM_FAMILY_CLOUD_TPU_LITE_POD_SLICE_CT5LP
+	AllocationAggregateReservation_VM_FAMILY_CLOUD_TPU_POD_SLICE_CT3P                                                     = src.AllocationAggregateReservation_VM_FAMILY_CLOUD_TPU_POD_SLICE_CT3P
+	AllocationAggregateReservation_VM_FAMILY_CLOUD_TPU_POD_SLICE_CT4P                                                     = src.AllocationAggregateReservation_VM_FAMILY_CLOUD_TPU_POD_SLICE_CT4P
+	AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDisk_NVME                                           = src.AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDisk_NVME
+	AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDisk_SCSI                                           = src.AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDisk_SCSI
+	AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDisk_UNDEFINED_INTERFACE                            = src.AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDisk_UNDEFINED_INTERFACE
+	AttachedDiskInitializeParams_ARCHITECTURE_UNSPECIFIED                                                                 = src.AttachedDiskInitializeParams_ARCHITECTURE_UNSPECIFIED
+	AttachedDiskInitializeParams_ARM64                                                                                    = src.AttachedDiskInitializeParams_ARM64
+	AttachedDiskInitializeParams_RECREATE_DISK                                                                            = src.AttachedDiskInitializeParams_RECREATE_DISK
+	AttachedDiskInitializeParams_RECREATE_DISK_IF_SOURCE_CHANGED                                                          = src.AttachedDiskInitializeParams_RECREATE_DISK_IF_SOURCE_CHANGED
+	AttachedDiskInitializeParams_UNDEFINED_ARCHITECTURE                                                                   = src.AttachedDiskInitializeParams_UNDEFINED_ARCHITECTURE
+	AttachedDiskInitializeParams_UNDEFINED_ON_UPDATE_ACTION                                                               = src.AttachedDiskInitializeParams_UNDEFINED_ON_UPDATE_ACTION
+	AttachedDiskInitializeParams_USE_EXISTING_DISK                                                                        = src.AttachedDiskInitializeParams_USE_EXISTING_DISK
+	AttachedDiskInitializeParams_X86_64                                                                                   = src.AttachedDiskInitializeParams_X86_64
+	AttachedDisk_ARCHITECTURE_UNSPECIFIED                                                                                 = src.AttachedDisk_ARCHITECTURE_UNSPECIFIED
+	AttachedDisk_ARM64                                                                                                    = src.AttachedDisk_ARM64
+	AttachedDisk_DISK_SAVED_STATE_UNSPECIFIED                                                                             = src.AttachedDisk_DISK_SAVED_STATE_UNSPECIFIED
+	AttachedDisk_NVME                                                                                                     = src.AttachedDisk_NVME
+	AttachedDisk_PERSISTENT                                                                                               = src.AttachedDisk_PERSISTENT
+	AttachedDisk_PRESERVED                                                                                                = src.AttachedDisk_PRESERVED
+	AttachedDisk_READ_ONLY                                                                                                = src.AttachedDisk_READ_ONLY
+	AttachedDisk_READ_WRITE                                                                                               = src.AttachedDisk_READ_WRITE
+	AttachedDisk_SCRATCH                                                                                                  = src.AttachedDisk_SCRATCH
+	AttachedDisk_SCSI                                                                                                     = src.AttachedDisk_SCSI
+	AttachedDisk_UNDEFINED_ARCHITECTURE                                                                                   = src.AttachedDisk_UNDEFINED_ARCHITECTURE
+	AttachedDisk_UNDEFINED_INTERFACE                                                                                      = src.AttachedDisk_UNDEFINED_INTERFACE
+	AttachedDisk_UNDEFINED_MODE                                                                                           = src.AttachedDisk_UNDEFINED_MODE
+	AttachedDisk_UNDEFINED_SAVED_STATE                                                                                    = src.AttachedDisk_UNDEFINED_SAVED_STATE
+	AttachedDisk_UNDEFINED_TYPE                                                                                           = src.AttachedDisk_UNDEFINED_TYPE
+	AttachedDisk_X86_64                                                                                                   = src.AttachedDisk_X86_64
+	AuditLogConfig_ADMIN_READ                                                                                             = src.AuditLogConfig_ADMIN_READ
+	AuditLogConfig_DATA_READ                                                                                              = src.AuditLogConfig_DATA_READ
+	AuditLogConfig_DATA_WRITE                                                                                             = src.AuditLogConfig_DATA_WRITE
+	AuditLogConfig_LOG_TYPE_UNSPECIFIED                                                                                   = src.AuditLogConfig_LOG_TYPE_UNSPECIFIED
+	AuditLogConfig_UNDEFINED_LOG_TYPE                                                                                     = src.AuditLogConfig_UNDEFINED_LOG_TYPE
+	AutoscalerStatusDetails_ALL_INSTANCES_UNHEALTHY                                                                       = src.AutoscalerStatusDetails_ALL_INSTANCES_UNHEALTHY
+	AutoscalerStatusDetails_BACKEND_SERVICE_DOES_NOT_EXIST                                                                = src.AutoscalerStatusDetails_BACKEND_SERVICE_DOES_NOT_EXIST
+	AutoscalerStatusDetails_CAPPED_AT_MAX_NUM_REPLICAS                                                                    = src.AutoscalerStatusDetails_CAPPED_AT_MAX_NUM_REPLICAS
+	AutoscalerStatusDetails_CUSTOM_METRIC_DATA_POINTS_TOO_SPARSE                                                          = src.AutoscalerStatusDetails_CUSTOM_METRIC_DATA_POINTS_TOO_SPARSE
+	AutoscalerStatusDetails_CUSTOM_METRIC_INVALID                                                                         = src.AutoscalerStatusDetails_CUSTOM_METRIC_INVALID
+	AutoscalerStatusDetails_MIN_EQUALS_MAX                                                                                = src.AutoscalerStatusDetails_MIN_EQUALS_MAX
+	AutoscalerStatusDetails_MISSING_CUSTOM_METRIC_DATA_POINTS                                                             = src.AutoscalerStatusDetails_MISSING_CUSTOM_METRIC_DATA_POINTS
+	AutoscalerStatusDetails_MISSING_LOAD_BALANCING_DATA_POINTS                                                            = src.AutoscalerStatusDetails_MISSING_LOAD_BALANCING_DATA_POINTS
+	AutoscalerStatusDetails_MODE_OFF                                                                                      = src.AutoscalerStatusDetails_MODE_OFF
+	AutoscalerStatusDetails_MODE_ONLY_SCALE_OUT                                                                           = src.AutoscalerStatusDetails_MODE_ONLY_SCALE_OUT
+	AutoscalerStatusDetails_MODE_ONLY_UP                                                                                  = src.AutoscalerStatusDetails_MODE_ONLY_UP
+	AutoscalerStatusDetails_MORE_THAN_ONE_BACKEND_SERVICE                                                                 = src.AutoscalerStatusDetails_MORE_THAN_ONE_BACKEND_SERVICE
+	AutoscalerStatusDetails_NOT_ENOUGH_QUOTA_AVAILABLE                                                                    = src.AutoscalerStatusDetails_NOT_ENOUGH_QUOTA_AVAILABLE
+	AutoscalerStatusDetails_REGION_RESOURCE_STOCKOUT                                                                      = src.AutoscalerStatusDetails_REGION_RESOURCE_STOCKOUT
+	AutoscalerStatusDetails_SCALING_TARGET_DOES_NOT_EXIST                                                                 = src.AutoscalerStatusDetails_SCALING_TARGET_DOES_NOT_EXIST
+	AutoscalerStatusDetails_SCHEDULED_INSTANCES_GREATER_THAN_AUTOSCALER_MAX                                               = src.AutoscalerStatusDetails_SCHEDULED_INSTANCES_GREATER_THAN_AUTOSCALER_MAX
+	AutoscalerStatusDetails_SCHEDULED_INSTANCES_LESS_THAN_AUTOSCALER_MIN                                                  = src.AutoscalerStatusDetails_SCHEDULED_INSTANCES_LESS_THAN_AUTOSCALER_MIN
+	AutoscalerStatusDetails_UNDEFINED_TYPE                                                                                = src.AutoscalerStatusDetails_UNDEFINED_TYPE
+	AutoscalerStatusDetails_UNKNOWN                                                                                       = src.AutoscalerStatusDetails_UNKNOWN
+	AutoscalerStatusDetails_UNSUPPORTED_MAX_RATE_LOAD_BALANCING_CONFIGURATION                                             = src.AutoscalerStatusDetails_UNSUPPORTED_MAX_RATE_LOAD_BALANCING_CONFIGURATION
+	AutoscalerStatusDetails_ZONE_RESOURCE_STOCKOUT                                                                        = src.AutoscalerStatusDetails_ZONE_RESOURCE_STOCKOUT
+	Autoscaler_ACTIVE                                                                                                     = src.Autoscaler_ACTIVE
+	Autoscaler_DELETING                                                                                                   = src.Autoscaler_DELETING
+	Autoscaler_ERROR                                                                                                      = src.Autoscaler_ERROR
+	Autoscaler_PENDING                                                                                                    = src.Autoscaler_PENDING
+	Autoscaler_UNDEFINED_STATUS                                                                                           = src.Autoscaler_UNDEFINED_STATUS
+	AutoscalingPolicyCpuUtilization_NONE                                                                                  = src.AutoscalingPolicyCpuUtilization_NONE
+	AutoscalingPolicyCpuUtilization_OPTIMIZE_AVAILABILITY                                                                 = src.AutoscalingPolicyCpuUtilization_OPTIMIZE_AVAILABILITY
+	AutoscalingPolicyCpuUtilization_UNDEFINED_PREDICTIVE_METHOD                                                           = src.AutoscalingPolicyCpuUtilization_UNDEFINED_PREDICTIVE_METHOD
+	AutoscalingPolicyCustomMetricUtilization_DELTA_PER_MINUTE                                                             = src.AutoscalingPolicyCustomMetricUtilization_DELTA_PER_MINUTE
+	AutoscalingPolicyCustomMetricUtilization_DELTA_PER_SECOND                                                             = src.AutoscalingPolicyCustomMetricUtilization_DELTA_PER_SECOND
+	AutoscalingPolicyCustomMetricUtilization_GAUGE                                                                        = src.AutoscalingPolicyCustomMetricUtilization_GAUGE
+	AutoscalingPolicyCustomMetricUtilization_UNDEFINED_UTILIZATION_TARGET_TYPE                                            = src.AutoscalingPolicyCustomMetricUtilization_UNDEFINED_UTILIZATION_TARGET_TYPE
+	AutoscalingPolicy_OFF                                                                                                 = src.AutoscalingPolicy_OFF
+	AutoscalingPolicy_ON                                                                                                  = src.AutoscalingPolicy_ON
+	AutoscalingPolicy_ONLY_SCALE_OUT                                                                                      = src.AutoscalingPolicy_ONLY_SCALE_OUT
+	AutoscalingPolicy_ONLY_UP                                                                                             = src.AutoscalingPolicy_ONLY_UP
+	AutoscalingPolicy_UNDEFINED_MODE                                                                                      = src.AutoscalingPolicy_UNDEFINED_MODE
+	BackendBucketCdnPolicy_CACHE_ALL_STATIC                                                                               = src.BackendBucketCdnPolicy_CACHE_ALL_STATIC
+	BackendBucketCdnPolicy_FORCE_CACHE_ALL                                                                                = src.BackendBucketCdnPolicy_FORCE_CACHE_ALL
+	BackendBucketCdnPolicy_INVALID_CACHE_MODE                                                                             = src.BackendBucketCdnPolicy_INVALID_CACHE_MODE
+	BackendBucketCdnPolicy_UNDEFINED_CACHE_MODE                                                                           = src.BackendBucketCdnPolicy_UNDEFINED_CACHE_MODE
+	BackendBucketCdnPolicy_USE_ORIGIN_HEADERS                                                                             = src.BackendBucketCdnPolicy_USE_ORIGIN_HEADERS
+	BackendBucket_AUTOMATIC                                                                                               = src.BackendBucket_AUTOMATIC
+	BackendBucket_DISABLED                                                                                                = src.BackendBucket_DISABLED
+	BackendBucket_UNDEFINED_COMPRESSION_MODE                                                                              = src.BackendBucket_UNDEFINED_COMPRESSION_MODE
+	BackendServiceCdnPolicy_CACHE_ALL_STATIC                                                                              = src.BackendServiceCdnPolicy_CACHE_ALL_STATIC
+	BackendServiceCdnPolicy_FORCE_CACHE_ALL                                                                               = src.BackendServiceCdnPolicy_FORCE_CACHE_ALL
+	BackendServiceCdnPolicy_INVALID_CACHE_MODE                                                                            = src.BackendServiceCdnPolicy_INVALID_CACHE_MODE
+	BackendServiceCdnPolicy_UNDEFINED_CACHE_MODE                                                                          = src.BackendServiceCdnPolicy_UNDEFINED_CACHE_MODE
+	BackendServiceCdnPolicy_USE_ORIGIN_HEADERS                                                                            = src.BackendServiceCdnPolicy_USE_ORIGIN_HEADERS
+	BackendServiceConnectionTrackingPolicy_ALWAYS_PERSIST                                                                 = src.BackendServiceConnectionTrackingPolicy_ALWAYS_PERSIST
+	BackendServiceConnectionTrackingPolicy_DEFAULT_FOR_PROTOCOL                                                           = src.BackendServiceConnectionTrackingPolicy_DEFAULT_FOR_PROTOCOL
+	BackendServiceConnectionTrackingPolicy_INVALID_TRACKING_MODE                                                          = src.BackendServiceConnectionTrackingPolicy_INVALID_TRACKING_MODE
+	BackendServiceConnectionTrackingPolicy_NEVER_PERSIST                                                                  = src.BackendServiceConnectionTrackingPolicy_NEVER_PERSIST
+	BackendServiceConnectionTrackingPolicy_PER_CONNECTION                                                                 = src.BackendServiceConnectionTrackingPolicy_PER_CONNECTION
+	BackendServiceConnectionTrackingPolicy_PER_SESSION                                                                    = src.BackendServiceConnectionTrackingPolicy_PER_SESSION
+	BackendServiceConnectionTrackingPolicy_UNDEFINED_CONNECTION_PERSISTENCE_ON_UNHEALTHY_BACKENDS                         = src.BackendServiceConnectionTrackingPolicy_UNDEFINED_CONNECTION_PERSISTENCE_ON_UNHEALTHY_BACKENDS
+	BackendServiceConnectionTrackingPolicy_UNDEFINED_TRACKING_MODE                                                        = src.BackendServiceConnectionTrackingPolicy_UNDEFINED_TRACKING_MODE
+	BackendServiceLocalityLoadBalancingPolicyConfigPolicy_INVALID_LB_POLICY                                               = src.BackendServiceLocalityLoadBalancingPolicyConfigPolicy_INVALID_LB_POLICY
+	BackendServiceLocalityLoadBalancingPolicyConfigPolicy_LEAST_REQUEST                                                   = src.BackendServiceLocalityLoadBalancingPolicyConfigPolicy_LEAST_REQUEST
+	BackendServiceLocalityLoadBalancingPolicyConfigPolicy_MAGLEV                                                          = src.BackendServiceLocalityLoadBalancingPolicyConfigPolicy_MAGLEV
+	BackendServiceLocalityLoadBalancingPolicyConfigPolicy_ORIGINAL_DESTINATION                                            = src.BackendServiceLocalityLoadBalancingPolicyConfigPolicy_ORIGINAL_DESTINATION
+	BackendServiceLocalityLoadBalancingPolicyConfigPolicy_RANDOM                                                          = src.BackendServiceLocalityLoadBalancingPolicyConfigPolicy_RANDOM
+	BackendServiceLocalityLoadBalancingPolicyConfigPolicy_RING_HASH                                                       = src.BackendServiceLocalityLoadBalancingPolicyConfigPolicy_RING_HASH
+	BackendServiceLocalityLoadBalancingPolicyConfigPolicy_ROUND_ROBIN                                                     = src.BackendServiceLocalityLoadBalancingPolicyConfigPolicy_ROUND_ROBIN
+	BackendServiceLocalityLoadBalancingPolicyConfigPolicy_UNDEFINED_NAME                                                  = src.BackendServiceLocalityLoadBalancingPolicyConfigPolicy_UNDEFINED_NAME
+	BackendServiceLocalityLoadBalancingPolicyConfigPolicy_WEIGHTED_MAGLEV                                                 = src.BackendServiceLocalityLoadBalancingPolicyConfigPolicy_WEIGHTED_MAGLEV
+	BackendServiceLogConfig_CUSTOM                                                                                        = src.BackendServiceLogConfig_CUSTOM
+	BackendServiceLogConfig_EXCLUDE_ALL_OPTIONAL                                                                          = src.BackendServiceLogConfig_EXCLUDE_ALL_OPTIONAL
+	BackendServiceLogConfig_INCLUDE_ALL_OPTIONAL                                                                          = src.BackendServiceLogConfig_INCLUDE_ALL_OPTIONAL
+	BackendServiceLogConfig_UNDEFINED_OPTIONAL_MODE                                                                       = src.BackendServiceLogConfig_UNDEFINED_OPTIONAL_MODE
+	BackendService_AUTOMATIC                                                                                              = src.BackendService_AUTOMATIC
+	BackendService_CLIENT_IP                                                                                              = src.BackendService_CLIENT_IP
+	BackendService_CLIENT_IP_NO_DESTINATION                                                                               = src.BackendService_CLIENT_IP_NO_DESTINATION
+	BackendService_CLIENT_IP_PORT_PROTO                                                                                   = src.BackendService_CLIENT_IP_PORT_PROTO
+	BackendService_CLIENT_IP_PROTO                                                                                        = src.BackendService_CLIENT_IP_PROTO
+	BackendService_DISABLED                                                                                               = src.BackendService_DISABLED
+	BackendService_EXTERNAL                                                                                               = src.BackendService_EXTERNAL
+	BackendService_EXTERNAL_MANAGED                                                                                       = src.BackendService_EXTERNAL_MANAGED
+	BackendService_GENERATED_COOKIE                                                                                       = src.BackendService_GENERATED_COOKIE
+	BackendService_GRPC                                                                                                   = src.BackendService_GRPC
+	BackendService_HEADER_FIELD                                                                                           = src.BackendService_HEADER_FIELD
+	BackendService_HTTP                                                                                                   = src.BackendService_HTTP
+	BackendService_HTTP2                                                                                                  = src.BackendService_HTTP2
+	BackendService_HTTPS                                                                                                  = src.BackendService_HTTPS
+	BackendService_HTTP_COOKIE                                                                                            = src.BackendService_HTTP_COOKIE
+	BackendService_INTERNAL                                                                                               = src.BackendService_INTERNAL
+	BackendService_INTERNAL_MANAGED                                                                                       = src.BackendService_INTERNAL_MANAGED
+	BackendService_INTERNAL_SELF_MANAGED                                                                                  = src.BackendService_INTERNAL_SELF_MANAGED
+	BackendService_INVALID_LB_POLICY                                                                                      = src.BackendService_INVALID_LB_POLICY
+	BackendService_INVALID_LOAD_BALANCING_SCHEME                                                                          = src.BackendService_INVALID_LOAD_BALANCING_SCHEME
+	BackendService_IPV4_ONLY                                                                                              = src.BackendService_IPV4_ONLY
+	BackendService_IPV6_ONLY                                                                                              = src.BackendService_IPV6_ONLY
+	BackendService_IP_ADDRESS_SELECTION_POLICY_UNSPECIFIED                                                                = src.BackendService_IP_ADDRESS_SELECTION_POLICY_UNSPECIFIED
+	BackendService_LEAST_REQUEST                                                                                          = src.BackendService_LEAST_REQUEST
+	BackendService_MAGLEV                                                                                                 = src.BackendService_MAGLEV
+	BackendService_NONE                                                                                                   = src.BackendService_NONE
+	BackendService_ORIGINAL_DESTINATION                                                                                   = src.BackendService_ORIGINAL_DESTINATION
+	BackendService_PREFER_IPV6                                                                                            = src.BackendService_PREFER_IPV6
+	BackendService_RANDOM                                                                                                 = src.BackendService_RANDOM
+	BackendService_RING_HASH                                                                                              = src.BackendService_RING_HASH
+	BackendService_ROUND_ROBIN                                                                                            = src.BackendService_ROUND_ROBIN
+	BackendService_SSL                                                                                                    = src.BackendService_SSL
+	BackendService_STRONG_COOKIE_AFFINITY                                                                                 = src.BackendService_STRONG_COOKIE_AFFINITY
+	BackendService_TCP                                                                                                    = src.BackendService_TCP
+	BackendService_UDP                                                                                                    = src.BackendService_UDP
+	BackendService_UNDEFINED_COMPRESSION_MODE                                                                             = src.BackendService_UNDEFINED_COMPRESSION_MODE
+	BackendService_UNDEFINED_IP_ADDRESS_SELECTION_POLICY                                                                  = src.BackendService_UNDEFINED_IP_ADDRESS_SELECTION_POLICY
+	BackendService_UNDEFINED_LOAD_BALANCING_SCHEME                                                                        = src.BackendService_UNDEFINED_LOAD_BALANCING_SCHEME
+	BackendService_UNDEFINED_LOCALITY_LB_POLICY                                                                           = src.BackendService_UNDEFINED_LOCALITY_LB_POLICY
+	BackendService_UNDEFINED_PROTOCOL                                                                                     = src.BackendService_UNDEFINED_PROTOCOL
+	BackendService_UNDEFINED_SESSION_AFFINITY                                                                             = src.BackendService_UNDEFINED_SESSION_AFFINITY
+	BackendService_UNSPECIFIED                                                                                            = src.BackendService_UNSPECIFIED
+	BackendService_WEIGHTED_MAGLEV                                                                                        = src.BackendService_WEIGHTED_MAGLEV
+	Backend_CONNECTION                                                                                                    = src.Backend_CONNECTION
+	Backend_DEFAULT                                                                                                       = src.Backend_DEFAULT
+	Backend_PREFERENCE_UNSPECIFIED                                                                                        = src.Backend_PREFERENCE_UNSPECIFIED
+	Backend_PREFERRED                                                                                                     = src.Backend_PREFERRED
+	Backend_RATE                                                                                                          = src.Backend_RATE
+	Backend_UNDEFINED_BALANCING_MODE                                                                                      = src.Backend_UNDEFINED_BALANCING_MODE
+	Backend_UNDEFINED_PREFERENCE                                                                                          = src.Backend_UNDEFINED_PREFERENCE
+	Backend_UTILIZATION                                                                                                   = src.Backend_UTILIZATION
+	BfdPacket_ADMINISTRATIVELY_DOWN                                                                                       = src.BfdPacket_ADMINISTRATIVELY_DOWN
+	BfdPacket_ADMIN_DOWN                                                                                                  = src.BfdPacket_ADMIN_DOWN
+	BfdPacket_CONCATENATED_PATH_DOWN                                                                                      = src.BfdPacket_CONCATENATED_PATH_DOWN
+	BfdPacket_CONTROL_DETECTION_TIME_EXPIRED                                                                              = src.BfdPacket_CONTROL_DETECTION_TIME_EXPIRED
+	BfdPacket_DIAGNOSTIC_UNSPECIFIED                                                                                      = src.BfdPacket_DIAGNOSTIC_UNSPECIFIED
+	BfdPacket_DOWN                                                                                                        = src.BfdPacket_DOWN
+	BfdPacket_ECHO_FUNCTION_FAILED                                                                                        = src.BfdPacket_ECHO_FUNCTION_FAILED
+	BfdPacket_FORWARDING_PLANE_RESET                                                                                      = src.BfdPacket_FORWARDING_PLANE_RESET
+	BfdPacket_INIT                                                                                                        = src.BfdPacket_INIT
+	BfdPacket_NEIGHBOR_SIGNALED_SESSION_DOWN                                                                              = src.BfdPacket_NEIGHBOR_SIGNALED_SESSION_DOWN
+	BfdPacket_NO_DIAGNOSTIC                                                                                               = src.BfdPacket_NO_DIAGNOSTIC
+	BfdPacket_PATH_DOWN                                                                                                   = src.BfdPacket_PATH_DOWN
+	BfdPacket_REVERSE_CONCATENATED_PATH_DOWN                                                                              = src.BfdPacket_REVERSE_CONCATENATED_PATH_DOWN
+	BfdPacket_STATE_UNSPECIFIED                                                                                           = src.BfdPacket_STATE_UNSPECIFIED
+	BfdPacket_UNDEFINED_DIAGNOSTIC                                                                                        = src.BfdPacket_UNDEFINED_DIAGNOSTIC
+	BfdPacket_UNDEFINED_STATE                                                                                             = src.BfdPacket_UNDEFINED_STATE
+	BfdPacket_UP                                                                                                          = src.BfdPacket_UP
+	BfdStatus_ACTIVE                                                                                                      = src.BfdStatus_ACTIVE
+	BfdStatus_ADMINISTRATIVELY_DOWN                                                                                       = src.BfdStatus_ADMINISTRATIVELY_DOWN
+	BfdStatus_ADMIN_DOWN                                                                                                  = src.BfdStatus_ADMIN_DOWN
+	BfdStatus_CONCATENATED_PATH_DOWN                                                                                      = src.BfdStatus_CONCATENATED_PATH_DOWN
+	BfdStatus_CONTROL_DETECTION_TIME_EXPIRED                                                                              = src.BfdStatus_CONTROL_DETECTION_TIME_EXPIRED
+	BfdStatus_DIAGNOSTIC_UNSPECIFIED                                                                                      = src.BfdStatus_DIAGNOSTIC_UNSPECIFIED
+	BfdStatus_DISABLED                                                                                                    = src.BfdStatus_DISABLED
+	BfdStatus_DOWN                                                                                                        = src.BfdStatus_DOWN
+	BfdStatus_ECHO_FUNCTION_FAILED                                                                                        = src.BfdStatus_ECHO_FUNCTION_FAILED
+	BfdStatus_FORWARDING_PLANE_RESET                                                                                      = src.BfdStatus_FORWARDING_PLANE_RESET
+	BfdStatus_INIT                                                                                                        = src.BfdStatus_INIT
+	BfdStatus_NEIGHBOR_SIGNALED_SESSION_DOWN                                                                              = src.BfdStatus_NEIGHBOR_SIGNALED_SESSION_DOWN
+	BfdStatus_NO_DIAGNOSTIC                                                                                               = src.BfdStatus_NO_DIAGNOSTIC
+	BfdStatus_PASSIVE                                                                                                     = src.BfdStatus_PASSIVE
+	BfdStatus_PATH_DOWN                                                                                                   = src.BfdStatus_PATH_DOWN
+	BfdStatus_REVERSE_CONCATENATED_PATH_DOWN                                                                              = src.BfdStatus_REVERSE_CONCATENATED_PATH_DOWN
+	BfdStatus_STATE_UNSPECIFIED                                                                                           = src.BfdStatus_STATE_UNSPECIFIED
+	BfdStatus_UNDEFINED_BFD_SESSION_INITIALIZATION_MODE                                                                   = src.BfdStatus_UNDEFINED_BFD_SESSION_INITIALIZATION_MODE
+	BfdStatus_UNDEFINED_LOCAL_DIAGNOSTIC                                                                                  = src.BfdStatus_UNDEFINED_LOCAL_DIAGNOSTIC
+	BfdStatus_UNDEFINED_LOCAL_STATE                                                                                       = src.BfdStatus_UNDEFINED_LOCAL_STATE
+	BfdStatus_UP                                                                                                          = src.BfdStatus_UP
+	BulkInsertOperationStatus_CREATING                                                                                    = src.BulkInsertOperationStatus_CREATING
+	BulkInsertOperationStatus_DONE                                                                                        = src.BulkInsertOperationStatus_DONE
+	BulkInsertOperationStatus_ROLLING_BACK                                                                                = src.BulkInsertOperationStatus_ROLLING_BACK
+	BulkInsertOperationStatus_STATUS_UNSPECIFIED                                                                          = src.BulkInsertOperationStatus_STATUS_UNSPECIFIED
+	BulkInsertOperationStatus_UNDEFINED_STATUS                                                                            = src.BulkInsertOperationStatus_UNDEFINED_STATUS
+	Commitment_ACCELERATOR_OPTIMIZED                                                                                      = src.Commitment_ACCELERATOR_OPTIMIZED
+	Commitment_ACCELERATOR_OPTIMIZED_A3                                                                                   = src.Commitment_ACCELERATOR_OPTIMIZED_A3
+	Commitment_ACCELERATOR_OPTIMIZED_A3_MEGA                                                                              = src.Commitment_ACCELERATOR_OPTIMIZED_A3_MEGA
+	Commitment_ACTIVE                                                                                                     = src.Commitment_ACTIVE
+	Commitment_CANCELLED                                                                                                  = src.Commitment_CANCELLED
+	Commitment_CATEGORY_UNSPECIFIED                                                                                       = src.Commitment_CATEGORY_UNSPECIFIED
+	Commitment_COMPUTE_OPTIMIZED                                                                                          = src.Commitment_COMPUTE_OPTIMIZED
+	Commitment_COMPUTE_OPTIMIZED_C2D                                                                                      = src.Commitment_COMPUTE_OPTIMIZED_C2D
+	Commitment_COMPUTE_OPTIMIZED_C3                                                                                       = src.Commitment_COMPUTE_OPTIMIZED_C3
+	Commitment_COMPUTE_OPTIMIZED_C3D                                                                                      = src.Commitment_COMPUTE_OPTIMIZED_C3D
+	Commitment_COMPUTE_OPTIMIZED_H3                                                                                       = src.Commitment_COMPUTE_OPTIMIZED_H3
+	Commitment_CREATING                                                                                                   = src.Commitment_CREATING
+	Commitment_EXPIRED                                                                                                    = src.Commitment_EXPIRED
+	Commitment_GENERAL_PURPOSE                                                                                            = src.Commitment_GENERAL_PURPOSE
+	Commitment_GENERAL_PURPOSE_C4                                                                                         = src.Commitment_GENERAL_PURPOSE_C4
+	Commitment_GENERAL_PURPOSE_E2                                                                                         = src.Commitment_GENERAL_PURPOSE_E2
+	Commitment_GENERAL_PURPOSE_N2                                                                                         = src.Commitment_GENERAL_PURPOSE_N2
+	Commitment_GENERAL_PURPOSE_N2D                                                                                        = src.Commitment_GENERAL_PURPOSE_N2D
+	Commitment_GENERAL_PURPOSE_N4                                                                                         = src.Commitment_GENERAL_PURPOSE_N4
+	Commitment_GENERAL_PURPOSE_T2D                                                                                        = src.Commitment_GENERAL_PURPOSE_T2D
+	Commitment_GRAPHICS_OPTIMIZED                                                                                         = src.Commitment_GRAPHICS_OPTIMIZED
+	Commitment_INVALID                                                                                                    = src.Commitment_INVALID
+	Commitment_LICENSE                                                                                                    = src.Commitment_LICENSE
+	Commitment_MACHINE                                                                                                    = src.Commitment_MACHINE
+	Commitment_MEMORY_OPTIMIZED                                                                                           = src.Commitment_MEMORY_OPTIMIZED
+	Commitment_MEMORY_OPTIMIZED_M3                                                                                        = src.Commitment_MEMORY_OPTIMIZED_M3
+	Commitment_NOT_YET_ACTIVE                                                                                             = src.Commitment_NOT_YET_ACTIVE
+	Commitment_STORAGE_OPTIMIZED_Z3                                                                                       = src.Commitment_STORAGE_OPTIMIZED_Z3
+	Commitment_THIRTY_SIX_MONTH                                                                                           = src.Commitment_THIRTY_SIX_MONTH
+	Commitment_TWELVE_MONTH                                                                                               = src.Commitment_TWELVE_MONTH
+	Commitment_TYPE_UNSPECIFIED                                                                                           = src.Commitment_TYPE_UNSPECIFIED
+	Commitment_UNDEFINED_CATEGORY                                                                                         = src.Commitment_UNDEFINED_CATEGORY
+	Commitment_UNDEFINED_PLAN                                                                                             = src.Commitment_UNDEFINED_PLAN
+	Commitment_UNDEFINED_STATUS                                                                                           = src.Commitment_UNDEFINED_STATUS
+	Commitment_UNDEFINED_TYPE                                                                                             = src.Commitment_UNDEFINED_TYPE
+	ConfidentialInstanceConfig_CONFIDENTIAL_INSTANCE_TYPE_UNSPECIFIED                                                     = src.ConfidentialInstanceConfig_CONFIDENTIAL_INSTANCE_TYPE_UNSPECIFIED
+	ConfidentialInstanceConfig_SEV                                                                                        = src.ConfidentialInstanceConfig_SEV
+	ConfidentialInstanceConfig_SEV_SNP                                                                                    = src.ConfidentialInstanceConfig_SEV_SNP
+	ConfidentialInstanceConfig_TDX                                                                                        = src.ConfidentialInstanceConfig_TDX
+	ConfidentialInstanceConfig_UNDEFINED_CONFIDENTIAL_INSTANCE_TYPE                                                       = src.ConfidentialInstanceConfig_UNDEFINED_CONFIDENTIAL_INSTANCE_TYPE
+	DeprecationStatus_ACTIVE                                                                                              = src.DeprecationStatus_ACTIVE
+	DeprecationStatus_DELETED                                                                                             = src.DeprecationStatus_DELETED
+	DeprecationStatus_DEPRECATED                                                                                          = src.DeprecationStatus_DEPRECATED
+	DeprecationStatus_OBSOLETE                                                                                            = src.DeprecationStatus_OBSOLETE
+	DeprecationStatus_UNDEFINED_STATE                                                                                     = src.DeprecationStatus_UNDEFINED_STATE
+	DiskInstantiationConfig_ATTACH_READ_ONLY                                                                              = src.DiskInstantiationConfig_ATTACH_READ_ONLY
+	DiskInstantiationConfig_BLANK                                                                                         = src.DiskInstantiationConfig_BLANK
+	DiskInstantiationConfig_CUSTOM_IMAGE                                                                                  = src.DiskInstantiationConfig_CUSTOM_IMAGE
+	DiskInstantiationConfig_DEFAULT                                                                                       = src.DiskInstantiationConfig_DEFAULT
+	DiskInstantiationConfig_DO_NOT_INCLUDE                                                                                = src.DiskInstantiationConfig_DO_NOT_INCLUDE
+	DiskInstantiationConfig_SOURCE_IMAGE                                                                                  = src.DiskInstantiationConfig_SOURCE_IMAGE
+	DiskInstantiationConfig_SOURCE_IMAGE_FAMILY                                                                           = src.DiskInstantiationConfig_SOURCE_IMAGE_FAMILY
+	DiskInstantiationConfig_UNDEFINED_INSTANTIATE_FROM                                                                    = src.DiskInstantiationConfig_UNDEFINED_INSTANTIATE_FROM
+	DiskResourceStatusAsyncReplicationStatus_ACTIVE                                                                       = src.DiskResourceStatusAsyncReplicationStatus_ACTIVE
+	DiskResourceStatusAsyncReplicationStatus_CREATED                                                                      = src.DiskResourceStatusAsyncReplicationStatus_CREATED
+	DiskResourceStatusAsyncReplicationStatus_STARTING                                                                     = src.DiskResourceStatusAsyncReplicationStatus_STARTING
+	DiskResourceStatusAsyncReplicationStatus_STATE_UNSPECIFIED                                                            = src.DiskResourceStatusAsyncReplicationStatus_STATE_UNSPECIFIED
+	DiskResourceStatusAsyncReplicationStatus_STOPPED                                                                      = src.DiskResourceStatusAsyncReplicationStatus_STOPPED
+	DiskResourceStatusAsyncReplicationStatus_STOPPING                                                                     = src.DiskResourceStatusAsyncReplicationStatus_STOPPING
+	DiskResourceStatusAsyncReplicationStatus_UNDEFINED_STATE                                                              = src.DiskResourceStatusAsyncReplicationStatus_UNDEFINED_STATE
+	Disk_ARCHITECTURE_UNSPECIFIED                                                                                         = src.Disk_ARCHITECTURE_UNSPECIFIED
+	Disk_ARM64                                                                                                            = src.Disk_ARM64
+	Disk_CREATING                                                                                                         = src.Disk_CREATING
+	Disk_DELETING                                                                                                         = src.Disk_DELETING
+	Disk_FAILED                                                                                                           = src.Disk_FAILED
+	Disk_READY                                                                                                            = src.Disk_READY
+	Disk_READ_ONLY_MANY                                                                                                   = src.Disk_READ_ONLY_MANY
+	Disk_READ_WRITE_MANY                                                                                                  = src.Disk_READ_WRITE_MANY
+	Disk_READ_WRITE_SINGLE                                                                                                = src.Disk_READ_WRITE_SINGLE
+	Disk_RESTORING                                                                                                        = src.Disk_RESTORING
+	Disk_UNAVAILABLE                                                                                                      = src.Disk_UNAVAILABLE
+	Disk_UNDEFINED_ACCESS_MODE                                                                                            = src.Disk_UNDEFINED_ACCESS_MODE
+	Disk_UNDEFINED_ARCHITECTURE                                                                                           = src.Disk_UNDEFINED_ARCHITECTURE
+	Disk_UNDEFINED_STATUS                                                                                                 = src.Disk_UNDEFINED_STATUS
+	Disk_X86_64                                                                                                           = src.Disk_X86_64
+	DistributionPolicy_ANY                                                                                                = src.DistributionPolicy_ANY
+	DistributionPolicy_ANY_SINGLE_ZONE                                                                                    = src.DistributionPolicy_ANY_SINGLE_ZONE
+	DistributionPolicy_BALANCED                                                                                           = src.DistributionPolicy_BALANCED
+	DistributionPolicy_EVEN                                                                                               = src.DistributionPolicy_EVEN
+	DistributionPolicy_UNDEFINED_TARGET_SHAPE                                                                             = src.DistributionPolicy_UNDEFINED_TARGET_SHAPE
+	ExchangedPeeringRoute_DYNAMIC_PEERING_ROUTE                                                                           = src.ExchangedPeeringRoute_DYNAMIC_PEERING_ROUTE
+	ExchangedPeeringRoute_STATIC_PEERING_ROUTE                                                                            = src.ExchangedPeeringRoute_STATIC_PEERING_ROUTE
+	ExchangedPeeringRoute_SUBNET_PEERING_ROUTE                                                                            = src.ExchangedPeeringRoute_SUBNET_PEERING_ROUTE
+	ExchangedPeeringRoute_UNDEFINED_TYPE                                                                                  = src.ExchangedPeeringRoute_UNDEFINED_TYPE
+	ExternalVpnGateway_FOUR_IPS_REDUNDANCY                                                                                = src.ExternalVpnGateway_FOUR_IPS_REDUNDANCY
+	ExternalVpnGateway_SINGLE_IP_INTERNALLY_REDUNDANT                                                                     = src.ExternalVpnGateway_SINGLE_IP_INTERNALLY_REDUNDANT
+	ExternalVpnGateway_TWO_IPS_REDUNDANCY                                                                                 = src.ExternalVpnGateway_TWO_IPS_REDUNDANCY
+	ExternalVpnGateway_UNDEFINED_REDUNDANCY_TYPE                                                                          = src.ExternalVpnGateway_UNDEFINED_REDUNDANCY_TYPE
+	FileContentBuffer_BIN                                                                                                 = src.FileContentBuffer_BIN
+	FileContentBuffer_UNDEFINED                                                                                           = src.FileContentBuffer_UNDEFINED
+	FileContentBuffer_UNDEFINED_FILE_TYPE                                                                                 = src.FileContentBuffer_UNDEFINED_FILE_TYPE
+	FileContentBuffer_X509                                                                                                = src.FileContentBuffer_X509
+	FirewallLogConfig_EXCLUDE_ALL_METADATA                                                                                = src.FirewallLogConfig_EXCLUDE_ALL_METADATA
+	FirewallLogConfig_INCLUDE_ALL_METADATA                                                                                = src.FirewallLogConfig_INCLUDE_ALL_METADATA
+	FirewallLogConfig_UNDEFINED_METADATA                                                                                  = src.FirewallLogConfig_UNDEFINED_METADATA
+	FirewallPolicyRuleSecureTag_EFFECTIVE                                                                                 = src.FirewallPolicyRuleSecureTag_EFFECTIVE
+	FirewallPolicyRuleSecureTag_INEFFECTIVE                                                                               = src.FirewallPolicyRuleSecureTag_INEFFECTIVE
+	FirewallPolicyRuleSecureTag_UNDEFINED_STATE                                                                           = src.FirewallPolicyRuleSecureTag_UNDEFINED_STATE
+	FirewallPolicyRule_EGRESS                                                                                             = src.FirewallPolicyRule_EGRESS
+	FirewallPolicyRule_INGRESS                                                                                            = src.FirewallPolicyRule_INGRESS
+	FirewallPolicyRule_UNDEFINED_DIRECTION                                                                                = src.FirewallPolicyRule_UNDEFINED_DIRECTION
+	Firewall_EGRESS                                                                                                       = src.Firewall_EGRESS
+	Firewall_INGRESS                                                                                                      = src.Firewall_INGRESS
+	Firewall_UNDEFINED_DIRECTION                                                                                          = src.Firewall_UNDEFINED_DIRECTION
+	ForwardingRule_ACCEPTED                                                                                               = src.ForwardingRule_ACCEPTED
+	ForwardingRule_AH                                                                                                     = src.ForwardingRule_AH
+	ForwardingRule_CLOSED                                                                                                 = src.ForwardingRule_CLOSED
+	ForwardingRule_ESP                                                                                                    = src.ForwardingRule_ESP
+	ForwardingRule_EXTERNAL                                                                                               = src.ForwardingRule_EXTERNAL
+	ForwardingRule_EXTERNAL_MANAGED                                                                                       = src.ForwardingRule_EXTERNAL_MANAGED
+	ForwardingRule_FIXED_STANDARD                                                                                         = src.ForwardingRule_FIXED_STANDARD
+	ForwardingRule_ICMP                                                                                                   = src.ForwardingRule_ICMP
+	ForwardingRule_INTERNAL                                                                                               = src.ForwardingRule_INTERNAL
+	ForwardingRule_INTERNAL_MANAGED                                                                                       = src.ForwardingRule_INTERNAL_MANAGED
+	ForwardingRule_INTERNAL_SELF_MANAGED                                                                                  = src.ForwardingRule_INTERNAL_SELF_MANAGED
+	ForwardingRule_INVALID                                                                                                = src.ForwardingRule_INVALID
+	ForwardingRule_IPV4                                                                                                   = src.ForwardingRule_IPV4
+	ForwardingRule_IPV6                                                                                                   = src.ForwardingRule_IPV6
+	ForwardingRule_L3_DEFAULT                                                                                             = src.ForwardingRule_L3_DEFAULT
+	ForwardingRule_NEEDS_ATTENTION                                                                                        = src.ForwardingRule_NEEDS_ATTENTION
+	ForwardingRule_PENDING                                                                                                = src.ForwardingRule_PENDING
+	ForwardingRule_PREMIUM                                                                                                = src.ForwardingRule_PREMIUM
+	ForwardingRule_REJECTED                                                                                               = src.ForwardingRule_REJECTED
+	ForwardingRule_SCTP                                                                                                   = src.ForwardingRule_SCTP
+	ForwardingRule_STANDARD                                                                                               = src.ForwardingRule_STANDARD
+	ForwardingRule_STANDARD_OVERRIDES_FIXED_STANDARD                                                                      = src.ForwardingRule_STANDARD_OVERRIDES_FIXED_STANDARD
+	ForwardingRule_STATUS_UNSPECIFIED                                                                                     = src.ForwardingRule_STATUS_UNSPECIFIED
+	ForwardingRule_TCP                                                                                                    = src.ForwardingRule_TCP
+	ForwardingRule_UDP                                                                                                    = src.ForwardingRule_UDP
+	ForwardingRule_UNDEFINED_IP_VERSION                                                                                   = src.ForwardingRule_UNDEFINED_IP_VERSION
+	ForwardingRule_UNDEFINED_I_P_PROTOCOL_ENUM                                                                            = src.ForwardingRule_UNDEFINED_I_P_PROTOCOL_ENUM
+	ForwardingRule_UNDEFINED_LOAD_BALANCING_SCHEME                                                                        = src.ForwardingRule_UNDEFINED_LOAD_BALANCING_SCHEME
+	ForwardingRule_UNDEFINED_NETWORK_TIER                                                                                 = src.ForwardingRule_UNDEFINED_NETWORK_TIER
+	ForwardingRule_UNDEFINED_PSC_CONNECTION_STATUS                                                                        = src.ForwardingRule_UNDEFINED_PSC_CONNECTION_STATUS
+	ForwardingRule_UNSPECIFIED_VERSION                                                                                    = src.ForwardingRule_UNSPECIFIED_VERSION
+	GRPCHealthCheck_UNDEFINED_PORT_SPECIFICATION                                                                          = src.GRPCHealthCheck_UNDEFINED_PORT_SPECIFICATION
+	GRPCHealthCheck_USE_FIXED_PORT                                                                                        = src.GRPCHealthCheck_USE_FIXED_PORT
+	GRPCHealthCheck_USE_NAMED_PORT                                                                                        = src.GRPCHealthCheck_USE_NAMED_PORT
+	GRPCHealthCheck_USE_SERVING_PORT                                                                                      = src.GRPCHealthCheck_USE_SERVING_PORT
+	GuestOsFeature_FEATURE_TYPE_UNSPECIFIED                                                                               = src.GuestOsFeature_FEATURE_TYPE_UNSPECIFIED
+	GuestOsFeature_GVNIC                                                                                                  = src.GuestOsFeature_GVNIC
+	GuestOsFeature_IDPF                                                                                                   = src.GuestOsFeature_IDPF
+	GuestOsFeature_MULTI_IP_SUBNET                                                                                        = src.GuestOsFeature_MULTI_IP_SUBNET
+	GuestOsFeature_SECURE_BOOT                                                                                            = src.GuestOsFeature_SECURE_BOOT
+	GuestOsFeature_SEV_CAPABLE                                                                                            = src.GuestOsFeature_SEV_CAPABLE
+	GuestOsFeature_SEV_LIVE_MIGRATABLE                                                                                    = src.GuestOsFeature_SEV_LIVE_MIGRATABLE
+	GuestOsFeature_SEV_LIVE_MIGRATABLE_V2                                                                                 = src.GuestOsFeature_SEV_LIVE_MIGRATABLE_V2
+	GuestOsFeature_SEV_SNP_CAPABLE                                                                                        = src.GuestOsFeature_SEV_SNP_CAPABLE
+	GuestOsFeature_TDX_CAPABLE                                                                                            = src.GuestOsFeature_TDX_CAPABLE
+	GuestOsFeature_UEFI_COMPATIBLE                                                                                        = src.GuestOsFeature_UEFI_COMPATIBLE
+	GuestOsFeature_UNDEFINED_TYPE                                                                                         = src.GuestOsFeature_UNDEFINED_TYPE
+	GuestOsFeature_VIRTIO_SCSI_MULTIQUEUE                                                                                 = src.GuestOsFeature_VIRTIO_SCSI_MULTIQUEUE
+	GuestOsFeature_WINDOWS                                                                                                = src.GuestOsFeature_WINDOWS
+	HTTP2HealthCheck_NONE                                                                                                 = src.HTTP2HealthCheck_NONE
+	HTTP2HealthCheck_PROXY_V1                                                                                             = src.HTTP2HealthCheck_PROXY_V1
+	HTTP2HealthCheck_UNDEFINED_PORT_SPECIFICATION                                                                         = src.HTTP2HealthCheck_UNDEFINED_PORT_SPECIFICATION
+	HTTP2HealthCheck_UNDEFINED_PROXY_HEADER                                                                               = src.HTTP2HealthCheck_UNDEFINED_PROXY_HEADER
+	HTTP2HealthCheck_USE_FIXED_PORT                                                                                       = src.HTTP2HealthCheck_USE_FIXED_PORT
+	HTTP2HealthCheck_USE_NAMED_PORT                                                                                       = src.HTTP2HealthCheck_USE_NAMED_PORT
+	HTTP2HealthCheck_USE_SERVING_PORT                                                                                     = src.HTTP2HealthCheck_USE_SERVING_PORT
+	HTTPHealthCheck_NONE                                                                                                  = src.HTTPHealthCheck_NONE
+	HTTPHealthCheck_PROXY_V1                                                                                              = src.HTTPHealthCheck_PROXY_V1
+	HTTPHealthCheck_UNDEFINED_PORT_SPECIFICATION                                                                          = src.HTTPHealthCheck_UNDEFINED_PORT_SPECIFICATION
+	HTTPHealthCheck_UNDEFINED_PROXY_HEADER                                                                                = src.HTTPHealthCheck_UNDEFINED_PROXY_HEADER
+	HTTPHealthCheck_USE_FIXED_PORT                                                                                        = src.HTTPHealthCheck_USE_FIXED_PORT
+	HTTPHealthCheck_USE_NAMED_PORT                                                                                        = src.HTTPHealthCheck_USE_NAMED_PORT
+	HTTPHealthCheck_USE_SERVING_PORT                                                                                      = src.HTTPHealthCheck_USE_SERVING_PORT
+	HTTPSHealthCheck_NONE                                                                                                 = src.HTTPSHealthCheck_NONE
+	HTTPSHealthCheck_PROXY_V1                                                                                             = src.HTTPSHealthCheck_PROXY_V1
+	HTTPSHealthCheck_UNDEFINED_PORT_SPECIFICATION                                                                         = src.HTTPSHealthCheck_UNDEFINED_PORT_SPECIFICATION
+	HTTPSHealthCheck_UNDEFINED_PROXY_HEADER                                                                               = src.HTTPSHealthCheck_UNDEFINED_PROXY_HEADER
+	HTTPSHealthCheck_USE_FIXED_PORT                                                                                       = src.HTTPSHealthCheck_USE_FIXED_PORT
+	HTTPSHealthCheck_USE_NAMED_PORT                                                                                       = src.HTTPSHealthCheck_USE_NAMED_PORT
+	HTTPSHealthCheck_USE_SERVING_PORT                                                                                     = src.HTTPSHealthCheck_USE_SERVING_PORT
+	HealthCheckService_AND                                                                                                = src.HealthCheckService_AND
+	HealthCheckService_NO_AGGREGATION                                                                                     = src.HealthCheckService_NO_AGGREGATION
+	HealthCheckService_UNDEFINED_HEALTH_STATUS_AGGREGATION_POLICY                                                         = src.HealthCheckService_UNDEFINED_HEALTH_STATUS_AGGREGATION_POLICY
+	HealthCheck_GRPC                                                                                                      = src.HealthCheck_GRPC
+	HealthCheck_HTTP                                                                                                      = src.HealthCheck_HTTP
+	HealthCheck_HTTP2                                                                                                     = src.HealthCheck_HTTP2
+	HealthCheck_HTTPS                                                                                                     = src.HealthCheck_HTTPS
+	HealthCheck_INVALID                                                                                                   = src.HealthCheck_INVALID
+	HealthCheck_SSL                                                                                                       = src.HealthCheck_SSL
+	HealthCheck_TCP                                                                                                       = src.HealthCheck_TCP
+	HealthCheck_UNDEFINED_TYPE                                                                                            = src.HealthCheck_UNDEFINED_TYPE
+	HealthStatusForNetworkEndpoint_DRAINING                                                                               = src.HealthStatusForNetworkEndpoint_DRAINING
+	HealthStatusForNetworkEndpoint_HEALTHY                                                                                = src.HealthStatusForNetworkEndpoint_HEALTHY
+	HealthStatusForNetworkEndpoint_UNDEFINED_HEALTH_STATE                                                                 = src.HealthStatusForNetworkEndpoint_UNDEFINED_HEALTH_STATE
+	HealthStatusForNetworkEndpoint_UNDEFINED_IPV6_HEALTH_STATE                                                            = src.HealthStatusForNetworkEndpoint_UNDEFINED_IPV6_HEALTH_STATE
+	HealthStatusForNetworkEndpoint_UNHEALTHY                                                                              = src.HealthStatusForNetworkEndpoint_UNHEALTHY
+	HealthStatusForNetworkEndpoint_UNKNOWN                                                                                = src.HealthStatusForNetworkEndpoint_UNKNOWN
+	HealthStatus_HEALTHY                                                                                                  = src.HealthStatus_HEALTHY
+	HealthStatus_INVALID_WEIGHT                                                                                           = src.HealthStatus_INVALID_WEIGHT
+	HealthStatus_MISSING_WEIGHT                                                                                           = src.HealthStatus_MISSING_WEIGHT
+	HealthStatus_UNAVAILABLE_WEIGHT                                                                                       = src.HealthStatus_UNAVAILABLE_WEIGHT
+	HealthStatus_UNDEFINED_HEALTH_STATE                                                                                   = src.HealthStatus_UNDEFINED_HEALTH_STATE
+	HealthStatus_UNDEFINED_IPV6_HEALTH_STATE                                                                              = src.HealthStatus_UNDEFINED_IPV6_HEALTH_STATE
+	HealthStatus_UNDEFINED_WEIGHT_ERROR                                                                                   = src.HealthStatus_UNDEFINED_WEIGHT_ERROR
+	HealthStatus_UNHEALTHY                                                                                                = src.HealthStatus_UNHEALTHY
+	HealthStatus_WEIGHT_NONE                                                                                              = src.HealthStatus_WEIGHT_NONE
+	HttpRedirectAction_FOUND                                                                                              = src.HttpRedirectAction_FOUND
+	HttpRedirectAction_MOVED_PERMANENTLY_DEFAULT                                                                          = src.HttpRedirectAction_MOVED_PERMANENTLY_DEFAULT
+	HttpRedirectAction_PERMANENT_REDIRECT                                                                                 = src.HttpRedirectAction_PERMANENT_REDIRECT
+	HttpRedirectAction_SEE_OTHER                                                                                          = src.HttpRedirectAction_SEE_OTHER
+	HttpRedirectAction_TEMPORARY_REDIRECT                                                                                 = src.HttpRedirectAction_TEMPORARY_REDIRECT
+	HttpRedirectAction_UNDEFINED_REDIRECT_RESPONSE_CODE                                                                   = src.HttpRedirectAction_UNDEFINED_REDIRECT_RESPONSE_CODE
+	Image_ARCHITECTURE_UNSPECIFIED                                                                                        = src.Image_ARCHITECTURE_UNSPECIFIED
+	Image_ARM64                                                                                                           = src.Image_ARM64
+	Image_DELETING                                                                                                        = src.Image_DELETING
+	Image_FAILED                                                                                                          = src.Image_FAILED
+	Image_PENDING                                                                                                         = src.Image_PENDING
+	Image_RAW                                                                                                             = src.Image_RAW
+	Image_READY                                                                                                           = src.Image_READY
+	Image_UNDEFINED_ARCHITECTURE                                                                                          = src.Image_UNDEFINED_ARCHITECTURE
+	Image_UNDEFINED_SOURCE_TYPE                                                                                           = src.Image_UNDEFINED_SOURCE_TYPE
+	Image_UNDEFINED_STATUS                                                                                                = src.Image_UNDEFINED_STATUS
+	Image_X86_64                                                                                                          = src.Image_X86_64
+	InstanceGroupManagerInstanceLifecyclePolicy_DO_NOTHING                                                                = src.InstanceGroupManagerInstanceLifecyclePolicy_DO_NOTHING
+	InstanceGroupManagerInstanceLifecyclePolicy_NO                                                                        = src.InstanceGroupManagerInstanceLifecyclePolicy_NO
+	InstanceGroupManagerInstanceLifecyclePolicy_REPAIR                                                                    = src.InstanceGroupManagerInstanceLifecyclePolicy_REPAIR
+	InstanceGroupManagerInstanceLifecyclePolicy_UNDEFINED_DEFAULT_ACTION_ON_FAILURE                                       = src.InstanceGroupManagerInstanceLifecyclePolicy_UNDEFINED_DEFAULT_ACTION_ON_FAILURE
+	InstanceGroupManagerInstanceLifecyclePolicy_UNDEFINED_FORCE_UPDATE_ON_REPAIR                                          = src.InstanceGroupManagerInstanceLifecyclePolicy_UNDEFINED_FORCE_UPDATE_ON_REPAIR
+	InstanceGroupManagerInstanceLifecyclePolicy_YES                                                                       = src.InstanceGroupManagerInstanceLifecyclePolicy_YES
+	InstanceGroupManagerResizeRequest_ACCEPTED                                                                            = src.InstanceGroupManagerResizeRequest_ACCEPTED
+	InstanceGroupManagerResizeRequest_CANCELLED                                                                           = src.InstanceGroupManagerResizeRequest_CANCELLED
+	InstanceGroupManagerResizeRequest_CREATING                                                                            = src.InstanceGroupManagerResizeRequest_CREATING
+	InstanceGroupManagerResizeRequest_FAILED                                                                              = src.InstanceGroupManagerResizeRequest_FAILED
+	InstanceGroupManagerResizeRequest_STATE_UNSPECIFIED                                                                   = src.InstanceGroupManagerResizeRequest_STATE_UNSPECIFIED
+	InstanceGroupManagerResizeRequest_SUCCEEDED                                                                           = src.InstanceGroupManagerResizeRequest_SUCCEEDED
+	InstanceGroupManagerResizeRequest_UNDEFINED_STATE                                                                     = src.InstanceGroupManagerResizeRequest_UNDEFINED_STATE
+	InstanceGroupManagerUpdatePolicy_OPPORTUNISTIC                                                                        = src.InstanceGroupManagerUpdatePolicy_OPPORTUNISTIC
+	InstanceGroupManagerUpdatePolicy_RECREATE                                                                             = src.InstanceGroupManagerUpdatePolicy_RECREATE
+	InstanceGroupManagerUpdatePolicy_SUBSTITUTE                                                                           = src.InstanceGroupManagerUpdatePolicy_SUBSTITUTE
+	InstanceGroupManagerUpdatePolicy_UNDEFINED_INSTANCE_REDISTRIBUTION_TYPE                                               = src.InstanceGroupManagerUpdatePolicy_UNDEFINED_INSTANCE_REDISTRIBUTION_TYPE
+	InstanceGroupManagerUpdatePolicy_UNDEFINED_MINIMAL_ACTION                                                             = src.InstanceGroupManagerUpdatePolicy_UNDEFINED_MINIMAL_ACTION
+	InstanceGroupManagerUpdatePolicy_UNDEFINED_MOST_DISRUPTIVE_ALLOWED_ACTION                                             = src.InstanceGroupManagerUpdatePolicy_UNDEFINED_MOST_DISRUPTIVE_ALLOWED_ACTION
+	InstanceGroupManagerUpdatePolicy_UNDEFINED_REPLACEMENT_METHOD                                                         = src.InstanceGroupManagerUpdatePolicy_UNDEFINED_REPLACEMENT_METHOD
+	InstanceGroupManagerUpdatePolicy_UNDEFINED_TYPE                                                                       = src.InstanceGroupManagerUpdatePolicy_UNDEFINED_TYPE
+	InstanceGroupManager_PAGELESS                                                                                         = src.InstanceGroupManager_PAGELESS
+	InstanceGroupManager_PAGINATED                                                                                        = src.InstanceGroupManager_PAGINATED
+	InstanceGroupManager_UNDEFINED_LIST_MANAGED_INSTANCES_RESULTS                                                         = src.InstanceGroupManager_UNDEFINED_LIST_MANAGED_INSTANCES_RESULTS
+	InstanceGroupManagersApplyUpdatesRequest_UNDEFINED_MINIMAL_ACTION                                                     = src.InstanceGroupManagersApplyUpdatesRequest_UNDEFINED_MINIMAL_ACTION
+	InstanceGroupManagersApplyUpdatesRequest_UNDEFINED_MOST_DISRUPTIVE_ALLOWED_ACTION                                     = src.InstanceGroupManagersApplyUpdatesRequest_UNDEFINED_MOST_DISRUPTIVE_ALLOWED_ACTION
+	InstanceGroupsListInstancesRequest_ALL                                                                                = src.InstanceGroupsListInstancesRequest_ALL
+	InstanceGroupsListInstancesRequest_RUNNING                                                                            = src.InstanceGroupsListInstancesRequest_RUNNING
+	InstanceGroupsListInstancesRequest_UNDEFINED_INSTANCE_STATE                                                           = src.InstanceGroupsListInstancesRequest_UNDEFINED_INSTANCE_STATE
+	InstanceManagedByIgmErrorInstanceActionDetails_ABANDONING                                                             = src.InstanceManagedByIgmErrorInstanceActionDetails_ABANDONING
+	InstanceManagedByIgmErrorInstanceActionDetails_CREATING                                                               = src.InstanceManagedByIgmErrorInstanceActionDetails_CREATING
+	InstanceManagedByIgmErrorInstanceActionDetails_CREATING_WITHOUT_RETRIES                                               = src.InstanceManagedByIgmErrorInstanceActionDetails_CREATING_WITHOUT_RETRIES
+	InstanceManagedByIgmErrorInstanceActionDetails_DELETING                                                               = src.InstanceManagedByIgmErrorInstanceActionDetails_DELETING
+	InstanceManagedByIgmErrorInstanceActionDetails_NONE                                                                   = src.InstanceManagedByIgmErrorInstanceActionDetails_NONE
+	InstanceManagedByIgmErrorInstanceActionDetails_RECREATING                                                             = src.InstanceManagedByIgmErrorInstanceActionDetails_RECREATING
+	InstanceManagedByIgmErrorInstanceActionDetails_REFRESHING                                                             = src.InstanceManagedByIgmErrorInstanceActionDetails_REFRESHING
+	InstanceManagedByIgmErrorInstanceActionDetails_RESTARTING                                                             = src.InstanceManagedByIgmErrorInstanceActionDetails_RESTARTING
+	InstanceManagedByIgmErrorInstanceActionDetails_RESUMING                                                               = src.InstanceManagedByIgmErrorInstanceActionDetails_RESUMING
+	InstanceManagedByIgmErrorInstanceActionDetails_STARTING                                                               = src.InstanceManagedByIgmErrorInstanceActionDetails_STARTING
+	InstanceManagedByIgmErrorInstanceActionDetails_STOPPING                                                               = src.InstanceManagedByIgmErrorInstanceActionDetails_STOPPING
+	InstanceManagedByIgmErrorInstanceActionDetails_SUSPENDING                                                             = src.InstanceManagedByIgmErrorInstanceActionDetails_SUSPENDING
+	InstanceManagedByIgmErrorInstanceActionDetails_UNDEFINED_ACTION                                                       = src.InstanceManagedByIgmErrorInstanceActionDetails_UNDEFINED_ACTION
+	InstanceManagedByIgmErrorInstanceActionDetails_VERIFYING                                                              = src.InstanceManagedByIgmErrorInstanceActionDetails_VERIFYING
+	InstanceProperties_ENABLE_BIDIRECTIONAL_ACCESS_TO_GOOGLE                                                              = src.InstanceProperties_ENABLE_BIDIRECTIONAL_ACCESS_TO_GOOGLE
+	InstanceProperties_ENABLE_OUTBOUND_VM_ACCESS_TO_GOOGLE                                                                = src.InstanceProperties_ENABLE_OUTBOUND_VM_ACCESS_TO_GOOGLE
+	InstanceProperties_INHERIT_FROM_SUBNETWORK                                                                            = src.InstanceProperties_INHERIT_FROM_SUBNETWORK
+	InstanceProperties_KEY_REVOCATION_ACTION_TYPE_UNSPECIFIED                                                             = src.InstanceProperties_KEY_REVOCATION_ACTION_TYPE_UNSPECIFIED
+	InstanceProperties_NONE                                                                                               = src.InstanceProperties_NONE
+	InstanceProperties_STOP                                                                                               = src.InstanceProperties_STOP
+	InstanceProperties_UNDEFINED_KEY_REVOCATION_ACTION_TYPE                                                               = src.InstanceProperties_UNDEFINED_KEY_REVOCATION_ACTION_TYPE
+	InstanceProperties_UNDEFINED_PRIVATE_IPV6_GOOGLE_ACCESS                                                               = src.InstanceProperties_UNDEFINED_PRIVATE_IPV6_GOOGLE_ACCESS
+	InstanceWithNamedPorts_DEPROVISIONING                                                                                 = src.InstanceWithNamedPorts_DEPROVISIONING
+	InstanceWithNamedPorts_PROVISIONING                                                                                   = src.InstanceWithNamedPorts_PROVISIONING
+	InstanceWithNamedPorts_REPAIRING                                                                                      = src.InstanceWithNamedPorts_REPAIRING
+	InstanceWithNamedPorts_RUNNING                                                                                        = src.InstanceWithNamedPorts_RUNNING
+	InstanceWithNamedPorts_STAGING                                                                                        = src.InstanceWithNamedPorts_STAGING
+	InstanceWithNamedPorts_STOPPED                                                                                        = src.InstanceWithNamedPorts_STOPPED
+	InstanceWithNamedPorts_STOPPING                                                                                       = src.InstanceWithNamedPorts_STOPPING
+	InstanceWithNamedPorts_SUSPENDED                                                                                      = src.InstanceWithNamedPorts_SUSPENDED
+	InstanceWithNamedPorts_SUSPENDING                                                                                     = src.InstanceWithNamedPorts_SUSPENDING
+	InstanceWithNamedPorts_TERMINATED                                                                                     = src.InstanceWithNamedPorts_TERMINATED
+	InstanceWithNamedPorts_UNDEFINED_STATUS                                                                               = src.InstanceWithNamedPorts_UNDEFINED_STATUS
+	Instance_DEPROVISIONING                                                                                               = src.Instance_DEPROVISIONING
+	Instance_ENABLE_BIDIRECTIONAL_ACCESS_TO_GOOGLE                                                                        = src.Instance_ENABLE_BIDIRECTIONAL_ACCESS_TO_GOOGLE
+	Instance_ENABLE_OUTBOUND_VM_ACCESS_TO_GOOGLE                                                                          = src.Instance_ENABLE_OUTBOUND_VM_ACCESS_TO_GOOGLE
+	Instance_INHERIT_FROM_SUBNETWORK                                                                                      = src.Instance_INHERIT_FROM_SUBNETWORK
+	Instance_KEY_REVOCATION_ACTION_TYPE_UNSPECIFIED                                                                       = src.Instance_KEY_REVOCATION_ACTION_TYPE_UNSPECIFIED
+	Instance_NONE                                                                                                         = src.Instance_NONE
+	Instance_PROVISIONING                                                                                                 = src.Instance_PROVISIONING
+	Instance_REPAIRING                                                                                                    = src.Instance_REPAIRING
+	Instance_RUNNING                                                                                                      = src.Instance_RUNNING
+	Instance_STAGING                                                                                                      = src.Instance_STAGING
+	Instance_STOP                                                                                                         = src.Instance_STOP
+	Instance_STOPPED                                                                                                      = src.Instance_STOPPED
+	Instance_STOPPING                                                                                                     = src.Instance_STOPPING
+	Instance_SUSPENDED                                                                                                    = src.Instance_SUSPENDED
+	Instance_SUSPENDING                                                                                                   = src.Instance_SUSPENDING
+	Instance_TERMINATED                                                                                                   = src.Instance_TERMINATED
+	Instance_UNDEFINED_KEY_REVOCATION_ACTION_TYPE                                                                         = src.Instance_UNDEFINED_KEY_REVOCATION_ACTION_TYPE
+	Instance_UNDEFINED_PRIVATE_IPV6_GOOGLE_ACCESS                                                                         = src.Instance_UNDEFINED_PRIVATE_IPV6_GOOGLE_ACCESS
+	Instance_UNDEFINED_STATUS                                                                                             = src.Instance_UNDEFINED_STATUS
+	InstancesGetEffectiveFirewallsResponseEffectiveFirewallPolicy_HIERARCHY                                               = src.InstancesGetEffectiveFirewallsResponseEffectiveFirewallPolicy_HIERARCHY
+	InstancesGetEffectiveFirewallsResponseEffectiveFirewallPolicy_NETWORK                                                 = src.InstancesGetEffectiveFirewallsResponseEffectiveFirewallPolicy_NETWORK
+	InstancesGetEffectiveFirewallsResponseEffectiveFirewallPolicy_NETWORK_REGIONAL                                        = src.InstancesGetEffectiveFirewallsResponseEffectiveFirewallPolicy_NETWORK_REGIONAL
+	InstancesGetEffectiveFirewallsResponseEffectiveFirewallPolicy_SYSTEM_GLOBAL                                           = src.InstancesGetEffectiveFirewallsResponseEffectiveFirewallPolicy_SYSTEM_GLOBAL
+	InstancesGetEffectiveFirewallsResponseEffectiveFirewallPolicy_SYSTEM_REGIONAL                                         = src.InstancesGetEffectiveFirewallsResponseEffectiveFirewallPolicy_SYSTEM_REGIONAL
+	InstancesGetEffectiveFirewallsResponseEffectiveFirewallPolicy_UNDEFINED_TYPE                                          = src.InstancesGetEffectiveFirewallsResponseEffectiveFirewallPolicy_UNDEFINED_TYPE
+	InstancesGetEffectiveFirewallsResponseEffectiveFirewallPolicy_UNSPECIFIED                                             = src.InstancesGetEffectiveFirewallsResponseEffectiveFirewallPolicy_UNSPECIFIED
+	InstantSnapshot_ARCHITECTURE_UNSPECIFIED                                                                              = src.InstantSnapshot_ARCHITECTURE_UNSPECIFIED
+	InstantSnapshot_ARM64                                                                                                 = src.InstantSnapshot_ARM64
+	InstantSnapshot_CREATING                                                                                              = src.InstantSnapshot_CREATING
+	InstantSnapshot_DELETING                                                                                              = src.InstantSnapshot_DELETING
+	InstantSnapshot_FAILED                                                                                                = src.InstantSnapshot_FAILED
+	InstantSnapshot_READY                                                                                                 = src.InstantSnapshot_READY
+	InstantSnapshot_UNAVAILABLE                                                                                           = src.InstantSnapshot_UNAVAILABLE
+	InstantSnapshot_UNDEFINED_ARCHITECTURE                                                                                = src.InstantSnapshot_UNDEFINED_ARCHITECTURE
+	InstantSnapshot_UNDEFINED_STATUS                                                                                      = src.InstantSnapshot_UNDEFINED_STATUS
+	InstantSnapshot_X86_64                                                                                                = src.InstantSnapshot_X86_64
+	InterconnectAttachmentConfigurationConstraints_MD5_OPTIONAL                                                           = src.InterconnectAttachmentConfigurationConstraints_MD5_OPTIONAL
+	InterconnectAttachmentConfigurationConstraints_MD5_REQUIRED                                                           = src.InterconnectAttachmentConfigurationConstraints_MD5_REQUIRED
+	InterconnectAttachmentConfigurationConstraints_MD5_UNSUPPORTED                                                        = src.InterconnectAttachmentConfigurationConstraints_MD5_UNSUPPORTED
+	InterconnectAttachmentConfigurationConstraints_UNDEFINED_BGP_MD5                                                      = src.InterconnectAttachmentConfigurationConstraints_UNDEFINED_BGP_MD5
+	InterconnectAttachment_ACTIVE                                                                                         = src.InterconnectAttachment_ACTIVE
+	InterconnectAttachment_AVAILABILITY_DOMAIN_1                                                                          = src.InterconnectAttachment_AVAILABILITY_DOMAIN_1
+	InterconnectAttachment_AVAILABILITY_DOMAIN_2                                                                          = src.InterconnectAttachment_AVAILABILITY_DOMAIN_2
+	InterconnectAttachment_AVAILABILITY_DOMAIN_ANY                                                                        = src.InterconnectAttachment_AVAILABILITY_DOMAIN_ANY
+	InterconnectAttachment_BPS_100M                                                                                       = src.InterconnectAttachment_BPS_100M
+	InterconnectAttachment_BPS_10G                                                                                        = src.InterconnectAttachment_BPS_10G
+	InterconnectAttachment_BPS_1G                                                                                         = src.InterconnectAttachment_BPS_1G
+	InterconnectAttachment_BPS_200M                                                                                       = src.InterconnectAttachment_BPS_200M
+	InterconnectAttachment_BPS_20G                                                                                        = src.InterconnectAttachment_BPS_20G
+	InterconnectAttachment_BPS_2G                                                                                         = src.InterconnectAttachment_BPS_2G
+	InterconnectAttachment_BPS_300M                                                                                       = src.InterconnectAttachment_BPS_300M
+	InterconnectAttachment_BPS_400M                                                                                       = src.InterconnectAttachment_BPS_400M
+	InterconnectAttachment_BPS_500M                                                                                       = src.InterconnectAttachment_BPS_500M
+	InterconnectAttachment_BPS_50G                                                                                        = src.InterconnectAttachment_BPS_50G
+	InterconnectAttachment_BPS_50M                                                                                        = src.InterconnectAttachment_BPS_50M
+	InterconnectAttachment_BPS_5G                                                                                         = src.InterconnectAttachment_BPS_5G
+	InterconnectAttachment_DEDICATED                                                                                      = src.InterconnectAttachment_DEDICATED
+	InterconnectAttachment_DEFUNCT                                                                                        = src.InterconnectAttachment_DEFUNCT
+	InterconnectAttachment_IPSEC                                                                                          = src.InterconnectAttachment_IPSEC
+	InterconnectAttachment_IPV4_IPV6                                                                                      = src.InterconnectAttachment_IPV4_IPV6
+	InterconnectAttachment_IPV4_ONLY                                                                                      = src.InterconnectAttachment_IPV4_ONLY
+	InterconnectAttachment_NONE                                                                                           = src.InterconnectAttachment_NONE
+	InterconnectAttachment_OS_ACTIVE                                                                                      = src.InterconnectAttachment_OS_ACTIVE
+	InterconnectAttachment_OS_UNPROVISIONED                                                                               = src.InterconnectAttachment_OS_UNPROVISIONED
+	InterconnectAttachment_PARTNER                                                                                        = src.InterconnectAttachment_PARTNER
+	InterconnectAttachment_PARTNER_PROVIDER                                                                               = src.InterconnectAttachment_PARTNER_PROVIDER
+	InterconnectAttachment_PARTNER_REQUEST_RECEIVED                                                                       = src.InterconnectAttachment_PARTNER_REQUEST_RECEIVED
+	InterconnectAttachment_PENDING_CUSTOMER                                                                               = src.InterconnectAttachment_PENDING_CUSTOMER
+	InterconnectAttachment_PENDING_PARTNER                                                                                = src.InterconnectAttachment_PENDING_PARTNER
+	InterconnectAttachment_STATE_UNSPECIFIED                                                                              = src.InterconnectAttachment_STATE_UNSPECIFIED
+	InterconnectAttachment_UNDEFINED_BANDWIDTH                                                                            = src.InterconnectAttachment_UNDEFINED_BANDWIDTH
+	InterconnectAttachment_UNDEFINED_EDGE_AVAILABILITY_DOMAIN                                                             = src.InterconnectAttachment_UNDEFINED_EDGE_AVAILABILITY_DOMAIN
+	InterconnectAttachment_UNDEFINED_ENCRYPTION                                                                           = src.InterconnectAttachment_UNDEFINED_ENCRYPTION
+	InterconnectAttachment_UNDEFINED_OPERATIONAL_STATUS                                                                   = src.InterconnectAttachment_UNDEFINED_OPERATIONAL_STATUS
+	InterconnectAttachment_UNDEFINED_STACK_TYPE                                                                           = src.InterconnectAttachment_UNDEFINED_STACK_TYPE
+	InterconnectAttachment_UNDEFINED_STATE                                                                                = src.InterconnectAttachment_UNDEFINED_STATE
+	InterconnectAttachment_UNDEFINED_TYPE                                                                                 = src.InterconnectAttachment_UNDEFINED_TYPE
+	InterconnectAttachment_UNPROVISIONED                                                                                  = src.InterconnectAttachment_UNPROVISIONED
+	InterconnectDiagnosticsLinkLACPStatus_ACTIVE                                                                          = src.InterconnectDiagnosticsLinkLACPStatus_ACTIVE
+	InterconnectDiagnosticsLinkLACPStatus_DETACHED                                                                        = src.InterconnectDiagnosticsLinkLACPStatus_DETACHED
+	InterconnectDiagnosticsLinkLACPStatus_UNDEFINED_STATE                                                                 = src.InterconnectDiagnosticsLinkLACPStatus_UNDEFINED_STATE
+	InterconnectDiagnosticsLinkOpticalPower_HIGH_ALARM                                                                    = src.InterconnectDiagnosticsLinkOpticalPower_HIGH_ALARM
+	InterconnectDiagnosticsLinkOpticalPower_HIGH_WARNING                                                                  = src.InterconnectDiagnosticsLinkOpticalPower_HIGH_WARNING
+	InterconnectDiagnosticsLinkOpticalPower_LOW_ALARM                                                                     = src.InterconnectDiagnosticsLinkOpticalPower_LOW_ALARM
+	InterconnectDiagnosticsLinkOpticalPower_LOW_WARNING                                                                   = src.InterconnectDiagnosticsLinkOpticalPower_LOW_WARNING
+	InterconnectDiagnosticsLinkOpticalPower_OK                                                                            = src.InterconnectDiagnosticsLinkOpticalPower_OK
+	InterconnectDiagnosticsLinkOpticalPower_UNDEFINED_STATE                                                               = src.InterconnectDiagnosticsLinkOpticalPower_UNDEFINED_STATE
+	InterconnectDiagnosticsLinkStatus_LINK_OPERATIONAL_STATUS_DOWN                                                        = src.InterconnectDiagnosticsLinkStatus_LINK_OPERATIONAL_STATUS_DOWN
+	InterconnectDiagnosticsLinkStatus_LINK_OPERATIONAL_STATUS_UP                                                          = src.InterconnectDiagnosticsLinkStatus_LINK_OPERATIONAL_STATUS_UP
+	InterconnectDiagnosticsLinkStatus_UNDEFINED_OPERATIONAL_STATUS                                                        = src.InterconnectDiagnosticsLinkStatus_UNDEFINED_OPERATIONAL_STATUS
+	InterconnectDiagnostics_BUNDLE_AGGREGATION_TYPE_LACP                                                                  = src.InterconnectDiagnostics_BUNDLE_AGGREGATION_TYPE_LACP
+	InterconnectDiagnostics_BUNDLE_AGGREGATION_TYPE_STATIC                                                                = src.InterconnectDiagnostics_BUNDLE_AGGREGATION_TYPE_STATIC
+	InterconnectDiagnostics_BUNDLE_OPERATIONAL_STATUS_DOWN                                                                = src.InterconnectDiagnostics_BUNDLE_OPERATIONAL_STATUS_DOWN
+	InterconnectDiagnostics_BUNDLE_OPERATIONAL_STATUS_UP                                                                  = src.InterconnectDiagnostics_BUNDLE_OPERATIONAL_STATUS_UP
+	InterconnectDiagnostics_UNDEFINED_BUNDLE_AGGREGATION_TYPE                                                             = src.InterconnectDiagnostics_UNDEFINED_BUNDLE_AGGREGATION_TYPE
+	InterconnectDiagnostics_UNDEFINED_BUNDLE_OPERATIONAL_STATUS                                                           = src.InterconnectDiagnostics_UNDEFINED_BUNDLE_OPERATIONAL_STATUS
+	InterconnectLocationRegionInfo_GLOBAL                                                                                 = src.InterconnectLocationRegionInfo_GLOBAL
+	InterconnectLocationRegionInfo_LOCAL_REGION                                                                           = src.InterconnectLocationRegionInfo_LOCAL_REGION
+	InterconnectLocationRegionInfo_LP_GLOBAL                                                                              = src.InterconnectLocationRegionInfo_LP_GLOBAL
+	InterconnectLocationRegionInfo_LP_LOCAL_REGION                                                                        = src.InterconnectLocationRegionInfo_LP_LOCAL_REGION
+	InterconnectLocationRegionInfo_UNDEFINED_LOCATION_PRESENCE                                                            = src.InterconnectLocationRegionInfo_UNDEFINED_LOCATION_PRESENCE
+	InterconnectLocation_AFRICA                                                                                           = src.InterconnectLocation_AFRICA
+	InterconnectLocation_ASIA_PAC                                                                                         = src.InterconnectLocation_ASIA_PAC
+	InterconnectLocation_AVAILABLE                                                                                        = src.InterconnectLocation_AVAILABLE
+	InterconnectLocation_CLOSED                                                                                           = src.InterconnectLocation_CLOSED
+	InterconnectLocation_C_AFRICA                                                                                         = src.InterconnectLocation_C_AFRICA
+	InterconnectLocation_C_ASIA_PAC                                                                                       = src.InterconnectLocation_C_ASIA_PAC
+	InterconnectLocation_C_EUROPE                                                                                         = src.InterconnectLocation_C_EUROPE
+	InterconnectLocation_C_NORTH_AMERICA                                                                                  = src.InterconnectLocation_C_NORTH_AMERICA
+	InterconnectLocation_C_SOUTH_AMERICA                                                                                  = src.InterconnectLocation_C_SOUTH_AMERICA
+	InterconnectLocation_EUROPE                                                                                           = src.InterconnectLocation_EUROPE
+	InterconnectLocation_IF_MACSEC                                                                                        = src.InterconnectLocation_IF_MACSEC
+	InterconnectLocation_LINK_TYPE_ETHERNET_100G_LR                                                                       = src.InterconnectLocation_LINK_TYPE_ETHERNET_100G_LR
+	InterconnectLocation_LINK_TYPE_ETHERNET_10G_LR                                                                        = src.InterconnectLocation_LINK_TYPE_ETHERNET_10G_LR
+	InterconnectLocation_NORTH_AMERICA                                                                                    = src.InterconnectLocation_NORTH_AMERICA
+	InterconnectLocation_SOUTH_AMERICA                                                                                    = src.InterconnectLocation_SOUTH_AMERICA
+	InterconnectLocation_UNDEFINED_AVAILABLE_FEATURES                                                                     = src.InterconnectLocation_UNDEFINED_AVAILABLE_FEATURES
+	InterconnectLocation_UNDEFINED_AVAILABLE_LINK_TYPES                                                                   = src.InterconnectLocation_UNDEFINED_AVAILABLE_LINK_TYPES
+	InterconnectLocation_UNDEFINED_CONTINENT                                                                              = src.InterconnectLocation_UNDEFINED_CONTINENT
+	InterconnectLocation_UNDEFINED_STATUS                                                                                 = src.InterconnectLocation_UNDEFINED_STATUS
+	InterconnectOutageNotification_ACTIVE                                                                                 = src.InterconnectOutageNotification_ACTIVE
+	InterconnectOutageNotification_CANCELLED                                                                              = src.InterconnectOutageNotification_CANCELLED
+	InterconnectOutageNotification_COMPLETED                                                                              = src.InterconnectOutageNotification_COMPLETED
+	InterconnectOutageNotification_GOOGLE                                                                                 = src.InterconnectOutageNotification_GOOGLE
+	InterconnectOutageNotification_IT_OUTAGE                                                                              = src.InterconnectOutageNotification_IT_OUTAGE
+	InterconnectOutageNotification_IT_PARTIAL_OUTAGE                                                                      = src.InterconnectOutageNotification_IT_PARTIAL_OUTAGE
+	InterconnectOutageNotification_NSRC_GOOGLE                                                                            = src.InterconnectOutageNotification_NSRC_GOOGLE
+	InterconnectOutageNotification_NS_ACTIVE                                                                              = src.InterconnectOutageNotification_NS_ACTIVE
+	InterconnectOutageNotification_NS_CANCELED                                                                            = src.InterconnectOutageNotification_NS_CANCELED
+	InterconnectOutageNotification_OUTAGE                                                                                 = src.InterconnectOutageNotification_OUTAGE
+	InterconnectOutageNotification_PARTIAL_OUTAGE                                                                         = src.InterconnectOutageNotification_PARTIAL_OUTAGE
+	InterconnectOutageNotification_UNDEFINED_ISSUE_TYPE                                                                   = src.InterconnectOutageNotification_UNDEFINED_ISSUE_TYPE
+	InterconnectOutageNotification_UNDEFINED_SOURCE                                                                       = src.InterconnectOutageNotification_UNDEFINED_SOURCE
+	InterconnectOutageNotification_UNDEFINED_STATE                                                                        = src.InterconnectOutageNotification_UNDEFINED_STATE
+	InterconnectRemoteLocationConstraints_PORT_PAIR_MATCHING_REMOTE_LOCATION                                              = src.InterconnectRemoteLocationConstraints_PORT_PAIR_MATCHING_REMOTE_LOCATION
+	InterconnectRemoteLocationConstraints_PORT_PAIR_MATCHING_VLAN                                                         = src.InterconnectRemoteLocationConstraints_PORT_PAIR_MATCHING_VLAN
+	InterconnectRemoteLocationConstraints_PORT_PAIR_UNCONSTRAINED_REMOTE_LOCATION                                         = src.InterconnectRemoteLocationConstraints_PORT_PAIR_UNCONSTRAINED_REMOTE_LOCATION
+	InterconnectRemoteLocationConstraints_PORT_PAIR_UNCONSTRAINED_VLAN                                                    = src.InterconnectRemoteLocationConstraints_PORT_PAIR_UNCONSTRAINED_VLAN
+	InterconnectRemoteLocationConstraints_UNDEFINED_PORT_PAIR_REMOTE_LOCATION                                             = src.InterconnectRemoteLocationConstraints_UNDEFINED_PORT_PAIR_REMOTE_LOCATION
+	InterconnectRemoteLocationConstraints_UNDEFINED_PORT_PAIR_VLAN                                                        = src.InterconnectRemoteLocationConstraints_UNDEFINED_PORT_PAIR_VLAN
+	InterconnectRemoteLocation_AFRICA                                                                                     = src.InterconnectRemoteLocation_AFRICA
+	InterconnectRemoteLocation_ASIA_PAC                                                                                   = src.InterconnectRemoteLocation_ASIA_PAC
+	InterconnectRemoteLocation_AVAILABLE                                                                                  = src.InterconnectRemoteLocation_AVAILABLE
+	InterconnectRemoteLocation_CLOSED                                                                                     = src.InterconnectRemoteLocation_CLOSED
+	InterconnectRemoteLocation_EUROPE                                                                                     = src.InterconnectRemoteLocation_EUROPE
+	InterconnectRemoteLocation_LACP_SUPPORTED                                                                             = src.InterconnectRemoteLocation_LACP_SUPPORTED
+	InterconnectRemoteLocation_LACP_UNSUPPORTED                                                                           = src.InterconnectRemoteLocation_LACP_UNSUPPORTED
+	InterconnectRemoteLocation_NORTH_AMERICA                                                                              = src.InterconnectRemoteLocation_NORTH_AMERICA
+	InterconnectRemoteLocation_SOUTH_AMERICA                                                                              = src.InterconnectRemoteLocation_SOUTH_AMERICA
+	InterconnectRemoteLocation_UNDEFINED_CONTINENT                                                                        = src.InterconnectRemoteLocation_UNDEFINED_CONTINENT
+	InterconnectRemoteLocation_UNDEFINED_LACP                                                                             = src.InterconnectRemoteLocation_UNDEFINED_LACP
+	InterconnectRemoteLocation_UNDEFINED_STATUS                                                                           = src.InterconnectRemoteLocation_UNDEFINED_STATUS
+	Interconnect_ACTIVE                                                                                                   = src.Interconnect_ACTIVE
+	Interconnect_DEDICATED                                                                                                = src.Interconnect_DEDICATED
+	Interconnect_IT_PRIVATE                                                                                               = src.Interconnect_IT_PRIVATE
+	Interconnect_LINK_TYPE_ETHERNET_100G_LR                                                                               = src.Interconnect_LINK_TYPE_ETHERNET_100G_LR
+	Interconnect_LINK_TYPE_ETHERNET_10G_LR                                                                                = src.Interconnect_LINK_TYPE_ETHERNET_10G_LR
+	Interconnect_OS_ACTIVE                                                                                                = src.Interconnect_OS_ACTIVE
+	Interconnect_OS_UNPROVISIONED                                                                                         = src.Interconnect_OS_UNPROVISIONED
+	Interconnect_PARTNER                                                                                                  = src.Interconnect_PARTNER
+	Interconnect_UNDEFINED_AVAILABLE_FEATURES                                                                             = src.Interconnect_UNDEFINED_AVAILABLE_FEATURES
+	Interconnect_UNDEFINED_INTERCONNECT_TYPE                                                                              = src.Interconnect_UNDEFINED_INTERCONNECT_TYPE
+	Interconnect_UNDEFINED_LINK_TYPE                                                                                      = src.Interconnect_UNDEFINED_LINK_TYPE
+	Interconnect_UNDEFINED_OPERATIONAL_STATUS                                                                             = src.Interconnect_UNDEFINED_OPERATIONAL_STATUS
+	Interconnect_UNDEFINED_REQUESTED_FEATURES                                                                             = src.Interconnect_UNDEFINED_REQUESTED_FEATURES
+	Interconnect_UNDEFINED_STATE                                                                                          = src.Interconnect_UNDEFINED_STATE
+	Interconnect_UNPROVISIONED                                                                                            = src.Interconnect_UNPROVISIONED
+	LicenseCode_DISABLED                                                                                                  = src.LicenseCode_DISABLED
+	LicenseCode_ENABLED                                                                                                   = src.LicenseCode_ENABLED
+	LicenseCode_RESTRICTED                                                                                                = src.LicenseCode_RESTRICTED
+	LicenseCode_STATE_UNSPECIFIED                                                                                         = src.LicenseCode_STATE_UNSPECIFIED
+	LicenseCode_TERMINATED                                                                                                = src.LicenseCode_TERMINATED
+	LicenseCode_UNDEFINED_STATE                                                                                           = src.LicenseCode_UNDEFINED_STATE
+	ListPeeringRoutesNetworksRequest_INCOMING                                                                             = src.ListPeeringRoutesNetworksRequest_INCOMING
+	ListPeeringRoutesNetworksRequest_OUTGOING                                                                             = src.ListPeeringRoutesNetworksRequest_OUTGOING
+	ListPeeringRoutesNetworksRequest_UNDEFINED_DIRECTION                                                                  = src.ListPeeringRoutesNetworksRequest_UNDEFINED_DIRECTION
+	LocationPolicyLocation_ALLOW                                                                                          = src.LocationPolicyLocation_ALLOW
+	LocationPolicyLocation_DENY                                                                                           = src.LocationPolicyLocation_DENY
+	LocationPolicyLocation_PREFERENCE_UNSPECIFIED                                                                         = src.LocationPolicyLocation_PREFERENCE_UNSPECIFIED
+	LocationPolicyLocation_UNDEFINED_PREFERENCE                                                                           = src.LocationPolicyLocation_UNDEFINED_PREFERENCE
+	LocationPolicy_ANY                                                                                                    = src.LocationPolicy_ANY
+	LocationPolicy_ANY_SINGLE_ZONE                                                                                        = src.LocationPolicy_ANY_SINGLE_ZONE
+	LocationPolicy_BALANCED                                                                                               = src.LocationPolicy_BALANCED
+	LocationPolicy_UNDEFINED_TARGET_SHAPE                                                                                 = src.LocationPolicy_UNDEFINED_TARGET_SHAPE
+	MachineImage_CREATING                                                                                                 = src.MachineImage_CREATING
+	MachineImage_DELETING                                                                                                 = src.MachineImage_DELETING
+	MachineImage_INVALID                                                                                                  = src.MachineImage_INVALID
+	MachineImage_READY                                                                                                    = src.MachineImage_READY
+	MachineImage_UNDEFINED_STATUS                                                                                         = src.MachineImage_UNDEFINED_STATUS
+	MachineImage_UPLOADING                                                                                                = src.MachineImage_UPLOADING
+	MachineType_ARCHITECTURE_UNSPECIFIED                                                                                  = src.MachineType_ARCHITECTURE_UNSPECIFIED
+	MachineType_ARM64                                                                                                     = src.MachineType_ARM64
+	MachineType_UNDEFINED_ARCHITECTURE                                                                                    = src.MachineType_UNDEFINED_ARCHITECTURE
+	MachineType_X86_64                                                                                                    = src.MachineType_X86_64
+	ManagedInstanceInstanceHealth_DRAINING                                                                                = src.ManagedInstanceInstanceHealth_DRAINING
+	ManagedInstanceInstanceHealth_HEALTHY                                                                                 = src.ManagedInstanceInstanceHealth_HEALTHY
+	ManagedInstanceInstanceHealth_TIMEOUT                                                                                 = src.ManagedInstanceInstanceHealth_TIMEOUT
+	ManagedInstanceInstanceHealth_UNDEFINED_DETAILED_HEALTH_STATE                                                         = src.ManagedInstanceInstanceHealth_UNDEFINED_DETAILED_HEALTH_STATE
+	ManagedInstanceInstanceHealth_UNHEALTHY                                                                               = src.ManagedInstanceInstanceHealth_UNHEALTHY
+	ManagedInstanceInstanceHealth_UNKNOWN                                                                                 = src.ManagedInstanceInstanceHealth_UNKNOWN
+	ManagedInstance_ABANDONING                                                                                            = src.ManagedInstance_ABANDONING
+	ManagedInstance_CREATING                                                                                              = src.ManagedInstance_CREATING
+	ManagedInstance_CREATING_WITHOUT_RETRIES                                                                              = src.ManagedInstance_CREATING_WITHOUT_RETRIES
+	ManagedInstance_DELETING                                                                                              = src.ManagedInstance_DELETING
+	ManagedInstance_DEPROVISIONING                                                                                        = src.ManagedInstance_DEPROVISIONING
+	ManagedInstance_NONE                                                                                                  = src.ManagedInstance_NONE
+	ManagedInstance_PROVISIONING                                                                                          = src.ManagedInstance_PROVISIONING
+	ManagedInstance_RECREATING                                                                                            = src.ManagedInstance_RECREATING
+	ManagedInstance_REFRESHING                                                                                            = src.ManagedInstance_REFRESHING
+	ManagedInstance_REPAIRING                                                                                             = src.ManagedInstance_REPAIRING
+	ManagedInstance_RESTARTING                                                                                            = src.ManagedInstance_RESTARTING
+	ManagedInstance_RESUMING                                                                                              = src.ManagedInstance_RESUMING
+	ManagedInstance_RUNNING                                                                                               = src.ManagedInstance_RUNNING
+	ManagedInstance_STAGING                                                                                               = src.ManagedInstance_STAGING
+	ManagedInstance_STARTING                                                                                              = src.ManagedInstance_STARTING
+	ManagedInstance_STOPPED                                                                                               = src.ManagedInstance_STOPPED
+	ManagedInstance_STOPPING                                                                                              = src.ManagedInstance_STOPPING
+	ManagedInstance_SUSPENDED                                                                                             = src.ManagedInstance_SUSPENDED
+	ManagedInstance_SUSPENDING                                                                                            = src.ManagedInstance_SUSPENDING
+	ManagedInstance_TERMINATED                                                                                            = src.ManagedInstance_TERMINATED
+	ManagedInstance_UNDEFINED_CURRENT_ACTION                                                                              = src.ManagedInstance_UNDEFINED_CURRENT_ACTION
+	ManagedInstance_UNDEFINED_INSTANCE_STATUS                                                                             = src.ManagedInstance_UNDEFINED_INSTANCE_STATUS
+	ManagedInstance_VERIFYING                                                                                             = src.ManagedInstance_VERIFYING
+	MetadataFilter_MATCH_ALL                                                                                              = src.MetadataFilter_MATCH_ALL
+	MetadataFilter_MATCH_ANY                                                                                              = src.MetadataFilter_MATCH_ANY
+	MetadataFilter_NOT_SET                                                                                                = src.MetadataFilter_NOT_SET
+	MetadataFilter_UNDEFINED_FILTER_MATCH_CRITERIA                                                                        = src.MetadataFilter_UNDEFINED_FILTER_MATCH_CRITERIA
+	NatIpInfoNatIpInfoMapping_AUTO                                                                                        = src.NatIpInfoNatIpInfoMapping_AUTO
+	NatIpInfoNatIpInfoMapping_IN_USE                                                                                      = src.NatIpInfoNatIpInfoMapping_IN_USE
+	NatIpInfoNatIpInfoMapping_MANUAL                                                                                      = src.NatIpInfoNatIpInfoMapping_MANUAL
+	NatIpInfoNatIpInfoMapping_UNDEFINED_MODE                                                                              = src.NatIpInfoNatIpInfoMapping_UNDEFINED_MODE
+	NatIpInfoNatIpInfoMapping_UNDEFINED_USAGE                                                                             = src.NatIpInfoNatIpInfoMapping_UNDEFINED_USAGE
+	NatIpInfoNatIpInfoMapping_UNUSED                                                                                      = src.NatIpInfoNatIpInfoMapping_UNUSED
+	NetworkAttachmentConnectedEndpoint_ACCEPTED                                                                           = src.NetworkAttachmentConnectedEndpoint_ACCEPTED
+	NetworkAttachmentConnectedEndpoint_CLOSED                                                                             = src.NetworkAttachmentConnectedEndpoint_CLOSED
+	NetworkAttachmentConnectedEndpoint_NEEDS_ATTENTION                                                                    = src.NetworkAttachmentConnectedEndpoint_NEEDS_ATTENTION
+	NetworkAttachmentConnectedEndpoint_PENDING                                                                            = src.NetworkAttachmentConnectedEndpoint_PENDING
+	NetworkAttachmentConnectedEndpoint_REJECTED                                                                           = src.NetworkAttachmentConnectedEndpoint_REJECTED
+	NetworkAttachmentConnectedEndpoint_STATUS_UNSPECIFIED                                                                 = src.NetworkAttachmentConnectedEndpoint_STATUS_UNSPECIFIED
+	NetworkAttachmentConnectedEndpoint_UNDEFINED_STATUS                                                                   = src.NetworkAttachmentConnectedEndpoint_UNDEFINED_STATUS
+	NetworkAttachment_ACCEPT_AUTOMATIC                                                                                    = src.NetworkAttachment_ACCEPT_AUTOMATIC
+	NetworkAttachment_ACCEPT_MANUAL                                                                                       = src.NetworkAttachment_ACCEPT_MANUAL
+	NetworkAttachment_INVALID                                                                                             = src.NetworkAttachment_INVALID
+	NetworkAttachment_UNDEFINED_CONNECTION_PREFERENCE                                                                     = src.NetworkAttachment_UNDEFINED_CONNECTION_PREFERENCE
+	NetworkEndpointGroupPscData_ACCEPTED                                                                                  = src.NetworkEndpointGroupPscData_ACCEPTED
+	NetworkEndpointGroupPscData_CLOSED                                                                                    = src.NetworkEndpointGroupPscData_CLOSED
+	NetworkEndpointGroupPscData_NEEDS_ATTENTION                                                                           = src.NetworkEndpointGroupPscData_NEEDS_ATTENTION
+	NetworkEndpointGroupPscData_PENDING                                                                                   = src.NetworkEndpointGroupPscData_PENDING
+	NetworkEndpointGroupPscData_REJECTED                                                                                  = src.NetworkEndpointGroupPscData_REJECTED
+	NetworkEndpointGroupPscData_STATUS_UNSPECIFIED                                                                        = src.NetworkEndpointGroupPscData_STATUS_UNSPECIFIED
+	NetworkEndpointGroupPscData_UNDEFINED_PSC_CONNECTION_STATUS                                                           = src.NetworkEndpointGroupPscData_UNDEFINED_PSC_CONNECTION_STATUS
+	NetworkEndpointGroup_GCE_VM_IP                                                                                        = src.NetworkEndpointGroup_GCE_VM_IP
+	NetworkEndpointGroup_GCE_VM_IP_PORT                                                                                   = src.NetworkEndpointGroup_GCE_VM_IP_PORT
+	NetworkEndpointGroup_GCE_VM_IP_PORTMAP                                                                                = src.NetworkEndpointGroup_GCE_VM_IP_PORTMAP
+	NetworkEndpointGroup_INTERNET_FQDN_PORT                                                                               = src.NetworkEndpointGroup_INTERNET_FQDN_PORT
+	NetworkEndpointGroup_INTERNET_IP_PORT                                                                                 = src.NetworkEndpointGroup_INTERNET_IP_PORT
+	NetworkEndpointGroup_NON_GCP_PRIVATE_IP_PORT                                                                          = src.NetworkEndpointGroup_NON_GCP_PRIVATE_IP_PORT
+	NetworkEndpointGroup_PRIVATE_SERVICE_CONNECT                                                                          = src.NetworkEndpointGroup_PRIVATE_SERVICE_CONNECT
+	NetworkEndpointGroup_SERVERLESS                                                                                       = src.NetworkEndpointGroup_SERVERLESS
+	NetworkEndpointGroup_UNDEFINED_NETWORK_ENDPOINT_TYPE                                                                  = src.NetworkEndpointGroup_UNDEFINED_NETWORK_ENDPOINT_TYPE
+	NetworkEndpointGroupsListEndpointsRequest_SHOW                                                                        = src.NetworkEndpointGroupsListEndpointsRequest_SHOW
+	NetworkEndpointGroupsListEndpointsRequest_SKIP                                                                        = src.NetworkEndpointGroupsListEndpointsRequest_SKIP
+	NetworkEndpointGroupsListEndpointsRequest_UNDEFINED_HEALTH_STATUS                                                     = src.NetworkEndpointGroupsListEndpointsRequest_UNDEFINED_HEALTH_STATUS
+	NetworkInterface_EXTERNAL                                                                                             = src.NetworkInterface_EXTERNAL
+	NetworkInterface_GVNIC                                                                                                = src.NetworkInterface_GVNIC
+	NetworkInterface_IDPF                                                                                                 = src.NetworkInterface_IDPF
+	NetworkInterface_INTERNAL                                                                                             = src.NetworkInterface_INTERNAL
+	NetworkInterface_IPV4_IPV6                                                                                            = src.NetworkInterface_IPV4_IPV6
+	NetworkInterface_IPV4_ONLY                                                                                            = src.NetworkInterface_IPV4_ONLY
+	NetworkInterface_IPV6_ONLY                                                                                            = src.NetworkInterface_IPV6_ONLY
+	NetworkInterface_UNDEFINED_IPV6_ACCESS_TYPE                                                                           = src.NetworkInterface_UNDEFINED_IPV6_ACCESS_TYPE
+	NetworkInterface_UNDEFINED_NIC_TYPE                                                                                   = src.NetworkInterface_UNDEFINED_NIC_TYPE
+	NetworkInterface_UNDEFINED_STACK_TYPE                                                                                 = src.NetworkInterface_UNDEFINED_STACK_TYPE
+	NetworkInterface_UNSPECIFIED_IPV6_ACCESS_TYPE                                                                         = src.NetworkInterface_UNSPECIFIED_IPV6_ACCESS_TYPE
+	NetworkInterface_UNSPECIFIED_NIC_TYPE                                                                                 = src.NetworkInterface_UNSPECIFIED_NIC_TYPE
+	NetworkInterface_UNSPECIFIED_STACK_TYPE                                                                               = src.NetworkInterface_UNSPECIFIED_STACK_TYPE
+	NetworkInterface_VIRTIO_NET                                                                                           = src.NetworkInterface_VIRTIO_NET
+	NetworkPeering_ACTIVE                                                                                                 = src.NetworkPeering_ACTIVE
+	NetworkPeering_INACTIVE                                                                                               = src.NetworkPeering_INACTIVE
+	NetworkPeering_IPV4_IPV6                                                                                              = src.NetworkPeering_IPV4_IPV6
+	NetworkPeering_IPV4_ONLY                                                                                              = src.NetworkPeering_IPV4_ONLY
+	NetworkPeering_UNDEFINED_STACK_TYPE                                                                                   = src.NetworkPeering_UNDEFINED_STACK_TYPE
+	NetworkPeering_UNDEFINED_STATE                                                                                        = src.NetworkPeering_UNDEFINED_STATE
+	NetworkPerformanceConfig_DEFAULT                                                                                      = src.NetworkPerformanceConfig_DEFAULT
+	NetworkPerformanceConfig_TIER_1                                                                                       = src.NetworkPerformanceConfig_TIER_1
+	NetworkPerformanceConfig_UNDEFINED_TOTAL_EGRESS_BANDWIDTH_TIER                                                        = src.NetworkPerformanceConfig_UNDEFINED_TOTAL_EGRESS_BANDWIDTH_TIER
+	NetworkRoutingConfig_GLOBAL                                                                                           = src.NetworkRoutingConfig_GLOBAL
+	NetworkRoutingConfig_REGIONAL                                                                                         = src.NetworkRoutingConfig_REGIONAL
+	NetworkRoutingConfig_UNDEFINED_ROUTING_MODE                                                                           = src.NetworkRoutingConfig_UNDEFINED_ROUTING_MODE
+	Network_AFTER_CLASSIC_FIREWALL                                                                                        = src.Network_AFTER_CLASSIC_FIREWALL
+	Network_BEFORE_CLASSIC_FIREWALL                                                                                       = src.Network_BEFORE_CLASSIC_FIREWALL
+	Network_UNDEFINED_NETWORK_FIREWALL_POLICY_ENFORCEMENT_ORDER                                                           = src.Network_UNDEFINED_NETWORK_FIREWALL_POLICY_ENFORCEMENT_ORDER
+	NetworksGetEffectiveFirewallsResponseEffectiveFirewallPolicy_HIERARCHY                                                = src.NetworksGetEffectiveFirewallsResponseEffectiveFirewallPolicy_HIERARCHY
+	NetworksGetEffectiveFirewallsResponseEffectiveFirewallPolicy_NETWORK                                                  = src.NetworksGetEffectiveFirewallsResponseEffectiveFirewallPolicy_NETWORK
+	NetworksGetEffectiveFirewallsResponseEffectiveFirewallPolicy_SYSTEM                                                   = src.NetworksGetEffectiveFirewallsResponseEffectiveFirewallPolicy_SYSTEM
+	NetworksGetEffectiveFirewallsResponseEffectiveFirewallPolicy_UNDEFINED_TYPE                                           = src.NetworksGetEffectiveFirewallsResponseEffectiveFirewallPolicy_UNDEFINED_TYPE
+	NetworksGetEffectiveFirewallsResponseEffectiveFirewallPolicy_UNSPECIFIED                                              = src.NetworksGetEffectiveFirewallsResponseEffectiveFirewallPolicy_UNSPECIFIED
+	NodeGroupAutoscalingPolicy_MODE_UNSPECIFIED                                                                           = src.NodeGroupAutoscalingPolicy_MODE_UNSPECIFIED
+	NodeGroupAutoscalingPolicy_OFF                                                                                        = src.NodeGroupAutoscalingPolicy_OFF
+	NodeGroupAutoscalingPolicy_ON                                                                                         = src.NodeGroupAutoscalingPolicy_ON
+	NodeGroupAutoscalingPolicy_ONLY_SCALE_OUT                                                                             = src.NodeGroupAutoscalingPolicy_ONLY_SCALE_OUT
+	NodeGroupAutoscalingPolicy_UNDEFINED_MODE                                                                             = src.NodeGroupAutoscalingPolicy_UNDEFINED_MODE
+	NodeGroupNode_CPU_OVERCOMMIT_TYPE_UNSPECIFIED                                                                         = src.NodeGroupNode_CPU_OVERCOMMIT_TYPE_UNSPECIFIED
+	NodeGroupNode_CREATING                                                                                                = src.NodeGroupNode_CREATING
+	NodeGroupNode_DELETING                                                                                                = src.NodeGroupNode_DELETING
+	NodeGroupNode_ENABLED                                                                                                 = src.NodeGroupNode_ENABLED
+	NodeGroupNode_INVALID                                                                                                 = src.NodeGroupNode_INVALID
+	NodeGroupNode_NONE                                                                                                    = src.NodeGroupNode_NONE
+	NodeGroupNode_READY                                                                                                   = src.NodeGroupNode_READY
+	NodeGroupNode_REPAIRING                                                                                               = src.NodeGroupNode_REPAIRING
+	NodeGroupNode_UNDEFINED_CPU_OVERCOMMIT_TYPE                                                                           = src.NodeGroupNode_UNDEFINED_CPU_OVERCOMMIT_TYPE
+	NodeGroupNode_UNDEFINED_STATUS                                                                                        = src.NodeGroupNode_UNDEFINED_STATUS
+	NodeGroup_AS_NEEDED                                                                                                   = src.NodeGroup_AS_NEEDED
+	NodeGroup_CREATING                                                                                                    = src.NodeGroup_CREATING
+	NodeGroup_DEFAULT                                                                                                     = src.NodeGroup_DEFAULT
+	NodeGroup_DELETING                                                                                                    = src.NodeGroup_DELETING
+	NodeGroup_INVALID                                                                                                     = src.NodeGroup_INVALID
+	NodeGroup_MAINTENANCE_POLICY_UNSPECIFIED                                                                              = src.NodeGroup_MAINTENANCE_POLICY_UNSPECIFIED
+	NodeGroup_MIGRATE_WITHIN_NODE_GROUP                                                                                   = src.NodeGroup_MIGRATE_WITHIN_NODE_GROUP
+	NodeGroup_READY                                                                                                       = src.NodeGroup_READY
+	NodeGroup_RECURRENT                                                                                                   = src.NodeGroup_RECURRENT
+	NodeGroup_RESTART_IN_PLACE                                                                                            = src.NodeGroup_RESTART_IN_PLACE
+	NodeGroup_UNDEFINED_MAINTENANCE_INTERVAL                                                                              = src.NodeGroup_UNDEFINED_MAINTENANCE_INTERVAL
+	NodeGroup_UNDEFINED_MAINTENANCE_POLICY                                                                                = src.NodeGroup_UNDEFINED_MAINTENANCE_POLICY
+	NodeGroup_UNDEFINED_STATUS                                                                                            = src.NodeGroup_UNDEFINED_STATUS
+	NodeTemplate_CPU_OVERCOMMIT_TYPE_UNSPECIFIED                                                                          = src.NodeTemplate_CPU_OVERCOMMIT_TYPE_UNSPECIFIED
+	NodeTemplate_CREATING                                                                                                 = src.NodeTemplate_CREATING
+	NodeTemplate_DELETING                                                                                                 = src.NodeTemplate_DELETING
+	NodeTemplate_ENABLED                                                                                                  = src.NodeTemplate_ENABLED
+	NodeTemplate_INVALID                                                                                                  = src.NodeTemplate_INVALID
+	NodeTemplate_NONE                                                                                                     = src.NodeTemplate_NONE
+	NodeTemplate_READY                                                                                                    = src.NodeTemplate_READY
+	NodeTemplate_UNDEFINED_CPU_OVERCOMMIT_TYPE                                                                            = src.NodeTemplate_UNDEFINED_CPU_OVERCOMMIT_TYPE
+	NodeTemplate_UNDEFINED_STATUS                                                                                         = src.NodeTemplate_UNDEFINED_STATUS
+	Operation_DONE                                                                                                        = src.Operation_DONE
+	Operation_PENDING                                                                                                     = src.Operation_PENDING
+	Operation_RUNNING                                                                                                     = src.Operation_RUNNING
+	Operation_UNDEFINED_STATUS                                                                                            = src.Operation_UNDEFINED_STATUS
+	PacketIntervals_DURATION_UNSPECIFIED                                                                                  = src.PacketIntervals_DURATION_UNSPECIFIED
+	PacketIntervals_HOUR                                                                                                  = src.PacketIntervals_HOUR
+	PacketIntervals_LOOPBACK                                                                                              = src.PacketIntervals_LOOPBACK
+	PacketIntervals_MAX                                                                                                   = src.PacketIntervals_MAX
+	PacketIntervals_MINUTE                                                                                                = src.PacketIntervals_MINUTE
+	PacketIntervals_RECEIVE                                                                                               = src.PacketIntervals_RECEIVE
+	PacketIntervals_TRANSMIT                                                                                              = src.PacketIntervals_TRANSMIT
+	PacketIntervals_TYPE_UNSPECIFIED                                                                                      = src.PacketIntervals_TYPE_UNSPECIFIED
+	PacketIntervals_UNDEFINED_DURATION                                                                                    = src.PacketIntervals_UNDEFINED_DURATION
+	PacketIntervals_UNDEFINED_TYPE                                                                                        = src.PacketIntervals_UNDEFINED_TYPE
+	PacketMirroringFilter_BOTH                                                                                            = src.PacketMirroringFilter_BOTH
+	PacketMirroringFilter_EGRESS                                                                                          = src.PacketMirroringFilter_EGRESS
+	PacketMirroringFilter_INGRESS                                                                                         = src.PacketMirroringFilter_INGRESS
+	PacketMirroringFilter_UNDEFINED_DIRECTION                                                                             = src.PacketMirroringFilter_UNDEFINED_DIRECTION
+	PacketMirroring_FALSE                                                                                                 = src.PacketMirroring_FALSE
+	PacketMirroring_TRUE                                                                                                  = src.PacketMirroring_TRUE
+	PacketMirroring_UNDEFINED_ENABLE                                                                                      = src.PacketMirroring_UNDEFINED_ENABLE
+	PerInstanceConfig_APPLYING                                                                                            = src.PerInstanceConfig_APPLYING
+	PerInstanceConfig_DELETING                                                                                            = src.PerInstanceConfig_DELETING
+	PerInstanceConfig_EFFECTIVE                                                                                           = src.PerInstanceConfig_EFFECTIVE
+	PerInstanceConfig_NONE                                                                                                = src.PerInstanceConfig_NONE
+	PerInstanceConfig_UNAPPLIED                                                                                           = src.PerInstanceConfig_UNAPPLIED
+	PerInstanceConfig_UNAPPLIED_DELETION                                                                                  = src.PerInstanceConfig_UNAPPLIED_DELETION
+	PerInstanceConfig_UNDEFINED_STATUS                                                                                    = src.PerInstanceConfig_UNDEFINED_STATUS
+	PreservedStatePreservedDisk_NEVER                                                                                     = src.PreservedStatePreservedDisk_NEVER
+	PreservedStatePreservedDisk_ON_PERMANENT_INSTANCE_DELETION                                                            = src.PreservedStatePreservedDisk_ON_PERMANENT_INSTANCE_DELETION
+	PreservedStatePreservedDisk_READ_ONLY                                                                                 = src.PreservedStatePreservedDisk_READ_ONLY
+	PreservedStatePreservedDisk_READ_WRITE                                                                                = src.PreservedStatePreservedDisk_READ_WRITE
+	PreservedStatePreservedDisk_UNDEFINED_AUTO_DELETE                                                                     = src.PreservedStatePreservedDisk_UNDEFINED_AUTO_DELETE
+	PreservedStatePreservedDisk_UNDEFINED_MODE                                                                            = src.PreservedStatePreservedDisk_UNDEFINED_MODE
+	PreservedStatePreservedNetworkIp_NEVER                                                                                = src.PreservedStatePreservedNetworkIp_NEVER
+	PreservedStatePreservedNetworkIp_ON_PERMANENT_INSTANCE_DELETION                                                       = src.PreservedStatePreservedNetworkIp_ON_PERMANENT_INSTANCE_DELETION
+	PreservedStatePreservedNetworkIp_UNDEFINED_AUTO_DELETE                                                                = src.PreservedStatePreservedNetworkIp_UNDEFINED_AUTO_DELETE
+	Project_CA_ENTERPRISE_ANNUAL                                                                                          = src.Project_CA_ENTERPRISE_ANNUAL
+	Project_CA_ENTERPRISE_PAYGO                                                                                           = src.Project_CA_ENTERPRISE_PAYGO
+	Project_CA_STANDARD                                                                                                   = src.Project_CA_STANDARD
+	Project_FIXED_STANDARD                                                                                                = src.Project_FIXED_STANDARD
+	Project_GLOBAL_DEFAULT                                                                                                = src.Project_GLOBAL_DEFAULT
+	Project_HOST                                                                                                          = src.Project_HOST
+	Project_PREMIUM                                                                                                       = src.Project_PREMIUM
+	Project_STANDARD                                                                                                      = src.Project_STANDARD
+	Project_STANDARD_OVERRIDES_FIXED_STANDARD                                                                             = src.Project_STANDARD_OVERRIDES_FIXED_STANDARD
+	Project_UNDEFINED_CLOUD_ARMOR_TIER                                                                                    = src.Project_UNDEFINED_CLOUD_ARMOR_TIER
+	Project_UNDEFINED_DEFAULT_NETWORK_TIER                                                                                = src.Project_UNDEFINED_DEFAULT_NETWORK_TIER
+	Project_UNDEFINED_VM_DNS_SETTING                                                                                      = src.Project_UNDEFINED_VM_DNS_SETTING
+	Project_UNDEFINED_XPN_PROJECT_STATUS                                                                                  = src.Project_UNDEFINED_XPN_PROJECT_STATUS
+	Project_UNSPECIFIED_VM_DNS_SETTING                                                                                    = src.Project_UNSPECIFIED_VM_DNS_SETTING
+	Project_UNSPECIFIED_XPN_PROJECT_STATUS                                                                                = src.Project_UNSPECIFIED_XPN_PROJECT_STATUS
+	Project_ZONAL_DEFAULT                                                                                                 = src.Project_ZONAL_DEFAULT
+	Project_ZONAL_ONLY                                                                                                    = src.Project_ZONAL_ONLY
+	ProjectsSetCloudArmorTierRequest_CA_ENTERPRISE_ANNUAL                                                                 = src.ProjectsSetCloudArmorTierRequest_CA_ENTERPRISE_ANNUAL
+	ProjectsSetCloudArmorTierRequest_CA_ENTERPRISE_PAYGO                                                                  = src.ProjectsSetCloudArmorTierRequest_CA_ENTERPRISE_PAYGO
+	ProjectsSetCloudArmorTierRequest_CA_STANDARD                                                                          = src.ProjectsSetCloudArmorTierRequest_CA_STANDARD
+	ProjectsSetCloudArmorTierRequest_UNDEFINED_CLOUD_ARMOR_TIER                                                           = src.ProjectsSetCloudArmorTierRequest_UNDEFINED_CLOUD_ARMOR_TIER
+	ProjectsSetDefaultNetworkTierRequest_FIXED_STANDARD                                                                   = src.ProjectsSetDefaultNetworkTierRequest_FIXED_STANDARD
+	ProjectsSetDefaultNetworkTierRequest_PREMIUM                                                                          = src.ProjectsSetDefaultNetworkTierRequest_PREMIUM
+	ProjectsSetDefaultNetworkTierRequest_STANDARD                                                                         = src.ProjectsSetDefaultNetworkTierRequest_STANDARD
+	ProjectsSetDefaultNetworkTierRequest_STANDARD_OVERRIDES_FIXED_STANDARD                                                = src.ProjectsSetDefaultNetworkTierRequest_STANDARD_OVERRIDES_FIXED_STANDARD
+	ProjectsSetDefaultNetworkTierRequest_UNDEFINED_NETWORK_TIER                                                           = src.ProjectsSetDefaultNetworkTierRequest_UNDEFINED_NETWORK_TIER
+	PublicAdvertisedPrefix_ANNOUNCED_TO_INTERNET                                                                          = src.PublicAdvertisedPrefix_ANNOUNCED_TO_INTERNET
+	PublicAdvertisedPrefix_GLOBAL                                                                                         = src.PublicAdvertisedPrefix_GLOBAL
+	PublicAdvertisedPrefix_GLOBAL_AND_REGIONAL                                                                            = src.PublicAdvertisedPrefix_GLOBAL_AND_REGIONAL
+	PublicAdvertisedPrefix_INITIAL                                                                                        = src.PublicAdvertisedPrefix_INITIAL
+	PublicAdvertisedPrefix_PREFIX_CONFIGURATION_COMPLETE                                                                  = src.PublicAdvertisedPrefix_PREFIX_CONFIGURATION_COMPLETE
+	PublicAdvertisedPrefix_PREFIX_CONFIGURATION_IN_PROGRESS                                                               = src.PublicAdvertisedPrefix_PREFIX_CONFIGURATION_IN_PROGRESS
+	PublicAdvertisedPrefix_PREFIX_REMOVAL_IN_PROGRESS                                                                     = src.PublicAdvertisedPrefix_PREFIX_REMOVAL_IN_PROGRESS
+	PublicAdvertisedPrefix_PTR_CONFIGURED                                                                                 = src.PublicAdvertisedPrefix_PTR_CONFIGURED
+	PublicAdvertisedPrefix_READY_TO_ANNOUNCE                                                                              = src.PublicAdvertisedPrefix_READY_TO_ANNOUNCE
+	PublicAdvertisedPrefix_REGIONAL                                                                                       = src.PublicAdvertisedPrefix_REGIONAL
+	PublicAdvertisedPrefix_REVERSE_DNS_LOOKUP_FAILED                                                                      = src.PublicAdvertisedPrefix_REVERSE_DNS_LOOKUP_FAILED
+	PublicAdvertisedPrefix_UNDEFINED_BYOIP_API_VERSION                                                                    = src.PublicAdvertisedPrefix_UNDEFINED_BYOIP_API_VERSION
+	PublicAdvertisedPrefix_UNDEFINED_PDP_SCOPE                                                                            = src.PublicAdvertisedPrefix_UNDEFINED_PDP_SCOPE
+	PublicAdvertisedPrefix_UNDEFINED_STATUS                                                                               = src.PublicAdvertisedPrefix_UNDEFINED_STATUS
+	PublicAdvertisedPrefix_V1                                                                                             = src.PublicAdvertisedPrefix_V1
+	PublicAdvertisedPrefix_V2                                                                                             = src.PublicAdvertisedPrefix_V2
+	PublicAdvertisedPrefix_VALIDATED                                                                                      = src.PublicAdvertisedPrefix_VALIDATED
+	PublicDelegatedPrefixPublicDelegatedSubPrefix_ACTIVE                                                                  = src.PublicDelegatedPrefixPublicDelegatedSubPrefix_ACTIVE
+	PublicDelegatedPrefixPublicDelegatedSubPrefix_DELEGATION                                                              = src.PublicDelegatedPrefixPublicDelegatedSubPrefix_DELEGATION
+	PublicDelegatedPrefixPublicDelegatedSubPrefix_EXTERNAL_IPV6_FORWARDING_RULE_CREATION                                  = src.PublicDelegatedPrefixPublicDelegatedSubPrefix_EXTERNAL_IPV6_FORWARDING_RULE_CREATION
+	PublicDelegatedPrefixPublicDelegatedSubPrefix_INACTIVE                                                                = src.PublicDelegatedPrefixPublicDelegatedSubPrefix_INACTIVE
+	PublicDelegatedPrefixPublicDelegatedSubPrefix_UNDEFINED_MODE                                                          = src.PublicDelegatedPrefixPublicDelegatedSubPrefix_UNDEFINED_MODE
+	PublicDelegatedPrefixPublicDelegatedSubPrefix_UNDEFINED_STATUS                                                        = src.PublicDelegatedPrefixPublicDelegatedSubPrefix_UNDEFINED_STATUS
+	PublicDelegatedPrefix_ANNOUNCED                                                                                       = src.PublicDelegatedPrefix_ANNOUNCED
+	PublicDelegatedPrefix_ANNOUNCED_TO_GOOGLE                                                                             = src.PublicDelegatedPrefix_ANNOUNCED_TO_GOOGLE
+	PublicDelegatedPrefix_ANNOUNCED_TO_INTERNET                                                                           = src.PublicDelegatedPrefix_ANNOUNCED_TO_INTERNET
+	PublicDelegatedPrefix_DELEGATION                                                                                      = src.PublicDelegatedPrefix_DELEGATION
+	PublicDelegatedPrefix_DELETING                                                                                        = src.PublicDelegatedPrefix_DELETING
+	PublicDelegatedPrefix_EXTERNAL_IPV6_FORWARDING_RULE_CREATION                                                          = src.PublicDelegatedPrefix_EXTERNAL_IPV6_FORWARDING_RULE_CREATION
+	PublicDelegatedPrefix_INITIALIZING                                                                                    = src.PublicDelegatedPrefix_INITIALIZING
+	PublicDelegatedPrefix_READY_TO_ANNOUNCE                                                                               = src.PublicDelegatedPrefix_READY_TO_ANNOUNCE
+	PublicDelegatedPrefix_UNDEFINED_BYOIP_API_VERSION                                                                     = src.PublicDelegatedPrefix_UNDEFINED_BYOIP_API_VERSION
+	PublicDelegatedPrefix_UNDEFINED_MODE                                                                                  = src.PublicDelegatedPrefix_UNDEFINED_MODE
+	PublicDelegatedPrefix_UNDEFINED_STATUS                                                                                = src.PublicDelegatedPrefix_UNDEFINED_STATUS
+	PublicDelegatedPrefix_V1                                                                                              = src.PublicDelegatedPrefix_V1
+	PublicDelegatedPrefix_V2                                                                                              = src.PublicDelegatedPrefix_V2
+	QuotaExceededInfo_IN_PROGRESS                                                                                         = src.QuotaExceededInfo_IN_PROGRESS
+	QuotaExceededInfo_ROLLOUT_STATUS_UNSPECIFIED                                                                          = src.QuotaExceededInfo_ROLLOUT_STATUS_UNSPECIFIED
+	QuotaExceededInfo_UNDEFINED_ROLLOUT_STATUS                                                                            = src.QuotaExceededInfo_UNDEFINED_ROLLOUT_STATUS
+	QuotaStatusWarning_CLEANUP_FAILED                                                                                     = src.QuotaStatusWarning_CLEANUP_FAILED
+	QuotaStatusWarning_DEPRECATED_RESOURCE_USED                                                                           = src.QuotaStatusWarning_DEPRECATED_RESOURCE_USED
+	QuotaStatusWarning_DEPRECATED_TYPE_USED                                                                               = src.QuotaStatusWarning_DEPRECATED_TYPE_USED
+	QuotaStatusWarning_DISK_SIZE_LARGER_THAN_IMAGE_SIZE                                                                   = src.QuotaStatusWarning_DISK_SIZE_LARGER_THAN_IMAGE_SIZE
+	QuotaStatusWarning_EXPERIMENTAL_TYPE_USED                                                                             = src.QuotaStatusWarning_EXPERIMENTAL_TYPE_USED
+	QuotaStatusWarning_EXTERNAL_API_WARNING                                                                               = src.QuotaStatusWarning_EXTERNAL_API_WARNING
+	QuotaStatusWarning_FIELD_VALUE_OVERRIDEN                                                                              = src.QuotaStatusWarning_FIELD_VALUE_OVERRIDEN
+	QuotaStatusWarning_INJECTED_KERNELS_DEPRECATED                                                                        = src.QuotaStatusWarning_INJECTED_KERNELS_DEPRECATED
+	QuotaStatusWarning_INVALID_HEALTH_CHECK_FOR_DYNAMIC_WIEGHTED_LB                                                       = src.QuotaStatusWarning_INVALID_HEALTH_CHECK_FOR_DYNAMIC_WIEGHTED_LB
+	QuotaStatusWarning_LARGE_DEPLOYMENT_WARNING                                                                           = src.QuotaStatusWarning_LARGE_DEPLOYMENT_WARNING
+	QuotaStatusWarning_LIST_OVERHEAD_QUOTA_EXCEED                                                                         = src.QuotaStatusWarning_LIST_OVERHEAD_QUOTA_EXCEED
+	QuotaStatusWarning_MISSING_TYPE_DEPENDENCY                                                                            = src.QuotaStatusWarning_MISSING_TYPE_DEPENDENCY
+	QuotaStatusWarning_NEXT_HOP_ADDRESS_NOT_ASSIGNED                                                                      = src.QuotaStatusWarning_NEXT_HOP_ADDRESS_NOT_ASSIGNED
+	QuotaStatusWarning_NEXT_HOP_CANNOT_IP_FORWARD                                                                         = src.QuotaStatusWarning_NEXT_HOP_CANNOT_IP_FORWARD
+	QuotaStatusWarning_NEXT_HOP_INSTANCE_HAS_NO_IPV6_INTERFACE                                                            = src.QuotaStatusWarning_NEXT_HOP_INSTANCE_HAS_NO_IPV6_INTERFACE
+	QuotaStatusWarning_NEXT_HOP_INSTANCE_NOT_FOUND                                                                        = src.QuotaStatusWarning_NEXT_HOP_INSTANCE_NOT_FOUND
+	QuotaStatusWarning_NEXT_HOP_INSTANCE_NOT_ON_NETWORK                                                                   = src.QuotaStatusWarning_NEXT_HOP_INSTANCE_NOT_ON_NETWORK
+	QuotaStatusWarning_NEXT_HOP_NOT_RUNNING                                                                               = src.QuotaStatusWarning_NEXT_HOP_NOT_RUNNING
+	QuotaStatusWarning_NOT_CRITICAL_ERROR                                                                                 = src.QuotaStatusWarning_NOT_CRITICAL_ERROR
+	QuotaStatusWarning_NO_RESULTS_ON_PAGE                                                                                 = src.QuotaStatusWarning_NO_RESULTS_ON_PAGE
+	QuotaStatusWarning_PARTIAL_SUCCESS                                                                                    = src.QuotaStatusWarning_PARTIAL_SUCCESS
+	QuotaStatusWarning_REQUIRED_TOS_AGREEMENT                                                                             = src.QuotaStatusWarning_REQUIRED_TOS_AGREEMENT
+	QuotaStatusWarning_RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING                                                          = src.QuotaStatusWarning_RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING
+	QuotaStatusWarning_RESOURCE_NOT_DELETED                                                                               = src.QuotaStatusWarning_RESOURCE_NOT_DELETED
+	QuotaStatusWarning_SCHEMA_VALIDATION_IGNORED                                                                          = src.QuotaStatusWarning_SCHEMA_VALIDATION_IGNORED
+	QuotaStatusWarning_SINGLE_INSTANCE_PROPERTY_TEMPLATE                                                                  = src.QuotaStatusWarning_SINGLE_INSTANCE_PROPERTY_TEMPLATE
+	QuotaStatusWarning_UNDECLARED_PROPERTIES                                                                              = src.QuotaStatusWarning_UNDECLARED_PROPERTIES
+	QuotaStatusWarning_UNDEFINED_CODE                                                                                     = src.QuotaStatusWarning_UNDEFINED_CODE
+	QuotaStatusWarning_UNREACHABLE                                                                                        = src.QuotaStatusWarning_UNREACHABLE
+	Quota_A2_CPUS                                                                                                         = src.Quota_A2_CPUS
+	Quota_AFFINITY_GROUPS                                                                                                 = src.Quota_AFFINITY_GROUPS
+	Quota_AUTOSCALERS                                                                                                     = src.Quota_AUTOSCALERS
+	Quota_BACKEND_BUCKETS                                                                                                 = src.Quota_BACKEND_BUCKETS
+	Quota_BACKEND_SERVICES                                                                                                = src.Quota_BACKEND_SERVICES
+	Quota_C2D_CPUS                                                                                                        = src.Quota_C2D_CPUS
+	Quota_C2_CPUS                                                                                                         = src.Quota_C2_CPUS
+	Quota_C3_CPUS                                                                                                         = src.Quota_C3_CPUS
+	Quota_COMMITMENTS                                                                                                     = src.Quota_COMMITMENTS
+	Quota_COMMITTED_A2_CPUS                                                                                               = src.Quota_COMMITTED_A2_CPUS
+	Quota_COMMITTED_C2D_CPUS                                                                                              = src.Quota_COMMITTED_C2D_CPUS
+	Quota_COMMITTED_C2_CPUS                                                                                               = src.Quota_COMMITTED_C2_CPUS
+	Quota_COMMITTED_C3_CPUS                                                                                               = src.Quota_COMMITTED_C3_CPUS
+	Quota_COMMITTED_CPUS                                                                                                  = src.Quota_COMMITTED_CPUS
+	Quota_COMMITTED_E2_CPUS                                                                                               = src.Quota_COMMITTED_E2_CPUS
+	Quota_COMMITTED_LICENSES                                                                                              = src.Quota_COMMITTED_LICENSES
+	Quota_COMMITTED_LOCAL_SSD_TOTAL_GB                                                                                    = src.Quota_COMMITTED_LOCAL_SSD_TOTAL_GB
+	Quota_COMMITTED_M3_CPUS                                                                                               = src.Quota_COMMITTED_M3_CPUS
+	Quota_COMMITTED_MEMORY_OPTIMIZED_CPUS                                                                                 = src.Quota_COMMITTED_MEMORY_OPTIMIZED_CPUS
+	Quota_COMMITTED_N2A_CPUS                                                                                              = src.Quota_COMMITTED_N2A_CPUS
+	Quota_COMMITTED_N2D_CPUS                                                                                              = src.Quota_COMMITTED_N2D_CPUS
+	Quota_COMMITTED_N2_CPUS                                                                                               = src.Quota_COMMITTED_N2_CPUS
+	Quota_COMMITTED_NVIDIA_A100_80GB_GPUS                                                                                 = src.Quota_COMMITTED_NVIDIA_A100_80GB_GPUS
+	Quota_COMMITTED_NVIDIA_A100_GPUS                                                                                      = src.Quota_COMMITTED_NVIDIA_A100_GPUS
+	Quota_COMMITTED_NVIDIA_H100_GPUS                                                                                      = src.Quota_COMMITTED_NVIDIA_H100_GPUS
+	Quota_COMMITTED_NVIDIA_K80_GPUS                                                                                       = src.Quota_COMMITTED_NVIDIA_K80_GPUS
+	Quota_COMMITTED_NVIDIA_L4_GPUS                                                                                        = src.Quota_COMMITTED_NVIDIA_L4_GPUS
+	Quota_COMMITTED_NVIDIA_P100_GPUS                                                                                      = src.Quota_COMMITTED_NVIDIA_P100_GPUS
+	Quota_COMMITTED_NVIDIA_P4_GPUS                                                                                        = src.Quota_COMMITTED_NVIDIA_P4_GPUS
+	Quota_COMMITTED_NVIDIA_T4_GPUS                                                                                        = src.Quota_COMMITTED_NVIDIA_T4_GPUS
+	Quota_COMMITTED_NVIDIA_V100_GPUS                                                                                      = src.Quota_COMMITTED_NVIDIA_V100_GPUS
+	Quota_COMMITTED_T2A_CPUS                                                                                              = src.Quota_COMMITTED_T2A_CPUS
+	Quota_COMMITTED_T2D_CPUS                                                                                              = src.Quota_COMMITTED_T2D_CPUS
+	Quota_COMMITTED_Z3_CPUS                                                                                               = src.Quota_COMMITTED_Z3_CPUS
+	Quota_CPUS                                                                                                            = src.Quota_CPUS
+	Quota_CPUS_ALL_REGIONS                                                                                                = src.Quota_CPUS_ALL_REGIONS
+	Quota_DISKS_TOTAL_GB                                                                                                  = src.Quota_DISKS_TOTAL_GB
+	Quota_E2_CPUS                                                                                                         = src.Quota_E2_CPUS
+	Quota_EXTERNAL_MANAGED_FORWARDING_RULES                                                                               = src.Quota_EXTERNAL_MANAGED_FORWARDING_RULES
+	Quota_EXTERNAL_NETWORK_LB_FORWARDING_RULES                                                                            = src.Quota_EXTERNAL_NETWORK_LB_FORWARDING_RULES
+	Quota_EXTERNAL_PROTOCOL_FORWARDING_RULES                                                                              = src.Quota_EXTERNAL_PROTOCOL_FORWARDING_RULES
+	Quota_EXTERNAL_VPN_GATEWAYS                                                                                           = src.Quota_EXTERNAL_VPN_GATEWAYS
+	Quota_FIREWALLS                                                                                                       = src.Quota_FIREWALLS
+	Quota_FORWARDING_RULES                                                                                                = src.Quota_FORWARDING_RULES
+	Quota_GLOBAL_EXTERNAL_MANAGED_BACKEND_SERVICES                                                                        = src.Quota_GLOBAL_EXTERNAL_MANAGED_BACKEND_SERVICES
+	Quota_GLOBAL_EXTERNAL_MANAGED_FORWARDING_RULES                                                                        = src.Quota_GLOBAL_EXTERNAL_MANAGED_FORWARDING_RULES
+	Quota_GLOBAL_EXTERNAL_PROXY_LB_BACKEND_SERVICES                                                                       = src.Quota_GLOBAL_EXTERNAL_PROXY_LB_BACKEND_SERVICES
+	Quota_GLOBAL_INTERNAL_ADDRESSES                                                                                       = src.Quota_GLOBAL_INTERNAL_ADDRESSES
+	Quota_GLOBAL_INTERNAL_MANAGED_BACKEND_SERVICES                                                                        = src.Quota_GLOBAL_INTERNAL_MANAGED_BACKEND_SERVICES
+	Quota_GLOBAL_INTERNAL_TRAFFIC_DIRECTOR_BACKEND_SERVICES                                                               = src.Quota_GLOBAL_INTERNAL_TRAFFIC_DIRECTOR_BACKEND_SERVICES
+	Quota_GPUS_ALL_REGIONS                                                                                                = src.Quota_GPUS_ALL_REGIONS
+	Quota_HDB_TOTAL_GB                                                                                                    = src.Quota_HDB_TOTAL_GB
+	Quota_HDB_TOTAL_IOPS                                                                                                  = src.Quota_HDB_TOTAL_IOPS
+	Quota_HDB_TOTAL_THROUGHPUT                                                                                            = src.Quota_HDB_TOTAL_THROUGHPUT
+	Quota_HEALTH_CHECKS                                                                                                   = src.Quota_HEALTH_CHECKS
+	Quota_IMAGES                                                                                                          = src.Quota_IMAGES
+	Quota_INSTANCES                                                                                                       = src.Quota_INSTANCES
+	Quota_INSTANCE_GROUPS                                                                                                 = src.Quota_INSTANCE_GROUPS
+	Quota_INSTANCE_GROUP_MANAGERS                                                                                         = src.Quota_INSTANCE_GROUP_MANAGERS
+	Quota_INSTANCE_TEMPLATES                                                                                              = src.Quota_INSTANCE_TEMPLATES
+	Quota_INTERCONNECTS                                                                                                   = src.Quota_INTERCONNECTS
+	Quota_INTERCONNECT_ATTACHMENTS_PER_REGION                                                                             = src.Quota_INTERCONNECT_ATTACHMENTS_PER_REGION
+	Quota_INTERCONNECT_ATTACHMENTS_TOTAL_MBPS                                                                             = src.Quota_INTERCONNECT_ATTACHMENTS_TOTAL_MBPS
+	Quota_INTERCONNECT_TOTAL_GBPS                                                                                         = src.Quota_INTERCONNECT_TOTAL_GBPS
+	Quota_INTERNAL_ADDRESSES                                                                                              = src.Quota_INTERNAL_ADDRESSES
+	Quota_INTERNAL_TRAFFIC_DIRECTOR_FORWARDING_RULES                                                                      = src.Quota_INTERNAL_TRAFFIC_DIRECTOR_FORWARDING_RULES
+	Quota_IN_PLACE_SNAPSHOTS                                                                                              = src.Quota_IN_PLACE_SNAPSHOTS
+	Quota_IN_USE_ADDRESSES                                                                                                = src.Quota_IN_USE_ADDRESSES
+	Quota_IN_USE_BACKUP_SCHEDULES                                                                                         = src.Quota_IN_USE_BACKUP_SCHEDULES
+	Quota_IN_USE_SNAPSHOT_SCHEDULES                                                                                       = src.Quota_IN_USE_SNAPSHOT_SCHEDULES
+	Quota_LOCAL_SSD_TOTAL_GB                                                                                              = src.Quota_LOCAL_SSD_TOTAL_GB
+	Quota_M1_CPUS                                                                                                         = src.Quota_M1_CPUS
+	Quota_M2_CPUS                                                                                                         = src.Quota_M2_CPUS
+	Quota_M3_CPUS                                                                                                         = src.Quota_M3_CPUS
+	Quota_MACHINE_IMAGES                                                                                                  = src.Quota_MACHINE_IMAGES
+	Quota_N2A_CPUS                                                                                                        = src.Quota_N2A_CPUS
+	Quota_N2D_CPUS                                                                                                        = src.Quota_N2D_CPUS
+	Quota_N2_CPUS                                                                                                         = src.Quota_N2_CPUS
+	Quota_NETWORKS                                                                                                        = src.Quota_NETWORKS
+	Quota_NETWORK_ATTACHMENTS                                                                                             = src.Quota_NETWORK_ATTACHMENTS
+	Quota_NETWORK_ENDPOINT_GROUPS                                                                                         = src.Quota_NETWORK_ENDPOINT_GROUPS
+	Quota_NETWORK_FIREWALL_POLICIES                                                                                       = src.Quota_NETWORK_FIREWALL_POLICIES
+	Quota_NET_LB_SECURITY_POLICIES_PER_REGION                                                                             = src.Quota_NET_LB_SECURITY_POLICIES_PER_REGION
+	Quota_NET_LB_SECURITY_POLICY_RULES_PER_REGION                                                                         = src.Quota_NET_LB_SECURITY_POLICY_RULES_PER_REGION
+	Quota_NET_LB_SECURITY_POLICY_RULE_ATTRIBUTES_PER_REGION                                                               = src.Quota_NET_LB_SECURITY_POLICY_RULE_ATTRIBUTES_PER_REGION
+	Quota_NODE_GROUPS                                                                                                     = src.Quota_NODE_GROUPS
+	Quota_NODE_TEMPLATES                                                                                                  = src.Quota_NODE_TEMPLATES
+	Quota_NVIDIA_A100_80GB_GPUS                                                                                           = src.Quota_NVIDIA_A100_80GB_GPUS
+	Quota_NVIDIA_A100_GPUS                                                                                                = src.Quota_NVIDIA_A100_GPUS
+	Quota_NVIDIA_K80_GPUS                                                                                                 = src.Quota_NVIDIA_K80_GPUS
+	Quota_NVIDIA_L4_GPUS                                                                                                  = src.Quota_NVIDIA_L4_GPUS
+	Quota_NVIDIA_P100_GPUS                                                                                                = src.Quota_NVIDIA_P100_GPUS
+	Quota_NVIDIA_P100_VWS_GPUS                                                                                            = src.Quota_NVIDIA_P100_VWS_GPUS
+	Quota_NVIDIA_P4_GPUS                                                                                                  = src.Quota_NVIDIA_P4_GPUS
+	Quota_NVIDIA_P4_VWS_GPUS                                                                                              = src.Quota_NVIDIA_P4_VWS_GPUS
+	Quota_NVIDIA_T4_GPUS                                                                                                  = src.Quota_NVIDIA_T4_GPUS
+	Quota_NVIDIA_T4_VWS_GPUS                                                                                              = src.Quota_NVIDIA_T4_VWS_GPUS
+	Quota_NVIDIA_V100_GPUS                                                                                                = src.Quota_NVIDIA_V100_GPUS
+	Quota_PACKET_MIRRORINGS                                                                                               = src.Quota_PACKET_MIRRORINGS
+	Quota_PD_EXTREME_TOTAL_PROVISIONED_IOPS                                                                               = src.Quota_PD_EXTREME_TOTAL_PROVISIONED_IOPS
+	Quota_PREEMPTIBLE_CPUS                                                                                                = src.Quota_PREEMPTIBLE_CPUS
+	Quota_PREEMPTIBLE_LOCAL_SSD_GB                                                                                        = src.Quota_PREEMPTIBLE_LOCAL_SSD_GB
+	Quota_PREEMPTIBLE_NVIDIA_A100_80GB_GPUS                                                                               = src.Quota_PREEMPTIBLE_NVIDIA_A100_80GB_GPUS
+	Quota_PREEMPTIBLE_NVIDIA_A100_GPUS                                                                                    = src.Quota_PREEMPTIBLE_NVIDIA_A100_GPUS
+	Quota_PREEMPTIBLE_NVIDIA_H100_GPUS                                                                                    = src.Quota_PREEMPTIBLE_NVIDIA_H100_GPUS
+	Quota_PREEMPTIBLE_NVIDIA_K80_GPUS                                                                                     = src.Quota_PREEMPTIBLE_NVIDIA_K80_GPUS
+	Quota_PREEMPTIBLE_NVIDIA_L4_GPUS                                                                                      = src.Quota_PREEMPTIBLE_NVIDIA_L4_GPUS
+	Quota_PREEMPTIBLE_NVIDIA_P100_GPUS                                                                                    = src.Quota_PREEMPTIBLE_NVIDIA_P100_GPUS
+	Quota_PREEMPTIBLE_NVIDIA_P100_VWS_GPUS                                                                                = src.Quota_PREEMPTIBLE_NVIDIA_P100_VWS_GPUS
+	Quota_PREEMPTIBLE_NVIDIA_P4_GPUS                                                                                      = src.Quota_PREEMPTIBLE_NVIDIA_P4_GPUS
+	Quota_PREEMPTIBLE_NVIDIA_P4_VWS_GPUS                                                                                  = src.Quota_PREEMPTIBLE_NVIDIA_P4_VWS_GPUS
+	Quota_PREEMPTIBLE_NVIDIA_T4_GPUS                                                                                      = src.Quota_PREEMPTIBLE_NVIDIA_T4_GPUS
+	Quota_PREEMPTIBLE_NVIDIA_T4_VWS_GPUS                                                                                  = src.Quota_PREEMPTIBLE_NVIDIA_T4_VWS_GPUS
+	Quota_PREEMPTIBLE_NVIDIA_V100_GPUS                                                                                    = src.Quota_PREEMPTIBLE_NVIDIA_V100_GPUS
+	Quota_PREEMPTIBLE_TPU_LITE_DEVICE_V5                                                                                  = src.Quota_PREEMPTIBLE_TPU_LITE_DEVICE_V5
+	Quota_PREEMPTIBLE_TPU_LITE_PODSLICE_V5                                                                                = src.Quota_PREEMPTIBLE_TPU_LITE_PODSLICE_V5
+	Quota_PREEMPTIBLE_TPU_PODSLICE_V4                                                                                     = src.Quota_PREEMPTIBLE_TPU_PODSLICE_V4
+	Quota_PSC_ILB_CONSUMER_FORWARDING_RULES_PER_PRODUCER_NETWORK                                                          = src.Quota_PSC_ILB_CONSUMER_FORWARDING_RULES_PER_PRODUCER_NETWORK
+	Quota_PSC_INTERNAL_LB_FORWARDING_RULES                                                                                = src.Quota_PSC_INTERNAL_LB_FORWARDING_RULES
+	Quota_PUBLIC_ADVERTISED_PREFIXES                                                                                      = src.Quota_PUBLIC_ADVERTISED_PREFIXES
+	Quota_PUBLIC_DELEGATED_PREFIXES                                                                                       = src.Quota_PUBLIC_DELEGATED_PREFIXES
+	Quota_REGIONAL_AUTOSCALERS                                                                                            = src.Quota_REGIONAL_AUTOSCALERS
+	Quota_REGIONAL_EXTERNAL_MANAGED_BACKEND_SERVICES                                                                      = src.Quota_REGIONAL_EXTERNAL_MANAGED_BACKEND_SERVICES
+	Quota_REGIONAL_EXTERNAL_NETWORK_LB_BACKEND_SERVICES                                                                   = src.Quota_REGIONAL_EXTERNAL_NETWORK_LB_BACKEND_SERVICES
+	Quota_REGIONAL_INSTANCE_GROUP_MANAGERS                                                                                = src.Quota_REGIONAL_INSTANCE_GROUP_MANAGERS
+	Quota_REGIONAL_INTERNAL_LB_BACKEND_SERVICES                                                                           = src.Quota_REGIONAL_INTERNAL_LB_BACKEND_SERVICES
+	Quota_REGIONAL_INTERNAL_MANAGED_BACKEND_SERVICES                                                                      = src.Quota_REGIONAL_INTERNAL_MANAGED_BACKEND_SERVICES
+	Quota_REGIONAL_INTERNAL_TRAFFIC_DIRECTOR_BACKEND_SERVICES                                                             = src.Quota_REGIONAL_INTERNAL_TRAFFIC_DIRECTOR_BACKEND_SERVICES
+	Quota_RESERVATIONS                                                                                                    = src.Quota_RESERVATIONS
+	Quota_RESOURCE_POLICIES                                                                                               = src.Quota_RESOURCE_POLICIES
+	Quota_ROUTERS                                                                                                         = src.Quota_ROUTERS
+	Quota_ROUTES                                                                                                          = src.Quota_ROUTES
+	Quota_SECURITY_POLICIES                                                                                               = src.Quota_SECURITY_POLICIES
+	Quota_SECURITY_POLICIES_PER_REGION                                                                                    = src.Quota_SECURITY_POLICIES_PER_REGION
+	Quota_SECURITY_POLICY_ADVANCED_RULES_PER_REGION                                                                       = src.Quota_SECURITY_POLICY_ADVANCED_RULES_PER_REGION
+	Quota_SECURITY_POLICY_CEVAL_RULES                                                                                     = src.Quota_SECURITY_POLICY_CEVAL_RULES
+	Quota_SECURITY_POLICY_RULES                                                                                           = src.Quota_SECURITY_POLICY_RULES
+	Quota_SECURITY_POLICY_RULES_PER_REGION                                                                                = src.Quota_SECURITY_POLICY_RULES_PER_REGION
+	Quota_SERVICE_ATTACHMENTS                                                                                             = src.Quota_SERVICE_ATTACHMENTS
+	Quota_SNAPSHOTS                                                                                                       = src.Quota_SNAPSHOTS
+	Quota_SSD_TOTAL_GB                                                                                                    = src.Quota_SSD_TOTAL_GB
+	Quota_SSL_CERTIFICATES                                                                                                = src.Quota_SSL_CERTIFICATES
+	Quota_SSL_POLICIES                                                                                                    = src.Quota_SSL_POLICIES
+	Quota_STATIC_ADDRESSES                                                                                                = src.Quota_STATIC_ADDRESSES
+	Quota_STATIC_BYOIP_ADDRESSES                                                                                          = src.Quota_STATIC_BYOIP_ADDRESSES
+	Quota_STATIC_EXTERNAL_IPV6_ADDRESS_RANGES                                                                             = src.Quota_STATIC_EXTERNAL_IPV6_ADDRESS_RANGES
+	Quota_SUBNETWORKS                                                                                                     = src.Quota_SUBNETWORKS
+	Quota_T2A_CPUS                                                                                                        = src.Quota_T2A_CPUS
+	Quota_T2D_CPUS                                                                                                        = src.Quota_T2D_CPUS
+	Quota_TARGET_HTTPS_PROXIES                                                                                            = src.Quota_TARGET_HTTPS_PROXIES
+	Quota_TARGET_HTTP_PROXIES                                                                                             = src.Quota_TARGET_HTTP_PROXIES
+	Quota_TARGET_INSTANCES                                                                                                = src.Quota_TARGET_INSTANCES
+	Quota_TARGET_POOLS                                                                                                    = src.Quota_TARGET_POOLS
+	Quota_TARGET_SSL_PROXIES                                                                                              = src.Quota_TARGET_SSL_PROXIES
+	Quota_TARGET_TCP_PROXIES                                                                                              = src.Quota_TARGET_TCP_PROXIES
+	Quota_TARGET_VPN_GATEWAYS                                                                                             = src.Quota_TARGET_VPN_GATEWAYS
+	Quota_TPU_LITE_DEVICE_V5                                                                                              = src.Quota_TPU_LITE_DEVICE_V5
+	Quota_TPU_LITE_PODSLICE_V5                                                                                            = src.Quota_TPU_LITE_PODSLICE_V5
+	Quota_TPU_PODSLICE_V4                                                                                                 = src.Quota_TPU_PODSLICE_V4
+	Quota_UNDEFINED_METRIC                                                                                                = src.Quota_UNDEFINED_METRIC
+	Quota_URL_MAPS                                                                                                        = src.Quota_URL_MAPS
+	Quota_VARIABLE_IPV6_PUBLIC_DELEGATED_PREFIXES                                                                         = src.Quota_VARIABLE_IPV6_PUBLIC_DELEGATED_PREFIXES
+	Quota_VPN_GATEWAYS                                                                                                    = src.Quota_VPN_GATEWAYS
+	Quota_VPN_TUNNELS                                                                                                     = src.Quota_VPN_TUNNELS
+	Quota_XPN_SERVICE_PROJECTS                                                                                            = src.Quota_XPN_SERVICE_PROJECTS
+	RawDisk_TAR                                                                                                           = src.RawDisk_TAR
+	RawDisk_UNDEFINED_CONTAINER_TYPE                                                                                      = src.RawDisk_UNDEFINED_CONTAINER_TYPE
+	RegionInstanceGroupManagersApplyUpdatesRequest_UNDEFINED_MINIMAL_ACTION                                               = src.RegionInstanceGroupManagersApplyUpdatesRequest_UNDEFINED_MINIMAL_ACTION
+	RegionInstanceGroupManagersApplyUpdatesRequest_UNDEFINED_MOST_DISRUPTIVE_ALLOWED_ACTION                               = src.RegionInstanceGroupManagersApplyUpdatesRequest_UNDEFINED_MOST_DISRUPTIVE_ALLOWED_ACTION
+	RegionInstanceGroupsListInstancesRequest_ALL                                                                          = src.RegionInstanceGroupsListInstancesRequest_ALL
+	RegionInstanceGroupsListInstancesRequest_RUNNING                                                                      = src.RegionInstanceGroupsListInstancesRequest_RUNNING
+	RegionInstanceGroupsListInstancesRequest_UNDEFINED_INSTANCE_STATE                                                     = src.RegionInstanceGroupsListInstancesRequest_UNDEFINED_INSTANCE_STATE
+	RegionNetworkFirewallPoliciesGetEffectiveFirewallsResponseEffectiveFirewallPolicy_HIERARCHY                           = src.RegionNetworkFirewallPoliciesGetEffectiveFirewallsResponseEffectiveFirewallPolicy_HIERARCHY
+	RegionNetworkFirewallPoliciesGetEffectiveFirewallsResponseEffectiveFirewallPolicy_NETWORK                             = src.RegionNetworkFirewallPoliciesGetEffectiveFirewallsResponseEffectiveFirewallPolicy_NETWORK
+	RegionNetworkFirewallPoliciesGetEffectiveFirewallsResponseEffectiveFirewallPolicy_NETWORK_REGIONAL                    = src.RegionNetworkFirewallPoliciesGetEffectiveFirewallsResponseEffectiveFirewallPolicy_NETWORK_REGIONAL
+	RegionNetworkFirewallPoliciesGetEffectiveFirewallsResponseEffectiveFirewallPolicy_UNDEFINED_TYPE                      = src.RegionNetworkFirewallPoliciesGetEffectiveFirewallsResponseEffectiveFirewallPolicy_UNDEFINED_TYPE
+	RegionNetworkFirewallPoliciesGetEffectiveFirewallsResponseEffectiveFirewallPolicy_UNSPECIFIED                         = src.RegionNetworkFirewallPoliciesGetEffectiveFirewallsResponseEffectiveFirewallPolicy_UNSPECIFIED
+	Region_DOWN                                                                                                           = src.Region_DOWN
+	Region_UNDEFINED_STATUS                                                                                               = src.Region_UNDEFINED_STATUS
+	Region_UP                                                                                                             = src.Region_UP
+	ReservationAffinity_ANY_RESERVATION                                                                                   = src.ReservationAffinity_ANY_RESERVATION
+	ReservationAffinity_NO_RESERVATION                                                                                    = src.ReservationAffinity_NO_RESERVATION
+	ReservationAffinity_SPECIFIC_RESERVATION                                                                              = src.ReservationAffinity_SPECIFIC_RESERVATION
+	ReservationAffinity_UNDEFINED_CONSUME_RESERVATION_TYPE                                                                = src.ReservationAffinity_UNDEFINED_CONSUME_RESERVATION_TYPE
+	ReservationAffinity_UNSPECIFIED                                                                                       = src.ReservationAffinity_UNSPECIFIED
+	Reservation_CREATING                                                                                                  = src.Reservation_CREATING
+	Reservation_DELETING                                                                                                  = src.Reservation_DELETING
+	Reservation_INVALID                                                                                                   = src.Reservation_INVALID
+	Reservation_READY                                                                                                     = src.Reservation_READY
+	Reservation_UNDEFINED_STATUS                                                                                          = src.Reservation_UNDEFINED_STATUS
+	Reservation_UPDATING                                                                                                  = src.Reservation_UPDATING
+	ResourceCommitment_ACCELERATOR                                                                                        = src.ResourceCommitment_ACCELERATOR
+	ResourceCommitment_LOCAL_SSD                                                                                          = src.ResourceCommitment_LOCAL_SSD
+	ResourceCommitment_MEMORY                                                                                             = src.ResourceCommitment_MEMORY
+	ResourceCommitment_UNDEFINED_TYPE                                                                                     = src.ResourceCommitment_UNDEFINED_TYPE
+	ResourceCommitment_UNSPECIFIED                                                                                        = src.ResourceCommitment_UNSPECIFIED
+	ResourceCommitment_VCPU                                                                                               = src.ResourceCommitment_VCPU
+	ResourcePolicyGroupPlacementPolicy_COLLOCATED                                                                         = src.ResourcePolicyGroupPlacementPolicy_COLLOCATED
+	ResourcePolicyGroupPlacementPolicy_UNDEFINED_COLLOCATION                                                              = src.ResourcePolicyGroupPlacementPolicy_UNDEFINED_COLLOCATION
+	ResourcePolicyGroupPlacementPolicy_UNSPECIFIED_COLLOCATION                                                            = src.ResourcePolicyGroupPlacementPolicy_UNSPECIFIED_COLLOCATION
+	ResourcePolicySnapshotSchedulePolicyRetentionPolicy_APPLY_RETENTION_POLICY                                            = src.ResourcePolicySnapshotSchedulePolicyRetentionPolicy_APPLY_RETENTION_POLICY
+	ResourcePolicySnapshotSchedulePolicyRetentionPolicy_KEEP_AUTO_SNAPSHOTS                                               = src.ResourcePolicySnapshotSchedulePolicyRetentionPolicy_KEEP_AUTO_SNAPSHOTS
+	ResourcePolicySnapshotSchedulePolicyRetentionPolicy_UNDEFINED_ON_SOURCE_DISK_DELETE                                   = src.ResourcePolicySnapshotSchedulePolicyRetentionPolicy_UNDEFINED_ON_SOURCE_DISK_DELETE
+	ResourcePolicySnapshotSchedulePolicyRetentionPolicy_UNSPECIFIED_ON_SOURCE_DISK_DELETE                                 = src.ResourcePolicySnapshotSchedulePolicyRetentionPolicy_UNSPECIFIED_ON_SOURCE_DISK_DELETE
+	ResourcePolicyWeeklyCycleDayOfWeek_FRIDAY                                                                             = src.ResourcePolicyWeeklyCycleDayOfWeek_FRIDAY
+	ResourcePolicyWeeklyCycleDayOfWeek_INVALID                                                                            = src.ResourcePolicyWeeklyCycleDayOfWeek_INVALID
+	ResourcePolicyWeeklyCycleDayOfWeek_MONDAY                                                                             = src.ResourcePolicyWeeklyCycleDayOfWeek_MONDAY
+	ResourcePolicyWeeklyCycleDayOfWeek_SATURDAY                                                                           = src.ResourcePolicyWeeklyCycleDayOfWeek_SATURDAY
+	ResourcePolicyWeeklyCycleDayOfWeek_SUNDAY                                                                             = src.ResourcePolicyWeeklyCycleDayOfWeek_SUNDAY
+	ResourcePolicyWeeklyCycleDayOfWeek_THURSDAY                                                                           = src.ResourcePolicyWeeklyCycleDayOfWeek_THURSDAY
+	ResourcePolicyWeeklyCycleDayOfWeek_TUESDAY                                                                            = src.ResourcePolicyWeeklyCycleDayOfWeek_TUESDAY
+	ResourcePolicyWeeklyCycleDayOfWeek_UNDEFINED_DAY                                                                      = src.ResourcePolicyWeeklyCycleDayOfWeek_UNDEFINED_DAY
+	ResourcePolicyWeeklyCycleDayOfWeek_WEDNESDAY                                                                          = src.ResourcePolicyWeeklyCycleDayOfWeek_WEDNESDAY
+	ResourcePolicy_CREATING                                                                                               = src.ResourcePolicy_CREATING
+	ResourcePolicy_DELETING                                                                                               = src.ResourcePolicy_DELETING
+	ResourcePolicy_EXPIRED                                                                                                = src.ResourcePolicy_EXPIRED
+	ResourcePolicy_INVALID                                                                                                = src.ResourcePolicy_INVALID
+	ResourcePolicy_READY                                                                                                  = src.ResourcePolicy_READY
+	ResourcePolicy_UNDEFINED_STATUS                                                                                       = src.ResourcePolicy_UNDEFINED_STATUS
+	RouteAsPath_AS_CONFED_SEQUENCE                                                                                        = src.RouteAsPath_AS_CONFED_SEQUENCE
+	RouteAsPath_AS_CONFED_SET                                                                                             = src.RouteAsPath_AS_CONFED_SET
+	RouteAsPath_AS_SEQUENCE                                                                                               = src.RouteAsPath_AS_SEQUENCE
+	RouteAsPath_AS_SET                                                                                                    = src.RouteAsPath_AS_SET
+	RouteAsPath_UNDEFINED_PATH_SEGMENT_TYPE                                                                               = src.RouteAsPath_UNDEFINED_PATH_SEGMENT_TYPE
+	Route_ACTIVE                                                                                                          = src.Route_ACTIVE
+	Route_BGP                                                                                                             = src.Route_BGP
+	Route_DROPPED                                                                                                         = src.Route_DROPPED
+	Route_INACTIVE                                                                                                        = src.Route_INACTIVE
+	Route_PENDING                                                                                                         = src.Route_PENDING
+	Route_STATIC                                                                                                          = src.Route_STATIC
+	Route_SUBNET                                                                                                          = src.Route_SUBNET
+	Route_TRANSIT                                                                                                         = src.Route_TRANSIT
+	Route_UNDEFINED_ROUTE_STATUS                                                                                          = src.Route_UNDEFINED_ROUTE_STATUS
+	Route_UNDEFINED_ROUTE_TYPE                                                                                            = src.Route_UNDEFINED_ROUTE_TYPE
+	RouterBgpPeerBfd_ACTIVE                                                                                               = src.RouterBgpPeerBfd_ACTIVE
+	RouterBgpPeerBfd_DISABLED                                                                                             = src.RouterBgpPeerBfd_DISABLED
+	RouterBgpPeerBfd_PASSIVE                                                                                              = src.RouterBgpPeerBfd_PASSIVE
+	RouterBgpPeerBfd_UNDEFINED_SESSION_INITIALIZATION_MODE                                                                = src.RouterBgpPeerBfd_UNDEFINED_SESSION_INITIALIZATION_MODE
+	RouterBgpPeer_ALL_SUBNETS                                                                                             = src.RouterBgpPeer_ALL_SUBNETS
+	RouterBgpPeer_CUSTOM                                                                                                  = src.RouterBgpPeer_CUSTOM
+	RouterBgpPeer_DEFAULT                                                                                                 = src.RouterBgpPeer_DEFAULT
+	RouterBgpPeer_FALSE                                                                                                   = src.RouterBgpPeer_FALSE
+	RouterBgpPeer_MANAGED_BY_ATTACHMENT                                                                                   = src.RouterBgpPeer_MANAGED_BY_ATTACHMENT
+	RouterBgpPeer_MANAGED_BY_USER                                                                                         = src.RouterBgpPeer_MANAGED_BY_USER
+	RouterBgpPeer_TRUE                                                                                                    = src.RouterBgpPeer_TRUE
+	RouterBgpPeer_UNDEFINED_ADVERTISED_GROUPS                                                                             = src.RouterBgpPeer_UNDEFINED_ADVERTISED_GROUPS
+	RouterBgpPeer_UNDEFINED_ADVERTISE_MODE                                                                                = src.RouterBgpPeer_UNDEFINED_ADVERTISE_MODE
+	RouterBgpPeer_UNDEFINED_ENABLE                                                                                        = src.RouterBgpPeer_UNDEFINED_ENABLE
+	RouterBgpPeer_UNDEFINED_MANAGEMENT_TYPE                                                                               = src.RouterBgpPeer_UNDEFINED_MANAGEMENT_TYPE
+	RouterBgp_ALL_SUBNETS                                                                                                 = src.RouterBgp_ALL_SUBNETS
+	RouterBgp_CUSTOM                                                                                                      = src.RouterBgp_CUSTOM
+	RouterBgp_DEFAULT                                                                                                     = src.RouterBgp_DEFAULT
+	RouterBgp_UNDEFINED_ADVERTISED_GROUPS                                                                                 = src.RouterBgp_UNDEFINED_ADVERTISED_GROUPS
+	RouterBgp_UNDEFINED_ADVERTISE_MODE                                                                                    = src.RouterBgp_UNDEFINED_ADVERTISE_MODE
+	RouterInterface_IPV4                                                                                                  = src.RouterInterface_IPV4
+	RouterInterface_IPV6                                                                                                  = src.RouterInterface_IPV6
+	RouterInterface_MANAGED_BY_ATTACHMENT                                                                                 = src.RouterInterface_MANAGED_BY_ATTACHMENT
+	RouterInterface_MANAGED_BY_USER                                                                                       = src.RouterInterface_MANAGED_BY_USER
+	RouterInterface_UNDEFINED_IP_VERSION                                                                                  = src.RouterInterface_UNDEFINED_IP_VERSION
+	RouterInterface_UNDEFINED_MANAGEMENT_TYPE                                                                             = src.RouterInterface_UNDEFINED_MANAGEMENT_TYPE
+	RouterNatLogConfig_ALL                                                                                                = src.RouterNatLogConfig_ALL
+	RouterNatLogConfig_ERRORS_ONLY                                                                                        = src.RouterNatLogConfig_ERRORS_ONLY
+	RouterNatLogConfig_TRANSLATIONS_ONLY                                                                                  = src.RouterNatLogConfig_TRANSLATIONS_ONLY
+	RouterNatLogConfig_UNDEFINED_FILTER                                                                                   = src.RouterNatLogConfig_UNDEFINED_FILTER
+	RouterNatSubnetworkToNat_ALL_IP_RANGES                                                                                = src.RouterNatSubnetworkToNat_ALL_IP_RANGES
+	RouterNatSubnetworkToNat_LIST_OF_SECONDARY_IP_RANGES                                                                  = src.RouterNatSubnetworkToNat_LIST_OF_SECONDARY_IP_RANGES
+	RouterNatSubnetworkToNat_PRIMARY_IP_RANGE                                                                             = src.RouterNatSubnetworkToNat_PRIMARY_IP_RANGE
+	RouterNatSubnetworkToNat_UNDEFINED_SOURCE_IP_RANGES_TO_NAT                                                            = src.RouterNatSubnetworkToNat_UNDEFINED_SOURCE_IP_RANGES_TO_NAT
+	RouterNat_ALL_SUBNETWORKS_ALL_IP_RANGES                                                                               = src.RouterNat_ALL_SUBNETWORKS_ALL_IP_RANGES
+	RouterNat_ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES                                                                       = src.RouterNat_ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES
+	RouterNat_AUTO_ONLY                                                                                                   = src.RouterNat_AUTO_ONLY
+	RouterNat_ENDPOINT_TYPE_MANAGED_PROXY_LB                                                                              = src.RouterNat_ENDPOINT_TYPE_MANAGED_PROXY_LB
+	RouterNat_ENDPOINT_TYPE_SWG                                                                                           = src.RouterNat_ENDPOINT_TYPE_SWG
+	RouterNat_ENDPOINT_TYPE_VM                                                                                            = src.RouterNat_ENDPOINT_TYPE_VM
+	RouterNat_FIXED_STANDARD                                                                                              = src.RouterNat_FIXED_STANDARD
+	RouterNat_LIST_OF_SUBNETWORKS                                                                                         = src.RouterNat_LIST_OF_SUBNETWORKS
+	RouterNat_MANUAL_ONLY                                                                                                 = src.RouterNat_MANUAL_ONLY
+	RouterNat_PREMIUM                                                                                                     = src.RouterNat_PREMIUM
+	RouterNat_PRIVATE                                                                                                     = src.RouterNat_PRIVATE
+	RouterNat_PUBLIC                                                                                                      = src.RouterNat_PUBLIC
+	RouterNat_STANDARD                                                                                                    = src.RouterNat_STANDARD
+	RouterNat_STANDARD_OVERRIDES_FIXED_STANDARD                                                                           = src.RouterNat_STANDARD_OVERRIDES_FIXED_STANDARD
+	RouterNat_UNDEFINED_AUTO_NETWORK_TIER                                                                                 = src.RouterNat_UNDEFINED_AUTO_NETWORK_TIER
+	RouterNat_UNDEFINED_ENDPOINT_TYPES                                                                                    = src.RouterNat_UNDEFINED_ENDPOINT_TYPES
+	RouterNat_UNDEFINED_NAT_IP_ALLOCATE_OPTION                                                                            = src.RouterNat_UNDEFINED_NAT_IP_ALLOCATE_OPTION
+	RouterNat_UNDEFINED_SOURCE_SUBNETWORK_IP_RANGES_TO_NAT                                                                = src.RouterNat_UNDEFINED_SOURCE_SUBNETWORK_IP_RANGES_TO_NAT
+	RouterNat_UNDEFINED_TYPE                                                                                              = src.RouterNat_UNDEFINED_TYPE
+	RouterStatusBgpPeerStatus_DOWN                                                                                        = src.RouterStatusBgpPeerStatus_DOWN
+	RouterStatusBgpPeerStatus_IPV4_PEER_ON_IPV6_ONLY_CONNECTION                                                           = src.RouterStatusBgpPeerStatus_IPV4_PEER_ON_IPV6_ONLY_CONNECTION
+	RouterStatusBgpPeerStatus_IPV6_PEER_ON_IPV4_ONLY_CONNECTION                                                           = src.RouterStatusBgpPeerStatus_IPV6_PEER_ON_IPV4_ONLY_CONNECTION
+	RouterStatusBgpPeerStatus_MD5_AUTH_INTERNAL_PROBLEM                                                                   = src.RouterStatusBgpPeerStatus_MD5_AUTH_INTERNAL_PROBLEM
+	RouterStatusBgpPeerStatus_STATUS_REASON_UNSPECIFIED                                                                   = src.RouterStatusBgpPeerStatus_STATUS_REASON_UNSPECIFIED
+	RouterStatusBgpPeerStatus_UNDEFINED_STATUS                                                                            = src.RouterStatusBgpPeerStatus_UNDEFINED_STATUS
+	RouterStatusBgpPeerStatus_UNDEFINED_STATUS_REASON                                                                     = src.RouterStatusBgpPeerStatus_UNDEFINED_STATUS_REASON
+	RouterStatusBgpPeerStatus_UNKNOWN                                                                                     = src.RouterStatusBgpPeerStatus_UNKNOWN
+	RouterStatusBgpPeerStatus_UP                                                                                          = src.RouterStatusBgpPeerStatus_UP
+	SSLHealthCheck_NONE                                                                                                   = src.SSLHealthCheck_NONE
+	SSLHealthCheck_PROXY_V1                                                                                               = src.SSLHealthCheck_PROXY_V1
+	SSLHealthCheck_UNDEFINED_PORT_SPECIFICATION                                                                           = src.SSLHealthCheck_UNDEFINED_PORT_SPECIFICATION
+	SSLHealthCheck_UNDEFINED_PROXY_HEADER                                                                                 = src.SSLHealthCheck_UNDEFINED_PROXY_HEADER
+	SSLHealthCheck_USE_FIXED_PORT                                                                                         = src.SSLHealthCheck_USE_FIXED_PORT
+	SSLHealthCheck_USE_NAMED_PORT                                                                                         = src.SSLHealthCheck_USE_NAMED_PORT
+	SSLHealthCheck_USE_SERVING_PORT                                                                                       = src.SSLHealthCheck_USE_SERVING_PORT
+	SavedAttachedDisk_NVME                                                                                                = src.SavedAttachedDisk_NVME
+	SavedAttachedDisk_PERSISTENT                                                                                          = src.SavedAttachedDisk_PERSISTENT
+	SavedAttachedDisk_READ_ONLY                                                                                           = src.SavedAttachedDisk_READ_ONLY
+	SavedAttachedDisk_READ_WRITE                                                                                          = src.SavedAttachedDisk_READ_WRITE
+	SavedAttachedDisk_SCRATCH                                                                                             = src.SavedAttachedDisk_SCRATCH
+	SavedAttachedDisk_SCSI                                                                                                = src.SavedAttachedDisk_SCSI
+	SavedAttachedDisk_UNDEFINED_INTERFACE                                                                                 = src.SavedAttachedDisk_UNDEFINED_INTERFACE
+	SavedAttachedDisk_UNDEFINED_MODE                                                                                      = src.SavedAttachedDisk_UNDEFINED_MODE
+	SavedAttachedDisk_UNDEFINED_STORAGE_BYTES_STATUS                                                                      = src.SavedAttachedDisk_UNDEFINED_STORAGE_BYTES_STATUS
+	SavedAttachedDisk_UNDEFINED_TYPE                                                                                      = src.SavedAttachedDisk_UNDEFINED_TYPE
+	SavedAttachedDisk_UPDATING                                                                                            = src.SavedAttachedDisk_UPDATING
+	SavedAttachedDisk_UP_TO_DATE                                                                                          = src.SavedAttachedDisk_UP_TO_DATE
+	SavedDisk_ARCHITECTURE_UNSPECIFIED                                                                                    = src.SavedDisk_ARCHITECTURE_UNSPECIFIED
+	SavedDisk_ARM64                                                                                                       = src.SavedDisk_ARM64
+	SavedDisk_UNDEFINED_ARCHITECTURE                                                                                      = src.SavedDisk_UNDEFINED_ARCHITECTURE
+	SavedDisk_UNDEFINED_STORAGE_BYTES_STATUS                                                                              = src.SavedDisk_UNDEFINED_STORAGE_BYTES_STATUS
+	SavedDisk_UPDATING                                                                                                    = src.SavedDisk_UPDATING
+	SavedDisk_UP_TO_DATE                                                                                                  = src.SavedDisk_UP_TO_DATE
+	SavedDisk_X86_64                                                                                                      = src.SavedDisk_X86_64
+	ScalingScheduleStatus_ACTIVE                                                                                          = src.ScalingScheduleStatus_ACTIVE
+	ScalingScheduleStatus_DISABLED                                                                                        = src.ScalingScheduleStatus_DISABLED
+	ScalingScheduleStatus_OBSOLETE                                                                                        = src.ScalingScheduleStatus_OBSOLETE
+	ScalingScheduleStatus_READY                                                                                           = src.ScalingScheduleStatus_READY
+	ScalingScheduleStatus_UNDEFINED_STATE                                                                                 = src.ScalingScheduleStatus_UNDEFINED_STATE
+	SchedulingNodeAffinity_IN                                                                                             = src.SchedulingNodeAffinity_IN
+	SchedulingNodeAffinity_NOT_IN                                                                                         = src.SchedulingNodeAffinity_NOT_IN
+	SchedulingNodeAffinity_OPERATOR_UNSPECIFIED                                                                           = src.SchedulingNodeAffinity_OPERATOR_UNSPECIFIED
+	SchedulingNodeAffinity_UNDEFINED_OPERATOR                                                                             = src.SchedulingNodeAffinity_UNDEFINED_OPERATOR
+	Scheduling_DELETE                                                                                                     = src.Scheduling_DELETE
+	Scheduling_INSTANCE_TERMINATION_ACTION_UNSPECIFIED                                                                    = src.Scheduling_INSTANCE_TERMINATION_ACTION_UNSPECIFIED
+	Scheduling_MIGRATE                                                                                                    = src.Scheduling_MIGRATE
+	Scheduling_SPOT                                                                                                       = src.Scheduling_SPOT
+	Scheduling_STANDARD                                                                                                   = src.Scheduling_STANDARD
+	Scheduling_STOP                                                                                                       = src.Scheduling_STOP
+	Scheduling_TERMINATE                                                                                                  = src.Scheduling_TERMINATE
+	Scheduling_UNDEFINED_INSTANCE_TERMINATION_ACTION                                                                      = src.Scheduling_UNDEFINED_INSTANCE_TERMINATION_ACTION
+	Scheduling_UNDEFINED_ON_HOST_MAINTENANCE                                                                              = src.Scheduling_UNDEFINED_ON_HOST_MAINTENANCE
+	Scheduling_UNDEFINED_PROVISIONING_MODEL                                                                               = src.Scheduling_UNDEFINED_PROVISIONING_MODEL
+	SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig_HTTP_HEADER_HOST = src.SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig_HTTP_HEADER_HOST
+	SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig_HTTP_PATH        = src.SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig_HTTP_PATH
+	SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig_UNDEFINED_TYPE   = src.SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig_UNDEFINED_TYPE
+	SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig_UNSPECIFIED_TYPE = src.SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig_UNSPECIFIED_TYPE
+	SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig_PREMIUM                                                 = src.SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig_PREMIUM
+	SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig_STANDARD                                                = src.SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig_STANDARD
+	SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig_UNDEFINED_RULE_VISIBILITY                               = src.SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig_UNDEFINED_RULE_VISIBILITY
+	SecurityPolicyAdvancedOptionsConfig_DISABLED                                                                          = src.SecurityPolicyAdvancedOptionsConfig_DISABLED
+	SecurityPolicyAdvancedOptionsConfig_NORMAL                                                                            = src.SecurityPolicyAdvancedOptionsConfig_NORMAL
+	SecurityPolicyAdvancedOptionsConfig_STANDARD                                                                          = src.SecurityPolicyAdvancedOptionsConfig_STANDARD
+	SecurityPolicyAdvancedOptionsConfig_STANDARD_WITH_GRAPHQL                                                             = src.SecurityPolicyAdvancedOptionsConfig_STANDARD_WITH_GRAPHQL
+	SecurityPolicyAdvancedOptionsConfig_UNDEFINED_JSON_PARSING                                                            = src.SecurityPolicyAdvancedOptionsConfig_UNDEFINED_JSON_PARSING
+	SecurityPolicyAdvancedOptionsConfig_UNDEFINED_LOG_LEVEL                                                               = src.SecurityPolicyAdvancedOptionsConfig_UNDEFINED_LOG_LEVEL
+	SecurityPolicyAdvancedOptionsConfig_VERBOSE                                                                           = src.SecurityPolicyAdvancedOptionsConfig_VERBOSE
+	SecurityPolicyDdosProtectionConfig_ADVANCED                                                                           = src.SecurityPolicyDdosProtectionConfig_ADVANCED
+	SecurityPolicyDdosProtectionConfig_STANDARD                                                                           = src.SecurityPolicyDdosProtectionConfig_STANDARD
+	SecurityPolicyDdosProtectionConfig_UNDEFINED_DDOS_PROTECTION                                                          = src.SecurityPolicyDdosProtectionConfig_UNDEFINED_DDOS_PROTECTION
+	SecurityPolicyRuleMatcher_SRC_IPS_V1                                                                                  = src.SecurityPolicyRuleMatcher_SRC_IPS_V1
+	SecurityPolicyRuleMatcher_UNDEFINED_VERSIONED_EXPR                                                                    = src.SecurityPolicyRuleMatcher_UNDEFINED_VERSIONED_EXPR
+	SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams_CONTAINS                                                 = src.SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams_CONTAINS
+	SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams_ENDS_WITH                                                = src.SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams_ENDS_WITH
+	SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams_EQUALS                                                   = src.SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams_EQUALS
+	SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams_EQUALS_ANY                                               = src.SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams_EQUALS_ANY
+	SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams_STARTS_WITH                                              = src.SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams_STARTS_WITH
+	SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams_UNDEFINED_OP                                             = src.SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams_UNDEFINED_OP
+	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig_ALL                                                              = src.SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig_ALL
+	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig_HTTP_COOKIE                                                      = src.SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig_HTTP_COOKIE
+	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig_HTTP_HEADER                                                      = src.SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig_HTTP_HEADER
+	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig_HTTP_PATH                                                        = src.SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig_HTTP_PATH
+	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig_IP                                                               = src.SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig_IP
+	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig_REGION_CODE                                                      = src.SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig_REGION_CODE
+	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig_SNI                                                              = src.SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig_SNI
+	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig_TLS_JA3_FINGERPRINT                                              = src.SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig_TLS_JA3_FINGERPRINT
+	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig_UNDEFINED_ENFORCE_ON_KEY_TYPE                                    = src.SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig_UNDEFINED_ENFORCE_ON_KEY_TYPE
+	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig_USER_IP                                                          = src.SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig_USER_IP
+	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig_XFF_IP                                                           = src.SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig_XFF_IP
+	SecurityPolicyRuleRateLimitOptions_ALL                                                                                = src.SecurityPolicyRuleRateLimitOptions_ALL
+	SecurityPolicyRuleRateLimitOptions_HTTP_COOKIE                                                                        = src.SecurityPolicyRuleRateLimitOptions_HTTP_COOKIE
+	SecurityPolicyRuleRateLimitOptions_HTTP_HEADER                                                                        = src.SecurityPolicyRuleRateLimitOptions_HTTP_HEADER
+	SecurityPolicyRuleRateLimitOptions_HTTP_PATH                                                                          = src.SecurityPolicyRuleRateLimitOptions_HTTP_PATH
+	SecurityPolicyRuleRateLimitOptions_IP                                                                                 = src.SecurityPolicyRuleRateLimitOptions_IP
+	SecurityPolicyRuleRateLimitOptions_REGION_CODE                                                                        = src.SecurityPolicyRuleRateLimitOptions_REGION_CODE
+	SecurityPolicyRuleRateLimitOptions_SNI                                                                                = src.SecurityPolicyRuleRateLimitOptions_SNI
+	SecurityPolicyRuleRateLimitOptions_TLS_JA3_FINGERPRINT                                                                = src.SecurityPolicyRuleRateLimitOptions_TLS_JA3_FINGERPRINT
+	SecurityPolicyRuleRateLimitOptions_UNDEFINED_ENFORCE_ON_KEY                                                           = src.SecurityPolicyRuleRateLimitOptions_UNDEFINED_ENFORCE_ON_KEY
+	SecurityPolicyRuleRateLimitOptions_USER_IP                                                                            = src.SecurityPolicyRuleRateLimitOptions_USER_IP
+	SecurityPolicyRuleRateLimitOptions_XFF_IP                                                                             = src.SecurityPolicyRuleRateLimitOptions_XFF_IP
+	SecurityPolicyRuleRedirectOptions_EXTERNAL_302                                                                        = src.SecurityPolicyRuleRedirectOptions_EXTERNAL_302
+	SecurityPolicyRuleRedirectOptions_GOOGLE_RECAPTCHA                                                                    = src.SecurityPolicyRuleRedirectOptions_GOOGLE_RECAPTCHA
+	SecurityPolicyRuleRedirectOptions_UNDEFINED_TYPE                                                                      = src.SecurityPolicyRuleRedirectOptions_UNDEFINED_TYPE
+	SecurityPolicyUserDefinedField_IPV4                                                                                   = src.SecurityPolicyUserDefinedField_IPV4
+	SecurityPolicyUserDefinedField_IPV6                                                                                   = src.SecurityPolicyUserDefinedField_IPV6
+	SecurityPolicyUserDefinedField_TCP                                                                                    = src.SecurityPolicyUserDefinedField_TCP
+	SecurityPolicyUserDefinedField_UDP                                                                                    = src.SecurityPolicyUserDefinedField_UDP
+	SecurityPolicyUserDefinedField_UNDEFINED_BASE                                                                         = src.SecurityPolicyUserDefinedField_UNDEFINED_BASE
+	SecurityPolicy_CLOUD_ARMOR                                                                                            = src.SecurityPolicy_CLOUD_ARMOR
+	SecurityPolicy_CLOUD_ARMOR_EDGE                                                                                       = src.SecurityPolicy_CLOUD_ARMOR_EDGE
+	SecurityPolicy_CLOUD_ARMOR_NETWORK                                                                                    = src.SecurityPolicy_CLOUD_ARMOR_NETWORK
+	SecurityPolicy_UNDEFINED_TYPE                                                                                         = src.SecurityPolicy_UNDEFINED_TYPE
+	ServerBinding_RESTART_NODE_ON_ANY_SERVER                                                                              = src.ServerBinding_RESTART_NODE_ON_ANY_SERVER
+	ServerBinding_RESTART_NODE_ON_MINIMAL_SERVERS                                                                         = src.ServerBinding_RESTART_NODE_ON_MINIMAL_SERVERS
+	ServerBinding_SERVER_BINDING_TYPE_UNSPECIFIED                                                                         = src.ServerBinding_SERVER_BINDING_TYPE_UNSPECIFIED
+	ServerBinding_UNDEFINED_TYPE                                                                                          = src.ServerBinding_UNDEFINED_TYPE
+	ServiceAttachmentConnectedEndpoint_ACCEPTED                                                                           = src.ServiceAttachmentConnectedEndpoint_ACCEPTED
+	ServiceAttachmentConnectedEndpoint_CLOSED                                                                             = src.ServiceAttachmentConnectedEndpoint_CLOSED
+	ServiceAttachmentConnectedEndpoint_NEEDS_ATTENTION                                                                    = src.ServiceAttachmentConnectedEndpoint_NEEDS_ATTENTION
+	ServiceAttachmentConnectedEndpoint_PENDING                                                                            = src.ServiceAttachmentConnectedEndpoint_PENDING
+	ServiceAttachmentConnectedEndpoint_REJECTED                                                                           = src.ServiceAttachmentConnectedEndpoint_REJECTED
+	ServiceAttachmentConnectedEndpoint_STATUS_UNSPECIFIED                                                                 = src.ServiceAttachmentConnectedEndpoint_STATUS_UNSPECIFIED
+	ServiceAttachmentConnectedEndpoint_UNDEFINED_STATUS                                                                   = src.ServiceAttachmentConnectedEndpoint_UNDEFINED_STATUS
+	ServiceAttachment_ACCEPT_AUTOMATIC                                                                                    = src.ServiceAttachment_ACCEPT_AUTOMATIC
+	ServiceAttachment_ACCEPT_MANUAL                                                                                       = src.ServiceAttachment_ACCEPT_MANUAL
+	ServiceAttachment_CONNECTION_PREFERENCE_UNSPECIFIED                                                                   = src.ServiceAttachment_CONNECTION_PREFERENCE_UNSPECIFIED
+	ServiceAttachment_UNDEFINED_CONNECTION_PREFERENCE                                                                     = src.ServiceAttachment_UNDEFINED_CONNECTION_PREFERENCE
+	SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfo_ABANDONED                                          = src.SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfo_ABANDONED
+	SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfo_DONE                                               = src.SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfo_DONE
+	SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfo_FAILED                                             = src.SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfo_FAILED
+	SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfo_PROPAGATED                                         = src.SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfo_PROPAGATED
+	SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfo_PROPAGATING                                        = src.SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfo_PROPAGATING
+	SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfo_UNDEFINED_STATE                                    = src.SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfo_UNDEFINED_STATE
+	SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfo_UNSPECIFIED                                        = src.SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfo_UNSPECIFIED
+	ShareSettings_LOCAL                                                                                                   = src.ShareSettings_LOCAL
+	ShareSettings_ORGANIZATION                                                                                            = src.ShareSettings_ORGANIZATION
+	ShareSettings_SHARE_TYPE_UNSPECIFIED                                                                                  = src.ShareSettings_SHARE_TYPE_UNSPECIFIED
+	ShareSettings_SPECIFIC_PROJECTS                                                                                       = src.ShareSettings_SPECIFIC_PROJECTS
+	ShareSettings_UNDEFINED_SHARE_TYPE                                                                                    = src.ShareSettings_UNDEFINED_SHARE_TYPE
+	SnapshotSettingsStorageLocationSettings_LOCAL_REGION                                                                  = src.SnapshotSettingsStorageLocationSettings_LOCAL_REGION
+	SnapshotSettingsStorageLocationSettings_NEAREST_MULTI_REGION                                                          = src.SnapshotSettingsStorageLocationSettings_NEAREST_MULTI_REGION
+	SnapshotSettingsStorageLocationSettings_SPECIFIC_LOCATIONS                                                            = src.SnapshotSettingsStorageLocationSettings_SPECIFIC_LOCATIONS
+	SnapshotSettingsStorageLocationSettings_STORAGE_LOCATION_POLICY_UNSPECIFIED                                           = src.SnapshotSettingsStorageLocationSettings_STORAGE_LOCATION_POLICY_UNSPECIFIED
+	SnapshotSettingsStorageLocationSettings_UNDEFINED_POLICY                                                              = src.SnapshotSettingsStorageLocationSettings_UNDEFINED_POLICY
+	Snapshot_ARCHITECTURE_UNSPECIFIED                                                                                     = src.Snapshot_ARCHITECTURE_UNSPECIFIED
+	Snapshot_ARCHIVE                                                                                                      = src.Snapshot_ARCHIVE
+	Snapshot_ARM64                                                                                                        = src.Snapshot_ARM64
+	Snapshot_CREATING                                                                                                     = src.Snapshot_CREATING
+	Snapshot_DELETING                                                                                                     = src.Snapshot_DELETING
+	Snapshot_FAILED                                                                                                       = src.Snapshot_FAILED
+	Snapshot_READY                                                                                                        = src.Snapshot_READY
+	Snapshot_STANDARD                                                                                                     = src.Snapshot_STANDARD
+	Snapshot_UNDEFINED_ARCHITECTURE                                                                                       = src.Snapshot_UNDEFINED_ARCHITECTURE
+	Snapshot_UNDEFINED_SNAPSHOT_TYPE                                                                                      = src.Snapshot_UNDEFINED_SNAPSHOT_TYPE
+	Snapshot_UNDEFINED_STATUS                                                                                             = src.Snapshot_UNDEFINED_STATUS
+	Snapshot_UNDEFINED_STORAGE_BYTES_STATUS                                                                               = src.Snapshot_UNDEFINED_STORAGE_BYTES_STATUS
+	Snapshot_UPDATING                                                                                                     = src.Snapshot_UPDATING
+	Snapshot_UPLOADING                                                                                                    = src.Snapshot_UPLOADING
+	Snapshot_UP_TO_DATE                                                                                                   = src.Snapshot_UP_TO_DATE
+	Snapshot_X86_64                                                                                                       = src.Snapshot_X86_64
+	SourceInstanceProperties_KEY_REVOCATION_ACTION_TYPE_UNSPECIFIED                                                       = src.SourceInstanceProperties_KEY_REVOCATION_ACTION_TYPE_UNSPECIFIED
+	SourceInstanceProperties_NONE                                                                                         = src.SourceInstanceProperties_NONE
+	SourceInstanceProperties_STOP                                                                                         = src.SourceInstanceProperties_STOP
+	SourceInstanceProperties_UNDEFINED_KEY_REVOCATION_ACTION_TYPE                                                         = src.SourceInstanceProperties_UNDEFINED_KEY_REVOCATION_ACTION_TYPE
+	SslCertificateManagedSslCertificate_ACTIVE                                                                            = src.SslCertificateManagedSslCertificate_ACTIVE
+	SslCertificateManagedSslCertificate_MANAGED_CERTIFICATE_STATUS_UNSPECIFIED                                            = src.SslCertificateManagedSslCertificate_MANAGED_CERTIFICATE_STATUS_UNSPECIFIED
+	SslCertificateManagedSslCertificate_PROVISIONING                                                                      = src.SslCertificateManagedSslCertificate_PROVISIONING
+	SslCertificateManagedSslCertificate_PROVISIONING_FAILED                                                               = src.SslCertificateManagedSslCertificate_PROVISIONING_FAILED
+	SslCertificateManagedSslCertificate_PROVISIONING_FAILED_PERMANENTLY                                                   = src.SslCertificateManagedSslCertificate_PROVISIONING_FAILED_PERMANENTLY
+	SslCertificateManagedSslCertificate_RENEWAL_FAILED                                                                    = src.SslCertificateManagedSslCertificate_RENEWAL_FAILED
+	SslCertificateManagedSslCertificate_UNDEFINED_STATUS                                                                  = src.SslCertificateManagedSslCertificate_UNDEFINED_STATUS
+	SslCertificate_MANAGED                                                                                                = src.SslCertificate_MANAGED
+	SslCertificate_SELF_MANAGED                                                                                           = src.SslCertificate_SELF_MANAGED
+	SslCertificate_TYPE_UNSPECIFIED                                                                                       = src.SslCertificate_TYPE_UNSPECIFIED
+	SslCertificate_UNDEFINED_TYPE                                                                                         = src.SslCertificate_UNDEFINED_TYPE
+	SslPolicy_COMPATIBLE                                                                                                  = src.SslPolicy_COMPATIBLE
+	SslPolicy_CUSTOM                                                                                                      = src.SslPolicy_CUSTOM
+	SslPolicy_MODERN                                                                                                      = src.SslPolicy_MODERN
+	SslPolicy_RESTRICTED                                                                                                  = src.SslPolicy_RESTRICTED
+	SslPolicy_TLS_1_0                                                                                                     = src.SslPolicy_TLS_1_0
+	SslPolicy_TLS_1_1                                                                                                     = src.SslPolicy_TLS_1_1
+	SslPolicy_TLS_1_2                                                                                                     = src.SslPolicy_TLS_1_2
+	SslPolicy_UNDEFINED_MIN_TLS_VERSION                                                                                   = src.SslPolicy_UNDEFINED_MIN_TLS_VERSION
+	SslPolicy_UNDEFINED_PROFILE                                                                                           = src.SslPolicy_UNDEFINED_PROFILE
+	StatefulPolicyPreservedStateDiskDevice_NEVER                                                                          = src.StatefulPolicyPreservedStateDiskDevice_NEVER
+	StatefulPolicyPreservedStateDiskDevice_ON_PERMANENT_INSTANCE_DELETION                                                 = src.StatefulPolicyPreservedStateDiskDevice_ON_PERMANENT_INSTANCE_DELETION
+	StatefulPolicyPreservedStateDiskDevice_UNDEFINED_AUTO_DELETE                                                          = src.StatefulPolicyPreservedStateDiskDevice_UNDEFINED_AUTO_DELETE
+	StatefulPolicyPreservedStateNetworkIp_NEVER                                                                           = src.StatefulPolicyPreservedStateNetworkIp_NEVER
+	StatefulPolicyPreservedStateNetworkIp_ON_PERMANENT_INSTANCE_DELETION                                                  = src.StatefulPolicyPreservedStateNetworkIp_ON_PERMANENT_INSTANCE_DELETION
+	StatefulPolicyPreservedStateNetworkIp_UNDEFINED_AUTO_DELETE                                                           = src.StatefulPolicyPreservedStateNetworkIp_UNDEFINED_AUTO_DELETE
+	StoragePoolDisk_CREATING                                                                                              = src.StoragePoolDisk_CREATING
+	StoragePoolDisk_DELETING                                                                                              = src.StoragePoolDisk_DELETING
+	StoragePoolDisk_FAILED                                                                                                = src.StoragePoolDisk_FAILED
+	StoragePoolDisk_READY                                                                                                 = src.StoragePoolDisk_READY
+	StoragePoolDisk_RESTORING                                                                                             = src.StoragePoolDisk_RESTORING
+	StoragePoolDisk_UNAVAILABLE                                                                                           = src.StoragePoolDisk_UNAVAILABLE
+	StoragePoolDisk_UNDEFINED_STATUS                                                                                      = src.StoragePoolDisk_UNDEFINED_STATUS
+	StoragePool_CREATING                                                                                                  = src.StoragePool_CREATING
+	StoragePool_DELETING                                                                                                  = src.StoragePool_DELETING
+	StoragePool_FAILED                                                                                                    = src.StoragePool_FAILED
+	StoragePool_READY                                                                                                     = src.StoragePool_READY
+	StoragePool_UNDEFINED_CAPACITY_PROVISIONING_TYPE                                                                      = src.StoragePool_UNDEFINED_CAPACITY_PROVISIONING_TYPE
+	StoragePool_UNDEFINED_PERFORMANCE_PROVISIONING_TYPE                                                                   = src.StoragePool_UNDEFINED_PERFORMANCE_PROVISIONING_TYPE
+	StoragePool_UNDEFINED_STATE                                                                                           = src.StoragePool_UNDEFINED_STATE
+	SubnetworkLogConfig_CUSTOM_METADATA                                                                                   = src.SubnetworkLogConfig_CUSTOM_METADATA
+	SubnetworkLogConfig_EXCLUDE_ALL_METADATA                                                                              = src.SubnetworkLogConfig_EXCLUDE_ALL_METADATA
+	SubnetworkLogConfig_INCLUDE_ALL_METADATA                                                                              = src.SubnetworkLogConfig_INCLUDE_ALL_METADATA
+	SubnetworkLogConfig_INTERVAL_10_MIN                                                                                   = src.SubnetworkLogConfig_INTERVAL_10_MIN
+	SubnetworkLogConfig_INTERVAL_15_MIN                                                                                   = src.SubnetworkLogConfig_INTERVAL_15_MIN
+	SubnetworkLogConfig_INTERVAL_1_MIN                                                                                    = src.SubnetworkLogConfig_INTERVAL_1_MIN
+	SubnetworkLogConfig_INTERVAL_30_SEC                                                                                   = src.SubnetworkLogConfig_INTERVAL_30_SEC
+	SubnetworkLogConfig_INTERVAL_5_MIN                                                                                    = src.SubnetworkLogConfig_INTERVAL_5_MIN
+	SubnetworkLogConfig_INTERVAL_5_SEC                                                                                    = src.SubnetworkLogConfig_INTERVAL_5_SEC
+	SubnetworkLogConfig_UNDEFINED_AGGREGATION_INTERVAL                                                                    = src.SubnetworkLogConfig_UNDEFINED_AGGREGATION_INTERVAL
+	SubnetworkLogConfig_UNDEFINED_METADATA                                                                                = src.SubnetworkLogConfig_UNDEFINED_METADATA
+	Subnetwork_ACTIVE                                                                                                     = src.Subnetwork_ACTIVE
+	Subnetwork_BACKUP                                                                                                     = src.Subnetwork_BACKUP
+	Subnetwork_DISABLE_GOOGLE_ACCESS                                                                                      = src.Subnetwork_DISABLE_GOOGLE_ACCESS
+	Subnetwork_DRAINING                                                                                                   = src.Subnetwork_DRAINING
+	Subnetwork_ENABLE_BIDIRECTIONAL_ACCESS_TO_GOOGLE                                                                      = src.Subnetwork_ENABLE_BIDIRECTIONAL_ACCESS_TO_GOOGLE
+	Subnetwork_ENABLE_OUTBOUND_VM_ACCESS_TO_GOOGLE                                                                        = src.Subnetwork_ENABLE_OUTBOUND_VM_ACCESS_TO_GOOGLE
+	Subnetwork_EXTERNAL                                                                                                   = src.Subnetwork_EXTERNAL
+	Subnetwork_GLOBAL_MANAGED_PROXY                                                                                       = src.Subnetwork_GLOBAL_MANAGED_PROXY
+	Subnetwork_INTERNAL                                                                                                   = src.Subnetwork_INTERNAL
+	Subnetwork_INTERNAL_HTTPS_LOAD_BALANCER                                                                               = src.Subnetwork_INTERNAL_HTTPS_LOAD_BALANCER
+	Subnetwork_IPV4_IPV6                                                                                                  = src.Subnetwork_IPV4_IPV6
+	Subnetwork_IPV4_ONLY                                                                                                  = src.Subnetwork_IPV4_ONLY
+	Subnetwork_IPV6_ONLY                                                                                                  = src.Subnetwork_IPV6_ONLY
+	Subnetwork_PRIVATE                                                                                                    = src.Subnetwork_PRIVATE
+	Subnetwork_PRIVATE_NAT                                                                                                = src.Subnetwork_PRIVATE_NAT
+	Subnetwork_PRIVATE_RFC_1918                                                                                           = src.Subnetwork_PRIVATE_RFC_1918
+	Subnetwork_PRIVATE_SERVICE_CONNECT                                                                                    = src.Subnetwork_PRIVATE_SERVICE_CONNECT
+	Subnetwork_READY                                                                                                      = src.Subnetwork_READY
+	Subnetwork_REGIONAL_MANAGED_PROXY                                                                                     = src.Subnetwork_REGIONAL_MANAGED_PROXY
+	Subnetwork_UNDEFINED_IPV6_ACCESS_TYPE                                                                                 = src.Subnetwork_UNDEFINED_IPV6_ACCESS_TYPE
+	Subnetwork_UNDEFINED_PRIVATE_IPV6_GOOGLE_ACCESS                                                                       = src.Subnetwork_UNDEFINED_PRIVATE_IPV6_GOOGLE_ACCESS
+	Subnetwork_UNDEFINED_PURPOSE                                                                                          = src.Subnetwork_UNDEFINED_PURPOSE
+	Subnetwork_UNDEFINED_ROLE                                                                                             = src.Subnetwork_UNDEFINED_ROLE
+	Subnetwork_UNDEFINED_STACK_TYPE                                                                                       = src.Subnetwork_UNDEFINED_STACK_TYPE
+	Subnetwork_UNDEFINED_STATE                                                                                            = src.Subnetwork_UNDEFINED_STATE
+	Subnetwork_UNSPECIFIED_IPV6_ACCESS_TYPE                                                                               = src.Subnetwork_UNSPECIFIED_IPV6_ACCESS_TYPE
+	Subnetwork_UNSPECIFIED_STACK_TYPE                                                                                     = src.Subnetwork_UNSPECIFIED_STACK_TYPE
+	Subsetting_CONSISTENT_HASH_SUBSETTING                                                                                 = src.Subsetting_CONSISTENT_HASH_SUBSETTING
+	Subsetting_NONE                                                                                                       = src.Subsetting_NONE
+	Subsetting_UNDEFINED_POLICY                                                                                           = src.Subsetting_UNDEFINED_POLICY
+	TCPHealthCheck_NONE                                                                                                   = src.TCPHealthCheck_NONE
+	TCPHealthCheck_PROXY_V1                                                                                               = src.TCPHealthCheck_PROXY_V1
+	TCPHealthCheck_UNDEFINED_PORT_SPECIFICATION                                                                           = src.TCPHealthCheck_UNDEFINED_PORT_SPECIFICATION
+	TCPHealthCheck_UNDEFINED_PROXY_HEADER                                                                                 = src.TCPHealthCheck_UNDEFINED_PROXY_HEADER
+	TCPHealthCheck_USE_FIXED_PORT                                                                                         = src.TCPHealthCheck_USE_FIXED_PORT
+	TCPHealthCheck_USE_NAMED_PORT                                                                                         = src.TCPHealthCheck_USE_NAMED_PORT
+	TCPHealthCheck_USE_SERVING_PORT                                                                                       = src.TCPHealthCheck_USE_SERVING_PORT
+	TargetHttpsProxiesSetQuicOverrideRequest_DISABLE                                                                      = src.TargetHttpsProxiesSetQuicOverrideRequest_DISABLE
+	TargetHttpsProxiesSetQuicOverrideRequest_ENABLE                                                                       = src.TargetHttpsProxiesSetQuicOverrideRequest_ENABLE
+	TargetHttpsProxiesSetQuicOverrideRequest_NONE                                                                         = src.TargetHttpsProxiesSetQuicOverrideRequest_NONE
+	TargetHttpsProxiesSetQuicOverrideRequest_UNDEFINED_QUIC_OVERRIDE                                                      = src.TargetHttpsProxiesSetQuicOverrideRequest_UNDEFINED_QUIC_OVERRIDE
+	TargetHttpsProxy_DISABLE                                                                                              = src.TargetHttpsProxy_DISABLE
+	TargetHttpsProxy_DISABLED                                                                                             = src.TargetHttpsProxy_DISABLED
+	TargetHttpsProxy_ENABLE                                                                                               = src.TargetHttpsProxy_ENABLE
+	TargetHttpsProxy_NONE                                                                                                 = src.TargetHttpsProxy_NONE
+	TargetHttpsProxy_PERMISSIVE                                                                                           = src.TargetHttpsProxy_PERMISSIVE
+	TargetHttpsProxy_STRICT                                                                                               = src.TargetHttpsProxy_STRICT
+	TargetHttpsProxy_UNDEFINED_QUIC_OVERRIDE                                                                              = src.TargetHttpsProxy_UNDEFINED_QUIC_OVERRIDE
+	TargetHttpsProxy_UNDEFINED_TLS_EARLY_DATA                                                                             = src.TargetHttpsProxy_UNDEFINED_TLS_EARLY_DATA
+	TargetInstance_NO_NAT                                                                                                 = src.TargetInstance_NO_NAT
+	TargetInstance_UNDEFINED_NAT_POLICY                                                                                   = src.TargetInstance_UNDEFINED_NAT_POLICY
+	TargetPool_CLIENT_IP                                                                                                  = src.TargetPool_CLIENT_IP
+	TargetPool_CLIENT_IP_NO_DESTINATION                                                                                   = src.TargetPool_CLIENT_IP_NO_DESTINATION
+	TargetPool_CLIENT_IP_PORT_PROTO                                                                                       = src.TargetPool_CLIENT_IP_PORT_PROTO
+	TargetPool_CLIENT_IP_PROTO                                                                                            = src.TargetPool_CLIENT_IP_PROTO
+	TargetPool_GENERATED_COOKIE                                                                                           = src.TargetPool_GENERATED_COOKIE
+	TargetPool_HEADER_FIELD                                                                                               = src.TargetPool_HEADER_FIELD
+	TargetPool_HTTP_COOKIE                                                                                                = src.TargetPool_HTTP_COOKIE
+	TargetPool_NONE                                                                                                       = src.TargetPool_NONE
+	TargetPool_STRONG_COOKIE_AFFINITY                                                                                     = src.TargetPool_STRONG_COOKIE_AFFINITY
+	TargetPool_UNDEFINED_SESSION_AFFINITY                                                                                 = src.TargetPool_UNDEFINED_SESSION_AFFINITY
+	TargetSslProxiesSetProxyHeaderRequest_NONE                                                                            = src.TargetSslProxiesSetProxyHeaderRequest_NONE
+	TargetSslProxiesSetProxyHeaderRequest_PROXY_V1                                                                        = src.TargetSslProxiesSetProxyHeaderRequest_PROXY_V1
+	TargetSslProxiesSetProxyHeaderRequest_UNDEFINED_PROXY_HEADER                                                          = src.TargetSslProxiesSetProxyHeaderRequest_UNDEFINED_PROXY_HEADER
+	TargetSslProxy_NONE                                                                                                   = src.TargetSslProxy_NONE
+	TargetSslProxy_PROXY_V1                                                                                               = src.TargetSslProxy_PROXY_V1
+	TargetSslProxy_UNDEFINED_PROXY_HEADER                                                                                 = src.TargetSslProxy_UNDEFINED_PROXY_HEADER
+	TargetTcpProxiesSetProxyHeaderRequest_NONE                                                                            = src.TargetTcpProxiesSetProxyHeaderRequest_NONE
+	TargetTcpProxiesSetProxyHeaderRequest_PROXY_V1                                                                        = src.TargetTcpProxiesSetProxyHeaderRequest_PROXY_V1
+	TargetTcpProxiesSetProxyHeaderRequest_UNDEFINED_PROXY_HEADER                                                          = src.TargetTcpProxiesSetProxyHeaderRequest_UNDEFINED_PROXY_HEADER
+	TargetTcpProxy_NONE                                                                                                   = src.TargetTcpProxy_NONE
+	TargetTcpProxy_PROXY_V1                                                                                               = src.TargetTcpProxy_PROXY_V1
+	TargetTcpProxy_UNDEFINED_PROXY_HEADER                                                                                 = src.TargetTcpProxy_UNDEFINED_PROXY_HEADER
+	TargetVpnGateway_CREATING                                                                                             = src.TargetVpnGateway_CREATING
+	TargetVpnGateway_DELETING                                                                                             = src.TargetVpnGateway_DELETING
+	TargetVpnGateway_FAILED                                                                                               = src.TargetVpnGateway_FAILED
+	TargetVpnGateway_READY                                                                                                = src.TargetVpnGateway_READY
+	TargetVpnGateway_UNDEFINED_STATUS                                                                                     = src.TargetVpnGateway_UNDEFINED_STATUS
+	UpcomingMaintenance_ONGOING                                                                                           = src.UpcomingMaintenance_ONGOING
+	UpcomingMaintenance_PENDING                                                                                           = src.UpcomingMaintenance_PENDING
+	UpcomingMaintenance_SCHEDULED                                                                                         = src.UpcomingMaintenance_SCHEDULED
+	UpcomingMaintenance_UNDEFINED_MAINTENANCE_STATUS                                                                      = src.UpcomingMaintenance_UNDEFINED_MAINTENANCE_STATUS
+	UpcomingMaintenance_UNDEFINED_TYPE                                                                                    = src.UpcomingMaintenance_UNDEFINED_TYPE
+	UpcomingMaintenance_UNKNOWN                                                                                           = src.UpcomingMaintenance_UNKNOWN
+	UpcomingMaintenance_UNKNOWN_TYPE                                                                                      = src.UpcomingMaintenance_UNKNOWN_TYPE
+	UpcomingMaintenance_UNSCHEDULED                                                                                       = src.UpcomingMaintenance_UNSCHEDULED
+	UpdateInstanceRequest_UNDEFINED_MINIMAL_ACTION                                                                        = src.UpdateInstanceRequest_UNDEFINED_MINIMAL_ACTION
+	UpdateInstanceRequest_UNDEFINED_MOST_DISRUPTIVE_ALLOWED_ACTION                                                        = src.UpdateInstanceRequest_UNDEFINED_MOST_DISRUPTIVE_ALLOWED_ACTION
+	UrlMapsValidateRequest_EXTERNAL                                                                                       = src.UrlMapsValidateRequest_EXTERNAL
+	UrlMapsValidateRequest_EXTERNAL_MANAGED                                                                               = src.UrlMapsValidateRequest_EXTERNAL_MANAGED
+	UrlMapsValidateRequest_LOAD_BALANCING_SCHEME_UNSPECIFIED                                                              = src.UrlMapsValidateRequest_LOAD_BALANCING_SCHEME_UNSPECIFIED
+	UrlMapsValidateRequest_UNDEFINED_LOAD_BALANCING_SCHEMES                                                               = src.UrlMapsValidateRequest_UNDEFINED_LOAD_BALANCING_SCHEMES
+	UsableSubnetwork_ACTIVE                                                                                               = src.UsableSubnetwork_ACTIVE
+	UsableSubnetwork_BACKUP                                                                                               = src.UsableSubnetwork_BACKUP
+	UsableSubnetwork_EXTERNAL                                                                                             = src.UsableSubnetwork_EXTERNAL
+	UsableSubnetwork_GLOBAL_MANAGED_PROXY                                                                                 = src.UsableSubnetwork_GLOBAL_MANAGED_PROXY
+	UsableSubnetwork_INTERNAL                                                                                             = src.UsableSubnetwork_INTERNAL
+	UsableSubnetwork_INTERNAL_HTTPS_LOAD_BALANCER                                                                         = src.UsableSubnetwork_INTERNAL_HTTPS_LOAD_BALANCER
+	UsableSubnetwork_IPV4_IPV6                                                                                            = src.UsableSubnetwork_IPV4_IPV6
+	UsableSubnetwork_IPV4_ONLY                                                                                            = src.UsableSubnetwork_IPV4_ONLY
+	UsableSubnetwork_IPV6_ONLY                                                                                            = src.UsableSubnetwork_IPV6_ONLY
+	UsableSubnetwork_PRIVATE                                                                                              = src.UsableSubnetwork_PRIVATE
+	UsableSubnetwork_PRIVATE_NAT                                                                                          = src.UsableSubnetwork_PRIVATE_NAT
+	UsableSubnetwork_PRIVATE_RFC_1918                                                                                     = src.UsableSubnetwork_PRIVATE_RFC_1918
+	UsableSubnetwork_PRIVATE_SERVICE_CONNECT                                                                              = src.UsableSubnetwork_PRIVATE_SERVICE_CONNECT
+	UsableSubnetwork_REGIONAL_MANAGED_PROXY                                                                               = src.UsableSubnetwork_REGIONAL_MANAGED_PROXY
+	UsableSubnetwork_UNDEFINED_IPV6_ACCESS_TYPE                                                                           = src.UsableSubnetwork_UNDEFINED_IPV6_ACCESS_TYPE
+	UsableSubnetwork_UNDEFINED_PURPOSE                                                                                    = src.UsableSubnetwork_UNDEFINED_PURPOSE
+	UsableSubnetwork_UNDEFINED_ROLE                                                                                       = src.UsableSubnetwork_UNDEFINED_ROLE
+	UsableSubnetwork_UNDEFINED_STACK_TYPE                                                                                 = src.UsableSubnetwork_UNDEFINED_STACK_TYPE
+	VpnGatewayStatusHighAvailabilityRequirementState_CONNECTION_REDUNDANCY_MET                                            = src.VpnGatewayStatusHighAvailabilityRequirementState_CONNECTION_REDUNDANCY_MET
+	VpnGatewayStatusHighAvailabilityRequirementState_CONNECTION_REDUNDANCY_NOT_MET                                        = src.VpnGatewayStatusHighAvailabilityRequirementState_CONNECTION_REDUNDANCY_NOT_MET
+	VpnGatewayStatusHighAvailabilityRequirementState_INCOMPLETE_TUNNELS_COVERAGE                                          = src.VpnGatewayStatusHighAvailabilityRequirementState_INCOMPLETE_TUNNELS_COVERAGE
+	VpnGatewayStatusHighAvailabilityRequirementState_UNDEFINED_STATE                                                      = src.VpnGatewayStatusHighAvailabilityRequirementState_UNDEFINED_STATE
+	VpnGatewayStatusHighAvailabilityRequirementState_UNDEFINED_UNSATISFIED_REASON                                         = src.VpnGatewayStatusHighAvailabilityRequirementState_UNDEFINED_UNSATISFIED_REASON
+	VpnGateway_IPV4                                                                                                       = src.VpnGateway_IPV4
+	VpnGateway_IPV4_IPV6                                                                                                  = src.VpnGateway_IPV4_IPV6
+	VpnGateway_IPV4_ONLY                                                                                                  = src.VpnGateway_IPV4_ONLY
+	VpnGateway_IPV6                                                                                                       = src.VpnGateway_IPV6
+	VpnGateway_IPV6_ONLY                                                                                                  = src.VpnGateway_IPV6_ONLY
+	VpnGateway_UNDEFINED_GATEWAY_IP_VERSION                                                                               = src.VpnGateway_UNDEFINED_GATEWAY_IP_VERSION
+	VpnGateway_UNDEFINED_STACK_TYPE                                                                                       = src.VpnGateway_UNDEFINED_STACK_TYPE
+	VpnTunnel_ALLOCATING_RESOURCES                                                                                        = src.VpnTunnel_ALLOCATING_RESOURCES
+	VpnTunnel_AUTHORIZATION_ERROR                                                                                         = src.VpnTunnel_AUTHORIZATION_ERROR
+	VpnTunnel_DEPROVISIONING                                                                                              = src.VpnTunnel_DEPROVISIONING
+	VpnTunnel_ESTABLISHED                                                                                                 = src.VpnTunnel_ESTABLISHED
+	VpnTunnel_FAILED                                                                                                      = src.VpnTunnel_FAILED
+	VpnTunnel_FIRST_HANDSHAKE                                                                                             = src.VpnTunnel_FIRST_HANDSHAKE
+	VpnTunnel_NEGOTIATION_FAILURE                                                                                         = src.VpnTunnel_NEGOTIATION_FAILURE
+	VpnTunnel_NETWORK_ERROR                                                                                               = src.VpnTunnel_NETWORK_ERROR
+	VpnTunnel_NO_INCOMING_PACKETS                                                                                         = src.VpnTunnel_NO_INCOMING_PACKETS
+	VpnTunnel_PROVISIONING                                                                                                = src.VpnTunnel_PROVISIONING
+	VpnTunnel_REJECTED                                                                                                    = src.VpnTunnel_REJECTED
+	VpnTunnel_STOPPED                                                                                                     = src.VpnTunnel_STOPPED
+	VpnTunnel_UNDEFINED_STATUS                                                                                            = src.VpnTunnel_UNDEFINED_STATUS
+	VpnTunnel_WAITING_FOR_FULL_CONFIG                                                                                     = src.VpnTunnel_WAITING_FOR_FULL_CONFIG
+	Warning_CLEANUP_FAILED                                                                                                = src.Warning_CLEANUP_FAILED
+	Warning_DEPRECATED_RESOURCE_USED                                                                                      = src.Warning_DEPRECATED_RESOURCE_USED
+	Warning_DEPRECATED_TYPE_USED                                                                                          = src.Warning_DEPRECATED_TYPE_USED
+	Warning_DISK_SIZE_LARGER_THAN_IMAGE_SIZE                                                                              = src.Warning_DISK_SIZE_LARGER_THAN_IMAGE_SIZE
+	Warning_EXPERIMENTAL_TYPE_USED                                                                                        = src.Warning_EXPERIMENTAL_TYPE_USED
+	Warning_EXTERNAL_API_WARNING                                                                                          = src.Warning_EXTERNAL_API_WARNING
+	Warning_FIELD_VALUE_OVERRIDEN                                                                                         = src.Warning_FIELD_VALUE_OVERRIDEN
+	Warning_INJECTED_KERNELS_DEPRECATED                                                                                   = src.Warning_INJECTED_KERNELS_DEPRECATED
+	Warning_INVALID_HEALTH_CHECK_FOR_DYNAMIC_WIEGHTED_LB                                                                  = src.Warning_INVALID_HEALTH_CHECK_FOR_DYNAMIC_WIEGHTED_LB
+	Warning_LARGE_DEPLOYMENT_WARNING                                                                                      = src.Warning_LARGE_DEPLOYMENT_WARNING
+	Warning_LIST_OVERHEAD_QUOTA_EXCEED                                                                                    = src.Warning_LIST_OVERHEAD_QUOTA_EXCEED
+	Warning_MISSING_TYPE_DEPENDENCY                                                                                       = src.Warning_MISSING_TYPE_DEPENDENCY
+	Warning_NEXT_HOP_ADDRESS_NOT_ASSIGNED                                                                                 = src.Warning_NEXT_HOP_ADDRESS_NOT_ASSIGNED
+	Warning_NEXT_HOP_CANNOT_IP_FORWARD                                                                                    = src.Warning_NEXT_HOP_CANNOT_IP_FORWARD
+	Warning_NEXT_HOP_INSTANCE_HAS_NO_IPV6_INTERFACE                                                                       = src.Warning_NEXT_HOP_INSTANCE_HAS_NO_IPV6_INTERFACE
+	Warning_NEXT_HOP_INSTANCE_NOT_FOUND                                                                                   = src.Warning_NEXT_HOP_INSTANCE_NOT_FOUND
+	Warning_NEXT_HOP_INSTANCE_NOT_ON_NETWORK                                                                              = src.Warning_NEXT_HOP_INSTANCE_NOT_ON_NETWORK
+	Warning_NEXT_HOP_NOT_RUNNING                                                                                          = src.Warning_NEXT_HOP_NOT_RUNNING
+	Warning_NOT_CRITICAL_ERROR                                                                                            = src.Warning_NOT_CRITICAL_ERROR
+	Warning_NO_RESULTS_ON_PAGE                                                                                            = src.Warning_NO_RESULTS_ON_PAGE
+	Warning_PARTIAL_SUCCESS                                                                                               = src.Warning_PARTIAL_SUCCESS
+	Warning_REQUIRED_TOS_AGREEMENT                                                                                        = src.Warning_REQUIRED_TOS_AGREEMENT
+	Warning_RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING                                                                     = src.Warning_RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING
+	Warning_RESOURCE_NOT_DELETED                                                                                          = src.Warning_RESOURCE_NOT_DELETED
+	Warning_SCHEMA_VALIDATION_IGNORED                                                                                     = src.Warning_SCHEMA_VALIDATION_IGNORED
+	Warning_SINGLE_INSTANCE_PROPERTY_TEMPLATE                                                                             = src.Warning_SINGLE_INSTANCE_PROPERTY_TEMPLATE
+	Warning_UNDECLARED_PROPERTIES                                                                                         = src.Warning_UNDECLARED_PROPERTIES
+	Warning_UNDEFINED_CODE                                                                                                = src.Warning_UNDEFINED_CODE
+	Warning_UNREACHABLE                                                                                                   = src.Warning_UNREACHABLE
+	Warnings_CLEANUP_FAILED                                                                                               = src.Warnings_CLEANUP_FAILED
+	Warnings_DEPRECATED_RESOURCE_USED                                                                                     = src.Warnings_DEPRECATED_RESOURCE_USED
+	Warnings_DEPRECATED_TYPE_USED                                                                                         = src.Warnings_DEPRECATED_TYPE_USED
+	Warnings_DISK_SIZE_LARGER_THAN_IMAGE_SIZE                                                                             = src.Warnings_DISK_SIZE_LARGER_THAN_IMAGE_SIZE
+	Warnings_EXPERIMENTAL_TYPE_USED                                                                                       = src.Warnings_EXPERIMENTAL_TYPE_USED
+	Warnings_EXTERNAL_API_WARNING                                                                                         = src.Warnings_EXTERNAL_API_WARNING
+	Warnings_FIELD_VALUE_OVERRIDEN                                                                                        = src.Warnings_FIELD_VALUE_OVERRIDEN
+	Warnings_INJECTED_KERNELS_DEPRECATED                                                                                  = src.Warnings_INJECTED_KERNELS_DEPRECATED
+	Warnings_INVALID_HEALTH_CHECK_FOR_DYNAMIC_WIEGHTED_LB                                                                 = src.Warnings_INVALID_HEALTH_CHECK_FOR_DYNAMIC_WIEGHTED_LB
+	Warnings_LARGE_DEPLOYMENT_WARNING                                                                                     = src.Warnings_LARGE_DEPLOYMENT_WARNING
+	Warnings_LIST_OVERHEAD_QUOTA_EXCEED                                                                                   = src.Warnings_LIST_OVERHEAD_QUOTA_EXCEED
+	Warnings_MISSING_TYPE_DEPENDENCY                                                                                      = src.Warnings_MISSING_TYPE_DEPENDENCY
+	Warnings_NEXT_HOP_ADDRESS_NOT_ASSIGNED                                                                                = src.Warnings_NEXT_HOP_ADDRESS_NOT_ASSIGNED
+	Warnings_NEXT_HOP_CANNOT_IP_FORWARD                                                                                   = src.Warnings_NEXT_HOP_CANNOT_IP_FORWARD
+	Warnings_NEXT_HOP_INSTANCE_HAS_NO_IPV6_INTERFACE                                                                      = src.Warnings_NEXT_HOP_INSTANCE_HAS_NO_IPV6_INTERFACE
+	Warnings_NEXT_HOP_INSTANCE_NOT_FOUND                                                                                  = src.Warnings_NEXT_HOP_INSTANCE_NOT_FOUND
+	Warnings_NEXT_HOP_INSTANCE_NOT_ON_NETWORK                                                                             = src.Warnings_NEXT_HOP_INSTANCE_NOT_ON_NETWORK
+	Warnings_NEXT_HOP_NOT_RUNNING                                                                                         = src.Warnings_NEXT_HOP_NOT_RUNNING
+	Warnings_NOT_CRITICAL_ERROR                                                                                           = src.Warnings_NOT_CRITICAL_ERROR
+	Warnings_NO_RESULTS_ON_PAGE                                                                                           = src.Warnings_NO_RESULTS_ON_PAGE
+	Warnings_PARTIAL_SUCCESS                                                                                              = src.Warnings_PARTIAL_SUCCESS
+	Warnings_REQUIRED_TOS_AGREEMENT                                                                                       = src.Warnings_REQUIRED_TOS_AGREEMENT
+	Warnings_RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING                                                                    = src.Warnings_RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING
+	Warnings_RESOURCE_NOT_DELETED                                                                                         = src.Warnings_RESOURCE_NOT_DELETED
+	Warnings_SCHEMA_VALIDATION_IGNORED                                                                                    = src.Warnings_SCHEMA_VALIDATION_IGNORED
+	Warnings_SINGLE_INSTANCE_PROPERTY_TEMPLATE                                                                            = src.Warnings_SINGLE_INSTANCE_PROPERTY_TEMPLATE
+	Warnings_UNDECLARED_PROPERTIES                                                                                        = src.Warnings_UNDECLARED_PROPERTIES
+	Warnings_UNDEFINED_CODE                                                                                               = src.Warnings_UNDEFINED_CODE
+	Warnings_UNREACHABLE                                                                                                  = src.Warnings_UNREACHABLE
+	XpnResourceId_PROJECT                                                                                                 = src.XpnResourceId_PROJECT
+	XpnResourceId_UNDEFINED_TYPE                                                                                          = src.XpnResourceId_UNDEFINED_TYPE
+	XpnResourceId_XPN_RESOURCE_TYPE_UNSPECIFIED                                                                           = src.XpnResourceId_XPN_RESOURCE_TYPE_UNSPECIFIED
+	Zone_DOWN                                                                                                             = src.Zone_DOWN
+	Zone_UNDEFINED_STATUS                                                                                                 = src.Zone_UNDEFINED_STATUS
+	Zone_UP                                                                                                               = src.Zone_UP
 )
 
 // Deprecated: Please use vars in: cloud.google.com/go/compute/apiv1/computepb
 var (
-	AccessConfig_NetworkTier_name                                                                = src.AccessConfig_NetworkTier_name
-	AccessConfig_NetworkTier_value                                                               = src.AccessConfig_NetworkTier_value
-	AccessConfig_Type_name                                                                       = src.AccessConfig_Type_name
-	AccessConfig_Type_value                                                                      = src.AccessConfig_Type_value
-	Address_AddressType_name                                                                     = src.Address_AddressType_name
-	Address_AddressType_value                                                                    = src.Address_AddressType_value
-	Address_IpVersion_name                                                                       = src.Address_IpVersion_name
-	Address_IpVersion_value                                                                      = src.Address_IpVersion_value
-	Address_Ipv6EndpointType_name                                                                = src.Address_Ipv6EndpointType_name
-	Address_Ipv6EndpointType_value                                                               = src.Address_Ipv6EndpointType_value
-	Address_NetworkTier_name                                                                     = src.Address_NetworkTier_name
-	Address_NetworkTier_value                                                                    = src.Address_NetworkTier_value
-	Address_Purpose_name                                                                         = src.Address_Purpose_name
-	Address_Purpose_value                                                                        = src.Address_Purpose_value
-	Address_Status_name                                                                          = src.Address_Status_name
-	Address_Status_value                                                                         = src.Address_Status_value
-	AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDisk_Interface_name        = src.AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDisk_Interface_name
-	AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDisk_Interface_value       = src.AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDisk_Interface_value
-	AttachedDiskInitializeParams_Architecture_name                                               = src.AttachedDiskInitializeParams_Architecture_name
-	AttachedDiskInitializeParams_Architecture_value                                              = src.AttachedDiskInitializeParams_Architecture_value
-	AttachedDiskInitializeParams_OnUpdateAction_name                                             = src.AttachedDiskInitializeParams_OnUpdateAction_name
-	AttachedDiskInitializeParams_OnUpdateAction_value                                            = src.AttachedDiskInitializeParams_OnUpdateAction_value
-	AttachedDisk_Architecture_name                                                               = src.AttachedDisk_Architecture_name
-	AttachedDisk_Architecture_value                                                              = src.AttachedDisk_Architecture_value
-	AttachedDisk_Interface_name                                                                  = src.AttachedDisk_Interface_name
-	AttachedDisk_Interface_value                                                                 = src.AttachedDisk_Interface_value
-	AttachedDisk_Mode_name                                                                       = src.AttachedDisk_Mode_name
-	AttachedDisk_Mode_value                                                                      = src.AttachedDisk_Mode_value
-	AttachedDisk_Type_name                                                                       = src.AttachedDisk_Type_name
-	AttachedDisk_Type_value                                                                      = src.AttachedDisk_Type_value
-	AuditLogConfig_LogType_name                                                                  = src.AuditLogConfig_LogType_name
-	AuditLogConfig_LogType_value                                                                 = src.AuditLogConfig_LogType_value
-	AuthorizationLoggingOptions_PermissionType_name                                              = src.AuthorizationLoggingOptions_PermissionType_name
-	AuthorizationLoggingOptions_PermissionType_value                                             = src.AuthorizationLoggingOptions_PermissionType_value
-	AutoscalerStatusDetails_Type_name                                                            = src.AutoscalerStatusDetails_Type_name
-	AutoscalerStatusDetails_Type_value                                                           = src.AutoscalerStatusDetails_Type_value
-	Autoscaler_Status_name                                                                       = src.Autoscaler_Status_name
-	Autoscaler_Status_value                                                                      = src.Autoscaler_Status_value
-	AutoscalingPolicyCpuUtilization_PredictiveMethod_name                                        = src.AutoscalingPolicyCpuUtilization_PredictiveMethod_name
-	AutoscalingPolicyCpuUtilization_PredictiveMethod_value                                       = src.AutoscalingPolicyCpuUtilization_PredictiveMethod_value
-	AutoscalingPolicyCustomMetricUtilization_UtilizationTargetType_name                          = src.AutoscalingPolicyCustomMetricUtilization_UtilizationTargetType_name
-	AutoscalingPolicyCustomMetricUtilization_UtilizationTargetType_value                         = src.AutoscalingPolicyCustomMetricUtilization_UtilizationTargetType_value
-	AutoscalingPolicy_Mode_name                                                                  = src.AutoscalingPolicy_Mode_name
-	AutoscalingPolicy_Mode_value                                                                 = src.AutoscalingPolicy_Mode_value
-	BackendBucketCdnPolicy_CacheMode_name                                                        = src.BackendBucketCdnPolicy_CacheMode_name
-	BackendBucketCdnPolicy_CacheMode_value                                                       = src.BackendBucketCdnPolicy_CacheMode_value
-	BackendBucket_CompressionMode_name                                                           = src.BackendBucket_CompressionMode_name
-	BackendBucket_CompressionMode_value                                                          = src.BackendBucket_CompressionMode_value
-	BackendServiceCdnPolicy_CacheMode_name                                                       = src.BackendServiceCdnPolicy_CacheMode_name
-	BackendServiceCdnPolicy_CacheMode_value                                                      = src.BackendServiceCdnPolicy_CacheMode_value
-	BackendServiceConnectionTrackingPolicy_ConnectionPersistenceOnUnhealthyBackends_name         = src.BackendServiceConnectionTrackingPolicy_ConnectionPersistenceOnUnhealthyBackends_name
-	BackendServiceConnectionTrackingPolicy_ConnectionPersistenceOnUnhealthyBackends_value        = src.BackendServiceConnectionTrackingPolicy_ConnectionPersistenceOnUnhealthyBackends_value
-	BackendServiceConnectionTrackingPolicy_TrackingMode_name                                     = src.BackendServiceConnectionTrackingPolicy_TrackingMode_name
-	BackendServiceConnectionTrackingPolicy_TrackingMode_value                                    = src.BackendServiceConnectionTrackingPolicy_TrackingMode_value
-	BackendServiceLocalityLoadBalancingPolicyConfigPolicy_Name_name                              = src.BackendServiceLocalityLoadBalancingPolicyConfigPolicy_Name_name
-	BackendServiceLocalityLoadBalancingPolicyConfigPolicy_Name_value                             = src.BackendServiceLocalityLoadBalancingPolicyConfigPolicy_Name_value
-	BackendService_CompressionMode_name                                                          = src.BackendService_CompressionMode_name
-	BackendService_CompressionMode_value                                                         = src.BackendService_CompressionMode_value
-	BackendService_LoadBalancingScheme_name                                                      = src.BackendService_LoadBalancingScheme_name
-	BackendService_LoadBalancingScheme_value                                                     = src.BackendService_LoadBalancingScheme_value
-	BackendService_LocalityLbPolicy_name                                                         = src.BackendService_LocalityLbPolicy_name
-	BackendService_LocalityLbPolicy_value                                                        = src.BackendService_LocalityLbPolicy_value
-	BackendService_Protocol_name                                                                 = src.BackendService_Protocol_name
-	BackendService_Protocol_value                                                                = src.BackendService_Protocol_value
-	BackendService_SessionAffinity_name                                                          = src.BackendService_SessionAffinity_name
-	BackendService_SessionAffinity_value                                                         = src.BackendService_SessionAffinity_value
-	Backend_BalancingMode_name                                                                   = src.Backend_BalancingMode_name
-	Backend_BalancingMode_value                                                                  = src.Backend_BalancingMode_value
-	BfdPacket_Diagnostic_name                                                                    = src.BfdPacket_Diagnostic_name
-	BfdPacket_Diagnostic_value                                                                   = src.BfdPacket_Diagnostic_value
-	BfdPacket_State_name                                                                         = src.BfdPacket_State_name
-	BfdPacket_State_value                                                                        = src.BfdPacket_State_value
-	BfdStatus_BfdSessionInitializationMode_name                                                  = src.BfdStatus_BfdSessionInitializationMode_name
-	BfdStatus_BfdSessionInitializationMode_value                                                 = src.BfdStatus_BfdSessionInitializationMode_value
-	BfdStatus_LocalDiagnostic_name                                                               = src.BfdStatus_LocalDiagnostic_name
-	BfdStatus_LocalDiagnostic_value                                                              = src.BfdStatus_LocalDiagnostic_value
-	BfdStatus_LocalState_name                                                                    = src.BfdStatus_LocalState_name
-	BfdStatus_LocalState_value                                                                   = src.BfdStatus_LocalState_value
-	Commitment_Category_name                                                                     = src.Commitment_Category_name
-	Commitment_Category_value                                                                    = src.Commitment_Category_value
-	Commitment_Plan_name                                                                         = src.Commitment_Plan_name
-	Commitment_Plan_value                                                                        = src.Commitment_Plan_value
-	Commitment_Status_name                                                                       = src.Commitment_Status_name
-	Commitment_Status_value                                                                      = src.Commitment_Status_value
-	Commitment_Type_name                                                                         = src.Commitment_Type_name
-	Commitment_Type_value                                                                        = src.Commitment_Type_value
-	Condition_Iam_name                                                                           = src.Condition_Iam_name
-	Condition_Iam_value                                                                          = src.Condition_Iam_value
-	Condition_Op_name                                                                            = src.Condition_Op_name
-	Condition_Op_value                                                                           = src.Condition_Op_value
-	Condition_Sys_name                                                                           = src.Condition_Sys_name
-	Condition_Sys_value                                                                          = src.Condition_Sys_value
-	DeprecationStatus_State_name                                                                 = src.DeprecationStatus_State_name
-	DeprecationStatus_State_value                                                                = src.DeprecationStatus_State_value
-	DiskInstantiationConfig_InstantiateFrom_name                                                 = src.DiskInstantiationConfig_InstantiateFrom_name
-	DiskInstantiationConfig_InstantiateFrom_value                                                = src.DiskInstantiationConfig_InstantiateFrom_value
-	Disk_Architecture_name                                                                       = src.Disk_Architecture_name
-	Disk_Architecture_value                                                                      = src.Disk_Architecture_value
-	Disk_Status_name                                                                             = src.Disk_Status_name
-	Disk_Status_value                                                                            = src.Disk_Status_value
-	DistributionPolicy_TargetShape_name                                                          = src.DistributionPolicy_TargetShape_name
-	DistributionPolicy_TargetShape_value                                                         = src.DistributionPolicy_TargetShape_value
-	ExchangedPeeringRoute_Type_name                                                              = src.ExchangedPeeringRoute_Type_name
-	ExchangedPeeringRoute_Type_value                                                             = src.ExchangedPeeringRoute_Type_value
-	ExternalVpnGateway_RedundancyType_name                                                       = src.ExternalVpnGateway_RedundancyType_name
-	ExternalVpnGateway_RedundancyType_value                                                      = src.ExternalVpnGateway_RedundancyType_value
-	FileContentBuffer_FileType_name                                                              = src.FileContentBuffer_FileType_name
-	FileContentBuffer_FileType_value                                                             = src.FileContentBuffer_FileType_value
-	File_google_cloud_compute_v1_compute_proto                                                   = src.File_google_cloud_compute_v1_compute_proto
-	FirewallLogConfig_Metadata_name                                                              = src.FirewallLogConfig_Metadata_name
-	FirewallLogConfig_Metadata_value                                                             = src.FirewallLogConfig_Metadata_value
-	FirewallPolicyRuleSecureTag_State_name                                                       = src.FirewallPolicyRuleSecureTag_State_name
-	FirewallPolicyRuleSecureTag_State_value                                                      = src.FirewallPolicyRuleSecureTag_State_value
-	FirewallPolicyRule_Direction_name                                                            = src.FirewallPolicyRule_Direction_name
-	FirewallPolicyRule_Direction_value                                                           = src.FirewallPolicyRule_Direction_value
-	Firewall_Direction_name                                                                      = src.Firewall_Direction_name
-	Firewall_Direction_value                                                                     = src.Firewall_Direction_value
-	ForwardingRule_IPProtocolEnum_name                                                           = src.ForwardingRule_IPProtocolEnum_name
-	ForwardingRule_IPProtocolEnum_value                                                          = src.ForwardingRule_IPProtocolEnum_value
-	ForwardingRule_IpVersion_name                                                                = src.ForwardingRule_IpVersion_name
-	ForwardingRule_IpVersion_value                                                               = src.ForwardingRule_IpVersion_value
-	ForwardingRule_LoadBalancingScheme_name                                                      = src.ForwardingRule_LoadBalancingScheme_name
-	ForwardingRule_LoadBalancingScheme_value                                                     = src.ForwardingRule_LoadBalancingScheme_value
-	ForwardingRule_NetworkTier_name                                                              = src.ForwardingRule_NetworkTier_name
-	ForwardingRule_NetworkTier_value                                                             = src.ForwardingRule_NetworkTier_value
-	ForwardingRule_PscConnectionStatus_name                                                      = src.ForwardingRule_PscConnectionStatus_name
-	ForwardingRule_PscConnectionStatus_value                                                     = src.ForwardingRule_PscConnectionStatus_value
-	GRPCHealthCheck_PortSpecification_name                                                       = src.GRPCHealthCheck_PortSpecification_name
-	GRPCHealthCheck_PortSpecification_value                                                      = src.GRPCHealthCheck_PortSpecification_value
-	GuestOsFeature_Type_name                                                                     = src.GuestOsFeature_Type_name
-	GuestOsFeature_Type_value                                                                    = src.GuestOsFeature_Type_value
-	HTTP2HealthCheck_PortSpecification_name                                                      = src.HTTP2HealthCheck_PortSpecification_name
-	HTTP2HealthCheck_PortSpecification_value                                                     = src.HTTP2HealthCheck_PortSpecification_value
-	HTTP2HealthCheck_ProxyHeader_name                                                            = src.HTTP2HealthCheck_ProxyHeader_name
-	HTTP2HealthCheck_ProxyHeader_value                                                           = src.HTTP2HealthCheck_ProxyHeader_value
-	HTTPHealthCheck_PortSpecification_name                                                       = src.HTTPHealthCheck_PortSpecification_name
-	HTTPHealthCheck_PortSpecification_value                                                      = src.HTTPHealthCheck_PortSpecification_value
-	HTTPHealthCheck_ProxyHeader_name                                                             = src.HTTPHealthCheck_ProxyHeader_name
-	HTTPHealthCheck_ProxyHeader_value                                                            = src.HTTPHealthCheck_ProxyHeader_value
-	HTTPSHealthCheck_PortSpecification_name                                                      = src.HTTPSHealthCheck_PortSpecification_name
-	HTTPSHealthCheck_PortSpecification_value                                                     = src.HTTPSHealthCheck_PortSpecification_value
-	HTTPSHealthCheck_ProxyHeader_name                                                            = src.HTTPSHealthCheck_ProxyHeader_name
-	HTTPSHealthCheck_ProxyHeader_value                                                           = src.HTTPSHealthCheck_ProxyHeader_value
-	HealthCheckService_HealthStatusAggregationPolicy_name                                        = src.HealthCheckService_HealthStatusAggregationPolicy_name
-	HealthCheckService_HealthStatusAggregationPolicy_value                                       = src.HealthCheckService_HealthStatusAggregationPolicy_value
-	HealthCheck_Type_name                                                                        = src.HealthCheck_Type_name
-	HealthCheck_Type_value                                                                       = src.HealthCheck_Type_value
-	HealthStatusForNetworkEndpoint_HealthState_name                                              = src.HealthStatusForNetworkEndpoint_HealthState_name
-	HealthStatusForNetworkEndpoint_HealthState_value                                             = src.HealthStatusForNetworkEndpoint_HealthState_value
-	HealthStatus_HealthState_name                                                                = src.HealthStatus_HealthState_name
-	HealthStatus_HealthState_value                                                               = src.HealthStatus_HealthState_value
-	HealthStatus_WeightError_name                                                                = src.HealthStatus_WeightError_name
-	HealthStatus_WeightError_value                                                               = src.HealthStatus_WeightError_value
-	HttpRedirectAction_RedirectResponseCode_name                                                 = src.HttpRedirectAction_RedirectResponseCode_name
-	HttpRedirectAction_RedirectResponseCode_value                                                = src.HttpRedirectAction_RedirectResponseCode_value
-	Image_Architecture_name                                                                      = src.Image_Architecture_name
-	Image_Architecture_value                                                                     = src.Image_Architecture_value
-	Image_SourceType_name                                                                        = src.Image_SourceType_name
-	Image_SourceType_value                                                                       = src.Image_SourceType_value
-	Image_Status_name                                                                            = src.Image_Status_name
-	Image_Status_value                                                                           = src.Image_Status_value
-	InstanceGroupManagerUpdatePolicy_InstanceRedistributionType_name                             = src.InstanceGroupManagerUpdatePolicy_InstanceRedistributionType_name
-	InstanceGroupManagerUpdatePolicy_InstanceRedistributionType_value                            = src.InstanceGroupManagerUpdatePolicy_InstanceRedistributionType_value
-	InstanceGroupManagerUpdatePolicy_MinimalAction_name                                          = src.InstanceGroupManagerUpdatePolicy_MinimalAction_name
-	InstanceGroupManagerUpdatePolicy_MinimalAction_value                                         = src.InstanceGroupManagerUpdatePolicy_MinimalAction_value
-	InstanceGroupManagerUpdatePolicy_MostDisruptiveAllowedAction_name                            = src.InstanceGroupManagerUpdatePolicy_MostDisruptiveAllowedAction_name
-	InstanceGroupManagerUpdatePolicy_MostDisruptiveAllowedAction_value                           = src.InstanceGroupManagerUpdatePolicy_MostDisruptiveAllowedAction_value
-	InstanceGroupManagerUpdatePolicy_ReplacementMethod_name                                      = src.InstanceGroupManagerUpdatePolicy_ReplacementMethod_name
-	InstanceGroupManagerUpdatePolicy_ReplacementMethod_value                                     = src.InstanceGroupManagerUpdatePolicy_ReplacementMethod_value
-	InstanceGroupManagerUpdatePolicy_Type_name                                                   = src.InstanceGroupManagerUpdatePolicy_Type_name
-	InstanceGroupManagerUpdatePolicy_Type_value                                                  = src.InstanceGroupManagerUpdatePolicy_Type_value
-	InstanceGroupManager_ListManagedInstancesResults_name                                        = src.InstanceGroupManager_ListManagedInstancesResults_name
-	InstanceGroupManager_ListManagedInstancesResults_value                                       = src.InstanceGroupManager_ListManagedInstancesResults_value
-	InstanceGroupManagersApplyUpdatesRequest_MinimalAction_name                                  = src.InstanceGroupManagersApplyUpdatesRequest_MinimalAction_name
-	InstanceGroupManagersApplyUpdatesRequest_MinimalAction_value                                 = src.InstanceGroupManagersApplyUpdatesRequest_MinimalAction_value
-	InstanceGroupManagersApplyUpdatesRequest_MostDisruptiveAllowedAction_name                    = src.InstanceGroupManagersApplyUpdatesRequest_MostDisruptiveAllowedAction_name
-	InstanceGroupManagersApplyUpdatesRequest_MostDisruptiveAllowedAction_value                   = src.InstanceGroupManagersApplyUpdatesRequest_MostDisruptiveAllowedAction_value
-	InstanceGroupsListInstancesRequest_InstanceState_name                                        = src.InstanceGroupsListInstancesRequest_InstanceState_name
-	InstanceGroupsListInstancesRequest_InstanceState_value                                       = src.InstanceGroupsListInstancesRequest_InstanceState_value
-	InstanceManagedByIgmErrorInstanceActionDetails_Action_name                                   = src.InstanceManagedByIgmErrorInstanceActionDetails_Action_name
-	InstanceManagedByIgmErrorInstanceActionDetails_Action_value                                  = src.InstanceManagedByIgmErrorInstanceActionDetails_Action_value
-	InstanceProperties_KeyRevocationActionType_name                                              = src.InstanceProperties_KeyRevocationActionType_name
-	InstanceProperties_KeyRevocationActionType_value                                             = src.InstanceProperties_KeyRevocationActionType_value
-	InstanceProperties_PrivateIpv6GoogleAccess_name                                              = src.InstanceProperties_PrivateIpv6GoogleAccess_name
-	InstanceProperties_PrivateIpv6GoogleAccess_value                                             = src.InstanceProperties_PrivateIpv6GoogleAccess_value
-	InstanceWithNamedPorts_Status_name                                                           = src.InstanceWithNamedPorts_Status_name
-	InstanceWithNamedPorts_Status_value                                                          = src.InstanceWithNamedPorts_Status_value
-	Instance_KeyRevocationActionType_name                                                        = src.Instance_KeyRevocationActionType_name
-	Instance_KeyRevocationActionType_value                                                       = src.Instance_KeyRevocationActionType_value
-	Instance_PrivateIpv6GoogleAccess_name                                                        = src.Instance_PrivateIpv6GoogleAccess_name
-	Instance_PrivateIpv6GoogleAccess_value                                                       = src.Instance_PrivateIpv6GoogleAccess_value
-	Instance_Status_name                                                                         = src.Instance_Status_name
-	Instance_Status_value                                                                        = src.Instance_Status_value
-	InstancesGetEffectiveFirewallsResponseEffectiveFirewallPolicy_Type_name                      = src.InstancesGetEffectiveFirewallsResponseEffectiveFirewallPolicy_Type_name
-	InstancesGetEffectiveFirewallsResponseEffectiveFirewallPolicy_Type_value                     = src.InstancesGetEffectiveFirewallsResponseEffectiveFirewallPolicy_Type_value
-	InterconnectAttachment_Bandwidth_name                                                        = src.InterconnectAttachment_Bandwidth_name
-	InterconnectAttachment_Bandwidth_value                                                       = src.InterconnectAttachment_Bandwidth_value
-	InterconnectAttachment_EdgeAvailabilityDomain_name                                           = src.InterconnectAttachment_EdgeAvailabilityDomain_name
-	InterconnectAttachment_EdgeAvailabilityDomain_value                                          = src.InterconnectAttachment_EdgeAvailabilityDomain_value
-	InterconnectAttachment_Encryption_name                                                       = src.InterconnectAttachment_Encryption_name
-	InterconnectAttachment_Encryption_value                                                      = src.InterconnectAttachment_Encryption_value
-	InterconnectAttachment_OperationalStatus_name                                                = src.InterconnectAttachment_OperationalStatus_name
-	InterconnectAttachment_OperationalStatus_value                                               = src.InterconnectAttachment_OperationalStatus_value
-	InterconnectAttachment_StackType_name                                                        = src.InterconnectAttachment_StackType_name
-	InterconnectAttachment_StackType_value                                                       = src.InterconnectAttachment_StackType_value
-	InterconnectAttachment_State_name                                                            = src.InterconnectAttachment_State_name
-	InterconnectAttachment_State_value                                                           = src.InterconnectAttachment_State_value
-	InterconnectAttachment_Type_name                                                             = src.InterconnectAttachment_Type_name
-	InterconnectAttachment_Type_value                                                            = src.InterconnectAttachment_Type_value
-	InterconnectDiagnosticsLinkLACPStatus_State_name                                             = src.InterconnectDiagnosticsLinkLACPStatus_State_name
-	InterconnectDiagnosticsLinkLACPStatus_State_value                                            = src.InterconnectDiagnosticsLinkLACPStatus_State_value
-	InterconnectDiagnosticsLinkOpticalPower_State_name                                           = src.InterconnectDiagnosticsLinkOpticalPower_State_name
-	InterconnectDiagnosticsLinkOpticalPower_State_value                                          = src.InterconnectDiagnosticsLinkOpticalPower_State_value
-	InterconnectLocationRegionInfo_LocationPresence_name                                         = src.InterconnectLocationRegionInfo_LocationPresence_name
-	InterconnectLocationRegionInfo_LocationPresence_value                                        = src.InterconnectLocationRegionInfo_LocationPresence_value
-	InterconnectLocation_Continent_name                                                          = src.InterconnectLocation_Continent_name
-	InterconnectLocation_Continent_value                                                         = src.InterconnectLocation_Continent_value
-	InterconnectLocation_Status_name                                                             = src.InterconnectLocation_Status_name
-	InterconnectLocation_Status_value                                                            = src.InterconnectLocation_Status_value
-	InterconnectOutageNotification_IssueType_name                                                = src.InterconnectOutageNotification_IssueType_name
-	InterconnectOutageNotification_IssueType_value                                               = src.InterconnectOutageNotification_IssueType_value
-	InterconnectOutageNotification_Source_name                                                   = src.InterconnectOutageNotification_Source_name
-	InterconnectOutageNotification_Source_value                                                  = src.InterconnectOutageNotification_Source_value
-	InterconnectOutageNotification_State_name                                                    = src.InterconnectOutageNotification_State_name
-	InterconnectOutageNotification_State_value                                                   = src.InterconnectOutageNotification_State_value
-	Interconnect_InterconnectType_name                                                           = src.Interconnect_InterconnectType_name
-	Interconnect_InterconnectType_value                                                          = src.Interconnect_InterconnectType_value
-	Interconnect_LinkType_name                                                                   = src.Interconnect_LinkType_name
-	Interconnect_LinkType_value                                                                  = src.Interconnect_LinkType_value
-	Interconnect_OperationalStatus_name                                                          = src.Interconnect_OperationalStatus_name
-	Interconnect_OperationalStatus_value                                                         = src.Interconnect_OperationalStatus_value
-	Interconnect_State_name                                                                      = src.Interconnect_State_name
-	Interconnect_State_value                                                                     = src.Interconnect_State_value
-	LicenseCode_State_name                                                                       = src.LicenseCode_State_name
-	LicenseCode_State_value                                                                      = src.LicenseCode_State_value
-	ListPeeringRoutesNetworksRequest_Direction_name                                              = src.ListPeeringRoutesNetworksRequest_Direction_name
-	ListPeeringRoutesNetworksRequest_Direction_value                                             = src.ListPeeringRoutesNetworksRequest_Direction_value
-	LocationPolicyLocation_Preference_name                                                       = src.LocationPolicyLocation_Preference_name
-	LocationPolicyLocation_Preference_value                                                      = src.LocationPolicyLocation_Preference_value
-	LocationPolicy_TargetShape_name                                                              = src.LocationPolicy_TargetShape_name
-	LocationPolicy_TargetShape_value                                                             = src.LocationPolicy_TargetShape_value
-	LogConfigCloudAuditOptions_LogName_name                                                      = src.LogConfigCloudAuditOptions_LogName_name
-	LogConfigCloudAuditOptions_LogName_value                                                     = src.LogConfigCloudAuditOptions_LogName_value
-	LogConfigDataAccessOptions_LogMode_name                                                      = src.LogConfigDataAccessOptions_LogMode_name
-	LogConfigDataAccessOptions_LogMode_value                                                     = src.LogConfigDataAccessOptions_LogMode_value
-	MachineImage_Status_name                                                                     = src.MachineImage_Status_name
-	MachineImage_Status_value                                                                    = src.MachineImage_Status_value
-	ManagedInstanceInstanceHealth_DetailedHealthState_name                                       = src.ManagedInstanceInstanceHealth_DetailedHealthState_name
-	ManagedInstanceInstanceHealth_DetailedHealthState_value                                      = src.ManagedInstanceInstanceHealth_DetailedHealthState_value
-	ManagedInstance_CurrentAction_name                                                           = src.ManagedInstance_CurrentAction_name
-	ManagedInstance_CurrentAction_value                                                          = src.ManagedInstance_CurrentAction_value
-	ManagedInstance_InstanceStatus_name                                                          = src.ManagedInstance_InstanceStatus_name
-	ManagedInstance_InstanceStatus_value                                                         = src.ManagedInstance_InstanceStatus_value
-	MetadataFilter_FilterMatchCriteria_name                                                      = src.MetadataFilter_FilterMatchCriteria_name
-	MetadataFilter_FilterMatchCriteria_value                                                     = src.MetadataFilter_FilterMatchCriteria_value
-	NetworkEndpointGroupPscData_PscConnectionStatus_name                                         = src.NetworkEndpointGroupPscData_PscConnectionStatus_name
-	NetworkEndpointGroupPscData_PscConnectionStatus_value                                        = src.NetworkEndpointGroupPscData_PscConnectionStatus_value
-	NetworkEndpointGroup_NetworkEndpointType_name                                                = src.NetworkEndpointGroup_NetworkEndpointType_name
-	NetworkEndpointGroup_NetworkEndpointType_value                                               = src.NetworkEndpointGroup_NetworkEndpointType_value
-	NetworkEndpointGroupsListEndpointsRequest_HealthStatus_name                                  = src.NetworkEndpointGroupsListEndpointsRequest_HealthStatus_name
-	NetworkEndpointGroupsListEndpointsRequest_HealthStatus_value                                 = src.NetworkEndpointGroupsListEndpointsRequest_HealthStatus_value
-	NetworkInterface_Ipv6AccessType_name                                                         = src.NetworkInterface_Ipv6AccessType_name
-	NetworkInterface_Ipv6AccessType_value                                                        = src.NetworkInterface_Ipv6AccessType_value
-	NetworkInterface_NicType_name                                                                = src.NetworkInterface_NicType_name
-	NetworkInterface_NicType_value                                                               = src.NetworkInterface_NicType_value
-	NetworkInterface_StackType_name                                                              = src.NetworkInterface_StackType_name
-	NetworkInterface_StackType_value                                                             = src.NetworkInterface_StackType_value
-	NetworkPeering_StackType_name                                                                = src.NetworkPeering_StackType_name
-	NetworkPeering_StackType_value                                                               = src.NetworkPeering_StackType_value
-	NetworkPeering_State_name                                                                    = src.NetworkPeering_State_name
-	NetworkPeering_State_value                                                                   = src.NetworkPeering_State_value
-	NetworkPerformanceConfig_TotalEgressBandwidthTier_name                                       = src.NetworkPerformanceConfig_TotalEgressBandwidthTier_name
-	NetworkPerformanceConfig_TotalEgressBandwidthTier_value                                      = src.NetworkPerformanceConfig_TotalEgressBandwidthTier_value
-	NetworkRoutingConfig_RoutingMode_name                                                        = src.NetworkRoutingConfig_RoutingMode_name
-	NetworkRoutingConfig_RoutingMode_value                                                       = src.NetworkRoutingConfig_RoutingMode_value
-	Network_NetworkFirewallPolicyEnforcementOrder_name                                           = src.Network_NetworkFirewallPolicyEnforcementOrder_name
-	Network_NetworkFirewallPolicyEnforcementOrder_value                                          = src.Network_NetworkFirewallPolicyEnforcementOrder_value
-	NetworksGetEffectiveFirewallsResponseEffectiveFirewallPolicy_Type_name                       = src.NetworksGetEffectiveFirewallsResponseEffectiveFirewallPolicy_Type_name
-	NetworksGetEffectiveFirewallsResponseEffectiveFirewallPolicy_Type_value                      = src.NetworksGetEffectiveFirewallsResponseEffectiveFirewallPolicy_Type_value
-	NodeGroupAutoscalingPolicy_Mode_name                                                         = src.NodeGroupAutoscalingPolicy_Mode_name
-	NodeGroupAutoscalingPolicy_Mode_value                                                        = src.NodeGroupAutoscalingPolicy_Mode_value
-	NodeGroupNode_CpuOvercommitType_name                                                         = src.NodeGroupNode_CpuOvercommitType_name
-	NodeGroupNode_CpuOvercommitType_value                                                        = src.NodeGroupNode_CpuOvercommitType_value
-	NodeGroupNode_Status_name                                                                    = src.NodeGroupNode_Status_name
-	NodeGroupNode_Status_value                                                                   = src.NodeGroupNode_Status_value
-	NodeGroup_MaintenancePolicy_name                                                             = src.NodeGroup_MaintenancePolicy_name
-	NodeGroup_MaintenancePolicy_value                                                            = src.NodeGroup_MaintenancePolicy_value
-	NodeGroup_Status_name                                                                        = src.NodeGroup_Status_name
-	NodeGroup_Status_value                                                                       = src.NodeGroup_Status_value
-	NodeTemplate_CpuOvercommitType_name                                                          = src.NodeTemplate_CpuOvercommitType_name
-	NodeTemplate_CpuOvercommitType_value                                                         = src.NodeTemplate_CpuOvercommitType_value
-	NodeTemplate_Status_name                                                                     = src.NodeTemplate_Status_name
-	NodeTemplate_Status_value                                                                    = src.NodeTemplate_Status_value
-	Operation_Status_name                                                                        = src.Operation_Status_name
-	Operation_Status_value                                                                       = src.Operation_Status_value
-	PacketIntervals_Duration_name                                                                = src.PacketIntervals_Duration_name
-	PacketIntervals_Duration_value                                                               = src.PacketIntervals_Duration_value
-	PacketIntervals_Type_name                                                                    = src.PacketIntervals_Type_name
-	PacketIntervals_Type_value                                                                   = src.PacketIntervals_Type_value
-	PacketMirroringFilter_Direction_name                                                         = src.PacketMirroringFilter_Direction_name
-	PacketMirroringFilter_Direction_value                                                        = src.PacketMirroringFilter_Direction_value
-	PacketMirroring_Enable_name                                                                  = src.PacketMirroring_Enable_name
-	PacketMirroring_Enable_value                                                                 = src.PacketMirroring_Enable_value
-	PerInstanceConfig_Status_name                                                                = src.PerInstanceConfig_Status_name
-	PerInstanceConfig_Status_value                                                               = src.PerInstanceConfig_Status_value
-	PreservedStatePreservedDisk_AutoDelete_name                                                  = src.PreservedStatePreservedDisk_AutoDelete_name
-	PreservedStatePreservedDisk_AutoDelete_value                                                 = src.PreservedStatePreservedDisk_AutoDelete_value
-	PreservedStatePreservedDisk_Mode_name                                                        = src.PreservedStatePreservedDisk_Mode_name
-	PreservedStatePreservedDisk_Mode_value                                                       = src.PreservedStatePreservedDisk_Mode_value
-	Project_DefaultNetworkTier_name                                                              = src.Project_DefaultNetworkTier_name
-	Project_DefaultNetworkTier_value                                                             = src.Project_DefaultNetworkTier_value
-	Project_XpnProjectStatus_name                                                                = src.Project_XpnProjectStatus_name
-	Project_XpnProjectStatus_value                                                               = src.Project_XpnProjectStatus_value
-	ProjectsSetDefaultNetworkTierRequest_NetworkTier_name                                        = src.ProjectsSetDefaultNetworkTierRequest_NetworkTier_name
-	ProjectsSetDefaultNetworkTierRequest_NetworkTier_value                                       = src.ProjectsSetDefaultNetworkTierRequest_NetworkTier_value
-	PublicAdvertisedPrefix_Status_name                                                           = src.PublicAdvertisedPrefix_Status_name
-	PublicAdvertisedPrefix_Status_value                                                          = src.PublicAdvertisedPrefix_Status_value
-	PublicDelegatedPrefixPublicDelegatedSubPrefix_Status_name                                    = src.PublicDelegatedPrefixPublicDelegatedSubPrefix_Status_name
-	PublicDelegatedPrefixPublicDelegatedSubPrefix_Status_value                                   = src.PublicDelegatedPrefixPublicDelegatedSubPrefix_Status_value
-	PublicDelegatedPrefix_Status_name                                                            = src.PublicDelegatedPrefix_Status_name
-	PublicDelegatedPrefix_Status_value                                                           = src.PublicDelegatedPrefix_Status_value
-	Quota_Metric_name                                                                            = src.Quota_Metric_name
-	Quota_Metric_value                                                                           = src.Quota_Metric_value
-	RawDisk_ContainerType_name                                                                   = src.RawDisk_ContainerType_name
-	RawDisk_ContainerType_value                                                                  = src.RawDisk_ContainerType_value
-	RegionInstanceGroupManagersApplyUpdatesRequest_MinimalAction_name                            = src.RegionInstanceGroupManagersApplyUpdatesRequest_MinimalAction_name
-	RegionInstanceGroupManagersApplyUpdatesRequest_MinimalAction_value                           = src.RegionInstanceGroupManagersApplyUpdatesRequest_MinimalAction_value
-	RegionInstanceGroupManagersApplyUpdatesRequest_MostDisruptiveAllowedAction_name              = src.RegionInstanceGroupManagersApplyUpdatesRequest_MostDisruptiveAllowedAction_name
-	RegionInstanceGroupManagersApplyUpdatesRequest_MostDisruptiveAllowedAction_value             = src.RegionInstanceGroupManagersApplyUpdatesRequest_MostDisruptiveAllowedAction_value
-	RegionInstanceGroupsListInstancesRequest_InstanceState_name                                  = src.RegionInstanceGroupsListInstancesRequest_InstanceState_name
-	RegionInstanceGroupsListInstancesRequest_InstanceState_value                                 = src.RegionInstanceGroupsListInstancesRequest_InstanceState_value
-	RegionNetworkFirewallPoliciesGetEffectiveFirewallsResponseEffectiveFirewallPolicy_Type_name  = src.RegionNetworkFirewallPoliciesGetEffectiveFirewallsResponseEffectiveFirewallPolicy_Type_name
-	RegionNetworkFirewallPoliciesGetEffectiveFirewallsResponseEffectiveFirewallPolicy_Type_value = src.RegionNetworkFirewallPoliciesGetEffectiveFirewallsResponseEffectiveFirewallPolicy_Type_value
-	Region_Status_name                                                                           = src.Region_Status_name
-	Region_Status_value                                                                          = src.Region_Status_value
-	ReservationAffinity_ConsumeReservationType_name                                              = src.ReservationAffinity_ConsumeReservationType_name
-	ReservationAffinity_ConsumeReservationType_value                                             = src.ReservationAffinity_ConsumeReservationType_value
-	Reservation_Status_name                                                                      = src.Reservation_Status_name
-	Reservation_Status_value                                                                     = src.Reservation_Status_value
-	ResourceCommitment_Type_name                                                                 = src.ResourceCommitment_Type_name
-	ResourceCommitment_Type_value                                                                = src.ResourceCommitment_Type_value
-	ResourcePolicyGroupPlacementPolicy_Collocation_name                                          = src.ResourcePolicyGroupPlacementPolicy_Collocation_name
-	ResourcePolicyGroupPlacementPolicy_Collocation_value                                         = src.ResourcePolicyGroupPlacementPolicy_Collocation_value
-	ResourcePolicySnapshotSchedulePolicyRetentionPolicy_OnSourceDiskDelete_name                  = src.ResourcePolicySnapshotSchedulePolicyRetentionPolicy_OnSourceDiskDelete_name
-	ResourcePolicySnapshotSchedulePolicyRetentionPolicy_OnSourceDiskDelete_value                 = src.ResourcePolicySnapshotSchedulePolicyRetentionPolicy_OnSourceDiskDelete_value
-	ResourcePolicyWeeklyCycleDayOfWeek_Day_name                                                  = src.ResourcePolicyWeeklyCycleDayOfWeek_Day_name
-	ResourcePolicyWeeklyCycleDayOfWeek_Day_value                                                 = src.ResourcePolicyWeeklyCycleDayOfWeek_Day_value
-	ResourcePolicy_Status_name                                                                   = src.ResourcePolicy_Status_name
-	ResourcePolicy_Status_value                                                                  = src.ResourcePolicy_Status_value
-	RouteAsPath_PathSegmentType_name                                                             = src.RouteAsPath_PathSegmentType_name
-	RouteAsPath_PathSegmentType_value                                                            = src.RouteAsPath_PathSegmentType_value
-	Route_RouteStatus_name                                                                       = src.Route_RouteStatus_name
-	Route_RouteStatus_value                                                                      = src.Route_RouteStatus_value
-	Route_RouteType_name                                                                         = src.Route_RouteType_name
-	Route_RouteType_value                                                                        = src.Route_RouteType_value
-	RouterBgpPeerBfd_SessionInitializationMode_name                                              = src.RouterBgpPeerBfd_SessionInitializationMode_name
-	RouterBgpPeerBfd_SessionInitializationMode_value                                             = src.RouterBgpPeerBfd_SessionInitializationMode_value
-	RouterBgpPeer_AdvertiseMode_name                                                             = src.RouterBgpPeer_AdvertiseMode_name
-	RouterBgpPeer_AdvertiseMode_value                                                            = src.RouterBgpPeer_AdvertiseMode_value
-	RouterBgpPeer_AdvertisedGroups_name                                                          = src.RouterBgpPeer_AdvertisedGroups_name
-	RouterBgpPeer_AdvertisedGroups_value                                                         = src.RouterBgpPeer_AdvertisedGroups_value
-	RouterBgpPeer_Enable_name                                                                    = src.RouterBgpPeer_Enable_name
-	RouterBgpPeer_Enable_value                                                                   = src.RouterBgpPeer_Enable_value
-	RouterBgpPeer_ManagementType_name                                                            = src.RouterBgpPeer_ManagementType_name
-	RouterBgpPeer_ManagementType_value                                                           = src.RouterBgpPeer_ManagementType_value
-	RouterBgp_AdvertiseMode_name                                                                 = src.RouterBgp_AdvertiseMode_name
-	RouterBgp_AdvertiseMode_value                                                                = src.RouterBgp_AdvertiseMode_value
-	RouterBgp_AdvertisedGroups_name                                                              = src.RouterBgp_AdvertisedGroups_name
-	RouterBgp_AdvertisedGroups_value                                                             = src.RouterBgp_AdvertisedGroups_value
-	RouterInterface_ManagementType_name                                                          = src.RouterInterface_ManagementType_name
-	RouterInterface_ManagementType_value                                                         = src.RouterInterface_ManagementType_value
-	RouterNatLogConfig_Filter_name                                                               = src.RouterNatLogConfig_Filter_name
-	RouterNatLogConfig_Filter_value                                                              = src.RouterNatLogConfig_Filter_value
-	RouterNatSubnetworkToNat_SourceIpRangesToNat_name                                            = src.RouterNatSubnetworkToNat_SourceIpRangesToNat_name
-	RouterNatSubnetworkToNat_SourceIpRangesToNat_value                                           = src.RouterNatSubnetworkToNat_SourceIpRangesToNat_value
-	RouterNat_EndpointTypes_name                                                                 = src.RouterNat_EndpointTypes_name
-	RouterNat_EndpointTypes_value                                                                = src.RouterNat_EndpointTypes_value
-	RouterNat_NatIpAllocateOption_name                                                           = src.RouterNat_NatIpAllocateOption_name
-	RouterNat_NatIpAllocateOption_value                                                          = src.RouterNat_NatIpAllocateOption_value
-	RouterNat_SourceSubnetworkIpRangesToNat_name                                                 = src.RouterNat_SourceSubnetworkIpRangesToNat_name
-	RouterNat_SourceSubnetworkIpRangesToNat_value                                                = src.RouterNat_SourceSubnetworkIpRangesToNat_value
-	RouterStatusBgpPeerStatus_StatusReason_name                                                  = src.RouterStatusBgpPeerStatus_StatusReason_name
-	RouterStatusBgpPeerStatus_StatusReason_value                                                 = src.RouterStatusBgpPeerStatus_StatusReason_value
-	RouterStatusBgpPeerStatus_Status_name                                                        = src.RouterStatusBgpPeerStatus_Status_name
-	RouterStatusBgpPeerStatus_Status_value                                                       = src.RouterStatusBgpPeerStatus_Status_value
-	Rule_Action_name                                                                             = src.Rule_Action_name
-	Rule_Action_value                                                                            = src.Rule_Action_value
-	SSLHealthCheck_PortSpecification_name                                                        = src.SSLHealthCheck_PortSpecification_name
-	SSLHealthCheck_PortSpecification_value                                                       = src.SSLHealthCheck_PortSpecification_value
-	SSLHealthCheck_ProxyHeader_name                                                              = src.SSLHealthCheck_ProxyHeader_name
-	SSLHealthCheck_ProxyHeader_value                                                             = src.SSLHealthCheck_ProxyHeader_value
-	SavedAttachedDisk_Interface_name                                                             = src.SavedAttachedDisk_Interface_name
-	SavedAttachedDisk_Interface_value                                                            = src.SavedAttachedDisk_Interface_value
-	SavedAttachedDisk_Mode_name                                                                  = src.SavedAttachedDisk_Mode_name
-	SavedAttachedDisk_Mode_value                                                                 = src.SavedAttachedDisk_Mode_value
-	SavedAttachedDisk_StorageBytesStatus_name                                                    = src.SavedAttachedDisk_StorageBytesStatus_name
-	SavedAttachedDisk_StorageBytesStatus_value                                                   = src.SavedAttachedDisk_StorageBytesStatus_value
-	SavedAttachedDisk_Type_name                                                                  = src.SavedAttachedDisk_Type_name
-	SavedAttachedDisk_Type_value                                                                 = src.SavedAttachedDisk_Type_value
-	SavedDisk_Architecture_name                                                                  = src.SavedDisk_Architecture_name
-	SavedDisk_Architecture_value                                                                 = src.SavedDisk_Architecture_value
-	SavedDisk_StorageBytesStatus_name                                                            = src.SavedDisk_StorageBytesStatus_name
-	SavedDisk_StorageBytesStatus_value                                                           = src.SavedDisk_StorageBytesStatus_value
-	ScalingScheduleStatus_State_name                                                             = src.ScalingScheduleStatus_State_name
-	ScalingScheduleStatus_State_value                                                            = src.ScalingScheduleStatus_State_value
-	SchedulingNodeAffinity_Operator_name                                                         = src.SchedulingNodeAffinity_Operator_name
-	SchedulingNodeAffinity_Operator_value                                                        = src.SchedulingNodeAffinity_Operator_value
-	Scheduling_InstanceTerminationAction_name                                                    = src.Scheduling_InstanceTerminationAction_name
-	Scheduling_InstanceTerminationAction_value                                                   = src.Scheduling_InstanceTerminationAction_value
-	Scheduling_OnHostMaintenance_name                                                            = src.Scheduling_OnHostMaintenance_name
-	Scheduling_OnHostMaintenance_value                                                           = src.Scheduling_OnHostMaintenance_value
-	Scheduling_ProvisioningModel_name                                                            = src.Scheduling_ProvisioningModel_name
-	Scheduling_ProvisioningModel_value                                                           = src.Scheduling_ProvisioningModel_value
-	SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig_RuleVisibility_name            = src.SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig_RuleVisibility_name
-	SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig_RuleVisibility_value           = src.SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig_RuleVisibility_value
-	SecurityPolicyAdvancedOptionsConfig_JsonParsing_name                                         = src.SecurityPolicyAdvancedOptionsConfig_JsonParsing_name
-	SecurityPolicyAdvancedOptionsConfig_JsonParsing_value                                        = src.SecurityPolicyAdvancedOptionsConfig_JsonParsing_value
-	SecurityPolicyAdvancedOptionsConfig_LogLevel_name                                            = src.SecurityPolicyAdvancedOptionsConfig_LogLevel_name
-	SecurityPolicyAdvancedOptionsConfig_LogLevel_value                                           = src.SecurityPolicyAdvancedOptionsConfig_LogLevel_value
-	SecurityPolicyDdosProtectionConfig_DdosProtection_name                                       = src.SecurityPolicyDdosProtectionConfig_DdosProtection_name
-	SecurityPolicyDdosProtectionConfig_DdosProtection_value                                      = src.SecurityPolicyDdosProtectionConfig_DdosProtection_value
-	SecurityPolicyRuleMatcher_VersionedExpr_name                                                 = src.SecurityPolicyRuleMatcher_VersionedExpr_name
-	SecurityPolicyRuleMatcher_VersionedExpr_value                                                = src.SecurityPolicyRuleMatcher_VersionedExpr_value
-	SecurityPolicyRuleRateLimitOptions_EnforceOnKey_name                                         = src.SecurityPolicyRuleRateLimitOptions_EnforceOnKey_name
-	SecurityPolicyRuleRateLimitOptions_EnforceOnKey_value                                        = src.SecurityPolicyRuleRateLimitOptions_EnforceOnKey_value
-	SecurityPolicyRuleRedirectOptions_Type_name                                                  = src.SecurityPolicyRuleRedirectOptions_Type_name
-	SecurityPolicyRuleRedirectOptions_Type_value                                                 = src.SecurityPolicyRuleRedirectOptions_Type_value
-	SecurityPolicy_Type_name                                                                     = src.SecurityPolicy_Type_name
-	SecurityPolicy_Type_value                                                                    = src.SecurityPolicy_Type_value
-	ServerBinding_Type_name                                                                      = src.ServerBinding_Type_name
-	ServerBinding_Type_value                                                                     = src.ServerBinding_Type_value
-	ServiceAttachmentConnectedEndpoint_Status_name                                               = src.ServiceAttachmentConnectedEndpoint_Status_name
-	ServiceAttachmentConnectedEndpoint_Status_value                                              = src.ServiceAttachmentConnectedEndpoint_Status_value
-	ServiceAttachment_ConnectionPreference_name                                                  = src.ServiceAttachment_ConnectionPreference_name
-	ServiceAttachment_ConnectionPreference_value                                                 = src.ServiceAttachment_ConnectionPreference_value
-	ShareSettings_ShareType_name                                                                 = src.ShareSettings_ShareType_name
-	ShareSettings_ShareType_value                                                                = src.ShareSettings_ShareType_value
-	Snapshot_Architecture_name                                                                   = src.Snapshot_Architecture_name
-	Snapshot_Architecture_value                                                                  = src.Snapshot_Architecture_value
-	Snapshot_SnapshotType_name                                                                   = src.Snapshot_SnapshotType_name
-	Snapshot_SnapshotType_value                                                                  = src.Snapshot_SnapshotType_value
-	Snapshot_Status_name                                                                         = src.Snapshot_Status_name
-	Snapshot_Status_value                                                                        = src.Snapshot_Status_value
-	Snapshot_StorageBytesStatus_name                                                             = src.Snapshot_StorageBytesStatus_name
-	Snapshot_StorageBytesStatus_value                                                            = src.Snapshot_StorageBytesStatus_value
-	SourceInstanceProperties_KeyRevocationActionType_name                                        = src.SourceInstanceProperties_KeyRevocationActionType_name
-	SourceInstanceProperties_KeyRevocationActionType_value                                       = src.SourceInstanceProperties_KeyRevocationActionType_value
-	SslCertificateManagedSslCertificate_Status_name                                              = src.SslCertificateManagedSslCertificate_Status_name
-	SslCertificateManagedSslCertificate_Status_value                                             = src.SslCertificateManagedSslCertificate_Status_value
-	SslCertificate_Type_name                                                                     = src.SslCertificate_Type_name
-	SslCertificate_Type_value                                                                    = src.SslCertificate_Type_value
-	SslPolicy_MinTlsVersion_name                                                                 = src.SslPolicy_MinTlsVersion_name
-	SslPolicy_MinTlsVersion_value                                                                = src.SslPolicy_MinTlsVersion_value
-	SslPolicy_Profile_name                                                                       = src.SslPolicy_Profile_name
-	SslPolicy_Profile_value                                                                      = src.SslPolicy_Profile_value
-	StatefulPolicyPreservedStateDiskDevice_AutoDelete_name                                       = src.StatefulPolicyPreservedStateDiskDevice_AutoDelete_name
-	StatefulPolicyPreservedStateDiskDevice_AutoDelete_value                                      = src.StatefulPolicyPreservedStateDiskDevice_AutoDelete_value
-	SubnetworkLogConfig_AggregationInterval_name                                                 = src.SubnetworkLogConfig_AggregationInterval_name
-	SubnetworkLogConfig_AggregationInterval_value                                                = src.SubnetworkLogConfig_AggregationInterval_value
-	SubnetworkLogConfig_Metadata_name                                                            = src.SubnetworkLogConfig_Metadata_name
-	SubnetworkLogConfig_Metadata_value                                                           = src.SubnetworkLogConfig_Metadata_value
-	Subnetwork_Ipv6AccessType_name                                                               = src.Subnetwork_Ipv6AccessType_name
-	Subnetwork_Ipv6AccessType_value                                                              = src.Subnetwork_Ipv6AccessType_value
-	Subnetwork_PrivateIpv6GoogleAccess_name                                                      = src.Subnetwork_PrivateIpv6GoogleAccess_name
-	Subnetwork_PrivateIpv6GoogleAccess_value                                                     = src.Subnetwork_PrivateIpv6GoogleAccess_value
-	Subnetwork_Purpose_name                                                                      = src.Subnetwork_Purpose_name
-	Subnetwork_Purpose_value                                                                     = src.Subnetwork_Purpose_value
-	Subnetwork_Role_name                                                                         = src.Subnetwork_Role_name
-	Subnetwork_Role_value                                                                        = src.Subnetwork_Role_value
-	Subnetwork_StackType_name                                                                    = src.Subnetwork_StackType_name
-	Subnetwork_StackType_value                                                                   = src.Subnetwork_StackType_value
-	Subnetwork_State_name                                                                        = src.Subnetwork_State_name
-	Subnetwork_State_value                                                                       = src.Subnetwork_State_value
-	Subsetting_Policy_name                                                                       = src.Subsetting_Policy_name
-	Subsetting_Policy_value                                                                      = src.Subsetting_Policy_value
-	TCPHealthCheck_PortSpecification_name                                                        = src.TCPHealthCheck_PortSpecification_name
-	TCPHealthCheck_PortSpecification_value                                                       = src.TCPHealthCheck_PortSpecification_value
-	TCPHealthCheck_ProxyHeader_name                                                              = src.TCPHealthCheck_ProxyHeader_name
-	TCPHealthCheck_ProxyHeader_value                                                             = src.TCPHealthCheck_ProxyHeader_value
-	TargetHttpsProxiesSetQuicOverrideRequest_QuicOverride_name                                   = src.TargetHttpsProxiesSetQuicOverrideRequest_QuicOverride_name
-	TargetHttpsProxiesSetQuicOverrideRequest_QuicOverride_value                                  = src.TargetHttpsProxiesSetQuicOverrideRequest_QuicOverride_value
-	TargetHttpsProxy_QuicOverride_name                                                           = src.TargetHttpsProxy_QuicOverride_name
-	TargetHttpsProxy_QuicOverride_value                                                          = src.TargetHttpsProxy_QuicOverride_value
-	TargetInstance_NatPolicy_name                                                                = src.TargetInstance_NatPolicy_name
-	TargetInstance_NatPolicy_value                                                               = src.TargetInstance_NatPolicy_value
-	TargetPool_SessionAffinity_name                                                              = src.TargetPool_SessionAffinity_name
-	TargetPool_SessionAffinity_value                                                             = src.TargetPool_SessionAffinity_value
-	TargetSslProxiesSetProxyHeaderRequest_ProxyHeader_name                                       = src.TargetSslProxiesSetProxyHeaderRequest_ProxyHeader_name
-	TargetSslProxiesSetProxyHeaderRequest_ProxyHeader_value                                      = src.TargetSslProxiesSetProxyHeaderRequest_ProxyHeader_value
-	TargetSslProxy_ProxyHeader_name                                                              = src.TargetSslProxy_ProxyHeader_name
-	TargetSslProxy_ProxyHeader_value                                                             = src.TargetSslProxy_ProxyHeader_value
-	TargetTcpProxiesSetProxyHeaderRequest_ProxyHeader_name                                       = src.TargetTcpProxiesSetProxyHeaderRequest_ProxyHeader_name
-	TargetTcpProxiesSetProxyHeaderRequest_ProxyHeader_value                                      = src.TargetTcpProxiesSetProxyHeaderRequest_ProxyHeader_value
-	TargetTcpProxy_ProxyHeader_name                                                              = src.TargetTcpProxy_ProxyHeader_name
-	TargetTcpProxy_ProxyHeader_value                                                             = src.TargetTcpProxy_ProxyHeader_value
-	TargetVpnGateway_Status_name                                                                 = src.TargetVpnGateway_Status_name
-	TargetVpnGateway_Status_value                                                                = src.TargetVpnGateway_Status_value
-	UpdateInstanceRequest_MinimalAction_name                                                     = src.UpdateInstanceRequest_MinimalAction_name
-	UpdateInstanceRequest_MinimalAction_value                                                    = src.UpdateInstanceRequest_MinimalAction_value
-	UpdateInstanceRequest_MostDisruptiveAllowedAction_name                                       = src.UpdateInstanceRequest_MostDisruptiveAllowedAction_name
-	UpdateInstanceRequest_MostDisruptiveAllowedAction_value                                      = src.UpdateInstanceRequest_MostDisruptiveAllowedAction_value
-	UrlMapsValidateRequest_LoadBalancingSchemes_name                                             = src.UrlMapsValidateRequest_LoadBalancingSchemes_name
-	UrlMapsValidateRequest_LoadBalancingSchemes_value                                            = src.UrlMapsValidateRequest_LoadBalancingSchemes_value
-	UsableSubnetwork_Ipv6AccessType_name                                                         = src.UsableSubnetwork_Ipv6AccessType_name
-	UsableSubnetwork_Ipv6AccessType_value                                                        = src.UsableSubnetwork_Ipv6AccessType_value
-	UsableSubnetwork_Purpose_name                                                                = src.UsableSubnetwork_Purpose_name
-	UsableSubnetwork_Purpose_value                                                               = src.UsableSubnetwork_Purpose_value
-	UsableSubnetwork_Role_name                                                                   = src.UsableSubnetwork_Role_name
-	UsableSubnetwork_Role_value                                                                  = src.UsableSubnetwork_Role_value
-	UsableSubnetwork_StackType_name                                                              = src.UsableSubnetwork_StackType_name
-	UsableSubnetwork_StackType_value                                                             = src.UsableSubnetwork_StackType_value
-	VpnGatewayStatusHighAvailabilityRequirementState_State_name                                  = src.VpnGatewayStatusHighAvailabilityRequirementState_State_name
-	VpnGatewayStatusHighAvailabilityRequirementState_State_value                                 = src.VpnGatewayStatusHighAvailabilityRequirementState_State_value
-	VpnGatewayStatusHighAvailabilityRequirementState_UnsatisfiedReason_name                      = src.VpnGatewayStatusHighAvailabilityRequirementState_UnsatisfiedReason_name
-	VpnGatewayStatusHighAvailabilityRequirementState_UnsatisfiedReason_value                     = src.VpnGatewayStatusHighAvailabilityRequirementState_UnsatisfiedReason_value
-	VpnGateway_StackType_name                                                                    = src.VpnGateway_StackType_name
-	VpnGateway_StackType_value                                                                   = src.VpnGateway_StackType_value
-	VpnTunnel_Status_name                                                                        = src.VpnTunnel_Status_name
-	VpnTunnel_Status_value                                                                       = src.VpnTunnel_Status_value
-	Warning_Code_name                                                                            = src.Warning_Code_name
-	Warning_Code_value                                                                           = src.Warning_Code_value
-	Warnings_Code_name                                                                           = src.Warnings_Code_name
-	Warnings_Code_value                                                                          = src.Warnings_Code_value
-	XpnResourceId_Type_name                                                                      = src.XpnResourceId_Type_name
-	XpnResourceId_Type_value                                                                     = src.XpnResourceId_Type_value
-	Zone_Status_name                                                                             = src.Zone_Status_name
-	Zone_Status_value                                                                            = src.Zone_Status_value
+	AccessConfig_NetworkTier_name                                                                                   = src.AccessConfig_NetworkTier_name
+	AccessConfig_NetworkTier_value                                                                                  = src.AccessConfig_NetworkTier_value
+	AccessConfig_Type_name                                                                                          = src.AccessConfig_Type_name
+	AccessConfig_Type_value                                                                                         = src.AccessConfig_Type_value
+	Address_AddressType_name                                                                                        = src.Address_AddressType_name
+	Address_AddressType_value                                                                                       = src.Address_AddressType_value
+	Address_IpVersion_name                                                                                          = src.Address_IpVersion_name
+	Address_IpVersion_value                                                                                         = src.Address_IpVersion_value
+	Address_Ipv6EndpointType_name                                                                                   = src.Address_Ipv6EndpointType_name
+	Address_Ipv6EndpointType_value                                                                                  = src.Address_Ipv6EndpointType_value
+	Address_NetworkTier_name                                                                                        = src.Address_NetworkTier_name
+	Address_NetworkTier_value                                                                                       = src.Address_NetworkTier_value
+	Address_Purpose_name                                                                                            = src.Address_Purpose_name
+	Address_Purpose_value                                                                                           = src.Address_Purpose_value
+	Address_Status_name                                                                                             = src.Address_Status_name
+	Address_Status_value                                                                                            = src.Address_Status_value
+	AdvancedMachineFeatures_PerformanceMonitoringUnit_name                                                          = src.AdvancedMachineFeatures_PerformanceMonitoringUnit_name
+	AdvancedMachineFeatures_PerformanceMonitoringUnit_value                                                         = src.AdvancedMachineFeatures_PerformanceMonitoringUnit_value
+	AllocationAggregateReservation_VmFamily_name                                                                    = src.AllocationAggregateReservation_VmFamily_name
+	AllocationAggregateReservation_VmFamily_value                                                                   = src.AllocationAggregateReservation_VmFamily_value
+	AllocationAggregateReservation_WorkloadType_name                                                                = src.AllocationAggregateReservation_WorkloadType_name
+	AllocationAggregateReservation_WorkloadType_value                                                               = src.AllocationAggregateReservation_WorkloadType_value
+	AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDisk_Interface_name                           = src.AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDisk_Interface_name
+	AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDisk_Interface_value                          = src.AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDisk_Interface_value
+	AttachedDiskInitializeParams_Architecture_name                                                                  = src.AttachedDiskInitializeParams_Architecture_name
+	AttachedDiskInitializeParams_Architecture_value                                                                 = src.AttachedDiskInitializeParams_Architecture_value
+	AttachedDiskInitializeParams_OnUpdateAction_name                                                                = src.AttachedDiskInitializeParams_OnUpdateAction_name
+	AttachedDiskInitializeParams_OnUpdateAction_value                                                               = src.AttachedDiskInitializeParams_OnUpdateAction_value
+	AttachedDisk_Architecture_name                                                                                  = src.AttachedDisk_Architecture_name
+	AttachedDisk_Architecture_value                                                                                 = src.AttachedDisk_Architecture_value
+	AttachedDisk_Interface_name                                                                                     = src.AttachedDisk_Interface_name
+	AttachedDisk_Interface_value                                                                                    = src.AttachedDisk_Interface_value
+	AttachedDisk_Mode_name                                                                                          = src.AttachedDisk_Mode_name
+	AttachedDisk_Mode_value                                                                                         = src.AttachedDisk_Mode_value
+	AttachedDisk_SavedState_name                                                                                    = src.AttachedDisk_SavedState_name
+	AttachedDisk_SavedState_value                                                                                   = src.AttachedDisk_SavedState_value
+	AttachedDisk_Type_name                                                                                          = src.AttachedDisk_Type_name
+	AttachedDisk_Type_value                                                                                         = src.AttachedDisk_Type_value
+	AuditLogConfig_LogType_name                                                                                     = src.AuditLogConfig_LogType_name
+	AuditLogConfig_LogType_value                                                                                    = src.AuditLogConfig_LogType_value
+	AutoscalerStatusDetails_Type_name                                                                               = src.AutoscalerStatusDetails_Type_name
+	AutoscalerStatusDetails_Type_value                                                                              = src.AutoscalerStatusDetails_Type_value
+	Autoscaler_Status_name                                                                                          = src.Autoscaler_Status_name
+	Autoscaler_Status_value                                                                                         = src.Autoscaler_Status_value
+	AutoscalingPolicyCpuUtilization_PredictiveMethod_name                                                           = src.AutoscalingPolicyCpuUtilization_PredictiveMethod_name
+	AutoscalingPolicyCpuUtilization_PredictiveMethod_value                                                          = src.AutoscalingPolicyCpuUtilization_PredictiveMethod_value
+	AutoscalingPolicyCustomMetricUtilization_UtilizationTargetType_name                                             = src.AutoscalingPolicyCustomMetricUtilization_UtilizationTargetType_name
+	AutoscalingPolicyCustomMetricUtilization_UtilizationTargetType_value                                            = src.AutoscalingPolicyCustomMetricUtilization_UtilizationTargetType_value
+	AutoscalingPolicy_Mode_name                                                                                     = src.AutoscalingPolicy_Mode_name
+	AutoscalingPolicy_Mode_value                                                                                    = src.AutoscalingPolicy_Mode_value
+	BackendBucketCdnPolicy_CacheMode_name                                                                           = src.BackendBucketCdnPolicy_CacheMode_name
+	BackendBucketCdnPolicy_CacheMode_value                                                                          = src.BackendBucketCdnPolicy_CacheMode_value
+	BackendBucket_CompressionMode_name                                                                              = src.BackendBucket_CompressionMode_name
+	BackendBucket_CompressionMode_value                                                                             = src.BackendBucket_CompressionMode_value
+	BackendServiceCdnPolicy_CacheMode_name                                                                          = src.BackendServiceCdnPolicy_CacheMode_name
+	BackendServiceCdnPolicy_CacheMode_value                                                                         = src.BackendServiceCdnPolicy_CacheMode_value
+	BackendServiceConnectionTrackingPolicy_ConnectionPersistenceOnUnhealthyBackends_name                            = src.BackendServiceConnectionTrackingPolicy_ConnectionPersistenceOnUnhealthyBackends_name
+	BackendServiceConnectionTrackingPolicy_ConnectionPersistenceOnUnhealthyBackends_value                           = src.BackendServiceConnectionTrackingPolicy_ConnectionPersistenceOnUnhealthyBackends_value
+	BackendServiceConnectionTrackingPolicy_TrackingMode_name                                                        = src.BackendServiceConnectionTrackingPolicy_TrackingMode_name
+	BackendServiceConnectionTrackingPolicy_TrackingMode_value                                                       = src.BackendServiceConnectionTrackingPolicy_TrackingMode_value
+	BackendServiceLocalityLoadBalancingPolicyConfigPolicy_Name_name                                                 = src.BackendServiceLocalityLoadBalancingPolicyConfigPolicy_Name_name
+	BackendServiceLocalityLoadBalancingPolicyConfigPolicy_Name_value                                                = src.BackendServiceLocalityLoadBalancingPolicyConfigPolicy_Name_value
+	BackendServiceLogConfig_OptionalMode_name                                                                       = src.BackendServiceLogConfig_OptionalMode_name
+	BackendServiceLogConfig_OptionalMode_value                                                                      = src.BackendServiceLogConfig_OptionalMode_value
+	BackendService_CompressionMode_name                                                                             = src.BackendService_CompressionMode_name
+	BackendService_CompressionMode_value                                                                            = src.BackendService_CompressionMode_value
+	BackendService_IpAddressSelectionPolicy_name                                                                    = src.BackendService_IpAddressSelectionPolicy_name
+	BackendService_IpAddressSelectionPolicy_value                                                                   = src.BackendService_IpAddressSelectionPolicy_value
+	BackendService_LoadBalancingScheme_name                                                                         = src.BackendService_LoadBalancingScheme_name
+	BackendService_LoadBalancingScheme_value                                                                        = src.BackendService_LoadBalancingScheme_value
+	BackendService_LocalityLbPolicy_name                                                                            = src.BackendService_LocalityLbPolicy_name
+	BackendService_LocalityLbPolicy_value                                                                           = src.BackendService_LocalityLbPolicy_value
+	BackendService_Protocol_name                                                                                    = src.BackendService_Protocol_name
+	BackendService_Protocol_value                                                                                   = src.BackendService_Protocol_value
+	BackendService_SessionAffinity_name                                                                             = src.BackendService_SessionAffinity_name
+	BackendService_SessionAffinity_value                                                                            = src.BackendService_SessionAffinity_value
+	Backend_BalancingMode_name                                                                                      = src.Backend_BalancingMode_name
+	Backend_BalancingMode_value                                                                                     = src.Backend_BalancingMode_value
+	Backend_Preference_name                                                                                         = src.Backend_Preference_name
+	Backend_Preference_value                                                                                        = src.Backend_Preference_value
+	BfdPacket_Diagnostic_name                                                                                       = src.BfdPacket_Diagnostic_name
+	BfdPacket_Diagnostic_value                                                                                      = src.BfdPacket_Diagnostic_value
+	BfdPacket_State_name                                                                                            = src.BfdPacket_State_name
+	BfdPacket_State_value                                                                                           = src.BfdPacket_State_value
+	BfdStatus_BfdSessionInitializationMode_name                                                                     = src.BfdStatus_BfdSessionInitializationMode_name
+	BfdStatus_BfdSessionInitializationMode_value                                                                    = src.BfdStatus_BfdSessionInitializationMode_value
+	BfdStatus_LocalDiagnostic_name                                                                                  = src.BfdStatus_LocalDiagnostic_name
+	BfdStatus_LocalDiagnostic_value                                                                                 = src.BfdStatus_LocalDiagnostic_value
+	BfdStatus_LocalState_name                                                                                       = src.BfdStatus_LocalState_name
+	BfdStatus_LocalState_value                                                                                      = src.BfdStatus_LocalState_value
+	BulkInsertOperationStatus_Status_name                                                                           = src.BulkInsertOperationStatus_Status_name
+	BulkInsertOperationStatus_Status_value                                                                          = src.BulkInsertOperationStatus_Status_value
+	Commitment_Category_name                                                                                        = src.Commitment_Category_name
+	Commitment_Category_value                                                                                       = src.Commitment_Category_value
+	Commitment_Plan_name                                                                                            = src.Commitment_Plan_name
+	Commitment_Plan_value                                                                                           = src.Commitment_Plan_value
+	Commitment_Status_name                                                                                          = src.Commitment_Status_name
+	Commitment_Status_value                                                                                         = src.Commitment_Status_value
+	Commitment_Type_name                                                                                            = src.Commitment_Type_name
+	Commitment_Type_value                                                                                           = src.Commitment_Type_value
+	ConfidentialInstanceConfig_ConfidentialInstanceType_name                                                        = src.ConfidentialInstanceConfig_ConfidentialInstanceType_name
+	ConfidentialInstanceConfig_ConfidentialInstanceType_value                                                       = src.ConfidentialInstanceConfig_ConfidentialInstanceType_value
+	DeprecationStatus_State_name                                                                                    = src.DeprecationStatus_State_name
+	DeprecationStatus_State_value                                                                                   = src.DeprecationStatus_State_value
+	DiskInstantiationConfig_InstantiateFrom_name                                                                    = src.DiskInstantiationConfig_InstantiateFrom_name
+	DiskInstantiationConfig_InstantiateFrom_value                                                                   = src.DiskInstantiationConfig_InstantiateFrom_value
+	DiskResourceStatusAsyncReplicationStatus_State_name                                                             = src.DiskResourceStatusAsyncReplicationStatus_State_name
+	DiskResourceStatusAsyncReplicationStatus_State_value                                                            = src.DiskResourceStatusAsyncReplicationStatus_State_value
+	Disk_AccessMode_name                                                                                            = src.Disk_AccessMode_name
+	Disk_AccessMode_value                                                                                           = src.Disk_AccessMode_value
+	Disk_Architecture_name                                                                                          = src.Disk_Architecture_name
+	Disk_Architecture_value                                                                                         = src.Disk_Architecture_value
+	Disk_Status_name                                                                                                = src.Disk_Status_name
+	Disk_Status_value                                                                                               = src.Disk_Status_value
+	DistributionPolicy_TargetShape_name                                                                             = src.DistributionPolicy_TargetShape_name
+	DistributionPolicy_TargetShape_value                                                                            = src.DistributionPolicy_TargetShape_value
+	ExchangedPeeringRoute_Type_name                                                                                 = src.ExchangedPeeringRoute_Type_name
+	ExchangedPeeringRoute_Type_value                                                                                = src.ExchangedPeeringRoute_Type_value
+	ExternalVpnGateway_RedundancyType_name                                                                          = src.ExternalVpnGateway_RedundancyType_name
+	ExternalVpnGateway_RedundancyType_value                                                                         = src.ExternalVpnGateway_RedundancyType_value
+	FileContentBuffer_FileType_name                                                                                 = src.FileContentBuffer_FileType_name
+	FileContentBuffer_FileType_value                                                                                = src.FileContentBuffer_FileType_value
+	File_google_cloud_compute_v1_compute_proto                                                                      = src.File_google_cloud_compute_v1_compute_proto
+	FirewallLogConfig_Metadata_name                                                                                 = src.FirewallLogConfig_Metadata_name
+	FirewallLogConfig_Metadata_value                                                                                = src.FirewallLogConfig_Metadata_value
+	FirewallPolicyRuleSecureTag_State_name                                                                          = src.FirewallPolicyRuleSecureTag_State_name
+	FirewallPolicyRuleSecureTag_State_value                                                                         = src.FirewallPolicyRuleSecureTag_State_value
+	FirewallPolicyRule_Direction_name                                                                               = src.FirewallPolicyRule_Direction_name
+	FirewallPolicyRule_Direction_value                                                                              = src.FirewallPolicyRule_Direction_value
+	Firewall_Direction_name                                                                                         = src.Firewall_Direction_name
+	Firewall_Direction_value                                                                                        = src.Firewall_Direction_value
+	ForwardingRule_IPProtocolEnum_name                                                                              = src.ForwardingRule_IPProtocolEnum_name
+	ForwardingRule_IPProtocolEnum_value                                                                             = src.ForwardingRule_IPProtocolEnum_value
+	ForwardingRule_IpVersion_name                                                                                   = src.ForwardingRule_IpVersion_name
+	ForwardingRule_IpVersion_value                                                                                  = src.ForwardingRule_IpVersion_value
+	ForwardingRule_LoadBalancingScheme_name                                                                         = src.ForwardingRule_LoadBalancingScheme_name
+	ForwardingRule_LoadBalancingScheme_value                                                                        = src.ForwardingRule_LoadBalancingScheme_value
+	ForwardingRule_NetworkTier_name                                                                                 = src.ForwardingRule_NetworkTier_name
+	ForwardingRule_NetworkTier_value                                                                                = src.ForwardingRule_NetworkTier_value
+	ForwardingRule_PscConnectionStatus_name                                                                         = src.ForwardingRule_PscConnectionStatus_name
+	ForwardingRule_PscConnectionStatus_value                                                                        = src.ForwardingRule_PscConnectionStatus_value
+	GRPCHealthCheck_PortSpecification_name                                                                          = src.GRPCHealthCheck_PortSpecification_name
+	GRPCHealthCheck_PortSpecification_value                                                                         = src.GRPCHealthCheck_PortSpecification_value
+	GuestOsFeature_Type_name                                                                                        = src.GuestOsFeature_Type_name
+	GuestOsFeature_Type_value                                                                                       = src.GuestOsFeature_Type_value
+	HTTP2HealthCheck_PortSpecification_name                                                                         = src.HTTP2HealthCheck_PortSpecification_name
+	HTTP2HealthCheck_PortSpecification_value                                                                        = src.HTTP2HealthCheck_PortSpecification_value
+	HTTP2HealthCheck_ProxyHeader_name                                                                               = src.HTTP2HealthCheck_ProxyHeader_name
+	HTTP2HealthCheck_ProxyHeader_value                                                                              = src.HTTP2HealthCheck_ProxyHeader_value
+	HTTPHealthCheck_PortSpecification_name                                                                          = src.HTTPHealthCheck_PortSpecification_name
+	HTTPHealthCheck_PortSpecification_value                                                                         = src.HTTPHealthCheck_PortSpecification_value
+	HTTPHealthCheck_ProxyHeader_name                                                                                = src.HTTPHealthCheck_ProxyHeader_name
+	HTTPHealthCheck_ProxyHeader_value                                                                               = src.HTTPHealthCheck_ProxyHeader_value
+	HTTPSHealthCheck_PortSpecification_name                                                                         = src.HTTPSHealthCheck_PortSpecification_name
+	HTTPSHealthCheck_PortSpecification_value                                                                        = src.HTTPSHealthCheck_PortSpecification_value
+	HTTPSHealthCheck_ProxyHeader_name                                                                               = src.HTTPSHealthCheck_ProxyHeader_name
+	HTTPSHealthCheck_ProxyHeader_value                                                                              = src.HTTPSHealthCheck_ProxyHeader_value
+	HealthCheckService_HealthStatusAggregationPolicy_name                                                           = src.HealthCheckService_HealthStatusAggregationPolicy_name
+	HealthCheckService_HealthStatusAggregationPolicy_value                                                          = src.HealthCheckService_HealthStatusAggregationPolicy_value
+	HealthCheck_Type_name                                                                                           = src.HealthCheck_Type_name
+	HealthCheck_Type_value                                                                                          = src.HealthCheck_Type_value
+	HealthStatusForNetworkEndpoint_HealthState_name                                                                 = src.HealthStatusForNetworkEndpoint_HealthState_name
+	HealthStatusForNetworkEndpoint_HealthState_value                                                                = src.HealthStatusForNetworkEndpoint_HealthState_value
+	HealthStatusForNetworkEndpoint_Ipv6HealthState_name                                                             = src.HealthStatusForNetworkEndpoint_Ipv6HealthState_name
+	HealthStatusForNetworkEndpoint_Ipv6HealthState_value                                                            = src.HealthStatusForNetworkEndpoint_Ipv6HealthState_value
+	HealthStatus_HealthState_name                                                                                   = src.HealthStatus_HealthState_name
+	HealthStatus_HealthState_value                                                                                  = src.HealthStatus_HealthState_value
+	HealthStatus_Ipv6HealthState_name                                                                               = src.HealthStatus_Ipv6HealthState_name
+	HealthStatus_Ipv6HealthState_value                                                                              = src.HealthStatus_Ipv6HealthState_value
+	HealthStatus_WeightError_name                                                                                   = src.HealthStatus_WeightError_name
+	HealthStatus_WeightError_value                                                                                  = src.HealthStatus_WeightError_value
+	HttpRedirectAction_RedirectResponseCode_name                                                                    = src.HttpRedirectAction_RedirectResponseCode_name
+	HttpRedirectAction_RedirectResponseCode_value                                                                   = src.HttpRedirectAction_RedirectResponseCode_value
+	Image_Architecture_name                                                                                         = src.Image_Architecture_name
+	Image_Architecture_value                                                                                        = src.Image_Architecture_value
+	Image_SourceType_name                                                                                           = src.Image_SourceType_name
+	Image_SourceType_value                                                                                          = src.Image_SourceType_value
+	Image_Status_name                                                                                               = src.Image_Status_name
+	Image_Status_value                                                                                              = src.Image_Status_value
+	InstanceGroupManagerInstanceLifecyclePolicy_DefaultActionOnFailure_name                                         = src.InstanceGroupManagerInstanceLifecyclePolicy_DefaultActionOnFailure_name
+	InstanceGroupManagerInstanceLifecyclePolicy_DefaultActionOnFailure_value                                        = src.InstanceGroupManagerInstanceLifecyclePolicy_DefaultActionOnFailure_value
+	InstanceGroupManagerInstanceLifecyclePolicy_ForceUpdateOnRepair_name                                            = src.InstanceGroupManagerInstanceLifecyclePolicy_ForceUpdateOnRepair_name
+	InstanceGroupManagerInstanceLifecyclePolicy_ForceUpdateOnRepair_value                                           = src.InstanceGroupManagerInstanceLifecyclePolicy_ForceUpdateOnRepair_value
+	InstanceGroupManagerResizeRequest_State_name                                                                    = src.InstanceGroupManagerResizeRequest_State_name
+	InstanceGroupManagerResizeRequest_State_value                                                                   = src.InstanceGroupManagerResizeRequest_State_value
+	InstanceGroupManagerUpdatePolicy_InstanceRedistributionType_name                                                = src.InstanceGroupManagerUpdatePolicy_InstanceRedistributionType_name
+	InstanceGroupManagerUpdatePolicy_InstanceRedistributionType_value                                               = src.InstanceGroupManagerUpdatePolicy_InstanceRedistributionType_value
+	InstanceGroupManagerUpdatePolicy_MinimalAction_name                                                             = src.InstanceGroupManagerUpdatePolicy_MinimalAction_name
+	InstanceGroupManagerUpdatePolicy_MinimalAction_value                                                            = src.InstanceGroupManagerUpdatePolicy_MinimalAction_value
+	InstanceGroupManagerUpdatePolicy_MostDisruptiveAllowedAction_name                                               = src.InstanceGroupManagerUpdatePolicy_MostDisruptiveAllowedAction_name
+	InstanceGroupManagerUpdatePolicy_MostDisruptiveAllowedAction_value                                              = src.InstanceGroupManagerUpdatePolicy_MostDisruptiveAllowedAction_value
+	InstanceGroupManagerUpdatePolicy_ReplacementMethod_name                                                         = src.InstanceGroupManagerUpdatePolicy_ReplacementMethod_name
+	InstanceGroupManagerUpdatePolicy_ReplacementMethod_value                                                        = src.InstanceGroupManagerUpdatePolicy_ReplacementMethod_value
+	InstanceGroupManagerUpdatePolicy_Type_name                                                                      = src.InstanceGroupManagerUpdatePolicy_Type_name
+	InstanceGroupManagerUpdatePolicy_Type_value                                                                     = src.InstanceGroupManagerUpdatePolicy_Type_value
+	InstanceGroupManager_ListManagedInstancesResults_name                                                           = src.InstanceGroupManager_ListManagedInstancesResults_name
+	InstanceGroupManager_ListManagedInstancesResults_value                                                          = src.InstanceGroupManager_ListManagedInstancesResults_value
+	InstanceGroupManagersApplyUpdatesRequest_MinimalAction_name                                                     = src.InstanceGroupManagersApplyUpdatesRequest_MinimalAction_name
+	InstanceGroupManagersApplyUpdatesRequest_MinimalAction_value                                                    = src.InstanceGroupManagersApplyUpdatesRequest_MinimalAction_value
+	InstanceGroupManagersApplyUpdatesRequest_MostDisruptiveAllowedAction_name                                       = src.InstanceGroupManagersApplyUpdatesRequest_MostDisruptiveAllowedAction_name
+	InstanceGroupManagersApplyUpdatesRequest_MostDisruptiveAllowedAction_value                                      = src.InstanceGroupManagersApplyUpdatesRequest_MostDisruptiveAllowedAction_value
+	InstanceGroupsListInstancesRequest_InstanceState_name                                                           = src.InstanceGroupsListInstancesRequest_InstanceState_name
+	InstanceGroupsListInstancesRequest_InstanceState_value                                                          = src.InstanceGroupsListInstancesRequest_InstanceState_value
+	InstanceManagedByIgmErrorInstanceActionDetails_Action_name                                                      = src.InstanceManagedByIgmErrorInstanceActionDetails_Action_name
+	InstanceManagedByIgmErrorInstanceActionDetails_Action_value                                                     = src.InstanceManagedByIgmErrorInstanceActionDetails_Action_value
+	InstanceProperties_KeyRevocationActionType_name                                                                 = src.InstanceProperties_KeyRevocationActionType_name
+	InstanceProperties_KeyRevocationActionType_value                                                                = src.InstanceProperties_KeyRevocationActionType_value
+	InstanceProperties_PrivateIpv6GoogleAccess_name                                                                 = src.InstanceProperties_PrivateIpv6GoogleAccess_name
+	InstanceProperties_PrivateIpv6GoogleAccess_value                                                                = src.InstanceProperties_PrivateIpv6GoogleAccess_value
+	InstanceWithNamedPorts_Status_name                                                                              = src.InstanceWithNamedPorts_Status_name
+	InstanceWithNamedPorts_Status_value                                                                             = src.InstanceWithNamedPorts_Status_value
+	Instance_KeyRevocationActionType_name                                                                           = src.Instance_KeyRevocationActionType_name
+	Instance_KeyRevocationActionType_value                                                                          = src.Instance_KeyRevocationActionType_value
+	Instance_PrivateIpv6GoogleAccess_name                                                                           = src.Instance_PrivateIpv6GoogleAccess_name
+	Instance_PrivateIpv6GoogleAccess_value                                                                          = src.Instance_PrivateIpv6GoogleAccess_value
+	Instance_Status_name                                                                                            = src.Instance_Status_name
+	Instance_Status_value                                                                                           = src.Instance_Status_value
+	InstancesGetEffectiveFirewallsResponseEffectiveFirewallPolicy_Type_name                                         = src.InstancesGetEffectiveFirewallsResponseEffectiveFirewallPolicy_Type_name
+	InstancesGetEffectiveFirewallsResponseEffectiveFirewallPolicy_Type_value                                        = src.InstancesGetEffectiveFirewallsResponseEffectiveFirewallPolicy_Type_value
+	InstantSnapshot_Architecture_name                                                                               = src.InstantSnapshot_Architecture_name
+	InstantSnapshot_Architecture_value                                                                              = src.InstantSnapshot_Architecture_value
+	InstantSnapshot_Status_name                                                                                     = src.InstantSnapshot_Status_name
+	InstantSnapshot_Status_value                                                                                    = src.InstantSnapshot_Status_value
+	InterconnectAttachmentConfigurationConstraints_BgpMd5_name                                                      = src.InterconnectAttachmentConfigurationConstraints_BgpMd5_name
+	InterconnectAttachmentConfigurationConstraints_BgpMd5_value                                                     = src.InterconnectAttachmentConfigurationConstraints_BgpMd5_value
+	InterconnectAttachment_Bandwidth_name                                                                           = src.InterconnectAttachment_Bandwidth_name
+	InterconnectAttachment_Bandwidth_value                                                                          = src.InterconnectAttachment_Bandwidth_value
+	InterconnectAttachment_EdgeAvailabilityDomain_name                                                              = src.InterconnectAttachment_EdgeAvailabilityDomain_name
+	InterconnectAttachment_EdgeAvailabilityDomain_value                                                             = src.InterconnectAttachment_EdgeAvailabilityDomain_value
+	InterconnectAttachment_Encryption_name                                                                          = src.InterconnectAttachment_Encryption_name
+	InterconnectAttachment_Encryption_value                                                                         = src.InterconnectAttachment_Encryption_value
+	InterconnectAttachment_OperationalStatus_name                                                                   = src.InterconnectAttachment_OperationalStatus_name
+	InterconnectAttachment_OperationalStatus_value                                                                  = src.InterconnectAttachment_OperationalStatus_value
+	InterconnectAttachment_StackType_name                                                                           = src.InterconnectAttachment_StackType_name
+	InterconnectAttachment_StackType_value                                                                          = src.InterconnectAttachment_StackType_value
+	InterconnectAttachment_State_name                                                                               = src.InterconnectAttachment_State_name
+	InterconnectAttachment_State_value                                                                              = src.InterconnectAttachment_State_value
+	InterconnectAttachment_Type_name                                                                                = src.InterconnectAttachment_Type_name
+	InterconnectAttachment_Type_value                                                                               = src.InterconnectAttachment_Type_value
+	InterconnectDiagnosticsLinkLACPStatus_State_name                                                                = src.InterconnectDiagnosticsLinkLACPStatus_State_name
+	InterconnectDiagnosticsLinkLACPStatus_State_value                                                               = src.InterconnectDiagnosticsLinkLACPStatus_State_value
+	InterconnectDiagnosticsLinkOpticalPower_State_name                                                              = src.InterconnectDiagnosticsLinkOpticalPower_State_name
+	InterconnectDiagnosticsLinkOpticalPower_State_value                                                             = src.InterconnectDiagnosticsLinkOpticalPower_State_value
+	InterconnectDiagnosticsLinkStatus_OperationalStatus_name                                                        = src.InterconnectDiagnosticsLinkStatus_OperationalStatus_name
+	InterconnectDiagnosticsLinkStatus_OperationalStatus_value                                                       = src.InterconnectDiagnosticsLinkStatus_OperationalStatus_value
+	InterconnectDiagnostics_BundleAggregationType_name                                                              = src.InterconnectDiagnostics_BundleAggregationType_name
+	InterconnectDiagnostics_BundleAggregationType_value                                                             = src.InterconnectDiagnostics_BundleAggregationType_value
+	InterconnectDiagnostics_BundleOperationalStatus_name                                                            = src.InterconnectDiagnostics_BundleOperationalStatus_name
+	InterconnectDiagnostics_BundleOperationalStatus_value                                                           = src.InterconnectDiagnostics_BundleOperationalStatus_value
+	InterconnectLocationRegionInfo_LocationPresence_name                                                            = src.InterconnectLocationRegionInfo_LocationPresence_name
+	InterconnectLocationRegionInfo_LocationPresence_value                                                           = src.InterconnectLocationRegionInfo_LocationPresence_value
+	InterconnectLocation_AvailableFeatures_name                                                                     = src.InterconnectLocation_AvailableFeatures_name
+	InterconnectLocation_AvailableFeatures_value                                                                    = src.InterconnectLocation_AvailableFeatures_value
+	InterconnectLocation_AvailableLinkTypes_name                                                                    = src.InterconnectLocation_AvailableLinkTypes_name
+	InterconnectLocation_AvailableLinkTypes_value                                                                   = src.InterconnectLocation_AvailableLinkTypes_value
+	InterconnectLocation_Continent_name                                                                             = src.InterconnectLocation_Continent_name
+	InterconnectLocation_Continent_value                                                                            = src.InterconnectLocation_Continent_value
+	InterconnectLocation_Status_name                                                                                = src.InterconnectLocation_Status_name
+	InterconnectLocation_Status_value                                                                               = src.InterconnectLocation_Status_value
+	InterconnectOutageNotification_IssueType_name                                                                   = src.InterconnectOutageNotification_IssueType_name
+	InterconnectOutageNotification_IssueType_value                                                                  = src.InterconnectOutageNotification_IssueType_value
+	InterconnectOutageNotification_Source_name                                                                      = src.InterconnectOutageNotification_Source_name
+	InterconnectOutageNotification_Source_value                                                                     = src.InterconnectOutageNotification_Source_value
+	InterconnectOutageNotification_State_name                                                                       = src.InterconnectOutageNotification_State_name
+	InterconnectOutageNotification_State_value                                                                      = src.InterconnectOutageNotification_State_value
+	InterconnectRemoteLocationConstraints_PortPairRemoteLocation_name                                               = src.InterconnectRemoteLocationConstraints_PortPairRemoteLocation_name
+	InterconnectRemoteLocationConstraints_PortPairRemoteLocation_value                                              = src.InterconnectRemoteLocationConstraints_PortPairRemoteLocation_value
+	InterconnectRemoteLocationConstraints_PortPairVlan_name                                                         = src.InterconnectRemoteLocationConstraints_PortPairVlan_name
+	InterconnectRemoteLocationConstraints_PortPairVlan_value                                                        = src.InterconnectRemoteLocationConstraints_PortPairVlan_value
+	InterconnectRemoteLocation_Continent_name                                                                       = src.InterconnectRemoteLocation_Continent_name
+	InterconnectRemoteLocation_Continent_value                                                                      = src.InterconnectRemoteLocation_Continent_value
+	InterconnectRemoteLocation_Lacp_name                                                                            = src.InterconnectRemoteLocation_Lacp_name
+	InterconnectRemoteLocation_Lacp_value                                                                           = src.InterconnectRemoteLocation_Lacp_value
+	InterconnectRemoteLocation_Status_name                                                                          = src.InterconnectRemoteLocation_Status_name
+	InterconnectRemoteLocation_Status_value                                                                         = src.InterconnectRemoteLocation_Status_value
+	Interconnect_AvailableFeatures_name                                                                             = src.Interconnect_AvailableFeatures_name
+	Interconnect_AvailableFeatures_value                                                                            = src.Interconnect_AvailableFeatures_value
+	Interconnect_InterconnectType_name                                                                              = src.Interconnect_InterconnectType_name
+	Interconnect_InterconnectType_value                                                                             = src.Interconnect_InterconnectType_value
+	Interconnect_LinkType_name                                                                                      = src.Interconnect_LinkType_name
+	Interconnect_LinkType_value                                                                                     = src.Interconnect_LinkType_value
+	Interconnect_OperationalStatus_name                                                                             = src.Interconnect_OperationalStatus_name
+	Interconnect_OperationalStatus_value                                                                            = src.Interconnect_OperationalStatus_value
+	Interconnect_RequestedFeatures_name                                                                             = src.Interconnect_RequestedFeatures_name
+	Interconnect_RequestedFeatures_value                                                                            = src.Interconnect_RequestedFeatures_value
+	Interconnect_State_name                                                                                         = src.Interconnect_State_name
+	Interconnect_State_value                                                                                        = src.Interconnect_State_value
+	LicenseCode_State_name                                                                                          = src.LicenseCode_State_name
+	LicenseCode_State_value                                                                                         = src.LicenseCode_State_value
+	ListPeeringRoutesNetworksRequest_Direction_name                                                                 = src.ListPeeringRoutesNetworksRequest_Direction_name
+	ListPeeringRoutesNetworksRequest_Direction_value                                                                = src.ListPeeringRoutesNetworksRequest_Direction_value
+	LocationPolicyLocation_Preference_name                                                                          = src.LocationPolicyLocation_Preference_name
+	LocationPolicyLocation_Preference_value                                                                         = src.LocationPolicyLocation_Preference_value
+	LocationPolicy_TargetShape_name                                                                                 = src.LocationPolicy_TargetShape_name
+	LocationPolicy_TargetShape_value                                                                                = src.LocationPolicy_TargetShape_value
+	MachineImage_Status_name                                                                                        = src.MachineImage_Status_name
+	MachineImage_Status_value                                                                                       = src.MachineImage_Status_value
+	MachineType_Architecture_name                                                                                   = src.MachineType_Architecture_name
+	MachineType_Architecture_value                                                                                  = src.MachineType_Architecture_value
+	ManagedInstanceInstanceHealth_DetailedHealthState_name                                                          = src.ManagedInstanceInstanceHealth_DetailedHealthState_name
+	ManagedInstanceInstanceHealth_DetailedHealthState_value                                                         = src.ManagedInstanceInstanceHealth_DetailedHealthState_value
+	ManagedInstance_CurrentAction_name                                                                              = src.ManagedInstance_CurrentAction_name
+	ManagedInstance_CurrentAction_value                                                                             = src.ManagedInstance_CurrentAction_value
+	ManagedInstance_InstanceStatus_name                                                                             = src.ManagedInstance_InstanceStatus_name
+	ManagedInstance_InstanceStatus_value                                                                            = src.ManagedInstance_InstanceStatus_value
+	MetadataFilter_FilterMatchCriteria_name                                                                         = src.MetadataFilter_FilterMatchCriteria_name
+	MetadataFilter_FilterMatchCriteria_value                                                                        = src.MetadataFilter_FilterMatchCriteria_value
+	NatIpInfoNatIpInfoMapping_Mode_name                                                                             = src.NatIpInfoNatIpInfoMapping_Mode_name
+	NatIpInfoNatIpInfoMapping_Mode_value                                                                            = src.NatIpInfoNatIpInfoMapping_Mode_value
+	NatIpInfoNatIpInfoMapping_Usage_name                                                                            = src.NatIpInfoNatIpInfoMapping_Usage_name
+	NatIpInfoNatIpInfoMapping_Usage_value                                                                           = src.NatIpInfoNatIpInfoMapping_Usage_value
+	NetworkAttachmentConnectedEndpoint_Status_name                                                                  = src.NetworkAttachmentConnectedEndpoint_Status_name
+	NetworkAttachmentConnectedEndpoint_Status_value                                                                 = src.NetworkAttachmentConnectedEndpoint_Status_value
+	NetworkAttachment_ConnectionPreference_name                                                                     = src.NetworkAttachment_ConnectionPreference_name
+	NetworkAttachment_ConnectionPreference_value                                                                    = src.NetworkAttachment_ConnectionPreference_value
+	NetworkEndpointGroupPscData_PscConnectionStatus_name                                                            = src.NetworkEndpointGroupPscData_PscConnectionStatus_name
+	NetworkEndpointGroupPscData_PscConnectionStatus_value                                                           = src.NetworkEndpointGroupPscData_PscConnectionStatus_value
+	NetworkEndpointGroup_NetworkEndpointType_name                                                                   = src.NetworkEndpointGroup_NetworkEndpointType_name
+	NetworkEndpointGroup_NetworkEndpointType_value                                                                  = src.NetworkEndpointGroup_NetworkEndpointType_value
+	NetworkEndpointGroupsListEndpointsRequest_HealthStatus_name                                                     = src.NetworkEndpointGroupsListEndpointsRequest_HealthStatus_name
+	NetworkEndpointGroupsListEndpointsRequest_HealthStatus_value                                                    = src.NetworkEndpointGroupsListEndpointsRequest_HealthStatus_value
+	NetworkInterface_Ipv6AccessType_name                                                                            = src.NetworkInterface_Ipv6AccessType_name
+	NetworkInterface_Ipv6AccessType_value                                                                           = src.NetworkInterface_Ipv6AccessType_value
+	NetworkInterface_NicType_name                                                                                   = src.NetworkInterface_NicType_name
+	NetworkInterface_NicType_value                                                                                  = src.NetworkInterface_NicType_value
+	NetworkInterface_StackType_name                                                                                 = src.NetworkInterface_StackType_name
+	NetworkInterface_StackType_value                                                                                = src.NetworkInterface_StackType_value
+	NetworkPeering_StackType_name                                                                                   = src.NetworkPeering_StackType_name
+	NetworkPeering_StackType_value                                                                                  = src.NetworkPeering_StackType_value
+	NetworkPeering_State_name                                                                                       = src.NetworkPeering_State_name
+	NetworkPeering_State_value                                                                                      = src.NetworkPeering_State_value
+	NetworkPerformanceConfig_TotalEgressBandwidthTier_name                                                          = src.NetworkPerformanceConfig_TotalEgressBandwidthTier_name
+	NetworkPerformanceConfig_TotalEgressBandwidthTier_value                                                         = src.NetworkPerformanceConfig_TotalEgressBandwidthTier_value
+	NetworkRoutingConfig_RoutingMode_name                                                                           = src.NetworkRoutingConfig_RoutingMode_name
+	NetworkRoutingConfig_RoutingMode_value                                                                          = src.NetworkRoutingConfig_RoutingMode_value
+	Network_NetworkFirewallPolicyEnforcementOrder_name                                                              = src.Network_NetworkFirewallPolicyEnforcementOrder_name
+	Network_NetworkFirewallPolicyEnforcementOrder_value                                                             = src.Network_NetworkFirewallPolicyEnforcementOrder_value
+	NetworksGetEffectiveFirewallsResponseEffectiveFirewallPolicy_Type_name                                          = src.NetworksGetEffectiveFirewallsResponseEffectiveFirewallPolicy_Type_name
+	NetworksGetEffectiveFirewallsResponseEffectiveFirewallPolicy_Type_value                                         = src.NetworksGetEffectiveFirewallsResponseEffectiveFirewallPolicy_Type_value
+	NodeGroupAutoscalingPolicy_Mode_name                                                                            = src.NodeGroupAutoscalingPolicy_Mode_name
+	NodeGroupAutoscalingPolicy_Mode_value                                                                           = src.NodeGroupAutoscalingPolicy_Mode_value
+	NodeGroupNode_CpuOvercommitType_name                                                                            = src.NodeGroupNode_CpuOvercommitType_name
+	NodeGroupNode_CpuOvercommitType_value                                                                           = src.NodeGroupNode_CpuOvercommitType_value
+	NodeGroupNode_Status_name                                                                                       = src.NodeGroupNode_Status_name
+	NodeGroupNode_Status_value                                                                                      = src.NodeGroupNode_Status_value
+	NodeGroup_MaintenanceInterval_name                                                                              = src.NodeGroup_MaintenanceInterval_name
+	NodeGroup_MaintenanceInterval_value                                                                             = src.NodeGroup_MaintenanceInterval_value
+	NodeGroup_MaintenancePolicy_name                                                                                = src.NodeGroup_MaintenancePolicy_name
+	NodeGroup_MaintenancePolicy_value                                                                               = src.NodeGroup_MaintenancePolicy_value
+	NodeGroup_Status_name                                                                                           = src.NodeGroup_Status_name
+	NodeGroup_Status_value                                                                                          = src.NodeGroup_Status_value
+	NodeTemplate_CpuOvercommitType_name                                                                             = src.NodeTemplate_CpuOvercommitType_name
+	NodeTemplate_CpuOvercommitType_value                                                                            = src.NodeTemplate_CpuOvercommitType_value
+	NodeTemplate_Status_name                                                                                        = src.NodeTemplate_Status_name
+	NodeTemplate_Status_value                                                                                       = src.NodeTemplate_Status_value
+	Operation_Status_name                                                                                           = src.Operation_Status_name
+	Operation_Status_value                                                                                          = src.Operation_Status_value
+	PacketIntervals_Duration_name                                                                                   = src.PacketIntervals_Duration_name
+	PacketIntervals_Duration_value                                                                                  = src.PacketIntervals_Duration_value
+	PacketIntervals_Type_name                                                                                       = src.PacketIntervals_Type_name
+	PacketIntervals_Type_value                                                                                      = src.PacketIntervals_Type_value
+	PacketMirroringFilter_Direction_name                                                                            = src.PacketMirroringFilter_Direction_name
+	PacketMirroringFilter_Direction_value                                                                           = src.PacketMirroringFilter_Direction_value
+	PacketMirroring_Enable_name                                                                                     = src.PacketMirroring_Enable_name
+	PacketMirroring_Enable_value                                                                                    = src.PacketMirroring_Enable_value
+	PerInstanceConfig_Status_name                                                                                   = src.PerInstanceConfig_Status_name
+	PerInstanceConfig_Status_value                                                                                  = src.PerInstanceConfig_Status_value
+	PreservedStatePreservedDisk_AutoDelete_name                                                                     = src.PreservedStatePreservedDisk_AutoDelete_name
+	PreservedStatePreservedDisk_AutoDelete_value                                                                    = src.PreservedStatePreservedDisk_AutoDelete_value
+	PreservedStatePreservedDisk_Mode_name                                                                           = src.PreservedStatePreservedDisk_Mode_name
+	PreservedStatePreservedDisk_Mode_value                                                                          = src.PreservedStatePreservedDisk_Mode_value
+	PreservedStatePreservedNetworkIp_AutoDelete_name                                                                = src.PreservedStatePreservedNetworkIp_AutoDelete_name
+	PreservedStatePreservedNetworkIp_AutoDelete_value                                                               = src.PreservedStatePreservedNetworkIp_AutoDelete_value
+	Project_CloudArmorTier_name                                                                                     = src.Project_CloudArmorTier_name
+	Project_CloudArmorTier_value                                                                                    = src.Project_CloudArmorTier_value
+	Project_DefaultNetworkTier_name                                                                                 = src.Project_DefaultNetworkTier_name
+	Project_DefaultNetworkTier_value                                                                                = src.Project_DefaultNetworkTier_value
+	Project_VmDnsSetting_name                                                                                       = src.Project_VmDnsSetting_name
+	Project_VmDnsSetting_value                                                                                      = src.Project_VmDnsSetting_value
+	Project_XpnProjectStatus_name                                                                                   = src.Project_XpnProjectStatus_name
+	Project_XpnProjectStatus_value                                                                                  = src.Project_XpnProjectStatus_value
+	ProjectsSetCloudArmorTierRequest_CloudArmorTier_name                                                            = src.ProjectsSetCloudArmorTierRequest_CloudArmorTier_name
+	ProjectsSetCloudArmorTierRequest_CloudArmorTier_value                                                           = src.ProjectsSetCloudArmorTierRequest_CloudArmorTier_value
+	ProjectsSetDefaultNetworkTierRequest_NetworkTier_name                                                           = src.ProjectsSetDefaultNetworkTierRequest_NetworkTier_name
+	ProjectsSetDefaultNetworkTierRequest_NetworkTier_value                                                          = src.ProjectsSetDefaultNetworkTierRequest_NetworkTier_value
+	PublicAdvertisedPrefix_ByoipApiVersion_name                                                                     = src.PublicAdvertisedPrefix_ByoipApiVersion_name
+	PublicAdvertisedPrefix_ByoipApiVersion_value                                                                    = src.PublicAdvertisedPrefix_ByoipApiVersion_value
+	PublicAdvertisedPrefix_PdpScope_name                                                                            = src.PublicAdvertisedPrefix_PdpScope_name
+	PublicAdvertisedPrefix_PdpScope_value                                                                           = src.PublicAdvertisedPrefix_PdpScope_value
+	PublicAdvertisedPrefix_Status_name                                                                              = src.PublicAdvertisedPrefix_Status_name
+	PublicAdvertisedPrefix_Status_value                                                                             = src.PublicAdvertisedPrefix_Status_value
+	PublicDelegatedPrefixPublicDelegatedSubPrefix_Mode_name                                                         = src.PublicDelegatedPrefixPublicDelegatedSubPrefix_Mode_name
+	PublicDelegatedPrefixPublicDelegatedSubPrefix_Mode_value                                                        = src.PublicDelegatedPrefixPublicDelegatedSubPrefix_Mode_value
+	PublicDelegatedPrefixPublicDelegatedSubPrefix_Status_name                                                       = src.PublicDelegatedPrefixPublicDelegatedSubPrefix_Status_name
+	PublicDelegatedPrefixPublicDelegatedSubPrefix_Status_value                                                      = src.PublicDelegatedPrefixPublicDelegatedSubPrefix_Status_value
+	PublicDelegatedPrefix_ByoipApiVersion_name                                                                      = src.PublicDelegatedPrefix_ByoipApiVersion_name
+	PublicDelegatedPrefix_ByoipApiVersion_value                                                                     = src.PublicDelegatedPrefix_ByoipApiVersion_value
+	PublicDelegatedPrefix_Mode_name                                                                                 = src.PublicDelegatedPrefix_Mode_name
+	PublicDelegatedPrefix_Mode_value                                                                                = src.PublicDelegatedPrefix_Mode_value
+	PublicDelegatedPrefix_Status_name                                                                               = src.PublicDelegatedPrefix_Status_name
+	PublicDelegatedPrefix_Status_value                                                                              = src.PublicDelegatedPrefix_Status_value
+	QuotaExceededInfo_RolloutStatus_name                                                                            = src.QuotaExceededInfo_RolloutStatus_name
+	QuotaExceededInfo_RolloutStatus_value                                                                           = src.QuotaExceededInfo_RolloutStatus_value
+	QuotaStatusWarning_Code_name                                                                                    = src.QuotaStatusWarning_Code_name
+	QuotaStatusWarning_Code_value                                                                                   = src.QuotaStatusWarning_Code_value
+	Quota_Metric_name                                                                                               = src.Quota_Metric_name
+	Quota_Metric_value                                                                                              = src.Quota_Metric_value
+	RawDisk_ContainerType_name                                                                                      = src.RawDisk_ContainerType_name
+	RawDisk_ContainerType_value                                                                                     = src.RawDisk_ContainerType_value
+	RegionInstanceGroupManagersApplyUpdatesRequest_MinimalAction_name                                               = src.RegionInstanceGroupManagersApplyUpdatesRequest_MinimalAction_name
+	RegionInstanceGroupManagersApplyUpdatesRequest_MinimalAction_value                                              = src.RegionInstanceGroupManagersApplyUpdatesRequest_MinimalAction_value
+	RegionInstanceGroupManagersApplyUpdatesRequest_MostDisruptiveAllowedAction_name                                 = src.RegionInstanceGroupManagersApplyUpdatesRequest_MostDisruptiveAllowedAction_name
+	RegionInstanceGroupManagersApplyUpdatesRequest_MostDisruptiveAllowedAction_value                                = src.RegionInstanceGroupManagersApplyUpdatesRequest_MostDisruptiveAllowedAction_value
+	RegionInstanceGroupsListInstancesRequest_InstanceState_name                                                     = src.RegionInstanceGroupsListInstancesRequest_InstanceState_name
+	RegionInstanceGroupsListInstancesRequest_InstanceState_value                                                    = src.RegionInstanceGroupsListInstancesRequest_InstanceState_value
+	RegionNetworkFirewallPoliciesGetEffectiveFirewallsResponseEffectiveFirewallPolicy_Type_name                     = src.RegionNetworkFirewallPoliciesGetEffectiveFirewallsResponseEffectiveFirewallPolicy_Type_name
+	RegionNetworkFirewallPoliciesGetEffectiveFirewallsResponseEffectiveFirewallPolicy_Type_value                    = src.RegionNetworkFirewallPoliciesGetEffectiveFirewallsResponseEffectiveFirewallPolicy_Type_value
+	Region_Status_name                                                                                              = src.Region_Status_name
+	Region_Status_value                                                                                             = src.Region_Status_value
+	ReservationAffinity_ConsumeReservationType_name                                                                 = src.ReservationAffinity_ConsumeReservationType_name
+	ReservationAffinity_ConsumeReservationType_value                                                                = src.ReservationAffinity_ConsumeReservationType_value
+	Reservation_Status_name                                                                                         = src.Reservation_Status_name
+	Reservation_Status_value                                                                                        = src.Reservation_Status_value
+	ResourceCommitment_Type_name                                                                                    = src.ResourceCommitment_Type_name
+	ResourceCommitment_Type_value                                                                                   = src.ResourceCommitment_Type_value
+	ResourcePolicyGroupPlacementPolicy_Collocation_name                                                             = src.ResourcePolicyGroupPlacementPolicy_Collocation_name
+	ResourcePolicyGroupPlacementPolicy_Collocation_value                                                            = src.ResourcePolicyGroupPlacementPolicy_Collocation_value
+	ResourcePolicySnapshotSchedulePolicyRetentionPolicy_OnSourceDiskDelete_name                                     = src.ResourcePolicySnapshotSchedulePolicyRetentionPolicy_OnSourceDiskDelete_name
+	ResourcePolicySnapshotSchedulePolicyRetentionPolicy_OnSourceDiskDelete_value                                    = src.ResourcePolicySnapshotSchedulePolicyRetentionPolicy_OnSourceDiskDelete_value
+	ResourcePolicyWeeklyCycleDayOfWeek_Day_name                                                                     = src.ResourcePolicyWeeklyCycleDayOfWeek_Day_name
+	ResourcePolicyWeeklyCycleDayOfWeek_Day_value                                                                    = src.ResourcePolicyWeeklyCycleDayOfWeek_Day_value
+	ResourcePolicy_Status_name                                                                                      = src.ResourcePolicy_Status_name
+	ResourcePolicy_Status_value                                                                                     = src.ResourcePolicy_Status_value
+	RouteAsPath_PathSegmentType_name                                                                                = src.RouteAsPath_PathSegmentType_name
+	RouteAsPath_PathSegmentType_value                                                                               = src.RouteAsPath_PathSegmentType_value
+	Route_RouteStatus_name                                                                                          = src.Route_RouteStatus_name
+	Route_RouteStatus_value                                                                                         = src.Route_RouteStatus_value
+	Route_RouteType_name                                                                                            = src.Route_RouteType_name
+	Route_RouteType_value                                                                                           = src.Route_RouteType_value
+	RouterBgpPeerBfd_SessionInitializationMode_name                                                                 = src.RouterBgpPeerBfd_SessionInitializationMode_name
+	RouterBgpPeerBfd_SessionInitializationMode_value                                                                = src.RouterBgpPeerBfd_SessionInitializationMode_value
+	RouterBgpPeer_AdvertiseMode_name                                                                                = src.RouterBgpPeer_AdvertiseMode_name
+	RouterBgpPeer_AdvertiseMode_value                                                                               = src.RouterBgpPeer_AdvertiseMode_value
+	RouterBgpPeer_AdvertisedGroups_name                                                                             = src.RouterBgpPeer_AdvertisedGroups_name
+	RouterBgpPeer_AdvertisedGroups_value                                                                            = src.RouterBgpPeer_AdvertisedGroups_value
+	RouterBgpPeer_Enable_name                                                                                       = src.RouterBgpPeer_Enable_name
+	RouterBgpPeer_Enable_value                                                                                      = src.RouterBgpPeer_Enable_value
+	RouterBgpPeer_ManagementType_name                                                                               = src.RouterBgpPeer_ManagementType_name
+	RouterBgpPeer_ManagementType_value                                                                              = src.RouterBgpPeer_ManagementType_value
+	RouterBgp_AdvertiseMode_name                                                                                    = src.RouterBgp_AdvertiseMode_name
+	RouterBgp_AdvertiseMode_value                                                                                   = src.RouterBgp_AdvertiseMode_value
+	RouterBgp_AdvertisedGroups_name                                                                                 = src.RouterBgp_AdvertisedGroups_name
+	RouterBgp_AdvertisedGroups_value                                                                                = src.RouterBgp_AdvertisedGroups_value
+	RouterInterface_IpVersion_name                                                                                  = src.RouterInterface_IpVersion_name
+	RouterInterface_IpVersion_value                                                                                 = src.RouterInterface_IpVersion_value
+	RouterInterface_ManagementType_name                                                                             = src.RouterInterface_ManagementType_name
+	RouterInterface_ManagementType_value                                                                            = src.RouterInterface_ManagementType_value
+	RouterNatLogConfig_Filter_name                                                                                  = src.RouterNatLogConfig_Filter_name
+	RouterNatLogConfig_Filter_value                                                                                 = src.RouterNatLogConfig_Filter_value
+	RouterNatSubnetworkToNat_SourceIpRangesToNat_name                                                               = src.RouterNatSubnetworkToNat_SourceIpRangesToNat_name
+	RouterNatSubnetworkToNat_SourceIpRangesToNat_value                                                              = src.RouterNatSubnetworkToNat_SourceIpRangesToNat_value
+	RouterNat_AutoNetworkTier_name                                                                                  = src.RouterNat_AutoNetworkTier_name
+	RouterNat_AutoNetworkTier_value                                                                                 = src.RouterNat_AutoNetworkTier_value
+	RouterNat_EndpointTypes_name                                                                                    = src.RouterNat_EndpointTypes_name
+	RouterNat_EndpointTypes_value                                                                                   = src.RouterNat_EndpointTypes_value
+	RouterNat_NatIpAllocateOption_name                                                                              = src.RouterNat_NatIpAllocateOption_name
+	RouterNat_NatIpAllocateOption_value                                                                             = src.RouterNat_NatIpAllocateOption_value
+	RouterNat_SourceSubnetworkIpRangesToNat_name                                                                    = src.RouterNat_SourceSubnetworkIpRangesToNat_name
+	RouterNat_SourceSubnetworkIpRangesToNat_value                                                                   = src.RouterNat_SourceSubnetworkIpRangesToNat_value
+	RouterNat_Type_name                                                                                             = src.RouterNat_Type_name
+	RouterNat_Type_value                                                                                            = src.RouterNat_Type_value
+	RouterStatusBgpPeerStatus_StatusReason_name                                                                     = src.RouterStatusBgpPeerStatus_StatusReason_name
+	RouterStatusBgpPeerStatus_StatusReason_value                                                                    = src.RouterStatusBgpPeerStatus_StatusReason_value
+	RouterStatusBgpPeerStatus_Status_name                                                                           = src.RouterStatusBgpPeerStatus_Status_name
+	RouterStatusBgpPeerStatus_Status_value                                                                          = src.RouterStatusBgpPeerStatus_Status_value
+	SSLHealthCheck_PortSpecification_name                                                                           = src.SSLHealthCheck_PortSpecification_name
+	SSLHealthCheck_PortSpecification_value                                                                          = src.SSLHealthCheck_PortSpecification_value
+	SSLHealthCheck_ProxyHeader_name                                                                                 = src.SSLHealthCheck_ProxyHeader_name
+	SSLHealthCheck_ProxyHeader_value                                                                                = src.SSLHealthCheck_ProxyHeader_value
+	SavedAttachedDisk_Interface_name                                                                                = src.SavedAttachedDisk_Interface_name
+	SavedAttachedDisk_Interface_value                                                                               = src.SavedAttachedDisk_Interface_value
+	SavedAttachedDisk_Mode_name                                                                                     = src.SavedAttachedDisk_Mode_name
+	SavedAttachedDisk_Mode_value                                                                                    = src.SavedAttachedDisk_Mode_value
+	SavedAttachedDisk_StorageBytesStatus_name                                                                       = src.SavedAttachedDisk_StorageBytesStatus_name
+	SavedAttachedDisk_StorageBytesStatus_value                                                                      = src.SavedAttachedDisk_StorageBytesStatus_value
+	SavedAttachedDisk_Type_name                                                                                     = src.SavedAttachedDisk_Type_name
+	SavedAttachedDisk_Type_value                                                                                    = src.SavedAttachedDisk_Type_value
+	SavedDisk_Architecture_name                                                                                     = src.SavedDisk_Architecture_name
+	SavedDisk_Architecture_value                                                                                    = src.SavedDisk_Architecture_value
+	SavedDisk_StorageBytesStatus_name                                                                               = src.SavedDisk_StorageBytesStatus_name
+	SavedDisk_StorageBytesStatus_value                                                                              = src.SavedDisk_StorageBytesStatus_value
+	ScalingScheduleStatus_State_name                                                                                = src.ScalingScheduleStatus_State_name
+	ScalingScheduleStatus_State_value                                                                               = src.ScalingScheduleStatus_State_value
+	SchedulingNodeAffinity_Operator_name                                                                            = src.SchedulingNodeAffinity_Operator_name
+	SchedulingNodeAffinity_Operator_value                                                                           = src.SchedulingNodeAffinity_Operator_value
+	Scheduling_InstanceTerminationAction_name                                                                       = src.Scheduling_InstanceTerminationAction_name
+	Scheduling_InstanceTerminationAction_value                                                                      = src.Scheduling_InstanceTerminationAction_value
+	Scheduling_OnHostMaintenance_name                                                                               = src.Scheduling_OnHostMaintenance_name
+	Scheduling_OnHostMaintenance_value                                                                              = src.Scheduling_OnHostMaintenance_value
+	Scheduling_ProvisioningModel_name                                                                               = src.Scheduling_ProvisioningModel_name
+	Scheduling_ProvisioningModel_value                                                                              = src.Scheduling_ProvisioningModel_value
+	SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig_Type_name  = src.SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig_Type_name
+	SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig_Type_value = src.SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig_Type_value
+	SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig_RuleVisibility_name                               = src.SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig_RuleVisibility_name
+	SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig_RuleVisibility_value                              = src.SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig_RuleVisibility_value
+	SecurityPolicyAdvancedOptionsConfig_JsonParsing_name                                                            = src.SecurityPolicyAdvancedOptionsConfig_JsonParsing_name
+	SecurityPolicyAdvancedOptionsConfig_JsonParsing_value                                                           = src.SecurityPolicyAdvancedOptionsConfig_JsonParsing_value
+	SecurityPolicyAdvancedOptionsConfig_LogLevel_name                                                               = src.SecurityPolicyAdvancedOptionsConfig_LogLevel_name
+	SecurityPolicyAdvancedOptionsConfig_LogLevel_value                                                              = src.SecurityPolicyAdvancedOptionsConfig_LogLevel_value
+	SecurityPolicyDdosProtectionConfig_DdosProtection_name                                                          = src.SecurityPolicyDdosProtectionConfig_DdosProtection_name
+	SecurityPolicyDdosProtectionConfig_DdosProtection_value                                                         = src.SecurityPolicyDdosProtectionConfig_DdosProtection_value
+	SecurityPolicyRuleMatcher_VersionedExpr_name                                                                    = src.SecurityPolicyRuleMatcher_VersionedExpr_name
+	SecurityPolicyRuleMatcher_VersionedExpr_value                                                                   = src.SecurityPolicyRuleMatcher_VersionedExpr_value
+	SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams_Op_name                                            = src.SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams_Op_name
+	SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams_Op_value                                           = src.SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams_Op_value
+	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig_EnforceOnKeyType_name                                      = src.SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig_EnforceOnKeyType_name
+	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig_EnforceOnKeyType_value                                     = src.SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig_EnforceOnKeyType_value
+	SecurityPolicyRuleRateLimitOptions_EnforceOnKey_name                                                            = src.SecurityPolicyRuleRateLimitOptions_EnforceOnKey_name
+	SecurityPolicyRuleRateLimitOptions_EnforceOnKey_value                                                           = src.SecurityPolicyRuleRateLimitOptions_EnforceOnKey_value
+	SecurityPolicyRuleRedirectOptions_Type_name                                                                     = src.SecurityPolicyRuleRedirectOptions_Type_name
+	SecurityPolicyRuleRedirectOptions_Type_value                                                                    = src.SecurityPolicyRuleRedirectOptions_Type_value
+	SecurityPolicyUserDefinedField_Base_name                                                                        = src.SecurityPolicyUserDefinedField_Base_name
+	SecurityPolicyUserDefinedField_Base_value                                                                       = src.SecurityPolicyUserDefinedField_Base_value
+	SecurityPolicy_Type_name                                                                                        = src.SecurityPolicy_Type_name
+	SecurityPolicy_Type_value                                                                                       = src.SecurityPolicy_Type_value
+	ServerBinding_Type_name                                                                                         = src.ServerBinding_Type_name
+	ServerBinding_Type_value                                                                                        = src.ServerBinding_Type_value
+	ServiceAttachmentConnectedEndpoint_Status_name                                                                  = src.ServiceAttachmentConnectedEndpoint_Status_name
+	ServiceAttachmentConnectedEndpoint_Status_value                                                                 = src.ServiceAttachmentConnectedEndpoint_Status_value
+	ServiceAttachment_ConnectionPreference_name                                                                     = src.ServiceAttachment_ConnectionPreference_name
+	ServiceAttachment_ConnectionPreference_value                                                                    = src.ServiceAttachment_ConnectionPreference_value
+	SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfo_State_name                                   = src.SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfo_State_name
+	SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfo_State_value                                  = src.SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfo_State_value
+	ShareSettings_ShareType_name                                                                                    = src.ShareSettings_ShareType_name
+	ShareSettings_ShareType_value                                                                                   = src.ShareSettings_ShareType_value
+	SnapshotSettingsStorageLocationSettings_Policy_name                                                             = src.SnapshotSettingsStorageLocationSettings_Policy_name
+	SnapshotSettingsStorageLocationSettings_Policy_value                                                            = src.SnapshotSettingsStorageLocationSettings_Policy_value
+	Snapshot_Architecture_name                                                                                      = src.Snapshot_Architecture_name
+	Snapshot_Architecture_value                                                                                     = src.Snapshot_Architecture_value
+	Snapshot_SnapshotType_name                                                                                      = src.Snapshot_SnapshotType_name
+	Snapshot_SnapshotType_value                                                                                     = src.Snapshot_SnapshotType_value
+	Snapshot_Status_name                                                                                            = src.Snapshot_Status_name
+	Snapshot_Status_value                                                                                           = src.Snapshot_Status_value
+	Snapshot_StorageBytesStatus_name                                                                                = src.Snapshot_StorageBytesStatus_name
+	Snapshot_StorageBytesStatus_value                                                                               = src.Snapshot_StorageBytesStatus_value
+	SourceInstanceProperties_KeyRevocationActionType_name                                                           = src.SourceInstanceProperties_KeyRevocationActionType_name
+	SourceInstanceProperties_KeyRevocationActionType_value                                                          = src.SourceInstanceProperties_KeyRevocationActionType_value
+	SslCertificateManagedSslCertificate_Status_name                                                                 = src.SslCertificateManagedSslCertificate_Status_name
+	SslCertificateManagedSslCertificate_Status_value                                                                = src.SslCertificateManagedSslCertificate_Status_value
+	SslCertificate_Type_name                                                                                        = src.SslCertificate_Type_name
+	SslCertificate_Type_value                                                                                       = src.SslCertificate_Type_value
+	SslPolicy_MinTlsVersion_name                                                                                    = src.SslPolicy_MinTlsVersion_name
+	SslPolicy_MinTlsVersion_value                                                                                   = src.SslPolicy_MinTlsVersion_value
+	SslPolicy_Profile_name                                                                                          = src.SslPolicy_Profile_name
+	SslPolicy_Profile_value                                                                                         = src.SslPolicy_Profile_value
+	StatefulPolicyPreservedStateDiskDevice_AutoDelete_name                                                          = src.StatefulPolicyPreservedStateDiskDevice_AutoDelete_name
+	StatefulPolicyPreservedStateDiskDevice_AutoDelete_value                                                         = src.StatefulPolicyPreservedStateDiskDevice_AutoDelete_value
+	StatefulPolicyPreservedStateNetworkIp_AutoDelete_name                                                           = src.StatefulPolicyPreservedStateNetworkIp_AutoDelete_name
+	StatefulPolicyPreservedStateNetworkIp_AutoDelete_value                                                          = src.StatefulPolicyPreservedStateNetworkIp_AutoDelete_value
+	StoragePoolDisk_Status_name                                                                                     = src.StoragePoolDisk_Status_name
+	StoragePoolDisk_Status_value                                                                                    = src.StoragePoolDisk_Status_value
+	StoragePool_CapacityProvisioningType_name                                                                       = src.StoragePool_CapacityProvisioningType_name
+	StoragePool_CapacityProvisioningType_value                                                                      = src.StoragePool_CapacityProvisioningType_value
+	StoragePool_PerformanceProvisioningType_name                                                                    = src.StoragePool_PerformanceProvisioningType_name
+	StoragePool_PerformanceProvisioningType_value                                                                   = src.StoragePool_PerformanceProvisioningType_value
+	StoragePool_State_name                                                                                          = src.StoragePool_State_name
+	StoragePool_State_value                                                                                         = src.StoragePool_State_value
+	SubnetworkLogConfig_AggregationInterval_name                                                                    = src.SubnetworkLogConfig_AggregationInterval_name
+	SubnetworkLogConfig_AggregationInterval_value                                                                   = src.SubnetworkLogConfig_AggregationInterval_value
+	SubnetworkLogConfig_Metadata_name                                                                               = src.SubnetworkLogConfig_Metadata_name
+	SubnetworkLogConfig_Metadata_value                                                                              = src.SubnetworkLogConfig_Metadata_value
+	Subnetwork_Ipv6AccessType_name                                                                                  = src.Subnetwork_Ipv6AccessType_name
+	Subnetwork_Ipv6AccessType_value                                                                                 = src.Subnetwork_Ipv6AccessType_value
+	Subnetwork_PrivateIpv6GoogleAccess_name                                                                         = src.Subnetwork_PrivateIpv6GoogleAccess_name
+	Subnetwork_PrivateIpv6GoogleAccess_value                                                                        = src.Subnetwork_PrivateIpv6GoogleAccess_value
+	Subnetwork_Purpose_name                                                                                         = src.Subnetwork_Purpose_name
+	Subnetwork_Purpose_value                                                                                        = src.Subnetwork_Purpose_value
+	Subnetwork_Role_name                                                                                            = src.Subnetwork_Role_name
+	Subnetwork_Role_value                                                                                           = src.Subnetwork_Role_value
+	Subnetwork_StackType_name                                                                                       = src.Subnetwork_StackType_name
+	Subnetwork_StackType_value                                                                                      = src.Subnetwork_StackType_value
+	Subnetwork_State_name                                                                                           = src.Subnetwork_State_name
+	Subnetwork_State_value                                                                                          = src.Subnetwork_State_value
+	Subsetting_Policy_name                                                                                          = src.Subsetting_Policy_name
+	Subsetting_Policy_value                                                                                         = src.Subsetting_Policy_value
+	TCPHealthCheck_PortSpecification_name                                                                           = src.TCPHealthCheck_PortSpecification_name
+	TCPHealthCheck_PortSpecification_value                                                                          = src.TCPHealthCheck_PortSpecification_value
+	TCPHealthCheck_ProxyHeader_name                                                                                 = src.TCPHealthCheck_ProxyHeader_name
+	TCPHealthCheck_ProxyHeader_value                                                                                = src.TCPHealthCheck_ProxyHeader_value
+	TargetHttpsProxiesSetQuicOverrideRequest_QuicOverride_name                                                      = src.TargetHttpsProxiesSetQuicOverrideRequest_QuicOverride_name
+	TargetHttpsProxiesSetQuicOverrideRequest_QuicOverride_value                                                     = src.TargetHttpsProxiesSetQuicOverrideRequest_QuicOverride_value
+	TargetHttpsProxy_QuicOverride_name                                                                              = src.TargetHttpsProxy_QuicOverride_name
+	TargetHttpsProxy_QuicOverride_value                                                                             = src.TargetHttpsProxy_QuicOverride_value
+	TargetHttpsProxy_TlsEarlyData_name                                                                              = src.TargetHttpsProxy_TlsEarlyData_name
+	TargetHttpsProxy_TlsEarlyData_value                                                                             = src.TargetHttpsProxy_TlsEarlyData_value
+	TargetInstance_NatPolicy_name                                                                                   = src.TargetInstance_NatPolicy_name
+	TargetInstance_NatPolicy_value                                                                                  = src.TargetInstance_NatPolicy_value
+	TargetPool_SessionAffinity_name                                                                                 = src.TargetPool_SessionAffinity_name
+	TargetPool_SessionAffinity_value                                                                                = src.TargetPool_SessionAffinity_value
+	TargetSslProxiesSetProxyHeaderRequest_ProxyHeader_name                                                          = src.TargetSslProxiesSetProxyHeaderRequest_ProxyHeader_name
+	TargetSslProxiesSetProxyHeaderRequest_ProxyHeader_value                                                         = src.TargetSslProxiesSetProxyHeaderRequest_ProxyHeader_value
+	TargetSslProxy_ProxyHeader_name                                                                                 = src.TargetSslProxy_ProxyHeader_name
+	TargetSslProxy_ProxyHeader_value                                                                                = src.TargetSslProxy_ProxyHeader_value
+	TargetTcpProxiesSetProxyHeaderRequest_ProxyHeader_name                                                          = src.TargetTcpProxiesSetProxyHeaderRequest_ProxyHeader_name
+	TargetTcpProxiesSetProxyHeaderRequest_ProxyHeader_value                                                         = src.TargetTcpProxiesSetProxyHeaderRequest_ProxyHeader_value
+	TargetTcpProxy_ProxyHeader_name                                                                                 = src.TargetTcpProxy_ProxyHeader_name
+	TargetTcpProxy_ProxyHeader_value                                                                                = src.TargetTcpProxy_ProxyHeader_value
+	TargetVpnGateway_Status_name                                                                                    = src.TargetVpnGateway_Status_name
+	TargetVpnGateway_Status_value                                                                                   = src.TargetVpnGateway_Status_value
+	UpcomingMaintenance_MaintenanceStatus_name                                                                      = src.UpcomingMaintenance_MaintenanceStatus_name
+	UpcomingMaintenance_MaintenanceStatus_value                                                                     = src.UpcomingMaintenance_MaintenanceStatus_value
+	UpcomingMaintenance_Type_name                                                                                   = src.UpcomingMaintenance_Type_name
+	UpcomingMaintenance_Type_value                                                                                  = src.UpcomingMaintenance_Type_value
+	UpdateInstanceRequest_MinimalAction_name                                                                        = src.UpdateInstanceRequest_MinimalAction_name
+	UpdateInstanceRequest_MinimalAction_value                                                                       = src.UpdateInstanceRequest_MinimalAction_value
+	UpdateInstanceRequest_MostDisruptiveAllowedAction_name                                                          = src.UpdateInstanceRequest_MostDisruptiveAllowedAction_name
+	UpdateInstanceRequest_MostDisruptiveAllowedAction_value                                                         = src.UpdateInstanceRequest_MostDisruptiveAllowedAction_value
+	UrlMapsValidateRequest_LoadBalancingSchemes_name                                                                = src.UrlMapsValidateRequest_LoadBalancingSchemes_name
+	UrlMapsValidateRequest_LoadBalancingSchemes_value                                                               = src.UrlMapsValidateRequest_LoadBalancingSchemes_value
+	UsableSubnetwork_Ipv6AccessType_name                                                                            = src.UsableSubnetwork_Ipv6AccessType_name
+	UsableSubnetwork_Ipv6AccessType_value                                                                           = src.UsableSubnetwork_Ipv6AccessType_value
+	UsableSubnetwork_Purpose_name                                                                                   = src.UsableSubnetwork_Purpose_name
+	UsableSubnetwork_Purpose_value                                                                                  = src.UsableSubnetwork_Purpose_value
+	UsableSubnetwork_Role_name                                                                                      = src.UsableSubnetwork_Role_name
+	UsableSubnetwork_Role_value                                                                                     = src.UsableSubnetwork_Role_value
+	UsableSubnetwork_StackType_name                                                                                 = src.UsableSubnetwork_StackType_name
+	UsableSubnetwork_StackType_value                                                                                = src.UsableSubnetwork_StackType_value
+	VpnGatewayStatusHighAvailabilityRequirementState_State_name                                                     = src.VpnGatewayStatusHighAvailabilityRequirementState_State_name
+	VpnGatewayStatusHighAvailabilityRequirementState_State_value                                                    = src.VpnGatewayStatusHighAvailabilityRequirementState_State_value
+	VpnGatewayStatusHighAvailabilityRequirementState_UnsatisfiedReason_name                                         = src.VpnGatewayStatusHighAvailabilityRequirementState_UnsatisfiedReason_name
+	VpnGatewayStatusHighAvailabilityRequirementState_UnsatisfiedReason_value                                        = src.VpnGatewayStatusHighAvailabilityRequirementState_UnsatisfiedReason_value
+	VpnGateway_GatewayIpVersion_name                                                                                = src.VpnGateway_GatewayIpVersion_name
+	VpnGateway_GatewayIpVersion_value                                                                               = src.VpnGateway_GatewayIpVersion_value
+	VpnGateway_StackType_name                                                                                       = src.VpnGateway_StackType_name
+	VpnGateway_StackType_value                                                                                      = src.VpnGateway_StackType_value
+	VpnTunnel_Status_name                                                                                           = src.VpnTunnel_Status_name
+	VpnTunnel_Status_value                                                                                          = src.VpnTunnel_Status_value
+	Warning_Code_name                                                                                               = src.Warning_Code_name
+	Warning_Code_value                                                                                              = src.Warning_Code_value
+	Warnings_Code_name                                                                                              = src.Warnings_Code_name
+	Warnings_Code_value                                                                                             = src.Warnings_Code_value
+	XpnResourceId_Type_name                                                                                         = src.XpnResourceId_Type_name
+	XpnResourceId_Type_value                                                                                        = src.XpnResourceId_Type_value
+	Zone_Status_name                                                                                                = src.Zone_Status_name
+	Zone_Status_value                                                                                               = src.Zone_Status_value
 )
 
-// Messages A request message for InstanceGroupManagers.AbandonInstances. See
-// the method description for details.
+// Messages Contains the configurations necessary to generate a signature for
+// access to private storage buckets that support Signature Version 4 for
+// authentication. The service name for generating the authentication header
+// will always default to 's3'.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type AWSV4Signature = src.AWSV4Signature
+
+// A request message for InstanceGroupManagers.AbandonInstances. See the
+// method description for details.
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type AbandonInstancesInstanceGroupManagerRequest = src.AbandonInstancesInstanceGroupManagerRequest
@@ -1970,19 +2415,7 @@ type AcceleratorTypeAggregatedList = src.AcceleratorTypeAggregatedList
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type AcceleratorTypeList = src.AcceleratorTypeList
-
-// AcceleratorTypesClient is the client API for AcceleratorTypes service. For
-// semantics around ctx use and closing/ending streaming RPCs, please refer to
-// https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type AcceleratorTypesClient = src.AcceleratorTypesClient
 type AcceleratorTypesScopedList = src.AcceleratorTypesScopedList
-
-// AcceleratorTypesServer is the server API for AcceleratorTypes service.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type AcceleratorTypesServer = src.AcceleratorTypesServer
 type Accelerators = src.Accelerators
 
 // An access configuration attached to an instance's network interface. Only
@@ -2001,7 +2434,9 @@ type AccessConfig = src.AccessConfig
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type AccessConfig_NetworkTier = src.AccessConfig_NetworkTier
 
-// The type of configuration. The default and only option is ONE_TO_ONE_NAT.
+// The type of configuration. In accessConfigs (IPv4), the default and only
+// option is ONE_TO_ONE_NAT. In ipv6AccessConfigs, the default and only option
+// is DIRECT_IPV6.
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type AccessConfig_Type = src.AccessConfig_Type
@@ -2096,6 +2531,12 @@ type AddRuleNetworkFirewallPolicyRequest = src.AddRuleNetworkFirewallPolicyReque
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type AddRuleRegionNetworkFirewallPolicyRequest = src.AddRuleRegionNetworkFirewallPolicyRequest
 
+// A request message for RegionSecurityPolicies.AddRule. See the method
+// description for details.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type AddRuleRegionSecurityPolicyRequest = src.AddRuleRegionSecurityPolicyRequest
+
 // A request message for SecurityPolicies.AddRule. See the method description
 // for details.
 //
@@ -2137,7 +2578,7 @@ type AddressList = src.AddressList
 type Address_AddressType = src.Address_AddressType
 
 // The IP version that will be used by this address. Valid options are IPV4 or
-// IPV6. This can only be specified for a global address.
+// IPV6.
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type Address_IpVersion = src.Address_IpVersion
@@ -2185,19 +2626,7 @@ type Address_Purpose = src.Address_Purpose
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type Address_Status = src.Address_Status
-
-// AddressesClient is the client API for Addresses service. For semantics
-// around ctx use and closing/ending streaming RPCs, please refer to
-// https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type AddressesClient = src.AddressesClient
 type AddressesScopedList = src.AddressesScopedList
-
-// AddressesServer is the server API for Addresses service.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type AddressesServer = src.AddressesServer
 
 // Specifies options for controlling advanced machine features. Options that
 // would traditionally be configured in a BIOS belong here. Features that
@@ -2207,6 +2636,11 @@ type AddressesServer = src.AddressesServer
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type AdvancedMachineFeatures = src.AdvancedMachineFeatures
+
+// Type of Performance Monitoring Unit requested on instance.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type AdvancedMachineFeatures_PerformanceMonitoringUnit = src.AdvancedMachineFeatures_PerformanceMonitoringUnit
 
 // A request message for AcceleratorTypes.AggregatedList. See the method
 // description for details.
@@ -2274,11 +2708,23 @@ type AggregatedListInstanceGroupManagersRequest = src.AggregatedListInstanceGrou
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type AggregatedListInstanceGroupsRequest = src.AggregatedListInstanceGroupsRequest
 
+// A request message for InstanceTemplates.AggregatedList. See the method
+// description for details.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type AggregatedListInstanceTemplatesRequest = src.AggregatedListInstanceTemplatesRequest
+
 // A request message for Instances.AggregatedList. See the method description
 // for details.
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type AggregatedListInstancesRequest = src.AggregatedListInstancesRequest
+
+// A request message for InstantSnapshots.AggregatedList. See the method
+// description for details.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type AggregatedListInstantSnapshotsRequest = src.AggregatedListInstantSnapshotsRequest
 
 // A request message for InterconnectAttachments.AggregatedList. See the
 // method description for details.
@@ -2291,6 +2737,12 @@ type AggregatedListInterconnectAttachmentsRequest = src.AggregatedListInterconne
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type AggregatedListMachineTypesRequest = src.AggregatedListMachineTypesRequest
+
+// A request message for NetworkAttachments.AggregatedList. See the method
+// description for details.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type AggregatedListNetworkAttachmentsRequest = src.AggregatedListNetworkAttachmentsRequest
 
 // A request message for NetworkEdgeSecurityServices.AggregatedList. See the
 // method description for details.
@@ -2382,6 +2834,18 @@ type AggregatedListSslCertificatesRequest = src.AggregatedListSslCertificatesReq
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type AggregatedListSslPoliciesRequest = src.AggregatedListSslPoliciesRequest
 
+// A request message for StoragePoolTypes.AggregatedList. See the method
+// description for details.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type AggregatedListStoragePoolTypesRequest = src.AggregatedListStoragePoolTypesRequest
+
+// A request message for StoragePools.AggregatedList. See the method
+// description for details.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type AggregatedListStoragePoolsRequest = src.AggregatedListStoragePoolsRequest
+
 // A request message for Subnetworks.AggregatedList. See the method
 // description for details.
 //
@@ -2446,6 +2910,36 @@ type AggregatedListVpnTunnelsRequest = src.AggregatedListVpnTunnelsRequest
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type AliasIpRange = src.AliasIpRange
+
+// This reservation type is specified by total resource amounts (e.g. total
+// count of CPUs) and can account for multiple instance SKUs. In other words,
+// one can create instances of varying shapes against this reservation.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type AllocationAggregateReservation = src.AllocationAggregateReservation
+type AllocationAggregateReservationReservedResourceInfo = src.AllocationAggregateReservationReservedResourceInfo
+type AllocationAggregateReservationReservedResourceInfoAccelerator = src.AllocationAggregateReservationReservedResourceInfoAccelerator
+
+// The VM family that all instances scheduled against this reservation must
+// belong to.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type AllocationAggregateReservation_VmFamily = src.AllocationAggregateReservation_VmFamily
+
+// The workload type of the instances that will target this reservation.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type AllocationAggregateReservation_WorkloadType = src.AllocationAggregateReservation_WorkloadType
+
+// [Output Only] Contains output only fields.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type AllocationResourceStatus = src.AllocationResourceStatus
+
+// Contains Properties set for the reservation.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type AllocationResourceStatusSpecificSKUAllocation = src.AllocationResourceStatusSpecificSKUAllocation
 type AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDisk = src.AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDisk
 
 // Specifies the disk interface to use for attaching this disk, which is
@@ -2461,11 +2955,23 @@ type AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDisk_Inte
 type AllocationSpecificSKUAllocationReservedInstanceProperties = src.AllocationSpecificSKUAllocationReservedInstanceProperties
 
 // This reservation type allows to pre allocate specific instance
-// configuration. Next ID: 6
+// configuration.
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type AllocationSpecificSKUReservation = src.AllocationSpecificSKUReservation
 type Allowed = src.Allowed
+
+// A request message for PublicAdvertisedPrefixes.Announce. See the method
+// description for details.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type AnnouncePublicAdvertisedPrefixeRequest = src.AnnouncePublicAdvertisedPrefixeRequest
+
+// A request message for PublicDelegatedPrefixes.Announce. See the method
+// description for details.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type AnnouncePublicDelegatedPrefixeRequest = src.AnnouncePublicDelegatedPrefixeRequest
 
 // A request message for InstanceGroupManagers.ApplyUpdatesToInstances. See
 // the method description for details.
@@ -2496,6 +3002,12 @@ type AttachNetworkEndpointsGlobalNetworkEndpointGroupRequest = src.AttachNetwork
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type AttachNetworkEndpointsNetworkEndpointGroupRequest = src.AttachNetworkEndpointsNetworkEndpointGroupRequest
+
+// A request message for RegionNetworkEndpointGroups.AttachNetworkEndpoints.
+// See the method description for details.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type AttachNetworkEndpointsRegionNetworkEndpointGroupRequest = src.AttachNetworkEndpointsRegionNetworkEndpointGroupRequest
 
 // An instance-attached disk resource.
 //
@@ -2543,6 +3055,14 @@ type AttachedDisk_Interface = src.AttachedDisk_Interface
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type AttachedDisk_Mode = src.AttachedDisk_Mode
 
+// For LocalSSD disks on VM Instances in STOPPED or SUSPENDED state, this
+// field is set to PRESERVED if the LocalSSD data has been saved to a
+// persistent location by customer request. (see the discard_local_ssd option
+// on Stop/Suspend). Read-only in the api.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type AttachedDisk_SavedState = src.AttachedDisk_SavedState
+
 // Specifies the type of the disk, either SCRATCH or PERSISTENT. If not
 // specified, the default is PERSISTENT.
 //
@@ -2563,8 +3083,8 @@ type AttachedDisk_Type = src.AttachedDisk_Type
 // "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type":
 // "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For
 // sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
-// logging. It also exempts jose@example.com from DATA_READ logging, and
-// aliya@example.com from DATA_WRITE logging.
+// logging. It also exempts `jose@example.com` from DATA_READ logging, and
+// `aliya@example.com` from DATA_WRITE logging.
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type AuditConfig = src.AuditConfig
@@ -2582,16 +3102,6 @@ type AuditLogConfig = src.AuditLogConfig
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type AuditLogConfig_LogType = src.AuditLogConfig_LogType
-
-// This is deprecated and has no effect. Do not use.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type AuthorizationLoggingOptions = src.AuthorizationLoggingOptions
-
-// This is deprecated and has no effect. Do not use.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type AuthorizationLoggingOptions_PermissionType = src.AuthorizationLoggingOptions_PermissionType
 
 // Represents an Autoscaler resource. Google Compute Engine has two Autoscaler
 // resources: * [Zonal](/compute/docs/reference/rest/v1/autoscalers) *
@@ -2659,19 +3169,7 @@ type AutoscalerStatusDetails_Type = src.AutoscalerStatusDetails_Type
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type Autoscaler_Status = src.Autoscaler_Status
-
-// AutoscalersClient is the client API for Autoscalers service. For semantics
-// around ctx use and closing/ending streaming RPCs, please refer to
-// https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type AutoscalersClient = src.AutoscalersClient
 type AutoscalersScopedList = src.AutoscalersScopedList
-
-// AutoscalersServer is the server API for Autoscalers service.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type AutoscalersServer = src.AutoscalersServer
 
 // Cloud Autoscaler policy.
 //
@@ -2723,7 +3221,11 @@ type AutoscalingPolicyScaleInControl = src.AutoscalingPolicyScaleInControl
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type AutoscalingPolicyScalingSchedule = src.AutoscalingPolicyScalingSchedule
 
-// Defines operating mode for this policy.
+// Defines the operating mode for this policy. The following modes are
+// available: - OFF: Disables the autoscaler but maintains its configuration. -
+// ONLY_SCALE_OUT: Restricts the autoscaler to add VM instances only. - ON:
+// Enables all autoscaler activities according to its policy. For more
+// information, see "Turning off or restricting an autoscaler"
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type AutoscalingPolicy_Mode = src.AutoscalingPolicy_Mode
@@ -2783,24 +3285,13 @@ type BackendBucketCdnPolicy_CacheMode = src.BackendBucketCdnPolicy_CacheMode
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type BackendBucketList = src.BackendBucketList
+type BackendBucketUsedBy = src.BackendBucketUsedBy
 
 // Compress text responses using Brotli or gzip compression, based on the
 // client's Accept-Encoding header.
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type BackendBucket_CompressionMode = src.BackendBucket_CompressionMode
-
-// BackendBucketsClient is the client API for BackendBuckets service. For
-// semantics around ctx use and closing/ending streaming RPCs, please refer to
-// https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type BackendBucketsClient = src.BackendBucketsClient
-
-// BackendBucketsServer is the server API for BackendBuckets service.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type BackendBucketsServer = src.BackendBucketsServer
 
 // Represents a Backend Service resource. A backend service defines how Google
 // Cloud load balancers distribute traffic. The backend service configuration
@@ -2894,10 +3385,11 @@ type BackendServiceConnectionTrackingPolicy_ConnectionPersistenceOnUnhealthyBack
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type BackendServiceConnectionTrackingPolicy_TrackingMode = src.BackendServiceConnectionTrackingPolicy_TrackingMode
 
-// For load balancers that have configurable failover: [Internal TCP/UDP Load
-// Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview)
-// and [external TCP/UDP Load
-// Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-failover-overview).
+// For load balancers that have configurable failover: [Internal passthrough
+// Network Load
+// Balancers](https://cloud.google.com/load-balancing/docs/internal/failover-overview)
+// and [external passthrough Network Load
+// Balancers](https://cloud.google.com/load-balancing/docs/network/networklb-failover-overview).
 // On failover or failback, this field indicates whether connection draining
 // will be honored. Google Cloud has a fixed connection draining timeout of 10
 // minutes. A setting of true terminates existing TCP connections to the active
@@ -2910,6 +3402,11 @@ type BackendServiceConnectionTrackingPolicy_TrackingMode = src.BackendServiceCon
 type BackendServiceFailoverPolicy = src.BackendServiceFailoverPolicy
 type BackendServiceGroupHealth = src.BackendServiceGroupHealth
 
+// The HTTP cookie used for stateful session affinity.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type BackendServiceHttpCookie = src.BackendServiceHttpCookie
+
 // Identity-Aware Proxy
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
@@ -2919,6 +3416,11 @@ type BackendServiceIAP = src.BackendServiceIAP
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type BackendServiceList = src.BackendServiceList
+
+// Contains a list of usable BackendService resources.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type BackendServiceListUsable = src.BackendServiceListUsable
 
 // Container for either a built-in LB policy supported by gRPC or Envoy or a
 // custom one implemented by the end user.
@@ -2937,11 +3439,10 @@ type BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicy = src.BackendSe
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type BackendServiceLocalityLoadBalancingPolicyConfigPolicy = src.BackendServiceLocalityLoadBalancingPolicyConfigPolicy
 
-// The name of a locality load balancer policy to be used. The value should be
-// one of the predefined ones as supported by localityLbPolicy, although at the
-// moment only ROUND_ROBIN is supported. This field should only be populated
-// when the customPolicy field is not used. Note that specifying the same
-// policy more than once for a backend is not a valid configuration and will be
+// The name of a locality load-balancing policy. Valid values include
+// ROUND_ROBIN and, for Java clients, LEAST_REQUEST. For information about
+// these values, see the description of localityLbPolicy. Do not specify the
+// same policy more than once for a backend. If you do, the configuration is
 // rejected.
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
@@ -2952,13 +3453,44 @@ type BackendServiceLocalityLoadBalancingPolicyConfigPolicy_Name = src.BackendSer
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type BackendServiceLogConfig = src.BackendServiceLogConfig
+
+// This field can only be specified if logging is enabled for this backend
+// service. Configures whether all, none or a subset of optional fields should
+// be added to the reported logs. One of [INCLUDE_ALL_OPTIONAL,
+// EXCLUDE_ALL_OPTIONAL, CUSTOM]. Default is EXCLUDE_ALL_OPTIONAL.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type BackendServiceLogConfig_OptionalMode = src.BackendServiceLogConfig_OptionalMode
 type BackendServiceReference = src.BackendServiceReference
+type BackendServiceUsedBy = src.BackendServiceUsedBy
 
 // Compress text responses using Brotli or gzip compression, based on the
 // client's Accept-Encoding header.
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type BackendService_CompressionMode = src.BackendService_CompressionMode
+
+// Specifies a preference for traffic sent from the proxy to the backend (or
+// from the client to the backend for proxyless gRPC). The possible values are:
+// - IPV4_ONLY: Only send IPv4 traffic to the backends of the backend service
+// (Instance Group, Managed Instance Group, Network Endpoint Group), regardless
+// of traffic from the client to the proxy. Only IPv4 health checks are used to
+// check the health of the backends. This is the default setting. -
+// PREFER_IPV6: Prioritize the connection to the endpoint's IPv6 address over
+// its IPv4 address (provided there is a healthy IPv6 address). - IPV6_ONLY:
+// Only send IPv6 traffic to the backends of the backend service (Instance
+// Group, Managed Instance Group, Network Endpoint Group), regardless of
+// traffic from the client to the proxy. Only IPv6 health checks are used to
+// check the health of the backends. This field is applicable to either: -
+// Advanced global external Application Load Balancer (load balancing scheme
+// EXTERNAL_MANAGED), - Regional external Application Load Balancer, - Internal
+// proxy Network Load Balancer (load balancing scheme INTERNAL_MANAGED), -
+// Regional internal Application Load Balancer (load balancing scheme
+// INTERNAL_MANAGED), - Traffic Director with Envoy proxies and proxyless gRPC
+// (load balancing scheme INTERNAL_SELF_MANAGED).
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type BackendService_IpAddressSelectionPolicy = src.BackendService_IpAddressSelectionPolicy
 
 // Specifies the load balancer type. A backend service created for one type of
 // load balancer cannot be used with another. For more information, refer to
@@ -2985,11 +3517,14 @@ type BackendService_LoadBalancingScheme = src.BackendService_LoadBalancingScheme
 // This field is applicable to either: - A regional backend service with the
 // service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set
 // to INTERNAL_MANAGED. - A global backend service with the
-// load_balancing_scheme set to INTERNAL_SELF_MANAGED. If sessionAffinity is
-// not NONE, and this field is not set to MAGLEV or RING_HASH, session affinity
-// settings will not take effect. Only ROUND_ROBIN and RING_HASH are supported
-// when the backend service is referenced by a URL map that is bound to target
-// gRPC proxy that has validateForProxyless field set to true.
+// load_balancing_scheme set to INTERNAL_SELF_MANAGED, INTERNAL_MANAGED, or
+// EXTERNAL_MANAGED. If sessionAffinity is not configured—that is, if session
+// affinity remains at the default value of NONE—then the default value for
+// localityLbPolicy is ROUND_ROBIN. If session affinity is set to a value other
+// than NONE, then the default value for localityLbPolicy is MAGLEV. Only
+// ROUND_ROBIN and RING_HASH are supported when the backend service is
+// referenced by a URL map that is bound to target gRPC proxy that has
+// validateForProxyless field set to true.
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type BackendService_LocalityLbPolicy = src.BackendService_LocalityLbPolicy
@@ -3012,19 +3547,7 @@ type BackendService_Protocol = src.BackendService_Protocol
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type BackendService_SessionAffinity = src.BackendService_SessionAffinity
-
-// BackendServicesClient is the client API for BackendServices service. For
-// semantics around ctx use and closing/ending streaming RPCs, please refer to
-// https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type BackendServicesClient = src.BackendServicesClient
 type BackendServicesScopedList = src.BackendServicesScopedList
-
-// BackendServicesServer is the server API for BackendServices service.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type BackendServicesServer = src.BackendServicesServer
 
 // Specifies how to determine whether the backend of a load balancer can
 // handle additional traffic or is fully loaded. For usage guidelines, see
@@ -3038,6 +3561,17 @@ type BackendServicesServer = src.BackendServicesServer
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type Backend_BalancingMode = src.Backend_BalancingMode
+
+// This field indicates whether this backend should be fully utilized before
+// sending traffic to backends with default preference. The possible values
+// are: - PREFERRED: Backends with this preference level will be filled up to
+// their capacity limits first, based on RTT. - DEFAULT: If preferred backends
+// don't have enough capacity, backends in this layer would be used and traffic
+// would be assigned based on the load balancing algorithm you use. This is the
+// default
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type Backend_Preference = src.Backend_Preference
 type BfdPacket = src.BfdPacket
 
 // The diagnostic code specifies the local system's reason for the last change
@@ -3088,6 +3622,19 @@ type BfdStatus_LocalState = src.BfdStatus_LocalState
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type Binding = src.Binding
 
+// A request message for Disks.BulkInsert. See the method description for
+// details.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type BulkInsertDiskRequest = src.BulkInsertDiskRequest
+
+// A transient resource used in compute.disks.bulkInsert and
+// compute.regionDisks.bulkInsert. It is only used to process requests and is
+// not persisted.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type BulkInsertDiskResource = src.BulkInsertDiskResource
+
 // A request message for Instances.BulkInsert. See the method description for
 // details.
 //
@@ -3106,6 +3653,19 @@ type BulkInsertInstanceResource = src.BulkInsertInstanceResource
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type BulkInsertInstanceResourcePerInstanceProperties = src.BulkInsertInstanceResourcePerInstanceProperties
+type BulkInsertOperationStatus = src.BulkInsertOperationStatus
+
+// [Output Only] Creation status of BulkInsert operation - information if the
+// flow is rolling forward or rolling back.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type BulkInsertOperationStatus_Status = src.BulkInsertOperationStatus_Status
+
+// A request message for RegionDisks.BulkInsert. See the method description
+// for details.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type BulkInsertRegionDiskRequest = src.BulkInsertRegionDiskRequest
 
 // A request message for RegionInstances.BulkInsert. See the method
 // description for details.
@@ -3119,6 +3679,12 @@ type CacheInvalidationRule = src.CacheInvalidationRule
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type CacheKeyPolicy = src.CacheKeyPolicy
+
+// A request message for InstanceGroupManagerResizeRequests.Cancel. See the
+// method description for details.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type CancelInstanceGroupManagerResizeRequestRequest = src.CancelInstanceGroupManagerResizeRequestRequest
 
 // Settings controlling the volume of requests, connections and retries to
 // this backend service.
@@ -3159,6 +3725,11 @@ type CommitmentAggregatedList = src.CommitmentAggregatedList
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type CommitmentList = src.CommitmentList
 
+// [Output Only] Contains output only fields.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type CommitmentResourceStatus = src.CommitmentResourceStatus
+
 // The category of the commitment. Category MACHINE specifies commitments
 // composed of machine resources such as VCPU or MEMORY, listed in resources.
 // Category LICENSE specifies commitments composed of software licenses, listed
@@ -3191,34 +3762,15 @@ type Commitment_Status = src.Commitment_Status
 type Commitment_Type = src.Commitment_Type
 type CommitmentsScopedList = src.CommitmentsScopedList
 
-// This is deprecated and has no effect. Do not use.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type Condition = src.Condition
-
-// This is deprecated and has no effect. Do not use. Additional supported
-// values which may be not listed in the enum directly due to technical
-// reasons: NO_ATTR
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type Condition_Iam = src.Condition_Iam
-
-// This is deprecated and has no effect. Do not use.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type Condition_Op = src.Condition_Op
-
-// This is deprecated and has no effect. Do not use. Additional supported
-// values which may be not listed in the enum directly due to technical
-// reasons: NO_ATTR
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type Condition_Sys = src.Condition_Sys
-
 // A set of Confidential Instance options.
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type ConfidentialInstanceConfig = src.ConfidentialInstanceConfig
+
+// Defines the type of technology used by the confidential instance.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type ConfidentialInstanceConfig_ConfidentialInstanceType = src.ConfidentialInstanceConfig_ConfidentialInstanceType
 
 // Message containing connection draining configuration.
 //
@@ -3266,6 +3818,19 @@ type CreateSnapshotDiskRequest = src.CreateSnapshotDiskRequest
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type CreateSnapshotRegionDiskRequest = src.CreateSnapshotRegionDiskRequest
+
+// Specifies the custom error response policy that must be applied when the
+// backend service or backend bucket responds with an error.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type CustomErrorResponsePolicy = src.CustomErrorResponsePolicy
+
+// Specifies the mapping between the response code that will be returned along
+// with the custom error content and the response code returned by the backend
+// service.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type CustomErrorResponsePolicyCustomErrorResponseRule = src.CustomErrorResponsePolicyCustomErrorResponseRule
 type CustomerEncryptionKey = src.CustomerEncryptionKey
 type CustomerEncryptionKeyProtectedDisk = src.CustomerEncryptionKeyProtectedDisk
 type Data = src.Data
@@ -3395,6 +3960,12 @@ type DeleteImageRequest = src.DeleteImageRequest
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type DeleteInstanceGroupManagerRequest = src.DeleteInstanceGroupManagerRequest
 
+// A request message for InstanceGroupManagerResizeRequests.Delete. See the
+// method description for details.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type DeleteInstanceGroupManagerResizeRequestRequest = src.DeleteInstanceGroupManagerResizeRequestRequest
+
 // A request message for InstanceGroups.Delete. See the method description for
 // details.
 //
@@ -3425,6 +3996,12 @@ type DeleteInstancesInstanceGroupManagerRequest = src.DeleteInstancesInstanceGro
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type DeleteInstancesRegionInstanceGroupManagerRequest = src.DeleteInstancesRegionInstanceGroupManagerRequest
 
+// A request message for InstantSnapshots.Delete. See the method description
+// for details.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type DeleteInstantSnapshotRequest = src.DeleteInstantSnapshotRequest
+
 // A request message for InterconnectAttachments.Delete. See the method
 // description for details.
 //
@@ -3448,6 +4025,12 @@ type DeleteLicenseRequest = src.DeleteLicenseRequest
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type DeleteMachineImageRequest = src.DeleteMachineImageRequest
+
+// A request message for NetworkAttachments.Delete. See the method description
+// for details.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type DeleteNetworkAttachmentRequest = src.DeleteNetworkAttachmentRequest
 
 // A request message for NetworkEdgeSecurityServices.Delete. See the method
 // description for details.
@@ -3556,6 +4139,18 @@ type DeleteRegionHealthCheckServiceRequest = src.DeleteRegionHealthCheckServiceR
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type DeleteRegionInstanceGroupManagerRequest = src.DeleteRegionInstanceGroupManagerRequest
+
+// A request message for RegionInstanceTemplates.Delete. See the method
+// description for details.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type DeleteRegionInstanceTemplateRequest = src.DeleteRegionInstanceTemplateRequest
+
+// A request message for RegionInstantSnapshots.Delete. See the method
+// description for details.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type DeleteRegionInstantSnapshotRequest = src.DeleteRegionInstantSnapshotRequest
 
 // A request message for RegionNetworkEndpointGroups.Delete. See the method
 // description for details.
@@ -3695,6 +4290,12 @@ type DeleteSslCertificateRequest = src.DeleteSslCertificateRequest
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type DeleteSslPolicyRequest = src.DeleteSslPolicyRequest
 
+// A request message for StoragePools.Delete. See the method description for
+// details.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type DeleteStoragePoolRequest = src.DeleteStoragePoolRequest
+
 // A request message for Subnetworks.Delete. See the method description for
 // details.
 //
@@ -3819,6 +4420,12 @@ type DetachNetworkEndpointsGlobalNetworkEndpointGroupRequest = src.DetachNetwork
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type DetachNetworkEndpointsNetworkEndpointGroupRequest = src.DetachNetworkEndpointsNetworkEndpointGroupRequest
 
+// A request message for RegionNetworkEndpointGroups.DetachNetworkEndpoints.
+// See the method description for details.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type DetachNetworkEndpointsRegionNetworkEndpointGroupRequest = src.DetachNetworkEndpointsRegionNetworkEndpointGroupRequest
+
 // A request message for Projects.DisableXpnHost. See the method description
 // for details.
 //
@@ -3844,6 +4451,8 @@ type DisableXpnResourceProjectRequest = src.DisableXpnResourceProjectRequest
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type Disk = src.Disk
 type DiskAggregatedList = src.DiskAggregatedList
+type DiskAsyncReplication = src.DiskAsyncReplication
+type DiskAsyncReplicationList = src.DiskAsyncReplicationList
 
 // A specification of the desired way to instantiate a disk in the instance
 // template when its created from a source instance.
@@ -3876,6 +4485,9 @@ type DiskMoveRequest = src.DiskMoveRequest
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type DiskParams = src.DiskParams
+type DiskResourceStatus = src.DiskResourceStatus
+type DiskResourceStatusAsyncReplicationStatus = src.DiskResourceStatusAsyncReplicationStatus
+type DiskResourceStatusAsyncReplicationStatus_State = src.DiskResourceStatusAsyncReplicationStatus_State
 
 // Represents a Disk Type resource. Google Compute Engine has two Disk Type
 // resources: * [Regional](/compute/docs/reference/rest/v1/regionDiskTypes) *
@@ -3894,19 +4506,17 @@ type DiskTypeAggregatedList = src.DiskTypeAggregatedList
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type DiskTypeList = src.DiskTypeList
-
-// DiskTypesClient is the client API for DiskTypes service. For semantics
-// around ctx use and closing/ending streaming RPCs, please refer to
-// https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type DiskTypesClient = src.DiskTypesClient
 type DiskTypesScopedList = src.DiskTypesScopedList
 
-// DiskTypesServer is the server API for DiskTypes service.
+// The access mode of the disk. - READ_WRITE_SINGLE: The default AccessMode,
+// means the disk can be attached to single instance in RW mode. -
+// READ_WRITE_MANY: The AccessMode means the disk can be attached to multiple
+// instances in RW mode. - READ_ONLY_MANY: The AccessMode means the disk can be
+// attached to multiple instances in RO mode. The AccessMode is only valid for
+// Hyperdisk disk types.
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type DiskTypesServer = src.DiskTypesServer
+type Disk_AccessMode = src.Disk_AccessMode
 
 // The architecture of the disk. Valid values are ARM64 or X86_64.
 //
@@ -3921,21 +4531,17 @@ type Disk_Architecture = src.Disk_Architecture
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type Disk_Status = src.Disk_Status
 type DisksAddResourcePoliciesRequest = src.DisksAddResourcePoliciesRequest
-
-// DisksClient is the client API for Disks service. For semantics around ctx
-// use and closing/ending streaming RPCs, please refer to
-// https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type DisksClient = src.DisksClient
 type DisksRemoveResourcePoliciesRequest = src.DisksRemoveResourcePoliciesRequest
 type DisksResizeRequest = src.DisksResizeRequest
 type DisksScopedList = src.DisksScopedList
+type DisksStartAsyncReplicationRequest = src.DisksStartAsyncReplicationRequest
 
-// DisksServer is the server API for Disks service.
+// A transient resource used in compute.disks.stopGroupAsyncReplication and
+// compute.regionDisks.stopGroupAsyncReplication. It is only used to process
+// requests and is not persisted.
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type DisksServer = src.DisksServer
+type DisksStopGroupAsyncReplicationResource = src.DisksStopGroupAsyncReplicationResource
 
 // A set of Display Device options
 //
@@ -3971,8 +4577,7 @@ type EnableXpnHostProjectRequest = src.EnableXpnHostProjectRequest
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type EnableXpnResourceProjectRequest = src.EnableXpnResourceProjectRequest
 
-// [Output Only] If errors are generated during processing of the operation,
-// this field will be populated.
+// Errors that prevented the ResizeRequest to be fulfilled.
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type Error = src.Error
@@ -4050,20 +4655,6 @@ type ExternalVpnGatewayList = src.ExternalVpnGatewayList
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type ExternalVpnGateway_RedundancyType = src.ExternalVpnGateway_RedundancyType
-
-// ExternalVpnGatewaysClient is the client API for ExternalVpnGateways
-// service. For semantics around ctx use and closing/ending streaming RPCs,
-// please refer to
-// https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type ExternalVpnGatewaysClient = src.ExternalVpnGatewaysClient
-
-// ExternalVpnGatewaysServer is the server API for ExternalVpnGateways
-// service.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type ExternalVpnGatewaysServer = src.ExternalVpnGatewaysServer
 type FileContentBuffer = src.FileContentBuffer
 
 // The file type of source file.
@@ -4094,19 +4685,7 @@ type FirewallLogConfig = src.FirewallLogConfig
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type FirewallLogConfig_Metadata = src.FirewallLogConfig_Metadata
-
-// FirewallPoliciesClient is the client API for FirewallPolicies service. For
-// semantics around ctx use and closing/ending streaming RPCs, please refer to
-// https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type FirewallPoliciesClient = src.FirewallPoliciesClient
 type FirewallPoliciesListAssociationsResponse = src.FirewallPoliciesListAssociationsResponse
-
-// FirewallPoliciesServer is the server API for FirewallPolicies service.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type FirewallPoliciesServer = src.FirewallPoliciesServer
 
 // Represents a Firewall Policy resource.
 //
@@ -4147,18 +4726,6 @@ type FirewallPolicyRule_Direction = src.FirewallPolicyRule_Direction
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type Firewall_Direction = src.Firewall_Direction
 
-// FirewallsClient is the client API for Firewalls service. For semantics
-// around ctx use and closing/ending streaming RPCs, please refer to
-// https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type FirewallsClient = src.FirewallsClient
-
-// FirewallsServer is the server API for Firewalls service.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type FirewallsServer = src.FirewallsServer
-
 // Encapsulates numeric value that can be either absolute or relative.
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
@@ -4170,8 +4737,8 @@ type FixedOrPercent = src.FixedOrPercent
 // *
 // [Regional](https://cloud.google.com/compute/docs/reference/rest/v1/forwardingRules)
 // A forwarding rule and its corresponding IP address represent the frontend
-// configuration of a Google Cloud Platform load balancer. Forwarding rules can
-// also reference target instances and Cloud VPN Classic gateways
+// configuration of a Google Cloud load balancer. Forwarding rules can also
+// reference target instances and Cloud VPN Classic gateways
 // (targetVpnGateway). For more information, read Forwarding rule concepts and
 // Using protocol forwarding.
 //
@@ -4185,9 +4752,9 @@ type ForwardingRuleAggregatedList = src.ForwardingRuleAggregatedList
 type ForwardingRuleList = src.ForwardingRuleList
 type ForwardingRuleReference = src.ForwardingRuleReference
 
-// Describes the auto-registration of the Forwarding Rule to Service
+// Describes the auto-registration of the forwarding rule to Service
 // Directory. The region and project of the Service Directory resource
-// generated from this registration will be the same as this Forwarding Rule.
+// generated from this registration will be the same as this forwarding rule.
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type ForwardingRuleServiceDirectoryRegistration = src.ForwardingRuleServiceDirectoryRegistration
@@ -4223,25 +4790,13 @@ type ForwardingRule_LoadBalancingScheme = src.ForwardingRule_LoadBalancingScheme
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type ForwardingRule_NetworkTier = src.ForwardingRule_NetworkTier
 type ForwardingRule_PscConnectionStatus = src.ForwardingRule_PscConnectionStatus
-
-// ForwardingRulesClient is the client API for ForwardingRules service. For
-// semantics around ctx use and closing/ending streaming RPCs, please refer to
-// https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type ForwardingRulesClient = src.ForwardingRulesClient
 type ForwardingRulesScopedList = src.ForwardingRulesScopedList
-
-// ForwardingRulesServer is the server API for ForwardingRules service.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type ForwardingRulesServer = src.ForwardingRulesServer
 type GRPCHealthCheck = src.GRPCHealthCheck
 
 // Specifies how a port is selected for health checking. Can be one of the
 // following values: USE_FIXED_PORT: Specifies a port number explicitly using
 // the port field in the health check. Supported by backend services for
-// pass-through load balancers and backend services for proxy load balancers.
+// passthrough load balancers and backend services for proxy load balancers.
 // Not supported by target pools. The health check supports all backends
 // supported by the backend service provided the backend can be health checked.
 // For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network
@@ -4249,7 +4804,7 @@ type GRPCHealthCheck = src.GRPCHealthCheck
 // USE_SERVING_PORT: Provides an indirect method of specifying the health check
 // port by referring to the backend service. Only supported by backend services
 // for proxy load balancers. Not supported by target pools. Not supported by
-// backend services for pass-through load balancers. Supports all backends that
+// backend services for passthrough load balancers. Supports all backends that
 // can be health checked; for example, GCE_VM_IP_PORT network endpoint groups
 // and instance group backends. For GCE_VM_IP_PORT network endpoint group
 // backends, the health check uses the port number specified for each endpoint
@@ -4439,6 +4994,12 @@ type GetHealthRegionBackendServiceRequest = src.GetHealthRegionBackendServiceReq
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type GetHealthTargetPoolRequest = src.GetHealthTargetPoolRequest
 
+// A request message for BackendBuckets.GetIamPolicy. See the method
+// description for details.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type GetIamPolicyBackendBucketRequest = src.GetIamPolicyBackendBucketRequest
+
 // A request message for BackendServices.GetIamPolicy. See the method
 // description for details.
 //
@@ -4475,6 +5036,12 @@ type GetIamPolicyInstanceRequest = src.GetIamPolicyInstanceRequest
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type GetIamPolicyInstanceTemplateRequest = src.GetIamPolicyInstanceTemplateRequest
 
+// A request message for InstantSnapshots.GetIamPolicy. See the method
+// description for details.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type GetIamPolicyInstantSnapshotRequest = src.GetIamPolicyInstantSnapshotRequest
+
 // A request message for Licenses.GetIamPolicy. See the method description for
 // details.
 //
@@ -4486,6 +5053,12 @@ type GetIamPolicyLicenseRequest = src.GetIamPolicyLicenseRequest
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type GetIamPolicyMachineImageRequest = src.GetIamPolicyMachineImageRequest
+
+// A request message for NetworkAttachments.GetIamPolicy. See the method
+// description for details.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type GetIamPolicyNetworkAttachmentRequest = src.GetIamPolicyNetworkAttachmentRequest
 
 // A request message for NetworkFirewallPolicies.GetIamPolicy. See the method
 // description for details.
@@ -4517,6 +5090,12 @@ type GetIamPolicyRegionBackendServiceRequest = src.GetIamPolicyRegionBackendServ
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type GetIamPolicyRegionDiskRequest = src.GetIamPolicyRegionDiskRequest
 
+// A request message for RegionInstantSnapshots.GetIamPolicy. See the method
+// description for details.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type GetIamPolicyRegionInstantSnapshotRequest = src.GetIamPolicyRegionInstantSnapshotRequest
+
 // A request message for RegionNetworkFirewallPolicies.GetIamPolicy. See the
 // method description for details.
 //
@@ -4547,6 +5126,12 @@ type GetIamPolicyServiceAttachmentRequest = src.GetIamPolicyServiceAttachmentReq
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type GetIamPolicySnapshotRequest = src.GetIamPolicySnapshotRequest
 
+// A request message for StoragePools.GetIamPolicy. See the method description
+// for details.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type GetIamPolicyStoragePoolRequest = src.GetIamPolicyStoragePoolRequest
+
 // A request message for Subnetworks.GetIamPolicy. See the method description
 // for details.
 //
@@ -4570,6 +5155,12 @@ type GetImageRequest = src.GetImageRequest
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type GetInstanceGroupManagerRequest = src.GetInstanceGroupManagerRequest
 
+// A request message for InstanceGroupManagerResizeRequests.Get. See the
+// method description for details.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type GetInstanceGroupManagerResizeRequestRequest = src.GetInstanceGroupManagerResizeRequestRequest
+
 // A request message for InstanceGroups.Get. See the method description for
 // details.
 //
@@ -4582,11 +5173,23 @@ type GetInstanceGroupRequest = src.GetInstanceGroupRequest
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type GetInstanceRequest = src.GetInstanceRequest
 
+// A request message for InstanceSettingsService.Get. See the method
+// description for details.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type GetInstanceSettingRequest = src.GetInstanceSettingRequest
+
 // A request message for InstanceTemplates.Get. See the method description for
 // details.
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type GetInstanceTemplateRequest = src.GetInstanceTemplateRequest
+
+// A request message for InstantSnapshots.Get. See the method description for
+// details.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type GetInstantSnapshotRequest = src.GetInstantSnapshotRequest
 
 // A request message for InterconnectAttachments.Get. See the method
 // description for details.
@@ -4599,6 +5202,12 @@ type GetInterconnectAttachmentRequest = src.GetInterconnectAttachmentRequest
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type GetInterconnectLocationRequest = src.GetInterconnectLocationRequest
+
+// A request message for InterconnectRemoteLocations.Get. See the method
+// description for details.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type GetInterconnectRemoteLocationRequest = src.GetInterconnectRemoteLocationRequest
 
 // A request message for Interconnects.Get. See the method description for
 // details.
@@ -4629,11 +5238,29 @@ type GetMachineImageRequest = src.GetMachineImageRequest
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type GetMachineTypeRequest = src.GetMachineTypeRequest
 
+// A request message for Interconnects.GetMacsecConfig. See the method
+// description for details.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type GetMacsecConfigInterconnectRequest = src.GetMacsecConfigInterconnectRequest
+
+// A request message for Routers.GetNatIpInfo. See the method description for
+// details.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type GetNatIpInfoRouterRequest = src.GetNatIpInfoRouterRequest
+
 // A request message for Routers.GetNatMappingInfo. See the method description
 // for details.
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type GetNatMappingInfoRoutersRequest = src.GetNatMappingInfoRoutersRequest
+
+// A request message for NetworkAttachments.Get. See the method description
+// for details.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type GetNetworkAttachmentRequest = src.GetNetworkAttachmentRequest
 
 // A request message for NetworkEdgeSecurityServices.Get. See the method
 // description for details.
@@ -4753,6 +5380,18 @@ type GetRegionInstanceGroupManagerRequest = src.GetRegionInstanceGroupManagerReq
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type GetRegionInstanceGroupRequest = src.GetRegionInstanceGroupRequest
 
+// A request message for RegionInstanceTemplates.Get. See the method
+// description for details.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type GetRegionInstanceTemplateRequest = src.GetRegionInstanceTemplateRequest
+
+// A request message for RegionInstantSnapshots.Get. See the method
+// description for details.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type GetRegionInstantSnapshotRequest = src.GetRegionInstantSnapshotRequest
+
 // A request message for RegionNetworkEndpointGroups.Get. See the method
 // description for details.
 //
@@ -4870,6 +5509,12 @@ type GetRuleNetworkFirewallPolicyRequest = src.GetRuleNetworkFirewallPolicyReque
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type GetRuleRegionNetworkFirewallPolicyRequest = src.GetRuleRegionNetworkFirewallPolicyRequest
 
+// A request message for RegionSecurityPolicies.GetRule. See the method
+// description for details.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type GetRuleRegionSecurityPolicyRequest = src.GetRuleRegionSecurityPolicyRequest
+
 // A request message for SecurityPolicies.GetRule. See the method description
 // for details.
 //
@@ -4912,6 +5557,12 @@ type GetShieldedInstanceIdentityInstanceRequest = src.GetShieldedInstanceIdentit
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type GetSnapshotRequest = src.GetSnapshotRequest
 
+// A request message for SnapshotSettingsService.Get. See the method
+// description for details.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type GetSnapshotSettingRequest = src.GetSnapshotSettingRequest
+
 // A request message for SslCertificates.Get. See the method description for
 // details.
 //
@@ -4929,6 +5580,18 @@ type GetSslPolicyRequest = src.GetSslPolicyRequest
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type GetStatusVpnGatewayRequest = src.GetStatusVpnGatewayRequest
+
+// A request message for StoragePools.Get. See the method description for
+// details.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type GetStoragePoolRequest = src.GetStoragePoolRequest
+
+// A request message for StoragePoolTypes.Get. See the method description for
+// details.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type GetStoragePoolTypeRequest = src.GetStoragePoolTypeRequest
 
 // A request message for Subnetworks.Get. See the method description for
 // details.
@@ -5023,89 +5686,10 @@ type GetZoneOperationRequest = src.GetZoneOperationRequest
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type GetZoneRequest = src.GetZoneRequest
-
-// GlobalAddressesClient is the client API for GlobalAddresses service. For
-// semantics around ctx use and closing/ending streaming RPCs, please refer to
-// https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type GlobalAddressesClient = src.GlobalAddressesClient
-
-// GlobalAddressesServer is the server API for GlobalAddresses service.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type GlobalAddressesServer = src.GlobalAddressesServer
-
-// GlobalForwardingRulesClient is the client API for GlobalForwardingRules
-// service. For semantics around ctx use and closing/ending streaming RPCs,
-// please refer to
-// https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type GlobalForwardingRulesClient = src.GlobalForwardingRulesClient
-
-// GlobalForwardingRulesServer is the server API for GlobalForwardingRules
-// service.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type GlobalForwardingRulesServer = src.GlobalForwardingRulesServer
+type GlobalAddressesMoveRequest = src.GlobalAddressesMoveRequest
 type GlobalNetworkEndpointGroupsAttachEndpointsRequest = src.GlobalNetworkEndpointGroupsAttachEndpointsRequest
-
-// GlobalNetworkEndpointGroupsClient is the client API for
-// GlobalNetworkEndpointGroups service. For semantics around ctx use and
-// closing/ending streaming RPCs, please refer to
-// https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type GlobalNetworkEndpointGroupsClient = src.GlobalNetworkEndpointGroupsClient
 type GlobalNetworkEndpointGroupsDetachEndpointsRequest = src.GlobalNetworkEndpointGroupsDetachEndpointsRequest
-
-// GlobalNetworkEndpointGroupsServer is the server API for
-// GlobalNetworkEndpointGroups service.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type GlobalNetworkEndpointGroupsServer = src.GlobalNetworkEndpointGroupsServer
-
-// GlobalOperationsClient is the client API for GlobalOperations service. For
-// semantics around ctx use and closing/ending streaming RPCs, please refer to
-// https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type GlobalOperationsClient = src.GlobalOperationsClient
-
-// GlobalOperationsServer is the server API for GlobalOperations service.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type GlobalOperationsServer = src.GlobalOperationsServer
-
-// GlobalOrganizationOperationsClient is the client API for
-// GlobalOrganizationOperations service. For semantics around ctx use and
-// closing/ending streaming RPCs, please refer to
-// https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type GlobalOrganizationOperationsClient = src.GlobalOrganizationOperationsClient
-
-// GlobalOrganizationOperationsServer is the server API for
-// GlobalOrganizationOperations service.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type GlobalOrganizationOperationsServer = src.GlobalOrganizationOperationsServer
 type GlobalOrganizationSetPolicyRequest = src.GlobalOrganizationSetPolicyRequest
-
-// GlobalPublicDelegatedPrefixesClient is the client API for
-// GlobalPublicDelegatedPrefixes service. For semantics around ctx use and
-// closing/ending streaming RPCs, please refer to
-// https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type GlobalPublicDelegatedPrefixesClient = src.GlobalPublicDelegatedPrefixesClient
-
-// GlobalPublicDelegatedPrefixesServer is the server API for
-// GlobalPublicDelegatedPrefixes service.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type GlobalPublicDelegatedPrefixesServer = src.GlobalPublicDelegatedPrefixesServer
 type GlobalSetLabelsRequest = src.GlobalSetLabelsRequest
 type GlobalSetPolicyRequest = src.GlobalSetPolicyRequest
 
@@ -5132,8 +5716,9 @@ type GuestOsFeature = src.GuestOsFeature
 // The ID of a supported feature. To add multiple values, use commas to
 // separate values. Set to one or more of the following values: -
 // VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC
-// - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_SNP_CAPABLE For more
-// information, see Enabling guest operating system features.
+// - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_LIVE_MIGRATABLE_V2 -
+// SEV_SNP_CAPABLE - TDX_CAPABLE - IDPF For more information, see Enabling
+// guest operating system features.
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type GuestOsFeature_Type = src.GuestOsFeature_Type
@@ -5142,7 +5727,7 @@ type HTTP2HealthCheck = src.HTTP2HealthCheck
 // Specifies how a port is selected for health checking. Can be one of the
 // following values: USE_FIXED_PORT: Specifies a port number explicitly using
 // the port field in the health check. Supported by backend services for
-// pass-through load balancers and backend services for proxy load balancers.
+// passthrough load balancers and backend services for proxy load balancers.
 // Not supported by target pools. The health check supports all backends
 // supported by the backend service provided the backend can be health checked.
 // For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network
@@ -5150,7 +5735,7 @@ type HTTP2HealthCheck = src.HTTP2HealthCheck
 // USE_SERVING_PORT: Provides an indirect method of specifying the health check
 // port by referring to the backend service. Only supported by backend services
 // for proxy load balancers. Not supported by target pools. Not supported by
-// backend services for pass-through load balancers. Supports all backends that
+// backend services for passthrough load balancers. Supports all backends that
 // can be health checked; for example, GCE_VM_IP_PORT network endpoint groups
 // and instance group backends. For GCE_VM_IP_PORT network endpoint group
 // backends, the health check uses the port number specified for each endpoint
@@ -5171,7 +5756,7 @@ type HTTPHealthCheck = src.HTTPHealthCheck
 // Specifies how a port is selected for health checking. Can be one of the
 // following values: USE_FIXED_PORT: Specifies a port number explicitly using
 // the port field in the health check. Supported by backend services for
-// pass-through load balancers and backend services for proxy load balancers.
+// passthrough load balancers and backend services for proxy load balancers.
 // Also supported in legacy HTTP health checks for target pools. The health
 // check supports all backends supported by the backend service provided the
 // backend can be health checked. For example, GCE_VM_IP network endpoint
@@ -5201,7 +5786,7 @@ type HTTPSHealthCheck = src.HTTPSHealthCheck
 // Specifies how a port is selected for health checking. Can be one of the
 // following values: USE_FIXED_PORT: Specifies a port number explicitly using
 // the port field in the health check. Supported by backend services for
-// pass-through load balancers and backend services for proxy load balancers.
+// passthrough load balancers and backend services for proxy load balancers.
 // Not supported by target pools. The health check supports all backends
 // supported by the backend service provided the backend can be health checked.
 // For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network
@@ -5209,7 +5794,7 @@ type HTTPSHealthCheck = src.HTTPSHealthCheck
 // USE_SERVING_PORT: Provides an indirect method of specifying the health check
 // port by referring to the backend service. Only supported by backend services
 // for proxy load balancers. Not supported by target pools. Not supported by
-// backend services for pass-through load balancers. Supports all backends that
+// backend services for passthrough load balancers. Supports all backends that
 // can be health checked; for example, GCE_VM_IP_PORT network endpoint groups
 // and instance group backends. For GCE_VM_IP_PORT network endpoint group
 // backends, the health check uses the port number specified for each endpoint
@@ -5226,20 +5811,19 @@ type HTTPSHealthCheck_PortSpecification = src.HTTPSHealthCheck_PortSpecification
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type HTTPSHealthCheck_ProxyHeader = src.HTTPSHealthCheck_ProxyHeader
 
-// Represents a Health Check resource. Google Compute Engine has two Health
-// Check resources: * [Global](/compute/docs/reference/rest/v1/healthChecks) *
-// [Regional](/compute/docs/reference/rest/v1/regionHealthChecks) Internal
-// HTTP(S) load balancers must use regional health checks
-// (`compute.v1.regionHealthChecks`). Traffic Director must use global health
-// checks (`compute.v1.HealthChecks`). Internal TCP/UDP load balancers can use
-// either regional or global health checks (`compute.v1.regionHealthChecks` or
-// `compute.v1.HealthChecks`). External HTTP(S), TCP proxy, and SSL proxy load
-// balancers as well as managed instance group auto-healing must use global
-// health checks (`compute.v1.HealthChecks`). Backend service-based network
-// load balancers must use regional health checks
-// (`compute.v1.regionHealthChecks`). Target pool-based network load balancers
-// must use legacy HTTP health checks (`compute.v1.httpHealthChecks`). For more
-// information, see Health checks overview.
+// Represents a health check resource. Google Compute Engine has two health
+// check resources: *
+// [Regional](/compute/docs/reference/rest/v1/regionHealthChecks) *
+// [Global](/compute/docs/reference/rest/v1/healthChecks) These health check
+// resources can be used for load balancing and for autohealing VMs in a
+// managed instance group (MIG). **Load balancing** Health check requirements
+// vary depending on the type of load balancer. For details about the type of
+// health check supported for each load balancer and corresponding backend
+// type, see Health checks overview: Load balancer guide. **Autohealing in
+// MIGs** The health checks that you use for autohealing VMs in a MIG can be
+// either regional or global. For more information, see Set up an application
+// health check and autohealing. For more information, see Health checks
+// overview.
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type HealthCheck = src.HealthCheck
@@ -5284,7 +5868,8 @@ type HealthCheckServiceReference = src.HealthCheckServiceReference
 // NO_AGGREGATION. An EndpointHealth message is returned for each pair in the
 // health check service. - AND. If any health check of an endpoint reports
 // UNHEALTHY, then UNHEALTHY is the HealthState of the endpoint. If all health
-// checks report HEALTHY, the HealthState of the endpoint is HEALTHY. .
+// checks report HEALTHY, the HealthState of the endpoint is HEALTHY. . This is
+// only allowed with regional HealthCheckService.
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type HealthCheckService_HealthStatusAggregationPolicy = src.HealthCheckService_HealthStatusAggregationPolicy
@@ -5297,32 +5882,38 @@ type HealthCheckServicesList = src.HealthCheckServicesList
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type HealthCheck_Type = src.HealthCheck_Type
 type HealthChecksAggregatedList = src.HealthChecksAggregatedList
-
-// HealthChecksClient is the client API for HealthChecks service. For
-// semantics around ctx use and closing/ending streaming RPCs, please refer to
-// https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type HealthChecksClient = src.HealthChecksClient
 type HealthChecksScopedList = src.HealthChecksScopedList
-
-// HealthChecksServer is the server API for HealthChecks service.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type HealthChecksServer = src.HealthChecksServer
 type HealthStatus = src.HealthStatus
 type HealthStatusForNetworkEndpoint = src.HealthStatusForNetworkEndpoint
 
 // Health state of the network endpoint determined based on the health checks
-// configured.
+// configured. Additional supported values which may be not listed in the enum
+// directly due to technical reasons: DRAINING HEALTHY UNHEALTHY UNKNOWN
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type HealthStatusForNetworkEndpoint_HealthState = src.HealthStatusForNetworkEndpoint_HealthState
 
-// Health state of the instance.
+// Health state of the ipv6 network endpoint determined based on the health
+// checks configured. Additional supported values which may be not listed in
+// the enum directly due to technical reasons: DRAINING HEALTHY UNHEALTHY
+// UNKNOWN
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type HealthStatusForNetworkEndpoint_Ipv6HealthState = src.HealthStatusForNetworkEndpoint_Ipv6HealthState
+
+// Health state of the IPv4 address of the instance. Additional supported
+// values which may be not listed in the enum directly due to technical
+// reasons: HEALTHY UNHEALTHY
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type HealthStatus_HealthState = src.HealthStatus_HealthState
+
+// Health state of the IPv6 address of the instance. Additional supported
+// values which may be not listed in the enum directly due to technical
+// reasons: HEALTHY UNHEALTHY
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type HealthStatus_Ipv6HealthState = src.HealthStatus_Ipv6HealthState
 type HealthStatus_WeightError = src.HealthStatus_WeightError
 
 // Provides links to documentation or for performing an out of band action.
@@ -5427,18 +6018,6 @@ type HttpRouteRuleMatch = src.HttpRouteRuleMatch
 type Image = src.Image
 type ImageFamilyView = src.ImageFamilyView
 
-// ImageFamilyViewsClient is the client API for ImageFamilyViews service. For
-// semantics around ctx use and closing/ending streaming RPCs, please refer to
-// https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type ImageFamilyViewsClient = src.ImageFamilyViewsClient
-
-// ImageFamilyViewsServer is the server API for ImageFamilyViews service.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type ImageFamilyViewsServer = src.ImageFamilyViewsServer
-
 // Contains a list of images.
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
@@ -5462,18 +6041,6 @@ type Image_SourceType = src.Image_SourceType
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type Image_Status = src.Image_Status
-
-// ImagesClient is the client API for Images service. For semantics around ctx
-// use and closing/ending streaming RPCs, please refer to
-// https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type ImagesClient = src.ImagesClient
-
-// ImagesServer is the server API for Images service.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type ImagesServer = src.ImagesServer
 
 // Initial State for shielded instance, these are public keys which are safe
 // to store in public
@@ -5576,6 +6143,12 @@ type InsertImageRequest = src.InsertImageRequest
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type InsertInstanceGroupManagerRequest = src.InsertInstanceGroupManagerRequest
 
+// A request message for InstanceGroupManagerResizeRequests.Insert. See the
+// method description for details.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type InsertInstanceGroupManagerResizeRequestRequest = src.InsertInstanceGroupManagerResizeRequestRequest
+
 // A request message for InstanceGroups.Insert. See the method description for
 // details.
 //
@@ -5593,6 +6166,12 @@ type InsertInstanceRequest = src.InsertInstanceRequest
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type InsertInstanceTemplateRequest = src.InsertInstanceTemplateRequest
+
+// A request message for InstantSnapshots.Insert. See the method description
+// for details.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type InsertInstantSnapshotRequest = src.InsertInstantSnapshotRequest
 
 // A request message for InterconnectAttachments.Insert. See the method
 // description for details.
@@ -5617,6 +6196,12 @@ type InsertLicenseRequest = src.InsertLicenseRequest
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type InsertMachineImageRequest = src.InsertMachineImageRequest
+
+// A request message for NetworkAttachments.Insert. See the method description
+// for details.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type InsertNetworkAttachmentRequest = src.InsertNetworkAttachmentRequest
 
 // A request message for NetworkEdgeSecurityServices.Insert. See the method
 // description for details.
@@ -5713,6 +6298,18 @@ type InsertRegionHealthCheckServiceRequest = src.InsertRegionHealthCheckServiceR
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type InsertRegionInstanceGroupManagerRequest = src.InsertRegionInstanceGroupManagerRequest
+
+// A request message for RegionInstanceTemplates.Insert. See the method
+// description for details.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type InsertRegionInstanceTemplateRequest = src.InsertRegionInstanceTemplateRequest
+
+// A request message for RegionInstantSnapshots.Insert. See the method
+// description for details.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type InsertRegionInstantSnapshotRequest = src.InsertRegionInstantSnapshotRequest
 
 // A request message for RegionNetworkEndpointGroups.Insert. See the method
 // description for details.
@@ -5828,6 +6425,12 @@ type InsertSslCertificateRequest = src.InsertSslCertificateRequest
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type InsertSslPolicyRequest = src.InsertSslPolicyRequest
 
+// A request message for StoragePools.Insert. See the method description for
+// details.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type InsertStoragePoolRequest = src.InsertStoragePoolRequest
+
 // A request message for Subnetworks.Insert. See the method description for
 // details.
 //
@@ -5938,13 +6541,58 @@ type InstanceGroupList = src.InstanceGroupList
 type InstanceGroupManager = src.InstanceGroupManager
 type InstanceGroupManagerActionsSummary = src.InstanceGroupManagerActionsSummary
 type InstanceGroupManagerAggregatedList = src.InstanceGroupManagerAggregatedList
+type InstanceGroupManagerAllInstancesConfig = src.InstanceGroupManagerAllInstancesConfig
 type InstanceGroupManagerAutoHealingPolicy = src.InstanceGroupManagerAutoHealingPolicy
+type InstanceGroupManagerInstanceFlexibilityPolicy = src.InstanceGroupManagerInstanceFlexibilityPolicy
+type InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection = src.InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection
+type InstanceGroupManagerInstanceLifecyclePolicy = src.InstanceGroupManagerInstanceLifecyclePolicy
+
+// The action that a MIG performs on a failed or an unhealthy VM. A VM is
+// marked as unhealthy when the application running on that VM fails a health
+// check. Valid values are - REPAIR (default): MIG automatically repairs a
+// failed or an unhealthy VM by recreating it. For more information, see About
+// repairing VMs in a MIG. - DO_NOTHING: MIG does not repair a failed or an
+// unhealthy VM.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type InstanceGroupManagerInstanceLifecyclePolicy_DefaultActionOnFailure = src.InstanceGroupManagerInstanceLifecyclePolicy_DefaultActionOnFailure
+
+// A bit indicating whether to forcefully apply the group's latest
+// configuration when repairing a VM. Valid options are: - NO (default): If
+// configuration updates are available, they are not forcefully applied during
+// repair. Instead, configuration updates are applied according to the group's
+// update policy. - YES: If configuration updates are available, they are
+// applied during repair.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type InstanceGroupManagerInstanceLifecyclePolicy_ForceUpdateOnRepair = src.InstanceGroupManagerInstanceLifecyclePolicy_ForceUpdateOnRepair
 
 // [Output Only] A list of managed instance groups.
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type InstanceGroupManagerList = src.InstanceGroupManagerList
+
+// InstanceGroupManagerResizeRequest represents a request to create a number
+// of VMs: either immediately or by queuing the request for the specified time.
+// This resize request is nested under InstanceGroupManager and the VMs created
+// by this request are added to the owning InstanceGroupManager.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type InstanceGroupManagerResizeRequest = src.InstanceGroupManagerResizeRequest
+type InstanceGroupManagerResizeRequestStatus = src.InstanceGroupManagerResizeRequestStatus
+type InstanceGroupManagerResizeRequestStatusLastAttempt = src.InstanceGroupManagerResizeRequestStatusLastAttempt
+
+// [Output only] Current state of the request.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type InstanceGroupManagerResizeRequest_State = src.InstanceGroupManagerResizeRequest_State
+
+// [Output Only] A list of resize requests.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type InstanceGroupManagerResizeRequestsListResponse = src.InstanceGroupManagerResizeRequestsListResponse
 type InstanceGroupManagerStatus = src.InstanceGroupManagerStatus
+type InstanceGroupManagerStatusAllInstancesConfig = src.InstanceGroupManagerStatusAllInstancesConfig
 type InstanceGroupManagerStatusStateful = src.InstanceGroupManagerStatusStateful
 type InstanceGroupManagerStatusStatefulPerInstanceConfigs = src.InstanceGroupManagerStatusStatefulPerInstanceConfigs
 type InstanceGroupManagerStatusVersionTarget = src.InstanceGroupManagerStatusVersionTarget
@@ -5977,13 +6625,14 @@ type InstanceGroupManagerUpdatePolicy_InstanceRedistributionType = src.InstanceG
 type InstanceGroupManagerUpdatePolicy_MinimalAction = src.InstanceGroupManagerUpdatePolicy_MinimalAction
 
 // Most disruptive action that is allowed to be taken on an instance. You can
-// specify either NONE to forbid any actions, REFRESH to allow actions that do
-// not need instance restart, RESTART to allow actions that can be applied
-// without instance replacing or REPLACE to allow all possible actions. If the
-// Updater determines that the minimal update action needed is more disruptive
-// than most disruptive allowed action you specify it will not perform the
-// update at all. Additional supported values which may be not listed in the
-// enum directly due to technical reasons: NONE REFRESH REPLACE RESTART
+// specify either NONE to forbid any actions, REFRESH to avoid restarting the
+// VM and to limit disruption as much as possible. RESTART to allow actions
+// that can be applied without instance replacing or REPLACE to allow all
+// possible actions. If the Updater determines that the minimal update action
+// needed is more disruptive than most disruptive allowed action you specify it
+// will not perform the update at all. Additional supported values which may be
+// not listed in the enum directly due to technical reasons: NONE REFRESH
+// REPLACE RESTART
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type InstanceGroupManagerUpdatePolicy_MostDisruptiveAllowedAction = src.InstanceGroupManagerUpdatePolicy_MostDisruptiveAllowedAction
@@ -5994,12 +6643,10 @@ type InstanceGroupManagerUpdatePolicy_MostDisruptiveAllowedAction = src.Instance
 type InstanceGroupManagerUpdatePolicy_ReplacementMethod = src.InstanceGroupManagerUpdatePolicy_ReplacementMethod
 
 // The type of update process. You can specify either PROACTIVE so that the
-// instance group manager proactively executes actions in order to bring
-// instances to their target versions or OPPORTUNISTIC so that no action is
-// proactively executed but the update will be performed as part of other
-// actions (for example, resizes or recreateInstances calls). Additional
-// supported values which may be not listed in the enum directly due to
-// technical reasons: PROACTIVE
+// MIG automatically updates VMs to the latest configurations or OPPORTUNISTIC
+// so that you can select the VMs that you want to update. Additional supported
+// values which may be not listed in the enum directly due to technical
+// reasons: PROACTIVE
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type InstanceGroupManagerUpdatePolicy_Type = src.InstanceGroupManagerUpdatePolicy_Type
@@ -6020,34 +6667,28 @@ type InstanceGroupManagersApplyUpdatesRequest = src.InstanceGroupManagersApplyUp
 // The minimal action that you want to perform on each instance during the
 // update: - REPLACE: At minimum, delete the instance and create it again. -
 // RESTART: Stop the instance and start it again. - REFRESH: Do not stop the
-// instance. - NONE: Do not disrupt the instance at all. By default, the
-// minimum action is NONE. If your update requires a more disruptive action
-// than you set with this flag, the necessary action is performed to execute
-// the update. Additional supported values which may be not listed in the enum
-// directly due to technical reasons: NONE REFRESH REPLACE RESTART
+// instance and limit disruption as much as possible. - NONE: Do not disrupt
+// the instance at all. By default, the minimum action is NONE. If your update
+// requires a more disruptive action than you set with this flag, the necessary
+// action is performed to execute the update. Additional supported values which
+// may be not listed in the enum directly due to technical reasons: NONE
+// REFRESH REPLACE RESTART
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type InstanceGroupManagersApplyUpdatesRequest_MinimalAction = src.InstanceGroupManagersApplyUpdatesRequest_MinimalAction
 
 // The most disruptive action that you want to perform on each instance during
 // the update: - REPLACE: Delete the instance and create it again. - RESTART:
-// Stop the instance and start it again. - REFRESH: Do not stop the instance. -
-// NONE: Do not disrupt the instance at all. By default, the most disruptive
-// allowed action is REPLACE. If your update requires a more disruptive action
-// than you set with this flag, the update request will fail. Additional
-// supported values which may be not listed in the enum directly due to
-// technical reasons: NONE REFRESH REPLACE RESTART
+// Stop the instance and start it again. - REFRESH: Do not stop the instance
+// and limit disruption as much as possible. - NONE: Do not disrupt the
+// instance at all. By default, the most disruptive allowed action is REPLACE.
+// If your update requires a more disruptive action than you set with this
+// flag, the update request will fail. Additional supported values which may be
+// not listed in the enum directly due to technical reasons: NONE REFRESH
+// REPLACE RESTART
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type InstanceGroupManagersApplyUpdatesRequest_MostDisruptiveAllowedAction = src.InstanceGroupManagersApplyUpdatesRequest_MostDisruptiveAllowedAction
-
-// InstanceGroupManagersClient is the client API for InstanceGroupManagers
-// service. For semantics around ctx use and closing/ending streaming RPCs,
-// please refer to
-// https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type InstanceGroupManagersClient = src.InstanceGroupManagersClient
 
 // InstanceGroupManagers.createInstances
 //
@@ -6069,12 +6710,6 @@ type InstanceGroupManagersListPerInstanceConfigsResp = src.InstanceGroupManagers
 type InstanceGroupManagersPatchPerInstanceConfigsReq = src.InstanceGroupManagersPatchPerInstanceConfigsReq
 type InstanceGroupManagersRecreateInstancesRequest = src.InstanceGroupManagersRecreateInstancesRequest
 type InstanceGroupManagersScopedList = src.InstanceGroupManagersScopedList
-
-// InstanceGroupManagersServer is the server API for InstanceGroupManagers
-// service.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type InstanceGroupManagersServer = src.InstanceGroupManagersServer
 type InstanceGroupManagersSetInstanceTemplateRequest = src.InstanceGroupManagersSetInstanceTemplateRequest
 type InstanceGroupManagersSetTargetPoolsRequest = src.InstanceGroupManagersSetTargetPoolsRequest
 
@@ -6083,13 +6718,6 @@ type InstanceGroupManagersSetTargetPoolsRequest = src.InstanceGroupManagersSetTa
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type InstanceGroupManagersUpdatePerInstanceConfigsReq = src.InstanceGroupManagersUpdatePerInstanceConfigsReq
 type InstanceGroupsAddInstancesRequest = src.InstanceGroupsAddInstancesRequest
-
-// InstanceGroupsClient is the client API for InstanceGroups service. For
-// semantics around ctx use and closing/ending streaming RPCs, please refer to
-// https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type InstanceGroupsClient = src.InstanceGroupsClient
 type InstanceGroupsListInstances = src.InstanceGroupsListInstances
 type InstanceGroupsListInstancesRequest = src.InstanceGroupsListInstancesRequest
 
@@ -6101,11 +6729,6 @@ type InstanceGroupsListInstancesRequest = src.InstanceGroupsListInstancesRequest
 type InstanceGroupsListInstancesRequest_InstanceState = src.InstanceGroupsListInstancesRequest_InstanceState
 type InstanceGroupsRemoveInstancesRequest = src.InstanceGroupsRemoveInstancesRequest
 type InstanceGroupsScopedList = src.InstanceGroupsScopedList
-
-// InstanceGroupsServer is the server API for InstanceGroups service.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type InstanceGroupsServer = src.InstanceGroupsServer
 type InstanceGroupsSetNamedPortsRequest = src.InstanceGroupsSetNamedPortsRequest
 
 // Contains a list of instances.
@@ -6134,6 +6757,11 @@ type InstanceMoveRequest = src.InstanceMoveRequest
 type InstanceParams = src.InstanceParams
 type InstanceProperties = src.InstanceProperties
 
+// Represents the change that you want to make to the instance properties.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type InstancePropertiesPatch = src.InstancePropertiesPatch
+
 // KeyRevocationActionType of the instance. Supported options are "STOP" and
 // "NONE". The default value is "NONE" if it is not specified.
 //
@@ -6148,29 +6776,38 @@ type InstanceProperties_KeyRevocationActionType = src.InstanceProperties_KeyRevo
 type InstanceProperties_PrivateIpv6GoogleAccess = src.InstanceProperties_PrivateIpv6GoogleAccess
 type InstanceReference = src.InstanceReference
 
-// Represents an Instance Template resource. You can use instance templates to
-// create VM instances and managed instance groups. For more information, read
+// Represents a Instance Settings resource. You can use instance settings to
+// configure default settings for Compute Engine VM instances. For example, you
+// can use it to configure default machine type of Compute Engine VM instances.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type InstanceSettings = src.InstanceSettings
+type InstanceSettingsMetadata = src.InstanceSettingsMetadata
+
+// Represents an Instance Template resource. Google Compute Engine has two
+// Instance Template resources: *
+// [Global](/compute/docs/reference/rest/v1/instanceTemplates) *
+// [Regional](/compute/docs/reference/rest/v1/regionInstanceTemplates) You can
+// reuse a global instance template in different regions whereas you can use a
+// regional instance template in a specified region only. If you want to reduce
+// cross-region dependency or achieve data residency, use a regional instance
+// template. To create VMs, managed instance groups, and reservations, you can
+// use either global or regional instance templates. For more information, read
 // Instance Templates.
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type InstanceTemplate = src.InstanceTemplate
 
+// Contains a list of InstanceTemplatesScopedList.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type InstanceTemplateAggregatedList = src.InstanceTemplateAggregatedList
+
 // A list of instance templates.
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type InstanceTemplateList = src.InstanceTemplateList
-
-// InstanceTemplatesClient is the client API for InstanceTemplates service.
-// For semantics around ctx use and closing/ending streaming RPCs, please refer
-// to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type InstanceTemplatesClient = src.InstanceTemplatesClient
-
-// InstanceTemplatesServer is the server API for InstanceTemplates service.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type InstanceTemplatesServer = src.InstanceTemplatesServer
+type InstanceTemplatesScopedList = src.InstanceTemplatesScopedList
 type InstanceWithNamedPorts = src.InstanceWithNamedPorts
 
 // [Output Only] The status of the instance.
@@ -6198,34 +6835,51 @@ type Instance_PrivateIpv6GoogleAccess = src.Instance_PrivateIpv6GoogleAccess
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type Instance_Status = src.Instance_Status
 type InstancesAddResourcePoliciesRequest = src.InstancesAddResourcePoliciesRequest
-
-// InstancesClient is the client API for Instances service. For semantics
-// around ctx use and closing/ending streaming RPCs, please refer to
-// https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type InstancesClient = src.InstancesClient
+type InstancesBulkInsertOperationMetadata = src.InstancesBulkInsertOperationMetadata
 type InstancesGetEffectiveFirewallsResponse = src.InstancesGetEffectiveFirewallsResponse
 type InstancesGetEffectiveFirewallsResponseEffectiveFirewallPolicy = src.InstancesGetEffectiveFirewallsResponseEffectiveFirewallPolicy
 
 // [Output Only] The type of the firewall policy. Can be one of HIERARCHY,
-// NETWORK, NETWORK_REGIONAL.
+// NETWORK, NETWORK_REGIONAL, SYSTEM_GLOBAL, SYSTEM_REGIONAL.
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type InstancesGetEffectiveFirewallsResponseEffectiveFirewallPolicy_Type = src.InstancesGetEffectiveFirewallsResponseEffectiveFirewallPolicy_Type
 type InstancesRemoveResourcePoliciesRequest = src.InstancesRemoveResourcePoliciesRequest
 type InstancesScopedList = src.InstancesScopedList
-
-// InstancesServer is the server API for Instances service.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type InstancesServer = src.InstancesServer
 type InstancesSetLabelsRequest = src.InstancesSetLabelsRequest
 type InstancesSetMachineResourcesRequest = src.InstancesSetMachineResourcesRequest
 type InstancesSetMachineTypeRequest = src.InstancesSetMachineTypeRequest
 type InstancesSetMinCpuPlatformRequest = src.InstancesSetMinCpuPlatformRequest
+type InstancesSetNameRequest = src.InstancesSetNameRequest
+type InstancesSetSecurityPolicyRequest = src.InstancesSetSecurityPolicyRequest
 type InstancesSetServiceAccountRequest = src.InstancesSetServiceAccountRequest
 type InstancesStartWithEncryptionKeyRequest = src.InstancesStartWithEncryptionKeyRequest
+
+// Represents a InstantSnapshot resource. You can use instant snapshots to
+// create disk rollback points quickly..
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type InstantSnapshot = src.InstantSnapshot
+type InstantSnapshotAggregatedList = src.InstantSnapshotAggregatedList
+
+// Contains a list of InstantSnapshot resources.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type InstantSnapshotList = src.InstantSnapshotList
+type InstantSnapshotResourceStatus = src.InstantSnapshotResourceStatus
+
+// [Output Only] The architecture of the instant snapshot. Valid values are
+// ARM64 or X86_64.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type InstantSnapshot_Architecture = src.InstantSnapshot_Architecture
+
+// [Output Only] The status of the instantSnapshot. This can be CREATING,
+// DELETING, FAILED, or READY.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type InstantSnapshot_Status = src.InstantSnapshot_Status
+type InstantSnapshotsScopedList = src.InstantSnapshotsScopedList
 
 // HttpRouteRuleMatch criteria for field values that must stay within the
 // specified integer range.
@@ -6234,8 +6888,8 @@ type InstancesStartWithEncryptionKeyRequest = src.InstancesStartWithEncryptionKe
 type Int64RangeMatch = src.Int64RangeMatch
 
 // Represents an Interconnect resource. An Interconnect resource is a
-// dedicated connection between the GCP network and your on-premises network.
-// For more information, read the Dedicated Interconnect Overview.
+// dedicated connection between the Google Cloud network and your on-premises
+// network. For more information, read the Dedicated Interconnect Overview.
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type Interconnect = src.Interconnect
@@ -6248,6 +6902,20 @@ type Interconnect = src.Interconnect
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type InterconnectAttachment = src.InterconnectAttachment
 type InterconnectAttachmentAggregatedList = src.InterconnectAttachmentAggregatedList
+type InterconnectAttachmentConfigurationConstraints = src.InterconnectAttachmentConfigurationConstraints
+type InterconnectAttachmentConfigurationConstraintsBgpPeerASNRange = src.InterconnectAttachmentConfigurationConstraintsBgpPeerASNRange
+
+// [Output Only] Whether the attachment's BGP session
+// requires/allows/disallows BGP MD5 authentication. This can take one of the
+// following values: MD5_OPTIONAL, MD5_REQUIRED, MD5_UNSUPPORTED. For example,
+// a Cross-Cloud Interconnect connection to a remote cloud provider that
+// requires BGP MD5 authentication has the interconnectRemoteLocation
+// attachment_configuration_constraints.bgp_md5 field set to MD5_REQUIRED, and
+// that property is propagated to the attachment. Similarly, if BGP MD5 is
+// MD5_UNSUPPORTED, an error is returned if MD5 is requested.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type InterconnectAttachmentConfigurationConstraints_BgpMd5 = src.InterconnectAttachmentConfigurationConstraints_BgpMd5
 
 // Response to the list request, and contains a list of interconnect
 // attachments.
@@ -6352,21 +7020,7 @@ type InterconnectAttachment_State = src.InterconnectAttachment_State
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type InterconnectAttachment_Type = src.InterconnectAttachment_Type
-
-// InterconnectAttachmentsClient is the client API for InterconnectAttachments
-// service. For semantics around ctx use and closing/ending streaming RPCs,
-// please refer to
-// https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type InterconnectAttachmentsClient = src.InterconnectAttachmentsClient
 type InterconnectAttachmentsScopedList = src.InterconnectAttachmentsScopedList
-
-// InterconnectAttachmentsServer is the server API for InterconnectAttachments
-// service.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type InterconnectAttachmentsServer = src.InterconnectAttachmentsServer
 
 // Describes a single physical circuit between the Customer and Google.
 // CircuitInfo objects are created by Google, so all fields are output only.
@@ -6374,8 +7028,9 @@ type InterconnectAttachmentsServer = src.InterconnectAttachmentsServer
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type InterconnectCircuitInfo = src.InterconnectCircuitInfo
 
-// Diagnostics information about interconnect, contains detailed and current
-// technical information about Google's side of the connection.
+// Diagnostics information about the Interconnect connection, which contains
+// detailed and current technical information about Google's side of the
+// connection.
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type InterconnectDiagnostics = src.InterconnectDiagnostics
@@ -6407,6 +7062,26 @@ type InterconnectDiagnosticsLinkOpticalPower = src.InterconnectDiagnosticsLinkOp
 type InterconnectDiagnosticsLinkOpticalPower_State = src.InterconnectDiagnosticsLinkOpticalPower_State
 type InterconnectDiagnosticsLinkStatus = src.InterconnectDiagnosticsLinkStatus
 
+// The operational status of the link.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type InterconnectDiagnosticsLinkStatus_OperationalStatus = src.InterconnectDiagnosticsLinkStatus_OperationalStatus
+
+// Describes the status of MACsec encryption on the link.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type InterconnectDiagnosticsMacsecStatus = src.InterconnectDiagnosticsMacsecStatus
+
+// The aggregation type of the bundle interface.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type InterconnectDiagnostics_BundleAggregationType = src.InterconnectDiagnostics_BundleAggregationType
+
+// The operational status of the bundle interface.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type InterconnectDiagnostics_BundleOperationalStatus = src.InterconnectDiagnostics_BundleOperationalStatus
+
 // Response to the list request, and contains a list of interconnects.
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
@@ -6437,6 +7112,8 @@ type InterconnectLocationRegionInfo = src.InterconnectLocationRegionInfo
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type InterconnectLocationRegionInfo_LocationPresence = src.InterconnectLocationRegionInfo_LocationPresence
+type InterconnectLocation_AvailableFeatures = src.InterconnectLocation_AvailableFeatures
+type InterconnectLocation_AvailableLinkTypes = src.InterconnectLocation_AvailableLinkTypes
 
 // [Output Only] Continent for this location, which can take one of the
 // following values: - AFRICA - ASIA_PAC - EUROPE - NORTH_AMERICA -
@@ -6453,19 +7130,31 @@ type InterconnectLocation_Continent = src.InterconnectLocation_Continent
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type InterconnectLocation_Status = src.InterconnectLocation_Status
 
-// InterconnectLocationsClient is the client API for InterconnectLocations
-// service. For semantics around ctx use and closing/ending streaming RPCs,
-// please refer to
-// https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
+// Configuration information for enabling Media Access Control security
+// (MACsec) on this Cloud Interconnect connection between Google and your
+// on-premises router.
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type InterconnectLocationsClient = src.InterconnectLocationsClient
+type InterconnectMacsec = src.InterconnectMacsec
 
-// InterconnectLocationsServer is the server API for InterconnectLocations
-// service.
+// MACsec configuration information for the Interconnect connection. Contains
+// the generated Connectivity Association Key Name (CKN) and the key (CAK) for
+// this Interconnect connection.
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type InterconnectLocationsServer = src.InterconnectLocationsServer
+type InterconnectMacsecConfig = src.InterconnectMacsecConfig
+
+// Describes a pre-shared key used to setup MACsec in static connectivity
+// association key (CAK) mode.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type InterconnectMacsecConfigPreSharedKey = src.InterconnectMacsecConfigPreSharedKey
+
+// Describes a pre-shared key used to setup MACsec in static connectivity
+// association key (CAK) mode.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type InterconnectMacsecPreSharedKey = src.InterconnectMacsecPreSharedKey
 
 // Description of a planned outage on this Interconnect.
 //
@@ -6500,6 +7189,69 @@ type InterconnectOutageNotification_Source = src.InterconnectOutageNotification_
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type InterconnectOutageNotification_State = src.InterconnectOutageNotification_State
 
+// Represents a Cross-Cloud Interconnect Remote Location resource. You can use
+// this resource to find remote location details about an Interconnect
+// attachment (VLAN).
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type InterconnectRemoteLocation = src.InterconnectRemoteLocation
+type InterconnectRemoteLocationConstraints = src.InterconnectRemoteLocationConstraints
+type InterconnectRemoteLocationConstraintsSubnetLengthRange = src.InterconnectRemoteLocationConstraintsSubnetLengthRange
+
+// [Output Only] Port pair remote location constraints, which can take one of
+// the following values: PORT_PAIR_UNCONSTRAINED_REMOTE_LOCATION,
+// PORT_PAIR_MATCHING_REMOTE_LOCATION. Google Cloud API refers only to
+// individual ports, but the UI uses this field when ordering a pair of ports,
+// to prevent users from accidentally ordering something that is incompatible
+// with their cloud provider. Specifically, when ordering a redundant pair of
+// Cross-Cloud Interconnect ports, and one of them uses a remote location with
+// portPairMatchingRemoteLocation set to matching, the UI requires that both
+// ports use the same remote location.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type InterconnectRemoteLocationConstraints_PortPairRemoteLocation = src.InterconnectRemoteLocationConstraints_PortPairRemoteLocation
+
+// [Output Only] Port pair VLAN constraints, which can take one of the
+// following values: PORT_PAIR_UNCONSTRAINED_VLAN, PORT_PAIR_MATCHING_VLAN
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type InterconnectRemoteLocationConstraints_PortPairVlan = src.InterconnectRemoteLocationConstraints_PortPairVlan
+
+// Response to the list request, and contains a list of interconnect remote
+// locations.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type InterconnectRemoteLocationList = src.InterconnectRemoteLocationList
+type InterconnectRemoteLocationPermittedConnections = src.InterconnectRemoteLocationPermittedConnections
+
+// [Output Only] Continent for this location, which can take one of the
+// following values: - AFRICA - ASIA_PAC - EUROPE - NORTH_AMERICA -
+// SOUTH_AMERICA
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type InterconnectRemoteLocation_Continent = src.InterconnectRemoteLocation_Continent
+
+// [Output Only] Link Aggregation Control Protocol (LACP) constraints, which
+// can take one of the following values: LACP_SUPPORTED, LACP_UNSUPPORTED
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type InterconnectRemoteLocation_Lacp = src.InterconnectRemoteLocation_Lacp
+
+// [Output Only] The status of this InterconnectRemoteLocation, which can take
+// one of the following values: - CLOSED: The InterconnectRemoteLocation is
+// closed and is unavailable for provisioning new Cross-Cloud Interconnects. -
+// AVAILABLE: The InterconnectRemoteLocation is available for provisioning new
+// Cross-Cloud Interconnects.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type InterconnectRemoteLocation_Status = src.InterconnectRemoteLocation_Status
+
+// Additional supported values which may be not listed in the enum directly
+// due to technical reasons: IF_MACSEC
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type Interconnect_AvailableFeatures = src.Interconnect_AvailableFeatures
+
 // Type of interconnect, which can take one of the following values: -
 // PARTNER: A partner-managed interconnection shared between customers though a
 // partner. - DEDICATED: A dedicated physical interconnection with the
@@ -6530,6 +7282,12 @@ type Interconnect_LinkType = src.Interconnect_LinkType
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type Interconnect_OperationalStatus = src.Interconnect_OperationalStatus
 
+// Additional supported values which may be not listed in the enum directly
+// due to technical reasons: IF_MACSEC
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type Interconnect_RequestedFeatures = src.Interconnect_RequestedFeatures
+
 // [Output Only] The current state of Interconnect functionality, which can
 // take one of the following values: - ACTIVE: The Interconnect is valid,
 // turned up and ready to use. Attachments may be provisioned on this
@@ -6541,22 +7299,15 @@ type Interconnect_OperationalStatus = src.Interconnect_OperationalStatus
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type Interconnect_State = src.Interconnect_State
 
-// InterconnectsClient is the client API for Interconnects service. For
-// semantics around ctx use and closing/ending streaming RPCs, please refer to
-// https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type InterconnectsClient = src.InterconnectsClient
-
 // Response for the InterconnectsGetDiagnosticsRequest.
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type InterconnectsGetDiagnosticsResponse = src.InterconnectsGetDiagnosticsResponse
 
-// InterconnectsServer is the server API for Interconnects service.
+// Response for the InterconnectsGetMacsecConfigRequest.
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type InterconnectsServer = src.InterconnectsServer
+type InterconnectsGetMacsecConfigResponse = src.InterconnectsGetMacsecConfigResponse
 
 // A request message for UrlMaps.InvalidateCache. See the method description
 // for details.
@@ -6591,36 +7342,12 @@ type LicenseCodeLicenseAlias = src.LicenseCodeLicenseAlias
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type LicenseCode_State = src.LicenseCode_State
 
-// LicenseCodesClient is the client API for LicenseCodes service. For
-// semantics around ctx use and closing/ending streaming RPCs, please refer to
-// https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type LicenseCodesClient = src.LicenseCodesClient
-
-// LicenseCodesServer is the server API for LicenseCodes service.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type LicenseCodesServer = src.LicenseCodesServer
-
 // Commitment for a particular license resource.
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type LicenseResourceCommitment = src.LicenseResourceCommitment
 type LicenseResourceRequirements = src.LicenseResourceRequirements
-
-// LicensesClient is the client API for Licenses service. For semantics around
-// ctx use and closing/ending streaming RPCs, please refer to
-// https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type LicensesClient = src.LicensesClient
 type LicensesListResponse = src.LicensesListResponse
-
-// LicensesServer is the server API for Licenses service.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type LicensesServer = src.LicensesServer
 
 // A request message for AcceleratorTypes.List. See the method description for
 // details.
@@ -6680,6 +7407,12 @@ type ListDiskTypesRequest = src.ListDiskTypesRequest
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type ListDisksRequest = src.ListDisksRequest
+
+// A request message for StoragePools.ListDisks. See the method description
+// for details.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type ListDisksStoragePoolsRequest = src.ListDisksStoragePoolsRequest
 
 // A request message for InstanceGroupManagers.ListErrors. See the method
 // description for details.
@@ -6764,6 +7497,12 @@ type ListHealthChecksRequest = src.ListHealthChecksRequest
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type ListImagesRequest = src.ListImagesRequest
 
+// A request message for InstanceGroupManagerResizeRequests.List. See the
+// method description for details.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type ListInstanceGroupManagerResizeRequestsRequest = src.ListInstanceGroupManagerResizeRequestsRequest
+
 // A request message for InstanceGroupManagers.List. See the method
 // description for details.
 //
@@ -6800,6 +7539,12 @@ type ListInstancesRegionInstanceGroupsRequest = src.ListInstancesRegionInstanceG
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type ListInstancesRequest = src.ListInstancesRequest
 
+// A request message for InstantSnapshots.List. See the method description for
+// details.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type ListInstantSnapshotsRequest = src.ListInstantSnapshotsRequest
+
 // A request message for InterconnectAttachments.List. See the method
 // description for details.
 //
@@ -6811,6 +7556,12 @@ type ListInterconnectAttachmentsRequest = src.ListInterconnectAttachmentsRequest
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type ListInterconnectLocationsRequest = src.ListInterconnectLocationsRequest
+
+// A request message for InterconnectRemoteLocations.List. See the method
+// description for details.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type ListInterconnectRemoteLocationsRequest = src.ListInterconnectRemoteLocationsRequest
 
 // A request message for Interconnects.List. See the method description for
 // details.
@@ -6848,6 +7599,12 @@ type ListManagedInstancesInstanceGroupManagersRequest = src.ListManagedInstances
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type ListManagedInstancesRegionInstanceGroupManagersRequest = src.ListManagedInstancesRegionInstanceGroupManagersRequest
 
+// A request message for NetworkAttachments.List. See the method description
+// for details.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type ListNetworkAttachmentsRequest = src.ListNetworkAttachmentsRequest
+
 // A request message for NetworkEndpointGroups.List. See the method
 // description for details.
 //
@@ -6865,6 +7622,12 @@ type ListNetworkEndpointsGlobalNetworkEndpointGroupsRequest = src.ListNetworkEnd
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type ListNetworkEndpointsNetworkEndpointGroupsRequest = src.ListNetworkEndpointsNetworkEndpointGroupsRequest
+
+// A request message for RegionNetworkEndpointGroups.ListNetworkEndpoints. See
+// the method description for details.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type ListNetworkEndpointsRegionNetworkEndpointGroupsRequest = src.ListNetworkEndpointsRegionNetworkEndpointGroupsRequest
 
 // A request message for NetworkFirewallPolicies.List. See the method
 // description for details.
@@ -7009,6 +7772,18 @@ type ListRegionInstanceGroupManagersRequest = src.ListRegionInstanceGroupManager
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type ListRegionInstanceGroupsRequest = src.ListRegionInstanceGroupsRequest
 
+// A request message for RegionInstanceTemplates.List. See the method
+// description for details.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type ListRegionInstanceTemplatesRequest = src.ListRegionInstanceTemplatesRequest
+
+// A request message for RegionInstantSnapshots.List. See the method
+// description for details.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type ListRegionInstantSnapshotsRequest = src.ListRegionInstantSnapshotsRequest
+
 // A request message for RegionNetworkEndpointGroups.List. See the method
 // description for details.
 //
@@ -7075,6 +7850,12 @@ type ListRegionTargetTcpProxiesRequest = src.ListRegionTargetTcpProxiesRequest
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type ListRegionUrlMapsRequest = src.ListRegionUrlMapsRequest
 
+// A request message for RegionZones.List. See the method description for
+// details.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type ListRegionZonesRequest = src.ListRegionZonesRequest
+
 // A request message for Regions.List. See the method description for details.
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
@@ -7131,6 +7912,18 @@ type ListSslCertificatesRequest = src.ListSslCertificatesRequest
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type ListSslPoliciesRequest = src.ListSslPoliciesRequest
+
+// A request message for StoragePoolTypes.List. See the method description for
+// details.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type ListStoragePoolTypesRequest = src.ListStoragePoolTypesRequest
+
+// A request message for StoragePools.List. See the method description for
+// details.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type ListStoragePoolsRequest = src.ListStoragePoolsRequest
 
 // A request message for Subnetworks.List. See the method description for
 // details.
@@ -7190,6 +7983,18 @@ type ListTargetVpnGatewaysRequest = src.ListTargetVpnGatewaysRequest
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type ListUrlMapsRequest = src.ListUrlMapsRequest
+
+// A request message for BackendServices.ListUsable. See the method
+// description for details.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type ListUsableBackendServicesRequest = src.ListUsableBackendServicesRequest
+
+// A request message for RegionBackendServices.ListUsable. See the method
+// description for details.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type ListUsableRegionBackendServicesRequest = src.ListUsableRegionBackendServicesRequest
 
 // A request message for Subnetworks.ListUsable. See the method description
 // for details.
@@ -7255,41 +8060,6 @@ type LocationPolicyLocation_Preference = src.LocationPolicyLocation_Preference
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type LocationPolicy_TargetShape = src.LocationPolicy_TargetShape
 
-// This is deprecated and has no effect. Do not use.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type LogConfig = src.LogConfig
-
-// This is deprecated and has no effect. Do not use.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type LogConfigCloudAuditOptions = src.LogConfigCloudAuditOptions
-
-// This is deprecated and has no effect. Do not use.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type LogConfigCloudAuditOptions_LogName = src.LogConfigCloudAuditOptions_LogName
-
-// This is deprecated and has no effect. Do not use.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type LogConfigCounterOptions = src.LogConfigCounterOptions
-
-// This is deprecated and has no effect. Do not use.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type LogConfigCounterOptionsCustomField = src.LogConfigCounterOptionsCustomField
-
-// This is deprecated and has no effect. Do not use.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type LogConfigDataAccessOptions = src.LogConfigDataAccessOptions
-
-// This is deprecated and has no effect. Do not use.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type LogConfigDataAccessOptions_LogMode = src.LogConfigDataAccessOptions_LogMode
-
 // Represents a machine image resource. A machine image is a Compute Engine
 // resource that stores all the configuration, metadata, permissions, and data
 // from one or more disks required to create a Virtual machine (VM) instance.
@@ -7309,18 +8079,6 @@ type MachineImageList = src.MachineImageList
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type MachineImage_Status = src.MachineImage_Status
 
-// MachineImagesClient is the client API for MachineImages service. For
-// semantics around ctx use and closing/ending streaming RPCs, please refer to
-// https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type MachineImagesClient = src.MachineImagesClient
-
-// MachineImagesServer is the server API for MachineImages service.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type MachineImagesServer = src.MachineImagesServer
-
 // Represents a Machine Type resource. You can use specific machine types for
 // your VM instances based on performance and pricing requirements. For more
 // information, read Machine Types.
@@ -7334,18 +8092,11 @@ type MachineTypeAggregatedList = src.MachineTypeAggregatedList
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type MachineTypeList = src.MachineTypeList
 
-// MachineTypesClient is the client API for MachineTypes service. For
-// semantics around ctx use and closing/ending streaming RPCs, please refer to
-// https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
+// [Output Only] The architecture of the machine type.
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type MachineTypesClient = src.MachineTypesClient
+type MachineType_Architecture = src.MachineType_Architecture
 type MachineTypesScopedList = src.MachineTypesScopedList
-
-// MachineTypesServer is the server API for MachineTypes service.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type MachineTypesServer = src.MachineTypesServer
 
 // A Managed Instance resource.
 //
@@ -7358,6 +8109,7 @@ type ManagedInstanceInstanceHealth = src.ManagedInstanceInstanceHealth
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type ManagedInstanceInstanceHealth_DetailedHealthState = src.ManagedInstanceInstanceHealth_DetailedHealthState
 type ManagedInstanceLastAttempt = src.ManagedInstanceLastAttempt
+type ManagedInstancePropertiesFromFlexibilityPolicy = src.ManagedInstancePropertiesFromFlexibilityPolicy
 type ManagedInstanceVersion = src.ManagedInstanceVersion
 
 // [Output Only] The current action that the managed instance group has
@@ -7428,6 +8180,12 @@ type MetadataFilterLabelMatch = src.MetadataFilterLabelMatch
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type MetadataFilter_FilterMatchCriteria = src.MetadataFilter_FilterMatchCriteria
 
+// A request message for Addresses.Move. See the method description for
+// details.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type MoveAddressRequest = src.MoveAddressRequest
+
 // A request message for Projects.MoveDisk. See the method description for
 // details.
 //
@@ -7440,6 +8198,12 @@ type MoveDiskProjectRequest = src.MoveDiskProjectRequest
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type MoveFirewallPolicyRequest = src.MoveFirewallPolicyRequest
 
+// A request message for GlobalAddresses.Move. See the method description for
+// details.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type MoveGlobalAddressRequest = src.MoveGlobalAddressRequest
+
 // A request message for Projects.MoveInstance. See the method description for
 // details.
 //
@@ -7451,6 +8215,27 @@ type MoveInstanceProjectRequest = src.MoveInstanceProjectRequest
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type NamedPort = src.NamedPort
 
+// Contains NAT IP information of a NAT config (i.e. usage status, mode).
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type NatIpInfo = src.NatIpInfo
+
+// Contains information of a NAT IP.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type NatIpInfoNatIpInfoMapping = src.NatIpInfoNatIpInfoMapping
+
+// Specifies whether NAT IP is auto or manual.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type NatIpInfoNatIpInfoMapping_Mode = src.NatIpInfoNatIpInfoMapping_Mode
+
+// Specifies whether NAT IP is currently serving at least one endpoint or not.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type NatIpInfoNatIpInfoMapping_Usage = src.NatIpInfoNatIpInfoMapping_Usage
+type NatIpInfoResponse = src.NatIpInfoResponse
+
 // Represents a VPC Network resource. Networks connect resources to each other
 // and to the internet. For more information, read Virtual Private Cloud (VPC)
 // Network.
@@ -7458,26 +8243,35 @@ type NamedPort = src.NamedPort
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type Network = src.Network
 
+// NetworkAttachments A network attachment resource ...
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type NetworkAttachment = src.NetworkAttachment
+
+// Contains a list of NetworkAttachmentsScopedList.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type NetworkAttachmentAggregatedList = src.NetworkAttachmentAggregatedList
+
+// [Output Only] A connection connected to this network attachment.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type NetworkAttachmentConnectedEndpoint = src.NetworkAttachmentConnectedEndpoint
+
+// The status of a connected endpoint to this network attachment.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type NetworkAttachmentConnectedEndpoint_Status = src.NetworkAttachmentConnectedEndpoint_Status
+type NetworkAttachmentList = src.NetworkAttachmentList
+type NetworkAttachment_ConnectionPreference = src.NetworkAttachment_ConnectionPreference
+type NetworkAttachmentsScopedList = src.NetworkAttachmentsScopedList
+
 // Represents a Google Cloud Armor network edge security service resource.
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type NetworkEdgeSecurityService = src.NetworkEdgeSecurityService
 type NetworkEdgeSecurityServiceAggregatedList = src.NetworkEdgeSecurityServiceAggregatedList
-
-// NetworkEdgeSecurityServicesClient is the client API for
-// NetworkEdgeSecurityServices service. For semantics around ctx use and
-// closing/ending streaming RPCs, please refer to
-// https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type NetworkEdgeSecurityServicesClient = src.NetworkEdgeSecurityServicesClient
 type NetworkEdgeSecurityServicesScopedList = src.NetworkEdgeSecurityServicesScopedList
-
-// NetworkEdgeSecurityServicesServer is the server API for
-// NetworkEdgeSecurityServices service.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type NetworkEdgeSecurityServicesServer = src.NetworkEdgeSecurityServicesServer
 
 // The network endpoint.
 //
@@ -7486,10 +8280,8 @@ type NetworkEndpoint = src.NetworkEndpoint
 
 // Represents a collection of network endpoints. A network endpoint group
 // (NEG) defines how a set of endpoints should be reached, whether they are
-// reachable, and where they are located. For more information about using
-// NEGs, see Setting up external HTTP(S) Load Balancing with internet NEGs,
-// Setting up zonal NEGs, or Setting up external HTTP(S) Load Balancing with
-// serverless NEGs.
+// reachable, and where they are located. For more information about using NEGs
+// for different use cases, see Network endpoint groups overview.
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type NetworkEndpointGroup = src.NetworkEndpointGroup
@@ -7534,19 +8326,11 @@ type NetworkEndpointGroupPscData_PscConnectionStatus = src.NetworkEndpointGroupP
 
 // Type of network endpoints in this network endpoint group. Can be one of
 // GCE_VM_IP, GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT,
-// INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
+// INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT, GCE_VM_IP_PORTMAP.
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type NetworkEndpointGroup_NetworkEndpointType = src.NetworkEndpointGroup_NetworkEndpointType
 type NetworkEndpointGroupsAttachEndpointsRequest = src.NetworkEndpointGroupsAttachEndpointsRequest
-
-// NetworkEndpointGroupsClient is the client API for NetworkEndpointGroups
-// service. For semantics around ctx use and closing/ending streaming RPCs,
-// please refer to
-// https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type NetworkEndpointGroupsClient = src.NetworkEndpointGroupsClient
 type NetworkEndpointGroupsDetachEndpointsRequest = src.NetworkEndpointGroupsDetachEndpointsRequest
 type NetworkEndpointGroupsListEndpointsRequest = src.NetworkEndpointGroupsListEndpointsRequest
 
@@ -7558,27 +8342,7 @@ type NetworkEndpointGroupsListEndpointsRequest = src.NetworkEndpointGroupsListEn
 type NetworkEndpointGroupsListEndpointsRequest_HealthStatus = src.NetworkEndpointGroupsListEndpointsRequest_HealthStatus
 type NetworkEndpointGroupsListNetworkEndpoints = src.NetworkEndpointGroupsListNetworkEndpoints
 type NetworkEndpointGroupsScopedList = src.NetworkEndpointGroupsScopedList
-
-// NetworkEndpointGroupsServer is the server API for NetworkEndpointGroups
-// service.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type NetworkEndpointGroupsServer = src.NetworkEndpointGroupsServer
 type NetworkEndpointWithHealthStatus = src.NetworkEndpointWithHealthStatus
-
-// NetworkFirewallPoliciesClient is the client API for NetworkFirewallPolicies
-// service. For semantics around ctx use and closing/ending streaming RPCs,
-// please refer to
-// https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type NetworkFirewallPoliciesClient = src.NetworkFirewallPoliciesClient
-
-// NetworkFirewallPoliciesServer is the server API for NetworkFirewallPolicies
-// service.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type NetworkFirewallPoliciesServer = src.NetworkFirewallPoliciesServer
 
 // A network interface resource attached to an instance.
 //
@@ -7598,10 +8362,10 @@ type NetworkInterface_Ipv6AccessType = src.NetworkInterface_Ipv6AccessType
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type NetworkInterface_NicType = src.NetworkInterface_NicType
 
-// The stack type for this network interface to identify whether the IPv6
-// feature is enabled or not. If not specified, IPV4_ONLY will be used. This
-// field can be both set at instance creation and update network interface
-// operations.
+// The stack type for this network interface. To assign only IPv4 addresses,
+// use IPV4_ONLY. To assign both IPv4 and IPv6 addresses, use IPV4_IPV6. If not
+// specified, IPV4_ONLY is used. This field can be both set at instance
+// creation and update network interface operations.
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type NetworkInterface_StackType = src.NetworkInterface_StackType
@@ -7655,13 +8419,6 @@ type NetworkRoutingConfig_RoutingMode = src.NetworkRoutingConfig_RoutingMode
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type Network_NetworkFirewallPolicyEnforcementOrder = src.Network_NetworkFirewallPolicyEnforcementOrder
 type NetworksAddPeeringRequest = src.NetworksAddPeeringRequest
-
-// NetworksClient is the client API for Networks service. For semantics around
-// ctx use and closing/ending streaming RPCs, please refer to
-// https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type NetworksClient = src.NetworksClient
 type NetworksGetEffectiveFirewallsResponse = src.NetworksGetEffectiveFirewallsResponse
 type NetworksGetEffectiveFirewallsResponseEffectiveFirewallPolicy = src.NetworksGetEffectiveFirewallsResponseEffectiveFirewallPolicy
 
@@ -7670,11 +8427,6 @@ type NetworksGetEffectiveFirewallsResponseEffectiveFirewallPolicy = src.Networks
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type NetworksGetEffectiveFirewallsResponseEffectiveFirewallPolicy_Type = src.NetworksGetEffectiveFirewallsResponseEffectiveFirewallPolicy_Type
 type NetworksRemovePeeringRequest = src.NetworksRemovePeeringRequest
-
-// NetworksServer is the server API for Networks service.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type NetworksServer = src.NetworksServer
 type NetworksUpdatePeeringRequest = src.NetworksUpdatePeeringRequest
 
 // Represents a sole-tenant Node Group resource. A sole-tenant node is a
@@ -7713,6 +8465,12 @@ type NodeGroupNode = src.NodeGroupNode
 type NodeGroupNode_CpuOvercommitType = src.NodeGroupNode_CpuOvercommitType
 type NodeGroupNode_Status = src.NodeGroupNode_Status
 
+// Specifies the frequency of planned maintenance events. The accepted values
+// are: `AS_NEEDED` and `RECURRENT`.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type NodeGroup_MaintenanceInterval = src.NodeGroup_MaintenanceInterval
+
 // Specifies how to handle instances when a node in the group undergoes
 // maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or
 // MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT. For more
@@ -7722,22 +8480,12 @@ type NodeGroupNode_Status = src.NodeGroupNode_Status
 type NodeGroup_MaintenancePolicy = src.NodeGroup_MaintenancePolicy
 type NodeGroup_Status = src.NodeGroup_Status
 type NodeGroupsAddNodesRequest = src.NodeGroupsAddNodesRequest
-
-// NodeGroupsClient is the client API for NodeGroups service. For semantics
-// around ctx use and closing/ending streaming RPCs, please refer to
-// https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type NodeGroupsClient = src.NodeGroupsClient
 type NodeGroupsDeleteNodesRequest = src.NodeGroupsDeleteNodesRequest
 type NodeGroupsListNodes = src.NodeGroupsListNodes
+type NodeGroupsPerformMaintenanceRequest = src.NodeGroupsPerformMaintenanceRequest
 type NodeGroupsScopedList = src.NodeGroupsScopedList
-
-// NodeGroupsServer is the server API for NodeGroups service.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type NodeGroupsServer = src.NodeGroupsServer
 type NodeGroupsSetNodeTemplateRequest = src.NodeGroupsSetNodeTemplateRequest
+type NodeGroupsSimulateMaintenanceEventRequest = src.NodeGroupsSimulateMaintenanceEventRequest
 
 // Represent a sole-tenant Node Template resource. You can use a template to
 // define properties for nodes in a node group. For more information, read
@@ -7763,19 +8511,7 @@ type NodeTemplate_CpuOvercommitType = src.NodeTemplate_CpuOvercommitType
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type NodeTemplate_Status = src.NodeTemplate_Status
-
-// NodeTemplatesClient is the client API for NodeTemplates service. For
-// semantics around ctx use and closing/ending streaming RPCs, please refer to
-// https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type NodeTemplatesClient = src.NodeTemplatesClient
 type NodeTemplatesScopedList = src.NodeTemplatesScopedList
-
-// NodeTemplatesServer is the server API for NodeTemplates service.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type NodeTemplatesServer = src.NodeTemplatesServer
 
 // Represent a sole-tenant Node Type resource. Each node within a node group
 // must have a node type. A node type specifies the total amount of cores and
@@ -7791,19 +8527,7 @@ type NodeTypeAggregatedList = src.NodeTypeAggregatedList
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type NodeTypeList = src.NodeTypeList
-
-// NodeTypesClient is the client API for NodeTypes service. For semantics
-// around ctx use and closing/ending streaming RPCs, please refer to
-// https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type NodeTypesClient = src.NodeTypesClient
 type NodeTypesScopedList = src.NodeTypesScopedList
-
-// NodeTypesServer is the server API for NodeTypes service.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type NodeTypesServer = src.NodeTypesServer
 
 // Represents a notification endpoint. A notification endpoint resource
 // defines an endpoint to receive notifications when there are status changes
@@ -7828,8 +8552,9 @@ type NotificationEndpointList = src.NotificationEndpointList
 // information, read Handling API responses. Operations can be global, regional
 // or zonal. - For global operations, use the `globalOperations` resource. -
 // For regional operations, use the `regionOperations` resource. - For zonal
-// operations, use the `zonalOperations` resource. For more information, read
-// Global, Regional, and Zonal Resources.
+// operations, use the `zoneOperations` resource. For more information, read
+// Global, Regional, and Zonal Resources. Note that completed Operation
+// resources have a limited retention period.
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type Operation = src.Operation
@@ -7905,19 +8630,7 @@ type PacketMirroringNetworkInfo = src.PacketMirroringNetworkInfo
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type PacketMirroring_Enable = src.PacketMirroring_Enable
-
-// PacketMirroringsClient is the client API for PacketMirrorings service. For
-// semantics around ctx use and closing/ending streaming RPCs, please refer to
-// https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type PacketMirroringsClient = src.PacketMirroringsClient
 type PacketMirroringsScopedList = src.PacketMirroringsScopedList
-
-// PacketMirroringsServer is the server API for PacketMirrorings service.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type PacketMirroringsServer = src.PacketMirroringsServer
 
 // A request message for Autoscalers.Patch. See the method description for
 // details.
@@ -7984,6 +8697,12 @@ type PatchImageRequest = src.PatchImageRequest
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type PatchInstanceGroupManagerRequest = src.PatchInstanceGroupManagerRequest
 
+// A request message for InstanceSettingsService.Patch. See the method
+// description for details.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type PatchInstanceSettingRequest = src.PatchInstanceSettingRequest
+
 // A request message for InterconnectAttachments.Patch. See the method
 // description for details.
 //
@@ -7995,6 +8714,12 @@ type PatchInterconnectAttachmentRequest = src.PatchInterconnectAttachmentRequest
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type PatchInterconnectRequest = src.PatchInterconnectRequest
+
+// A request message for NetworkAttachments.Patch. See the method description
+// for details.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type PatchNetworkAttachmentRequest = src.PatchNetworkAttachmentRequest
 
 // A request message for NetworkEdgeSecurityServices.Patch. See the method
 // description for details.
@@ -8110,6 +8835,12 @@ type PatchRegionTargetHttpsProxyRequest = src.PatchRegionTargetHttpsProxyRequest
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type PatchRegionUrlMapRequest = src.PatchRegionUrlMapRequest
 
+// A request message for ResourcePolicies.Patch. See the method description
+// for details.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type PatchResourcePolicyRequest = src.PatchResourcePolicyRequest
+
 // A request message for Routers.Patch. See the method description for
 // details.
 //
@@ -8134,6 +8865,12 @@ type PatchRuleNetworkFirewallPolicyRequest = src.PatchRuleNetworkFirewallPolicyR
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type PatchRuleRegionNetworkFirewallPolicyRequest = src.PatchRuleRegionNetworkFirewallPolicyRequest
 
+// A request message for RegionSecurityPolicies.PatchRule. See the method
+// description for details.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type PatchRuleRegionSecurityPolicyRequest = src.PatchRuleRegionSecurityPolicyRequest
+
 // A request message for SecurityPolicies.PatchRule. See the method
 // description for details.
 //
@@ -8151,6 +8888,12 @@ type PatchSecurityPolicyRequest = src.PatchSecurityPolicyRequest
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type PatchServiceAttachmentRequest = src.PatchServiceAttachmentRequest
+
+// A request message for SnapshotSettingsService.Patch. See the method
+// description for details.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type PatchSnapshotSettingRequest = src.PatchSnapshotSettingRequest
 
 // A request message for SslPolicies.Patch. See the method description for
 // details.
@@ -8208,6 +8951,18 @@ type PerInstanceConfig = src.PerInstanceConfig
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type PerInstanceConfig_Status = src.PerInstanceConfig_Status
 
+// A request message for Instances.PerformMaintenance. See the method
+// description for details.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type PerformMaintenanceInstanceRequest = src.PerformMaintenanceInstanceRequest
+
+// A request message for NodeGroups.PerformMaintenance. See the method
+// description for details.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type PerformMaintenanceNodeGroupRequest = src.PerformMaintenanceNodeGroupRequest
+
 // An Identity and Access Management (IAM) policy, which specifies access
 // controls for Google Cloud resources. A `Policy` is a collection of
 // `bindings`. A `binding` binds one or more `members`, or principals, to a
@@ -8220,7 +8975,7 @@ type PerInstanceConfig_Status = src.PerInstanceConfig_Status
 // constraints based on attributes of the request, the resource, or both. To
 // learn which resources support conditions in their IAM policies, see the [IAM
 // documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-// **JSON example:** { "bindings": [ { "role":
+// **JSON example:** ``` { "bindings": [ { "role":
 // "roles/resourcemanager.organizationAdmin", "members": [
 // "user:mike@example.com", "group:admins@example.com", "domain:google.com",
 // "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role":
@@ -8228,15 +8983,15 @@ type PerInstanceConfig_Status = src.PerInstanceConfig_Status
 // "user:eve@example.com" ], "condition": { "title": "expirable access",
 // "description": "Does not grant access after Sep 2020", "expression":
 // "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
-// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: -
-// user:mike@example.com - group:admins@example.com - domain:google.com -
-// serviceAccount:my-project-id@appspot.gserviceaccount.com role:
-// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com
-// role: roles/resourcemanager.organizationViewer condition: title: expirable
-// access description: Does not grant access after Sep 2020 expression:
-// request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA=
-// version: 3 For a description of IAM and its features, see the [IAM
-// documentation](https://cloud.google.com/iam/docs/).
+// "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: -
+// members: - user:mike@example.com - group:admins@example.com -
+// domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
+// role: roles/resourcemanager.organizationAdmin - members: -
+// user:eve@example.com role: roles/resourcemanager.organizationViewer
+// condition: title: expirable access description: Does not grant access after
+// Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
+// etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features,
+// see the [IAM documentation](https://cloud.google.com/iam/docs/).
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type Policy = src.Policy
@@ -8262,6 +9017,16 @@ type PreservedStatePreservedDisk_AutoDelete = src.PreservedStatePreservedDisk_Au
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type PreservedStatePreservedDisk_Mode = src.PreservedStatePreservedDisk_Mode
+type PreservedStatePreservedNetworkIp = src.PreservedStatePreservedNetworkIp
+type PreservedStatePreservedNetworkIpIpAddress = src.PreservedStatePreservedNetworkIpIpAddress
+
+// These stateful IPs will never be released during autohealing, update or VM
+// instance recreate operations. This flag is used to configure if the IP
+// reservation should be deleted after it is no longer used by the group, e.g.
+// when the given instance or the whole group is deleted.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type PreservedStatePreservedNetworkIp_AutoDelete = src.PreservedStatePreservedNetworkIp_AutoDelete
 
 // A request message for Routers.Preview. See the method description for
 // details.
@@ -8276,6 +9041,13 @@ type PreviewRouterRequest = src.PreviewRouterRequest
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type Project = src.Project
 
+// [Output Only] The Cloud Armor tier for this project. It can be one of the
+// following values: CA_STANDARD, CA_ENTERPRISE_PAYGO. If this field is not
+// specified, it is assumed to be CA_STANDARD.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type Project_CloudArmorTier = src.Project_CloudArmorTier
+
 // This signifies the default network tier used for configuring resources of
 // the project and can only take the following values: PREMIUM, STANDARD.
 // Initially the default network tier is PREMIUM.
@@ -8283,28 +9055,28 @@ type Project = src.Project
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type Project_DefaultNetworkTier = src.Project_DefaultNetworkTier
 
+// [Output Only] Default internal DNS setting used by VMs running in this
+// project.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type Project_VmDnsSetting = src.Project_VmDnsSetting
+
 // [Output Only] The role this project has in a shared VPC configuration.
 // Currently, only projects with the host role, which is specified by the value
 // HOST, are differentiated.
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type Project_XpnProjectStatus = src.Project_XpnProjectStatus
-
-// ProjectsClient is the client API for Projects service. For semantics around
-// ctx use and closing/ending streaming RPCs, please refer to
-// https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type ProjectsClient = src.ProjectsClient
 type ProjectsDisableXpnResourceRequest = src.ProjectsDisableXpnResourceRequest
 type ProjectsEnableXpnResourceRequest = src.ProjectsEnableXpnResourceRequest
 type ProjectsGetXpnResources = src.ProjectsGetXpnResources
 type ProjectsListXpnHostsRequest = src.ProjectsListXpnHostsRequest
+type ProjectsSetCloudArmorTierRequest = src.ProjectsSetCloudArmorTierRequest
 
-// ProjectsServer is the server API for Projects service.
+// Managed protection tier to be set.
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type ProjectsServer = src.ProjectsServer
+type ProjectsSetCloudArmorTierRequest_CloudArmorTier = src.ProjectsSetCloudArmorTierRequest_CloudArmorTier
 type ProjectsSetDefaultNetworkTierRequest = src.ProjectsSetDefaultNetworkTierRequest
 
 // Default network tier to be set.
@@ -8325,6 +9097,22 @@ type PublicAdvertisedPrefixList = src.PublicAdvertisedPrefixList
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type PublicAdvertisedPrefixPublicDelegatedPrefix = src.PublicAdvertisedPrefixPublicDelegatedPrefix
 
+// [Output Only] The version of BYOIP API.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type PublicAdvertisedPrefix_ByoipApiVersion = src.PublicAdvertisedPrefix_ByoipApiVersion
+
+// Specifies how child public delegated prefix will be scoped. It could be one
+// of following values: - `REGIONAL`: The public delegated prefix is regional
+// only. The provisioning will take a few minutes. - `GLOBAL`: The public
+// delegated prefix is global only. The provisioning will take ~4 weeks. -
+// `GLOBAL_AND_REGIONAL` [output only]: The public delegated prefixes is BYOIP
+// V1 legacy prefix. This is output only value and no longer supported in BYOIP
+// V2.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type PublicAdvertisedPrefix_PdpScope = src.PublicAdvertisedPrefix_PdpScope
+
 // The status of the public advertised prefix. Possible values include: -
 // `INITIAL`: RPKI validation is complete. - `PTR_CONFIGURED`: User has
 // configured the PTR. - `VALIDATED`: Reverse DNS lookup is successful. -
@@ -8335,20 +9123,6 @@ type PublicAdvertisedPrefixPublicDelegatedPrefix = src.PublicAdvertisedPrefixPub
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type PublicAdvertisedPrefix_Status = src.PublicAdvertisedPrefix_Status
-
-// PublicAdvertisedPrefixesClient is the client API for
-// PublicAdvertisedPrefixes service. For semantics around ctx use and
-// closing/ending streaming RPCs, please refer to
-// https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type PublicAdvertisedPrefixesClient = src.PublicAdvertisedPrefixesClient
-
-// PublicAdvertisedPrefixesServer is the server API for
-// PublicAdvertisedPrefixes service.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type PublicAdvertisedPrefixesServer = src.PublicAdvertisedPrefixesServer
 
 // A PublicDelegatedPrefix resource represents an IP block within a
 // PublicAdvertisedPrefix that is configured within a single cloud scope
@@ -8366,10 +9140,25 @@ type PublicDelegatedPrefixList = src.PublicDelegatedPrefixList
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type PublicDelegatedPrefixPublicDelegatedSubPrefix = src.PublicDelegatedPrefixPublicDelegatedSubPrefix
 
+// The PublicDelegatedSubPrefix mode for IPv6 only.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type PublicDelegatedPrefixPublicDelegatedSubPrefix_Mode = src.PublicDelegatedPrefixPublicDelegatedSubPrefix_Mode
+
 // [Output Only] The status of the sub public delegated prefix.
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type PublicDelegatedPrefixPublicDelegatedSubPrefix_Status = src.PublicDelegatedPrefixPublicDelegatedSubPrefix_Status
+
+// [Output Only] The version of BYOIP API.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type PublicDelegatedPrefix_ByoipApiVersion = src.PublicDelegatedPrefix_ByoipApiVersion
+
+// The public delegated prefix mode for IPv6 only.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type PublicDelegatedPrefix_Mode = src.PublicDelegatedPrefix_Mode
 
 // [Output Only] The status of the public delegated prefix, which can be one
 // of following values: - `INITIALIZING` The public delegated prefix is being
@@ -8380,21 +9169,7 @@ type PublicDelegatedPrefixPublicDelegatedSubPrefix_Status = src.PublicDelegatedP
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type PublicDelegatedPrefix_Status = src.PublicDelegatedPrefix_Status
-
-// PublicDelegatedPrefixesClient is the client API for PublicDelegatedPrefixes
-// service. For semantics around ctx use and closing/ending streaming RPCs,
-// please refer to
-// https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type PublicDelegatedPrefixesClient = src.PublicDelegatedPrefixesClient
 type PublicDelegatedPrefixesScopedList = src.PublicDelegatedPrefixesScopedList
-
-// PublicDelegatedPrefixesServer is the server API for PublicDelegatedPrefixes
-// service.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type PublicDelegatedPrefixesServer = src.PublicDelegatedPrefixesServer
 
 // A quotas entry.
 //
@@ -8405,6 +9180,23 @@ type Quota = src.Quota
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type QuotaExceededInfo = src.QuotaExceededInfo
+
+// Rollout status of the future quota limit.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type QuotaExceededInfo_RolloutStatus = src.QuotaExceededInfo_RolloutStatus
+
+// [Output Only] Warning of fetching the `quotas` field for this region. This
+// field is populated only if fetching of the `quotas` field fails.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type QuotaStatusWarning = src.QuotaStatusWarning
+
+// [Output Only] A warning code, if applicable. For example, Compute Engine
+// returns NO_RESULTS_ON_PAGE if there are no results in the response.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type QuotaStatusWarning_Code = src.QuotaStatusWarning_Code
 
 // [Output Only] Name of the quota metric.
 //
@@ -8445,103 +9237,17 @@ type Reference = src.Reference
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type Region = src.Region
+type RegionAddressesMoveRequest = src.RegionAddressesMoveRequest
 
 // Contains a list of autoscalers.
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type RegionAutoscalerList = src.RegionAutoscalerList
-
-// RegionAutoscalersClient is the client API for RegionAutoscalers service.
-// For semantics around ctx use and closing/ending streaming RPCs, please refer
-// to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type RegionAutoscalersClient = src.RegionAutoscalersClient
-
-// RegionAutoscalersServer is the server API for RegionAutoscalers service.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type RegionAutoscalersServer = src.RegionAutoscalersServer
-
-// RegionBackendServicesClient is the client API for RegionBackendServices
-// service. For semantics around ctx use and closing/ending streaming RPCs,
-// please refer to
-// https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type RegionBackendServicesClient = src.RegionBackendServicesClient
-
-// RegionBackendServicesServer is the server API for RegionBackendServices
-// service.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type RegionBackendServicesServer = src.RegionBackendServicesServer
-
-// RegionCommitmentsClient is the client API for RegionCommitments service.
-// For semantics around ctx use and closing/ending streaming RPCs, please refer
-// to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type RegionCommitmentsClient = src.RegionCommitmentsClient
-
-// RegionCommitmentsServer is the server API for RegionCommitments service.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type RegionCommitmentsServer = src.RegionCommitmentsServer
 type RegionDiskTypeList = src.RegionDiskTypeList
-
-// RegionDiskTypesClient is the client API for RegionDiskTypes service. For
-// semantics around ctx use and closing/ending streaming RPCs, please refer to
-// https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type RegionDiskTypesClient = src.RegionDiskTypesClient
-
-// RegionDiskTypesServer is the server API for RegionDiskTypes service.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type RegionDiskTypesServer = src.RegionDiskTypesServer
 type RegionDisksAddResourcePoliciesRequest = src.RegionDisksAddResourcePoliciesRequest
-
-// RegionDisksClient is the client API for RegionDisks service. For semantics
-// around ctx use and closing/ending streaming RPCs, please refer to
-// https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type RegionDisksClient = src.RegionDisksClient
 type RegionDisksRemoveResourcePoliciesRequest = src.RegionDisksRemoveResourcePoliciesRequest
 type RegionDisksResizeRequest = src.RegionDisksResizeRequest
-
-// RegionDisksServer is the server API for RegionDisks service.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type RegionDisksServer = src.RegionDisksServer
-
-// RegionHealthCheckServicesClient is the client API for
-// RegionHealthCheckServices service. For semantics around ctx use and
-// closing/ending streaming RPCs, please refer to
-// https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type RegionHealthCheckServicesClient = src.RegionHealthCheckServicesClient
-
-// RegionHealthCheckServicesServer is the server API for
-// RegionHealthCheckServices service.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type RegionHealthCheckServicesServer = src.RegionHealthCheckServicesServer
-
-// RegionHealthChecksClient is the client API for RegionHealthChecks service.
-// For semantics around ctx use and closing/ending streaming RPCs, please refer
-// to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type RegionHealthChecksClient = src.RegionHealthChecksClient
-
-// RegionHealthChecksServer is the server API for RegionHealthChecks service.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type RegionHealthChecksServer = src.RegionHealthChecksServer
+type RegionDisksStartAsyncReplicationRequest = src.RegionDisksStartAsyncReplicationRequest
 
 // Contains a list of InstanceGroup resources.
 //
@@ -8577,34 +9283,28 @@ type RegionInstanceGroupManagersApplyUpdatesRequest = src.RegionInstanceGroupMan
 // The minimal action that you want to perform on each instance during the
 // update: - REPLACE: At minimum, delete the instance and create it again. -
 // RESTART: Stop the instance and start it again. - REFRESH: Do not stop the
-// instance. - NONE: Do not disrupt the instance at all. By default, the
-// minimum action is NONE. If your update requires a more disruptive action
-// than you set with this flag, the necessary action is performed to execute
-// the update. Additional supported values which may be not listed in the enum
-// directly due to technical reasons: NONE REFRESH REPLACE RESTART
+// instance and limit disruption as much as possible. - NONE: Do not disrupt
+// the instance at all. By default, the minimum action is NONE. If your update
+// requires a more disruptive action than you set with this flag, the necessary
+// action is performed to execute the update. Additional supported values which
+// may be not listed in the enum directly due to technical reasons: NONE
+// REFRESH REPLACE RESTART
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type RegionInstanceGroupManagersApplyUpdatesRequest_MinimalAction = src.RegionInstanceGroupManagersApplyUpdatesRequest_MinimalAction
 
 // The most disruptive action that you want to perform on each instance during
 // the update: - REPLACE: Delete the instance and create it again. - RESTART:
-// Stop the instance and start it again. - REFRESH: Do not stop the instance. -
-// NONE: Do not disrupt the instance at all. By default, the most disruptive
-// allowed action is REPLACE. If your update requires a more disruptive action
-// than you set with this flag, the update request will fail. Additional
-// supported values which may be not listed in the enum directly due to
-// technical reasons: NONE REFRESH REPLACE RESTART
+// Stop the instance and start it again. - REFRESH: Do not stop the instance
+// and limit disruption as much as possible. - NONE: Do not disrupt the
+// instance at all. By default, the most disruptive allowed action is REPLACE.
+// If your update requires a more disruptive action than you set with this
+// flag, the update request will fail. Additional supported values which may be
+// not listed in the enum directly due to technical reasons: NONE REFRESH
+// REPLACE RESTART
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type RegionInstanceGroupManagersApplyUpdatesRequest_MostDisruptiveAllowedAction = src.RegionInstanceGroupManagersApplyUpdatesRequest_MostDisruptiveAllowedAction
-
-// RegionInstanceGroupManagersClient is the client API for
-// RegionInstanceGroupManagers service. For semantics around ctx use and
-// closing/ending streaming RPCs, please refer to
-// https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type RegionInstanceGroupManagersClient = src.RegionInstanceGroupManagersClient
 
 // RegionInstanceGroupManagers.createInstances
 //
@@ -8615,22 +9315,8 @@ type RegionInstanceGroupManagersListErrorsResponse = src.RegionInstanceGroupMana
 type RegionInstanceGroupManagersListInstanceConfigsResp = src.RegionInstanceGroupManagersListInstanceConfigsResp
 type RegionInstanceGroupManagersListInstancesResponse = src.RegionInstanceGroupManagersListInstancesResponse
 type RegionInstanceGroupManagersRecreateRequest = src.RegionInstanceGroupManagersRecreateRequest
-
-// RegionInstanceGroupManagersServer is the server API for
-// RegionInstanceGroupManagers service.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type RegionInstanceGroupManagersServer = src.RegionInstanceGroupManagersServer
 type RegionInstanceGroupManagersSetTargetPoolsRequest = src.RegionInstanceGroupManagersSetTargetPoolsRequest
 type RegionInstanceGroupManagersSetTemplateRequest = src.RegionInstanceGroupManagersSetTemplateRequest
-
-// RegionInstanceGroupsClient is the client API for RegionInstanceGroups
-// service. For semantics around ctx use and closing/ending streaming RPCs,
-// please refer to
-// https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type RegionInstanceGroupsClient = src.RegionInstanceGroupsClient
 type RegionInstanceGroupsListInstances = src.RegionInstanceGroupsListInstances
 type RegionInstanceGroupsListInstancesRequest = src.RegionInstanceGroupsListInstancesRequest
 
@@ -8639,207 +9325,31 @@ type RegionInstanceGroupsListInstancesRequest = src.RegionInstanceGroupsListInst
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type RegionInstanceGroupsListInstancesRequest_InstanceState = src.RegionInstanceGroupsListInstancesRequest_InstanceState
-
-// RegionInstanceGroupsServer is the server API for RegionInstanceGroups
-// service.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type RegionInstanceGroupsServer = src.RegionInstanceGroupsServer
 type RegionInstanceGroupsSetNamedPortsRequest = src.RegionInstanceGroupsSetNamedPortsRequest
-
-// RegionInstancesClient is the client API for RegionInstances service. For
-// semantics around ctx use and closing/ending streaming RPCs, please refer to
-// https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type RegionInstancesClient = src.RegionInstancesClient
-
-// RegionInstancesServer is the server API for RegionInstances service.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type RegionInstancesServer = src.RegionInstancesServer
 
 // Contains a list of region resources.
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type RegionList = src.RegionList
-
-// RegionNetworkEndpointGroupsClient is the client API for
-// RegionNetworkEndpointGroups service. For semantics around ctx use and
-// closing/ending streaming RPCs, please refer to
-// https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type RegionNetworkEndpointGroupsClient = src.RegionNetworkEndpointGroupsClient
-
-// RegionNetworkEndpointGroupsServer is the server API for
-// RegionNetworkEndpointGroups service.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type RegionNetworkEndpointGroupsServer = src.RegionNetworkEndpointGroupsServer
-
-// RegionNetworkFirewallPoliciesClient is the client API for
-// RegionNetworkFirewallPolicies service. For semantics around ctx use and
-// closing/ending streaming RPCs, please refer to
-// https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type RegionNetworkFirewallPoliciesClient = src.RegionNetworkFirewallPoliciesClient
+type RegionNetworkEndpointGroupsAttachEndpointsRequest = src.RegionNetworkEndpointGroupsAttachEndpointsRequest
+type RegionNetworkEndpointGroupsDetachEndpointsRequest = src.RegionNetworkEndpointGroupsDetachEndpointsRequest
 type RegionNetworkFirewallPoliciesGetEffectiveFirewallsResponse = src.RegionNetworkFirewallPoliciesGetEffectiveFirewallsResponse
 type RegionNetworkFirewallPoliciesGetEffectiveFirewallsResponseEffectiveFirewallPolicy = src.RegionNetworkFirewallPoliciesGetEffectiveFirewallsResponseEffectiveFirewallPolicy
 
 // [Output Only] The type of the firewall policy. Can be one of HIERARCHY,
-// NETWORK, NETWORK_REGIONAL.
+// NETWORK, NETWORK_REGIONAL, SYSTEM_GLOBAL, SYSTEM_REGIONAL.
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type RegionNetworkFirewallPoliciesGetEffectiveFirewallsResponseEffectiveFirewallPolicy_Type = src.RegionNetworkFirewallPoliciesGetEffectiveFirewallsResponseEffectiveFirewallPolicy_Type
-
-// RegionNetworkFirewallPoliciesServer is the server API for
-// RegionNetworkFirewallPolicies service.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type RegionNetworkFirewallPoliciesServer = src.RegionNetworkFirewallPoliciesServer
-
-// RegionNotificationEndpointsClient is the client API for
-// RegionNotificationEndpoints service. For semantics around ctx use and
-// closing/ending streaming RPCs, please refer to
-// https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type RegionNotificationEndpointsClient = src.RegionNotificationEndpointsClient
-
-// RegionNotificationEndpointsServer is the server API for
-// RegionNotificationEndpoints service.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type RegionNotificationEndpointsServer = src.RegionNotificationEndpointsServer
-
-// RegionOperationsClient is the client API for RegionOperations service. For
-// semantics around ctx use and closing/ending streaming RPCs, please refer to
-// https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type RegionOperationsClient = src.RegionOperationsClient
-
-// RegionOperationsServer is the server API for RegionOperations service.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type RegionOperationsServer = src.RegionOperationsServer
-
-// RegionSecurityPoliciesClient is the client API for RegionSecurityPolicies
-// service. For semantics around ctx use and closing/ending streaming RPCs,
-// please refer to
-// https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type RegionSecurityPoliciesClient = src.RegionSecurityPoliciesClient
-
-// RegionSecurityPoliciesServer is the server API for RegionSecurityPolicies
-// service.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type RegionSecurityPoliciesServer = src.RegionSecurityPoliciesServer
 type RegionSetLabelsRequest = src.RegionSetLabelsRequest
 type RegionSetPolicyRequest = src.RegionSetPolicyRequest
-
-// RegionSslCertificatesClient is the client API for RegionSslCertificates
-// service. For semantics around ctx use and closing/ending streaming RPCs,
-// please refer to
-// https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type RegionSslCertificatesClient = src.RegionSslCertificatesClient
-
-// RegionSslCertificatesServer is the server API for RegionSslCertificates
-// service.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type RegionSslCertificatesServer = src.RegionSslCertificatesServer
-
-// RegionSslPoliciesClient is the client API for RegionSslPolicies service.
-// For semantics around ctx use and closing/ending streaming RPCs, please refer
-// to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type RegionSslPoliciesClient = src.RegionSslPoliciesClient
-
-// RegionSslPoliciesServer is the server API for RegionSslPolicies service.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type RegionSslPoliciesServer = src.RegionSslPoliciesServer
-
-// RegionTargetHttpProxiesClient is the client API for RegionTargetHttpProxies
-// service. For semantics around ctx use and closing/ending streaming RPCs,
-// please refer to
-// https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type RegionTargetHttpProxiesClient = src.RegionTargetHttpProxiesClient
-
-// RegionTargetHttpProxiesServer is the server API for RegionTargetHttpProxies
-// service.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type RegionTargetHttpProxiesServer = src.RegionTargetHttpProxiesServer
-
-// RegionTargetHttpsProxiesClient is the client API for
-// RegionTargetHttpsProxies service. For semantics around ctx use and
-// closing/ending streaming RPCs, please refer to
-// https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type RegionTargetHttpsProxiesClient = src.RegionTargetHttpsProxiesClient
-
-// RegionTargetHttpsProxiesServer is the server API for
-// RegionTargetHttpsProxies service.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type RegionTargetHttpsProxiesServer = src.RegionTargetHttpsProxiesServer
 type RegionTargetHttpsProxiesSetSslCertificatesRequest = src.RegionTargetHttpsProxiesSetSslCertificatesRequest
-
-// RegionTargetTcpProxiesClient is the client API for RegionTargetTcpProxies
-// service. For semantics around ctx use and closing/ending streaming RPCs,
-// please refer to
-// https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type RegionTargetTcpProxiesClient = src.RegionTargetTcpProxiesClient
-
-// RegionTargetTcpProxiesServer is the server API for RegionTargetTcpProxies
-// service.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type RegionTargetTcpProxiesServer = src.RegionTargetTcpProxiesServer
-
-// RegionUrlMapsClient is the client API for RegionUrlMaps service. For
-// semantics around ctx use and closing/ending streaming RPCs, please refer to
-// https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type RegionUrlMapsClient = src.RegionUrlMapsClient
-
-// RegionUrlMapsServer is the server API for RegionUrlMaps service.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type RegionUrlMapsServer = src.RegionUrlMapsServer
 type RegionUrlMapsValidateRequest = src.RegionUrlMapsValidateRequest
 
 // [Output Only] Status of the region, either UP or DOWN.
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type Region_Status = src.Region_Status
-
-// RegionsClient is the client API for Regions service. For semantics around
-// ctx use and closing/ending streaming RPCs, please refer to
-// https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type RegionsClient = src.RegionsClient
-
-// RegionsServer is the server API for Regions service.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type RegionsServer = src.RegionsServer
 
 // A request message for FirewallPolicies.RemoveAssociation. See the method
 // description for details.
@@ -8919,6 +9429,12 @@ type RemoveRuleNetworkFirewallPolicyRequest = src.RemoveRuleNetworkFirewallPolic
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type RemoveRuleRegionNetworkFirewallPolicyRequest = src.RemoveRuleRegionNetworkFirewallPolicyRequest
 
+// A request message for RegionSecurityPolicies.RemoveRule. See the method
+// description for details.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type RemoveRuleRegionSecurityPolicyRequest = src.RemoveRuleRegionSecurityPolicyRequest
+
 // A request message for SecurityPolicies.RemoveRule. See the method
 // description for details.
 //
@@ -8958,24 +9474,15 @@ type ReservationAffinity_ConsumeReservationType = src.ReservationAffinity_Consum
 type ReservationAggregatedList = src.ReservationAggregatedList
 type ReservationList = src.ReservationList
 
-// [Output Only] The status of the reservation.
+// [Output Only] The status of the reservation. - CREATING: Reservation
+// resources are being allocated. - READY: Reservation resources have been
+// allocated, and the reservation is ready for use. - DELETING: Reservation
+// deletion is in progress. - UPDATING: Reservation update is in progress.
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type Reservation_Status = src.Reservation_Status
-
-// ReservationsClient is the client API for Reservations service. For
-// semantics around ctx use and closing/ending streaming RPCs, please refer to
-// https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type ReservationsClient = src.ReservationsClient
 type ReservationsResizeRequest = src.ReservationsResizeRequest
 type ReservationsScopedList = src.ReservationsScopedList
-
-// ReservationsServer is the server API for Reservations service.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type ReservationsServer = src.ReservationsServer
 
 // A request message for Instances.Reset. See the method description for
 // details.
@@ -9019,24 +9526,12 @@ type ResizeReservationRequest = src.ResizeReservationRequest
 type ResourceCommitment = src.ResourceCommitment
 
 // Type of resource for which this commitment applies. Possible values are
-// VCPU and MEMORY
+// VCPU, MEMORY, LOCAL_SSD, and ACCELERATOR.
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type ResourceCommitment_Type = src.ResourceCommitment_Type
 type ResourceGroupReference = src.ResourceGroupReference
-
-// ResourcePoliciesClient is the client API for ResourcePolicies service. For
-// semantics around ctx use and closing/ending streaming RPCs, please refer to
-// https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type ResourcePoliciesClient = src.ResourcePoliciesClient
 type ResourcePoliciesScopedList = src.ResourcePoliciesScopedList
-
-// ResourcePoliciesServer is the server API for ResourcePolicies service.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type ResourcePoliciesServer = src.ResourcePoliciesServer
 
 // Represents a Resource Policy resource. You can use resource policies to
 // schedule actions for some Compute Engine resources. For example, you can use
@@ -9055,8 +9550,13 @@ type ResourcePolicyAggregatedList = src.ResourcePolicyAggregatedList
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type ResourcePolicyDailyCycle = src.ResourcePolicyDailyCycle
 
+// Resource policy for disk consistency groups.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type ResourcePolicyDiskConsistencyGroupPolicy = src.ResourcePolicyDiskConsistencyGroupPolicy
+
 // A GroupPlacementPolicy specifies resource placement configuration. It
-// specifies the failure bucket separation as well as network locality
+// specifies the failure bucket separation
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type ResourcePolicyGroupPlacementPolicy = src.ResourcePolicyGroupPlacementPolicy
@@ -9144,6 +9644,7 @@ type ResourcePolicy_Status = src.ResourcePolicy_Status
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type ResourceStatus = src.ResourceStatus
+type ResourceStatusScheduling = src.ResourceStatusScheduling
 
 // A request message for Instances.Resume. See the method description for
 // details.
@@ -9216,6 +9717,7 @@ type RouterBgpPeerBfd = src.RouterBgpPeerBfd
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type RouterBgpPeerBfd_SessionInitializationMode = src.RouterBgpPeerBfd_SessionInitializationMode
+type RouterBgpPeerCustomLearnedIpRange = src.RouterBgpPeerCustomLearnedIpRange
 
 // User-specified flag to indicate which mode to use for advertisement.
 //
@@ -9249,6 +9751,11 @@ type RouterBgpPeer_ManagementType = src.RouterBgpPeer_ManagementType
 type RouterBgp_AdvertiseMode = src.RouterBgp_AdvertiseMode
 type RouterBgp_AdvertisedGroups = src.RouterBgp_AdvertisedGroups
 type RouterInterface = src.RouterInterface
+
+// IP version of this interface.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type RouterInterface_IpVersion = src.RouterInterface_IpVersion
 
 // [Output Only] The resource that configures and manages this interface. -
 // MANAGED_BY_USER is the default value and can be managed directly by users. -
@@ -9297,6 +9804,13 @@ type RouterNatRuleAction = src.RouterNatRuleAction
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type RouterNatSubnetworkToNat = src.RouterNatSubnetworkToNat
 type RouterNatSubnetworkToNat_SourceIpRangesToNat = src.RouterNatSubnetworkToNat_SourceIpRangesToNat
+
+// The network tier to use when automatically reserving NAT IP addresses. Must
+// be one of: PREMIUM, STANDARD. If not specified, then the current
+// project-level default tier is used.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type RouterNat_AutoNetworkTier = src.RouterNat_AutoNetworkTier
 type RouterNat_EndpointTypes = src.RouterNat_EndpointTypes
 
 // Specify the NatIpAllocateOption, which can take one of the following
@@ -9315,12 +9829,18 @@ type RouterNat_NatIpAllocateOption = src.RouterNat_NatIpAllocateOption
 // IP ranges in every Subnetwork are allowed to Nat. - LIST_OF_SUBNETWORKS: A
 // list of Subnetworks are allowed to Nat (specified in the field subnetwork
 // below) The default is SUBNETWORK_IP_RANGE_TO_NAT_OPTION_UNSPECIFIED. Note
-// that if this field contains ALL_SUBNETWORKS_ALL_IP_RANGES or
-// ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES, then there should not be any other
-// Router.Nat section in any Router for this network in this region.
+// that if this field contains ALL_SUBNETWORKS_ALL_IP_RANGES then there should
+// not be any other Router.Nat section in any Router for this network in this
+// region.
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type RouterNat_SourceSubnetworkIpRangesToNat = src.RouterNat_SourceSubnetworkIpRangesToNat
+
+// Indicates whether this NAT is used for public or private IP translation. If
+// unspecified, it defaults to PUBLIC.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type RouterNat_Type = src.RouterNat_Type
 type RouterStatus = src.RouterStatus
 type RouterStatusBgpPeerStatus = src.RouterStatusBgpPeerStatus
 
@@ -9344,48 +9864,14 @@ type RouterStatusNatStatus = src.RouterStatusNatStatus
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type RouterStatusNatStatusNatRuleStatus = src.RouterStatusNatStatusNatRuleStatus
 type RouterStatusResponse = src.RouterStatusResponse
-
-// RoutersClient is the client API for Routers service. For semantics around
-// ctx use and closing/ending streaming RPCs, please refer to
-// https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type RoutersClient = src.RoutersClient
 type RoutersPreviewResponse = src.RoutersPreviewResponse
 type RoutersScopedList = src.RoutersScopedList
-
-// RoutersServer is the server API for Routers service.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type RoutersServer = src.RoutersServer
-
-// RoutesClient is the client API for Routes service. For semantics around ctx
-// use and closing/ending streaming RPCs, please refer to
-// https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type RoutesClient = src.RoutesClient
-
-// RoutesServer is the server API for Routes service.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type RoutesServer = src.RoutesServer
-
-// This is deprecated and has no effect. Do not use.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type Rule = src.Rule
-
-// This is deprecated and has no effect. Do not use.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type Rule_Action = src.Rule_Action
 type SSLHealthCheck = src.SSLHealthCheck
 
 // Specifies how a port is selected for health checking. Can be one of the
 // following values: USE_FIXED_PORT: Specifies a port number explicitly using
 // the port field in the health check. Supported by backend services for
-// pass-through load balancers and backend services for proxy load balancers.
+// passthrough load balancers and backend services for proxy load balancers.
 // Not supported by target pools. The health check supports all backends
 // supported by the backend service provided the backend can be health checked.
 // For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network
@@ -9393,7 +9879,7 @@ type SSLHealthCheck = src.SSLHealthCheck
 // USE_SERVING_PORT: Provides an indirect method of specifying the health check
 // port by referring to the backend service. Only supported by backend services
 // for proxy load balancers. Not supported by target pools. Not supported by
-// backend services for pass-through load balancers. Supports all backends that
+// backend services for passthrough load balancers. Supports all backends that
 // can be health checked; for example, GCE_VM_IP_PORT network endpoint groups
 // and instance group backends. For GCE_VM_IP_PORT network endpoint group
 // backends, the health check uses the port number specified for each endpoint
@@ -9482,6 +9968,12 @@ type SchedulingNodeAffinity = src.SchedulingNodeAffinity
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type SchedulingNodeAffinity_Operator = src.SchedulingNodeAffinity_Operator
 
+// Defines the behaviour for instances with the instance_termination_action
+// STOP.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type SchedulingOnInstanceStopAction = src.SchedulingOnInstanceStopAction
+
 // Specifies the termination action for the instance.
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
@@ -9506,20 +9998,8 @@ type ScratchDisks = src.ScratchDisks
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type Screenshot = src.Screenshot
 type SecurityPoliciesAggregatedList = src.SecurityPoliciesAggregatedList
-
-// SecurityPoliciesClient is the client API for SecurityPolicies service. For
-// semantics around ctx use and closing/ending streaming RPCs, please refer to
-// https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type SecurityPoliciesClient = src.SecurityPoliciesClient
 type SecurityPoliciesListPreconfiguredExpressionSetsResponse = src.SecurityPoliciesListPreconfiguredExpressionSetsResponse
 type SecurityPoliciesScopedList = src.SecurityPoliciesScopedList
-
-// SecurityPoliciesServer is the server API for SecurityPolicies service.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type SecurityPoliciesServer = src.SecurityPoliciesServer
 type SecurityPoliciesWafConfig = src.SecurityPoliciesWafConfig
 
 // Represents a Google Cloud Armor security policy resource. Only external
@@ -9534,13 +10014,27 @@ type SecurityPolicy = src.SecurityPolicy
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type SecurityPolicyAdaptiveProtectionConfig = src.SecurityPolicyAdaptiveProtectionConfig
 
-// Configuration options for L7 DDoS detection.
+// Configuration options for L7 DDoS detection. This field is only supported
+// in Global Security Policies of type CLOUD_ARMOR.
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig = src.SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig
+type SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig = src.SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig
+
+// Configurations to specifc granular traffic units processed by Adaptive
+// Protection.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig = src.SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig
+
+// Type of this configuration.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig_Type = src.SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig_Type
 
 // Rule visibility can be one of the following: STANDARD - opaque rules.
-// (default) PREMIUM - transparent rules.
+// (default) PREMIUM - transparent rules. This field is only supported in
+// Global Security Policies of type CLOUD_ARMOR.
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig_RuleVisibility = src.SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig_RuleVisibility
@@ -9568,6 +10062,8 @@ type SecurityPolicyRuleHttpHeaderActionHttpHeaderOption = src.SecurityPolicyRule
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type SecurityPolicyRuleMatcher = src.SecurityPolicyRuleMatcher
 type SecurityPolicyRuleMatcherConfig = src.SecurityPolicyRuleMatcherConfig
+type SecurityPolicyRuleMatcherExprOptions = src.SecurityPolicyRuleMatcherExprOptions
+type SecurityPolicyRuleMatcherExprOptionsRecaptchaOptions = src.SecurityPolicyRuleMatcherExprOptionsRecaptchaOptions
 
 // Preconfigured versioned expression. If this field is specified, config must
 // also be specified. Available preconfigured expressions along with their
@@ -9576,7 +10072,52 @@ type SecurityPolicyRuleMatcherConfig = src.SecurityPolicyRuleMatcherConfig
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type SecurityPolicyRuleMatcher_VersionedExpr = src.SecurityPolicyRuleMatcher_VersionedExpr
+
+// Represents a match condition that incoming network traffic is evaluated
+// against.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type SecurityPolicyRuleNetworkMatcher = src.SecurityPolicyRuleNetworkMatcher
+type SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatch = src.SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatch
+type SecurityPolicyRulePreconfiguredWafConfig = src.SecurityPolicyRulePreconfiguredWafConfig
+type SecurityPolicyRulePreconfiguredWafConfigExclusion = src.SecurityPolicyRulePreconfiguredWafConfigExclusion
+type SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams = src.SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams
+
+// The match operator for the field.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams_Op = src.SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams_Op
 type SecurityPolicyRuleRateLimitOptions = src.SecurityPolicyRuleRateLimitOptions
+type SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig = src.SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig
+
+// Determines the key to enforce the rate_limit_threshold on. Possible values
+// are: - ALL: A single rate limit threshold is applied to all the requests
+// matching this rule. This is the default value if "enforceOnKeyConfigs" is
+// not configured. - IP: The source IP address of the request is the key. Each
+// IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP
+// header whose name is configured under "enforceOnKeyName". The key value is
+// truncated to the first 128 bytes of the header value. If no such header is
+// present in the request, the key type defaults to ALL. - XFF_IP: The first IP
+// address (i.e. the originating client IP address) specified in the list of
+// IPs under X-Forwarded-For HTTP header. If no such header is present or the
+// value is not a valid IP, the key defaults to the source IP address of the
+// request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose
+// name is configured under "enforceOnKeyName". The key value is truncated to
+// the first 128 bytes of the cookie value. If no such cookie is present in the
+// request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP
+// request. The key value is truncated to the first 128 bytes. - SNI: Server
+// name indication in the TLS session of the HTTPS request. The key value is
+// truncated to the first 128 bytes. The key type defaults to ALL on a HTTP
+// session. - REGION_CODE: The country/region from which the request
+// originates. - TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client
+// connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type
+// defaults to ALL. - USER_IP: The IP address of the originating client, which
+// is resolved based on "userIpRequestHeaders" configured with the security
+// policy. If there is no "userIpRequestHeaders" configuration or an IP address
+// cannot be resolved from it, the key type defaults to IP.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig_EnforceOnKeyType = src.SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig_EnforceOnKeyType
 type SecurityPolicyRuleRateLimitOptionsThreshold = src.SecurityPolicyRuleRateLimitOptionsThreshold
 
 // Determines the key to enforce the rate_limit_threshold on. Possible values
@@ -9598,7 +10139,12 @@ type SecurityPolicyRuleRateLimitOptionsThreshold = src.SecurityPolicyRuleRateLim
 // name indication in the TLS session of the HTTPS request. The key value is
 // truncated to the first 128 bytes. The key type defaults to ALL on a HTTP
 // session. - REGION_CODE: The country/region from which the request
-// originates.
+// originates. - TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client
+// connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type
+// defaults to ALL. - USER_IP: The IP address of the originating client, which
+// is resolved based on "userIpRequestHeaders" configured with the security
+// policy. If there is no "userIpRequestHeaders" configuration or an IP address
+// cannot be resolved from it, the key type defaults to IP.
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type SecurityPolicyRuleRateLimitOptions_EnforceOnKey = src.SecurityPolicyRuleRateLimitOptions_EnforceOnKey
@@ -9608,6 +10154,18 @@ type SecurityPolicyRuleRedirectOptions = src.SecurityPolicyRuleRedirectOptions
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type SecurityPolicyRuleRedirectOptions_Type = src.SecurityPolicyRuleRedirectOptions_Type
+type SecurityPolicyUserDefinedField = src.SecurityPolicyUserDefinedField
+
+// The base relative to which 'offset' is measured. Possible values are: -
+// IPV4: Points to the beginning of the IPv4 header. - IPV6: Points to the
+// beginning of the IPv6 header. - TCP: Points to the beginning of the TCP
+// header, skipping over any IPv4 options or IPv6 extension headers. Not
+// present for non-first fragments. - UDP: Points to the beginning of the UDP
+// header, skipping over any IPv4 options or IPv6 extension headers. Not
+// present for non-first fragments. required
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type SecurityPolicyUserDefinedField_Base = src.SecurityPolicyUserDefinedField_Base
 
 // The type indicates the intended use of the security policy. - CLOUD_ARMOR:
 // Cloud Armor backend security policies can be configured to filter incoming
@@ -9619,7 +10177,11 @@ type SecurityPolicyRuleRedirectOptions_Type = src.SecurityPolicyRuleRedirectOpti
 // Google's cache. - CLOUD_ARMOR_INTERNAL_SERVICE: Cloud Armor internal service
 // policies can be configured to filter HTTP requests targeting services
 // managed by Traffic Director in a service mesh. They filter requests before
-// the request is served from the application. This field can be set only at
+// the request is served from the application. - CLOUD_ARMOR_NETWORK: Cloud
+// Armor network policies can be configured to filter packets targeting network
+// load balancing resources such as backend services, target pools, target
+// instances, and instances with external IPs. They filter requests before the
+// request is served from the application. This field can be set only at
 // resource creation time.
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
@@ -9657,7 +10219,7 @@ type ServiceAccount = src.ServiceAccount
 // Represents a ServiceAttachment resource. A service attachment represents a
 // service that a producer has exposed. It encapsulates the load balancer which
 // fronts the service runs and a list of NAT IP ranges that the producers uses
-// to represent the consumers connecting to the service. next tag = 20
+// to represent the consumers connecting to the service.
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type ServiceAttachment = src.ServiceAttachment
@@ -9685,19 +10247,7 @@ type ServiceAttachmentList = src.ServiceAttachmentList
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type ServiceAttachment_ConnectionPreference = src.ServiceAttachment_ConnectionPreference
-
-// ServiceAttachmentsClient is the client API for ServiceAttachments service.
-// For semantics around ctx use and closing/ending streaming RPCs, please refer
-// to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type ServiceAttachmentsClient = src.ServiceAttachmentsClient
 type ServiceAttachmentsScopedList = src.ServiceAttachmentsScopedList
-
-// ServiceAttachmentsServer is the server API for ServiceAttachments service.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type ServiceAttachmentsServer = src.ServiceAttachmentsServer
 
 // A request message for TargetSslProxies.SetBackendService. See the method
 // description for details.
@@ -9728,6 +10278,20 @@ type SetCertificateMapTargetHttpsProxyRequest = src.SetCertificateMapTargetHttps
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type SetCertificateMapTargetSslProxyRequest = src.SetCertificateMapTargetSslProxyRequest
+
+// A request message for Projects.SetCloudArmorTier. See the method
+// description for details.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type SetCloudArmorTierProjectRequest = src.SetCloudArmorTierProjectRequest
+type SetCommonInstanceMetadataOperationMetadata = src.SetCommonInstanceMetadataOperationMetadata
+type SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfo = src.SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfo
+
+// [Output Only] Status of the action, which can be one of the following:
+// `PROPAGATING`, `PROPAGATED`, `ABANDONED`, `FAILED`, or `DONE`.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfo_State = src.SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfo_State
 
 // A request message for Projects.SetCommonInstanceMetadata. See the method
 // description for details.
@@ -9765,6 +10329,12 @@ type SetEdgeSecurityPolicyBackendBucketRequest = src.SetEdgeSecurityPolicyBacken
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type SetEdgeSecurityPolicyBackendServiceRequest = src.SetEdgeSecurityPolicyBackendServiceRequest
 
+// A request message for BackendBuckets.SetIamPolicy. See the method
+// description for details.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type SetIamPolicyBackendBucketRequest = src.SetIamPolicyBackendBucketRequest
+
 // A request message for BackendServices.SetIamPolicy. See the method
 // description for details.
 //
@@ -9801,6 +10371,12 @@ type SetIamPolicyInstanceRequest = src.SetIamPolicyInstanceRequest
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type SetIamPolicyInstanceTemplateRequest = src.SetIamPolicyInstanceTemplateRequest
 
+// A request message for InstantSnapshots.SetIamPolicy. See the method
+// description for details.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type SetIamPolicyInstantSnapshotRequest = src.SetIamPolicyInstantSnapshotRequest
+
 // A request message for Licenses.SetIamPolicy. See the method description for
 // details.
 //
@@ -9812,6 +10388,12 @@ type SetIamPolicyLicenseRequest = src.SetIamPolicyLicenseRequest
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type SetIamPolicyMachineImageRequest = src.SetIamPolicyMachineImageRequest
+
+// A request message for NetworkAttachments.SetIamPolicy. See the method
+// description for details.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type SetIamPolicyNetworkAttachmentRequest = src.SetIamPolicyNetworkAttachmentRequest
 
 // A request message for NetworkFirewallPolicies.SetIamPolicy. See the method
 // description for details.
@@ -9843,6 +10425,12 @@ type SetIamPolicyRegionBackendServiceRequest = src.SetIamPolicyRegionBackendServ
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type SetIamPolicyRegionDiskRequest = src.SetIamPolicyRegionDiskRequest
 
+// A request message for RegionInstantSnapshots.SetIamPolicy. See the method
+// description for details.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type SetIamPolicyRegionInstantSnapshotRequest = src.SetIamPolicyRegionInstantSnapshotRequest
+
 // A request message for RegionNetworkFirewallPolicies.SetIamPolicy. See the
 // method description for details.
 //
@@ -9872,6 +10460,12 @@ type SetIamPolicyServiceAttachmentRequest = src.SetIamPolicyServiceAttachmentReq
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type SetIamPolicySnapshotRequest = src.SetIamPolicySnapshotRequest
+
+// A request message for StoragePools.SetIamPolicy. See the method description
+// for details.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type SetIamPolicyStoragePoolRequest = src.SetIamPolicyStoragePoolRequest
 
 // A request message for Subnetworks.SetIamPolicy. See the method description
 // for details.
@@ -9939,6 +10533,12 @@ type SetLabelsImageRequest = src.SetLabelsImageRequest
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type SetLabelsInstanceRequest = src.SetLabelsInstanceRequest
 
+// A request message for InstantSnapshots.SetLabels. See the method
+// description for details.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type SetLabelsInstantSnapshotRequest = src.SetLabelsInstantSnapshotRequest
+
 // A request message for InterconnectAttachments.SetLabels. See the method
 // description for details.
 //
@@ -9956,6 +10556,12 @@ type SetLabelsInterconnectRequest = src.SetLabelsInterconnectRequest
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type SetLabelsRegionDiskRequest = src.SetLabelsRegionDiskRequest
+
+// A request message for RegionInstantSnapshots.SetLabels. See the method
+// description for details.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type SetLabelsRegionInstantSnapshotRequest = src.SetLabelsRegionInstantSnapshotRequest
 
 // A request message for SecurityPolicies.SetLabels. See the method
 // description for details.
@@ -10011,6 +10617,12 @@ type SetMetadataInstanceRequest = src.SetMetadataInstanceRequest
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type SetMinCpuPlatformInstanceRequest = src.SetMinCpuPlatformInstanceRequest
 
+// A request message for Instances.SetName. See the method description for
+// details.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type SetNameInstanceRequest = src.SetNameInstanceRequest
+
 // A request message for InstanceGroups.SetNamedPorts. See the method
 // description for details.
 //
@@ -10064,6 +10676,30 @@ type SetSchedulingInstanceRequest = src.SetSchedulingInstanceRequest
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type SetSecurityPolicyBackendServiceRequest = src.SetSecurityPolicyBackendServiceRequest
+
+// A request message for Instances.SetSecurityPolicy. See the method
+// description for details.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type SetSecurityPolicyInstanceRequest = src.SetSecurityPolicyInstanceRequest
+
+// A request message for RegionBackendServices.SetSecurityPolicy. See the
+// method description for details.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type SetSecurityPolicyRegionBackendServiceRequest = src.SetSecurityPolicyRegionBackendServiceRequest
+
+// A request message for TargetInstances.SetSecurityPolicy. See the method
+// description for details.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type SetSecurityPolicyTargetInstanceRequest = src.SetSecurityPolicyTargetInstanceRequest
+
+// A request message for TargetPools.SetSecurityPolicy. See the method
+// description for details.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type SetSecurityPolicyTargetPoolRequest = src.SetSecurityPolicyTargetPoolRequest
 
 // A request message for Instances.SetServiceAccount. See the method
 // description for details.
@@ -10214,6 +10850,12 @@ type SignedUrlKey = src.SignedUrlKey
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type SimulateMaintenanceEventInstanceRequest = src.SimulateMaintenanceEventInstanceRequest
 
+// A request message for NodeGroups.SimulateMaintenanceEvent. See the method
+// description for details.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type SimulateMaintenanceEventNodeGroupRequest = src.SimulateMaintenanceEventNodeGroupRequest
+
 // Represents a Persistent Disk Snapshot resource. You can use snapshots to
 // back up data on a regular interval. For more information, read Creating
 // persistent disk snapshots.
@@ -10225,6 +10867,18 @@ type Snapshot = src.Snapshot
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type SnapshotList = src.SnapshotList
+type SnapshotSettings = src.SnapshotSettings
+type SnapshotSettingsStorageLocationSettings = src.SnapshotSettingsStorageLocationSettings
+
+// A structure for specifying storage locations.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type SnapshotSettingsStorageLocationSettingsStorageLocationPreference = src.SnapshotSettingsStorageLocationSettingsStorageLocationPreference
+
+// The chosen location policy.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type SnapshotSettingsStorageLocationSettings_Policy = src.SnapshotSettingsStorageLocationSettings_Policy
 
 // [Output Only] The architecture of the snapshot. Valid values are ARM64 or
 // X86_64.
@@ -10250,18 +10904,6 @@ type Snapshot_Status = src.Snapshot_Status
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type Snapshot_StorageBytesStatus = src.Snapshot_StorageBytesStatus
-
-// SnapshotsClient is the client API for Snapshots service. For semantics
-// around ctx use and closing/ending streaming RPCs, please refer to
-// https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type SnapshotsClient = src.SnapshotsClient
-
-// SnapshotsServer is the server API for Snapshots service.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type SnapshotsServer = src.SnapshotsServer
 type SourceDiskEncryptionKey = src.SourceDiskEncryptionKey
 
 // A specification of the parameters to use when creating the instance
@@ -10282,14 +10924,17 @@ type SourceInstanceProperties = src.SourceInstanceProperties
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type SourceInstanceProperties_KeyRevocationActionType = src.SourceInstanceProperties_KeyRevocationActionType
 
-// Represents an SSL Certificate resource. Google Compute Engine has two SSL
-// Certificate resources: *
+// Represents an SSL certificate resource. Google Compute Engine has two SSL
+// certificate resources: *
 // [Global](/compute/docs/reference/rest/v1/sslCertificates) *
-// [Regional](/compute/docs/reference/rest/v1/regionSslCertificates) The
-// sslCertificates are used by: - external HTTPS load balancers - SSL proxy
-// load balancers The regionSslCertificates are used by internal HTTPS load
-// balancers. Optionally, certificate file contents that you upload can contain
-// a set of up to five PEM-encoded certificates. The API call creates an object
+// [Regional](/compute/docs/reference/rest/v1/regionSslCertificates) The global
+// SSL certificates (sslCertificates) are used by: - Global external
+// Application Load Balancers - Classic Application Load Balancers - Proxy
+// Network Load Balancers (with target SSL proxies) The regional SSL
+// certificates (regionSslCertificates) are used by: - Regional external
+// Application Load Balancers - Regional internal Application Load Balancers
+// Optionally, certificate file contents that you upload can contain a set of
+// up to five PEM-encoded certificates. The API call creates an object
 // (sslCertificate) that holds this data. You can use SSL keys and certificates
 // to secure connections to a load balancer. For more information, read
 // Creating and using SSL certificates, SSL certificates quotas and limits, and
@@ -10325,39 +10970,16 @@ type SslCertificateSelfManagedSslCertificate = src.SslCertificateSelfManagedSslC
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type SslCertificate_Type = src.SslCertificate_Type
-
-// SslCertificatesClient is the client API for SslCertificates service. For
-// semantics around ctx use and closing/ending streaming RPCs, please refer to
-// https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type SslCertificatesClient = src.SslCertificatesClient
 type SslCertificatesScopedList = src.SslCertificatesScopedList
-
-// SslCertificatesServer is the server API for SslCertificates service.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type SslCertificatesServer = src.SslCertificatesServer
 type SslPoliciesAggregatedList = src.SslPoliciesAggregatedList
-
-// SslPoliciesClient is the client API for SslPolicies service. For semantics
-// around ctx use and closing/ending streaming RPCs, please refer to
-// https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type SslPoliciesClient = src.SslPoliciesClient
 type SslPoliciesList = src.SslPoliciesList
 type SslPoliciesListAvailableFeaturesResponse = src.SslPoliciesListAvailableFeaturesResponse
 type SslPoliciesScopedList = src.SslPoliciesScopedList
 
-// SslPoliciesServer is the server API for SslPolicies service.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type SslPoliciesServer = src.SslPoliciesServer
-
-// Represents an SSL Policy resource. Use SSL policies to control the SSL
-// features, such as versions and cipher suites, offered by an HTTPS or SSL
-// Proxy load balancer. For more information, read SSL Policy Concepts.
+// Represents an SSL Policy resource. Use SSL policies to control SSL
+// features, such as versions and cipher suites, that are offered by
+// Application Load Balancers and proxy Network Load Balancers. For more
+// information, read SSL policies overview.
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type SslPolicy = src.SslPolicy
@@ -10377,6 +10999,18 @@ type SslPolicy_MinTlsVersion = src.SslPolicy_MinTlsVersion
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type SslPolicy_Profile = src.SslPolicy_Profile
+
+// A request message for Disks.StartAsyncReplication. See the method
+// description for details.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type StartAsyncReplicationDiskRequest = src.StartAsyncReplicationDiskRequest
+
+// A request message for RegionDisks.StartAsyncReplication. See the method
+// description for details.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type StartAsyncReplicationRegionDiskRequest = src.StartAsyncReplicationRegionDiskRequest
 
 // A request message for Instances.Start. See the method description for
 // details.
@@ -10405,12 +11039,108 @@ type StatefulPolicyPreservedStateDiskDevice = src.StatefulPolicyPreservedStateDi
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type StatefulPolicyPreservedStateDiskDevice_AutoDelete = src.StatefulPolicyPreservedStateDiskDevice_AutoDelete
+type StatefulPolicyPreservedStateNetworkIp = src.StatefulPolicyPreservedStateNetworkIp
+
+// These stateful IPs will never be released during autohealing, update or VM
+// instance recreate operations. This flag is used to configure if the IP
+// reservation should be deleted after it is no longer used by the group, e.g.
+// when the given instance or the whole group is deleted.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type StatefulPolicyPreservedStateNetworkIp_AutoDelete = src.StatefulPolicyPreservedStateNetworkIp_AutoDelete
+
+// The `Status` type defines a logical error model that is suitable for
+// different programming environments, including REST APIs and RPC APIs. It is
+// used by [gRPC](https://github.com/grpc). Each `Status` message contains
+// three pieces of data: error code, error message, and error details. You can
+// find out more about this error model and how to work with it in the [API
+// Design Guide](https://cloud.google.com/apis/design/errors).
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type Status = src.Status
+
+// A request message for Disks.StopAsyncReplication. See the method
+// description for details.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type StopAsyncReplicationDiskRequest = src.StopAsyncReplicationDiskRequest
+
+// A request message for RegionDisks.StopAsyncReplication. See the method
+// description for details.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type StopAsyncReplicationRegionDiskRequest = src.StopAsyncReplicationRegionDiskRequest
+
+// A request message for Disks.StopGroupAsyncReplication. See the method
+// description for details.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type StopGroupAsyncReplicationDiskRequest = src.StopGroupAsyncReplicationDiskRequest
+
+// A request message for RegionDisks.StopGroupAsyncReplication. See the method
+// description for details.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type StopGroupAsyncReplicationRegionDiskRequest = src.StopGroupAsyncReplicationRegionDiskRequest
 
 // A request message for Instances.Stop. See the method description for
 // details.
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type StopInstanceRequest = src.StopInstanceRequest
+
+// Represents a zonal storage pool resource.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type StoragePool = src.StoragePool
+type StoragePoolAggregatedList = src.StoragePoolAggregatedList
+type StoragePoolDisk = src.StoragePoolDisk
+
+// [Output Only] The disk status.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type StoragePoolDisk_Status = src.StoragePoolDisk_Status
+
+// A list of StoragePool resources.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type StoragePoolList = src.StoragePoolList
+type StoragePoolListDisks = src.StoragePoolListDisks
+
+// [Output Only] Contains output only fields.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type StoragePoolResourceStatus = src.StoragePoolResourceStatus
+type StoragePoolType = src.StoragePoolType
+type StoragePoolTypeAggregatedList = src.StoragePoolTypeAggregatedList
+
+// Contains a list of storage pool types.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type StoragePoolTypeList = src.StoragePoolTypeList
+type StoragePoolTypesScopedList = src.StoragePoolTypesScopedList
+
+// Provisioning type of the byte capacity of the pool. Additional supported
+// values which may be not listed in the enum directly due to technical
+// reasons: ADVANCED STANDARD UNSPECIFIED
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type StoragePool_CapacityProvisioningType = src.StoragePool_CapacityProvisioningType
+
+// Provisioning type of the performance-related parameters of the pool, such
+// as throughput and IOPS. Additional supported values which may be not listed
+// in the enum directly due to technical reasons: ADVANCED STANDARD UNSPECIFIED
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type StoragePool_PerformanceProvisioningType = src.StoragePool_PerformanceProvisioningType
+
+// [Output Only] The status of storage pool creation. - CREATING: Storage pool
+// is provisioning. storagePool. - FAILED: Storage pool creation failed. -
+// READY: Storage pool is ready for use. - DELETING: Storage pool is deleting.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type StoragePool_State = src.StoragePool_State
+type StoragePoolsScopedList = src.StoragePoolsScopedList
 
 // Represents a Subnetwork resource. A subnetwork (also known as a subnet) is
 // a logical partition of a Virtual Private Cloud network with one primary IP
@@ -10464,22 +11194,26 @@ type Subnetwork_Ipv6AccessType = src.Subnetwork_Ipv6AccessType
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type Subnetwork_PrivateIpv6GoogleAccess = src.Subnetwork_PrivateIpv6GoogleAccess
 
-// The purpose of the resource. This field can be either PRIVATE_RFC_1918 or
-// INTERNAL_HTTPS_LOAD_BALANCER. A subnetwork with purpose set to
-// INTERNAL_HTTPS_LOAD_BALANCER is a user-created subnetwork that is reserved
-// for Internal HTTP(S) Load Balancing. If unspecified, the purpose defaults to
-// PRIVATE_RFC_1918. The enableFlowLogs field isn't supported with the purpose
-// field set to INTERNAL_HTTPS_LOAD_BALANCER.
+// The purpose of the resource. This field can be either PRIVATE,
+// GLOBAL_MANAGED_PROXY, REGIONAL_MANAGED_PROXY, PRIVATE_SERVICE_CONNECT, or
+// PRIVATE is the default purpose for user-created subnets or subnets that are
+// automatically created in auto mode networks. Subnets with purpose set to
+// GLOBAL_MANAGED_PROXY or REGIONAL_MANAGED_PROXY are user-created subnetworks
+// that are reserved for Envoy-based load balancers. A subnet with purpose set
+// to PRIVATE_SERVICE_CONNECT is used to publish services using Private Service
+// Connect. If unspecified, the subnet purpose defaults to PRIVATE. The
+// enableFlowLogs field isn't supported if the subnet purpose field is set to
+// GLOBAL_MANAGED_PROXY or REGIONAL_MANAGED_PROXY.
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type Subnetwork_Purpose = src.Subnetwork_Purpose
 
-// The role of subnetwork. Currently, this field is only used when purpose =
-// INTERNAL_HTTPS_LOAD_BALANCER. The value can be set to ACTIVE or BACKUP. An
-// ACTIVE subnetwork is one that is currently being used for Internal HTTP(S)
-// Load Balancing. A BACKUP subnetwork is one that is ready to be promoted to
-// ACTIVE or is currently draining. This field can be updated with a patch
-// request.
+// The role of subnetwork. Currently, this field is only used when purpose is
+// set to GLOBAL_MANAGED_PROXY or REGIONAL_MANAGED_PROXY. The value can be set
+// to ACTIVE or BACKUP. An ACTIVE subnetwork is one that is currently being
+// used for Envoy-based load balancers in a region. A BACKUP subnetwork is one
+// that is ready to be promoted to ACTIVE or is currently draining. This field
+// can be updated with a patch request.
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type Subnetwork_Role = src.Subnetwork_Role
@@ -10502,20 +11236,8 @@ type Subnetwork_StackType = src.Subnetwork_StackType
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type Subnetwork_State = src.Subnetwork_State
-
-// SubnetworksClient is the client API for Subnetworks service. For semantics
-// around ctx use and closing/ending streaming RPCs, please refer to
-// https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type SubnetworksClient = src.SubnetworksClient
 type SubnetworksExpandIpCidrRangeRequest = src.SubnetworksExpandIpCidrRangeRequest
 type SubnetworksScopedList = src.SubnetworksScopedList
-
-// SubnetworksServer is the server API for Subnetworks service.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type SubnetworksServer = src.SubnetworksServer
 type SubnetworksSetPrivateIpGoogleAccessRequest = src.SubnetworksSetPrivateIpGoogleAccessRequest
 
 // Subsetting configuration for this BackendService. Currently this is
@@ -10542,7 +11264,7 @@ type TCPHealthCheck = src.TCPHealthCheck
 // Specifies how a port is selected for health checking. Can be one of the
 // following values: USE_FIXED_PORT: Specifies a port number explicitly using
 // the port field in the health check. Supported by backend services for
-// pass-through load balancers and backend services for proxy load balancers.
+// passthrough load balancers and backend services for proxy load balancers.
 // Not supported by target pools. The health check supports all backends
 // supported by the backend service provided the backend can be health checked.
 // For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network
@@ -10550,7 +11272,7 @@ type TCPHealthCheck = src.TCPHealthCheck
 // USE_SERVING_PORT: Provides an indirect method of specifying the health check
 // port by referring to the backend service. Only supported by backend services
 // for proxy load balancers. Not supported by target pools. Not supported by
-// backend services for pass-through load balancers. Supports all backends that
+// backend services for passthrough load balancers. Supports all backends that
 // can be health checked; for example, GCE_VM_IP_PORT network endpoint groups
 // and instance group backends. For GCE_VM_IP_PORT network endpoint group
 // backends, the health check uses the port number specified for each endpoint
@@ -10572,18 +11294,6 @@ type TCPHealthCheck_ProxyHeader = src.TCPHealthCheck_ProxyHeader
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type Tags = src.Tags
 
-// TargetGrpcProxiesClient is the client API for TargetGrpcProxies service.
-// For semantics around ctx use and closing/ending streaming RPCs, please refer
-// to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type TargetGrpcProxiesClient = src.TargetGrpcProxiesClient
-
-// TargetGrpcProxiesServer is the server API for TargetGrpcProxies service.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type TargetGrpcProxiesServer = src.TargetGrpcProxiesServer
-
 // Represents a Target gRPC Proxy resource. A target gRPC proxy is a component
 // of load balancers intended for load balancing gRPC traffic. Only global
 // forwarding rules with load balancing scheme INTERNAL_SELF_MANAGED can
@@ -10593,30 +11303,20 @@ type TargetGrpcProxiesServer = src.TargetGrpcProxiesServer
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type TargetGrpcProxy = src.TargetGrpcProxy
 type TargetGrpcProxyList = src.TargetGrpcProxyList
-
-// TargetHttpProxiesClient is the client API for TargetHttpProxies service.
-// For semantics around ctx use and closing/ending streaming RPCs, please refer
-// to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type TargetHttpProxiesClient = src.TargetHttpProxiesClient
 type TargetHttpProxiesScopedList = src.TargetHttpProxiesScopedList
-
-// TargetHttpProxiesServer is the server API for TargetHttpProxies service.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type TargetHttpProxiesServer = src.TargetHttpProxiesServer
 
 // Represents a Target HTTP Proxy resource. Google Compute Engine has two
 // Target HTTP Proxy resources: *
 // [Global](/compute/docs/reference/rest/v1/targetHttpProxies) *
 // [Regional](/compute/docs/reference/rest/v1/regionTargetHttpProxies) A target
-// HTTP proxy is a component of GCP HTTP load balancers. * targetHttpProxies
-// are used by external HTTP load balancers and Traffic Director. *
-// regionTargetHttpProxies are used by internal HTTP load balancers. Forwarding
-// rules reference a target HTTP proxy, and the target proxy then references a
-// URL map. For more information, read Using Target Proxies and Forwarding rule
-// concepts.
+// HTTP proxy is a component of Google Cloud HTTP load balancers. *
+// targetHttpProxies are used by global external Application Load Balancers,
+// classic Application Load Balancers, cross-region internal Application Load
+// Balancers, and Traffic Director. * regionTargetHttpProxies are used by
+// regional internal Application Load Balancers and regional external
+// Application Load Balancers. Forwarding rules reference a target HTTP proxy,
+// and the target proxy then references a URL map. For more information, read
+// Using Target Proxies and Forwarding rule concepts.
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type TargetHttpProxy = src.TargetHttpProxy
@@ -10626,19 +11326,7 @@ type TargetHttpProxyAggregatedList = src.TargetHttpProxyAggregatedList
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type TargetHttpProxyList = src.TargetHttpProxyList
-
-// TargetHttpsProxiesClient is the client API for TargetHttpsProxies service.
-// For semantics around ctx use and closing/ending streaming RPCs, please refer
-// to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type TargetHttpsProxiesClient = src.TargetHttpsProxiesClient
 type TargetHttpsProxiesScopedList = src.TargetHttpsProxiesScopedList
-
-// TargetHttpsProxiesServer is the server API for TargetHttpsProxies service.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type TargetHttpsProxiesServer = src.TargetHttpsProxiesServer
 type TargetHttpsProxiesSetCertificateMapRequest = src.TargetHttpsProxiesSetCertificateMapRequest
 type TargetHttpsProxiesSetQuicOverrideRequest = src.TargetHttpsProxiesSetQuicOverrideRequest
 
@@ -10653,11 +11341,13 @@ type TargetHttpsProxiesSetSslCertificatesRequest = src.TargetHttpsProxiesSetSslC
 // [Global](/compute/docs/reference/rest/v1/targetHttpsProxies) *
 // [Regional](/compute/docs/reference/rest/v1/regionTargetHttpsProxies) A
 // target HTTPS proxy is a component of GCP HTTPS load balancers. *
-// targetHttpsProxies are used by external HTTPS load balancers. *
-// regionTargetHttpsProxies are used by internal HTTPS load balancers.
-// Forwarding rules reference a target HTTPS proxy, and the target proxy then
-// references a URL map. For more information, read Using Target Proxies and
-// Forwarding rule concepts.
+// targetHttpProxies are used by global external Application Load Balancers,
+// classic Application Load Balancers, cross-region internal Application Load
+// Balancers, and Traffic Director. * regionTargetHttpProxies are used by
+// regional internal Application Load Balancers and regional external
+// Application Load Balancers. Forwarding rules reference a target HTTPS proxy,
+// and the target proxy then references a URL map. For more information, read
+// Using Target Proxies and Forwarding rule concepts.
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type TargetHttpsProxy = src.TargetHttpsProxy
@@ -10679,6 +11369,26 @@ type TargetHttpsProxyList = src.TargetHttpsProxyList
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type TargetHttpsProxy_QuicOverride = src.TargetHttpsProxy_QuicOverride
 
+// Specifies whether TLS 1.3 0-RTT Data ("Early Data") should be accepted for
+// this service. Early Data allows a TLS resumption handshake to include the
+// initial application payload (a HTTP request) alongside the handshake,
+// reducing the effective round trips to "zero". This applies to TLS 1.3
+// connections over TCP (HTTP/2) as well as over UDP (QUIC/h3). This can
+// improve application performance, especially on networks where interruptions
+// may be common, such as on mobile. Requests with Early Data will have the
+// "Early-Data" HTTP header set on the request, with a value of "1", to allow
+// the backend to determine whether Early Data was included. Note: TLS Early
+// Data may allow requests to be replayed, as the data is sent to the backend
+// before the handshake has fully completed. Applications that allow idempotent
+// HTTP methods to make non-idempotent changes, such as a GET request updating
+// a database, should not accept Early Data on those requests, and reject
+// requests with the "Early-Data: 1" HTTP header by returning a HTTP 425 (Too
+// Early) status code, in order to remain RFC compliant. The default value is
+// DISABLED.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type TargetHttpsProxy_TlsEarlyData = src.TargetHttpsProxy_TlsEarlyData
+
 // Represents a Target Instance resource. You can use a target instance to
 // handle traffic for one or more forwarding rules, which is ideal for
 // forwarding protocol traffic that is managed by a single source. For example,
@@ -10699,24 +11409,12 @@ type TargetInstanceList = src.TargetInstanceList
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type TargetInstance_NatPolicy = src.TargetInstance_NatPolicy
-
-// TargetInstancesClient is the client API for TargetInstances service. For
-// semantics around ctx use and closing/ending streaming RPCs, please refer to
-// https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type TargetInstancesClient = src.TargetInstancesClient
 type TargetInstancesScopedList = src.TargetInstancesScopedList
 
-// TargetInstancesServer is the server API for TargetInstances service.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type TargetInstancesServer = src.TargetInstancesServer
-
-// Represents a Target Pool resource. Target pools are used for network
-// TCP/UDP load balancing. A target pool references member instances, an
-// associated legacy HttpHealthCheck resource, and, optionally, a backup target
-// pool. For more information, read Using target pools.
+// Represents a Target Pool resource. Target pools are used with external
+// passthrough Network Load Balancers. A target pool references member
+// instances, an associated legacy HttpHealthCheck resource, and, optionally, a
+// backup target pool. For more information, read Using target pools.
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type TargetPool = src.TargetPool
@@ -10739,34 +11437,10 @@ type TargetPoolList = src.TargetPoolList
 type TargetPool_SessionAffinity = src.TargetPool_SessionAffinity
 type TargetPoolsAddHealthCheckRequest = src.TargetPoolsAddHealthCheckRequest
 type TargetPoolsAddInstanceRequest = src.TargetPoolsAddInstanceRequest
-
-// TargetPoolsClient is the client API for TargetPools service. For semantics
-// around ctx use and closing/ending streaming RPCs, please refer to
-// https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type TargetPoolsClient = src.TargetPoolsClient
 type TargetPoolsRemoveHealthCheckRequest = src.TargetPoolsRemoveHealthCheckRequest
 type TargetPoolsRemoveInstanceRequest = src.TargetPoolsRemoveInstanceRequest
 type TargetPoolsScopedList = src.TargetPoolsScopedList
-
-// TargetPoolsServer is the server API for TargetPools service.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type TargetPoolsServer = src.TargetPoolsServer
 type TargetReference = src.TargetReference
-
-// TargetSslProxiesClient is the client API for TargetSslProxies service. For
-// semantics around ctx use and closing/ending streaming RPCs, please refer to
-// https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type TargetSslProxiesClient = src.TargetSslProxiesClient
-
-// TargetSslProxiesServer is the server API for TargetSslProxies service.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type TargetSslProxiesServer = src.TargetSslProxiesServer
 type TargetSslProxiesSetBackendServiceRequest = src.TargetSslProxiesSetBackendServiceRequest
 type TargetSslProxiesSetCertificateMapRequest = src.TargetSslProxiesSetCertificateMapRequest
 type TargetSslProxiesSetProxyHeaderRequest = src.TargetSslProxiesSetProxyHeaderRequest
@@ -10779,9 +11453,9 @@ type TargetSslProxiesSetProxyHeaderRequest_ProxyHeader = src.TargetSslProxiesSet
 type TargetSslProxiesSetSslCertificatesRequest = src.TargetSslProxiesSetSslCertificatesRequest
 
 // Represents a Target SSL Proxy resource. A target SSL proxy is a component
-// of a SSL Proxy load balancer. Global forwarding rules reference a target SSL
-// proxy, and the target proxy then references an external backend service. For
-// more information, read Using Target Proxies.
+// of a Proxy Network Load Balancer. The forwarding rule references the target
+// SSL proxy, and the target proxy then references a backend service. For more
+// information, read Proxy Network Load Balancer overview.
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type TargetSslProxy = src.TargetSslProxy
@@ -10796,19 +11470,7 @@ type TargetSslProxyList = src.TargetSslProxyList
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type TargetSslProxy_ProxyHeader = src.TargetSslProxy_ProxyHeader
-
-// TargetTcpProxiesClient is the client API for TargetTcpProxies service. For
-// semantics around ctx use and closing/ending streaming RPCs, please refer to
-// https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type TargetTcpProxiesClient = src.TargetTcpProxiesClient
 type TargetTcpProxiesScopedList = src.TargetTcpProxiesScopedList
-
-// TargetTcpProxiesServer is the server API for TargetTcpProxies service.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type TargetTcpProxiesServer = src.TargetTcpProxiesServer
 type TargetTcpProxiesSetBackendServiceRequest = src.TargetTcpProxiesSetBackendServiceRequest
 type TargetTcpProxiesSetProxyHeaderRequest = src.TargetTcpProxiesSetProxyHeaderRequest
 
@@ -10819,9 +11481,9 @@ type TargetTcpProxiesSetProxyHeaderRequest = src.TargetTcpProxiesSetProxyHeaderR
 type TargetTcpProxiesSetProxyHeaderRequest_ProxyHeader = src.TargetTcpProxiesSetProxyHeaderRequest_ProxyHeader
 
 // Represents a Target TCP Proxy resource. A target TCP proxy is a component
-// of a TCP Proxy load balancer. Global forwarding rules reference target TCP
-// proxy, and the target proxy then references an external backend service. For
-// more information, read TCP Proxy Load Balancing overview.
+// of a Proxy Network Load Balancer. The forwarding rule references the target
+// TCP proxy, and the target proxy then references a backend service. For more
+// information, read Proxy Network Load Balancer overview.
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type TargetTcpProxy = src.TargetTcpProxy
@@ -10856,20 +11518,20 @@ type TargetVpnGatewayList = src.TargetVpnGatewayList
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type TargetVpnGateway_Status = src.TargetVpnGateway_Status
-
-// TargetVpnGatewaysClient is the client API for TargetVpnGateways service.
-// For semantics around ctx use and closing/ending streaming RPCs, please refer
-// to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type TargetVpnGatewaysClient = src.TargetVpnGatewaysClient
 type TargetVpnGatewaysScopedList = src.TargetVpnGatewaysScopedList
+type TestFailure = src.TestFailure
 
-// TargetVpnGatewaysServer is the server API for TargetVpnGateways service.
+// A request message for BackendBuckets.TestIamPermissions. See the method
+// description for details.
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type TargetVpnGatewaysServer = src.TargetVpnGatewaysServer
-type TestFailure = src.TestFailure
+type TestIamPermissionsBackendBucketRequest = src.TestIamPermissionsBackendBucketRequest
+
+// A request message for BackendServices.TestIamPermissions. See the method
+// description for details.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type TestIamPermissionsBackendServiceRequest = src.TestIamPermissionsBackendServiceRequest
 
 // A request message for Disks.TestIamPermissions. See the method description
 // for details.
@@ -10907,6 +11569,12 @@ type TestIamPermissionsInstanceRequest = src.TestIamPermissionsInstanceRequest
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type TestIamPermissionsInstanceTemplateRequest = src.TestIamPermissionsInstanceTemplateRequest
 
+// A request message for InstantSnapshots.TestIamPermissions. See the method
+// description for details.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type TestIamPermissionsInstantSnapshotRequest = src.TestIamPermissionsInstantSnapshotRequest
+
 // A request message for LicenseCodes.TestIamPermissions. See the method
 // description for details.
 //
@@ -10924,6 +11592,12 @@ type TestIamPermissionsLicenseRequest = src.TestIamPermissionsLicenseRequest
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type TestIamPermissionsMachineImageRequest = src.TestIamPermissionsMachineImageRequest
+
+// A request message for NetworkAttachments.TestIamPermissions. See the method
+// description for details.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type TestIamPermissionsNetworkAttachmentRequest = src.TestIamPermissionsNetworkAttachmentRequest
 
 // A request message for NetworkEndpointGroups.TestIamPermissions. See the
 // method description for details.
@@ -10955,11 +11629,23 @@ type TestIamPermissionsNodeTemplateRequest = src.TestIamPermissionsNodeTemplateR
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type TestIamPermissionsPacketMirroringRequest = src.TestIamPermissionsPacketMirroringRequest
 
+// A request message for RegionBackendServices.TestIamPermissions. See the
+// method description for details.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type TestIamPermissionsRegionBackendServiceRequest = src.TestIamPermissionsRegionBackendServiceRequest
+
 // A request message for RegionDisks.TestIamPermissions. See the method
 // description for details.
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type TestIamPermissionsRegionDiskRequest = src.TestIamPermissionsRegionDiskRequest
+
+// A request message for RegionInstantSnapshots.TestIamPermissions. See the
+// method description for details.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type TestIamPermissionsRegionInstantSnapshotRequest = src.TestIamPermissionsRegionInstantSnapshotRequest
 
 // A request message for RegionNetworkFirewallPolicies.TestIamPermissions. See
 // the method description for details.
@@ -10991,6 +11677,12 @@ type TestIamPermissionsServiceAttachmentRequest = src.TestIamPermissionsServiceA
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type TestIamPermissionsSnapshotRequest = src.TestIamPermissionsSnapshotRequest
 
+// A request message for StoragePools.TestIamPermissions. See the method
+// description for details.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type TestIamPermissionsStoragePoolRequest = src.TestIamPermissionsStoragePoolRequest
+
 // A request message for Subnetworks.TestIamPermissions. See the method
 // description for details.
 //
@@ -11006,527 +11698,16 @@ type TestPermissionsRequest = src.TestPermissionsRequest
 type TestPermissionsResponse = src.TestPermissionsResponse
 type Uint128 = src.Uint128
 
-// UnimplementedAcceleratorTypesServer can be embedded to have forward
-// compatible implementations.
+// Upcoming Maintenance notification information.
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type UnimplementedAcceleratorTypesServer = src.UnimplementedAcceleratorTypesServer
+type UpcomingMaintenance = src.UpcomingMaintenance
+type UpcomingMaintenance_MaintenanceStatus = src.UpcomingMaintenance_MaintenanceStatus
 
-// UnimplementedAddressesServer can be embedded to have forward compatible
-// implementations.
+// Defines the type of maintenance.
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type UnimplementedAddressesServer = src.UnimplementedAddressesServer
-
-// UnimplementedAutoscalersServer can be embedded to have forward compatible
-// implementations.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type UnimplementedAutoscalersServer = src.UnimplementedAutoscalersServer
-
-// UnimplementedBackendBucketsServer can be embedded to have forward
-// compatible implementations.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type UnimplementedBackendBucketsServer = src.UnimplementedBackendBucketsServer
-
-// UnimplementedBackendServicesServer can be embedded to have forward
-// compatible implementations.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type UnimplementedBackendServicesServer = src.UnimplementedBackendServicesServer
-
-// UnimplementedDiskTypesServer can be embedded to have forward compatible
-// implementations.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type UnimplementedDiskTypesServer = src.UnimplementedDiskTypesServer
-
-// UnimplementedDisksServer can be embedded to have forward compatible
-// implementations.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type UnimplementedDisksServer = src.UnimplementedDisksServer
-
-// UnimplementedExternalVpnGatewaysServer can be embedded to have forward
-// compatible implementations.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type UnimplementedExternalVpnGatewaysServer = src.UnimplementedExternalVpnGatewaysServer
-
-// UnimplementedFirewallPoliciesServer can be embedded to have forward
-// compatible implementations.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type UnimplementedFirewallPoliciesServer = src.UnimplementedFirewallPoliciesServer
-
-// UnimplementedFirewallsServer can be embedded to have forward compatible
-// implementations.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type UnimplementedFirewallsServer = src.UnimplementedFirewallsServer
-
-// UnimplementedForwardingRulesServer can be embedded to have forward
-// compatible implementations.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type UnimplementedForwardingRulesServer = src.UnimplementedForwardingRulesServer
-
-// UnimplementedGlobalAddressesServer can be embedded to have forward
-// compatible implementations.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type UnimplementedGlobalAddressesServer = src.UnimplementedGlobalAddressesServer
-
-// UnimplementedGlobalForwardingRulesServer can be embedded to have forward
-// compatible implementations.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type UnimplementedGlobalForwardingRulesServer = src.UnimplementedGlobalForwardingRulesServer
-
-// UnimplementedGlobalNetworkEndpointGroupsServer can be embedded to have
-// forward compatible implementations.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type UnimplementedGlobalNetworkEndpointGroupsServer = src.UnimplementedGlobalNetworkEndpointGroupsServer
-
-// UnimplementedGlobalOperationsServer can be embedded to have forward
-// compatible implementations.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type UnimplementedGlobalOperationsServer = src.UnimplementedGlobalOperationsServer
-
-// UnimplementedGlobalOrganizationOperationsServer can be embedded to have
-// forward compatible implementations.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type UnimplementedGlobalOrganizationOperationsServer = src.UnimplementedGlobalOrganizationOperationsServer
-
-// UnimplementedGlobalPublicDelegatedPrefixesServer can be embedded to have
-// forward compatible implementations.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type UnimplementedGlobalPublicDelegatedPrefixesServer = src.UnimplementedGlobalPublicDelegatedPrefixesServer
-
-// UnimplementedHealthChecksServer can be embedded to have forward compatible
-// implementations.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type UnimplementedHealthChecksServer = src.UnimplementedHealthChecksServer
-
-// UnimplementedImageFamilyViewsServer can be embedded to have forward
-// compatible implementations.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type UnimplementedImageFamilyViewsServer = src.UnimplementedImageFamilyViewsServer
-
-// UnimplementedImagesServer can be embedded to have forward compatible
-// implementations.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type UnimplementedImagesServer = src.UnimplementedImagesServer
-
-// UnimplementedInstanceGroupManagersServer can be embedded to have forward
-// compatible implementations.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type UnimplementedInstanceGroupManagersServer = src.UnimplementedInstanceGroupManagersServer
-
-// UnimplementedInstanceGroupsServer can be embedded to have forward
-// compatible implementations.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type UnimplementedInstanceGroupsServer = src.UnimplementedInstanceGroupsServer
-
-// UnimplementedInstanceTemplatesServer can be embedded to have forward
-// compatible implementations.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type UnimplementedInstanceTemplatesServer = src.UnimplementedInstanceTemplatesServer
-
-// UnimplementedInstancesServer can be embedded to have forward compatible
-// implementations.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type UnimplementedInstancesServer = src.UnimplementedInstancesServer
-
-// UnimplementedInterconnectAttachmentsServer can be embedded to have forward
-// compatible implementations.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type UnimplementedInterconnectAttachmentsServer = src.UnimplementedInterconnectAttachmentsServer
-
-// UnimplementedInterconnectLocationsServer can be embedded to have forward
-// compatible implementations.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type UnimplementedInterconnectLocationsServer = src.UnimplementedInterconnectLocationsServer
-
-// UnimplementedInterconnectsServer can be embedded to have forward compatible
-// implementations.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type UnimplementedInterconnectsServer = src.UnimplementedInterconnectsServer
-
-// UnimplementedLicenseCodesServer can be embedded to have forward compatible
-// implementations.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type UnimplementedLicenseCodesServer = src.UnimplementedLicenseCodesServer
-
-// UnimplementedLicensesServer can be embedded to have forward compatible
-// implementations.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type UnimplementedLicensesServer = src.UnimplementedLicensesServer
-
-// UnimplementedMachineImagesServer can be embedded to have forward compatible
-// implementations.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type UnimplementedMachineImagesServer = src.UnimplementedMachineImagesServer
-
-// UnimplementedMachineTypesServer can be embedded to have forward compatible
-// implementations.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type UnimplementedMachineTypesServer = src.UnimplementedMachineTypesServer
-
-// UnimplementedNetworkEdgeSecurityServicesServer can be embedded to have
-// forward compatible implementations.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type UnimplementedNetworkEdgeSecurityServicesServer = src.UnimplementedNetworkEdgeSecurityServicesServer
-
-// UnimplementedNetworkEndpointGroupsServer can be embedded to have forward
-// compatible implementations.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type UnimplementedNetworkEndpointGroupsServer = src.UnimplementedNetworkEndpointGroupsServer
-
-// UnimplementedNetworkFirewallPoliciesServer can be embedded to have forward
-// compatible implementations.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type UnimplementedNetworkFirewallPoliciesServer = src.UnimplementedNetworkFirewallPoliciesServer
-
-// UnimplementedNetworksServer can be embedded to have forward compatible
-// implementations.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type UnimplementedNetworksServer = src.UnimplementedNetworksServer
-
-// UnimplementedNodeGroupsServer can be embedded to have forward compatible
-// implementations.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type UnimplementedNodeGroupsServer = src.UnimplementedNodeGroupsServer
-
-// UnimplementedNodeTemplatesServer can be embedded to have forward compatible
-// implementations.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type UnimplementedNodeTemplatesServer = src.UnimplementedNodeTemplatesServer
-
-// UnimplementedNodeTypesServer can be embedded to have forward compatible
-// implementations.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type UnimplementedNodeTypesServer = src.UnimplementedNodeTypesServer
-
-// UnimplementedPacketMirroringsServer can be embedded to have forward
-// compatible implementations.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type UnimplementedPacketMirroringsServer = src.UnimplementedPacketMirroringsServer
-
-// UnimplementedProjectsServer can be embedded to have forward compatible
-// implementations.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type UnimplementedProjectsServer = src.UnimplementedProjectsServer
-
-// UnimplementedPublicAdvertisedPrefixesServer can be embedded to have forward
-// compatible implementations.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type UnimplementedPublicAdvertisedPrefixesServer = src.UnimplementedPublicAdvertisedPrefixesServer
-
-// UnimplementedPublicDelegatedPrefixesServer can be embedded to have forward
-// compatible implementations.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type UnimplementedPublicDelegatedPrefixesServer = src.UnimplementedPublicDelegatedPrefixesServer
-
-// UnimplementedRegionAutoscalersServer can be embedded to have forward
-// compatible implementations.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type UnimplementedRegionAutoscalersServer = src.UnimplementedRegionAutoscalersServer
-
-// UnimplementedRegionBackendServicesServer can be embedded to have forward
-// compatible implementations.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type UnimplementedRegionBackendServicesServer = src.UnimplementedRegionBackendServicesServer
-
-// UnimplementedRegionCommitmentsServer can be embedded to have forward
-// compatible implementations.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type UnimplementedRegionCommitmentsServer = src.UnimplementedRegionCommitmentsServer
-
-// UnimplementedRegionDiskTypesServer can be embedded to have forward
-// compatible implementations.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type UnimplementedRegionDiskTypesServer = src.UnimplementedRegionDiskTypesServer
-
-// UnimplementedRegionDisksServer can be embedded to have forward compatible
-// implementations.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type UnimplementedRegionDisksServer = src.UnimplementedRegionDisksServer
-
-// UnimplementedRegionHealthCheckServicesServer can be embedded to have
-// forward compatible implementations.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type UnimplementedRegionHealthCheckServicesServer = src.UnimplementedRegionHealthCheckServicesServer
-
-// UnimplementedRegionHealthChecksServer can be embedded to have forward
-// compatible implementations.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type UnimplementedRegionHealthChecksServer = src.UnimplementedRegionHealthChecksServer
-
-// UnimplementedRegionInstanceGroupManagersServer can be embedded to have
-// forward compatible implementations.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type UnimplementedRegionInstanceGroupManagersServer = src.UnimplementedRegionInstanceGroupManagersServer
-
-// UnimplementedRegionInstanceGroupsServer can be embedded to have forward
-// compatible implementations.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type UnimplementedRegionInstanceGroupsServer = src.UnimplementedRegionInstanceGroupsServer
-
-// UnimplementedRegionInstancesServer can be embedded to have forward
-// compatible implementations.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type UnimplementedRegionInstancesServer = src.UnimplementedRegionInstancesServer
-
-// UnimplementedRegionNetworkEndpointGroupsServer can be embedded to have
-// forward compatible implementations.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type UnimplementedRegionNetworkEndpointGroupsServer = src.UnimplementedRegionNetworkEndpointGroupsServer
-
-// UnimplementedRegionNetworkFirewallPoliciesServer can be embedded to have
-// forward compatible implementations.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type UnimplementedRegionNetworkFirewallPoliciesServer = src.UnimplementedRegionNetworkFirewallPoliciesServer
-
-// UnimplementedRegionNotificationEndpointsServer can be embedded to have
-// forward compatible implementations.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type UnimplementedRegionNotificationEndpointsServer = src.UnimplementedRegionNotificationEndpointsServer
-
-// UnimplementedRegionOperationsServer can be embedded to have forward
-// compatible implementations.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type UnimplementedRegionOperationsServer = src.UnimplementedRegionOperationsServer
-
-// UnimplementedRegionSecurityPoliciesServer can be embedded to have forward
-// compatible implementations.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type UnimplementedRegionSecurityPoliciesServer = src.UnimplementedRegionSecurityPoliciesServer
-
-// UnimplementedRegionSslCertificatesServer can be embedded to have forward
-// compatible implementations.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type UnimplementedRegionSslCertificatesServer = src.UnimplementedRegionSslCertificatesServer
-
-// UnimplementedRegionSslPoliciesServer can be embedded to have forward
-// compatible implementations.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type UnimplementedRegionSslPoliciesServer = src.UnimplementedRegionSslPoliciesServer
-
-// UnimplementedRegionTargetHttpProxiesServer can be embedded to have forward
-// compatible implementations.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type UnimplementedRegionTargetHttpProxiesServer = src.UnimplementedRegionTargetHttpProxiesServer
-
-// UnimplementedRegionTargetHttpsProxiesServer can be embedded to have forward
-// compatible implementations.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type UnimplementedRegionTargetHttpsProxiesServer = src.UnimplementedRegionTargetHttpsProxiesServer
-
-// UnimplementedRegionTargetTcpProxiesServer can be embedded to have forward
-// compatible implementations.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type UnimplementedRegionTargetTcpProxiesServer = src.UnimplementedRegionTargetTcpProxiesServer
-
-// UnimplementedRegionUrlMapsServer can be embedded to have forward compatible
-// implementations.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type UnimplementedRegionUrlMapsServer = src.UnimplementedRegionUrlMapsServer
-
-// UnimplementedRegionsServer can be embedded to have forward compatible
-// implementations.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type UnimplementedRegionsServer = src.UnimplementedRegionsServer
-
-// UnimplementedReservationsServer can be embedded to have forward compatible
-// implementations.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type UnimplementedReservationsServer = src.UnimplementedReservationsServer
-
-// UnimplementedResourcePoliciesServer can be embedded to have forward
-// compatible implementations.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type UnimplementedResourcePoliciesServer = src.UnimplementedResourcePoliciesServer
-
-// UnimplementedRoutersServer can be embedded to have forward compatible
-// implementations.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type UnimplementedRoutersServer = src.UnimplementedRoutersServer
-
-// UnimplementedRoutesServer can be embedded to have forward compatible
-// implementations.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type UnimplementedRoutesServer = src.UnimplementedRoutesServer
-
-// UnimplementedSecurityPoliciesServer can be embedded to have forward
-// compatible implementations.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type UnimplementedSecurityPoliciesServer = src.UnimplementedSecurityPoliciesServer
-
-// UnimplementedServiceAttachmentsServer can be embedded to have forward
-// compatible implementations.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type UnimplementedServiceAttachmentsServer = src.UnimplementedServiceAttachmentsServer
-
-// UnimplementedSnapshotsServer can be embedded to have forward compatible
-// implementations.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type UnimplementedSnapshotsServer = src.UnimplementedSnapshotsServer
-
-// UnimplementedSslCertificatesServer can be embedded to have forward
-// compatible implementations.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type UnimplementedSslCertificatesServer = src.UnimplementedSslCertificatesServer
-
-// UnimplementedSslPoliciesServer can be embedded to have forward compatible
-// implementations.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type UnimplementedSslPoliciesServer = src.UnimplementedSslPoliciesServer
-
-// UnimplementedSubnetworksServer can be embedded to have forward compatible
-// implementations.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type UnimplementedSubnetworksServer = src.UnimplementedSubnetworksServer
-
-// UnimplementedTargetGrpcProxiesServer can be embedded to have forward
-// compatible implementations.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type UnimplementedTargetGrpcProxiesServer = src.UnimplementedTargetGrpcProxiesServer
-
-// UnimplementedTargetHttpProxiesServer can be embedded to have forward
-// compatible implementations.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type UnimplementedTargetHttpProxiesServer = src.UnimplementedTargetHttpProxiesServer
-
-// UnimplementedTargetHttpsProxiesServer can be embedded to have forward
-// compatible implementations.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type UnimplementedTargetHttpsProxiesServer = src.UnimplementedTargetHttpsProxiesServer
-
-// UnimplementedTargetInstancesServer can be embedded to have forward
-// compatible implementations.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type UnimplementedTargetInstancesServer = src.UnimplementedTargetInstancesServer
-
-// UnimplementedTargetPoolsServer can be embedded to have forward compatible
-// implementations.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type UnimplementedTargetPoolsServer = src.UnimplementedTargetPoolsServer
-
-// UnimplementedTargetSslProxiesServer can be embedded to have forward
-// compatible implementations.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type UnimplementedTargetSslProxiesServer = src.UnimplementedTargetSslProxiesServer
-
-// UnimplementedTargetTcpProxiesServer can be embedded to have forward
-// compatible implementations.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type UnimplementedTargetTcpProxiesServer = src.UnimplementedTargetTcpProxiesServer
-
-// UnimplementedTargetVpnGatewaysServer can be embedded to have forward
-// compatible implementations.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type UnimplementedTargetVpnGatewaysServer = src.UnimplementedTargetVpnGatewaysServer
-
-// UnimplementedUrlMapsServer can be embedded to have forward compatible
-// implementations.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type UnimplementedUrlMapsServer = src.UnimplementedUrlMapsServer
-
-// UnimplementedVpnGatewaysServer can be embedded to have forward compatible
-// implementations.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type UnimplementedVpnGatewaysServer = src.UnimplementedVpnGatewaysServer
-
-// UnimplementedVpnTunnelsServer can be embedded to have forward compatible
-// implementations.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type UnimplementedVpnTunnelsServer = src.UnimplementedVpnTunnelsServer
-
-// UnimplementedZoneOperationsServer can be embedded to have forward
-// compatible implementations.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type UnimplementedZoneOperationsServer = src.UnimplementedZoneOperationsServer
-
-// UnimplementedZonesServer can be embedded to have forward compatible
-// implementations.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type UnimplementedZonesServer = src.UnimplementedZonesServer
+type UpcomingMaintenance_Type = src.UpcomingMaintenance_Type
 
 // A request message for Instances.UpdateAccessConfig. See the method
 // description for details.
@@ -11551,6 +11732,11 @@ type UpdateBackendBucketRequest = src.UpdateBackendBucketRequest
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type UpdateBackendServiceRequest = src.UpdateBackendServiceRequest
+
+// A request message for Disks.Update. See the method description for details.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type UpdateDiskRequest = src.UpdateDiskRequest
 
 // A request message for Instances.UpdateDisplayDevice. See the method
 // description for details.
@@ -11637,6 +11823,12 @@ type UpdateRegionBackendServiceRequest = src.UpdateRegionBackendServiceRequest
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type UpdateRegionCommitmentRequest = src.UpdateRegionCommitmentRequest
 
+// A request message for RegionDisks.Update. See the method description for
+// details.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type UpdateRegionDiskRequest = src.UpdateRegionDiskRequest
+
 // A request message for RegionHealthChecks.Update. See the method description
 // for details.
 //
@@ -11667,6 +11859,12 @@ type UpdateRouterRequest = src.UpdateRouterRequest
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type UpdateShieldedInstanceConfigInstanceRequest = src.UpdateShieldedInstanceConfigInstanceRequest
 
+// A request message for StoragePools.Update. See the method description for
+// details.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type UpdateStoragePoolRequest = src.UpdateStoragePoolRequest
+
 // A request message for UrlMaps.Update. See the method description for
 // details.
 //
@@ -11677,18 +11875,20 @@ type UpdateUrlMapRequest = src.UpdateUrlMapRequest
 // [Global](/compute/docs/reference/rest/v1/urlMaps) *
 // [Regional](/compute/docs/reference/rest/v1/regionUrlMaps) A URL map resource
 // is a component of certain types of cloud load balancers and Traffic
-// Director: * urlMaps are used by external HTTP(S) load balancers and Traffic
-// Director. * regionUrlMaps are used by internal HTTP(S) load balancers. For a
-// list of supported URL map features by the load balancer type, see the Load
-// balancing features: Routing and traffic management table. For a list of
-// supported URL map features for Traffic Director, see the Traffic Director
-// features: Routing and traffic management table. This resource defines
-// mappings from hostnames and URL paths to either a backend service or a
-// backend bucket. To use the global urlMaps resource, the backend service must
-// have a loadBalancingScheme of either EXTERNAL or INTERNAL_SELF_MANAGED. To
-// use the regionUrlMaps resource, the backend service must have a
-// loadBalancingScheme of INTERNAL_MANAGED. For more information, read URL Map
-// Concepts.
+// Director: * urlMaps are used by global external Application Load Balancers,
+// classic Application Load Balancers, and cross-region internal Application
+// Load Balancers. * regionUrlMaps are used by internal Application Load
+// Balancers, regional external Application Load Balancers and regional
+// internal Application Load Balancers. For a list of supported URL map
+// features by the load balancer type, see the Load balancing features: Routing
+// and traffic management table. For a list of supported URL map features for
+// Traffic Director, see the Traffic Director features: Routing and traffic
+// management table. This resource defines mappings from hostnames and URL
+// paths to either a backend service or a backend bucket. To use the global
+// urlMaps resource, the backend service must have a loadBalancingScheme of
+// either EXTERNAL, EXTERNAL_MANAGED, or INTERNAL_SELF_MANAGED. To use the
+// regionUrlMaps resource, the backend service must have a loadBalancingScheme
+// of INTERNAL_MANAGED. For more information, read URL Map Concepts.
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type UrlMap = src.UrlMap
@@ -11714,19 +11914,7 @@ type UrlMapTestHeader = src.UrlMapTestHeader
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type UrlMapValidationResult = src.UrlMapValidationResult
 type UrlMapsAggregatedList = src.UrlMapsAggregatedList
-
-// UrlMapsClient is the client API for UrlMaps service. For semantics around
-// ctx use and closing/ending streaming RPCs, please refer to
-// https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type UrlMapsClient = src.UrlMapsClient
 type UrlMapsScopedList = src.UrlMapsScopedList
-
-// UrlMapsServer is the server API for UrlMaps service.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type UrlMapsServer = src.UrlMapsServer
 type UrlMapsValidateRequest = src.UrlMapsValidateRequest
 type UrlMapsValidateRequest_LoadBalancingSchemes = src.UrlMapsValidateRequest_LoadBalancingSchemes
 type UrlMapsValidateResponse = src.UrlMapsValidateResponse
@@ -11755,22 +11943,26 @@ type UsableSubnetworkSecondaryRange = src.UsableSubnetworkSecondaryRange
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type UsableSubnetwork_Ipv6AccessType = src.UsableSubnetwork_Ipv6AccessType
 
-// The purpose of the resource. This field can be either PRIVATE_RFC_1918 or
-// INTERNAL_HTTPS_LOAD_BALANCER. A subnetwork with purpose set to
-// INTERNAL_HTTPS_LOAD_BALANCER is a user-created subnetwork that is reserved
-// for Internal HTTP(S) Load Balancing. If unspecified, the purpose defaults to
-// PRIVATE_RFC_1918. The enableFlowLogs field isn't supported with the purpose
-// field set to INTERNAL_HTTPS_LOAD_BALANCER.
+// The purpose of the resource. This field can be either PRIVATE,
+// GLOBAL_MANAGED_PROXY, REGIONAL_MANAGED_PROXY, PRIVATE_SERVICE_CONNECT, or
+// PRIVATE is the default purpose for user-created subnets or subnets that are
+// automatically created in auto mode networks. Subnets with purpose set to
+// GLOBAL_MANAGED_PROXY or REGIONAL_MANAGED_PROXY are user-created subnetworks
+// that are reserved for Envoy-based load balancers. A subnet with purpose set
+// to PRIVATE_SERVICE_CONNECT is used to publish services using Private Service
+// Connect. If unspecified, the subnet purpose defaults to PRIVATE. The
+// enableFlowLogs field isn't supported if the subnet purpose field is set to
+// GLOBAL_MANAGED_PROXY or REGIONAL_MANAGED_PROXY.
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type UsableSubnetwork_Purpose = src.UsableSubnetwork_Purpose
 
-// The role of subnetwork. Currently, this field is only used when purpose =
-// INTERNAL_HTTPS_LOAD_BALANCER. The value can be set to ACTIVE or BACKUP. An
-// ACTIVE subnetwork is one that is currently being used for Internal HTTP(S)
-// Load Balancing. A BACKUP subnetwork is one that is ready to be promoted to
-// ACTIVE or is currently draining. This field can be updated with a patch
-// request.
+// The role of subnetwork. Currently, this field is only used when purpose is
+// set to GLOBAL_MANAGED_PROXY or REGIONAL_MANAGED_PROXY. The value can be set
+// to ACTIVE or BACKUP. An ACTIVE subnetwork is one that is currently being
+// used for Envoy-based load balancers in a region. A BACKUP subnetwork is one
+// that is ready to be promoted to ACTIVE or is currently draining. This field
+// can be updated with a patch request.
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type UsableSubnetwork_Role = src.UsableSubnetwork_Role
@@ -11864,8 +12056,8 @@ type VpnGatewayStatusHighAvailabilityRequirementState_UnsatisfiedReason = src.Vp
 type VpnGatewayStatusTunnel = src.VpnGatewayStatusTunnel
 
 // A VPN connection contains all VPN tunnels connected from this VpnGateway to
-// the same peer gateway. The peer gateway could either be a external VPN
-// gateway or GCP VPN gateway.
+// the same peer gateway. The peer gateway could either be an external VPN
+// gateway or a Google Cloud VPN gateway.
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type VpnGatewayStatusVpnConnection = src.VpnGatewayStatusVpnConnection
@@ -11875,26 +12067,21 @@ type VpnGatewayStatusVpnConnection = src.VpnGatewayStatusVpnConnection
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type VpnGatewayVpnGatewayInterface = src.VpnGatewayVpnGatewayInterface
 
+// The IP family of the gateway IPs for the HA-VPN gateway interfaces. If not
+// specified, IPV4 will be used.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type VpnGateway_GatewayIpVersion = src.VpnGateway_GatewayIpVersion
+
 // The stack type for this VPN gateway to identify the IP protocols that are
-// enabled. Possible values are: IPV4_ONLY, IPV4_IPV6. If not specified,
-// IPV4_ONLY will be used.
+// enabled. Possible values are: IPV4_ONLY, IPV4_IPV6, IPV6_ONLY. If not
+// specified, IPV4_ONLY is used if the gateway IP version is IPV4, or IPV4_IPV6
+// if the gateway IP version is IPV6.
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type VpnGateway_StackType = src.VpnGateway_StackType
-
-// VpnGatewaysClient is the client API for VpnGateways service. For semantics
-// around ctx use and closing/ending streaming RPCs, please refer to
-// https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type VpnGatewaysClient = src.VpnGatewaysClient
 type VpnGatewaysGetStatusResponse = src.VpnGatewaysGetStatusResponse
 type VpnGatewaysScopedList = src.VpnGatewaysScopedList
-
-// VpnGatewaysServer is the server API for VpnGateways service.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type VpnGatewaysServer = src.VpnGatewaysServer
 
 // Represents a Cloud VPN Tunnel resource. For more information about VPN,
 // read the the Cloud VPN Overview.
@@ -11930,19 +12117,7 @@ type VpnTunnelList = src.VpnTunnelList
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type VpnTunnel_Status = src.VpnTunnel_Status
-
-// VpnTunnelsClient is the client API for VpnTunnels service. For semantics
-// around ctx use and closing/ending streaming RPCs, please refer to
-// https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type VpnTunnelsClient = src.VpnTunnelsClient
 type VpnTunnelsScopedList = src.VpnTunnelsScopedList
-
-// VpnTunnelsServer is the server API for VpnTunnels service.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type VpnTunnelsServer = src.VpnTunnelsServer
 type WafExpressionSet = src.WafExpressionSet
 type WafExpressionSetExpression = src.WafExpressionSetExpression
 
@@ -11990,6 +12165,18 @@ type Warnings_Code = src.Warnings_Code
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type WeightedBackendService = src.WeightedBackendService
+
+// A request message for PublicAdvertisedPrefixes.Withdraw. See the method
+// description for details.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type WithdrawPublicAdvertisedPrefixeRequest = src.WithdrawPublicAdvertisedPrefixeRequest
+
+// A request message for PublicDelegatedPrefixes.Withdraw. See the method
+// description for details.
+//
+// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
+type WithdrawPublicDelegatedPrefixeRequest = src.WithdrawPublicDelegatedPrefixeRequest
 type XpnHostList = src.XpnHostList
 
 // Service resource (a.k.a service project) ID.
@@ -12003,7 +12190,7 @@ type XpnResourceId = src.XpnResourceId
 type XpnResourceId_Type = src.XpnResourceId_Type
 
 // Represents a Zone resource. A zone is a deployment area. These deployment
-// areas are subsets of a region. For example the zone us-east1-a is located in
+// areas are subsets of a region. For example the zone us-east1-b is located in
 // the us-east1 region. For more information, read Regions and Zones.
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
@@ -12013,18 +12200,6 @@ type Zone = src.Zone
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type ZoneList = src.ZoneList
-
-// ZoneOperationsClient is the client API for ZoneOperations service. For
-// semantics around ctx use and closing/ending streaming RPCs, please refer to
-// https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type ZoneOperationsClient = src.ZoneOperationsClient
-
-// ZoneOperationsServer is the server API for ZoneOperations service.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type ZoneOperationsServer = src.ZoneOperationsServer
 type ZoneSetLabelsRequest = src.ZoneSetLabelsRequest
 type ZoneSetPolicyRequest = src.ZoneSetPolicyRequest
 
@@ -12032,845 +12207,3 @@ type ZoneSetPolicyRequest = src.ZoneSetPolicyRequest
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type Zone_Status = src.Zone_Status
-
-// ZonesClient is the client API for Zones service. For semantics around ctx
-// use and closing/ending streaming RPCs, please refer to
-// https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type ZonesClient = src.ZonesClient
-
-// ZonesServer is the server API for Zones service.
-//
-// Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
-type ZonesServer = src.ZonesServer
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func NewAcceleratorTypesClient(cc grpc.ClientConnInterface) AcceleratorTypesClient {
-	return src.NewAcceleratorTypesClient(cc)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func NewAddressesClient(cc grpc.ClientConnInterface) AddressesClient {
-	return src.NewAddressesClient(cc)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func NewAutoscalersClient(cc grpc.ClientConnInterface) AutoscalersClient {
-	return src.NewAutoscalersClient(cc)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func NewBackendBucketsClient(cc grpc.ClientConnInterface) BackendBucketsClient {
-	return src.NewBackendBucketsClient(cc)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func NewBackendServicesClient(cc grpc.ClientConnInterface) BackendServicesClient {
-	return src.NewBackendServicesClient(cc)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func NewDiskTypesClient(cc grpc.ClientConnInterface) DiskTypesClient {
-	return src.NewDiskTypesClient(cc)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func NewDisksClient(cc grpc.ClientConnInterface) DisksClient { return src.NewDisksClient(cc) }
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func NewExternalVpnGatewaysClient(cc grpc.ClientConnInterface) ExternalVpnGatewaysClient {
-	return src.NewExternalVpnGatewaysClient(cc)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func NewFirewallPoliciesClient(cc grpc.ClientConnInterface) FirewallPoliciesClient {
-	return src.NewFirewallPoliciesClient(cc)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func NewFirewallsClient(cc grpc.ClientConnInterface) FirewallsClient {
-	return src.NewFirewallsClient(cc)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func NewForwardingRulesClient(cc grpc.ClientConnInterface) ForwardingRulesClient {
-	return src.NewForwardingRulesClient(cc)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func NewGlobalAddressesClient(cc grpc.ClientConnInterface) GlobalAddressesClient {
-	return src.NewGlobalAddressesClient(cc)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func NewGlobalForwardingRulesClient(cc grpc.ClientConnInterface) GlobalForwardingRulesClient {
-	return src.NewGlobalForwardingRulesClient(cc)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func NewGlobalNetworkEndpointGroupsClient(cc grpc.ClientConnInterface) GlobalNetworkEndpointGroupsClient {
-	return src.NewGlobalNetworkEndpointGroupsClient(cc)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func NewGlobalOperationsClient(cc grpc.ClientConnInterface) GlobalOperationsClient {
-	return src.NewGlobalOperationsClient(cc)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func NewGlobalOrganizationOperationsClient(cc grpc.ClientConnInterface) GlobalOrganizationOperationsClient {
-	return src.NewGlobalOrganizationOperationsClient(cc)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func NewGlobalPublicDelegatedPrefixesClient(cc grpc.ClientConnInterface) GlobalPublicDelegatedPrefixesClient {
-	return src.NewGlobalPublicDelegatedPrefixesClient(cc)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func NewHealthChecksClient(cc grpc.ClientConnInterface) HealthChecksClient {
-	return src.NewHealthChecksClient(cc)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func NewImageFamilyViewsClient(cc grpc.ClientConnInterface) ImageFamilyViewsClient {
-	return src.NewImageFamilyViewsClient(cc)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func NewImagesClient(cc grpc.ClientConnInterface) ImagesClient { return src.NewImagesClient(cc) }
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func NewInstanceGroupManagersClient(cc grpc.ClientConnInterface) InstanceGroupManagersClient {
-	return src.NewInstanceGroupManagersClient(cc)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func NewInstanceGroupsClient(cc grpc.ClientConnInterface) InstanceGroupsClient {
-	return src.NewInstanceGroupsClient(cc)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func NewInstanceTemplatesClient(cc grpc.ClientConnInterface) InstanceTemplatesClient {
-	return src.NewInstanceTemplatesClient(cc)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func NewInstancesClient(cc grpc.ClientConnInterface) InstancesClient {
-	return src.NewInstancesClient(cc)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func NewInterconnectAttachmentsClient(cc grpc.ClientConnInterface) InterconnectAttachmentsClient {
-	return src.NewInterconnectAttachmentsClient(cc)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func NewInterconnectLocationsClient(cc grpc.ClientConnInterface) InterconnectLocationsClient {
-	return src.NewInterconnectLocationsClient(cc)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func NewInterconnectsClient(cc grpc.ClientConnInterface) InterconnectsClient {
-	return src.NewInterconnectsClient(cc)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func NewLicenseCodesClient(cc grpc.ClientConnInterface) LicenseCodesClient {
-	return src.NewLicenseCodesClient(cc)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func NewLicensesClient(cc grpc.ClientConnInterface) LicensesClient { return src.NewLicensesClient(cc) }
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func NewMachineImagesClient(cc grpc.ClientConnInterface) MachineImagesClient {
-	return src.NewMachineImagesClient(cc)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func NewMachineTypesClient(cc grpc.ClientConnInterface) MachineTypesClient {
-	return src.NewMachineTypesClient(cc)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func NewNetworkEdgeSecurityServicesClient(cc grpc.ClientConnInterface) NetworkEdgeSecurityServicesClient {
-	return src.NewNetworkEdgeSecurityServicesClient(cc)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func NewNetworkEndpointGroupsClient(cc grpc.ClientConnInterface) NetworkEndpointGroupsClient {
-	return src.NewNetworkEndpointGroupsClient(cc)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func NewNetworkFirewallPoliciesClient(cc grpc.ClientConnInterface) NetworkFirewallPoliciesClient {
-	return src.NewNetworkFirewallPoliciesClient(cc)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func NewNetworksClient(cc grpc.ClientConnInterface) NetworksClient { return src.NewNetworksClient(cc) }
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func NewNodeGroupsClient(cc grpc.ClientConnInterface) NodeGroupsClient {
-	return src.NewNodeGroupsClient(cc)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func NewNodeTemplatesClient(cc grpc.ClientConnInterface) NodeTemplatesClient {
-	return src.NewNodeTemplatesClient(cc)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func NewNodeTypesClient(cc grpc.ClientConnInterface) NodeTypesClient {
-	return src.NewNodeTypesClient(cc)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func NewPacketMirroringsClient(cc grpc.ClientConnInterface) PacketMirroringsClient {
-	return src.NewPacketMirroringsClient(cc)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func NewProjectsClient(cc grpc.ClientConnInterface) ProjectsClient { return src.NewProjectsClient(cc) }
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func NewPublicAdvertisedPrefixesClient(cc grpc.ClientConnInterface) PublicAdvertisedPrefixesClient {
-	return src.NewPublicAdvertisedPrefixesClient(cc)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func NewPublicDelegatedPrefixesClient(cc grpc.ClientConnInterface) PublicDelegatedPrefixesClient {
-	return src.NewPublicDelegatedPrefixesClient(cc)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func NewRegionAutoscalersClient(cc grpc.ClientConnInterface) RegionAutoscalersClient {
-	return src.NewRegionAutoscalersClient(cc)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func NewRegionBackendServicesClient(cc grpc.ClientConnInterface) RegionBackendServicesClient {
-	return src.NewRegionBackendServicesClient(cc)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func NewRegionCommitmentsClient(cc grpc.ClientConnInterface) RegionCommitmentsClient {
-	return src.NewRegionCommitmentsClient(cc)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func NewRegionDiskTypesClient(cc grpc.ClientConnInterface) RegionDiskTypesClient {
-	return src.NewRegionDiskTypesClient(cc)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func NewRegionDisksClient(cc grpc.ClientConnInterface) RegionDisksClient {
-	return src.NewRegionDisksClient(cc)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func NewRegionHealthCheckServicesClient(cc grpc.ClientConnInterface) RegionHealthCheckServicesClient {
-	return src.NewRegionHealthCheckServicesClient(cc)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func NewRegionHealthChecksClient(cc grpc.ClientConnInterface) RegionHealthChecksClient {
-	return src.NewRegionHealthChecksClient(cc)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func NewRegionInstanceGroupManagersClient(cc grpc.ClientConnInterface) RegionInstanceGroupManagersClient {
-	return src.NewRegionInstanceGroupManagersClient(cc)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func NewRegionInstanceGroupsClient(cc grpc.ClientConnInterface) RegionInstanceGroupsClient {
-	return src.NewRegionInstanceGroupsClient(cc)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func NewRegionInstancesClient(cc grpc.ClientConnInterface) RegionInstancesClient {
-	return src.NewRegionInstancesClient(cc)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func NewRegionNetworkEndpointGroupsClient(cc grpc.ClientConnInterface) RegionNetworkEndpointGroupsClient {
-	return src.NewRegionNetworkEndpointGroupsClient(cc)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func NewRegionNetworkFirewallPoliciesClient(cc grpc.ClientConnInterface) RegionNetworkFirewallPoliciesClient {
-	return src.NewRegionNetworkFirewallPoliciesClient(cc)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func NewRegionNotificationEndpointsClient(cc grpc.ClientConnInterface) RegionNotificationEndpointsClient {
-	return src.NewRegionNotificationEndpointsClient(cc)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func NewRegionOperationsClient(cc grpc.ClientConnInterface) RegionOperationsClient {
-	return src.NewRegionOperationsClient(cc)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func NewRegionSecurityPoliciesClient(cc grpc.ClientConnInterface) RegionSecurityPoliciesClient {
-	return src.NewRegionSecurityPoliciesClient(cc)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func NewRegionSslCertificatesClient(cc grpc.ClientConnInterface) RegionSslCertificatesClient {
-	return src.NewRegionSslCertificatesClient(cc)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func NewRegionSslPoliciesClient(cc grpc.ClientConnInterface) RegionSslPoliciesClient {
-	return src.NewRegionSslPoliciesClient(cc)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func NewRegionTargetHttpProxiesClient(cc grpc.ClientConnInterface) RegionTargetHttpProxiesClient {
-	return src.NewRegionTargetHttpProxiesClient(cc)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func NewRegionTargetHttpsProxiesClient(cc grpc.ClientConnInterface) RegionTargetHttpsProxiesClient {
-	return src.NewRegionTargetHttpsProxiesClient(cc)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func NewRegionTargetTcpProxiesClient(cc grpc.ClientConnInterface) RegionTargetTcpProxiesClient {
-	return src.NewRegionTargetTcpProxiesClient(cc)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func NewRegionUrlMapsClient(cc grpc.ClientConnInterface) RegionUrlMapsClient {
-	return src.NewRegionUrlMapsClient(cc)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func NewRegionsClient(cc grpc.ClientConnInterface) RegionsClient { return src.NewRegionsClient(cc) }
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func NewReservationsClient(cc grpc.ClientConnInterface) ReservationsClient {
-	return src.NewReservationsClient(cc)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func NewResourcePoliciesClient(cc grpc.ClientConnInterface) ResourcePoliciesClient {
-	return src.NewResourcePoliciesClient(cc)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func NewRoutersClient(cc grpc.ClientConnInterface) RoutersClient { return src.NewRoutersClient(cc) }
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func NewRoutesClient(cc grpc.ClientConnInterface) RoutesClient { return src.NewRoutesClient(cc) }
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func NewSecurityPoliciesClient(cc grpc.ClientConnInterface) SecurityPoliciesClient {
-	return src.NewSecurityPoliciesClient(cc)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func NewServiceAttachmentsClient(cc grpc.ClientConnInterface) ServiceAttachmentsClient {
-	return src.NewServiceAttachmentsClient(cc)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func NewSnapshotsClient(cc grpc.ClientConnInterface) SnapshotsClient {
-	return src.NewSnapshotsClient(cc)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func NewSslCertificatesClient(cc grpc.ClientConnInterface) SslCertificatesClient {
-	return src.NewSslCertificatesClient(cc)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func NewSslPoliciesClient(cc grpc.ClientConnInterface) SslPoliciesClient {
-	return src.NewSslPoliciesClient(cc)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func NewSubnetworksClient(cc grpc.ClientConnInterface) SubnetworksClient {
-	return src.NewSubnetworksClient(cc)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func NewTargetGrpcProxiesClient(cc grpc.ClientConnInterface) TargetGrpcProxiesClient {
-	return src.NewTargetGrpcProxiesClient(cc)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func NewTargetHttpProxiesClient(cc grpc.ClientConnInterface) TargetHttpProxiesClient {
-	return src.NewTargetHttpProxiesClient(cc)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func NewTargetHttpsProxiesClient(cc grpc.ClientConnInterface) TargetHttpsProxiesClient {
-	return src.NewTargetHttpsProxiesClient(cc)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func NewTargetInstancesClient(cc grpc.ClientConnInterface) TargetInstancesClient {
-	return src.NewTargetInstancesClient(cc)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func NewTargetPoolsClient(cc grpc.ClientConnInterface) TargetPoolsClient {
-	return src.NewTargetPoolsClient(cc)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func NewTargetSslProxiesClient(cc grpc.ClientConnInterface) TargetSslProxiesClient {
-	return src.NewTargetSslProxiesClient(cc)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func NewTargetTcpProxiesClient(cc grpc.ClientConnInterface) TargetTcpProxiesClient {
-	return src.NewTargetTcpProxiesClient(cc)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func NewTargetVpnGatewaysClient(cc grpc.ClientConnInterface) TargetVpnGatewaysClient {
-	return src.NewTargetVpnGatewaysClient(cc)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func NewUrlMapsClient(cc grpc.ClientConnInterface) UrlMapsClient { return src.NewUrlMapsClient(cc) }
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func NewVpnGatewaysClient(cc grpc.ClientConnInterface) VpnGatewaysClient {
-	return src.NewVpnGatewaysClient(cc)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func NewVpnTunnelsClient(cc grpc.ClientConnInterface) VpnTunnelsClient {
-	return src.NewVpnTunnelsClient(cc)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func NewZoneOperationsClient(cc grpc.ClientConnInterface) ZoneOperationsClient {
-	return src.NewZoneOperationsClient(cc)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func NewZonesClient(cc grpc.ClientConnInterface) ZonesClient { return src.NewZonesClient(cc) }
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func RegisterAcceleratorTypesServer(s *grpc.Server, srv AcceleratorTypesServer) {
-	src.RegisterAcceleratorTypesServer(s, srv)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func RegisterAddressesServer(s *grpc.Server, srv AddressesServer) {
-	src.RegisterAddressesServer(s, srv)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func RegisterAutoscalersServer(s *grpc.Server, srv AutoscalersServer) {
-	src.RegisterAutoscalersServer(s, srv)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func RegisterBackendBucketsServer(s *grpc.Server, srv BackendBucketsServer) {
-	src.RegisterBackendBucketsServer(s, srv)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func RegisterBackendServicesServer(s *grpc.Server, srv BackendServicesServer) {
-	src.RegisterBackendServicesServer(s, srv)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func RegisterDiskTypesServer(s *grpc.Server, srv DiskTypesServer) {
-	src.RegisterDiskTypesServer(s, srv)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func RegisterDisksServer(s *grpc.Server, srv DisksServer) { src.RegisterDisksServer(s, srv) }
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func RegisterExternalVpnGatewaysServer(s *grpc.Server, srv ExternalVpnGatewaysServer) {
-	src.RegisterExternalVpnGatewaysServer(s, srv)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func RegisterFirewallPoliciesServer(s *grpc.Server, srv FirewallPoliciesServer) {
-	src.RegisterFirewallPoliciesServer(s, srv)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func RegisterFirewallsServer(s *grpc.Server, srv FirewallsServer) {
-	src.RegisterFirewallsServer(s, srv)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func RegisterForwardingRulesServer(s *grpc.Server, srv ForwardingRulesServer) {
-	src.RegisterForwardingRulesServer(s, srv)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func RegisterGlobalAddressesServer(s *grpc.Server, srv GlobalAddressesServer) {
-	src.RegisterGlobalAddressesServer(s, srv)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func RegisterGlobalForwardingRulesServer(s *grpc.Server, srv GlobalForwardingRulesServer) {
-	src.RegisterGlobalForwardingRulesServer(s, srv)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func RegisterGlobalNetworkEndpointGroupsServer(s *grpc.Server, srv GlobalNetworkEndpointGroupsServer) {
-	src.RegisterGlobalNetworkEndpointGroupsServer(s, srv)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func RegisterGlobalOperationsServer(s *grpc.Server, srv GlobalOperationsServer) {
-	src.RegisterGlobalOperationsServer(s, srv)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func RegisterGlobalOrganizationOperationsServer(s *grpc.Server, srv GlobalOrganizationOperationsServer) {
-	src.RegisterGlobalOrganizationOperationsServer(s, srv)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func RegisterGlobalPublicDelegatedPrefixesServer(s *grpc.Server, srv GlobalPublicDelegatedPrefixesServer) {
-	src.RegisterGlobalPublicDelegatedPrefixesServer(s, srv)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func RegisterHealthChecksServer(s *grpc.Server, srv HealthChecksServer) {
-	src.RegisterHealthChecksServer(s, srv)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func RegisterImageFamilyViewsServer(s *grpc.Server, srv ImageFamilyViewsServer) {
-	src.RegisterImageFamilyViewsServer(s, srv)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func RegisterImagesServer(s *grpc.Server, srv ImagesServer) { src.RegisterImagesServer(s, srv) }
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func RegisterInstanceGroupManagersServer(s *grpc.Server, srv InstanceGroupManagersServer) {
-	src.RegisterInstanceGroupManagersServer(s, srv)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func RegisterInstanceGroupsServer(s *grpc.Server, srv InstanceGroupsServer) {
-	src.RegisterInstanceGroupsServer(s, srv)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func RegisterInstanceTemplatesServer(s *grpc.Server, srv InstanceTemplatesServer) {
-	src.RegisterInstanceTemplatesServer(s, srv)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func RegisterInstancesServer(s *grpc.Server, srv InstancesServer) {
-	src.RegisterInstancesServer(s, srv)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func RegisterInterconnectAttachmentsServer(s *grpc.Server, srv InterconnectAttachmentsServer) {
-	src.RegisterInterconnectAttachmentsServer(s, srv)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func RegisterInterconnectLocationsServer(s *grpc.Server, srv InterconnectLocationsServer) {
-	src.RegisterInterconnectLocationsServer(s, srv)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func RegisterInterconnectsServer(s *grpc.Server, srv InterconnectsServer) {
-	src.RegisterInterconnectsServer(s, srv)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func RegisterLicenseCodesServer(s *grpc.Server, srv LicenseCodesServer) {
-	src.RegisterLicenseCodesServer(s, srv)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func RegisterLicensesServer(s *grpc.Server, srv LicensesServer) { src.RegisterLicensesServer(s, srv) }
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func RegisterMachineImagesServer(s *grpc.Server, srv MachineImagesServer) {
-	src.RegisterMachineImagesServer(s, srv)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func RegisterMachineTypesServer(s *grpc.Server, srv MachineTypesServer) {
-	src.RegisterMachineTypesServer(s, srv)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func RegisterNetworkEdgeSecurityServicesServer(s *grpc.Server, srv NetworkEdgeSecurityServicesServer) {
-	src.RegisterNetworkEdgeSecurityServicesServer(s, srv)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func RegisterNetworkEndpointGroupsServer(s *grpc.Server, srv NetworkEndpointGroupsServer) {
-	src.RegisterNetworkEndpointGroupsServer(s, srv)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func RegisterNetworkFirewallPoliciesServer(s *grpc.Server, srv NetworkFirewallPoliciesServer) {
-	src.RegisterNetworkFirewallPoliciesServer(s, srv)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func RegisterNetworksServer(s *grpc.Server, srv NetworksServer) { src.RegisterNetworksServer(s, srv) }
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func RegisterNodeGroupsServer(s *grpc.Server, srv NodeGroupsServer) {
-	src.RegisterNodeGroupsServer(s, srv)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func RegisterNodeTemplatesServer(s *grpc.Server, srv NodeTemplatesServer) {
-	src.RegisterNodeTemplatesServer(s, srv)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func RegisterNodeTypesServer(s *grpc.Server, srv NodeTypesServer) {
-	src.RegisterNodeTypesServer(s, srv)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func RegisterPacketMirroringsServer(s *grpc.Server, srv PacketMirroringsServer) {
-	src.RegisterPacketMirroringsServer(s, srv)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func RegisterProjectsServer(s *grpc.Server, srv ProjectsServer) { src.RegisterProjectsServer(s, srv) }
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func RegisterPublicAdvertisedPrefixesServer(s *grpc.Server, srv PublicAdvertisedPrefixesServer) {
-	src.RegisterPublicAdvertisedPrefixesServer(s, srv)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func RegisterPublicDelegatedPrefixesServer(s *grpc.Server, srv PublicDelegatedPrefixesServer) {
-	src.RegisterPublicDelegatedPrefixesServer(s, srv)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func RegisterRegionAutoscalersServer(s *grpc.Server, srv RegionAutoscalersServer) {
-	src.RegisterRegionAutoscalersServer(s, srv)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func RegisterRegionBackendServicesServer(s *grpc.Server, srv RegionBackendServicesServer) {
-	src.RegisterRegionBackendServicesServer(s, srv)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func RegisterRegionCommitmentsServer(s *grpc.Server, srv RegionCommitmentsServer) {
-	src.RegisterRegionCommitmentsServer(s, srv)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func RegisterRegionDiskTypesServer(s *grpc.Server, srv RegionDiskTypesServer) {
-	src.RegisterRegionDiskTypesServer(s, srv)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func RegisterRegionDisksServer(s *grpc.Server, srv RegionDisksServer) {
-	src.RegisterRegionDisksServer(s, srv)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func RegisterRegionHealthCheckServicesServer(s *grpc.Server, srv RegionHealthCheckServicesServer) {
-	src.RegisterRegionHealthCheckServicesServer(s, srv)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func RegisterRegionHealthChecksServer(s *grpc.Server, srv RegionHealthChecksServer) {
-	src.RegisterRegionHealthChecksServer(s, srv)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func RegisterRegionInstanceGroupManagersServer(s *grpc.Server, srv RegionInstanceGroupManagersServer) {
-	src.RegisterRegionInstanceGroupManagersServer(s, srv)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func RegisterRegionInstanceGroupsServer(s *grpc.Server, srv RegionInstanceGroupsServer) {
-	src.RegisterRegionInstanceGroupsServer(s, srv)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func RegisterRegionInstancesServer(s *grpc.Server, srv RegionInstancesServer) {
-	src.RegisterRegionInstancesServer(s, srv)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func RegisterRegionNetworkEndpointGroupsServer(s *grpc.Server, srv RegionNetworkEndpointGroupsServer) {
-	src.RegisterRegionNetworkEndpointGroupsServer(s, srv)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func RegisterRegionNetworkFirewallPoliciesServer(s *grpc.Server, srv RegionNetworkFirewallPoliciesServer) {
-	src.RegisterRegionNetworkFirewallPoliciesServer(s, srv)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func RegisterRegionNotificationEndpointsServer(s *grpc.Server, srv RegionNotificationEndpointsServer) {
-	src.RegisterRegionNotificationEndpointsServer(s, srv)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func RegisterRegionOperationsServer(s *grpc.Server, srv RegionOperationsServer) {
-	src.RegisterRegionOperationsServer(s, srv)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func RegisterRegionSecurityPoliciesServer(s *grpc.Server, srv RegionSecurityPoliciesServer) {
-	src.RegisterRegionSecurityPoliciesServer(s, srv)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func RegisterRegionSslCertificatesServer(s *grpc.Server, srv RegionSslCertificatesServer) {
-	src.RegisterRegionSslCertificatesServer(s, srv)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func RegisterRegionSslPoliciesServer(s *grpc.Server, srv RegionSslPoliciesServer) {
-	src.RegisterRegionSslPoliciesServer(s, srv)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func RegisterRegionTargetHttpProxiesServer(s *grpc.Server, srv RegionTargetHttpProxiesServer) {
-	src.RegisterRegionTargetHttpProxiesServer(s, srv)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func RegisterRegionTargetHttpsProxiesServer(s *grpc.Server, srv RegionTargetHttpsProxiesServer) {
-	src.RegisterRegionTargetHttpsProxiesServer(s, srv)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func RegisterRegionTargetTcpProxiesServer(s *grpc.Server, srv RegionTargetTcpProxiesServer) {
-	src.RegisterRegionTargetTcpProxiesServer(s, srv)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func RegisterRegionUrlMapsServer(s *grpc.Server, srv RegionUrlMapsServer) {
-	src.RegisterRegionUrlMapsServer(s, srv)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func RegisterRegionsServer(s *grpc.Server, srv RegionsServer) { src.RegisterRegionsServer(s, srv) }
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func RegisterReservationsServer(s *grpc.Server, srv ReservationsServer) {
-	src.RegisterReservationsServer(s, srv)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func RegisterResourcePoliciesServer(s *grpc.Server, srv ResourcePoliciesServer) {
-	src.RegisterResourcePoliciesServer(s, srv)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func RegisterRoutersServer(s *grpc.Server, srv RoutersServer) { src.RegisterRoutersServer(s, srv) }
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func RegisterRoutesServer(s *grpc.Server, srv RoutesServer) { src.RegisterRoutesServer(s, srv) }
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func RegisterSecurityPoliciesServer(s *grpc.Server, srv SecurityPoliciesServer) {
-	src.RegisterSecurityPoliciesServer(s, srv)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func RegisterServiceAttachmentsServer(s *grpc.Server, srv ServiceAttachmentsServer) {
-	src.RegisterServiceAttachmentsServer(s, srv)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func RegisterSnapshotsServer(s *grpc.Server, srv SnapshotsServer) {
-	src.RegisterSnapshotsServer(s, srv)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func RegisterSslCertificatesServer(s *grpc.Server, srv SslCertificatesServer) {
-	src.RegisterSslCertificatesServer(s, srv)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func RegisterSslPoliciesServer(s *grpc.Server, srv SslPoliciesServer) {
-	src.RegisterSslPoliciesServer(s, srv)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func RegisterSubnetworksServer(s *grpc.Server, srv SubnetworksServer) {
-	src.RegisterSubnetworksServer(s, srv)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func RegisterTargetGrpcProxiesServer(s *grpc.Server, srv TargetGrpcProxiesServer) {
-	src.RegisterTargetGrpcProxiesServer(s, srv)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func RegisterTargetHttpProxiesServer(s *grpc.Server, srv TargetHttpProxiesServer) {
-	src.RegisterTargetHttpProxiesServer(s, srv)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func RegisterTargetHttpsProxiesServer(s *grpc.Server, srv TargetHttpsProxiesServer) {
-	src.RegisterTargetHttpsProxiesServer(s, srv)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func RegisterTargetInstancesServer(s *grpc.Server, srv TargetInstancesServer) {
-	src.RegisterTargetInstancesServer(s, srv)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func RegisterTargetPoolsServer(s *grpc.Server, srv TargetPoolsServer) {
-	src.RegisterTargetPoolsServer(s, srv)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func RegisterTargetSslProxiesServer(s *grpc.Server, srv TargetSslProxiesServer) {
-	src.RegisterTargetSslProxiesServer(s, srv)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func RegisterTargetTcpProxiesServer(s *grpc.Server, srv TargetTcpProxiesServer) {
-	src.RegisterTargetTcpProxiesServer(s, srv)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func RegisterTargetVpnGatewaysServer(s *grpc.Server, srv TargetVpnGatewaysServer) {
-	src.RegisterTargetVpnGatewaysServer(s, srv)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func RegisterUrlMapsServer(s *grpc.Server, srv UrlMapsServer) { src.RegisterUrlMapsServer(s, srv) }
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func RegisterVpnGatewaysServer(s *grpc.Server, srv VpnGatewaysServer) {
-	src.RegisterVpnGatewaysServer(s, srv)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func RegisterVpnTunnelsServer(s *grpc.Server, srv VpnTunnelsServer) {
-	src.RegisterVpnTunnelsServer(s, srv)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func RegisterZoneOperationsServer(s *grpc.Server, srv ZoneOperationsServer) {
-	src.RegisterZoneOperationsServer(s, srv)
-}
-
-// Deprecated: Please use funcs in: cloud.google.com/go/compute/apiv1/computepb
-func RegisterZonesServer(s *grpc.Server, srv ZonesServer) { src.RegisterZonesServer(s, srv) }

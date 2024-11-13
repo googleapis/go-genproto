@@ -13,7 +13,7 @@ require (
 	cloud.google.com/go/apigeeregistry v0.9.2
 	cloud.google.com/go/appengine v1.9.2
 	cloud.google.com/go/area120 v0.9.2
-	cloud.google.com/go/artifactregistry v1.15.2
+	cloud.google.com/go/artifactregistry v1.16.0
 	cloud.google.com/go/asset v1.20.3
 	cloud.google.com/go/assuredworkloads v1.12.2
 	cloud.google.com/go/automl v1.14.2
@@ -26,10 +26,10 @@ require (
 	cloud.google.com/go/binaryauthorization v1.9.2
 	cloud.google.com/go/certificatemanager v1.9.2
 	cloud.google.com/go/channel v1.19.1
-	cloud.google.com/go/cloudbuild v1.18.1
+	cloud.google.com/go/cloudbuild v1.19.0
 	cloud.google.com/go/clouddms v1.8.2
 	cloud.google.com/go/cloudtasks v1.13.2
-	cloud.google.com/go/compute v1.28.2
+	cloud.google.com/go/compute v1.28.3
 	cloud.google.com/go/contactcenterinsights v1.15.1
 	cloud.google.com/go/container v1.41.0
 	cloud.google.com/go/containeranalysis v0.13.2
@@ -43,15 +43,15 @@ require (
 	cloud.google.com/go/dataqna v0.9.2
 	cloud.google.com/go/datastore v1.20.0
 	cloud.google.com/go/datastream v1.11.2
-	cloud.google.com/go/deploy v1.23.1
-	cloud.google.com/go/dialogflow v1.58.1
+	cloud.google.com/go/deploy v1.24.0
+	cloud.google.com/go/dialogflow v1.59.0
 	cloud.google.com/go/dlp v1.20.0
 	cloud.google.com/go/documentai v1.35.0
 	cloud.google.com/go/domains v0.10.2
-	cloud.google.com/go/edgecontainer v1.3.2
+	cloud.google.com/go/edgecontainer v1.4.0
 	cloud.google.com/go/errorreporting v0.3.1
 	cloud.google.com/go/essentialcontacts v1.7.2
-	cloud.google.com/go/eventarc v1.14.2
+	cloud.google.com/go/eventarc v1.15.0
 	cloud.google.com/go/filestore v1.9.2
 	cloud.google.com/go/firestore v1.17.0
 	cloud.google.com/go/functions v1.19.2
@@ -89,7 +89,7 @@ require (
 	cloud.google.com/go/privatecatalog v0.10.2
 	cloud.google.com/go/pubsub v1.45.1
 	cloud.google.com/go/pubsublite v1.8.2
-	cloud.google.com/go/recaptchaenterprise/v2 v2.17.3
+	cloud.google.com/go/recaptchaenterprise/v2 v2.18.0
 	cloud.google.com/go/recommendationengine v0.9.2
 	cloud.google.com/go/recommender v1.13.2
 	cloud.google.com/go/redis v1.17.2
@@ -103,11 +103,11 @@ require (
 	cloud.google.com/go/securitycenter v1.35.2
 	cloud.google.com/go/servicedirectory v1.12.2
 	cloud.google.com/go/shell v1.8.2
-	cloud.google.com/go/spanner v1.71.0
+	cloud.google.com/go/spanner v1.72.0
 	cloud.google.com/go/speech v1.25.2
 	cloud.google.com/go/storagetransfer v1.11.2
 	cloud.google.com/go/talent v1.7.2
-	cloud.google.com/go/texttospeech v1.9.0
+	cloud.google.com/go/texttospeech v1.10.0
 	cloud.google.com/go/tpu v1.7.2
 	cloud.google.com/go/trace v1.11.2
 	cloud.google.com/go/translate v1.12.2
@@ -121,8 +121,8 @@ require (
 	cloud.google.com/go/websecurityscanner v1.7.2
 	cloud.google.com/go/workflows v1.13.2
 	github.com/golang/protobuf v1.5.4
-	google.golang.org/genproto/googleapis/api v0.0.0-20241021214115-324edc3d5d38
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20241021214115-324edc3d5d38
+	google.golang.org/genproto/googleapis/api v0.0.0-20241104194629-dd2ea8efbc28
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20241104194629-dd2ea8efbc28
 	google.golang.org/grpc v1.67.1
 	google.golang.org/protobuf v1.35.1
 )
