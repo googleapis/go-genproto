@@ -3,7 +3,7 @@ module google.golang.org/genproto
 go 1.21
 
 require (
-	cloud.google.com/go v0.116.0
+	cloud.google.com/go v0.117.0
 	cloud.google.com/go/accessapproval v1.8.2
 	cloud.google.com/go/accesscontextmanager v1.9.2
 	cloud.google.com/go/aiplatform v1.69.0
@@ -16,9 +16,9 @@ require (
 	cloud.google.com/go/artifactregistry v1.16.0
 	cloud.google.com/go/asset v1.20.3
 	cloud.google.com/go/assuredworkloads v1.12.2
-	cloud.google.com/go/automl v1.14.2
+	cloud.google.com/go/automl v1.14.3
 	cloud.google.com/go/baremetalsolution v1.3.2
-	cloud.google.com/go/batch v1.11.3
+	cloud.google.com/go/batch v1.11.4
 	cloud.google.com/go/beyondcorp v1.1.2
 	cloud.google.com/go/bigquery v1.65.0
 	cloud.google.com/go/bigtable v1.33.0
@@ -26,10 +26,10 @@ require (
 	cloud.google.com/go/binaryauthorization v1.9.2
 	cloud.google.com/go/certificatemanager v1.9.2
 	cloud.google.com/go/channel v1.19.1
-	cloud.google.com/go/cloudbuild v1.19.0
+	cloud.google.com/go/cloudbuild v1.19.1
 	cloud.google.com/go/clouddms v1.8.2
 	cloud.google.com/go/cloudtasks v1.13.2
-	cloud.google.com/go/compute v1.29.0
+	cloud.google.com/go/compute v1.31.0
 	cloud.google.com/go/contactcenterinsights v1.16.0
 	cloud.google.com/go/container v1.42.0
 	cloud.google.com/go/containeranalysis v0.13.2
@@ -44,12 +44,12 @@ require (
 	cloud.google.com/go/datastore v1.20.0
 	cloud.google.com/go/datastream v1.12.0
 	cloud.google.com/go/deploy v1.26.0
-	cloud.google.com/go/dialogflow v1.62.0
+	cloud.google.com/go/dialogflow v1.63.0
 	cloud.google.com/go/dlp v1.20.0
 	cloud.google.com/go/documentai v1.35.0
 	cloud.google.com/go/domains v0.10.2
 	cloud.google.com/go/edgecontainer v1.4.0
-	cloud.google.com/go/errorreporting v0.3.1
+	cloud.google.com/go/errorreporting v0.3.2
 	cloud.google.com/go/essentialcontacts v1.7.2
 	cloud.google.com/go/eventarc v1.15.0
 	cloud.google.com/go/filestore v1.9.2
@@ -70,7 +70,7 @@ require (
 	cloud.google.com/go/logging v1.12.0
 	cloud.google.com/go/longrunning v0.6.3
 	cloud.google.com/go/managedidentities v1.7.2
-	cloud.google.com/go/maps v1.16.0
+	cloud.google.com/go/maps v1.17.0
 	cloud.google.com/go/mediatranslation v0.9.2
 	cloud.google.com/go/memcache v1.11.2
 	cloud.google.com/go/metastore v1.14.2
@@ -80,7 +80,7 @@ require (
 	cloud.google.com/go/networksecurity v0.10.2
 	cloud.google.com/go/notebooks v1.12.2
 	cloud.google.com/go/optimization v1.7.2
-	cloud.google.com/go/orchestration v1.11.1
+	cloud.google.com/go/orchestration v1.11.2
 	cloud.google.com/go/orgpolicy v1.14.1
 	cloud.google.com/go/osconfig v1.14.2
 	cloud.google.com/go/oslogin v1.14.2
@@ -121,14 +121,14 @@ require (
 	cloud.google.com/go/websecurityscanner v1.7.2
 	cloud.google.com/go/workflows v1.13.2
 	github.com/golang/protobuf v1.5.4
-	google.golang.org/genproto/googleapis/api v0.0.0-20241206012308-a4fef0638583
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20241206012308-a4fef0638583
+	google.golang.org/genproto/googleapis/api v0.0.0-20241209162323-e6fa225c2576
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20241209162323-e6fa225c2576
 	google.golang.org/grpc v1.67.1
-	google.golang.org/protobuf v1.35.2
+	google.golang.org/protobuf v1.36.0
 )
 
 require (
-	golang.org/x/net v0.31.0 // indirect
-	golang.org/x/sys v0.27.0 // indirect
-	golang.org/x/text v0.20.0 // indirect
+	golang.org/x/net v0.32.0 // indirect
+	golang.org/x/sys v0.28.0 // indirect
+	golang.org/x/text v0.21.0 // indirect
 )
