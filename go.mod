@@ -30,10 +30,10 @@ require (
 	cloud.google.com/go/clouddms v1.8.2
 	cloud.google.com/go/cloudtasks v1.13.2
 	cloud.google.com/go/compute v1.31.0
-	cloud.google.com/go/contactcenterinsights v1.16.0
+	cloud.google.com/go/contactcenterinsights v1.17.0
 	cloud.google.com/go/container v1.42.0
 	cloud.google.com/go/containeranalysis v0.13.2
-	cloud.google.com/go/datacatalog v1.24.0
+	cloud.google.com/go/datacatalog v1.24.1
 	cloud.google.com/go/dataflow v0.10.2
 	cloud.google.com/go/dataform v0.10.2
 	cloud.google.com/go/datafusion v1.8.2
@@ -44,7 +44,7 @@ require (
 	cloud.google.com/go/datastore v1.20.0
 	cloud.google.com/go/datastream v1.12.0
 	cloud.google.com/go/deploy v1.26.0
-	cloud.google.com/go/dialogflow v1.63.0
+	cloud.google.com/go/dialogflow v1.64.0
 	cloud.google.com/go/dlp v1.20.0
 	cloud.google.com/go/documentai v1.35.0
 	cloud.google.com/go/domains v0.10.2
@@ -64,7 +64,7 @@ require (
 	cloud.google.com/go/iap v1.10.2
 	cloud.google.com/go/ids v1.5.2
 	cloud.google.com/go/iot v1.8.2
-	cloud.google.com/go/kms v1.20.2
+	cloud.google.com/go/kms v1.20.3
 	cloud.google.com/go/language v1.14.2
 	cloud.google.com/go/lifesciences v0.10.2
 	cloud.google.com/go/logging v1.12.0
@@ -105,7 +105,7 @@ require (
 	cloud.google.com/go/shell v1.8.2
 	cloud.google.com/go/spanner v1.73.0
 	cloud.google.com/go/speech v1.25.2
-	cloud.google.com/go/storagetransfer v1.11.2
+	cloud.google.com/go/storagetransfer v1.12.0
 	cloud.google.com/go/talent v1.7.2
 	cloud.google.com/go/texttospeech v1.10.0
 	cloud.google.com/go/tpu v1.7.2
@@ -121,9 +121,9 @@ require (
 	cloud.google.com/go/websecurityscanner v1.7.2
 	cloud.google.com/go/workflows v1.13.2
 	github.com/golang/protobuf v1.5.4
-	google.golang.org/genproto/googleapis/api v0.0.0-20241209162323-e6fa225c2576
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20241209162323-e6fa225c2576
-	google.golang.org/grpc v1.67.1
+	google.golang.org/genproto/googleapis/api v0.0.0-20241219192143-6b3ec007d9bb
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20241219192143-6b3ec007d9bb
+	google.golang.org/grpc v1.67.3
 	google.golang.org/protobuf v1.36.0
 )
 
