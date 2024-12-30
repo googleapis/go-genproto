@@ -4,10 +4,10 @@ go 1.21
 
 require (
 	cloud.google.com/go/servicecontrol v1.14.2
-	google.golang.org/genproto/googleapis/api v0.0.0-20241219192143-6b3ec007d9bb
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20241219192143-6b3ec007d9bb
+	google.golang.org/genproto/googleapis/api v0.0.0-20241223144023-3abc09e42ca8
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20241223144023-3abc09e42ca8
 	google.golang.org/grpc v1.67.1
-	google.golang.org/protobuf v1.36.0
+	google.golang.org/protobuf v1.36.1
 )
 
 require (
