@@ -1,6 +1,6 @@
 module google.golang.org/genproto/googleapis/api/servicecontrol
 
-go 1.21
+go 1.22
 
 require (
 	cloud.google.com/go/servicecontrol v1.14.1
