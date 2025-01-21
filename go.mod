@@ -20,13 +20,13 @@ require (
 	cloud.google.com/go/baremetalsolution v1.3.3
 	cloud.google.com/go/batch v1.11.5
 	cloud.google.com/go/beyondcorp v1.1.3
-	cloud.google.com/go/bigquery v1.65.0
+	cloud.google.com/go/bigquery v1.66.0
 	cloud.google.com/go/bigtable v1.34.0
 	cloud.google.com/go/billing v1.20.1
 	cloud.google.com/go/binaryauthorization v1.9.3
 	cloud.google.com/go/certificatemanager v1.9.3
 	cloud.google.com/go/channel v1.19.2
-	cloud.google.com/go/cloudbuild v1.19.2
+	cloud.google.com/go/cloudbuild v1.20.0
 	cloud.google.com/go/clouddms v1.8.3
 	cloud.google.com/go/cloudtasks v1.13.3
 	cloud.google.com/go/compute v1.31.1
@@ -58,7 +58,7 @@ require (
 	cloud.google.com/go/gkebackup v1.6.3
 	cloud.google.com/go/gkeconnect v0.12.1
 	cloud.google.com/go/gkehub v0.15.3
-	cloud.google.com/go/gkemulticloud v1.5.0
+	cloud.google.com/go/gkemulticloud v1.5.1
 	cloud.google.com/go/gsuiteaddons v1.7.3
 	cloud.google.com/go/iam v1.3.1
 	cloud.google.com/go/iap v1.10.3
@@ -74,13 +74,13 @@ require (
 	cloud.google.com/go/mediatranslation v0.9.3
 	cloud.google.com/go/memcache v1.11.3
 	cloud.google.com/go/metastore v1.14.3
-	cloud.google.com/go/monitoring v1.22.1
+	cloud.google.com/go/monitoring v1.23.0
 	cloud.google.com/go/networkconnectivity v1.16.1
-	cloud.google.com/go/networkmanagement v1.17.1
+	cloud.google.com/go/networkmanagement v1.18.0
 	cloud.google.com/go/networksecurity v0.10.3
 	cloud.google.com/go/notebooks v1.12.3
 	cloud.google.com/go/optimization v1.7.3
-	cloud.google.com/go/orchestration v1.11.3
+	cloud.google.com/go/orchestration v1.11.4
 	cloud.google.com/go/orgpolicy v1.14.2
 	cloud.google.com/go/osconfig v1.14.3
 	cloud.google.com/go/oslogin v1.14.3
@@ -89,7 +89,7 @@ require (
 	cloud.google.com/go/privatecatalog v0.10.4
 	cloud.google.com/go/pubsub v1.45.3
 	cloud.google.com/go/pubsublite v1.8.2
-	cloud.google.com/go/recaptchaenterprise/v2 v2.19.3
+	cloud.google.com/go/recaptchaenterprise/v2 v2.19.4
 	cloud.google.com/go/recommendationengine v0.9.3
 	cloud.google.com/go/recommender v1.13.3
 	cloud.google.com/go/redis v1.17.3
@@ -108,7 +108,7 @@ require (
 	cloud.google.com/go/storagetransfer v1.12.1
 	cloud.google.com/go/talent v1.8.0
 	cloud.google.com/go/texttospeech v1.11.0
-	cloud.google.com/go/tpu v1.7.3
+	cloud.google.com/go/tpu v1.8.0
 	cloud.google.com/go/trace v1.11.3
 	cloud.google.com/go/translate v1.12.3
 	cloud.google.com/go/video v1.23.3
@@ -121,14 +121,14 @@ require (
 	cloud.google.com/go/websecurityscanner v1.7.3
 	cloud.google.com/go/workflows v1.13.3
 	github.com/golang/protobuf v1.5.4
-	google.golang.org/genproto/googleapis/api v0.0.0-20250106144421-5f5ef82da422
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20250106144421-5f5ef82da422
-	google.golang.org/grpc v1.67.3
+	google.golang.org/genproto/googleapis/api v0.0.0-20250115164207-1a7da9e5054f
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20250115164207-1a7da9e5054f
+	google.golang.org/grpc v1.69.4
 	google.golang.org/protobuf v1.36.3
 )
 
 require (
-	golang.org/x/net v0.33.0 // indirect
-	golang.org/x/sys v0.28.0 // indirect
+	golang.org/x/net v0.34.0 // indirect
+	golang.org/x/sys v0.29.0 // indirect
 	golang.org/x/text v0.21.0 // indirect
 )
