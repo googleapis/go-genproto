@@ -42,7 +42,7 @@ type HttpAuthorizationHeader int32
 const (
 	// Default value, equivalent to `SYSTEM_ID_TOKEN`
 	HttpAuthorizationHeader_HTTP_AUTHORIZATION_HEADER_UNSPECIFIED HttpAuthorizationHeader = 0
-	// Send an ID token for the project-specific Google Workspace Add-ons system
+	// Send an ID token for the project-specific Google Workspace add-ons system
 	// service account (default)
 	HttpAuthorizationHeader_SYSTEM_ID_TOKEN HttpAuthorizationHeader = 1
 	// Send an ID token for the end user
