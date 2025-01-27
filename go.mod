@@ -1,6 +1,8 @@
 module google.golang.org/genproto
 
-go 1.22
+go 1.22.7
+
+toolchain go1.22.11
 
 require (
 	cloud.google.com/go v0.118.0
@@ -21,7 +23,7 @@ require (
 	cloud.google.com/go/batch v1.11.5
 	cloud.google.com/go/beyondcorp v1.1.3
 	cloud.google.com/go/bigquery v1.66.0
-	cloud.google.com/go/bigtable v1.34.0
+	cloud.google.com/go/bigtable v1.35.0
 	cloud.google.com/go/billing v1.20.1
 	cloud.google.com/go/binaryauthorization v1.9.3
 	cloud.google.com/go/certificatemanager v1.9.3
@@ -121,10 +123,10 @@ require (
 	cloud.google.com/go/websecurityscanner v1.7.3
 	cloud.google.com/go/workflows v1.13.3
 	github.com/golang/protobuf v1.5.4
-	google.golang.org/genproto/googleapis/api v0.0.0-20250115164207-1a7da9e5054f
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20250115164207-1a7da9e5054f
+	google.golang.org/genproto/googleapis/api v0.0.0-20250124145028-65684f501c47
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20250124145028-65684f501c47
 	google.golang.org/grpc v1.69.4
-	google.golang.org/protobuf v1.36.3
+	google.golang.org/protobuf v1.36.4
 )
 
 require (
