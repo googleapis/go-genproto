@@ -308,9 +308,9 @@ type Page struct {
 	// You can reference `Java` page using Markdown reference link syntax:
 	// `[Java][Tutorial.Java]`.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	// The Markdown content of the page. You can use <code>&#40;== include {path}
-	// ==&#41;</code> to include content from a Markdown file. The content can be
-	// used to produce the documentation page such as HTML format page.
+	// The Markdown content of the page. You can use ```(== include {path}
+	// ==)``` to include content from a Markdown file. The content can be used
+	// to produce the documentation page such as HTML format page.
 	Content string `protobuf:"bytes,2,opt,name=content,proto3" json:"content,omitempty"`
 	// Subpages of this page. The order of subpages specified here will be
 	// honored in the generated docset.
