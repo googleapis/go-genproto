@@ -2,8 +2,6 @@ module google.golang.org/genproto
 
 go 1.22.7
 
-toolchain go1.22.11
-
 require (
 	cloud.google.com/go v0.118.0
 	cloud.google.com/go/accessapproval v1.8.3
