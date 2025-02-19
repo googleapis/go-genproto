@@ -1,6 +1,6 @@
 module google.golang.org/genproto/googleapis/api
 
-go 1.22
+go 1.23.0
 
 require (
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20250212204824-5a70512c5d8b
