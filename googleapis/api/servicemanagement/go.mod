@@ -1,6 +1,6 @@
 module google.golang.org/genproto/googleapis/api/servicemanagement
 
-go 1.22
+go 1.23.0
 
 require (
 	cloud.google.com/go/servicemanagement v1.10.3
