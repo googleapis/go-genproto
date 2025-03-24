@@ -3,17 +3,17 @@ module google.golang.org/genproto/googleapis/api/serviceusage
 go 1.23.0
 
 require (
-	cloud.google.com/go/serviceusage v1.9.3
-	google.golang.org/genproto v0.0.0-20250227231956-55c901821b1e
-	google.golang.org/genproto/googleapis/api v0.0.0-20250227231956-55c901821b1e
-	google.golang.org/grpc v1.70.0
-	google.golang.org/protobuf v1.36.5
+	cloud.google.com/go/serviceusage v1.9.5
+	google.golang.org/genproto v0.0.0-20250313205543-e70fdf4c4cb4
+	google.golang.org/genproto/googleapis/api v0.0.0-20250313205543-e70fdf4c4cb4
+	google.golang.org/grpc v1.71.0
+	google.golang.org/protobuf v1.36.6
 )
 
 require (
-	cloud.google.com/go/longrunning v0.6.4 // indirect
+	cloud.google.com/go/longrunning v0.6.6 // indirect
 	golang.org/x/net v0.37.0 // indirect
 	golang.org/x/sys v0.31.0 // indirect
 	golang.org/x/text v0.23.0 // indirect
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20250219182151-9fdb1cabc7b2 // indirect
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20250313205543-e70fdf4c4cb4 // indirect
 )
