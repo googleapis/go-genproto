@@ -121,8 +121,8 @@ require (
 	cloud.google.com/go/websecurityscanner v1.7.5
 	cloud.google.com/go/workflows v1.14.0
 	github.com/golang/protobuf v1.5.4
-	google.golang.org/genproto/googleapis/api v0.0.0-20250324211829-b45e905df463
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20250324211829-b45e905df463
+	google.golang.org/genproto/googleapis/api v0.0.0-20250404141209-ee84b53bf3d0
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20250404141209-ee84b53bf3d0
 	google.golang.org/grpc v1.71.0
 	google.golang.org/protobuf v1.36.6
 )
