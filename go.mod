@@ -87,7 +87,7 @@ require (
 	cloud.google.com/go/phishingprotection v0.9.5
 	cloud.google.com/go/policytroubleshooter v1.11.5
 	cloud.google.com/go/privatecatalog v0.10.6
-	cloud.google.com/go/pubsub v1.48.1
+	cloud.google.com/go/pubsub v1.49.0
 	cloud.google.com/go/pubsublite v1.8.2
 	cloud.google.com/go/recaptchaenterprise/v2 v2.20.2
 	cloud.google.com/go/recommendationengine v0.9.5
@@ -103,7 +103,7 @@ require (
 	cloud.google.com/go/securitycenter v1.36.1
 	cloud.google.com/go/servicedirectory v1.12.5
 	cloud.google.com/go/shell v1.8.5
-	cloud.google.com/go/spanner v1.78.0
+	cloud.google.com/go/spanner v1.79.0
 	cloud.google.com/go/speech v1.26.1
 	cloud.google.com/go/storagetransfer v1.12.3
 	cloud.google.com/go/talent v1.8.2
@@ -121,8 +121,8 @@ require (
 	cloud.google.com/go/websecurityscanner v1.7.5
 	cloud.google.com/go/workflows v1.14.0
 	github.com/golang/protobuf v1.5.4
-	google.golang.org/genproto/googleapis/api v0.0.0-20250404141209-ee84b53bf3d0
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20250404141209-ee84b53bf3d0
+	google.golang.org/genproto/googleapis/api v0.0.0-20250409194420-de1ac958c67a
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20250409194420-de1ac958c67a
 	google.golang.org/grpc v1.71.0
 	google.golang.org/protobuf v1.36.6
 )
