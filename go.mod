@@ -6,8 +6,8 @@ require (
 	cloud.google.com/go v0.120.1
 	cloud.google.com/go/accessapproval v1.8.6
 	cloud.google.com/go/accesscontextmanager v1.9.6
-	cloud.google.com/go/aiplatform v1.83.0
-	cloud.google.com/go/analytics v0.27.2
+	cloud.google.com/go/aiplatform v1.84.0
+	cloud.google.com/go/analytics v0.28.0
 	cloud.google.com/go/apigateway v1.7.6
 	cloud.google.com/go/apigeeconnect v1.7.6
 	cloud.google.com/go/apigeeregistry v0.9.6
@@ -29,7 +29,7 @@ require (
 	cloud.google.com/go/cloudbuild v1.22.2
 	cloud.google.com/go/clouddms v1.8.7
 	cloud.google.com/go/cloudtasks v1.13.6
-	cloud.google.com/go/compute v1.36.1
+	cloud.google.com/go/compute v1.37.0
 	cloud.google.com/go/contactcenterinsights v1.17.3
 	cloud.google.com/go/container v1.42.4
 	cloud.google.com/go/containeranalysis v0.14.1
@@ -70,7 +70,7 @@ require (
 	cloud.google.com/go/logging v1.13.0
 	cloud.google.com/go/longrunning v0.6.7
 	cloud.google.com/go/managedidentities v1.7.6
-	cloud.google.com/go/maps v1.20.2
+	cloud.google.com/go/maps v1.20.3
 	cloud.google.com/go/mediatranslation v0.9.6
 	cloud.google.com/go/memcache v1.11.6
 	cloud.google.com/go/metastore v1.14.6
@@ -81,7 +81,7 @@ require (
 	cloud.google.com/go/notebooks v1.12.6
 	cloud.google.com/go/optimization v1.7.6
 	cloud.google.com/go/orchestration v1.11.9
-	cloud.google.com/go/orgpolicy v1.14.4
+	cloud.google.com/go/orgpolicy v1.15.0
 	cloud.google.com/go/osconfig v1.14.5
 	cloud.google.com/go/oslogin v1.14.6
 	cloud.google.com/go/phishingprotection v0.9.6
@@ -103,7 +103,7 @@ require (
 	cloud.google.com/go/securitycenter v1.36.2
 	cloud.google.com/go/servicedirectory v1.12.6
 	cloud.google.com/go/shell v1.8.6
-	cloud.google.com/go/spanner v1.79.0
+	cloud.google.com/go/spanner v1.80.0
 	cloud.google.com/go/speech v1.27.1
 	cloud.google.com/go/storagetransfer v1.12.4
 	cloud.google.com/go/talent v1.8.3
@@ -121,8 +121,8 @@ require (
 	cloud.google.com/go/websecurityscanner v1.7.6
 	cloud.google.com/go/workflows v1.14.2
 	github.com/golang/protobuf v1.5.4
-	google.golang.org/genproto/googleapis/api v0.0.0-20250414145226-207652e42e2e
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20250414145226-207652e42e2e
+	google.golang.org/genproto/googleapis/api v0.0.0-20250425173222-7b384671a197
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20250425173222-7b384671a197
 	google.golang.org/grpc v1.71.1
 	google.golang.org/protobuf v1.36.6
 )
