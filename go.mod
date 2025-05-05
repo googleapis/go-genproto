@@ -3,7 +3,6 @@ module google.golang.org/genproto
 go 1.23.0
 
 require (
-	cloud.google.com/go v0.120.1
 	cloud.google.com/go/accessapproval v1.8.6
 	cloud.google.com/go/accesscontextmanager v1.9.6
 	cloud.google.com/go/aiplatform v1.84.0
