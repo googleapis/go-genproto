@@ -174,7 +174,7 @@ type Alert struct {
 	// This is output only after alert is created.
 	// For a list of available alert types see
 	// [Google Workspace Alert
-	// types](https://developers.google.com/admin-sdk/alertcenter/reference/alert-types).
+	// types](https://developers.google.com/workspace/admin/alertcenter/reference/alert-types).
 	Type string `protobuf:"bytes,6,opt,name=type,proto3" json:"type,omitempty"`
 	// Required. A unique identifier for the system that reported the alert.
 	// This is output only after alert is created.
@@ -873,9 +873,9 @@ type ListAlertsRequest struct {
 	PageToken string `protobuf:"bytes,3,opt,name=page_token,json=pageToken,proto3" json:"page_token,omitempty"`
 	// Optional. A query string for filtering alert results.
 	// For more details, see [Query
-	// filters](https://developers.google.com/admin-sdk/alertcenter/guides/query-filters)
+	// filters](https://developers.google.com/workspace/admin/alertcenter/guides/query-filters)
 	// and [Supported query filter
-	// fields](https://developers.google.com/admin-sdk/alertcenter/reference/filter-fields#alerts.list).
+	// fields](https://developers.google.com/workspace/admin/alertcenter/reference/filter-fields#alerts.list).
 	Filter string `protobuf:"bytes,4,opt,name=filter,proto3" json:"filter,omitempty"`
 	// Optional. The sort order of the list results.
 	// If not specified results may be returned in arbitrary order.
@@ -1289,9 +1289,9 @@ type ListAlertFeedbackRequest struct {
 	AlertId string `protobuf:"bytes,2,opt,name=alert_id,json=alertId,proto3" json:"alert_id,omitempty"`
 	// Optional. A query string for filtering alert feedback results.
 	// For more details, see [Query
-	// filters](https://developers.google.com/admin-sdk/alertcenter/guides/query-filters)
+	// filters](https://developers.google.com/workspace/admin/alertcenter/guides/query-filters)
 	// and [Supported query filter
-	// fields](https://developers.google.com/admin-sdk/alertcenter/reference/filter-fields#alerts.feedback.list).
+	// fields](https://developers.google.com/workspace/admin/alertcenter/reference/filter-fields#alerts.feedback.list).
 	Filter string `protobuf:"bytes,3,opt,name=filter,proto3" json:"filter,omitempty"`
 }
 
@@ -1577,7 +1577,7 @@ func (x *UpdateSettingsRequest) GetSettings() *Settings {
 
 // Settings for callback notifications.
 // For more details see [Google Workspace Alert
-// Notification](https://developers.google.com/admin-sdk/alertcenter/guides/notifications).
+// Notification](https://developers.google.com/workspace/admin/alertcenter/guides/notifications).
 type Settings_Notification struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
