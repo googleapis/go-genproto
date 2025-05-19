@@ -5,7 +5,7 @@ go 1.23.0
 require (
 	cloud.google.com/go/accessapproval v1.8.6
 	cloud.google.com/go/accesscontextmanager v1.9.6
-	cloud.google.com/go/aiplatform v1.86.0
+	cloud.google.com/go/aiplatform v1.87.0
 	cloud.google.com/go/analytics v0.28.1
 	cloud.google.com/go/apigateway v1.7.6
 	cloud.google.com/go/apigeeconnect v1.7.6
@@ -13,13 +13,13 @@ require (
 	cloud.google.com/go/appengine v1.9.6
 	cloud.google.com/go/area120 v0.9.6
 	cloud.google.com/go/artifactregistry v1.17.1
-	cloud.google.com/go/asset v1.21.0
+	cloud.google.com/go/asset v1.21.1
 	cloud.google.com/go/assuredworkloads v1.12.6
 	cloud.google.com/go/automl v1.14.7
 	cloud.google.com/go/baremetalsolution v1.3.6
 	cloud.google.com/go/batch v1.12.2
 	cloud.google.com/go/beyondcorp v1.1.6
-	cloud.google.com/go/bigquery v1.67.0
+	cloud.google.com/go/bigquery v1.68.0
 	cloud.google.com/go/bigtable v1.37.0
 	cloud.google.com/go/billing v1.20.4
 	cloud.google.com/go/binaryauthorization v1.9.5
@@ -37,12 +37,12 @@ require (
 	cloud.google.com/go/dataform v0.11.2
 	cloud.google.com/go/datafusion v1.8.6
 	cloud.google.com/go/datalabeling v0.9.6
-	cloud.google.com/go/dataplex v1.25.2
+	cloud.google.com/go/dataplex v1.25.3
 	cloud.google.com/go/dataproc/v2 v2.11.2
 	cloud.google.com/go/dataqna v0.9.7
 	cloud.google.com/go/datastore v1.20.0
 	cloud.google.com/go/datastream v1.14.1
-	cloud.google.com/go/deploy v1.27.1
+	cloud.google.com/go/deploy v1.27.2
 	cloud.google.com/go/dialogflow v1.68.2
 	cloud.google.com/go/dlp v1.22.1
 	cloud.google.com/go/documentai v1.37.0
@@ -102,7 +102,7 @@ require (
 	cloud.google.com/go/securitycenter v1.36.2
 	cloud.google.com/go/servicedirectory v1.12.6
 	cloud.google.com/go/shell v1.8.6
-	cloud.google.com/go/spanner v1.81.0
+	cloud.google.com/go/spanner v1.81.1
 	cloud.google.com/go/speech v1.27.1
 	cloud.google.com/go/storagetransfer v1.12.4
 	cloud.google.com/go/talent v1.8.3
@@ -120,8 +120,8 @@ require (
 	cloud.google.com/go/websecurityscanner v1.7.6
 	cloud.google.com/go/workflows v1.14.2
 	github.com/golang/protobuf v1.5.4
-	google.golang.org/genproto/googleapis/api v0.0.0-20250505200425-f936aa4a68b2
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20250505200425-f936aa4a68b2
+	google.golang.org/genproto/googleapis/api v0.0.0-20250512202823-5a2f75b736a9
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20250512202823-5a2f75b736a9
 	google.golang.org/grpc v1.72.0
 	google.golang.org/protobuf v1.36.6
 )
