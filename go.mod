@@ -5,7 +5,7 @@ go 1.23.0
 require (
 	cloud.google.com/go/accessapproval v1.8.6
 	cloud.google.com/go/accesscontextmanager v1.9.6
-	cloud.google.com/go/aiplatform v1.87.0
+	cloud.google.com/go/aiplatform v1.88.0
 	cloud.google.com/go/analytics v0.28.1
 	cloud.google.com/go/apigateway v1.7.6
 	cloud.google.com/go/apigeeconnect v1.7.6
@@ -19,7 +19,7 @@ require (
 	cloud.google.com/go/baremetalsolution v1.3.6
 	cloud.google.com/go/batch v1.12.2
 	cloud.google.com/go/beyondcorp v1.1.6
-	cloud.google.com/go/bigquery v1.68.0
+	cloud.google.com/go/bigquery v1.69.0
 	cloud.google.com/go/bigtable v1.37.0
 	cloud.google.com/go/billing v1.20.4
 	cloud.google.com/go/binaryauthorization v1.9.5
@@ -28,13 +28,13 @@ require (
 	cloud.google.com/go/cloudbuild v1.22.2
 	cloud.google.com/go/clouddms v1.8.7
 	cloud.google.com/go/cloudtasks v1.13.6
-	cloud.google.com/go/compute v1.37.0
+	cloud.google.com/go/compute v1.38.0
 	cloud.google.com/go/contactcenterinsights v1.17.3
 	cloud.google.com/go/container v1.42.4
 	cloud.google.com/go/containeranalysis v0.14.1
 	cloud.google.com/go/datacatalog v1.26.0
 	cloud.google.com/go/dataflow v0.11.0
-	cloud.google.com/go/dataform v0.11.2
+	cloud.google.com/go/dataform v0.12.0
 	cloud.google.com/go/datafusion v1.8.6
 	cloud.google.com/go/datalabeling v0.9.6
 	cloud.google.com/go/dataplex v1.25.3
@@ -54,7 +54,7 @@ require (
 	cloud.google.com/go/filestore v1.10.2
 	cloud.google.com/go/firestore v1.18.0
 	cloud.google.com/go/functions v1.19.6
-	cloud.google.com/go/gkebackup v1.7.0
+	cloud.google.com/go/gkebackup v1.8.0
 	cloud.google.com/go/gkeconnect v0.12.4
 	cloud.google.com/go/gkehub v0.15.6
 	cloud.google.com/go/gkemulticloud v1.5.3
@@ -63,13 +63,13 @@ require (
 	cloud.google.com/go/iap v1.11.1
 	cloud.google.com/go/ids v1.5.6
 	cloud.google.com/go/iot v1.8.6
-	cloud.google.com/go/kms v1.21.2
+	cloud.google.com/go/kms v1.22.0
 	cloud.google.com/go/language v1.14.5
 	cloud.google.com/go/lifesciences v0.10.6
 	cloud.google.com/go/logging v1.13.0
 	cloud.google.com/go/longrunning v0.6.7
 	cloud.google.com/go/managedidentities v1.7.6
-	cloud.google.com/go/maps v1.20.4
+	cloud.google.com/go/maps v1.21.0
 	cloud.google.com/go/mediatranslation v0.9.6
 	cloud.google.com/go/memcache v1.11.6
 	cloud.google.com/go/metastore v1.14.7
@@ -95,14 +95,14 @@ require (
 	cloud.google.com/go/resourcemanager v1.10.6
 	cloud.google.com/go/resourcesettings v1.8.3
 	cloud.google.com/go/retail v1.20.0
-	cloud.google.com/go/run v1.9.3
+	cloud.google.com/go/run v1.10.0
 	cloud.google.com/go/scheduler v1.11.7
 	cloud.google.com/go/secretmanager v1.14.7
 	cloud.google.com/go/security v1.18.5
 	cloud.google.com/go/securitycenter v1.36.2
 	cloud.google.com/go/servicedirectory v1.12.6
 	cloud.google.com/go/shell v1.8.6
-	cloud.google.com/go/spanner v1.81.1
+	cloud.google.com/go/spanner v1.82.0
 	cloud.google.com/go/speech v1.27.1
 	cloud.google.com/go/storagetransfer v1.12.4
 	cloud.google.com/go/talent v1.8.3
@@ -110,7 +110,7 @@ require (
 	cloud.google.com/go/tpu v1.8.3
 	cloud.google.com/go/trace v1.11.6
 	cloud.google.com/go/translate v1.12.5
-	cloud.google.com/go/video v1.23.5
+	cloud.google.com/go/video v1.24.0
 	cloud.google.com/go/videointelligence v1.12.6
 	cloud.google.com/go/vision/v2 v2.9.5
 	cloud.google.com/go/vmmigration v1.8.6
@@ -120,8 +120,8 @@ require (
 	cloud.google.com/go/websecurityscanner v1.7.6
 	cloud.google.com/go/workflows v1.14.2
 	github.com/golang/protobuf v1.5.4
-	google.golang.org/genproto/googleapis/api v0.0.0-20250512202823-5a2f75b736a9
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20250512202823-5a2f75b736a9
+	google.golang.org/genproto/googleapis/api v0.0.0-20250519155744-55703ea1f237
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20250519155744-55703ea1f237
 	google.golang.org/grpc v1.72.0
 	google.golang.org/protobuf v1.36.6
 )
