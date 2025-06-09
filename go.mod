@@ -3,15 +3,15 @@ module google.golang.org/genproto
 go 1.23.0
 
 require (
-	cloud.google.com/go/accessapproval v1.8.6
+	cloud.google.com/go/accessapproval v1.8.7
 	cloud.google.com/go/accesscontextmanager v1.9.6
-	cloud.google.com/go/aiplatform v1.89.0
+	cloud.google.com/go/aiplatform v1.90.0
 	cloud.google.com/go/analytics v0.28.1
-	cloud.google.com/go/apigateway v1.7.6
-	cloud.google.com/go/apigeeconnect v1.7.6
+	cloud.google.com/go/apigateway v1.7.7
+	cloud.google.com/go/apigeeconnect v1.7.7
 	cloud.google.com/go/apigeeregistry v0.9.6
-	cloud.google.com/go/appengine v1.9.6
-	cloud.google.com/go/area120 v0.9.6
+	cloud.google.com/go/appengine v1.9.7
+	cloud.google.com/go/area120 v0.9.7
 	cloud.google.com/go/artifactregistry v1.17.1
 	cloud.google.com/go/asset v1.21.1
 	cloud.google.com/go/assuredworkloads v1.12.6
@@ -28,7 +28,7 @@ require (
 	cloud.google.com/go/cloudbuild v1.22.2
 	cloud.google.com/go/clouddms v1.8.7
 	cloud.google.com/go/cloudtasks v1.13.6
-	cloud.google.com/go/compute v1.38.0
+	cloud.google.com/go/compute v1.39.0
 	cloud.google.com/go/contactcenterinsights v1.17.3
 	cloud.google.com/go/container v1.43.0
 	cloud.google.com/go/containeranalysis v0.14.1
@@ -38,7 +38,7 @@ require (
 	cloud.google.com/go/datafusion v1.8.6
 	cloud.google.com/go/datalabeling v0.9.6
 	cloud.google.com/go/dataplex v1.25.3
-	cloud.google.com/go/dataproc/v2 v2.11.2
+	cloud.google.com/go/dataproc/v2 v2.12.0
 	cloud.google.com/go/dataqna v0.9.7
 	cloud.google.com/go/datastore v1.20.0
 	cloud.google.com/go/datastream v1.14.1
@@ -95,7 +95,7 @@ require (
 	cloud.google.com/go/resourcemanager v1.10.6
 	cloud.google.com/go/resourcesettings v1.8.3
 	cloud.google.com/go/retail v1.21.0
-	cloud.google.com/go/run v1.10.0
+	cloud.google.com/go/run v1.10.1
 	cloud.google.com/go/scheduler v1.11.7
 	cloud.google.com/go/secretmanager v1.14.7
 	cloud.google.com/go/security v1.18.5
@@ -120,9 +120,9 @@ require (
 	cloud.google.com/go/websecurityscanner v1.7.6
 	cloud.google.com/go/workflows v1.14.2
 	github.com/golang/protobuf v1.5.4
-	google.golang.org/genproto/googleapis/api v0.0.0-20250528174236-200df99c418a
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20250528174236-200df99c418a
-	google.golang.org/grpc v1.72.1
+	google.golang.org/genproto/googleapis/api v0.0.0-20250603155806-513f23925822
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20250603155806-513f23925822
+	google.golang.org/grpc v1.72.2
 	google.golang.org/protobuf v1.36.6
 )
 
