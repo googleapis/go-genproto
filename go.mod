@@ -3,15 +3,15 @@ module google.golang.org/genproto
 go 1.23.0
 
 require (
-	cloud.google.com/go/accessapproval v1.8.6
+	cloud.google.com/go/accessapproval v1.8.7
 	cloud.google.com/go/accesscontextmanager v1.9.6
-	cloud.google.com/go/aiplatform v1.89.0
-	cloud.google.com/go/analytics v0.28.1
-	cloud.google.com/go/apigateway v1.7.6
-	cloud.google.com/go/apigeeconnect v1.7.6
+	cloud.google.com/go/aiplatform v1.92.0
+	cloud.google.com/go/analytics v0.29.0
+	cloud.google.com/go/apigateway v1.7.7
+	cloud.google.com/go/apigeeconnect v1.7.7
 	cloud.google.com/go/apigeeregistry v0.9.6
-	cloud.google.com/go/appengine v1.9.6
-	cloud.google.com/go/area120 v0.9.6
+	cloud.google.com/go/appengine v1.9.7
+	cloud.google.com/go/area120 v0.9.7
 	cloud.google.com/go/artifactregistry v1.17.1
 	cloud.google.com/go/asset v1.21.1
 	cloud.google.com/go/assuredworkloads v1.12.6
@@ -20,15 +20,15 @@ require (
 	cloud.google.com/go/batch v1.12.2
 	cloud.google.com/go/beyondcorp v1.1.6
 	cloud.google.com/go/bigquery v1.69.0
-	cloud.google.com/go/bigtable v1.37.0
+	cloud.google.com/go/bigtable v1.38.0
 	cloud.google.com/go/billing v1.20.4
 	cloud.google.com/go/binaryauthorization v1.9.5
 	cloud.google.com/go/certificatemanager v1.9.5
-	cloud.google.com/go/channel v1.19.5
+	cloud.google.com/go/channel v1.20.0
 	cloud.google.com/go/cloudbuild v1.22.2
 	cloud.google.com/go/clouddms v1.8.7
 	cloud.google.com/go/cloudtasks v1.13.6
-	cloud.google.com/go/compute v1.38.0
+	cloud.google.com/go/compute v1.39.0
 	cloud.google.com/go/contactcenterinsights v1.17.3
 	cloud.google.com/go/container v1.43.0
 	cloud.google.com/go/containeranalysis v0.14.1
@@ -38,13 +38,13 @@ require (
 	cloud.google.com/go/datafusion v1.8.6
 	cloud.google.com/go/datalabeling v0.9.6
 	cloud.google.com/go/dataplex v1.25.3
-	cloud.google.com/go/dataproc/v2 v2.11.2
+	cloud.google.com/go/dataproc/v2 v2.13.0
 	cloud.google.com/go/dataqna v0.9.7
 	cloud.google.com/go/datastore v1.20.0
 	cloud.google.com/go/datastream v1.14.1
 	cloud.google.com/go/deploy v1.27.2
 	cloud.google.com/go/dialogflow v1.68.2
-	cloud.google.com/go/dlp v1.23.0
+	cloud.google.com/go/dlp v1.24.0
 	cloud.google.com/go/documentai v1.37.0
 	cloud.google.com/go/domains v0.10.6
 	cloud.google.com/go/edgecontainer v1.4.3
@@ -94,22 +94,22 @@ require (
 	cloud.google.com/go/redis v1.18.2
 	cloud.google.com/go/resourcemanager v1.10.6
 	cloud.google.com/go/resourcesettings v1.8.3
-	cloud.google.com/go/retail v1.21.0
-	cloud.google.com/go/run v1.10.0
+	cloud.google.com/go/retail v1.22.0
+	cloud.google.com/go/run v1.10.1
 	cloud.google.com/go/scheduler v1.11.7
-	cloud.google.com/go/secretmanager v1.14.7
+	cloud.google.com/go/secretmanager v1.15.0
 	cloud.google.com/go/security v1.18.5
 	cloud.google.com/go/securitycenter v1.36.2
 	cloud.google.com/go/servicedirectory v1.12.6
 	cloud.google.com/go/shell v1.8.6
-	cloud.google.com/go/spanner v1.82.0
-	cloud.google.com/go/speech v1.27.1
+	cloud.google.com/go/spanner v1.83.0
+	cloud.google.com/go/speech v1.28.0
 	cloud.google.com/go/storagetransfer v1.13.0
 	cloud.google.com/go/talent v1.8.3
 	cloud.google.com/go/texttospeech v1.13.0
 	cloud.google.com/go/tpu v1.8.3
 	cloud.google.com/go/trace v1.11.6
-	cloud.google.com/go/translate v1.12.5
+	cloud.google.com/go/translate v1.12.6
 	cloud.google.com/go/video v1.24.0
 	cloud.google.com/go/videointelligence v1.12.6
 	cloud.google.com/go/vision/v2 v2.9.5
@@ -120,14 +120,14 @@ require (
 	cloud.google.com/go/websecurityscanner v1.7.6
 	cloud.google.com/go/workflows v1.14.2
 	github.com/golang/protobuf v1.5.4
-	google.golang.org/genproto/googleapis/api v0.0.0-20250528174236-200df99c418a
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20250528174236-200df99c418a
-	google.golang.org/grpc v1.72.1
+	google.golang.org/genproto/googleapis/api v0.0.0-20250603155806-513f23925822
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20250603155806-513f23925822
+	google.golang.org/grpc v1.73.0
 	google.golang.org/protobuf v1.36.6
 )
 
 require (
-	golang.org/x/net v0.40.0 // indirect
+	golang.org/x/net v0.41.0 // indirect
 	golang.org/x/sys v0.33.0 // indirect
-	golang.org/x/text v0.25.0 // indirect
+	golang.org/x/text v0.26.0 // indirect
 )
