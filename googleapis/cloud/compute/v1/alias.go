@@ -9991,7 +9991,6 @@ type Scheduling_OnHostMaintenance = src.Scheduling_OnHostMaintenance
 //
 // Deprecated: Please use types in: cloud.google.com/go/compute/apiv1/computepb
 type Scheduling_ProvisioningModel = src.Scheduling_ProvisioningModel
-type ScratchDisks = src.ScratchDisks
 
 // An instance's screenshot.
 //
