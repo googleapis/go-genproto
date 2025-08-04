@@ -5,7 +5,7 @@ go 1.23.0
 require (
 	cloud.google.com/go/accessapproval v1.8.7
 	cloud.google.com/go/accesscontextmanager v1.9.6
-	cloud.google.com/go/aiplatform v1.95.0
+	cloud.google.com/go/aiplatform v1.96.0
 	cloud.google.com/go/analytics v0.29.0
 	cloud.google.com/go/apigateway v1.7.7
 	cloud.google.com/go/apigeeconnect v1.7.7
@@ -25,7 +25,7 @@ require (
 	cloud.google.com/go/binaryauthorization v1.9.5
 	cloud.google.com/go/certificatemanager v1.9.5
 	cloud.google.com/go/channel v1.20.0
-	cloud.google.com/go/cloudbuild v1.22.2
+	cloud.google.com/go/cloudbuild v1.22.3
 	cloud.google.com/go/clouddms v1.8.7
 	cloud.google.com/go/cloudtasks v1.13.6
 	cloud.google.com/go/compute v1.41.0
@@ -86,7 +86,7 @@ require (
 	cloud.google.com/go/phishingprotection v0.9.6
 	cloud.google.com/go/policytroubleshooter v1.11.6
 	cloud.google.com/go/privatecatalog v0.10.7
-	cloud.google.com/go/pubsub v1.49.0
+	cloud.google.com/go/pubsub v1.50.0
 	cloud.google.com/go/pubsublite v1.8.2
 	cloud.google.com/go/recaptchaenterprise/v2 v2.20.4
 	cloud.google.com/go/recommendationengine v0.9.6
@@ -94,7 +94,7 @@ require (
 	cloud.google.com/go/redis v1.18.2
 	cloud.google.com/go/resourcemanager v1.10.6
 	cloud.google.com/go/resourcesettings v1.8.3
-	cloud.google.com/go/retail v1.23.0
+	cloud.google.com/go/retail v1.24.0
 	cloud.google.com/go/run v1.11.0
 	cloud.google.com/go/scheduler v1.11.7
 	cloud.google.com/go/secretmanager v1.15.0
@@ -120,13 +120,14 @@ require (
 	cloud.google.com/go/websecurityscanner v1.7.6
 	cloud.google.com/go/workflows v1.14.2
 	github.com/golang/protobuf v1.5.4
-	google.golang.org/genproto/googleapis/api v0.0.0-20250721164621-a45f3dfb1074
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20250721164621-a45f3dfb1074
+	google.golang.org/genproto/googleapis/api v0.0.0-20250728155136-f173205681a0
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20250728155136-f173205681a0
 	google.golang.org/grpc v1.74.2
 	google.golang.org/protobuf v1.36.6
 )
 
 require (
+	cloud.google.com/go/pubsub/v2 v2.0.0 // indirect
 	golang.org/x/net v0.42.0 // indirect
 	golang.org/x/sys v0.34.0 // indirect
 	golang.org/x/text v0.27.0 // indirect
