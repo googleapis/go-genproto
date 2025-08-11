@@ -5,7 +5,7 @@ go 1.23.0
 require (
 	cloud.google.com/go/accessapproval v1.8.7
 	cloud.google.com/go/accesscontextmanager v1.9.6
-	cloud.google.com/go/aiplatform v1.96.0
+	cloud.google.com/go/aiplatform v1.97.0
 	cloud.google.com/go/analytics v0.29.0
 	cloud.google.com/go/apigateway v1.7.7
 	cloud.google.com/go/apigeeconnect v1.7.7
@@ -28,7 +28,7 @@ require (
 	cloud.google.com/go/cloudbuild v1.22.3
 	cloud.google.com/go/clouddms v1.8.7
 	cloud.google.com/go/cloudtasks v1.13.6
-	cloud.google.com/go/compute v1.41.0
+	cloud.google.com/go/compute v1.42.0
 	cloud.google.com/go/contactcenterinsights v1.17.3
 	cloud.google.com/go/container v1.44.0
 	cloud.google.com/go/containeranalysis v0.14.1
@@ -102,7 +102,7 @@ require (
 	cloud.google.com/go/securitycenter v1.37.0
 	cloud.google.com/go/servicedirectory v1.12.6
 	cloud.google.com/go/shell v1.8.6
-	cloud.google.com/go/spanner v1.83.0
+	cloud.google.com/go/spanner v1.84.1
 	cloud.google.com/go/speech v1.28.0
 	cloud.google.com/go/storagetransfer v1.13.0
 	cloud.google.com/go/talent v1.8.3
@@ -120,10 +120,10 @@ require (
 	cloud.google.com/go/websecurityscanner v1.7.6
 	cloud.google.com/go/workflows v1.14.2
 	github.com/golang/protobuf v1.5.4
-	google.golang.org/genproto/googleapis/api v0.0.0-20250728155136-f173205681a0
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20250728155136-f173205681a0
+	google.golang.org/genproto/googleapis/api v0.0.0-20250804133106-a7a43d27e69b
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20250804133106-a7a43d27e69b
 	google.golang.org/grpc v1.74.2
-	google.golang.org/protobuf v1.36.6
+	google.golang.org/protobuf v1.36.7
 )
 
 require (
