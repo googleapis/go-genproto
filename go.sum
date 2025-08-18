@@ -1,3 +1,4 @@
+cloud.google.com/go v0.121.4 h1:cVvUiY0sX0xwyxPwdSU2KsF9knOVmtRyAMt8xou0iTs=
 cloud.google.com/go/accessapproval v1.8.7 h1:Sc9ZjxFBEM/PoAxNlUwVGDcv8DYyjLYWDxHlzPG0q5I=
 cloud.google.com/go/accessapproval v1.8.7/go.mod h1:BFvZOW4GJjJnl6aA/YDEg0TGViFHyusa/bMdcVFmh8A=
 cloud.google.com/go/accesscontextmanager v1.9.6 h1:2LnncRqfYB8NEdh9+FeYxAt9POTW/0zVboktnRlO11w=
@@ -164,6 +165,8 @@ cloud.google.com/go/policytroubleshooter v1.11.6 h1:Z8+tO2z21MY1arBBuJjwrOjbw8fb
 cloud.google.com/go/policytroubleshooter v1.11.6/go.mod h1:jdjYGIveoYolk38Dm2JjS5mPkn8IjVqPsDHccTMu3mY=
 cloud.google.com/go/privatecatalog v0.10.7 h1:R951ikhxIanXEijBCu0xnoUAOteS5m/Xplek0YvsNTE=
 cloud.google.com/go/privatecatalog v0.10.7/go.mod h1:Fo/PF/B6m4A9vUYt0nEF1xd0U6Kk19/Je3eZGrQ6l60=
+cloud.google.com/go/pubsub v1.47.0 h1:Ou2Qu4INnf7ykrFjGv2ntFOjVo8Nloh/+OffF4mUu9w=
+cloud.google.com/go/pubsub v1.47.0/go.mod h1:LaENesmga+2u0nDtLkIOILskxsfvn/BXX9Ak1NFxOs8=
 cloud.google.com/go/pubsub v1.50.0 h1:hnYpOIxVlgVD1Z8LN7est4DQZK3K6tvZNurZjIVjUe0=
 cloud.google.com/go/pubsub v1.50.0/go.mod h1:Di2Y+nqXBpIS+dXUEJPQzLh8PbIQZMLE9IVUFhf2zmM=
 cloud.google.com/go/pubsub/v2 v2.0.0 h1:0qS6mRJ41gD1lNmM/vdm6bR7DQu6coQcVwD+VPf0Bz0=

@@ -10,13 +10,13 @@ jobs:
   scan_changes:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v5
       with:
         ref: main
     - name: Get main commit
       id: main
       run: echo "hash=$(git rev-parse HEAD)" >> $GITHUB_OUTPUT
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v5
     - uses: actions/setup-go@v5
       with:
         go-version: '1.24.6'
@@ -51,7 +51,7 @@ jobs:
     - name: Install latest apidiff
       # TODO: restore @latest after golang.org/x/exp supports 1.23. Error: golang.org/x/exp@v0.0.0-20240909161429 ... go.mod:3: invalid go version '1.22.0': must match format 1.23
       run: go install golang.org/x/exp/cmd/apidiff@v0.0.0-20240823005443-9b4947da3948
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v5
       with:
         ref: main
     - name: Create baseline
@@ -67,7 +67,7 @@ jobs:
         name: ${{ steps.baseline.outputs.pkg }}
         path: ${{ matrix.changed }}/${{ steps.baseline.outputs.pkg }}
         retention-days: 1
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v5
     - name: Download baseline package data
       uses: actions/download-artifact@v5
       with:
