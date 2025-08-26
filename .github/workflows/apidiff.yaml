@@ -49,8 +49,7 @@ jobs:
       with:
         go-version: '1.25.0'
     - name: Install latest apidiff
-      # TODO: restore @latest after golang.org/x/exp supports 1.23. Error: golang.org/x/exp@v0.0.0-20240909161429 ... go.mod:3: invalid go version '1.22.0': must match format 1.23
-      run: go install golang.org/x/exp/cmd/apidiff@v0.0.0-20240823005443-9b4947da3948
+      run: go install golang.org/x/exp/cmd/apidiff@latest
     - uses: actions/checkout@v4
       with:
         ref: main
