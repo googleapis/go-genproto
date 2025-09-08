@@ -5,8 +5,8 @@ go 1.24.0
 require (
 	cloud.google.com/go/accessapproval v1.8.7
 	cloud.google.com/go/accesscontextmanager v1.9.6
-	cloud.google.com/go/aiplatform v1.99.0
-	cloud.google.com/go/analytics v0.29.0
+	cloud.google.com/go/aiplatform v1.100.0
+	cloud.google.com/go/analytics v0.30.0
 	cloud.google.com/go/apigateway v1.7.7
 	cloud.google.com/go/apigeeconnect v1.7.7
 	cloud.google.com/go/apigeeregistry v0.9.6
@@ -19,8 +19,8 @@ require (
 	cloud.google.com/go/baremetalsolution v1.3.6
 	cloud.google.com/go/batch v1.12.2
 	cloud.google.com/go/beyondcorp v1.1.6
-	cloud.google.com/go/bigquery v1.69.0
-	cloud.google.com/go/bigtable v1.38.0
+	cloud.google.com/go/bigquery v1.70.0
+	cloud.google.com/go/bigtable v1.39.0
 	cloud.google.com/go/billing v1.20.4
 	cloud.google.com/go/binaryauthorization v1.9.5
 	cloud.google.com/go/certificatemanager v1.9.5
@@ -28,7 +28,7 @@ require (
 	cloud.google.com/go/cloudbuild v1.23.0
 	cloud.google.com/go/clouddms v1.8.7
 	cloud.google.com/go/cloudtasks v1.13.6
-	cloud.google.com/go/compute v1.44.0
+	cloud.google.com/go/compute v1.45.0
 	cloud.google.com/go/contactcenterinsights v1.17.3
 	cloud.google.com/go/container v1.44.0
 	cloud.google.com/go/containeranalysis v0.14.1
@@ -86,7 +86,7 @@ require (
 	cloud.google.com/go/phishingprotection v0.9.6
 	cloud.google.com/go/policytroubleshooter v1.11.6
 	cloud.google.com/go/privatecatalog v0.10.7
-	cloud.google.com/go/pubsub v1.50.0
+	cloud.google.com/go/pubsub v1.50.1
 	cloud.google.com/go/pubsublite v1.8.2
 	cloud.google.com/go/recaptchaenterprise/v2 v2.20.4
 	cloud.google.com/go/recommendationengine v0.9.6
@@ -98,19 +98,19 @@ require (
 	cloud.google.com/go/run v1.12.0
 	cloud.google.com/go/scheduler v1.11.7
 	cloud.google.com/go/secretmanager v1.15.0
-	cloud.google.com/go/security v1.19.0
+	cloud.google.com/go/security v1.19.1
 	cloud.google.com/go/securitycenter v1.37.0
 	cloud.google.com/go/servicedirectory v1.12.6
 	cloud.google.com/go/shell v1.8.6
-	cloud.google.com/go/spanner v1.84.1
+	cloud.google.com/go/spanner v1.85.0
 	cloud.google.com/go/speech v1.28.0
 	cloud.google.com/go/storagetransfer v1.13.0
 	cloud.google.com/go/talent v1.8.3
-	cloud.google.com/go/texttospeech v1.13.0
+	cloud.google.com/go/texttospeech v1.14.0
 	cloud.google.com/go/tpu v1.8.3
 	cloud.google.com/go/trace v1.11.6
 	cloud.google.com/go/translate v1.12.6
-	cloud.google.com/go/video v1.25.0
+	cloud.google.com/go/video v1.26.0
 	cloud.google.com/go/videointelligence v1.12.6
 	cloud.google.com/go/vision/v2 v2.9.5
 	cloud.google.com/go/vmmigration v1.8.6
@@ -120,15 +120,15 @@ require (
 	cloud.google.com/go/websecurityscanner v1.7.6
 	cloud.google.com/go/workflows v1.14.2
 	github.com/golang/protobuf v1.5.4
-	google.golang.org/genproto/googleapis/api v0.0.0-20250818200422-3122310a409c
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20250818200422-3122310a409c
+	google.golang.org/genproto/googleapis/api v0.0.0-20250826171959-ef028d996bc1
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20250826171959-ef028d996bc1
 	google.golang.org/grpc v1.74.2
 	google.golang.org/protobuf v1.36.8
 )
 
 require (
 	cloud.google.com/go/pubsub/v2 v2.0.0 // indirect
-	golang.org/x/net v0.42.0 // indirect
-	golang.org/x/sys v0.34.0 // indirect
-	golang.org/x/text v0.27.0 // indirect
+	golang.org/x/net v0.43.0 // indirect
+	golang.org/x/sys v0.35.0 // indirect
+	golang.org/x/text v0.28.0 // indirect
 )
