@@ -1,6 +1,6 @@
 module google.golang.org/genproto/googleapis/bytestream
 
-go 1.24.0
+go 1.24
 
 require (
 	google.golang.org/grpc v1.71.0
