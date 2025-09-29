@@ -3,7 +3,7 @@ module google.golang.org/genproto/googleapis/api
 go 1.24.0
 
 require (
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20250908214217-97024824d090
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20250922171735-9219d122eba9
 	google.golang.org/grpc v1.71.0
 	google.golang.org/protobuf v1.36.9
 )
