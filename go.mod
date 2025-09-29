@@ -20,14 +20,14 @@ require (
 	cloud.google.com/go/batch v1.12.2
 	cloud.google.com/go/beyondcorp v1.1.6
 	cloud.google.com/go/bigquery v1.70.0
-	cloud.google.com/go/bigtable v1.39.0
+	cloud.google.com/go/bigtable v1.40.1
 	cloud.google.com/go/billing v1.20.4
 	cloud.google.com/go/binaryauthorization v1.9.5
 	cloud.google.com/go/certificatemanager v1.9.5
 	cloud.google.com/go/channel v1.20.0
 	cloud.google.com/go/cloudbuild v1.23.0
 	cloud.google.com/go/clouddms v1.8.8
-	cloud.google.com/go/cloudtasks v1.13.6
+	cloud.google.com/go/cloudtasks v1.13.7
 	cloud.google.com/go/compute v1.47.0
 	cloud.google.com/go/contactcenterinsights v1.17.4
 	cloud.google.com/go/container v1.44.0
@@ -88,40 +88,40 @@ require (
 	cloud.google.com/go/privatecatalog v0.10.8
 	cloud.google.com/go/pubsub v1.50.1
 	cloud.google.com/go/pubsublite v1.8.2
-	cloud.google.com/go/recaptchaenterprise/v2 v2.20.4
-	cloud.google.com/go/recommendationengine v0.9.6
-	cloud.google.com/go/recommender v1.13.5
-	cloud.google.com/go/redis v1.18.2
-	cloud.google.com/go/resourcemanager v1.10.6
+	cloud.google.com/go/recaptchaenterprise/v2 v2.20.5
+	cloud.google.com/go/recommendationengine v0.9.7
+	cloud.google.com/go/recommender v1.13.6
+	cloud.google.com/go/redis v1.18.3
+	cloud.google.com/go/resourcemanager v1.10.7
 	cloud.google.com/go/resourcesettings v1.8.3
-	cloud.google.com/go/retail v1.25.0
+	cloud.google.com/go/retail v1.25.1
 	cloud.google.com/go/run v1.12.0
-	cloud.google.com/go/scheduler v1.11.7
+	cloud.google.com/go/scheduler v1.11.8
 	cloud.google.com/go/secretmanager v1.15.0
-	cloud.google.com/go/security v1.19.1
-	cloud.google.com/go/securitycenter v1.38.0
-	cloud.google.com/go/servicedirectory v1.12.6
-	cloud.google.com/go/shell v1.8.6
+	cloud.google.com/go/security v1.19.2
+	cloud.google.com/go/securitycenter v1.38.1
+	cloud.google.com/go/servicedirectory v1.12.7
+	cloud.google.com/go/shell v1.8.7
 	cloud.google.com/go/spanner v1.85.1
 	cloud.google.com/go/speech v1.28.0
 	cloud.google.com/go/storagetransfer v1.13.0
-	cloud.google.com/go/talent v1.8.3
-	cloud.google.com/go/texttospeech v1.14.0
-	cloud.google.com/go/tpu v1.8.3
+	cloud.google.com/go/talent v1.8.4
+	cloud.google.com/go/texttospeech v1.15.0
+	cloud.google.com/go/tpu v1.8.4
 	cloud.google.com/go/trace v1.11.6
 	cloud.google.com/go/translate v1.12.6
-	cloud.google.com/go/video v1.26.0
-	cloud.google.com/go/videointelligence v1.12.6
+	cloud.google.com/go/video v1.27.1
+	cloud.google.com/go/videointelligence v1.12.7
 	cloud.google.com/go/vision/v2 v2.9.5
-	cloud.google.com/go/vmmigration v1.9.0
-	cloud.google.com/go/vmwareengine v1.3.5
-	cloud.google.com/go/vpcaccess v1.8.6
-	cloud.google.com/go/webrisk v1.11.1
-	cloud.google.com/go/websecurityscanner v1.7.6
-	cloud.google.com/go/workflows v1.14.2
+	cloud.google.com/go/vmmigration v1.9.1
+	cloud.google.com/go/vmwareengine v1.3.6
+	cloud.google.com/go/vpcaccess v1.8.7
+	cloud.google.com/go/webrisk v1.11.2
+	cloud.google.com/go/websecurityscanner v1.7.7
+	cloud.google.com/go/workflows v1.14.3
 	github.com/golang/protobuf v1.5.4
-	google.golang.org/genproto/googleapis/api v0.0.0-20250908214217-97024824d090
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20250908214217-97024824d090
+	google.golang.org/genproto/googleapis/api v0.0.0-20250922171735-9219d122eba9
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20250922171735-9219d122eba9
 	google.golang.org/grpc v1.74.2
 	google.golang.org/protobuf v1.36.9
 )
