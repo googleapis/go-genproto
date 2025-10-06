@@ -5,7 +5,7 @@ go 1.24.0
 require (
 	cloud.google.com/go/accessapproval v1.8.7
 	cloud.google.com/go/accesscontextmanager v1.9.6
-	cloud.google.com/go/aiplatform v1.102.0
+	cloud.google.com/go/aiplatform v1.103.0
 	cloud.google.com/go/analytics v0.30.0
 	cloud.google.com/go/apigateway v1.7.7
 	cloud.google.com/go/apigeeconnect v1.7.7
@@ -19,7 +19,7 @@ require (
 	cloud.google.com/go/baremetalsolution v1.3.6
 	cloud.google.com/go/batch v1.12.2
 	cloud.google.com/go/beyondcorp v1.1.6
-	cloud.google.com/go/bigquery v1.70.0
+	cloud.google.com/go/bigquery v1.71.0
 	cloud.google.com/go/bigtable v1.40.1
 	cloud.google.com/go/billing v1.20.4
 	cloud.google.com/go/binaryauthorization v1.9.5
@@ -28,7 +28,7 @@ require (
 	cloud.google.com/go/cloudbuild v1.23.0
 	cloud.google.com/go/clouddms v1.8.8
 	cloud.google.com/go/cloudtasks v1.13.7
-	cloud.google.com/go/compute v1.47.0
+	cloud.google.com/go/compute v1.48.0
 	cloud.google.com/go/contactcenterinsights v1.17.4
 	cloud.google.com/go/container v1.44.0
 	cloud.google.com/go/containeranalysis v0.14.1
@@ -102,7 +102,7 @@ require (
 	cloud.google.com/go/securitycenter v1.38.1
 	cloud.google.com/go/servicedirectory v1.12.7
 	cloud.google.com/go/shell v1.8.7
-	cloud.google.com/go/spanner v1.85.1
+	cloud.google.com/go/spanner v1.86.0
 	cloud.google.com/go/speech v1.28.0
 	cloud.google.com/go/storagetransfer v1.13.0
 	cloud.google.com/go/talent v1.8.4
@@ -120,15 +120,15 @@ require (
 	cloud.google.com/go/websecurityscanner v1.7.7
 	cloud.google.com/go/workflows v1.14.3
 	github.com/golang/protobuf v1.5.4
-	google.golang.org/genproto/googleapis/api v0.0.0-20250922171735-9219d122eba9
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20250922171735-9219d122eba9
-	google.golang.org/grpc v1.74.2
-	google.golang.org/protobuf v1.36.9
+	google.golang.org/genproto/googleapis/api v0.0.0-20251002232023-7c0ddcbb5797
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20251002232023-7c0ddcbb5797
+	google.golang.org/grpc v1.75.1
+	google.golang.org/protobuf v1.36.10
 )
 
 require (
 	cloud.google.com/go/pubsub/v2 v2.0.0 // indirect
-	golang.org/x/net v0.43.0 // indirect
-	golang.org/x/sys v0.35.0 // indirect
-	golang.org/x/text v0.28.0 // indirect
+	golang.org/x/net v0.44.0 // indirect
+	golang.org/x/sys v0.36.0 // indirect
+	golang.org/x/text v0.29.0 // indirect
 )
