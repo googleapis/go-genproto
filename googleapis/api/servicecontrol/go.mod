@@ -3,16 +3,16 @@ module google.golang.org/genproto/googleapis/api/servicecontrol
 go 1.24.0
 
 require (
-	cloud.google.com/go/servicecontrol v1.14.5
-	google.golang.org/genproto/googleapis/api v0.0.0-20251007200510-49b9836ed3ff
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20251007200510-49b9836ed3ff
-	google.golang.org/grpc v1.71.1
+	cloud.google.com/go/servicecontrol v1.14.6
+	google.golang.org/genproto/googleapis/api v0.0.0-20251014184007-4626949a642f
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20251014184007-4626949a642f
+	google.golang.org/grpc v1.74.2
 	google.golang.org/protobuf v1.36.10
 )
 
 require (
-	golang.org/x/net v0.39.0 // indirect
-	golang.org/x/sys v0.32.0 // indirect
-	golang.org/x/text v0.24.0 // indirect
-	google.golang.org/genproto v0.0.0-20250313205543-e70fdf4c4cb4 // indirect
+	golang.org/x/net v0.43.0 // indirect
+	golang.org/x/sys v0.35.0 // indirect
+	golang.org/x/text v0.28.0 // indirect
+	google.golang.org/genproto v0.0.0-20250603155806-513f23925822 // indirect
 )
