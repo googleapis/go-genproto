@@ -1,0 +1,4 @@
+# Indicate to the container that it should take
+# a different path for generate/build
+# (and prohibit configure and release init entirely)
+type: go-genproto

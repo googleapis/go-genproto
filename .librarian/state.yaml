@@ -1,0 +1,134 @@
+image: us-central1-docker.pkg.dev/cloud-sdk-librarian-prod/images-prod/librarian-go@sha256:496591304b0d24ab57ea5f2c8a7870921713edab7f6fd002c5b2e78a8d6de396
+libraries:
+  - id: genproto
+    version: 0.0.0
+    last_generated_commit: c288189b43c016dd3cf1ec73ce3cadee8b732f07
+    apis:
+      - path: google/actions/sdk/v2
+      - path: google/actions/sdk/v2/conversation
+      - path: google/actions/sdk/v2/conversation/prompt
+      - path: google/actions/sdk/v2/conversation/prompt/content
+      - path: google/actions/sdk/v2/interactionmodel
+      - path: google/actions/sdk/v2/interactionmodel/prompt
+      - path: google/actions/sdk/v2/interactionmodel/prompt/content
+      - path: google/actions/sdk/v2/interactionmodel/type
+      - path: google/actions/type
+      - path: google/api
+      - path: google/api/apikeys/v2
+      - path: google/api/expr/conformance/v1alpha1
+      - path: google/api/expr/v1alpha1
+      - path: google/api/expr/v1beta1
+      - path: google/apps/alertcenter/v1beta1
+      - path: google/apps/card/v1
+      - path: google/apps/drive/activity/v2
+      - path: google/apps/drive/labels/v2
+      - path: google/apps/drive/labels/v2beta
+      - path: google/apps/script/type
+      - path: google/apps/script/type/calendar
+      - path: google/apps/script/type/docs
+      - path: google/apps/script/type/drive
+      - path: google/apps/script/type/gmail
+      - path: google/apps/script/type/sheets
+      - path: google/apps/script/type/slides
+      - path: google/assistant/embedded/v1alpha1
+      - path: google/assistant/embedded/v1alpha2
+      - path: google/bytestream
+      - path: google/chromeos/moblab/v1beta1
+      - path: google/chromeos/uidetection/v1
+      - path: google/cloud/audit
+      - path: google/container/v1alpha1
+      - path: google/example/library/v1
+      - path: google/firebase/fcm/connection/v1alpha1
+      - path: gapic/metadata
+      - path: google/genomics/v1
+      - path: google/genomics/v1alpha2
+      - path: google/geo/type
+      - path: grafeas/v1
+      - path: google/home/enterprise/sdm/v1
+      - path: google/home/graph/v1
+      - path: google/networking/trafficdirector/type
+      - path: google/partner/aistreams/v1alpha1
+      - path: google/rpc
+      - path: google/rpc/context
+      - path: google/search/partnerdataingestion/logging/v1
+      - path: google/type
+      - path: google/watcher/v1
+    source_roots:
+      - .
+    remove_regex:
+      - ^googleapis/actions/sdk/v2/[^/]*\.go$
+      - ^googleapis/actions/sdk/v2/conversation/[^/]*\.go$
+      - ^googleapis/actions/sdk/v2/interactionmodel/[^/]*\.go$
+      - ^googleapis/actions/sdk/v2/interactionmodel/prompt/[^/]*\.go$
+      - ^googleapis/actions/sdk/v2/interactionmodel/type/[^/]*\.go$
+      - ^googleapis/api/[^/]*\.go$
+      - ^googleapis/api/annotations/[^/]*\.go$
+      - ^googleapis/api/configchange/[^/]*\.go$
+      - ^googleapis/api/distribution/[^/]*\.go$
+      - ^googleapis/api/error_reason/[^/]*\.go$
+      - ^googleapis/api/expr/conformance/v1alpha1/[^/]*\.go$
+      - ^googleapis/api/expr/v1alpha1/[^/]*\.go$
+      - ^googleapis/api/expr/v1beta1/[^/]*\.go$
+      - ^googleapis/api/httpbody/[^/]*\.go$
+      - ^googleapis/api/label/[^/]*\.go$
+      - ^googleapis/api/metric/[^/]*\.go$
+      - ^googleapis/api/monitoredres/[^/]*\.go$
+      - ^googleapis/api/serviceconfig/[^/]*\.go$
+      - ^googleapis/api/visibility/[^/]*\.go$
+      - ^googleapis/apps/alertcenter/v1beta1/[^/]*\.go$
+      - ^googleapis/apps/card/v1/[^/]*\.go$
+      - ^googleapis/apps/drive/activity/v2/[^/]*\.go$
+      - ^googleapis/apps/drive/labels/v2/[^/]*\.go$
+      - ^googleapis/apps/drive/labels/v2beta/[^/]*\.go$
+      - ^googleapis/apps/script/type/[^/]*\.go$
+      - ^googleapis/apps/script/type/calendar/[^/]*\.go$
+      - ^googleapis/apps/script/type/docs/[^/]*\.go$
+      - ^googleapis/apps/script/type/drive/[^/]*\.go$
+      - ^googleapis/apps/script/type/gmail/[^/]*\.go$
+      - ^googleapis/apps/script/type/sheets/[^/]*\.go$
+      - ^googleapis/apps/script/type/slides/[^/]*\.go$
+      - ^googleapis/assistant/embedded/v1alpha1/[^/]*\.go$
+      - ^googleapis/assistant/embedded/v1alpha2/[^/]*\.go$
+      - ^googleapis/bytestream/[^/]*\.go$
+      - ^googleapis/chromeos/moblab/v1beta1/[^/]*\.go$
+      - ^googleapis/chromeos/uidetection/v1/[^/]*\.go$
+      - ^googleapis/cloud/audit/[^/]*\.go$
+      - ^googleapis/container/v1alpha1/[^/]*\.go$
+      - ^googleapis/example/library/v1/[^/]*\.go$
+      - ^googleapis/firebase/fcm/connection/v1alpha1/[^/]*\.go$
+      - ^googleapis/gapic/metadata/[^/]*\.go$
+      - ^googleapis/genomics/v1/[^/]*\.go$
+      - ^googleapis/genomics/v1alpha2/[^/]*\.go$
+      - ^googleapis/geo/type/viewport/[^/]*\.go$
+      - ^googleapis/grafeas/v1/[^/]*\.go$
+      - ^googleapis/home/enterprise/sdm/v1/[^/]*\.go$
+      - ^googleapis/home/graph/v1/[^/]*\.go$
+      - ^googleapis/networking/trafficdirector/type/[^/]*\.go$
+      - ^googleapis/partner/aistreams/v1alpha1/[^/]*\.go$
+      - ^googleapis/rpc/code/[^/]*\.go$
+      - ^googleapis/rpc/context/[^/]*\.go$
+      - ^googleapis/rpc/context/attribute_context/[^/]*\.go$
+      - ^googleapis/rpc/errdetails/[^/]*\.go$
+      - ^googleapis/rpc/http/[^/]*\.go$
+      - ^googleapis/rpc/status/[^/]*\.go$
+      - ^googleapis/search/partnerdataingestion/logging/v1/[^/]*\.go$
+      - ^googleapis/type/calendarperiod/[^/]*\.go$
+      - ^googleapis/type/color/[^/]*\.go$
+      - ^googleapis/type/date/[^/]*\.go$
+      - ^googleapis/type/date_range/[^/]*\.go$
+      - ^googleapis/type/datetime/[^/]*\.go$
+      - ^googleapis/type/date_time_range/[^/]*\.go$
+      - ^googleapis/type/dayofweek/[^/]*\.go$
+      - ^googleapis/type/decimal/[^/]*\.go$
+      - ^googleapis/type/expr/[^/]*\.go$
+      - ^googleapis/type/fraction/[^/]*\.go$
+      - ^googleapis/type/interval/[^/]*\.go$
+      - ^googleapis/type/latlng/[^/]*\.go$
+      - ^googleapis/type/localized_text/[^/]*\.go$
+      - ^googleapis/type/money/[^/]*\.go$
+      - ^googleapis/type/month/[^/]*\.go$
+      - ^googleapis/type/phone_number/[^/]*\.go$
+      - ^googleapis/type/postaladdress/[^/]*\.go$
+      - ^googleapis/type/quaternion/[^/]*\.go$
+      - ^googleapis/type/timeofday/[^/]*\.go$
+      - ^googleapis/watcher/v1/[^/]*\.go$
