@@ -1,6 +1,6 @@
 module google.golang.org/genproto/googleapis/api/serviceusage
 
-go 1.24.0
+go 1.24
 
 require (
 	cloud.google.com/go/serviceusage v1.9.7
