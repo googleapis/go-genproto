@@ -1,0 +1,7 @@
+# This repo is never actually released. While
+# automation shouldn't even be configured for
+# release, this makes sure that even if *is*
+# configured at some point, we won't create release PRs.
+libraries:
+  - id: genproto
+    release_blocked: true
