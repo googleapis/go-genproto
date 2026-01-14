@@ -33,11 +33,14 @@ go get github.com/jstemmer/go-junit-report
 
 set +e
 
-# Run tests and tee output to log file, to be pushed to GCS as artifact.
-go test -race -v ./... 2>&1 | tee $KOKORO_ARTIFACTS_DIR/sponge_log.log
+exit_code = 0
+go_test_args=("-race" "-timeout" "10m")
 
-cat $KOKORO_ARTIFACTS_DIR/sponge_log.log | go-junit-report -set-exit-code >$KOKORO_ARTIFACTS_DIR/sponge_log.xml
-exit_code=$?
+gotestsum --packages="./..." \
+    --junitfile sponge_log.xml \
+    --format standard-verbose \
+    -- "${go_test_args[@]}" 2>&1 | tee sponge_log.log
+exit_code=$(($exit_code + $?))
 
 # Send logs to Flaky Bot for continuous builds.
 if [[ $KOKORO_BUILD_ARTIFACTS_SUBDIR = *"continuous"* ]]; then
