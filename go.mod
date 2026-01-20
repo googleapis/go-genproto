@@ -52,7 +52,7 @@ require (
 	cloud.google.com/go/essentialcontacts v1.7.7
 	cloud.google.com/go/eventarc v1.18.0
 	cloud.google.com/go/filestore v1.10.3
-	cloud.google.com/go/firestore v1.20.0
+	cloud.google.com/go/firestore v1.21.0
 	cloud.google.com/go/functions v1.19.7
 	cloud.google.com/go/gkebackup v1.8.1
 	cloud.google.com/go/gkeconnect v0.12.5
@@ -63,7 +63,7 @@ require (
 	cloud.google.com/go/iap v1.11.3
 	cloud.google.com/go/ids v1.5.7
 	cloud.google.com/go/iot v1.8.7
-	cloud.google.com/go/kms v1.23.2
+	cloud.google.com/go/kms v1.24.0
 	cloud.google.com/go/language v1.14.6
 	cloud.google.com/go/lifesciences v0.10.7
 	cloud.google.com/go/logging v1.13.1
@@ -95,7 +95,7 @@ require (
 	cloud.google.com/go/resourcemanager v1.10.7
 	cloud.google.com/go/resourcesettings v1.8.3
 	cloud.google.com/go/retail v1.25.1
-	cloud.google.com/go/run v1.13.0
+	cloud.google.com/go/run v1.14.0
 	cloud.google.com/go/scheduler v1.11.8
 	cloud.google.com/go/secretmanager v1.16.0
 	cloud.google.com/go/security v1.19.2
@@ -120,8 +120,8 @@ require (
 	cloud.google.com/go/websecurityscanner v1.7.7
 	cloud.google.com/go/workflows v1.14.3
 	github.com/golang/protobuf v1.5.4
-	google.golang.org/genproto/googleapis/api v0.0.0-20251222181119-0a764e51fe1b
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20251222181119-0a764e51fe1b
+	google.golang.org/genproto/googleapis/api v0.0.0-20260120174246-409b4a993575
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20260120174246-409b4a993575
 	google.golang.org/grpc v1.76.0
 	google.golang.org/protobuf v1.36.11
 )
