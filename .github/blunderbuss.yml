@@ -3,4 +3,4 @@ assign_issues_by:
   - 'api: logging'
   - 'api: clouderrorreporting'
   to:
-  - googleapis/cloud-sdk-go-eng
+  - googleapis/cloud-sdk-go-team
