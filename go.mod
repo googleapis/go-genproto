@@ -30,7 +30,7 @@ require (
 	cloud.google.com/go/cloudtasks v1.13.7
 	cloud.google.com/go/compute v1.54.0
 	cloud.google.com/go/contactcenterinsights v1.17.4
-	cloud.google.com/go/container v1.45.0
+	cloud.google.com/go/container v1.46.0
 	cloud.google.com/go/containeranalysis v0.14.2
 	cloud.google.com/go/datacatalog v1.26.1
 	cloud.google.com/go/dataflow v0.11.1
@@ -45,7 +45,7 @@ require (
 	cloud.google.com/go/deploy v1.27.3
 	cloud.google.com/go/dialogflow v1.74.0
 	cloud.google.com/go/dlp v1.28.0
-	cloud.google.com/go/documentai v1.39.0
+	cloud.google.com/go/documentai v1.40.0
 	cloud.google.com/go/domains v0.10.7
 	cloud.google.com/go/edgecontainer v1.4.4
 	cloud.google.com/go/errorreporting v0.4.0
@@ -75,7 +75,7 @@ require (
 	cloud.google.com/go/metastore v1.14.8
 	cloud.google.com/go/monitoring v1.24.3
 	cloud.google.com/go/networkconnectivity v1.20.0
-	cloud.google.com/go/networkmanagement v1.21.0
+	cloud.google.com/go/networkmanagement v1.22.0
 	cloud.google.com/go/networksecurity v0.11.0
 	cloud.google.com/go/notebooks v1.12.7
 	cloud.google.com/go/optimization v1.7.7
@@ -94,7 +94,7 @@ require (
 	cloud.google.com/go/redis v1.18.3
 	cloud.google.com/go/resourcemanager v1.10.7
 	cloud.google.com/go/resourcesettings v1.8.3
-	cloud.google.com/go/retail v1.25.1
+	cloud.google.com/go/retail v1.26.0
 	cloud.google.com/go/run v1.15.0
 	cloud.google.com/go/scheduler v1.11.8
 	cloud.google.com/go/secretmanager v1.16.0
@@ -120,8 +120,8 @@ require (
 	cloud.google.com/go/websecurityscanner v1.7.7
 	cloud.google.com/go/workflows v1.14.3
 	github.com/golang/protobuf v1.5.4
-	google.golang.org/genproto/googleapis/api v0.0.0-20260122232226-8e98ce8d340d
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20260122232226-8e98ce8d340d
+	google.golang.org/genproto/googleapis/api v0.0.0-20260128011058-8636f8732409
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20260128011058-8636f8732409
 	google.golang.org/grpc v1.76.0
 	google.golang.org/protobuf v1.36.11
 )
