@@ -5,14 +5,14 @@ go 1.25.0
 require (
 	cloud.google.com/go/accessapproval v1.8.8
 	cloud.google.com/go/accesscontextmanager v1.9.7
-	cloud.google.com/go/aiplatform v1.115.0
+	cloud.google.com/go/aiplatform v1.116.0
 	cloud.google.com/go/analytics v0.30.1
 	cloud.google.com/go/apigateway v1.7.7
 	cloud.google.com/go/apigeeconnect v1.7.7
 	cloud.google.com/go/apigeeregistry v0.10.0
 	cloud.google.com/go/appengine v1.9.7
 	cloud.google.com/go/area120 v0.9.7
-	cloud.google.com/go/artifactregistry v1.19.0
+	cloud.google.com/go/artifactregistry v1.20.0
 	cloud.google.com/go/asset v1.22.0
 	cloud.google.com/go/assuredworkloads v1.13.0
 	cloud.google.com/go/automl v1.15.0
@@ -45,7 +45,7 @@ require (
 	cloud.google.com/go/deploy v1.27.3
 	cloud.google.com/go/dialogflow v1.75.0
 	cloud.google.com/go/dlp v1.28.0
-	cloud.google.com/go/documentai v1.40.0
+	cloud.google.com/go/documentai v1.41.0
 	cloud.google.com/go/domains v0.10.7
 	cloud.google.com/go/edgecontainer v1.4.4
 	cloud.google.com/go/errorreporting v0.4.0
@@ -69,7 +69,7 @@ require (
 	cloud.google.com/go/logging v1.13.2
 	cloud.google.com/go/longrunning v0.8.0
 	cloud.google.com/go/managedidentities v1.7.7
-	cloud.google.com/go/maps v1.26.0
+	cloud.google.com/go/maps v1.27.0
 	cloud.google.com/go/mediatranslation v0.9.7
 	cloud.google.com/go/memcache v1.11.7
 	cloud.google.com/go/metastore v1.14.8
@@ -102,7 +102,7 @@ require (
 	cloud.google.com/go/securitycenter v1.38.1
 	cloud.google.com/go/servicedirectory v1.12.7
 	cloud.google.com/go/shell v1.8.7
-	cloud.google.com/go/spanner v1.87.0
+	cloud.google.com/go/spanner v1.88.0
 	cloud.google.com/go/speech v1.29.0
 	cloud.google.com/go/storagetransfer v1.13.1
 	cloud.google.com/go/talent v1.8.4
@@ -120,15 +120,15 @@ require (
 	cloud.google.com/go/websecurityscanner v1.7.7
 	cloud.google.com/go/workflows v1.14.3
 	github.com/golang/protobuf v1.5.4
-	google.golang.org/genproto/googleapis/api v0.0.0-20260203192932-546029d2fa20
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20260203192932-546029d2fa20
+	google.golang.org/genproto/googleapis/api v0.0.0-20260209200024-4cfbd4190f57
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20260209200024-4cfbd4190f57
 	google.golang.org/grpc v1.78.0
 	google.golang.org/protobuf v1.36.11
 )
 
 require (
 	cloud.google.com/go/pubsub/v2 v2.0.0 // indirect
-	golang.org/x/net v0.48.0 // indirect
-	golang.org/x/sys v0.39.0 // indirect
-	golang.org/x/text v0.32.0 // indirect
+	golang.org/x/net v0.49.0 // indirect
+	golang.org/x/sys v0.40.0 // indirect
+	golang.org/x/text v0.33.0 // indirect
 )
