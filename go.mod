@@ -5,7 +5,7 @@ go 1.25.0
 require (
 	cloud.google.com/go/accessapproval v1.8.8
 	cloud.google.com/go/accesscontextmanager v1.9.7
-	cloud.google.com/go/aiplatform v1.116.0
+	cloud.google.com/go/aiplatform v1.117.0
 	cloud.google.com/go/analytics v0.30.1
 	cloud.google.com/go/apigateway v1.7.7
 	cloud.google.com/go/apigeeconnect v1.7.7
@@ -13,7 +13,7 @@ require (
 	cloud.google.com/go/appengine v1.9.7
 	cloud.google.com/go/area120 v0.9.7
 	cloud.google.com/go/artifactregistry v1.20.0
-	cloud.google.com/go/asset v1.22.0
+	cloud.google.com/go/asset v1.22.1
 	cloud.google.com/go/assuredworkloads v1.13.0
 	cloud.google.com/go/automl v1.15.0
 	cloud.google.com/go/baremetalsolution v1.4.0
@@ -34,16 +34,16 @@ require (
 	cloud.google.com/go/containeranalysis v0.14.2
 	cloud.google.com/go/datacatalog v1.26.1
 	cloud.google.com/go/dataflow v0.11.1
-	cloud.google.com/go/dataform v0.12.1
+	cloud.google.com/go/dataform v0.13.0
 	cloud.google.com/go/datafusion v1.8.7
 	cloud.google.com/go/datalabeling v0.9.7
 	cloud.google.com/go/dataplex v1.28.0
-	cloud.google.com/go/dataproc/v2 v2.15.0
+	cloud.google.com/go/dataproc/v2 v2.16.0
 	cloud.google.com/go/dataqna v0.9.8
 	cloud.google.com/go/datastore v1.22.0
 	cloud.google.com/go/datastream v1.15.1
 	cloud.google.com/go/deploy v1.27.3
-	cloud.google.com/go/dialogflow v1.75.0
+	cloud.google.com/go/dialogflow v1.76.0
 	cloud.google.com/go/dlp v1.28.0
 	cloud.google.com/go/documentai v1.41.0
 	cloud.google.com/go/domains v0.10.7
@@ -63,13 +63,13 @@ require (
 	cloud.google.com/go/iap v1.11.3
 	cloud.google.com/go/ids v1.5.7
 	cloud.google.com/go/iot v1.8.7
-	cloud.google.com/go/kms v1.25.0
+	cloud.google.com/go/kms v1.26.0
 	cloud.google.com/go/language v1.14.6
 	cloud.google.com/go/lifesciences v0.10.7
 	cloud.google.com/go/logging v1.13.2
 	cloud.google.com/go/longrunning v0.8.0
 	cloud.google.com/go/managedidentities v1.7.7
-	cloud.google.com/go/maps v1.27.0
+	cloud.google.com/go/maps v1.28.0
 	cloud.google.com/go/mediatranslation v0.9.7
 	cloud.google.com/go/memcache v1.11.7
 	cloud.google.com/go/metastore v1.14.8
@@ -120,8 +120,8 @@ require (
 	cloud.google.com/go/websecurityscanner v1.7.7
 	cloud.google.com/go/workflows v1.14.3
 	github.com/golang/protobuf v1.5.4
-	google.golang.org/genproto/googleapis/api v0.0.0-20260209200024-4cfbd4190f57
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20260209200024-4cfbd4190f57
+	google.golang.org/genproto/googleapis/api v0.0.0-20260217215200-42d3e9bedb6d
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20260217215200-42d3e9bedb6d
 	google.golang.org/grpc v1.78.0
 	google.golang.org/protobuf v1.36.11
 )
