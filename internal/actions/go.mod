@@ -1,3 +1,3 @@
 module cloud.google.com/go/internal/actions
 
-go 1.24.0
+go 1.25.0

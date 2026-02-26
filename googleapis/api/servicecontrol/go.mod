@@ -1,11 +1,11 @@
 module google.golang.org/genproto/googleapis/api/servicecontrol
 
-go 1.24.0
+go 1.25.0
 
 require (
 	cloud.google.com/go/servicecontrol v1.14.6
-	google.golang.org/genproto/googleapis/api v0.0.0-20260203192932-546029d2fa20
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20260203192932-546029d2fa20
+	google.golang.org/genproto/googleapis/api v0.0.0-20260217215200-42d3e9bedb6d
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20260217215200-42d3e9bedb6d
 	google.golang.org/grpc v1.74.2
 	google.golang.org/protobuf v1.36.11
 )
