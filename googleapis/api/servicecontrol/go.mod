@@ -4,8 +4,8 @@ go 1.25.0
 
 require (
 	cloud.google.com/go/servicecontrol v1.14.6
-	google.golang.org/genproto/googleapis/api v0.0.0-20260226221140-a57be14db171
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20260226221140-a57be14db171
+	google.golang.org/genproto/googleapis/api v0.0.0-20260316172706-e463d84ca32d
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20260311181403-84a4fc48630c
 	google.golang.org/grpc v1.74.2
 	google.golang.org/protobuf v1.36.11
 )
