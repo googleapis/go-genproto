@@ -233,6 +233,197 @@ func (CloudBuild_State) EnumDescriptor() ([]byte, []int) {
 	return file_google_chromeos_moblab_v1beta1_resources_proto_rawDescGZIP(), []int{5, 0}
 }
 
+// The possible states of a test effort.
+type TestEffort_State int32
+
+const (
+	// No test effort state is specified.
+	TestEffort_STATE_UNSPECIFIED TestEffort_State = 0
+	// The test effort is created.
+	TestEffort_CREATED TestEffort_State = 1
+	// The test effort has incomplete results.
+	TestEffort_INCOMPLETE TestEffort_State = 2
+	// The test effort has failed.
+	TestEffort_FAILED TestEffort_State = 3
+	// The test effort has unreported results.
+	TestEffort_UNREPORTED TestEffort_State = 4
+	// The test effort is not applicable.
+	TestEffort_NOT_APPLICABLE TestEffort_State = 5
+	// The test effort has passed.
+	TestEffort_SUCCEEDED TestEffort_State = 6
+	// The test effort is requested to be cancelled.
+	TestEffort_CANCEL_REQUESTED TestEffort_State = 7
+	// The test effort is cancelled.
+	TestEffort_CANCELLED TestEffort_State = 8
+	// The cancelling the test effort failed.
+	TestEffort_CANCEL_FAILED TestEffort_State = 9
+)
+
+// Enum value maps for TestEffort_State.
+var (
+	TestEffort_State_name = map[int32]string{
+		0: "STATE_UNSPECIFIED",
+		1: "CREATED",
+		2: "INCOMPLETE",
+		3: "FAILED",
+		4: "UNREPORTED",
+		5: "NOT_APPLICABLE",
+		6: "SUCCEEDED",
+		7: "CANCEL_REQUESTED",
+		8: "CANCELLED",
+		9: "CANCEL_FAILED",
+	}
+	TestEffort_State_value = map[string]int32{
+		"STATE_UNSPECIFIED": 0,
+		"CREATED":           1,
+		"INCOMPLETE":        2,
+		"FAILED":            3,
+		"UNREPORTED":        4,
+		"NOT_APPLICABLE":    5,
+		"SUCCEEDED":         6,
+		"CANCEL_REQUESTED":  7,
+		"CANCELLED":         8,
+		"CANCEL_FAILED":     9,
+	}
+)
+
+func (x TestEffort_State) Enum() *TestEffort_State {
+	p := new(TestEffort_State)
+	*p = x
+	return p
+}
+
+func (x TestEffort_State) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (TestEffort_State) Descriptor() protoreflect.EnumDescriptor {
+	return file_google_chromeos_moblab_v1beta1_resources_proto_enumTypes[3].Descriptor()
+}
+
+func (TestEffort_State) Type() protoreflect.EnumType {
+	return &file_google_chromeos_moblab_v1beta1_resources_proto_enumTypes[3]
+}
+
+func (x TestEffort_State) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use TestEffort_State.Descriptor instead.
+func (TestEffort_State) EnumDescriptor() ([]byte, []int) {
+	return file_google_chromeos_moblab_v1beta1_resources_proto_rawDescGZIP(), []int{9, 0}
+}
+
+// The firmware type.
+type TestEffort_FirmwareType int32
+
+const (
+	// No firmware type is specified.
+	TestEffort_FIRMWARE_TYPE_UNSPECIFIED TestEffort_FirmwareType = 0
+	// The read only firmware type.
+	TestEffort_READ_ONLY TestEffort_FirmwareType = 1
+	// The read write firmware type.
+	TestEffort_READ_WRITE TestEffort_FirmwareType = 2
+)
+
+// Enum value maps for TestEffort_FirmwareType.
+var (
+	TestEffort_FirmwareType_name = map[int32]string{
+		0: "FIRMWARE_TYPE_UNSPECIFIED",
+		1: "READ_ONLY",
+		2: "READ_WRITE",
+	}
+	TestEffort_FirmwareType_value = map[string]int32{
+		"FIRMWARE_TYPE_UNSPECIFIED": 0,
+		"READ_ONLY":                 1,
+		"READ_WRITE":                2,
+	}
+)
+
+func (x TestEffort_FirmwareType) Enum() *TestEffort_FirmwareType {
+	p := new(TestEffort_FirmwareType)
+	*p = x
+	return p
+}
+
+func (x TestEffort_FirmwareType) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (TestEffort_FirmwareType) Descriptor() protoreflect.EnumDescriptor {
+	return file_google_chromeos_moblab_v1beta1_resources_proto_enumTypes[4].Descriptor()
+}
+
+func (TestEffort_FirmwareType) Type() protoreflect.EnumType {
+	return &file_google_chromeos_moblab_v1beta1_resources_proto_enumTypes[4]
+}
+
+func (x TestEffort_FirmwareType) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use TestEffort_FirmwareType.Descriptor instead.
+func (TestEffort_FirmwareType) EnumDescriptor() ([]byte, []int) {
+	return file_google_chromeos_moblab_v1beta1_resources_proto_rawDescGZIP(), []int{9, 1}
+}
+
+// The category of pool to schedule tests against.
+type TestEffort_Pool_PoolType int32
+
+const (
+	// Not used. Exists to distinguish between an unset value and DEFAULT.
+	TestEffort_Pool_POOL_TYPE_UNSPECIFIED TestEffort_Pool_PoolType = 0
+	// Pools used when scheduling tests without any special exceptions
+	TestEffort_Pool_DEFAULT_POOL TestEffort_Pool_PoolType = 1
+	// Pools to use when scheduling FAFT PD tests.
+	TestEffort_Pool_FAFT_PD TestEffort_Pool_PoolType = 2
+	// Pools to schedule tests with extremely long runtimes (3+ hours)
+	TestEffort_Pool_EXTENDED_DURATION TestEffort_Pool_PoolType = 3
+)
+
+// Enum value maps for TestEffort_Pool_PoolType.
+var (
+	TestEffort_Pool_PoolType_name = map[int32]string{
+		0: "POOL_TYPE_UNSPECIFIED",
+		1: "DEFAULT_POOL",
+		2: "FAFT_PD",
+		3: "EXTENDED_DURATION",
+	}
+	TestEffort_Pool_PoolType_value = map[string]int32{
+		"POOL_TYPE_UNSPECIFIED": 0,
+		"DEFAULT_POOL":          1,
+		"FAFT_PD":               2,
+		"EXTENDED_DURATION":     3,
+	}
+)
+
+func (x TestEffort_Pool_PoolType) Enum() *TestEffort_Pool_PoolType {
+	p := new(TestEffort_Pool_PoolType)
+	*p = x
+	return p
+}
+
+func (x TestEffort_Pool_PoolType) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (TestEffort_Pool_PoolType) Descriptor() protoreflect.EnumDescriptor {
+	return file_google_chromeos_moblab_v1beta1_resources_proto_enumTypes[5].Descriptor()
+}
+
+func (TestEffort_Pool_PoolType) Type() protoreflect.EnumType {
+	return &file_google_chromeos_moblab_v1beta1_resources_proto_enumTypes[5]
+}
+
+func (x TestEffort_Pool_PoolType) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use TestEffort_Pool_PoolType.Descriptor instead.
+func (TestEffort_Pool_PoolType) EnumDescriptor() ([]byte, []int) {
+	return file_google_chromeos_moblab_v1beta1_resources_proto_rawDescGZIP(), []int{9, 1, 0}
+}
+
 // Resource that represents a build target.
 // -- NEXT_TAG: 2 --
 type BuildTarget struct {
@@ -926,6 +1117,718 @@ func (x *TradefedTest) GetCommand() string {
 	return ""
 }
 
+// Summary information for an entire test effort
+type TestEffort struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// Identifier. The resource name of the test effort.
+	// Format: testEfforts/{test_effort}
+	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	// Output only. The ID of the test effort.
+	TestEffortId string `protobuf:"bytes,2,opt,name=test_effort_id,json=testEffortId,proto3" json:"test_effort_id,omitempty"`
+	// Optional. The satlab ID that the test effort comes from.
+	SatlabId string `protobuf:"bytes,3,opt,name=satlab_id,json=satlabId,proto3" json:"satlab_id,omitempty"`
+	// The test target of the test effort.
+	//
+	// Types that are assignable to TestTarget:
+	//
+	//	*TestEffort_BoardModel_
+	TestTarget isTestEffort_TestTarget `protobuf_oneof:"test_target"`
+	// Required. The pools of the test effort.
+	Pools []*TestEffort_Pool `protobuf:"bytes,5,rep,name=pools,proto3" json:"pools,omitempty"`
+	// Required. Test plan reference.
+	TestPlan string `protobuf:"bytes,6,opt,name=test_plan,json=testPlan,proto3" json:"test_plan,omitempty"`
+	// Specifies the Operating System build targets to test against.
+	//
+	// Types that are assignable to Os:
+	//
+	//	*TestEffort_Android
+	Os isTestEffort_Os `protobuf_oneof:"os"`
+	// Output only. Overall result of the test effort.
+	State TestEffort_State `protobuf:"varint,8,opt,name=state,proto3,enum=google.chromeos.moblab.v1beta1.TestEffort_State" json:"state,omitempty"`
+	// Output only. The time when the test effort was created.
+	CreateTime *timestamppb.Timestamp `protobuf:"bytes,9,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
+	// Output only. Testhaus link.
+	TesthausUrl string `protobuf:"bytes,10,opt,name=testhaus_url,json=testhausUrl,proto3" json:"testhaus_url,omitempty"`
+	// Optional. The firmware configuration of the test effort.
+	FirmwareConfigs []*TestEffort_FirmwareConfig `protobuf:"bytes,11,rep,name=firmware_configs,json=firmwareConfigs,proto3" json:"firmware_configs,omitempty"`
+}
+
+func (x *TestEffort) Reset() {
+	*x = TestEffort{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_google_chromeos_moblab_v1beta1_resources_proto_msgTypes[9]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *TestEffort) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*TestEffort) ProtoMessage() {}
+
+func (x *TestEffort) ProtoReflect() protoreflect.Message {
+	mi := &file_google_chromeos_moblab_v1beta1_resources_proto_msgTypes[9]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use TestEffort.ProtoReflect.Descriptor instead.
+func (*TestEffort) Descriptor() ([]byte, []int) {
+	return file_google_chromeos_moblab_v1beta1_resources_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *TestEffort) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *TestEffort) GetTestEffortId() string {
+	if x != nil {
+		return x.TestEffortId
+	}
+	return ""
+}
+
+func (x *TestEffort) GetSatlabId() string {
+	if x != nil {
+		return x.SatlabId
+	}
+	return ""
+}
+
+func (m *TestEffort) GetTestTarget() isTestEffort_TestTarget {
+	if m != nil {
+		return m.TestTarget
+	}
+	return nil
+}
+
+func (x *TestEffort) GetBoardModel() *TestEffort_BoardModel {
+	if x, ok := x.GetTestTarget().(*TestEffort_BoardModel_); ok {
+		return x.BoardModel
+	}
+	return nil
+}
+
+func (x *TestEffort) GetPools() []*TestEffort_Pool {
+	if x != nil {
+		return x.Pools
+	}
+	return nil
+}
+
+func (x *TestEffort) GetTestPlan() string {
+	if x != nil {
+		return x.TestPlan
+	}
+	return ""
+}
+
+func (m *TestEffort) GetOs() isTestEffort_Os {
+	if m != nil {
+		return m.Os
+	}
+	return nil
+}
+
+func (x *TestEffort) GetAndroid() *TestEffort_AndroidBuildTarget {
+	if x, ok := x.GetOs().(*TestEffort_Android); ok {
+		return x.Android
+	}
+	return nil
+}
+
+func (x *TestEffort) GetState() TestEffort_State {
+	if x != nil {
+		return x.State
+	}
+	return TestEffort_STATE_UNSPECIFIED
+}
+
+func (x *TestEffort) GetCreateTime() *timestamppb.Timestamp {
+	if x != nil {
+		return x.CreateTime
+	}
+	return nil
+}
+
+func (x *TestEffort) GetTesthausUrl() string {
+	if x != nil {
+		return x.TesthausUrl
+	}
+	return ""
+}
+
+func (x *TestEffort) GetFirmwareConfigs() []*TestEffort_FirmwareConfig {
+	if x != nil {
+		return x.FirmwareConfigs
+	}
+	return nil
+}
+
+type isTestEffort_TestTarget interface {
+	isTestEffort_TestTarget()
+}
+
+type TestEffort_BoardModel_ struct {
+	// The board and model of the test effort.
+	BoardModel *TestEffort_BoardModel `protobuf:"bytes,4,opt,name=board_model,json=boardModel,proto3,oneof"`
+}
+
+func (*TestEffort_BoardModel_) isTestEffort_TestTarget() {}
+
+type isTestEffort_Os interface {
+	isTestEffort_Os()
+}
+
+type TestEffort_Android struct {
+	// Test against an Android build.
+	Android *TestEffort_AndroidBuildTarget `protobuf:"bytes,7,opt,name=android,proto3,oneof"`
+}
+
+func (*TestEffort_Android) isTestEffort_Os() {}
+
+// The board and model of the test effort.
+type TestEffort_BoardModel struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// Required. The board name.
+	Board string `protobuf:"bytes,1,opt,name=board,proto3" json:"board,omitempty"`
+	// Required. The model name.
+	Model string `protobuf:"bytes,2,opt,name=model,proto3" json:"model,omitempty"`
+}
+
+func (x *TestEffort_BoardModel) Reset() {
+	*x = TestEffort_BoardModel{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_google_chromeos_moblab_v1beta1_resources_proto_msgTypes[11]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *TestEffort_BoardModel) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*TestEffort_BoardModel) ProtoMessage() {}
+
+func (x *TestEffort_BoardModel) ProtoReflect() protoreflect.Message {
+	mi := &file_google_chromeos_moblab_v1beta1_resources_proto_msgTypes[11]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use TestEffort_BoardModel.ProtoReflect.Descriptor instead.
+func (*TestEffort_BoardModel) Descriptor() ([]byte, []int) {
+	return file_google_chromeos_moblab_v1beta1_resources_proto_rawDescGZIP(), []int{9, 0}
+}
+
+func (x *TestEffort_BoardModel) GetBoard() string {
+	if x != nil {
+		return x.Board
+	}
+	return ""
+}
+
+func (x *TestEffort_BoardModel) GetModel() string {
+	if x != nil {
+		return x.Model
+	}
+	return ""
+}
+
+// The pool of the test effort.
+type TestEffort_Pool struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// Required. The label of the pool.
+	Label string `protobuf:"bytes,1,opt,name=label,proto3" json:"label,omitempty"`
+	// Required. The category of pool to schedule tests against.
+	Type TestEffort_Pool_PoolType `protobuf:"varint,2,opt,name=type,proto3,enum=google.chromeos.moblab.v1beta1.TestEffort_Pool_PoolType" json:"type,omitempty"`
+}
+
+func (x *TestEffort_Pool) Reset() {
+	*x = TestEffort_Pool{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_google_chromeos_moblab_v1beta1_resources_proto_msgTypes[12]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *TestEffort_Pool) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*TestEffort_Pool) ProtoMessage() {}
+
+func (x *TestEffort_Pool) ProtoReflect() protoreflect.Message {
+	mi := &file_google_chromeos_moblab_v1beta1_resources_proto_msgTypes[12]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use TestEffort_Pool.ProtoReflect.Descriptor instead.
+func (*TestEffort_Pool) Descriptor() ([]byte, []int) {
+	return file_google_chromeos_moblab_v1beta1_resources_proto_rawDescGZIP(), []int{9, 1}
+}
+
+func (x *TestEffort_Pool) GetLabel() string {
+	if x != nil {
+		return x.Label
+	}
+	return ""
+}
+
+func (x *TestEffort_Pool) GetType() TestEffort_Pool_PoolType {
+	if x != nil {
+		return x.Type
+	}
+	return TestEffort_Pool_POOL_TYPE_UNSPECIFIED
+}
+
+// Represents the Android build target.
+type TestEffort_AndroidBuildTarget struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// Required. Represents the name of a configured branch in the Android Build
+	// system
+	Branch string `protobuf:"bytes,1,opt,name=branch,proto3" json:"branch,omitempty"`
+	// Required. Specifies the release configuration of the build target.
+	ReleaseConfig string `protobuf:"bytes,2,opt,name=release_config,json=releaseConfig,proto3" json:"release_config,omitempty"`
+	// Required. Specifies the build variant for the target.
+	BuildVariant string `protobuf:"bytes,3,opt,name=build_variant,json=buildVariant,proto3" json:"build_variant,omitempty"`
+	// Required. The build ID of the test effort.
+	BuildId string `protobuf:"bytes,4,opt,name=build_id,json=buildId,proto3" json:"build_id,omitempty"`
+	// Optional. Product name of the build target.
+	Product string `protobuf:"bytes,5,opt,name=product,proto3" json:"product,omitempty"`
+}
+
+func (x *TestEffort_AndroidBuildTarget) Reset() {
+	*x = TestEffort_AndroidBuildTarget{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_google_chromeos_moblab_v1beta1_resources_proto_msgTypes[13]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *TestEffort_AndroidBuildTarget) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*TestEffort_AndroidBuildTarget) ProtoMessage() {}
+
+func (x *TestEffort_AndroidBuildTarget) ProtoReflect() protoreflect.Message {
+	mi := &file_google_chromeos_moblab_v1beta1_resources_proto_msgTypes[13]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use TestEffort_AndroidBuildTarget.ProtoReflect.Descriptor instead.
+func (*TestEffort_AndroidBuildTarget) Descriptor() ([]byte, []int) {
+	return file_google_chromeos_moblab_v1beta1_resources_proto_rawDescGZIP(), []int{9, 2}
+}
+
+func (x *TestEffort_AndroidBuildTarget) GetBranch() string {
+	if x != nil {
+		return x.Branch
+	}
+	return ""
+}
+
+func (x *TestEffort_AndroidBuildTarget) GetReleaseConfig() string {
+	if x != nil {
+		return x.ReleaseConfig
+	}
+	return ""
+}
+
+func (x *TestEffort_AndroidBuildTarget) GetBuildVariant() string {
+	if x != nil {
+		return x.BuildVariant
+	}
+	return ""
+}
+
+func (x *TestEffort_AndroidBuildTarget) GetBuildId() string {
+	if x != nil {
+		return x.BuildId
+	}
+	return ""
+}
+
+func (x *TestEffort_AndroidBuildTarget) GetProduct() string {
+	if x != nil {
+		return x.Product
+	}
+	return ""
+}
+
+// The version of the firmware test effort.
+type TestEffort_FirmwareTestEffortVersion struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// Required. The major version of the firmware test effort.
+	MajorVersion int32 `protobuf:"varint,1,opt,name=major_version,json=majorVersion,proto3" json:"major_version,omitempty"`
+	// Required. The minor version of the firmware test effort.
+	MinorVersion int32 `protobuf:"varint,2,opt,name=minor_version,json=minorVersion,proto3" json:"minor_version,omitempty"`
+	// Required. The patch number of the firmware test effort.
+	PatchNumber int32 `protobuf:"varint,3,opt,name=patch_number,json=patchNumber,proto3" json:"patch_number,omitempty"`
+	// Optional. The URI of the firmware.
+	Uri string `protobuf:"bytes,4,opt,name=uri,proto3" json:"uri,omitempty"`
+}
+
+func (x *TestEffort_FirmwareTestEffortVersion) Reset() {
+	*x = TestEffort_FirmwareTestEffortVersion{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_google_chromeos_moblab_v1beta1_resources_proto_msgTypes[14]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *TestEffort_FirmwareTestEffortVersion) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*TestEffort_FirmwareTestEffortVersion) ProtoMessage() {}
+
+func (x *TestEffort_FirmwareTestEffortVersion) ProtoReflect() protoreflect.Message {
+	mi := &file_google_chromeos_moblab_v1beta1_resources_proto_msgTypes[14]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use TestEffort_FirmwareTestEffortVersion.ProtoReflect.Descriptor instead.
+func (*TestEffort_FirmwareTestEffortVersion) Descriptor() ([]byte, []int) {
+	return file_google_chromeos_moblab_v1beta1_resources_proto_rawDescGZIP(), []int{9, 3}
+}
+
+func (x *TestEffort_FirmwareTestEffortVersion) GetMajorVersion() int32 {
+	if x != nil {
+		return x.MajorVersion
+	}
+	return 0
+}
+
+func (x *TestEffort_FirmwareTestEffortVersion) GetMinorVersion() int32 {
+	if x != nil {
+		return x.MinorVersion
+	}
+	return 0
+}
+
+func (x *TestEffort_FirmwareTestEffortVersion) GetPatchNumber() int32 {
+	if x != nil {
+		return x.PatchNumber
+	}
+	return 0
+}
+
+func (x *TestEffort_FirmwareTestEffortVersion) GetUri() string {
+	if x != nil {
+		return x.Uri
+	}
+	return ""
+}
+
+// The version of the GSC test effort.
+type TestEffort_GscTestEffortVersion struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// Required. The major version of the GSC test effort
+	MajorVersion int32 `protobuf:"varint,1,opt,name=major_version,json=majorVersion,proto3" json:"major_version,omitempty"`
+	// Required. The minor version of the GSC test effort.
+	MinorVersion int32 `protobuf:"varint,2,opt,name=minor_version,json=minorVersion,proto3" json:"minor_version,omitempty"`
+	// Required. The epoch of the GSC test effort.
+	Generation int32 `protobuf:"varint,3,opt,name=generation,proto3" json:"generation,omitempty"`
+	// Optional. The URI of the GSC.
+	Uri string `protobuf:"bytes,4,opt,name=uri,proto3" json:"uri,omitempty"`
+}
+
+func (x *TestEffort_GscTestEffortVersion) Reset() {
+	*x = TestEffort_GscTestEffortVersion{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_google_chromeos_moblab_v1beta1_resources_proto_msgTypes[15]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *TestEffort_GscTestEffortVersion) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*TestEffort_GscTestEffortVersion) ProtoMessage() {}
+
+func (x *TestEffort_GscTestEffortVersion) ProtoReflect() protoreflect.Message {
+	mi := &file_google_chromeos_moblab_v1beta1_resources_proto_msgTypes[15]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use TestEffort_GscTestEffortVersion.ProtoReflect.Descriptor instead.
+func (*TestEffort_GscTestEffortVersion) Descriptor() ([]byte, []int) {
+	return file_google_chromeos_moblab_v1beta1_resources_proto_rawDescGZIP(), []int{9, 4}
+}
+
+func (x *TestEffort_GscTestEffortVersion) GetMajorVersion() int32 {
+	if x != nil {
+		return x.MajorVersion
+	}
+	return 0
+}
+
+func (x *TestEffort_GscTestEffortVersion) GetMinorVersion() int32 {
+	if x != nil {
+		return x.MinorVersion
+	}
+	return 0
+}
+
+func (x *TestEffort_GscTestEffortVersion) GetGeneration() int32 {
+	if x != nil {
+		return x.Generation
+	}
+	return 0
+}
+
+func (x *TestEffort_GscTestEffortVersion) GetUri() string {
+	if x != nil {
+		return x.Uri
+	}
+	return ""
+}
+
+// The target of the firmware.
+type TestEffort_FirmwareTarget struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// The firmware content.
+	//
+	// Types that are assignable to Fw:
+	//
+	//	*TestEffort_FirmwareTarget_Ec
+	//	*TestEffort_FirmwareTarget_Ap
+	//	*TestEffort_FirmwareTarget_Gsc
+	//	*TestEffort_FirmwareTarget_Fpmcu
+	Fw isTestEffort_FirmwareTarget_Fw `protobuf_oneof:"fw"`
+}
+
+func (x *TestEffort_FirmwareTarget) Reset() {
+	*x = TestEffort_FirmwareTarget{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_google_chromeos_moblab_v1beta1_resources_proto_msgTypes[16]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *TestEffort_FirmwareTarget) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*TestEffort_FirmwareTarget) ProtoMessage() {}
+
+func (x *TestEffort_FirmwareTarget) ProtoReflect() protoreflect.Message {
+	mi := &file_google_chromeos_moblab_v1beta1_resources_proto_msgTypes[16]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use TestEffort_FirmwareTarget.ProtoReflect.Descriptor instead.
+func (*TestEffort_FirmwareTarget) Descriptor() ([]byte, []int) {
+	return file_google_chromeos_moblab_v1beta1_resources_proto_rawDescGZIP(), []int{9, 5}
+}
+
+func (m *TestEffort_FirmwareTarget) GetFw() isTestEffort_FirmwareTarget_Fw {
+	if m != nil {
+		return m.Fw
+	}
+	return nil
+}
+
+func (x *TestEffort_FirmwareTarget) GetEc() *TestEffort_FirmwareTestEffortVersion {
+	if x, ok := x.GetFw().(*TestEffort_FirmwareTarget_Ec); ok {
+		return x.Ec
+	}
+	return nil
+}
+
+func (x *TestEffort_FirmwareTarget) GetAp() *TestEffort_FirmwareTestEffortVersion {
+	if x, ok := x.GetFw().(*TestEffort_FirmwareTarget_Ap); ok {
+		return x.Ap
+	}
+	return nil
+}
+
+func (x *TestEffort_FirmwareTarget) GetGsc() *TestEffort_GscTestEffortVersion {
+	if x, ok := x.GetFw().(*TestEffort_FirmwareTarget_Gsc); ok {
+		return x.Gsc
+	}
+	return nil
+}
+
+func (x *TestEffort_FirmwareTarget) GetFpmcu() *TestEffort_FirmwareTestEffortVersion {
+	if x, ok := x.GetFw().(*TestEffort_FirmwareTarget_Fpmcu); ok {
+		return x.Fpmcu
+	}
+	return nil
+}
+
+type isTestEffort_FirmwareTarget_Fw interface {
+	isTestEffort_FirmwareTarget_Fw()
+}
+
+type TestEffort_FirmwareTarget_Ec struct {
+	// The EC firmware version.
+	Ec *TestEffort_FirmwareTestEffortVersion `protobuf:"bytes,1,opt,name=ec,proto3,oneof"`
+}
+
+type TestEffort_FirmwareTarget_Ap struct {
+	// The AP firmware version.
+	Ap *TestEffort_FirmwareTestEffortVersion `protobuf:"bytes,2,opt,name=ap,proto3,oneof"`
+}
+
+type TestEffort_FirmwareTarget_Gsc struct {
+	// The GSC firmware version.
+	Gsc *TestEffort_GscTestEffortVersion `protobuf:"bytes,3,opt,name=gsc,proto3,oneof"`
+}
+
+type TestEffort_FirmwareTarget_Fpmcu struct {
+	// The FPMCU firmware version.
+	Fpmcu *TestEffort_FirmwareTestEffortVersion `protobuf:"bytes,4,opt,name=fpmcu,proto3,oneof"`
+}
+
+func (*TestEffort_FirmwareTarget_Ec) isTestEffort_FirmwareTarget_Fw() {}
+
+func (*TestEffort_FirmwareTarget_Ap) isTestEffort_FirmwareTarget_Fw() {}
+
+func (*TestEffort_FirmwareTarget_Gsc) isTestEffort_FirmwareTarget_Fw() {}
+
+func (*TestEffort_FirmwareTarget_Fpmcu) isTestEffort_FirmwareTarget_Fw() {}
+
+// The configuration of the firmware.
+type TestEffort_FirmwareConfig struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// Required. The firmware target.
+	FirmwareTarget *TestEffort_FirmwareTarget `protobuf:"bytes,1,opt,name=firmware_target,json=firmwareTarget,proto3" json:"firmware_target,omitempty"`
+	// Required. The firmware types.
+	FirmwareTypes []TestEffort_FirmwareType `protobuf:"varint,2,rep,packed,name=firmware_types,json=firmwareTypes,proto3,enum=google.chromeos.moblab.v1beta1.TestEffort_FirmwareType" json:"firmware_types,omitempty"`
+}
+
+func (x *TestEffort_FirmwareConfig) Reset() {
+	*x = TestEffort_FirmwareConfig{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_google_chromeos_moblab_v1beta1_resources_proto_msgTypes[17]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *TestEffort_FirmwareConfig) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*TestEffort_FirmwareConfig) ProtoMessage() {}
+
+func (x *TestEffort_FirmwareConfig) ProtoReflect() protoreflect.Message {
+	mi := &file_google_chromeos_moblab_v1beta1_resources_proto_msgTypes[17]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use TestEffort_FirmwareConfig.ProtoReflect.Descriptor instead.
+func (*TestEffort_FirmwareConfig) Descriptor() ([]byte, []int) {
+	return file_google_chromeos_moblab_v1beta1_resources_proto_rawDescGZIP(), []int{9, 6}
+}
+
+func (x *TestEffort_FirmwareConfig) GetFirmwareTarget() *TestEffort_FirmwareTarget {
+	if x != nil {
+		return x.FirmwareTarget
+	}
+	return nil
+}
+
+func (x *TestEffort_FirmwareConfig) GetFirmwareTypes() []TestEffort_FirmwareType {
+	if x != nil {
+		return x.FirmwareTypes
+	}
+	return nil
+}
+
 var File_google_chromeos_moblab_v1beta1_resources_proto protoreflect.FileDescriptor
 
 var file_google_chromeos_moblab_v1beta1_resources_proto_rawDesc = []byte{
@@ -1100,15 +2003,172 @@ var file_google_chromeos_moblab_v1beta1_resources_proto_rawDesc = []byte{
 	0x6d, 0x65, 0x6f, 0x75, 0x74, 0x22, 0x2d, 0x0a, 0x0c, 0x54, 0x72, 0x61, 0x64, 0x65, 0x66, 0x65,
 	0x64, 0x54, 0x65, 0x73, 0x74, 0x12, 0x1d, 0x0a, 0x07, 0x63, 0x6f, 0x6d, 0x6d, 0x61, 0x6e, 0x64,
 	0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x42, 0x03, 0xe0, 0x41, 0x02, 0x52, 0x07, 0x63, 0x6f, 0x6d,
-	0x6d, 0x61, 0x6e, 0x64, 0x42, 0x7e, 0x0a, 0x22, 0x63, 0x6f, 0x6d, 0x2e, 0x67, 0x6f, 0x6f, 0x67,
+	0x6d, 0x61, 0x6e, 0x64, 0x22, 0xca, 0x13, 0x0a, 0x0a, 0x54, 0x65, 0x73, 0x74, 0x45, 0x66, 0x66,
+	0x6f, 0x72, 0x74, 0x12, 0x17, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28,
+	0x09, 0x42, 0x03, 0xe0, 0x41, 0x08, 0x52, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x12, 0x29, 0x0a, 0x0e,
+	0x74, 0x65, 0x73, 0x74, 0x5f, 0x65, 0x66, 0x66, 0x6f, 0x72, 0x74, 0x5f, 0x69, 0x64, 0x18, 0x02,
+	0x20, 0x01, 0x28, 0x09, 0x42, 0x03, 0xe0, 0x41, 0x03, 0x52, 0x0c, 0x74, 0x65, 0x73, 0x74, 0x45,
+	0x66, 0x66, 0x6f, 0x72, 0x74, 0x49, 0x64, 0x12, 0x20, 0x0a, 0x09, 0x73, 0x61, 0x74, 0x6c, 0x61,
+	0x62, 0x5f, 0x69, 0x64, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x42, 0x03, 0xe0, 0x41, 0x01, 0x52,
+	0x08, 0x73, 0x61, 0x74, 0x6c, 0x61, 0x62, 0x49, 0x64, 0x12, 0x58, 0x0a, 0x0b, 0x62, 0x6f, 0x61,
+	0x72, 0x64, 0x5f, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x18, 0x04, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x35,
+	0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x63, 0x68, 0x72, 0x6f, 0x6d, 0x65, 0x6f, 0x73,
+	0x2e, 0x6d, 0x6f, 0x62, 0x6c, 0x61, 0x62, 0x2e, 0x76, 0x31, 0x62, 0x65, 0x74, 0x61, 0x31, 0x2e,
+	0x54, 0x65, 0x73, 0x74, 0x45, 0x66, 0x66, 0x6f, 0x72, 0x74, 0x2e, 0x42, 0x6f, 0x61, 0x72, 0x64,
+	0x4d, 0x6f, 0x64, 0x65, 0x6c, 0x48, 0x00, 0x52, 0x0a, 0x62, 0x6f, 0x61, 0x72, 0x64, 0x4d, 0x6f,
+	0x64, 0x65, 0x6c, 0x12, 0x4a, 0x0a, 0x05, 0x70, 0x6f, 0x6f, 0x6c, 0x73, 0x18, 0x05, 0x20, 0x03,
+	0x28, 0x0b, 0x32, 0x2f, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x63, 0x68, 0x72, 0x6f,
+	0x6d, 0x65, 0x6f, 0x73, 0x2e, 0x6d, 0x6f, 0x62, 0x6c, 0x61, 0x62, 0x2e, 0x76, 0x31, 0x62, 0x65,
+	0x74, 0x61, 0x31, 0x2e, 0x54, 0x65, 0x73, 0x74, 0x45, 0x66, 0x66, 0x6f, 0x72, 0x74, 0x2e, 0x50,
+	0x6f, 0x6f, 0x6c, 0x42, 0x03, 0xe0, 0x41, 0x02, 0x52, 0x05, 0x70, 0x6f, 0x6f, 0x6c, 0x73, 0x12,
+	0x20, 0x0a, 0x09, 0x74, 0x65, 0x73, 0x74, 0x5f, 0x70, 0x6c, 0x61, 0x6e, 0x18, 0x06, 0x20, 0x01,
+	0x28, 0x09, 0x42, 0x03, 0xe0, 0x41, 0x02, 0x52, 0x08, 0x74, 0x65, 0x73, 0x74, 0x50, 0x6c, 0x61,
+	0x6e, 0x12, 0x59, 0x0a, 0x07, 0x61, 0x6e, 0x64, 0x72, 0x6f, 0x69, 0x64, 0x18, 0x07, 0x20, 0x01,
+	0x28, 0x0b, 0x32, 0x3d, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x63, 0x68, 0x72, 0x6f,
+	0x6d, 0x65, 0x6f, 0x73, 0x2e, 0x6d, 0x6f, 0x62, 0x6c, 0x61, 0x62, 0x2e, 0x76, 0x31, 0x62, 0x65,
+	0x74, 0x61, 0x31, 0x2e, 0x54, 0x65, 0x73, 0x74, 0x45, 0x66, 0x66, 0x6f, 0x72, 0x74, 0x2e, 0x41,
+	0x6e, 0x64, 0x72, 0x6f, 0x69, 0x64, 0x42, 0x75, 0x69, 0x6c, 0x64, 0x54, 0x61, 0x72, 0x67, 0x65,
+	0x74, 0x48, 0x01, 0x52, 0x07, 0x61, 0x6e, 0x64, 0x72, 0x6f, 0x69, 0x64, 0x12, 0x4b, 0x0a, 0x05,
+	0x73, 0x74, 0x61, 0x74, 0x65, 0x18, 0x08, 0x20, 0x01, 0x28, 0x0e, 0x32, 0x30, 0x2e, 0x67, 0x6f,
+	0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x63, 0x68, 0x72, 0x6f, 0x6d, 0x65, 0x6f, 0x73, 0x2e, 0x6d, 0x6f,
+	0x62, 0x6c, 0x61, 0x62, 0x2e, 0x76, 0x31, 0x62, 0x65, 0x74, 0x61, 0x31, 0x2e, 0x54, 0x65, 0x73,
+	0x74, 0x45, 0x66, 0x66, 0x6f, 0x72, 0x74, 0x2e, 0x53, 0x74, 0x61, 0x74, 0x65, 0x42, 0x03, 0xe0,
+	0x41, 0x03, 0x52, 0x05, 0x73, 0x74, 0x61, 0x74, 0x65, 0x12, 0x40, 0x0a, 0x0b, 0x63, 0x72, 0x65,
+	0x61, 0x74, 0x65, 0x5f, 0x74, 0x69, 0x6d, 0x65, 0x18, 0x09, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1a,
+	0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66,
+	0x2e, 0x54, 0x69, 0x6d, 0x65, 0x73, 0x74, 0x61, 0x6d, 0x70, 0x42, 0x03, 0xe0, 0x41, 0x03, 0x52,
+	0x0a, 0x63, 0x72, 0x65, 0x61, 0x74, 0x65, 0x54, 0x69, 0x6d, 0x65, 0x12, 0x26, 0x0a, 0x0c, 0x74,
+	0x65, 0x73, 0x74, 0x68, 0x61, 0x75, 0x73, 0x5f, 0x75, 0x72, 0x6c, 0x18, 0x0a, 0x20, 0x01, 0x28,
+	0x09, 0x42, 0x03, 0xe0, 0x41, 0x03, 0x52, 0x0b, 0x74, 0x65, 0x73, 0x74, 0x68, 0x61, 0x75, 0x73,
+	0x55, 0x72, 0x6c, 0x12, 0x69, 0x0a, 0x10, 0x66, 0x69, 0x72, 0x6d, 0x77, 0x61, 0x72, 0x65, 0x5f,
+	0x63, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x73, 0x18, 0x0b, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x39, 0x2e,
+	0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x63, 0x68, 0x72, 0x6f, 0x6d, 0x65, 0x6f, 0x73, 0x2e,
+	0x6d, 0x6f, 0x62, 0x6c, 0x61, 0x62, 0x2e, 0x76, 0x31, 0x62, 0x65, 0x74, 0x61, 0x31, 0x2e, 0x54,
+	0x65, 0x73, 0x74, 0x45, 0x66, 0x66, 0x6f, 0x72, 0x74, 0x2e, 0x46, 0x69, 0x72, 0x6d, 0x77, 0x61,
+	0x72, 0x65, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x42, 0x03, 0xe0, 0x41, 0x01, 0x52, 0x0f, 0x66,
+	0x69, 0x72, 0x6d, 0x77, 0x61, 0x72, 0x65, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x73, 0x1a, 0x42,
+	0x0a, 0x0a, 0x42, 0x6f, 0x61, 0x72, 0x64, 0x4d, 0x6f, 0x64, 0x65, 0x6c, 0x12, 0x19, 0x0a, 0x05,
+	0x62, 0x6f, 0x61, 0x72, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x42, 0x03, 0xe0, 0x41, 0x02,
+	0x52, 0x05, 0x62, 0x6f, 0x61, 0x72, 0x64, 0x12, 0x19, 0x0a, 0x05, 0x6d, 0x6f, 0x64, 0x65, 0x6c,
+	0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x42, 0x03, 0xe0, 0x41, 0x02, 0x52, 0x05, 0x6d, 0x6f, 0x64,
+	0x65, 0x6c, 0x1a, 0xd1, 0x01, 0x0a, 0x04, 0x50, 0x6f, 0x6f, 0x6c, 0x12, 0x19, 0x0a, 0x05, 0x6c,
+	0x61, 0x62, 0x65, 0x6c, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x42, 0x03, 0xe0, 0x41, 0x02, 0x52,
+	0x05, 0x6c, 0x61, 0x62, 0x65, 0x6c, 0x12, 0x51, 0x0a, 0x04, 0x74, 0x79, 0x70, 0x65, 0x18, 0x02,
+	0x20, 0x01, 0x28, 0x0e, 0x32, 0x38, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x63, 0x68,
+	0x72, 0x6f, 0x6d, 0x65, 0x6f, 0x73, 0x2e, 0x6d, 0x6f, 0x62, 0x6c, 0x61, 0x62, 0x2e, 0x76, 0x31,
+	0x62, 0x65, 0x74, 0x61, 0x31, 0x2e, 0x54, 0x65, 0x73, 0x74, 0x45, 0x66, 0x66, 0x6f, 0x72, 0x74,
+	0x2e, 0x50, 0x6f, 0x6f, 0x6c, 0x2e, 0x50, 0x6f, 0x6f, 0x6c, 0x54, 0x79, 0x70, 0x65, 0x42, 0x03,
+	0xe0, 0x41, 0x02, 0x52, 0x04, 0x74, 0x79, 0x70, 0x65, 0x22, 0x5b, 0x0a, 0x08, 0x50, 0x6f, 0x6f,
+	0x6c, 0x54, 0x79, 0x70, 0x65, 0x12, 0x19, 0x0a, 0x15, 0x50, 0x4f, 0x4f, 0x4c, 0x5f, 0x54, 0x59,
+	0x50, 0x45, 0x5f, 0x55, 0x4e, 0x53, 0x50, 0x45, 0x43, 0x49, 0x46, 0x49, 0x45, 0x44, 0x10, 0x00,
+	0x12, 0x10, 0x0a, 0x0c, 0x44, 0x45, 0x46, 0x41, 0x55, 0x4c, 0x54, 0x5f, 0x50, 0x4f, 0x4f, 0x4c,
+	0x10, 0x01, 0x12, 0x0b, 0x0a, 0x07, 0x46, 0x41, 0x46, 0x54, 0x5f, 0x50, 0x44, 0x10, 0x02, 0x12,
+	0x15, 0x0a, 0x11, 0x45, 0x58, 0x54, 0x45, 0x4e, 0x44, 0x45, 0x44, 0x5f, 0x44, 0x55, 0x52, 0x41,
+	0x54, 0x49, 0x4f, 0x4e, 0x10, 0x03, 0x1a, 0xc6, 0x01, 0x0a, 0x12, 0x41, 0x6e, 0x64, 0x72, 0x6f,
+	0x69, 0x64, 0x42, 0x75, 0x69, 0x6c, 0x64, 0x54, 0x61, 0x72, 0x67, 0x65, 0x74, 0x12, 0x1b, 0x0a,
+	0x06, 0x62, 0x72, 0x61, 0x6e, 0x63, 0x68, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x42, 0x03, 0xe0,
+	0x41, 0x02, 0x52, 0x06, 0x62, 0x72, 0x61, 0x6e, 0x63, 0x68, 0x12, 0x2a, 0x0a, 0x0e, 0x72, 0x65,
+	0x6c, 0x65, 0x61, 0x73, 0x65, 0x5f, 0x63, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x18, 0x02, 0x20, 0x01,
+	0x28, 0x09, 0x42, 0x03, 0xe0, 0x41, 0x02, 0x52, 0x0d, 0x72, 0x65, 0x6c, 0x65, 0x61, 0x73, 0x65,
+	0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x12, 0x28, 0x0a, 0x0d, 0x62, 0x75, 0x69, 0x6c, 0x64, 0x5f,
+	0x76, 0x61, 0x72, 0x69, 0x61, 0x6e, 0x74, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x42, 0x03, 0xe0,
+	0x41, 0x02, 0x52, 0x0c, 0x62, 0x75, 0x69, 0x6c, 0x64, 0x56, 0x61, 0x72, 0x69, 0x61, 0x6e, 0x74,
+	0x12, 0x1e, 0x0a, 0x08, 0x62, 0x75, 0x69, 0x6c, 0x64, 0x5f, 0x69, 0x64, 0x18, 0x04, 0x20, 0x01,
+	0x28, 0x09, 0x42, 0x03, 0xe0, 0x41, 0x02, 0x52, 0x07, 0x62, 0x75, 0x69, 0x6c, 0x64, 0x49, 0x64,
+	0x12, 0x1d, 0x0a, 0x07, 0x70, 0x72, 0x6f, 0x64, 0x75, 0x63, 0x74, 0x18, 0x05, 0x20, 0x01, 0x28,
+	0x09, 0x42, 0x03, 0xe0, 0x41, 0x01, 0x52, 0x07, 0x70, 0x72, 0x6f, 0x64, 0x75, 0x63, 0x74, 0x1a,
+	0xae, 0x01, 0x0a, 0x19, 0x46, 0x69, 0x72, 0x6d, 0x77, 0x61, 0x72, 0x65, 0x54, 0x65, 0x73, 0x74,
+	0x45, 0x66, 0x66, 0x6f, 0x72, 0x74, 0x56, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x12, 0x28, 0x0a,
+	0x0d, 0x6d, 0x61, 0x6a, 0x6f, 0x72, 0x5f, 0x76, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x18, 0x01,
+	0x20, 0x01, 0x28, 0x05, 0x42, 0x03, 0xe0, 0x41, 0x02, 0x52, 0x0c, 0x6d, 0x61, 0x6a, 0x6f, 0x72,
+	0x56, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x12, 0x28, 0x0a, 0x0d, 0x6d, 0x69, 0x6e, 0x6f, 0x72,
+	0x5f, 0x76, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x18, 0x02, 0x20, 0x01, 0x28, 0x05, 0x42, 0x03,
+	0xe0, 0x41, 0x02, 0x52, 0x0c, 0x6d, 0x69, 0x6e, 0x6f, 0x72, 0x56, 0x65, 0x72, 0x73, 0x69, 0x6f,
+	0x6e, 0x12, 0x26, 0x0a, 0x0c, 0x70, 0x61, 0x74, 0x63, 0x68, 0x5f, 0x6e, 0x75, 0x6d, 0x62, 0x65,
+	0x72, 0x18, 0x03, 0x20, 0x01, 0x28, 0x05, 0x42, 0x03, 0xe0, 0x41, 0x02, 0x52, 0x0b, 0x70, 0x61,
+	0x74, 0x63, 0x68, 0x4e, 0x75, 0x6d, 0x62, 0x65, 0x72, 0x12, 0x15, 0x0a, 0x03, 0x75, 0x72, 0x69,
+	0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x42, 0x03, 0xe0, 0x41, 0x01, 0x52, 0x03, 0x75, 0x72, 0x69,
+	0x1a, 0xa6, 0x01, 0x0a, 0x14, 0x47, 0x73, 0x63, 0x54, 0x65, 0x73, 0x74, 0x45, 0x66, 0x66, 0x6f,
+	0x72, 0x74, 0x56, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x12, 0x28, 0x0a, 0x0d, 0x6d, 0x61, 0x6a,
+	0x6f, 0x72, 0x5f, 0x76, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05,
+	0x42, 0x03, 0xe0, 0x41, 0x02, 0x52, 0x0c, 0x6d, 0x61, 0x6a, 0x6f, 0x72, 0x56, 0x65, 0x72, 0x73,
+	0x69, 0x6f, 0x6e, 0x12, 0x28, 0x0a, 0x0d, 0x6d, 0x69, 0x6e, 0x6f, 0x72, 0x5f, 0x76, 0x65, 0x72,
+	0x73, 0x69, 0x6f, 0x6e, 0x18, 0x02, 0x20, 0x01, 0x28, 0x05, 0x42, 0x03, 0xe0, 0x41, 0x02, 0x52,
+	0x0c, 0x6d, 0x69, 0x6e, 0x6f, 0x72, 0x56, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x12, 0x23, 0x0a,
+	0x0a, 0x67, 0x65, 0x6e, 0x65, 0x72, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x18, 0x03, 0x20, 0x01, 0x28,
+	0x05, 0x42, 0x03, 0xe0, 0x41, 0x02, 0x52, 0x0a, 0x67, 0x65, 0x6e, 0x65, 0x72, 0x61, 0x74, 0x69,
+	0x6f, 0x6e, 0x12, 0x15, 0x0a, 0x03, 0x75, 0x72, 0x69, 0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x42,
+	0x03, 0xe0, 0x41, 0x01, 0x52, 0x03, 0x75, 0x72, 0x69, 0x1a, 0xf9, 0x02, 0x0a, 0x0e, 0x46, 0x69,
+	0x72, 0x6d, 0x77, 0x61, 0x72, 0x65, 0x54, 0x61, 0x72, 0x67, 0x65, 0x74, 0x12, 0x56, 0x0a, 0x02,
+	0x65, 0x63, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x44, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c,
+	0x65, 0x2e, 0x63, 0x68, 0x72, 0x6f, 0x6d, 0x65, 0x6f, 0x73, 0x2e, 0x6d, 0x6f, 0x62, 0x6c, 0x61,
+	0x62, 0x2e, 0x76, 0x31, 0x62, 0x65, 0x74, 0x61, 0x31, 0x2e, 0x54, 0x65, 0x73, 0x74, 0x45, 0x66,
+	0x66, 0x6f, 0x72, 0x74, 0x2e, 0x46, 0x69, 0x72, 0x6d, 0x77, 0x61, 0x72, 0x65, 0x54, 0x65, 0x73,
+	0x74, 0x45, 0x66, 0x66, 0x6f, 0x72, 0x74, 0x56, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x48, 0x00,
+	0x52, 0x02, 0x65, 0x63, 0x12, 0x56, 0x0a, 0x02, 0x61, 0x70, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b,
+	0x32, 0x44, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x63, 0x68, 0x72, 0x6f, 0x6d, 0x65,
+	0x6f, 0x73, 0x2e, 0x6d, 0x6f, 0x62, 0x6c, 0x61, 0x62, 0x2e, 0x76, 0x31, 0x62, 0x65, 0x74, 0x61,
+	0x31, 0x2e, 0x54, 0x65, 0x73, 0x74, 0x45, 0x66, 0x66, 0x6f, 0x72, 0x74, 0x2e, 0x46, 0x69, 0x72,
+	0x6d, 0x77, 0x61, 0x72, 0x65, 0x54, 0x65, 0x73, 0x74, 0x45, 0x66, 0x66, 0x6f, 0x72, 0x74, 0x56,
+	0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x48, 0x00, 0x52, 0x02, 0x61, 0x70, 0x12, 0x53, 0x0a, 0x03,
+	0x67, 0x73, 0x63, 0x18, 0x03, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x3f, 0x2e, 0x67, 0x6f, 0x6f, 0x67,
 	0x6c, 0x65, 0x2e, 0x63, 0x68, 0x72, 0x6f, 0x6d, 0x65, 0x6f, 0x73, 0x2e, 0x6d, 0x6f, 0x62, 0x6c,
-	0x61, 0x62, 0x2e, 0x76, 0x31, 0x62, 0x65, 0x74, 0x61, 0x31, 0x42, 0x0e, 0x52, 0x65, 0x73, 0x6f,
-	0x75, 0x72, 0x63, 0x65, 0x73, 0x50, 0x72, 0x6f, 0x74, 0x6f, 0x48, 0x01, 0x50, 0x01, 0x5a, 0x44,
-	0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x67, 0x6f, 0x6c, 0x61, 0x6e, 0x67, 0x2e, 0x6f, 0x72,
-	0x67, 0x2f, 0x67, 0x65, 0x6e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x67, 0x6f, 0x6f, 0x67, 0x6c,
-	0x65, 0x61, 0x70, 0x69, 0x73, 0x2f, 0x63, 0x68, 0x72, 0x6f, 0x6d, 0x65, 0x6f, 0x73, 0x2f, 0x6d,
-	0x6f, 0x62, 0x6c, 0x61, 0x62, 0x2f, 0x76, 0x31, 0x62, 0x65, 0x74, 0x61, 0x31, 0x3b, 0x6d, 0x6f,
-	0x62, 0x6c, 0x61, 0x62, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x61, 0x62, 0x2e, 0x76, 0x31, 0x62, 0x65, 0x74, 0x61, 0x31, 0x2e, 0x54, 0x65, 0x73, 0x74, 0x45,
+	0x66, 0x66, 0x6f, 0x72, 0x74, 0x2e, 0x47, 0x73, 0x63, 0x54, 0x65, 0x73, 0x74, 0x45, 0x66, 0x66,
+	0x6f, 0x72, 0x74, 0x56, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x48, 0x00, 0x52, 0x03, 0x67, 0x73,
+	0x63, 0x12, 0x5c, 0x0a, 0x05, 0x66, 0x70, 0x6d, 0x63, 0x75, 0x18, 0x04, 0x20, 0x01, 0x28, 0x0b,
+	0x32, 0x44, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x63, 0x68, 0x72, 0x6f, 0x6d, 0x65,
+	0x6f, 0x73, 0x2e, 0x6d, 0x6f, 0x62, 0x6c, 0x61, 0x62, 0x2e, 0x76, 0x31, 0x62, 0x65, 0x74, 0x61,
+	0x31, 0x2e, 0x54, 0x65, 0x73, 0x74, 0x45, 0x66, 0x66, 0x6f, 0x72, 0x74, 0x2e, 0x46, 0x69, 0x72,
+	0x6d, 0x77, 0x61, 0x72, 0x65, 0x54, 0x65, 0x73, 0x74, 0x45, 0x66, 0x66, 0x6f, 0x72, 0x74, 0x56,
+	0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x48, 0x00, 0x52, 0x05, 0x66, 0x70, 0x6d, 0x63, 0x75, 0x42,
+	0x04, 0x0a, 0x02, 0x66, 0x77, 0x1a, 0xde, 0x01, 0x0a, 0x0e, 0x46, 0x69, 0x72, 0x6d, 0x77, 0x61,
+	0x72, 0x65, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x12, 0x67, 0x0a, 0x0f, 0x66, 0x69, 0x72, 0x6d,
+	0x77, 0x61, 0x72, 0x65, 0x5f, 0x74, 0x61, 0x72, 0x67, 0x65, 0x74, 0x18, 0x01, 0x20, 0x01, 0x28,
+	0x0b, 0x32, 0x39, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x63, 0x68, 0x72, 0x6f, 0x6d,
+	0x65, 0x6f, 0x73, 0x2e, 0x6d, 0x6f, 0x62, 0x6c, 0x61, 0x62, 0x2e, 0x76, 0x31, 0x62, 0x65, 0x74,
+	0x61, 0x31, 0x2e, 0x54, 0x65, 0x73, 0x74, 0x45, 0x66, 0x66, 0x6f, 0x72, 0x74, 0x2e, 0x46, 0x69,
+	0x72, 0x6d, 0x77, 0x61, 0x72, 0x65, 0x54, 0x61, 0x72, 0x67, 0x65, 0x74, 0x42, 0x03, 0xe0, 0x41,
+	0x02, 0x52, 0x0e, 0x66, 0x69, 0x72, 0x6d, 0x77, 0x61, 0x72, 0x65, 0x54, 0x61, 0x72, 0x67, 0x65,
+	0x74, 0x12, 0x63, 0x0a, 0x0e, 0x66, 0x69, 0x72, 0x6d, 0x77, 0x61, 0x72, 0x65, 0x5f, 0x74, 0x79,
+	0x70, 0x65, 0x73, 0x18, 0x02, 0x20, 0x03, 0x28, 0x0e, 0x32, 0x37, 0x2e, 0x67, 0x6f, 0x6f, 0x67,
+	0x6c, 0x65, 0x2e, 0x63, 0x68, 0x72, 0x6f, 0x6d, 0x65, 0x6f, 0x73, 0x2e, 0x6d, 0x6f, 0x62, 0x6c,
+	0x61, 0x62, 0x2e, 0x76, 0x31, 0x62, 0x65, 0x74, 0x61, 0x31, 0x2e, 0x54, 0x65, 0x73, 0x74, 0x45,
+	0x66, 0x66, 0x6f, 0x72, 0x74, 0x2e, 0x46, 0x69, 0x72, 0x6d, 0x77, 0x61, 0x72, 0x65, 0x54, 0x79,
+	0x70, 0x65, 0x42, 0x03, 0xe0, 0x41, 0x02, 0x52, 0x0d, 0x66, 0x69, 0x72, 0x6d, 0x77, 0x61, 0x72,
+	0x65, 0x54, 0x79, 0x70, 0x65, 0x73, 0x22, 0xb2, 0x01, 0x0a, 0x05, 0x53, 0x74, 0x61, 0x74, 0x65,
+	0x12, 0x15, 0x0a, 0x11, 0x53, 0x54, 0x41, 0x54, 0x45, 0x5f, 0x55, 0x4e, 0x53, 0x50, 0x45, 0x43,
+	0x49, 0x46, 0x49, 0x45, 0x44, 0x10, 0x00, 0x12, 0x0b, 0x0a, 0x07, 0x43, 0x52, 0x45, 0x41, 0x54,
+	0x45, 0x44, 0x10, 0x01, 0x12, 0x0e, 0x0a, 0x0a, 0x49, 0x4e, 0x43, 0x4f, 0x4d, 0x50, 0x4c, 0x45,
+	0x54, 0x45, 0x10, 0x02, 0x12, 0x0a, 0x0a, 0x06, 0x46, 0x41, 0x49, 0x4c, 0x45, 0x44, 0x10, 0x03,
+	0x12, 0x0e, 0x0a, 0x0a, 0x55, 0x4e, 0x52, 0x45, 0x50, 0x4f, 0x52, 0x54, 0x45, 0x44, 0x10, 0x04,
+	0x12, 0x12, 0x0a, 0x0e, 0x4e, 0x4f, 0x54, 0x5f, 0x41, 0x50, 0x50, 0x4c, 0x49, 0x43, 0x41, 0x42,
+	0x4c, 0x45, 0x10, 0x05, 0x12, 0x0d, 0x0a, 0x09, 0x53, 0x55, 0x43, 0x43, 0x45, 0x45, 0x44, 0x45,
+	0x44, 0x10, 0x06, 0x12, 0x14, 0x0a, 0x10, 0x43, 0x41, 0x4e, 0x43, 0x45, 0x4c, 0x5f, 0x52, 0x45,
+	0x51, 0x55, 0x45, 0x53, 0x54, 0x45, 0x44, 0x10, 0x07, 0x12, 0x0d, 0x0a, 0x09, 0x43, 0x41, 0x4e,
+	0x43, 0x45, 0x4c, 0x4c, 0x45, 0x44, 0x10, 0x08, 0x12, 0x11, 0x0a, 0x0d, 0x43, 0x41, 0x4e, 0x43,
+	0x45, 0x4c, 0x5f, 0x46, 0x41, 0x49, 0x4c, 0x45, 0x44, 0x10, 0x09, 0x22, 0x4c, 0x0a, 0x0c, 0x46,
+	0x69, 0x72, 0x6d, 0x77, 0x61, 0x72, 0x65, 0x54, 0x79, 0x70, 0x65, 0x12, 0x1d, 0x0a, 0x19, 0x46,
+	0x49, 0x52, 0x4d, 0x57, 0x41, 0x52, 0x45, 0x5f, 0x54, 0x59, 0x50, 0x45, 0x5f, 0x55, 0x4e, 0x53,
+	0x50, 0x45, 0x43, 0x49, 0x46, 0x49, 0x45, 0x44, 0x10, 0x00, 0x12, 0x0d, 0x0a, 0x09, 0x52, 0x45,
+	0x41, 0x44, 0x5f, 0x4f, 0x4e, 0x4c, 0x59, 0x10, 0x01, 0x12, 0x0e, 0x0a, 0x0a, 0x52, 0x45, 0x41,
+	0x44, 0x5f, 0x57, 0x52, 0x49, 0x54, 0x45, 0x10, 0x02, 0x3a, 0x61, 0xea, 0x41, 0x5e, 0x0a, 0x28,
+	0x63, 0x68, 0x72, 0x6f, 0x6d, 0x65, 0x6f, 0x73, 0x6d, 0x6f, 0x62, 0x6c, 0x61, 0x62, 0x2e, 0x67,
+	0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x61, 0x70, 0x69, 0x73, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x54, 0x65,
+	0x73, 0x74, 0x45, 0x66, 0x66, 0x6f, 0x72, 0x74, 0x12, 0x19, 0x74, 0x65, 0x73, 0x74, 0x45, 0x66,
+	0x66, 0x6f, 0x72, 0x74, 0x73, 0x2f, 0x7b, 0x74, 0x65, 0x73, 0x74, 0x5f, 0x65, 0x66, 0x66, 0x6f,
+	0x72, 0x74, 0x7d, 0x2a, 0x0b, 0x74, 0x65, 0x73, 0x74, 0x45, 0x66, 0x66, 0x6f, 0x72, 0x74, 0x73,
+	0x32, 0x0a, 0x74, 0x65, 0x73, 0x74, 0x45, 0x66, 0x66, 0x6f, 0x72, 0x74, 0x42, 0x0d, 0x0a, 0x0b,
+	0x74, 0x65, 0x73, 0x74, 0x5f, 0x74, 0x61, 0x72, 0x67, 0x65, 0x74, 0x42, 0x04, 0x0a, 0x02, 0x6f,
+	0x73, 0x42, 0x7e, 0x0a, 0x22, 0x63, 0x6f, 0x6d, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e,
+	0x63, 0x68, 0x72, 0x6f, 0x6d, 0x65, 0x6f, 0x73, 0x2e, 0x6d, 0x6f, 0x62, 0x6c, 0x61, 0x62, 0x2e,
+	0x76, 0x31, 0x62, 0x65, 0x74, 0x61, 0x31, 0x42, 0x0e, 0x52, 0x65, 0x73, 0x6f, 0x75, 0x72, 0x63,
+	0x65, 0x73, 0x50, 0x72, 0x6f, 0x74, 0x6f, 0x48, 0x01, 0x50, 0x01, 0x5a, 0x44, 0x67, 0x6f, 0x6f,
+	0x67, 0x6c, 0x65, 0x2e, 0x67, 0x6f, 0x6c, 0x61, 0x6e, 0x67, 0x2e, 0x6f, 0x72, 0x67, 0x2f, 0x67,
+	0x65, 0x6e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x61, 0x70,
+	0x69, 0x73, 0x2f, 0x63, 0x68, 0x72, 0x6f, 0x6d, 0x65, 0x6f, 0x73, 0x2f, 0x6d, 0x6f, 0x62, 0x6c,
+	0x61, 0x62, 0x2f, 0x76, 0x31, 0x62, 0x65, 0x74, 0x61, 0x31, 0x3b, 0x6d, 0x6f, 0x62, 0x6c, 0x61,
+	0x62, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -1123,43 +2183,67 @@ func file_google_chromeos_moblab_v1beta1_resources_proto_rawDescGZIP() []byte {
 	return file_google_chromeos_moblab_v1beta1_resources_proto_rawDescData
 }
 
-var file_google_chromeos_moblab_v1beta1_resources_proto_enumTypes = make([]protoimpl.EnumInfo, 3)
-var file_google_chromeos_moblab_v1beta1_resources_proto_msgTypes = make([]protoimpl.MessageInfo, 10)
+var file_google_chromeos_moblab_v1beta1_resources_proto_enumTypes = make([]protoimpl.EnumInfo, 6)
+var file_google_chromeos_moblab_v1beta1_resources_proto_msgTypes = make([]protoimpl.MessageInfo, 18)
 var file_google_chromeos_moblab_v1beta1_resources_proto_goTypes = []interface{}{
-	(Build_BuildStatus)(0),        // 0: google.chromeos.moblab.v1beta1.Build.BuildStatus
-	(Build_BuildType)(0),          // 1: google.chromeos.moblab.v1beta1.Build.BuildType
-	(CloudBuild_State)(0),         // 2: google.chromeos.moblab.v1beta1.CloudBuild.State
-	(*BuildTarget)(nil),           // 3: google.chromeos.moblab.v1beta1.BuildTarget
-	(*Model)(nil),                 // 4: google.chromeos.moblab.v1beta1.Model
-	(*Milestone)(nil),             // 5: google.chromeos.moblab.v1beta1.Milestone
-	(*Build)(nil),                 // 6: google.chromeos.moblab.v1beta1.Build
-	(*BuildArtifact)(nil),         // 7: google.chromeos.moblab.v1beta1.BuildArtifact
-	(*CloudBuild)(nil),            // 8: google.chromeos.moblab.v1beta1.CloudBuild
-	(*Session)(nil),               // 9: google.chromeos.moblab.v1beta1.Session
-	(*Timeout)(nil),               // 10: google.chromeos.moblab.v1beta1.Timeout
-	(*TradefedTest)(nil),          // 11: google.chromeos.moblab.v1beta1.TradefedTest
-	nil,                           // 12: google.chromeos.moblab.v1beta1.Session.DimensionsEntry
-	(*timestamppb.Timestamp)(nil), // 13: google.protobuf.Timestamp
-	(*durationpb.Duration)(nil),   // 14: google.protobuf.Duration
+	(Build_BuildStatus)(0),                       // 0: google.chromeos.moblab.v1beta1.Build.BuildStatus
+	(Build_BuildType)(0),                         // 1: google.chromeos.moblab.v1beta1.Build.BuildType
+	(CloudBuild_State)(0),                        // 2: google.chromeos.moblab.v1beta1.CloudBuild.State
+	(TestEffort_State)(0),                        // 3: google.chromeos.moblab.v1beta1.TestEffort.State
+	(TestEffort_FirmwareType)(0),                 // 4: google.chromeos.moblab.v1beta1.TestEffort.FirmwareType
+	(TestEffort_Pool_PoolType)(0),                // 5: google.chromeos.moblab.v1beta1.TestEffort.Pool.PoolType
+	(*BuildTarget)(nil),                          // 6: google.chromeos.moblab.v1beta1.BuildTarget
+	(*Model)(nil),                                // 7: google.chromeos.moblab.v1beta1.Model
+	(*Milestone)(nil),                            // 8: google.chromeos.moblab.v1beta1.Milestone
+	(*Build)(nil),                                // 9: google.chromeos.moblab.v1beta1.Build
+	(*BuildArtifact)(nil),                        // 10: google.chromeos.moblab.v1beta1.BuildArtifact
+	(*CloudBuild)(nil),                           // 11: google.chromeos.moblab.v1beta1.CloudBuild
+	(*Session)(nil),                              // 12: google.chromeos.moblab.v1beta1.Session
+	(*Timeout)(nil),                              // 13: google.chromeos.moblab.v1beta1.Timeout
+	(*TradefedTest)(nil),                         // 14: google.chromeos.moblab.v1beta1.TradefedTest
+	(*TestEffort)(nil),                           // 15: google.chromeos.moblab.v1beta1.TestEffort
+	nil,                                          // 16: google.chromeos.moblab.v1beta1.Session.DimensionsEntry
+	(*TestEffort_BoardModel)(nil),                // 17: google.chromeos.moblab.v1beta1.TestEffort.BoardModel
+	(*TestEffort_Pool)(nil),                      // 18: google.chromeos.moblab.v1beta1.TestEffort.Pool
+	(*TestEffort_AndroidBuildTarget)(nil),        // 19: google.chromeos.moblab.v1beta1.TestEffort.AndroidBuildTarget
+	(*TestEffort_FirmwareTestEffortVersion)(nil), // 20: google.chromeos.moblab.v1beta1.TestEffort.FirmwareTestEffortVersion
+	(*TestEffort_GscTestEffortVersion)(nil),      // 21: google.chromeos.moblab.v1beta1.TestEffort.GscTestEffortVersion
+	(*TestEffort_FirmwareTarget)(nil),            // 22: google.chromeos.moblab.v1beta1.TestEffort.FirmwareTarget
+	(*TestEffort_FirmwareConfig)(nil),            // 23: google.chromeos.moblab.v1beta1.TestEffort.FirmwareConfig
+	(*timestamppb.Timestamp)(nil),                // 24: google.protobuf.Timestamp
+	(*durationpb.Duration)(nil),                  // 25: google.protobuf.Duration
 }
 var file_google_chromeos_moblab_v1beta1_resources_proto_depIdxs = []int32{
 	0,  // 0: google.chromeos.moblab.v1beta1.Build.status:type_name -> google.chromeos.moblab.v1beta1.Build.BuildStatus
 	1,  // 1: google.chromeos.moblab.v1beta1.Build.type:type_name -> google.chromeos.moblab.v1beta1.Build.BuildType
 	2,  // 2: google.chromeos.moblab.v1beta1.CloudBuild.status:type_name -> google.chromeos.moblab.v1beta1.CloudBuild.State
-	13, // 3: google.chromeos.moblab.v1beta1.CloudBuild.create_time:type_name -> google.protobuf.Timestamp
-	13, // 4: google.chromeos.moblab.v1beta1.CloudBuild.start_time:type_name -> google.protobuf.Timestamp
-	13, // 5: google.chromeos.moblab.v1beta1.CloudBuild.finish_time:type_name -> google.protobuf.Timestamp
-	12, // 6: google.chromeos.moblab.v1beta1.Session.dimensions:type_name -> google.chromeos.moblab.v1beta1.Session.DimensionsEntry
-	10, // 7: google.chromeos.moblab.v1beta1.Session.timeout:type_name -> google.chromeos.moblab.v1beta1.Timeout
-	11, // 8: google.chromeos.moblab.v1beta1.Session.tradefed_test:type_name -> google.chromeos.moblab.v1beta1.TradefedTest
-	14, // 9: google.chromeos.moblab.v1beta1.Timeout.job_timeout:type_name -> google.protobuf.Duration
-	14, // 10: google.chromeos.moblab.v1beta1.Timeout.test_timeout:type_name -> google.protobuf.Duration
-	14, // 11: google.chromeos.moblab.v1beta1.Timeout.start_timeout:type_name -> google.protobuf.Duration
-	12, // [12:12] is the sub-list for method output_type
-	12, // [12:12] is the sub-list for method input_type
-	12, // [12:12] is the sub-list for extension type_name
-	12, // [12:12] is the sub-list for extension extendee
-	0,  // [0:12] is the sub-list for field type_name
+	24, // 3: google.chromeos.moblab.v1beta1.CloudBuild.create_time:type_name -> google.protobuf.Timestamp
+	24, // 4: google.chromeos.moblab.v1beta1.CloudBuild.start_time:type_name -> google.protobuf.Timestamp
+	24, // 5: google.chromeos.moblab.v1beta1.CloudBuild.finish_time:type_name -> google.protobuf.Timestamp
+	16, // 6: google.chromeos.moblab.v1beta1.Session.dimensions:type_name -> google.chromeos.moblab.v1beta1.Session.DimensionsEntry
+	13, // 7: google.chromeos.moblab.v1beta1.Session.timeout:type_name -> google.chromeos.moblab.v1beta1.Timeout
+	14, // 8: google.chromeos.moblab.v1beta1.Session.tradefed_test:type_name -> google.chromeos.moblab.v1beta1.TradefedTest
+	25, // 9: google.chromeos.moblab.v1beta1.Timeout.job_timeout:type_name -> google.protobuf.Duration
+	25, // 10: google.chromeos.moblab.v1beta1.Timeout.test_timeout:type_name -> google.protobuf.Duration
+	25, // 11: google.chromeos.moblab.v1beta1.Timeout.start_timeout:type_name -> google.protobuf.Duration
+	17, // 12: google.chromeos.moblab.v1beta1.TestEffort.board_model:type_name -> google.chromeos.moblab.v1beta1.TestEffort.BoardModel
+	18, // 13: google.chromeos.moblab.v1beta1.TestEffort.pools:type_name -> google.chromeos.moblab.v1beta1.TestEffort.Pool
+	19, // 14: google.chromeos.moblab.v1beta1.TestEffort.android:type_name -> google.chromeos.moblab.v1beta1.TestEffort.AndroidBuildTarget
+	3,  // 15: google.chromeos.moblab.v1beta1.TestEffort.state:type_name -> google.chromeos.moblab.v1beta1.TestEffort.State
+	24, // 16: google.chromeos.moblab.v1beta1.TestEffort.create_time:type_name -> google.protobuf.Timestamp
+	23, // 17: google.chromeos.moblab.v1beta1.TestEffort.firmware_configs:type_name -> google.chromeos.moblab.v1beta1.TestEffort.FirmwareConfig
+	5,  // 18: google.chromeos.moblab.v1beta1.TestEffort.Pool.type:type_name -> google.chromeos.moblab.v1beta1.TestEffort.Pool.PoolType
+	20, // 19: google.chromeos.moblab.v1beta1.TestEffort.FirmwareTarget.ec:type_name -> google.chromeos.moblab.v1beta1.TestEffort.FirmwareTestEffortVersion
+	20, // 20: google.chromeos.moblab.v1beta1.TestEffort.FirmwareTarget.ap:type_name -> google.chromeos.moblab.v1beta1.TestEffort.FirmwareTestEffortVersion
+	21, // 21: google.chromeos.moblab.v1beta1.TestEffort.FirmwareTarget.gsc:type_name -> google.chromeos.moblab.v1beta1.TestEffort.GscTestEffortVersion
+	20, // 22: google.chromeos.moblab.v1beta1.TestEffort.FirmwareTarget.fpmcu:type_name -> google.chromeos.moblab.v1beta1.TestEffort.FirmwareTestEffortVersion
+	22, // 23: google.chromeos.moblab.v1beta1.TestEffort.FirmwareConfig.firmware_target:type_name -> google.chromeos.moblab.v1beta1.TestEffort.FirmwareTarget
+	4,  // 24: google.chromeos.moblab.v1beta1.TestEffort.FirmwareConfig.firmware_types:type_name -> google.chromeos.moblab.v1beta1.TestEffort.FirmwareType
+	25, // [25:25] is the sub-list for method output_type
+	25, // [25:25] is the sub-list for method input_type
+	25, // [25:25] is the sub-list for extension type_name
+	25, // [25:25] is the sub-list for extension extendee
+	0,  // [0:25] is the sub-list for field type_name
 }
 
 func init() { file_google_chromeos_moblab_v1beta1_resources_proto_init() }
@@ -1276,17 +2360,123 @@ func file_google_chromeos_moblab_v1beta1_resources_proto_init() {
 				return nil
 			}
 		}
+		file_google_chromeos_moblab_v1beta1_resources_proto_msgTypes[9].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*TestEffort); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_google_chromeos_moblab_v1beta1_resources_proto_msgTypes[11].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*TestEffort_BoardModel); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_google_chromeos_moblab_v1beta1_resources_proto_msgTypes[12].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*TestEffort_Pool); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_google_chromeos_moblab_v1beta1_resources_proto_msgTypes[13].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*TestEffort_AndroidBuildTarget); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_google_chromeos_moblab_v1beta1_resources_proto_msgTypes[14].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*TestEffort_FirmwareTestEffortVersion); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_google_chromeos_moblab_v1beta1_resources_proto_msgTypes[15].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*TestEffort_GscTestEffortVersion); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_google_chromeos_moblab_v1beta1_resources_proto_msgTypes[16].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*TestEffort_FirmwareTarget); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_google_chromeos_moblab_v1beta1_resources_proto_msgTypes[17].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*TestEffort_FirmwareConfig); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
 	}
 	file_google_chromeos_moblab_v1beta1_resources_proto_msgTypes[6].OneofWrappers = []interface{}{
 		(*Session_TradefedTest)(nil),
+	}
+	file_google_chromeos_moblab_v1beta1_resources_proto_msgTypes[9].OneofWrappers = []interface{}{
+		(*TestEffort_BoardModel_)(nil),
+		(*TestEffort_Android)(nil),
+	}
+	file_google_chromeos_moblab_v1beta1_resources_proto_msgTypes[16].OneofWrappers = []interface{}{
+		(*TestEffort_FirmwareTarget_Ec)(nil),
+		(*TestEffort_FirmwareTarget_Ap)(nil),
+		(*TestEffort_FirmwareTarget_Gsc)(nil),
+		(*TestEffort_FirmwareTarget_Fpmcu)(nil),
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_google_chromeos_moblab_v1beta1_resources_proto_rawDesc,
-			NumEnums:      3,
-			NumMessages:   10,
+			NumEnums:      6,
+			NumMessages:   18,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

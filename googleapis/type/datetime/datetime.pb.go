@@ -1,4 +1,4 @@
-// Copyright 2025 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -49,8 +49,8 @@ const (
 //
 // The date is relative to the Proleptic Gregorian Calendar.
 //
-// If year is 0, the DateTime is considered not to have a specific year. month
-// and day must have valid, non-zero values.
+// If year, month, or day are 0, the DateTime is considered not to have a
+// specific year, month, or day respectively.
 //
 // This type may also be used to represent a physical time if all the date and
 // time fields are set and either case of the `time_offset` oneof is set.
@@ -68,22 +68,23 @@ type DateTime struct {
 	// Optional. Year of date. Must be from 1 to 9999, or 0 if specifying a
 	// datetime without a year.
 	Year int32 `protobuf:"varint,1,opt,name=year,proto3" json:"year,omitempty"`
-	// Required. Month of year. Must be from 1 to 12.
+	// Optional. Month of year. Must be from 1 to 12, or 0 if specifying a
+	// datetime without a month.
 	Month int32 `protobuf:"varint,2,opt,name=month,proto3" json:"month,omitempty"`
-	// Required. Day of month. Must be from 1 to 31 and valid for the year and
-	// month.
+	// Optional. Day of month. Must be from 1 to 31 and valid for the year and
+	// month, or 0 if specifying a datetime without a day.
 	Day int32 `protobuf:"varint,3,opt,name=day,proto3" json:"day,omitempty"`
-	// Required. Hours of day in 24 hour format. Should be from 0 to 23. An API
-	// may choose to allow the value "24:00:00" for scenarios like business
-	// closing time.
+	// Optional. Hours of day in 24 hour format. Should be from 0 to 23, defaults
+	// to 0 (midnight). An API may choose to allow the value "24:00:00" for
+	// scenarios like business closing time.
 	Hours int32 `protobuf:"varint,4,opt,name=hours,proto3" json:"hours,omitempty"`
-	// Required. Minutes of hour of day. Must be from 0 to 59.
+	// Optional. Minutes of hour of day. Must be from 0 to 59, defaults to 0.
 	Minutes int32 `protobuf:"varint,5,opt,name=minutes,proto3" json:"minutes,omitempty"`
-	// Required. Seconds of minutes of the time. Must normally be from 0 to 59. An
-	// API may allow the value 60 if it allows leap-seconds.
+	// Optional. Seconds of minutes of the time. Must normally be from 0 to 59,
+	// defaults to 0. An API may allow the value 60 if it allows leap-seconds.
 	Seconds int32 `protobuf:"varint,6,opt,name=seconds,proto3" json:"seconds,omitempty"`
-	// Required. Fractions of seconds in nanoseconds. Must be from 0 to
-	// 999,999,999.
+	// Optional. Fractions of seconds in nanoseconds. Must be from 0 to
+	// 999,999,999, defaults to 0.
 	Nanos int32 `protobuf:"varint,7,opt,name=nanos,proto3" json:"nanos,omitempty"`
 	// Optional. Specifies either the UTC offset or the time zone of the DateTime.
 	// Choose carefully between them, considering that time zone data may change
@@ -227,9 +228,9 @@ type TimeZone struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// IANA Time Zone Database time zone, e.g. "America/New_York".
+	// IANA Time Zone Database time zone. For example "America/New_York".
 	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	// Optional. IANA Time Zone Database version number, e.g. "2019a".
+	// Optional. IANA Time Zone Database version number. For example "2019a".
 	Version string `protobuf:"bytes,2,opt,name=version,proto3" json:"version,omitempty"`
 }
 
@@ -308,14 +309,14 @@ var file_google_type_datetime_proto_rawDesc = []byte{
 	0x73, 0x65, 0x74, 0x22, 0x34, 0x0a, 0x08, 0x54, 0x69, 0x6d, 0x65, 0x5a, 0x6f, 0x6e, 0x65, 0x12,
 	0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x02, 0x69, 0x64, 0x12,
 	0x18, 0x0a, 0x07, 0x76, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09,
-	0x52, 0x07, 0x76, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x42, 0x69, 0x0a, 0x0f, 0x63, 0x6f, 0x6d,
+	0x52, 0x07, 0x76, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x42, 0x66, 0x0a, 0x0f, 0x63, 0x6f, 0x6d,
 	0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x74, 0x79, 0x70, 0x65, 0x42, 0x0d, 0x44, 0x61,
 	0x74, 0x65, 0x54, 0x69, 0x6d, 0x65, 0x50, 0x72, 0x6f, 0x74, 0x6f, 0x50, 0x01, 0x5a, 0x3c, 0x67,
 	0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x67, 0x6f, 0x6c, 0x61, 0x6e, 0x67, 0x2e, 0x6f, 0x72, 0x67,
 	0x2f, 0x67, 0x65, 0x6e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65,
 	0x61, 0x70, 0x69, 0x73, 0x2f, 0x74, 0x79, 0x70, 0x65, 0x2f, 0x64, 0x61, 0x74, 0x65, 0x74, 0x69,
-	0x6d, 0x65, 0x3b, 0x64, 0x61, 0x74, 0x65, 0x74, 0x69, 0x6d, 0x65, 0xf8, 0x01, 0x01, 0xa2, 0x02,
-	0x03, 0x47, 0x54, 0x50, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x6d, 0x65, 0x3b, 0x64, 0x61, 0x74, 0x65, 0x74, 0x69, 0x6d, 0x65, 0xa2, 0x02, 0x03, 0x47, 0x54,
+	0x50, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
