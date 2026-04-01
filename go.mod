@@ -87,7 +87,6 @@ require (
 	cloud.google.com/go/policytroubleshooter v1.11.7
 	cloud.google.com/go/privatecatalog v0.10.8
 	cloud.google.com/go/pubsub v1.50.1
-	cloud.google.com/go/pubsub/v2 v2.5.1
 	cloud.google.com/go/pubsublite v1.8.2
 	cloud.google.com/go/recaptchaenterprise/v2 v2.21.0
 	cloud.google.com/go/recommendationengine v0.9.7
@@ -128,6 +127,7 @@ require (
 )
 
 require (
+	cloud.google.com/go/pubsub/v2 v2.5.1 // indirect
 	golang.org/x/net v0.52.0 // indirect
 	golang.org/x/sys v0.42.0 // indirect
 	golang.org/x/text v0.35.0 // indirect
