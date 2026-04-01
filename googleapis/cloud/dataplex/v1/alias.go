@@ -72,9 +72,6 @@ const (
 	Entity_FILESET                                              = src.Entity_FILESET
 	Entity_TABLE                                                = src.Entity_TABLE
 	Entity_TYPE_UNSPECIFIED                                     = src.Entity_TYPE_UNSPECIFIED
-	GetContentRequest_BASIC                                     = src.GetContentRequest_BASIC
-	GetContentRequest_CONTENT_VIEW_UNSPECIFIED                  = src.GetContentRequest_CONTENT_VIEW_UNSPECIFIED
-	GetContentRequest_FULL                                      = src.GetContentRequest_FULL
 	GetEntityRequest_BASIC                                      = src.GetEntityRequest_BASIC
 	GetEntityRequest_ENTITY_VIEW_UNSPECIFIED                    = src.GetEntityRequest_ENTITY_VIEW_UNSPECIFIED
 	GetEntityRequest_FULL                                       = src.GetEntityRequest_FULL
@@ -204,8 +201,6 @@ var (
 	File_google_cloud_dataplex_v1_resources_proto        = src.File_google_cloud_dataplex_v1_resources_proto
 	File_google_cloud_dataplex_v1_service_proto          = src.File_google_cloud_dataplex_v1_service_proto
 	File_google_cloud_dataplex_v1_tasks_proto            = src.File_google_cloud_dataplex_v1_tasks_proto
-	GetContentRequest_ContentView_name                   = src.GetContentRequest_ContentView_name
-	GetContentRequest_ContentView_value                  = src.GetContentRequest_ContentView_value
 	GetEntityRequest_EntityView_name                     = src.GetEntityRequest_EntityView_name
 	GetEntityRequest_EntityView_value                    = src.GetEntityRequest_EntityView_value
 	JobEvent_Service_name                                = src.JobEvent_Service_name
@@ -443,20 +438,10 @@ type Content_SqlScript_QueryEngine = src.Content_SqlScript_QueryEngine
 // Deprecated: Please use types in: cloud.google.com/go/dataplex/apiv1/dataplexpb
 type CreateAssetRequest = src.CreateAssetRequest
 
-// Create content request.
-//
-// Deprecated: Please use types in: cloud.google.com/go/dataplex/apiv1/dataplexpb
-type CreateContentRequest = src.CreateContentRequest
-
 // Create a metadata entity request.
 //
 // Deprecated: Please use types in: cloud.google.com/go/dataplex/apiv1/dataplexpb
 type CreateEntityRequest = src.CreateEntityRequest
-
-// Create environment request.
-//
-// Deprecated: Please use types in: cloud.google.com/go/dataplex/apiv1/dataplexpb
-type CreateEnvironmentRequest = src.CreateEnvironmentRequest
 
 // Create lake request.
 //
@@ -495,20 +480,10 @@ type DataplexServiceServer = src.DataplexServiceServer
 // Deprecated: Please use types in: cloud.google.com/go/dataplex/apiv1/dataplexpb
 type DeleteAssetRequest = src.DeleteAssetRequest
 
-// Delete content request.
-//
-// Deprecated: Please use types in: cloud.google.com/go/dataplex/apiv1/dataplexpb
-type DeleteContentRequest = src.DeleteContentRequest
-
 // Delete a metadata entity request.
 //
 // Deprecated: Please use types in: cloud.google.com/go/dataplex/apiv1/dataplexpb
 type DeleteEntityRequest = src.DeleteEntityRequest
-
-// Delete environment request.
-//
-// Deprecated: Please use types in: cloud.google.com/go/dataplex/apiv1/dataplexpb
-type DeleteEnvironmentRequest = src.DeleteEnvironmentRequest
 
 // Delete lake request.
 //
@@ -620,17 +595,6 @@ type Environment_SessionStatus = src.Environment_SessionStatus
 // Deprecated: Please use types in: cloud.google.com/go/dataplex/apiv1/dataplexpb
 type GetAssetRequest = src.GetAssetRequest
 
-// Get content request.
-//
-// Deprecated: Please use types in: cloud.google.com/go/dataplex/apiv1/dataplexpb
-type GetContentRequest = src.GetContentRequest
-
-// Specifies whether the request should return the full or the partial
-// representation.
-//
-// Deprecated: Please use types in: cloud.google.com/go/dataplex/apiv1/dataplexpb
-type GetContentRequest_ContentView = src.GetContentRequest_ContentView
-
 // Get metadata entity request.
 //
 // Deprecated: Please use types in: cloud.google.com/go/dataplex/apiv1/dataplexpb
@@ -640,11 +604,6 @@ type GetEntityRequest = src.GetEntityRequest
 //
 // Deprecated: Please use types in: cloud.google.com/go/dataplex/apiv1/dataplexpb
 type GetEntityRequest_EntityView = src.GetEntityRequest_EntityView
-
-// Get environment request.
-//
-// Deprecated: Please use types in: cloud.google.com/go/dataplex/apiv1/dataplexpb
-type GetEnvironmentRequest = src.GetEnvironmentRequest
 
 // Get job request.
 //
@@ -746,16 +705,6 @@ type ListAssetsRequest = src.ListAssetsRequest
 // Deprecated: Please use types in: cloud.google.com/go/dataplex/apiv1/dataplexpb
 type ListAssetsResponse = src.ListAssetsResponse
 
-// List content request. Returns the BASIC Content view.
-//
-// Deprecated: Please use types in: cloud.google.com/go/dataplex/apiv1/dataplexpb
-type ListContentRequest = src.ListContentRequest
-
-// List content response.
-//
-// Deprecated: Please use types in: cloud.google.com/go/dataplex/apiv1/dataplexpb
-type ListContentResponse = src.ListContentResponse
-
 // List metadata entities request.
 //
 // Deprecated: Please use types in: cloud.google.com/go/dataplex/apiv1/dataplexpb
@@ -770,16 +719,6 @@ type ListEntitiesRequest_EntityView = src.ListEntitiesRequest_EntityView
 //
 // Deprecated: Please use types in: cloud.google.com/go/dataplex/apiv1/dataplexpb
 type ListEntitiesResponse = src.ListEntitiesResponse
-
-// List environments request.
-//
-// Deprecated: Please use types in: cloud.google.com/go/dataplex/apiv1/dataplexpb
-type ListEnvironmentsRequest = src.ListEnvironmentsRequest
-
-// List environments response.
-//
-// Deprecated: Please use types in: cloud.google.com/go/dataplex/apiv1/dataplexpb
-type ListEnvironmentsResponse = src.ListEnvironmentsResponse
 
 // List jobs request.
 //
@@ -815,16 +754,6 @@ type ListPartitionsRequest = src.ListPartitionsRequest
 //
 // Deprecated: Please use types in: cloud.google.com/go/dataplex/apiv1/dataplexpb
 type ListPartitionsResponse = src.ListPartitionsResponse
-
-// List sessions request.
-//
-// Deprecated: Please use types in: cloud.google.com/go/dataplex/apiv1/dataplexpb
-type ListSessionsRequest = src.ListSessionsRequest
-
-// List sessions response.
-//
-// Deprecated: Please use types in: cloud.google.com/go/dataplex/apiv1/dataplexpb
-type ListSessionsResponse = src.ListSessionsResponse
 
 // List tasks request.
 //
@@ -1061,11 +990,6 @@ type UnimplementedMetadataServiceServer = src.UnimplementedMetadataServiceServer
 // Deprecated: Please use types in: cloud.google.com/go/dataplex/apiv1/dataplexpb
 type UpdateAssetRequest = src.UpdateAssetRequest
 
-// Update content request.
-//
-// Deprecated: Please use types in: cloud.google.com/go/dataplex/apiv1/dataplexpb
-type UpdateContentRequest = src.UpdateContentRequest
-
 // Update a metadata entity request. The exiting entity will be fully replaced
 // by the entity in the request. The entity ID is mutable. To modify the ID,
 // use the current entity ID in the request URL and specify the new ID in the
@@ -1073,11 +997,6 @@ type UpdateContentRequest = src.UpdateContentRequest
 //
 // Deprecated: Please use types in: cloud.google.com/go/dataplex/apiv1/dataplexpb
 type UpdateEntityRequest = src.UpdateEntityRequest
-
-// Update environment request.
-//
-// Deprecated: Please use types in: cloud.google.com/go/dataplex/apiv1/dataplexpb
-type UpdateEnvironmentRequest = src.UpdateEnvironmentRequest
 
 // Update lake request.
 //
