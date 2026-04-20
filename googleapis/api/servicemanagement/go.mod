@@ -3,7 +3,7 @@ module google.golang.org/genproto/googleapis/api/servicemanagement
 go 1.25.0
 
 require (
-	cloud.google.com/go/servicemanagement v1.12.0
+	cloud.google.com/go/servicemanagement v1.13.0
 	google.golang.org/grpc v1.80.0
 )
 
