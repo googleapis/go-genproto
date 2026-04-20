@@ -1,5 +1,5 @@
-cloud.google.com/go/apikeys v1.4.0 h1:LkndtCpWqz9bjKi6So/YakGtAogQ0L8cIHN4pB1OKxI=
-cloud.google.com/go/apikeys v1.4.0/go.mod h1:54W/UBstYAspaXLcnpQ/tv1aexaI0dbzKGN3RSTfz/Q=
+cloud.google.com/go/apikeys v1.5.0 h1:2KlsL8GHLJg+y7CQAnA+YVMpxePGbg0RuXnSHQUIfDk=
+cloud.google.com/go/apikeys v1.5.0/go.mod h1:54W/UBstYAspaXLcnpQ/tv1aexaI0dbzKGN3RSTfz/Q=
 cloud.google.com/go/longrunning v0.9.0 h1:0EzbDEGsAvOZNbqXopgniY0w0a1phvu5IdUFq8grmqY=
 cloud.google.com/go/longrunning v0.9.0/go.mod h1:pkTz846W7bF4o2SzdWJ40Hu0Re+UoNT6Q5t+igIcb8E=
 github.com/cespare/xxhash/v2 v2.3.0 h1:UL815xU9SqsFlibzuggzjXhog7bL6oX9BbNZnL2UFvs=
