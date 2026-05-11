@@ -3,7 +3,7 @@ module google.golang.org/genproto/googleapis/api/apikeys
 go 1.25.0
 
 require (
-	cloud.google.com/go/apikeys v1.6.0
+	cloud.google.com/go/apikeys v1.7.0
 	google.golang.org/grpc v1.80.0
 )
 
