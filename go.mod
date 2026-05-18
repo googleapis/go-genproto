@@ -28,17 +28,17 @@ require (
 	cloud.google.com/go/cloudbuild v1.30.0
 	cloud.google.com/go/clouddms v1.13.0
 	cloud.google.com/go/cloudtasks v1.18.0
-	cloud.google.com/go/compute v1.62.0
+	cloud.google.com/go/compute v1.63.0
 	cloud.google.com/go/contactcenterinsights v1.22.0
 	cloud.google.com/go/container v1.49.0
 	cloud.google.com/go/containeranalysis v0.19.0
-	cloud.google.com/go/datacatalog v1.31.0
+	cloud.google.com/go/datacatalog v1.32.0
 	cloud.google.com/go/dataflow v0.16.0
 	cloud.google.com/go/dataform v0.19.0
 	cloud.google.com/go/datafusion v1.13.0
 	cloud.google.com/go/datalabeling v0.14.0
 	cloud.google.com/go/dataplex v1.34.0
-	cloud.google.com/go/dataproc/v2 v2.21.0
+	cloud.google.com/go/dataproc/v2 v2.22.0
 	cloud.google.com/go/dataqna v0.13.0
 	cloud.google.com/go/datastore v1.23.0
 	cloud.google.com/go/datastream v1.20.0
@@ -120,8 +120,8 @@ require (
 	cloud.google.com/go/websecurityscanner v1.12.0
 	cloud.google.com/go/workflows v1.19.0
 	github.com/golang/protobuf v1.5.4
-	google.golang.org/genproto/googleapis/api v0.0.0-20260504160031-60b97b32f348
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20260504160031-60b97b32f348
+	google.golang.org/genproto/googleapis/api v0.0.0-20260511170946-3700d4141b60
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20260511170946-3700d4141b60
 	google.golang.org/grpc v1.80.0
 	google.golang.org/protobuf v1.36.11
 )
