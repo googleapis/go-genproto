@@ -9,7 +9,7 @@ require (
 	cloud.google.com/go/analytics v0.35.0
 	cloud.google.com/go/apigateway v1.12.0
 	cloud.google.com/go/apigeeconnect v1.12.0
-	cloud.google.com/go/apigeeregistry v0.15.0
+	cloud.google.com/go/apigeeregistry v1.0.0
 	cloud.google.com/go/appengine v1.14.0
 	cloud.google.com/go/area120 v0.15.0
 	cloud.google.com/go/artifactregistry v1.25.0
@@ -34,7 +34,7 @@ require (
 	cloud.google.com/go/containeranalysis v0.19.0
 	cloud.google.com/go/datacatalog v1.32.0
 	cloud.google.com/go/dataflow v0.16.0
-	cloud.google.com/go/dataform v0.19.0
+	cloud.google.com/go/dataform v1.0.0
 	cloud.google.com/go/datafusion v1.13.0
 	cloud.google.com/go/datalabeling v0.14.0
 	cloud.google.com/go/dataplex v1.34.0
@@ -55,7 +55,7 @@ require (
 	cloud.google.com/go/firestore v1.22.0
 	cloud.google.com/go/functions v1.24.0
 	cloud.google.com/go/gkebackup v1.13.0
-	cloud.google.com/go/gkeconnect v0.16.0
+	cloud.google.com/go/gkeconnect v1.0.0
 	cloud.google.com/go/gkehub v0.21.0
 	cloud.google.com/go/gkemulticloud v1.11.0
 	cloud.google.com/go/gsuiteaddons v1.12.0
@@ -67,7 +67,7 @@ require (
 	cloud.google.com/go/language v1.18.0
 	cloud.google.com/go/lifesciences v0.15.0
 	cloud.google.com/go/logging v1.18.0
-	cloud.google.com/go/longrunning v0.13.0
+	cloud.google.com/go/longrunning v1.0.0
 	cloud.google.com/go/managedidentities v1.12.0
 	cloud.google.com/go/maps v1.35.0
 	cloud.google.com/go/mediatranslation v0.13.0

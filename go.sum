@@ -12,6 +12,8 @@ cloud.google.com/go/apigeeconnect v1.12.0 h1:YvZhi0QkHobBRMrN6ri9PUPnnhgEd4VpW0+
 cloud.google.com/go/apigeeconnect v1.12.0/go.mod h1:mYJekCKZHc2ia5yZX5lwtexTn9CzsOfb6+sh/2hi42Q=
 cloud.google.com/go/apigeeregistry v0.15.0 h1:rLGEHznrkwAEfTEaNnDUuTDGpACLXJHaV+RyHSnkzMo=
 cloud.google.com/go/apigeeregistry v0.15.0/go.mod h1:o+j6eA8hYhTWX5gEqMMBVDWY+/QQFrYe/YJBsO19pn0=
+cloud.google.com/go/apigeeregistry v1.0.0 h1:S0DHrbgpO8/b+YJY/Af2rEQ5d7dkiO1LB59UdvkS6Aw=
+cloud.google.com/go/apigeeregistry v1.0.0/go.mod h1:o+j6eA8hYhTWX5gEqMMBVDWY+/QQFrYe/YJBsO19pn0=
 cloud.google.com/go/appengine v1.14.0 h1:dTww1xDqBpeR0BpLsiqfjyAnaK7S1vniJ5YR7L83Jh4=
 cloud.google.com/go/appengine v1.14.0/go.mod h1:JMjrVFg+YgfksZCWbtA3TgbKbPfZZtapB9cGL/5WVnM=
 cloud.google.com/go/area120 v0.15.0 h1:9v6HeQsBpfRqoZtNeLI4V8SQ7Jcmt6s2gmgbjl0fVFc=
@@ -62,6 +64,8 @@ cloud.google.com/go/dataflow v0.16.0 h1:BchGCAl9QIZ/pyTGokv5V3daxBTrXsOmrU4ARXoT
 cloud.google.com/go/dataflow v0.16.0/go.mod h1:BWhSrIGmsMfuYj3J+nJ2Tw7tplRR6r28kvRiqCD3WlQ=
 cloud.google.com/go/dataform v0.19.0 h1:cJZBnFQO93a6vJ6mfW6hoPzb5uFy5a0DVCVeCPjVjt8=
 cloud.google.com/go/dataform v0.19.0/go.mod h1:i1a0zkS751kvrY1IIPpUQZ77H5doxx7cs0AP3hnXTMk=
+cloud.google.com/go/dataform v1.0.0 h1:EExrLoU1kh8wYxjeRW/LUIlC4yk4QW5ikoZMbI0mgtE=
+cloud.google.com/go/dataform v1.0.0/go.mod h1:i1a0zkS751kvrY1IIPpUQZ77H5doxx7cs0AP3hnXTMk=
 cloud.google.com/go/datafusion v1.13.0 h1:rpmpw3F9clEDTk1uCAMjPwJblRGjlW1tQEMEiTC/tR8=
 cloud.google.com/go/datafusion v1.13.0/go.mod h1:MQdANs3I/4gitzY+mTBx27rrQyMiUg8uc2Z4TPLWWfc=
 cloud.google.com/go/datalabeling v0.14.0 h1:hlmO3GBCfiU23UovEKnJoKDKzr+7Du5x1UxXm+4U5AY=
@@ -104,6 +108,8 @@ cloud.google.com/go/gkebackup v1.13.0 h1:QyeJc4XPqV0hzoAcAQIi8YMveT8eRI21oOK16qK
 cloud.google.com/go/gkebackup v1.13.0/go.mod h1:D2MDbHW4V/uKCmS9TnT8hNKX2tPkE/pWp9nSm0TQ9hY=
 cloud.google.com/go/gkeconnect v0.16.0 h1:FMUrJSjLUj9Nlp73nZAkSblEQIXyq284IZ0VTCUhAjA=
 cloud.google.com/go/gkeconnect v0.16.0/go.mod h1:5iWSBQzMIRLwUHUWVhxxcNK45ZPE8ntyBgE0MkavlqQ=
+cloud.google.com/go/gkeconnect v1.0.0 h1:IDuAD/w0Xph8k/31vdt6pBkDdRx55lVXz7gW8ABOfCs=
+cloud.google.com/go/gkeconnect v1.0.0/go.mod h1:5iWSBQzMIRLwUHUWVhxxcNK45ZPE8ntyBgE0MkavlqQ=
 cloud.google.com/go/gkehub v0.21.0 h1:Fvx6c94yYToZBlsYF7tBIt+LW1u6uY6WYK/h3Z6IZYI=
 cloud.google.com/go/gkehub v0.21.0/go.mod h1:xKePlMrI8LpKErzKMWdH/yQv+GDV60ypCNfTTdT+BN0=
 cloud.google.com/go/gkemulticloud v1.11.0 h1:MTqEPjiNVY9bcliSfQR23HHaTPlfFinDh+4ARB5Gn14=
@@ -128,6 +134,8 @@ cloud.google.com/go/logging v1.18.0 h1:KhzZq+1cSkPH9YUaKLLhLtQxIHitVayBmk0sGfoM9
 cloud.google.com/go/logging v1.18.0/go.mod h1:ZGKnpBaURITh+g/uom2VhbiFoFWvejcrHPDhxFtU/gI=
 cloud.google.com/go/longrunning v0.13.0 h1:dUfqF8y0bHOeZzF5+tKPZ6RBCeEEDOejvwGwENv/eEc=
 cloud.google.com/go/longrunning v0.13.0/go.mod h1:8nqFBPOO1U/XkhWl0I19AMZEphrHi73VNABIpKYaTwM=
+cloud.google.com/go/longrunning v1.0.0 h1:lwzWEYD8+NkYV7dhexOz6kmlvajZA70+bW/xMhRVVdY=
+cloud.google.com/go/longrunning v1.0.0/go.mod h1:8nqFBPOO1U/XkhWl0I19AMZEphrHi73VNABIpKYaTwM=
 cloud.google.com/go/managedidentities v1.12.0 h1:tGderKWJBrOee9BtGul26gA6425tdbZXkbK0ZSkbAE4=
 cloud.google.com/go/managedidentities v1.12.0/go.mod h1:rm72jf/v//0NG73VQNZM1JlV2E95uhJymmSXlgi6hMA=
 cloud.google.com/go/maps v1.35.0 h1:Noryf6HN6xKhNBQW0S0Pitc8Fc1L7ZjaIavLYAfneVE=
