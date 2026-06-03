@@ -1118,6 +1118,7 @@ type TestEffort struct {
 	// Types that are valid to be assigned to Os:
 	//
 	//	*TestEffort_Android
+	//	*TestEffort_BuildTargetOverride
 	Os isTestEffort_Os `protobuf_oneof:"os"`
 	// Output only. Overall result of the test effort.
 	State TestEffort_State `protobuf:"varint,8,opt,name=state,proto3,enum=google.chromeos.moblab.v1beta1.TestEffort_State" json:"state,omitempty"`
@@ -1132,6 +1133,7 @@ type TestEffort struct {
 	// Types that are valid to be assigned to TestSource:
 	//
 	//	*TestEffort_AndroidTestTarget
+	//	*TestEffort_TestTargetOverride
 	TestSource    isTestEffort_TestSource `protobuf_oneof:"test_source"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -1234,6 +1236,15 @@ func (x *TestEffort) GetAndroid() *TestEffort_AndroidBuildTarget {
 	return nil
 }
 
+func (x *TestEffort) GetBuildTargetOverride() string {
+	if x != nil {
+		if x, ok := x.Os.(*TestEffort_BuildTargetOverride); ok {
+			return x.BuildTargetOverride
+		}
+	}
+	return ""
+}
+
 func (x *TestEffort) GetState() TestEffort_State {
 	if x != nil {
 		return x.State
@@ -1278,6 +1289,15 @@ func (x *TestEffort) GetAndroidTestTarget() *TestEffort_AndroidBuildTarget {
 	return nil
 }
 
+func (x *TestEffort) GetTestTargetOverride() string {
+	if x != nil {
+		if x, ok := x.TestSource.(*TestEffort_TestTargetOverride); ok {
+			return x.TestTargetOverride
+		}
+	}
+	return ""
+}
+
 type isTestEffort_TestTarget interface {
 	isTestEffort_TestTarget()
 }
@@ -1298,7 +1318,14 @@ type TestEffort_Android struct {
 	Android *TestEffort_AndroidBuildTarget `protobuf:"bytes,7,opt,name=android,proto3,oneof"`
 }
 
+type TestEffort_BuildTargetOverride struct {
+	// Directly specifies the build target name.
+	BuildTargetOverride string `protobuf:"bytes,13,opt,name=build_target_override,json=buildTargetOverride,proto3,oneof"`
+}
+
 func (*TestEffort_Android) isTestEffort_Os() {}
+
+func (*TestEffort_BuildTargetOverride) isTestEffort_Os() {}
 
 type isTestEffort_TestSource interface {
 	isTestEffort_TestSource()
@@ -1309,7 +1336,14 @@ type TestEffort_AndroidTestTarget struct {
 	AndroidTestTarget *TestEffort_AndroidBuildTarget `protobuf:"bytes,12,opt,name=android_test_target,json=androidTestTarget,proto3,oneof"`
 }
 
+type TestEffort_TestTargetOverride struct {
+	// Directly specifies the test target name.
+	TestTargetOverride string `protobuf:"bytes,14,opt,name=test_target_override,json=testTargetOverride,proto3,oneof"`
+}
+
 func (*TestEffort_AndroidTestTarget) isTestEffort_TestSource() {}
+
+func (*TestEffort_TestTargetOverride) isTestEffort_TestSource() {}
 
 // The board and model of the test effort.
 type TestEffort_BoardModel struct {
@@ -1913,7 +1947,7 @@ const file_google_chromeos_moblab_v1beta1_resources_proto_rawDesc = "" +
 	"\ftest_timeout\x18\x02 \x01(\v2\x19.google.protobuf.DurationB\x03\xe0A\x01R\vtestTimeout\x12C\n" +
 	"\rstart_timeout\x18\x03 \x01(\v2\x19.google.protobuf.DurationB\x03\xe0A\x01R\fstartTimeout\"-\n" +
 	"\fTradefedTest\x12\x1d\n" +
-	"\acommand\x18\x01 \x01(\tB\x03\xe0A\x02R\acommand\"\xca\x14\n" +
+	"\acommand\x18\x01 \x01(\tB\x03\xe0A\x02R\acommand\"\xb4\x15\n" +
 	"\n" +
 	"TestEffort\x12\x17\n" +
 	"\x04name\x18\x01 \x01(\tB\x03\xe0A\bR\x04name\x12)\n" +
@@ -1923,14 +1957,16 @@ const file_google_chromeos_moblab_v1beta1_resources_proto_rawDesc = "" +
 	"boardModel\x12J\n" +
 	"\x05pools\x18\x05 \x03(\v2/.google.chromeos.moblab.v1beta1.TestEffort.PoolB\x03\xe0A\x02R\x05pools\x12 \n" +
 	"\ttest_plan\x18\x06 \x01(\tB\x03\xe0A\x02R\btestPlan\x12Y\n" +
-	"\aandroid\x18\a \x01(\v2=.google.chromeos.moblab.v1beta1.TestEffort.AndroidBuildTargetH\x01R\aandroid\x12K\n" +
+	"\aandroid\x18\a \x01(\v2=.google.chromeos.moblab.v1beta1.TestEffort.AndroidBuildTargetH\x01R\aandroid\x124\n" +
+	"\x15build_target_override\x18\r \x01(\tH\x01R\x13buildTargetOverride\x12K\n" +
 	"\x05state\x18\b \x01(\x0e20.google.chromeos.moblab.v1beta1.TestEffort.StateB\x03\xe0A\x03R\x05state\x12@\n" +
 	"\vcreate_time\x18\t \x01(\v2\x1a.google.protobuf.TimestampB\x03\xe0A\x03R\n" +
 	"createTime\x12&\n" +
 	"\ftesthaus_url\x18\n" +
 	" \x01(\tB\x03\xe0A\x03R\vtesthausUrl\x12i\n" +
 	"\x10firmware_configs\x18\v \x03(\v29.google.chromeos.moblab.v1beta1.TestEffort.FirmwareConfigB\x03\xe0A\x01R\x0ffirmwareConfigs\x12o\n" +
-	"\x13android_test_target\x18\f \x01(\v2=.google.chromeos.moblab.v1beta1.TestEffort.AndroidBuildTargetH\x02R\x11androidTestTarget\x1aB\n" +
+	"\x13android_test_target\x18\f \x01(\v2=.google.chromeos.moblab.v1beta1.TestEffort.AndroidBuildTargetH\x02R\x11androidTestTarget\x122\n" +
+	"\x14test_target_override\x18\x0e \x01(\tH\x02R\x12testTargetOverride\x1aB\n" +
 	"\n" +
 	"BoardModel\x12\x19\n" +
 	"\x05board\x18\x01 \x01(\tB\x03\xe0A\x02R\x05board\x12\x19\n" +
@@ -2083,7 +2119,9 @@ func file_google_chromeos_moblab_v1beta1_resources_proto_init() {
 	file_google_chromeos_moblab_v1beta1_resources_proto_msgTypes[9].OneofWrappers = []any{
 		(*TestEffort_BoardModel_)(nil),
 		(*TestEffort_Android)(nil),
+		(*TestEffort_BuildTargetOverride)(nil),
 		(*TestEffort_AndroidTestTarget)(nil),
+		(*TestEffort_TestTargetOverride)(nil),
 	}
 	file_google_chromeos_moblab_v1beta1_resources_proto_msgTypes[16].OneofWrappers = []any{
 		(*TestEffort_FirmwareTarget_Ec)(nil),
