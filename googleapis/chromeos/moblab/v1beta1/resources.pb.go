@@ -1134,9 +1134,11 @@ type TestEffort struct {
 	//
 	//	*TestEffort_AndroidTestTarget
 	//	*TestEffort_TestTargetOverride
-	TestSource    isTestEffort_TestSource `protobuf_oneof:"test_source"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	TestSource isTestEffort_TestSource `protobuf_oneof:"test_source"`
+	// Optional. Option to make boot tests optional.
+	SkipBootPrerequisite bool `protobuf:"varint,15,opt,name=skip_boot_prerequisite,json=skipBootPrerequisite,proto3" json:"skip_boot_prerequisite,omitempty"`
+	unknownFields        protoimpl.UnknownFields
+	sizeCache            protoimpl.SizeCache
 }
 
 func (x *TestEffort) Reset() {
@@ -1236,6 +1238,7 @@ func (x *TestEffort) GetAndroid() *TestEffort_AndroidBuildTarget {
 	return nil
 }
 
+// Deprecated: Marked as deprecated in google/chromeos/moblab/v1beta1/resources.proto.
 func (x *TestEffort) GetBuildTargetOverride() string {
 	if x != nil {
 		if x, ok := x.Os.(*TestEffort_BuildTargetOverride); ok {
@@ -1289,6 +1292,7 @@ func (x *TestEffort) GetAndroidTestTarget() *TestEffort_AndroidBuildTarget {
 	return nil
 }
 
+// Deprecated: Marked as deprecated in google/chromeos/moblab/v1beta1/resources.proto.
 func (x *TestEffort) GetTestTargetOverride() string {
 	if x != nil {
 		if x, ok := x.TestSource.(*TestEffort_TestTargetOverride); ok {
@@ -1296,6 +1300,13 @@ func (x *TestEffort) GetTestTargetOverride() string {
 		}
 	}
 	return ""
+}
+
+func (x *TestEffort) GetSkipBootPrerequisite() bool {
+	if x != nil {
+		return x.SkipBootPrerequisite
+	}
+	return false
 }
 
 type isTestEffort_TestTarget interface {
@@ -1319,7 +1330,10 @@ type TestEffort_Android struct {
 }
 
 type TestEffort_BuildTargetOverride struct {
+	// Deprecated: Use android.target instead.
 	// Directly specifies the build target name.
+	//
+	// Deprecated: Marked as deprecated in google/chromeos/moblab/v1beta1/resources.proto.
 	BuildTargetOverride string `protobuf:"bytes,13,opt,name=build_target_override,json=buildTargetOverride,proto3,oneof"`
 }
 
@@ -1337,7 +1351,10 @@ type TestEffort_AndroidTestTarget struct {
 }
 
 type TestEffort_TestTargetOverride struct {
+	// Deprecated: Use android_test_target.target instead.
 	// Directly specifies the test target name.
+	//
+	// Deprecated: Marked as deprecated in google/chromeos/moblab/v1beta1/resources.proto.
 	TestTargetOverride string `protobuf:"bytes,14,opt,name=test_target_override,json=testTargetOverride,proto3,oneof"`
 }
 
@@ -1468,7 +1485,11 @@ type TestEffort_AndroidBuildTarget struct {
 	// Required. The build ID of the test effort.
 	BuildId string `protobuf:"bytes,4,opt,name=build_id,json=buildId,proto3" json:"build_id,omitempty"`
 	// Optional. Product name of the build target.
-	Product       string `protobuf:"bytes,5,opt,name=product,proto3" json:"product,omitempty"`
+	Product string `protobuf:"bytes,5,opt,name=product,proto3" json:"product,omitempty"`
+	// Optional. Directly specifies the build target name.
+	// When it is used, product, build_variant, and release_config are
+	// overridden.
+	Target        string `protobuf:"bytes,6,opt,name=target,proto3" json:"target,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1534,6 +1555,13 @@ func (x *TestEffort_AndroidBuildTarget) GetBuildId() string {
 func (x *TestEffort_AndroidBuildTarget) GetProduct() string {
 	if x != nil {
 		return x.Product
+	}
+	return ""
+}
+
+func (x *TestEffort_AndroidBuildTarget) GetTarget() string {
+	if x != nil {
+		return x.Target
 	}
 	return ""
 }
@@ -1947,7 +1975,7 @@ const file_google_chromeos_moblab_v1beta1_resources_proto_rawDesc = "" +
 	"\ftest_timeout\x18\x02 \x01(\v2\x19.google.protobuf.DurationB\x03\xe0A\x01R\vtestTimeout\x12C\n" +
 	"\rstart_timeout\x18\x03 \x01(\v2\x19.google.protobuf.DurationB\x03\xe0A\x01R\fstartTimeout\"-\n" +
 	"\fTradefedTest\x12\x1d\n" +
-	"\acommand\x18\x01 \x01(\tB\x03\xe0A\x02R\acommand\"\xb4\x15\n" +
+	"\acommand\x18\x01 \x01(\tB\x03\xe0A\x02R\acommand\"\x94\x16\n" +
 	"\n" +
 	"TestEffort\x12\x17\n" +
 	"\x04name\x18\x01 \x01(\tB\x03\xe0A\bR\x04name\x12)\n" +
@@ -1957,16 +1985,17 @@ const file_google_chromeos_moblab_v1beta1_resources_proto_rawDesc = "" +
 	"boardModel\x12J\n" +
 	"\x05pools\x18\x05 \x03(\v2/.google.chromeos.moblab.v1beta1.TestEffort.PoolB\x03\xe0A\x02R\x05pools\x12 \n" +
 	"\ttest_plan\x18\x06 \x01(\tB\x03\xe0A\x02R\btestPlan\x12Y\n" +
-	"\aandroid\x18\a \x01(\v2=.google.chromeos.moblab.v1beta1.TestEffort.AndroidBuildTargetH\x01R\aandroid\x124\n" +
-	"\x15build_target_override\x18\r \x01(\tH\x01R\x13buildTargetOverride\x12K\n" +
+	"\aandroid\x18\a \x01(\v2=.google.chromeos.moblab.v1beta1.TestEffort.AndroidBuildTargetH\x01R\aandroid\x128\n" +
+	"\x15build_target_override\x18\r \x01(\tB\x02\x18\x01H\x01R\x13buildTargetOverride\x12K\n" +
 	"\x05state\x18\b \x01(\x0e20.google.chromeos.moblab.v1beta1.TestEffort.StateB\x03\xe0A\x03R\x05state\x12@\n" +
 	"\vcreate_time\x18\t \x01(\v2\x1a.google.protobuf.TimestampB\x03\xe0A\x03R\n" +
 	"createTime\x12&\n" +
 	"\ftesthaus_url\x18\n" +
 	" \x01(\tB\x03\xe0A\x03R\vtesthausUrl\x12i\n" +
 	"\x10firmware_configs\x18\v \x03(\v29.google.chromeos.moblab.v1beta1.TestEffort.FirmwareConfigB\x03\xe0A\x01R\x0ffirmwareConfigs\x12o\n" +
-	"\x13android_test_target\x18\f \x01(\v2=.google.chromeos.moblab.v1beta1.TestEffort.AndroidBuildTargetH\x02R\x11androidTestTarget\x122\n" +
-	"\x14test_target_override\x18\x0e \x01(\tH\x02R\x12testTargetOverride\x1aB\n" +
+	"\x13android_test_target\x18\f \x01(\v2=.google.chromeos.moblab.v1beta1.TestEffort.AndroidBuildTargetH\x02R\x11androidTestTarget\x126\n" +
+	"\x14test_target_override\x18\x0e \x01(\tB\x02\x18\x01H\x02R\x12testTargetOverride\x129\n" +
+	"\x16skip_boot_prerequisite\x18\x0f \x01(\bB\x03\xe0A\x01R\x14skipBootPrerequisite\x1aB\n" +
 	"\n" +
 	"BoardModel\x12\x19\n" +
 	"\x05board\x18\x01 \x01(\tB\x03\xe0A\x02R\x05board\x12\x19\n" +
@@ -1978,13 +2007,14 @@ const file_google_chromeos_moblab_v1beta1_resources_proto_rawDesc = "" +
 	"\x15POOL_TYPE_UNSPECIFIED\x10\x00\x12\x10\n" +
 	"\fDEFAULT_POOL\x10\x01\x12\v\n" +
 	"\aFAFT_PD\x10\x02\x12\x15\n" +
-	"\x11EXTENDED_DURATION\x10\x03\x1a\xc6\x01\n" +
+	"\x11EXTENDED_DURATION\x10\x03\x1a\xe3\x01\n" +
 	"\x12AndroidBuildTarget\x12\x1b\n" +
 	"\x06branch\x18\x01 \x01(\tB\x03\xe0A\x02R\x06branch\x12*\n" +
 	"\x0erelease_config\x18\x02 \x01(\tB\x03\xe0A\x01R\rreleaseConfig\x12(\n" +
 	"\rbuild_variant\x18\x03 \x01(\tB\x03\xe0A\x01R\fbuildVariant\x12\x1e\n" +
 	"\bbuild_id\x18\x04 \x01(\tB\x03\xe0A\x02R\abuildId\x12\x1d\n" +
-	"\aproduct\x18\x05 \x01(\tB\x03\xe0A\x01R\aproduct\x1a\xae\x01\n" +
+	"\aproduct\x18\x05 \x01(\tB\x03\xe0A\x01R\aproduct\x12\x1b\n" +
+	"\x06target\x18\x06 \x01(\tB\x03\xe0A\x01R\x06target\x1a\xae\x01\n" +
 	"\x19FirmwareTestEffortVersion\x12(\n" +
 	"\rmajor_version\x18\x01 \x01(\x05B\x03\xe0A\x02R\fmajorVersion\x12(\n" +
 	"\rminor_version\x18\x02 \x01(\x05B\x03\xe0A\x02R\fminorVersion\x12&\n" +
