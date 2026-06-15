@@ -1,6 +1,6 @@
 module google.golang.org/genproto
 
-go 1.25.0
+go 1.25.8
 
 require (
 	cloud.google.com/go/accessapproval v1.13.0
@@ -20,7 +20,7 @@ require (
 	cloud.google.com/go/batch v1.19.0
 	cloud.google.com/go/beyondcorp v1.7.0
 	cloud.google.com/go/bigquery v1.77.0
-	cloud.google.com/go/bigtable v1.48.0
+	cloud.google.com/go/bigtable v1.49.0
 	cloud.google.com/go/billing v1.26.0
 	cloud.google.com/go/binaryauthorization v1.15.0
 	cloud.google.com/go/certificatemanager v1.14.0
@@ -44,7 +44,7 @@ require (
 	cloud.google.com/go/datastream v1.20.0
 	cloud.google.com/go/deploy v1.32.0
 	cloud.google.com/go/dialogflow v1.82.0
-	cloud.google.com/go/dlp v1.35.0
+	cloud.google.com/go/dlp v1.36.0
 	cloud.google.com/go/documentai v1.48.0
 	cloud.google.com/go/domains v0.15.0
 	cloud.google.com/go/edgecontainer v1.9.0
@@ -120,15 +120,15 @@ require (
 	cloud.google.com/go/websecurityscanner v1.12.0
 	cloud.google.com/go/workflows v1.19.0
 	github.com/golang/protobuf v1.5.4
-	google.golang.org/genproto/googleapis/api v0.0.0-20260526163538-3dc84a4a5aaa
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20260526163538-3dc84a4a5aaa
+	google.golang.org/genproto/googleapis/api v0.0.0-20260610212136-7ab31c22f7ad
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20260610212136-7ab31c22f7ad
 	google.golang.org/grpc v1.81.1
 	google.golang.org/protobuf v1.36.11
 )
 
 require (
 	cloud.google.com/go/pubsub/v2 v2.5.1 // indirect
-	golang.org/x/net v0.54.0 // indirect
-	golang.org/x/sys v0.44.0 // indirect
+	golang.org/x/net v0.55.0 // indirect
+	golang.org/x/sys v0.45.0 // indirect
 	golang.org/x/text v0.37.0 // indirect
 )
