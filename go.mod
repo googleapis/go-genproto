@@ -20,7 +20,7 @@ require (
 	cloud.google.com/go/batch v1.19.0
 	cloud.google.com/go/beyondcorp v1.7.0
 	cloud.google.com/go/bigquery v1.77.0
-	cloud.google.com/go/bigtable v1.49.0
+	cloud.google.com/go/bigtable v1.50.0
 	cloud.google.com/go/billing v1.26.0
 	cloud.google.com/go/binaryauthorization v1.15.0
 	cloud.google.com/go/certificatemanager v1.14.0
@@ -102,7 +102,7 @@ require (
 	cloud.google.com/go/securitycenter v1.44.0
 	cloud.google.com/go/servicedirectory v1.17.0
 	cloud.google.com/go/shell v1.12.0
-	cloud.google.com/go/spanner v1.91.0
+	cloud.google.com/go/spanner v1.92.0
 	cloud.google.com/go/speech v1.35.0
 	cloud.google.com/go/storagetransfer v1.18.0
 	cloud.google.com/go/talent v1.13.0
@@ -120,8 +120,8 @@ require (
 	cloud.google.com/go/websecurityscanner v1.12.0
 	cloud.google.com/go/workflows v1.19.0
 	github.com/golang/protobuf v1.5.4
-	google.golang.org/genproto/googleapis/api v0.0.0-20260610212136-7ab31c22f7ad
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20260610212136-7ab31c22f7ad
+	google.golang.org/genproto/googleapis/api v0.0.0-20260618152121-87f3d3e198d3
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20260618152121-87f3d3e198d3
 	google.golang.org/grpc v1.81.1
 	google.golang.org/protobuf v1.36.11
 )
