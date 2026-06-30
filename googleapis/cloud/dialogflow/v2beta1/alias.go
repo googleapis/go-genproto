@@ -1180,12 +1180,6 @@ type GetVersionRequest = src.GetVersionRequest
 // Deprecated: Please use types in: cloud.google.com/go/dialogflow/apiv2beta1/dialogflowpb
 type HumanAgentAssistantConfig = src.HumanAgentAssistantConfig
 
-// Custom conversation models used in agent assist feature. Supported feature:
-// ARTICLE_SUGGESTION, SMART_COMPOSE, SMART_REPLY, CONVERSATION_SUMMARIZATION.
-//
-// Deprecated: Please use types in: cloud.google.com/go/dialogflow/apiv2beta1/dialogflowpb
-type HumanAgentAssistantConfig_ConversationModelConfig = src.HumanAgentAssistantConfig_ConversationModelConfig
-
 // Config to process conversation.
 //
 // Deprecated: Please use types in: cloud.google.com/go/dialogflow/apiv2beta1/dialogflowpb
