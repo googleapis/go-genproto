@@ -1,6 +1,6 @@
 module google.golang.org/genproto
 
-go 1.25.8
+go 1.25.0
 
 require (
 	cloud.google.com/go/accessapproval v1.13.0
