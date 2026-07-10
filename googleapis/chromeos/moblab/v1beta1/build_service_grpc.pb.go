@@ -63,7 +63,7 @@ type BuildServiceClient interface {
 	// Operation
 	// <response:[StageBuildResponse][google.chromeos.moblab.v1beta1.StageBuildResponse],
 	//
-	//	 metadata:
+	//	metadata:
 	//	[StageBuildMetadata][google.chromeos.moblab.v1beta1.StageBuildMetadata]>
 	StageBuild(ctx context.Context, in *StageBuildRequest, opts ...grpc.CallOption) (*longrunningpb.Operation, error)
 	// Finds the most stable build for the given build target. The definition of
@@ -163,7 +163,7 @@ type BuildServiceServer interface {
 	// Operation
 	// <response:[StageBuildResponse][google.chromeos.moblab.v1beta1.StageBuildResponse],
 	//
-	//	 metadata:
+	//	metadata:
 	//	[StageBuildMetadata][google.chromeos.moblab.v1beta1.StageBuildMetadata]>
 	StageBuild(context.Context, *StageBuildRequest) (*longrunningpb.Operation, error)
 	// Finds the most stable build for the given build target. The definition of
