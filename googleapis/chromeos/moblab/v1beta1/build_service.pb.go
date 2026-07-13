@@ -41,7 +41,6 @@ const (
 )
 
 // Request message for finding the most stable build.
-// -- NEXT_TAG: 3 --
 type FindMostStableBuildRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Optional. The full resource name of the build target.
@@ -101,7 +100,6 @@ func (x *FindMostStableBuildRequest) GetModel() string {
 }
 
 // Response message for finding the most stable build.
-// -- NEXT_TAG: 2 --
 type FindMostStableBuildResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// The most stable build.
@@ -148,7 +146,6 @@ func (x *FindMostStableBuildResponse) GetBuild() *Build {
 }
 
 // Request message for listing build targets.
-// -- NEXT_TAG: 4 --
 type ListBuildTargetsRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Optional. The number of build targets to return in a page.
@@ -216,7 +213,6 @@ func (x *ListBuildTargetsRequest) GetFilter() string {
 }
 
 // Response message for listing build targets.
-// -- NEXT_TAG: 4 --
 type ListBuildTargetsResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// The list of build targets.
@@ -282,7 +278,6 @@ func (x *ListBuildTargetsResponse) GetTotalSize() int32 {
 }
 
 // Request message for listing models.
-// -- NEXT_TAG: 4 --
 type ListModelsRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Required. The full resource name of build target.
@@ -348,7 +343,6 @@ func (x *ListModelsRequest) GetPageToken() string {
 }
 
 // Response message for listing models.
-// -- NEXT_TAG: 4 --
 type ListModelsResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// The list of models.
@@ -414,7 +408,6 @@ func (x *ListModelsResponse) GetTotalSize() int32 {
 }
 
 // Request message for listing builds.
-// -- NEXT_TAG: 7 --
 type ListBuildsRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Required. The full resource name of the model. The model id is the same as
@@ -518,7 +511,6 @@ func (x *ListBuildsRequest) GetGroupBy() *fieldmaskpb.FieldMask {
 }
 
 // Response message for listing builds.
-// -- NEXT_TAG: 4 --
 type ListBuildsResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// The list of builds.
@@ -584,7 +576,6 @@ func (x *ListBuildsResponse) GetTotalSize() int32 {
 }
 
 // Request message for checking if the build artifact is staged.
-// -- NEXT_TAG: 6 --
 type CheckBuildStageStatusRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Required. The full resource name of the build artifact.
@@ -677,7 +668,6 @@ func (x *CheckBuildStageStatusRequest) GetArtifact() string {
 }
 
 // Response message for checking the stage status of a build artifact.
-// -- NEXT_TAG: 5 --
 type CheckBuildStageStatusResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// The status to represent if the build is staged or not.
@@ -751,7 +741,6 @@ func (x *CheckBuildStageStatusResponse) GetCloudBuild() *CloudBuild {
 }
 
 // Request message for staging a build artifact.
-// -- NEXT_TAG: 6 --
 type StageBuildRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Required. The full resource name of the build artifact.
@@ -844,7 +833,6 @@ func (x *StageBuildRequest) GetArtifact() string {
 }
 
 // Response message for staging a build artifact.
-// -- NEXT_TAG: 3 --
 type StageBuildResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// The staged build in the destination bucket.
@@ -903,7 +891,6 @@ func (x *StageBuildResponse) GetCloudBuild() *CloudBuild {
 }
 
 // Metadata message for staging a build artifact.
-// -- NEXT_TAG: 5 --
 type StageBuildMetadata struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Approximate percentage of progress, e.g. "50" means 50%.
