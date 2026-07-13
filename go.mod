@@ -19,7 +19,7 @@ require (
 	cloud.google.com/go/baremetalsolution v1.9.0
 	cloud.google.com/go/batch v1.19.0
 	cloud.google.com/go/beyondcorp v1.7.0
-	cloud.google.com/go/bigquery v1.77.0
+	cloud.google.com/go/bigquery v1.78.0
 	cloud.google.com/go/bigtable v1.50.0
 	cloud.google.com/go/billing v1.26.0
 	cloud.google.com/go/binaryauthorization v1.15.0
@@ -52,7 +52,7 @@ require (
 	cloud.google.com/go/essentialcontacts v1.12.0
 	cloud.google.com/go/eventarc v1.24.0
 	cloud.google.com/go/filestore v1.15.0
-	cloud.google.com/go/firestore v1.22.0
+	cloud.google.com/go/firestore v1.23.0
 	cloud.google.com/go/functions v1.24.0
 	cloud.google.com/go/gkebackup v1.13.0
 	cloud.google.com/go/gkeconnect v1.0.0
@@ -67,7 +67,7 @@ require (
 	cloud.google.com/go/language v1.18.0
 	cloud.google.com/go/lifesciences v0.15.0
 	cloud.google.com/go/logging v1.18.0
-	cloud.google.com/go/longrunning v1.1.0
+	cloud.google.com/go/longrunning v1.2.0
 	cloud.google.com/go/managedidentities v1.12.0
 	cloud.google.com/go/maps v1.36.0
 	cloud.google.com/go/mediatranslation v0.13.0
@@ -86,8 +86,8 @@ require (
 	cloud.google.com/go/phishingprotection v0.13.0
 	cloud.google.com/go/policytroubleshooter v1.15.0
 	cloud.google.com/go/privatecatalog v0.15.0
-	cloud.google.com/go/pubsub v1.50.2
-	cloud.google.com/go/pubsublite v1.8.2
+	cloud.google.com/go/pubsub v1.50.4
+	cloud.google.com/go/pubsublite v1.9.0
 	cloud.google.com/go/recaptchaenterprise/v2 v2.26.0
 	cloud.google.com/go/recommendationengine v0.14.0
 	cloud.google.com/go/recommender v1.19.0
@@ -120,14 +120,14 @@ require (
 	cloud.google.com/go/websecurityscanner v1.12.0
 	cloud.google.com/go/workflows v1.19.0
 	github.com/golang/protobuf v1.5.4
-	google.golang.org/genproto/googleapis/api v0.0.0-20260630182238-925bb5da69e7
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20260630182238-925bb5da69e7
-	google.golang.org/grpc v1.81.1
+	google.golang.org/genproto/googleapis/api v0.0.0-20260706201446-f0a921348800
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20260706201446-f0a921348800
+	google.golang.org/grpc v1.82.0
 	google.golang.org/protobuf v1.36.11
 )
 
 require (
-	cloud.google.com/go/pubsub/v2 v2.5.1 // indirect
+	cloud.google.com/go/pubsub/v2 v2.6.0 // indirect
 	golang.org/x/net v0.56.0 // indirect
 	golang.org/x/sys v0.46.0 // indirect
 	golang.org/x/text v0.38.0 // indirect
