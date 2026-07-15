@@ -17,6 +17,11 @@
   ],
   "packageRules": [
     {
+      "description": "prevent go version upgrades",
+      "matchManagers": ["gomod"],
+      "constraintsFiltering": "strict"
+    },
+    {
       "enabled": false,
       "matchPackageNames": [
         "cloud.google.com/go/pubsub"
