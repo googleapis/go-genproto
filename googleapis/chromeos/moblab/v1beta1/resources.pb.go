@@ -1025,9 +1025,11 @@ type Session struct {
 	// Output only. Time at which execution of the session was started.
 	StartTime *timestamppb.Timestamp `protobuf:"bytes,10,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
 	// Output only. Time at which execution of the session was finished.
-	FinishTime    *timestamppb.Timestamp `protobuf:"bytes,11,opt,name=finish_time,json=finishTime,proto3" json:"finish_time,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	FinishTime *timestamppb.Timestamp `protobuf:"bytes,11,opt,name=finish_time,json=finishTime,proto3" json:"finish_time,omitempty"`
+	// Optional. The ResultDB root invocation ID for the session.
+	ResultdbRootInvocationId string `protobuf:"bytes,12,opt,name=resultdb_root_invocation_id,json=resultdbRootInvocationId,proto3" json:"resultdb_root_invocation_id,omitempty"`
+	unknownFields            protoimpl.UnknownFields
+	sizeCache                protoimpl.SizeCache
 }
 
 func (x *Session) Reset() {
@@ -1146,6 +1148,13 @@ func (x *Session) GetFinishTime() *timestamppb.Timestamp {
 	return nil
 }
 
+func (x *Session) GetResultdbRootInvocationId() string {
+	if x != nil {
+		return x.ResultdbRootInvocationId
+	}
+	return ""
+}
+
 type isSession_Test interface {
 	isSession_Test()
 }
@@ -1226,7 +1235,11 @@ func (x *Timeout) GetStartTimeout() *durationpb.Duration {
 type TradefedTest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Required. The command to run the Tradefed test.
-	Command       string `protobuf:"bytes,1,opt,name=command,proto3" json:"command,omitempty"`
+	Command string `protobuf:"bytes,1,opt,name=command,proto3" json:"command,omitempty"`
+	// Optional. Map from shard index to extra arguments to append to the command.
+	// The key is the 0-based shard index (i.e. 0, 1, ..., shard_count - 1).
+	// If shard_count is 0 or 1, only key 0 is valid.
+	ShardArgs     map[int32]string `protobuf:"bytes,2,rep,name=shard_args,json=shardArgs,proto3" json:"shard_args,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1266,6 +1279,13 @@ func (x *TradefedTest) GetCommand() string {
 		return x.Command
 	}
 	return ""
+}
+
+func (x *TradefedTest) GetShardArgs() map[int32]string {
+	if x != nil {
+		return x.ShardArgs
+	}
+	return nil
 }
 
 // Summary information for an entire test effort
@@ -1550,7 +1570,7 @@ type TestEffort_BoardModel struct {
 
 func (x *TestEffort_BoardModel) Reset() {
 	*x = TestEffort_BoardModel{}
-	mi := &file_google_chromeos_moblab_v1beta1_resources_proto_msgTypes[11]
+	mi := &file_google_chromeos_moblab_v1beta1_resources_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1562,7 +1582,7 @@ func (x *TestEffort_BoardModel) String() string {
 func (*TestEffort_BoardModel) ProtoMessage() {}
 
 func (x *TestEffort_BoardModel) ProtoReflect() protoreflect.Message {
-	mi := &file_google_chromeos_moblab_v1beta1_resources_proto_msgTypes[11]
+	mi := &file_google_chromeos_moblab_v1beta1_resources_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1605,7 +1625,7 @@ type TestEffort_Pool struct {
 
 func (x *TestEffort_Pool) Reset() {
 	*x = TestEffort_Pool{}
-	mi := &file_google_chromeos_moblab_v1beta1_resources_proto_msgTypes[12]
+	mi := &file_google_chromeos_moblab_v1beta1_resources_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1617,7 +1637,7 @@ func (x *TestEffort_Pool) String() string {
 func (*TestEffort_Pool) ProtoMessage() {}
 
 func (x *TestEffort_Pool) ProtoReflect() protoreflect.Message {
-	mi := &file_google_chromeos_moblab_v1beta1_resources_proto_msgTypes[12]
+	mi := &file_google_chromeos_moblab_v1beta1_resources_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1671,7 +1691,7 @@ type TestEffort_AndroidBuildTarget struct {
 
 func (x *TestEffort_AndroidBuildTarget) Reset() {
 	*x = TestEffort_AndroidBuildTarget{}
-	mi := &file_google_chromeos_moblab_v1beta1_resources_proto_msgTypes[13]
+	mi := &file_google_chromeos_moblab_v1beta1_resources_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1683,7 +1703,7 @@ func (x *TestEffort_AndroidBuildTarget) String() string {
 func (*TestEffort_AndroidBuildTarget) ProtoMessage() {}
 
 func (x *TestEffort_AndroidBuildTarget) ProtoReflect() protoreflect.Message {
-	mi := &file_google_chromeos_moblab_v1beta1_resources_proto_msgTypes[13]
+	mi := &file_google_chromeos_moblab_v1beta1_resources_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1758,7 +1778,7 @@ type TestEffort_FirmwareTestEffortVersion struct {
 
 func (x *TestEffort_FirmwareTestEffortVersion) Reset() {
 	*x = TestEffort_FirmwareTestEffortVersion{}
-	mi := &file_google_chromeos_moblab_v1beta1_resources_proto_msgTypes[14]
+	mi := &file_google_chromeos_moblab_v1beta1_resources_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1770,7 +1790,7 @@ func (x *TestEffort_FirmwareTestEffortVersion) String() string {
 func (*TestEffort_FirmwareTestEffortVersion) ProtoMessage() {}
 
 func (x *TestEffort_FirmwareTestEffortVersion) ProtoReflect() protoreflect.Message {
-	mi := &file_google_chromeos_moblab_v1beta1_resources_proto_msgTypes[14]
+	mi := &file_google_chromeos_moblab_v1beta1_resources_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1831,7 +1851,7 @@ type TestEffort_GscTestEffortVersion struct {
 
 func (x *TestEffort_GscTestEffortVersion) Reset() {
 	*x = TestEffort_GscTestEffortVersion{}
-	mi := &file_google_chromeos_moblab_v1beta1_resources_proto_msgTypes[15]
+	mi := &file_google_chromeos_moblab_v1beta1_resources_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1843,7 +1863,7 @@ func (x *TestEffort_GscTestEffortVersion) String() string {
 func (*TestEffort_GscTestEffortVersion) ProtoMessage() {}
 
 func (x *TestEffort_GscTestEffortVersion) ProtoReflect() protoreflect.Message {
-	mi := &file_google_chromeos_moblab_v1beta1_resources_proto_msgTypes[15]
+	mi := &file_google_chromeos_moblab_v1beta1_resources_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1905,7 +1925,7 @@ type TestEffort_FirmwareTarget struct {
 
 func (x *TestEffort_FirmwareTarget) Reset() {
 	*x = TestEffort_FirmwareTarget{}
-	mi := &file_google_chromeos_moblab_v1beta1_resources_proto_msgTypes[16]
+	mi := &file_google_chromeos_moblab_v1beta1_resources_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1917,7 +1937,7 @@ func (x *TestEffort_FirmwareTarget) String() string {
 func (*TestEffort_FirmwareTarget) ProtoMessage() {}
 
 func (x *TestEffort_FirmwareTarget) ProtoReflect() protoreflect.Message {
-	mi := &file_google_chromeos_moblab_v1beta1_resources_proto_msgTypes[16]
+	mi := &file_google_chromeos_moblab_v1beta1_resources_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2021,7 +2041,7 @@ type TestEffort_FirmwareConfig struct {
 
 func (x *TestEffort_FirmwareConfig) Reset() {
 	*x = TestEffort_FirmwareConfig{}
-	mi := &file_google_chromeos_moblab_v1beta1_resources_proto_msgTypes[17]
+	mi := &file_google_chromeos_moblab_v1beta1_resources_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2033,7 +2053,7 @@ func (x *TestEffort_FirmwareConfig) String() string {
 func (*TestEffort_FirmwareConfig) ProtoMessage() {}
 
 func (x *TestEffort_FirmwareConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_google_chromeos_moblab_v1beta1_resources_proto_msgTypes[17]
+	mi := &file_google_chromeos_moblab_v1beta1_resources_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2128,7 +2148,7 @@ const file_google_chromeos_moblab_v1beta1_resources_proto_rawDesc = "" +
 	"\x0eINTERNAL_ERROR\x10\x06\x12\v\n" +
 	"\aTIMEOUT\x10\a\x12\r\n" +
 	"\tCANCELLED\x10\b\x12\v\n" +
-	"\aEXPIRED\x10\t\"\xba\b\n" +
+	"\aEXPIRED\x10\t\"\xfe\b\n" +
 	"\aSession\x12\x17\n" +
 	"\x04name\x18\x01 \x01(\tB\x03\xe0A\bR\x04name\x12 \n" +
 	"\tsatlab_id\x18\x02 \x01(\tB\x03\xe0A\x01R\bsatlabId\x12_\n" +
@@ -2147,7 +2167,8 @@ const file_google_chromeos_moblab_v1beta1_resources_proto_rawDesc = "" +
 	"start_time\x18\n" +
 	" \x01(\v2\x1a.google.protobuf.TimestampB\x03\xe0A\x03R\tstartTime\x12@\n" +
 	"\vfinish_time\x18\v \x01(\v2\x1a.google.protobuf.TimestampB\x03\xe0A\x03R\n" +
-	"finishTime\x1a=\n" +
+	"finishTime\x12B\n" +
+	"\x1bresultdb_root_invocation_id\x18\f \x01(\tB\x03\xe0A\x01R\x18resultdbRootInvocationId\x1a=\n" +
 	"\x0fDimensionsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
 	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"[\n" +
@@ -2175,9 +2196,14 @@ const file_google_chromeos_moblab_v1beta1_resources_proto_rawDesc = "" +
 	"\vjob_timeout\x18\x01 \x01(\v2\x19.google.protobuf.DurationB\x03\xe0A\x01R\n" +
 	"jobTimeout\x12A\n" +
 	"\ftest_timeout\x18\x02 \x01(\v2\x19.google.protobuf.DurationB\x03\xe0A\x01R\vtestTimeout\x12C\n" +
-	"\rstart_timeout\x18\x03 \x01(\v2\x19.google.protobuf.DurationB\x03\xe0A\x01R\fstartTimeout\"-\n" +
+	"\rstart_timeout\x18\x03 \x01(\v2\x19.google.protobuf.DurationB\x03\xe0A\x01R\fstartTimeout\"\xcc\x01\n" +
 	"\fTradefedTest\x12\x1d\n" +
-	"\acommand\x18\x01 \x01(\tB\x03\xe0A\x02R\acommand\"\x94\x16\n" +
+	"\acommand\x18\x01 \x01(\tB\x03\xe0A\x02R\acommand\x12_\n" +
+	"\n" +
+	"shard_args\x18\x02 \x03(\v2;.google.chromeos.moblab.v1beta1.TradefedTest.ShardArgsEntryB\x03\xe0A\x01R\tshardArgs\x1a<\n" +
+	"\x0eShardArgsEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\x05R\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\x94\x16\n" +
 	"\n" +
 	"TestEffort\x12\x17\n" +
 	"\x04name\x18\x01 \x01(\tB\x03\xe0A\bR\x04name\x12)\n" +
@@ -2277,74 +2303,76 @@ func file_google_chromeos_moblab_v1beta1_resources_proto_rawDescGZIP() []byte {
 }
 
 var file_google_chromeos_moblab_v1beta1_resources_proto_enumTypes = make([]protoimpl.EnumInfo, 8)
-var file_google_chromeos_moblab_v1beta1_resources_proto_msgTypes = make([]protoimpl.MessageInfo, 18)
+var file_google_chromeos_moblab_v1beta1_resources_proto_msgTypes = make([]protoimpl.MessageInfo, 19)
 var file_google_chromeos_moblab_v1beta1_resources_proto_goTypes = []any{
-	(Build_BuildStatus)(0),                       // 0: google.chromeos.moblab.v1beta1.Build.BuildStatus
-	(Build_BuildType)(0),                         // 1: google.chromeos.moblab.v1beta1.Build.BuildType
-	(CloudBuild_State)(0),                        // 2: google.chromeos.moblab.v1beta1.CloudBuild.State
-	(Session_State)(0),                           // 3: google.chromeos.moblab.v1beta1.Session.State
-	(Session_Result)(0),                          // 4: google.chromeos.moblab.v1beta1.Session.Result
-	(TestEffort_State)(0),                        // 5: google.chromeos.moblab.v1beta1.TestEffort.State
-	(TestEffort_FirmwareType)(0),                 // 6: google.chromeos.moblab.v1beta1.TestEffort.FirmwareType
-	(TestEffort_Pool_PoolType)(0),                // 7: google.chromeos.moblab.v1beta1.TestEffort.Pool.PoolType
-	(*BuildTarget)(nil),                          // 8: google.chromeos.moblab.v1beta1.BuildTarget
-	(*Model)(nil),                                // 9: google.chromeos.moblab.v1beta1.Model
-	(*Milestone)(nil),                            // 10: google.chromeos.moblab.v1beta1.Milestone
-	(*Build)(nil),                                // 11: google.chromeos.moblab.v1beta1.Build
-	(*BuildArtifact)(nil),                        // 12: google.chromeos.moblab.v1beta1.BuildArtifact
-	(*CloudBuild)(nil),                           // 13: google.chromeos.moblab.v1beta1.CloudBuild
-	(*Session)(nil),                              // 14: google.chromeos.moblab.v1beta1.Session
-	(*Timeout)(nil),                              // 15: google.chromeos.moblab.v1beta1.Timeout
-	(*TradefedTest)(nil),                         // 16: google.chromeos.moblab.v1beta1.TradefedTest
-	(*TestEffort)(nil),                           // 17: google.chromeos.moblab.v1beta1.TestEffort
-	nil,                                          // 18: google.chromeos.moblab.v1beta1.Session.DimensionsEntry
-	(*TestEffort_BoardModel)(nil),                // 19: google.chromeos.moblab.v1beta1.TestEffort.BoardModel
-	(*TestEffort_Pool)(nil),                      // 20: google.chromeos.moblab.v1beta1.TestEffort.Pool
-	(*TestEffort_AndroidBuildTarget)(nil),        // 21: google.chromeos.moblab.v1beta1.TestEffort.AndroidBuildTarget
-	(*TestEffort_FirmwareTestEffortVersion)(nil), // 22: google.chromeos.moblab.v1beta1.TestEffort.FirmwareTestEffortVersion
-	(*TestEffort_GscTestEffortVersion)(nil),      // 23: google.chromeos.moblab.v1beta1.TestEffort.GscTestEffortVersion
-	(*TestEffort_FirmwareTarget)(nil),            // 24: google.chromeos.moblab.v1beta1.TestEffort.FirmwareTarget
-	(*TestEffort_FirmwareConfig)(nil),            // 25: google.chromeos.moblab.v1beta1.TestEffort.FirmwareConfig
-	(*timestamppb.Timestamp)(nil),                // 26: google.protobuf.Timestamp
-	(*durationpb.Duration)(nil),                  // 27: google.protobuf.Duration
+	(Build_BuildStatus)(0),                // 0: google.chromeos.moblab.v1beta1.Build.BuildStatus
+	(Build_BuildType)(0),                  // 1: google.chromeos.moblab.v1beta1.Build.BuildType
+	(CloudBuild_State)(0),                 // 2: google.chromeos.moblab.v1beta1.CloudBuild.State
+	(Session_State)(0),                    // 3: google.chromeos.moblab.v1beta1.Session.State
+	(Session_Result)(0),                   // 4: google.chromeos.moblab.v1beta1.Session.Result
+	(TestEffort_State)(0),                 // 5: google.chromeos.moblab.v1beta1.TestEffort.State
+	(TestEffort_FirmwareType)(0),          // 6: google.chromeos.moblab.v1beta1.TestEffort.FirmwareType
+	(TestEffort_Pool_PoolType)(0),         // 7: google.chromeos.moblab.v1beta1.TestEffort.Pool.PoolType
+	(*BuildTarget)(nil),                   // 8: google.chromeos.moblab.v1beta1.BuildTarget
+	(*Model)(nil),                         // 9: google.chromeos.moblab.v1beta1.Model
+	(*Milestone)(nil),                     // 10: google.chromeos.moblab.v1beta1.Milestone
+	(*Build)(nil),                         // 11: google.chromeos.moblab.v1beta1.Build
+	(*BuildArtifact)(nil),                 // 12: google.chromeos.moblab.v1beta1.BuildArtifact
+	(*CloudBuild)(nil),                    // 13: google.chromeos.moblab.v1beta1.CloudBuild
+	(*Session)(nil),                       // 14: google.chromeos.moblab.v1beta1.Session
+	(*Timeout)(nil),                       // 15: google.chromeos.moblab.v1beta1.Timeout
+	(*TradefedTest)(nil),                  // 16: google.chromeos.moblab.v1beta1.TradefedTest
+	(*TestEffort)(nil),                    // 17: google.chromeos.moblab.v1beta1.TestEffort
+	nil,                                   // 18: google.chromeos.moblab.v1beta1.Session.DimensionsEntry
+	nil,                                   // 19: google.chromeos.moblab.v1beta1.TradefedTest.ShardArgsEntry
+	(*TestEffort_BoardModel)(nil),         // 20: google.chromeos.moblab.v1beta1.TestEffort.BoardModel
+	(*TestEffort_Pool)(nil),               // 21: google.chromeos.moblab.v1beta1.TestEffort.Pool
+	(*TestEffort_AndroidBuildTarget)(nil), // 22: google.chromeos.moblab.v1beta1.TestEffort.AndroidBuildTarget
+	(*TestEffort_FirmwareTestEffortVersion)(nil), // 23: google.chromeos.moblab.v1beta1.TestEffort.FirmwareTestEffortVersion
+	(*TestEffort_GscTestEffortVersion)(nil),      // 24: google.chromeos.moblab.v1beta1.TestEffort.GscTestEffortVersion
+	(*TestEffort_FirmwareTarget)(nil),            // 25: google.chromeos.moblab.v1beta1.TestEffort.FirmwareTarget
+	(*TestEffort_FirmwareConfig)(nil),            // 26: google.chromeos.moblab.v1beta1.TestEffort.FirmwareConfig
+	(*timestamppb.Timestamp)(nil),                // 27: google.protobuf.Timestamp
+	(*durationpb.Duration)(nil),                  // 28: google.protobuf.Duration
 }
 var file_google_chromeos_moblab_v1beta1_resources_proto_depIdxs = []int32{
 	0,  // 0: google.chromeos.moblab.v1beta1.Build.status:type_name -> google.chromeos.moblab.v1beta1.Build.BuildStatus
 	1,  // 1: google.chromeos.moblab.v1beta1.Build.type:type_name -> google.chromeos.moblab.v1beta1.Build.BuildType
 	2,  // 2: google.chromeos.moblab.v1beta1.CloudBuild.status:type_name -> google.chromeos.moblab.v1beta1.CloudBuild.State
-	26, // 3: google.chromeos.moblab.v1beta1.CloudBuild.create_time:type_name -> google.protobuf.Timestamp
-	26, // 4: google.chromeos.moblab.v1beta1.CloudBuild.start_time:type_name -> google.protobuf.Timestamp
-	26, // 5: google.chromeos.moblab.v1beta1.CloudBuild.finish_time:type_name -> google.protobuf.Timestamp
+	27, // 3: google.chromeos.moblab.v1beta1.CloudBuild.create_time:type_name -> google.protobuf.Timestamp
+	27, // 4: google.chromeos.moblab.v1beta1.CloudBuild.start_time:type_name -> google.protobuf.Timestamp
+	27, // 5: google.chromeos.moblab.v1beta1.CloudBuild.finish_time:type_name -> google.protobuf.Timestamp
 	18, // 6: google.chromeos.moblab.v1beta1.Session.dimensions:type_name -> google.chromeos.moblab.v1beta1.Session.DimensionsEntry
 	15, // 7: google.chromeos.moblab.v1beta1.Session.timeout:type_name -> google.chromeos.moblab.v1beta1.Timeout
 	16, // 8: google.chromeos.moblab.v1beta1.Session.tradefed_test:type_name -> google.chromeos.moblab.v1beta1.TradefedTest
 	3,  // 9: google.chromeos.moblab.v1beta1.Session.state:type_name -> google.chromeos.moblab.v1beta1.Session.State
 	4,  // 10: google.chromeos.moblab.v1beta1.Session.result:type_name -> google.chromeos.moblab.v1beta1.Session.Result
-	26, // 11: google.chromeos.moblab.v1beta1.Session.create_time:type_name -> google.protobuf.Timestamp
-	26, // 12: google.chromeos.moblab.v1beta1.Session.start_time:type_name -> google.protobuf.Timestamp
-	26, // 13: google.chromeos.moblab.v1beta1.Session.finish_time:type_name -> google.protobuf.Timestamp
-	27, // 14: google.chromeos.moblab.v1beta1.Timeout.job_timeout:type_name -> google.protobuf.Duration
-	27, // 15: google.chromeos.moblab.v1beta1.Timeout.test_timeout:type_name -> google.protobuf.Duration
-	27, // 16: google.chromeos.moblab.v1beta1.Timeout.start_timeout:type_name -> google.protobuf.Duration
-	19, // 17: google.chromeos.moblab.v1beta1.TestEffort.board_model:type_name -> google.chromeos.moblab.v1beta1.TestEffort.BoardModel
-	20, // 18: google.chromeos.moblab.v1beta1.TestEffort.pools:type_name -> google.chromeos.moblab.v1beta1.TestEffort.Pool
-	21, // 19: google.chromeos.moblab.v1beta1.TestEffort.android:type_name -> google.chromeos.moblab.v1beta1.TestEffort.AndroidBuildTarget
-	5,  // 20: google.chromeos.moblab.v1beta1.TestEffort.state:type_name -> google.chromeos.moblab.v1beta1.TestEffort.State
-	26, // 21: google.chromeos.moblab.v1beta1.TestEffort.create_time:type_name -> google.protobuf.Timestamp
-	25, // 22: google.chromeos.moblab.v1beta1.TestEffort.firmware_configs:type_name -> google.chromeos.moblab.v1beta1.TestEffort.FirmwareConfig
-	21, // 23: google.chromeos.moblab.v1beta1.TestEffort.android_test_target:type_name -> google.chromeos.moblab.v1beta1.TestEffort.AndroidBuildTarget
-	7,  // 24: google.chromeos.moblab.v1beta1.TestEffort.Pool.type:type_name -> google.chromeos.moblab.v1beta1.TestEffort.Pool.PoolType
-	22, // 25: google.chromeos.moblab.v1beta1.TestEffort.FirmwareTarget.ec:type_name -> google.chromeos.moblab.v1beta1.TestEffort.FirmwareTestEffortVersion
-	22, // 26: google.chromeos.moblab.v1beta1.TestEffort.FirmwareTarget.ap:type_name -> google.chromeos.moblab.v1beta1.TestEffort.FirmwareTestEffortVersion
-	23, // 27: google.chromeos.moblab.v1beta1.TestEffort.FirmwareTarget.gsc:type_name -> google.chromeos.moblab.v1beta1.TestEffort.GscTestEffortVersion
-	22, // 28: google.chromeos.moblab.v1beta1.TestEffort.FirmwareTarget.fpmcu:type_name -> google.chromeos.moblab.v1beta1.TestEffort.FirmwareTestEffortVersion
-	24, // 29: google.chromeos.moblab.v1beta1.TestEffort.FirmwareConfig.firmware_target:type_name -> google.chromeos.moblab.v1beta1.TestEffort.FirmwareTarget
-	6,  // 30: google.chromeos.moblab.v1beta1.TestEffort.FirmwareConfig.firmware_types:type_name -> google.chromeos.moblab.v1beta1.TestEffort.FirmwareType
-	31, // [31:31] is the sub-list for method output_type
-	31, // [31:31] is the sub-list for method input_type
-	31, // [31:31] is the sub-list for extension type_name
-	31, // [31:31] is the sub-list for extension extendee
-	0,  // [0:31] is the sub-list for field type_name
+	27, // 11: google.chromeos.moblab.v1beta1.Session.create_time:type_name -> google.protobuf.Timestamp
+	27, // 12: google.chromeos.moblab.v1beta1.Session.start_time:type_name -> google.protobuf.Timestamp
+	27, // 13: google.chromeos.moblab.v1beta1.Session.finish_time:type_name -> google.protobuf.Timestamp
+	28, // 14: google.chromeos.moblab.v1beta1.Timeout.job_timeout:type_name -> google.protobuf.Duration
+	28, // 15: google.chromeos.moblab.v1beta1.Timeout.test_timeout:type_name -> google.protobuf.Duration
+	28, // 16: google.chromeos.moblab.v1beta1.Timeout.start_timeout:type_name -> google.protobuf.Duration
+	19, // 17: google.chromeos.moblab.v1beta1.TradefedTest.shard_args:type_name -> google.chromeos.moblab.v1beta1.TradefedTest.ShardArgsEntry
+	20, // 18: google.chromeos.moblab.v1beta1.TestEffort.board_model:type_name -> google.chromeos.moblab.v1beta1.TestEffort.BoardModel
+	21, // 19: google.chromeos.moblab.v1beta1.TestEffort.pools:type_name -> google.chromeos.moblab.v1beta1.TestEffort.Pool
+	22, // 20: google.chromeos.moblab.v1beta1.TestEffort.android:type_name -> google.chromeos.moblab.v1beta1.TestEffort.AndroidBuildTarget
+	5,  // 21: google.chromeos.moblab.v1beta1.TestEffort.state:type_name -> google.chromeos.moblab.v1beta1.TestEffort.State
+	27, // 22: google.chromeos.moblab.v1beta1.TestEffort.create_time:type_name -> google.protobuf.Timestamp
+	26, // 23: google.chromeos.moblab.v1beta1.TestEffort.firmware_configs:type_name -> google.chromeos.moblab.v1beta1.TestEffort.FirmwareConfig
+	22, // 24: google.chromeos.moblab.v1beta1.TestEffort.android_test_target:type_name -> google.chromeos.moblab.v1beta1.TestEffort.AndroidBuildTarget
+	7,  // 25: google.chromeos.moblab.v1beta1.TestEffort.Pool.type:type_name -> google.chromeos.moblab.v1beta1.TestEffort.Pool.PoolType
+	23, // 26: google.chromeos.moblab.v1beta1.TestEffort.FirmwareTarget.ec:type_name -> google.chromeos.moblab.v1beta1.TestEffort.FirmwareTestEffortVersion
+	23, // 27: google.chromeos.moblab.v1beta1.TestEffort.FirmwareTarget.ap:type_name -> google.chromeos.moblab.v1beta1.TestEffort.FirmwareTestEffortVersion
+	24, // 28: google.chromeos.moblab.v1beta1.TestEffort.FirmwareTarget.gsc:type_name -> google.chromeos.moblab.v1beta1.TestEffort.GscTestEffortVersion
+	23, // 29: google.chromeos.moblab.v1beta1.TestEffort.FirmwareTarget.fpmcu:type_name -> google.chromeos.moblab.v1beta1.TestEffort.FirmwareTestEffortVersion
+	25, // 30: google.chromeos.moblab.v1beta1.TestEffort.FirmwareConfig.firmware_target:type_name -> google.chromeos.moblab.v1beta1.TestEffort.FirmwareTarget
+	6,  // 31: google.chromeos.moblab.v1beta1.TestEffort.FirmwareConfig.firmware_types:type_name -> google.chromeos.moblab.v1beta1.TestEffort.FirmwareType
+	32, // [32:32] is the sub-list for method output_type
+	32, // [32:32] is the sub-list for method input_type
+	32, // [32:32] is the sub-list for extension type_name
+	32, // [32:32] is the sub-list for extension extendee
+	0,  // [0:32] is the sub-list for field type_name
 }
 
 func init() { file_google_chromeos_moblab_v1beta1_resources_proto_init() }
@@ -2362,7 +2390,7 @@ func file_google_chromeos_moblab_v1beta1_resources_proto_init() {
 		(*TestEffort_AndroidTestTarget)(nil),
 		(*TestEffort_TestTargetOverride)(nil),
 	}
-	file_google_chromeos_moblab_v1beta1_resources_proto_msgTypes[16].OneofWrappers = []any{
+	file_google_chromeos_moblab_v1beta1_resources_proto_msgTypes[17].OneofWrappers = []any{
 		(*TestEffort_FirmwareTarget_Ec)(nil),
 		(*TestEffort_FirmwareTarget_Ap)(nil),
 		(*TestEffort_FirmwareTarget_Gsc)(nil),
@@ -2374,7 +2402,7 @@ func file_google_chromeos_moblab_v1beta1_resources_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_google_chromeos_moblab_v1beta1_resources_proto_rawDesc), len(file_google_chromeos_moblab_v1beta1_resources_proto_rawDesc)),
 			NumEnums:      8,
-			NumMessages:   18,
+			NumMessages:   19,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
