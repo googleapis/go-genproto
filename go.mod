@@ -19,7 +19,7 @@ require (
 	cloud.google.com/go/baremetalsolution v1.10.0
 	cloud.google.com/go/batch v1.20.0
 	cloud.google.com/go/beyondcorp v1.8.0
-	cloud.google.com/go/bigquery v1.78.0
+	cloud.google.com/go/bigquery v1.79.0
 	cloud.google.com/go/bigtable v1.50.0
 	cloud.google.com/go/billing v1.26.0
 	cloud.google.com/go/binaryauthorization v1.16.0
@@ -40,7 +40,7 @@ require (
 	cloud.google.com/go/dataplex v1.36.0
 	cloud.google.com/go/dataproc/v2 v2.25.0
 	cloud.google.com/go/dataqna v0.13.0
-	cloud.google.com/go/datastore v1.24.0
+	cloud.google.com/go/datastore v1.25.0
 	cloud.google.com/go/datastream v1.21.0
 	cloud.google.com/go/deploy v1.33.0
 	cloud.google.com/go/dialogflow v1.84.0
@@ -52,7 +52,7 @@ require (
 	cloud.google.com/go/essentialcontacts v1.12.0
 	cloud.google.com/go/eventarc v1.25.0
 	cloud.google.com/go/filestore v1.16.0
-	cloud.google.com/go/firestore v1.23.0
+	cloud.google.com/go/firestore v1.24.0
 	cloud.google.com/go/functions v1.25.0
 	cloud.google.com/go/gkebackup v1.14.0
 	cloud.google.com/go/gkeconnect v1.0.0
@@ -86,8 +86,8 @@ require (
 	cloud.google.com/go/phishingprotection v0.13.0
 	cloud.google.com/go/policytroubleshooter v1.16.0
 	cloud.google.com/go/privatecatalog v0.16.0
-	cloud.google.com/go/pubsub v1.50.4
-	cloud.google.com/go/pubsublite v1.9.0
+	cloud.google.com/go/pubsub v1.51.0
+	cloud.google.com/go/pubsublite v1.10.0
 	cloud.google.com/go/recaptchaenterprise/v2 v2.26.0
 	cloud.google.com/go/recommendationengine v0.15.0
 	cloud.google.com/go/recommender v1.19.0
@@ -120,8 +120,8 @@ require (
 	cloud.google.com/go/websecurityscanner v1.12.0
 	cloud.google.com/go/workflows v1.20.0
 	github.com/golang/protobuf v1.5.4
-	google.golang.org/genproto/googleapis/api v0.0.0-20260713194154-142c488ef3d3
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20260713194154-142c488ef3d3
+	google.golang.org/genproto/googleapis/api v0.0.0-20260713224248-f5fc221cf8c4
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20260713224248-f5fc221cf8c4
 	google.golang.org/grpc v1.82.0
 	google.golang.org/protobuf v1.36.11
 )
