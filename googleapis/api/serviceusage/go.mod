@@ -4,8 +4,8 @@ go 1.25.0
 
 require (
 	cloud.google.com/go/serviceusage v1.15.0
-	google.golang.org/genproto v0.0.0-20260715201247-33e454440029
-	google.golang.org/genproto/googleapis/api v0.0.0-20260715201247-33e454440029
+	google.golang.org/genproto v0.0.0-20260720155508-bb71a54f79dc
+	google.golang.org/genproto/googleapis/api v0.0.0-20260720155508-bb71a54f79dc
 	google.golang.org/grpc v1.82.0
 	google.golang.org/protobuf v1.36.11
 )
