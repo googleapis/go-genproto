@@ -20,7 +20,6 @@ require (
 	cloud.google.com/go/batch v1.20.0
 	cloud.google.com/go/beyondcorp v1.8.0
 	cloud.google.com/go/bigquery v1.79.0
-	cloud.google.com/go/bigtable v1.47.0
 	cloud.google.com/go/billing v1.26.0
 	cloud.google.com/go/binaryauthorization v1.16.0
 	cloud.google.com/go/certificatemanager v1.15.0
@@ -40,7 +39,6 @@ require (
 	cloud.google.com/go/dataplex v1.36.0
 	cloud.google.com/go/dataproc/v2 v2.25.0
 	cloud.google.com/go/dataqna v0.13.0
-	cloud.google.com/go/datastore v1.25.0
 	cloud.google.com/go/datastream v1.21.0
 	cloud.google.com/go/deploy v1.33.0
 	cloud.google.com/go/dialogflow v1.84.0
@@ -52,7 +50,6 @@ require (
 	cloud.google.com/go/essentialcontacts v1.12.0
 	cloud.google.com/go/eventarc v1.25.0
 	cloud.google.com/go/filestore v1.16.0
-	cloud.google.com/go/firestore v1.24.0
 	cloud.google.com/go/functions v1.25.0
 	cloud.google.com/go/gkebackup v1.14.0
 	cloud.google.com/go/gkeconnect v1.0.0
@@ -86,7 +83,6 @@ require (
 	cloud.google.com/go/phishingprotection v0.13.0
 	cloud.google.com/go/policytroubleshooter v1.16.0
 	cloud.google.com/go/privatecatalog v0.16.0
-	cloud.google.com/go/pubsub v1.51.0
 	cloud.google.com/go/pubsublite v1.10.0
 	cloud.google.com/go/recaptchaenterprise/v2 v2.26.0
 	cloud.google.com/go/recommendationengine v0.15.0
@@ -102,7 +98,6 @@ require (
 	cloud.google.com/go/securitycenter v1.45.0
 	cloud.google.com/go/servicedirectory v1.17.0
 	cloud.google.com/go/shell v1.13.0
-	cloud.google.com/go/spanner v1.91.0
 	cloud.google.com/go/speech v1.36.0
 	cloud.google.com/go/storagetransfer v1.19.0
 	cloud.google.com/go/talent v1.14.0
@@ -127,7 +122,6 @@ require (
 )
 
 require (
-	cloud.google.com/go/pubsub/v2 v2.6.0 // indirect
 	golang.org/x/net v0.56.0 // indirect
 	golang.org/x/sys v0.47.0 // indirect
 	golang.org/x/text v0.40.0 // indirect
