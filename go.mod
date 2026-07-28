@@ -14,6 +14,7 @@ require (
 	cloud.google.com/go/documentai v1.49.0
 	cloud.google.com/go/domains v0.16.0
 	cloud.google.com/go/iam v1.12.0
+	cloud.google.com/go/language v1.18.0
 	cloud.google.com/go/logging v1.19.0
 	cloud.google.com/go/longrunning v1.2.0
 	cloud.google.com/go/recommender v1.19.0
