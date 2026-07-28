@@ -1081,6 +1081,10 @@ type Session struct {
 	FinishTime *timestamppb.Timestamp `protobuf:"bytes,11,opt,name=finish_time,json=finishTime,proto3" json:"finish_time,omitempty"`
 	// Optional. The ResultDB root invocation ID for the session.
 	ResultdbRootInvocationId string `protobuf:"bytes,12,opt,name=resultdb_root_invocation_id,json=resultdbRootInvocationId,proto3" json:"resultdb_root_invocation_id,omitempty"`
+	// Optional. The ResultDB work unit ID for the session.
+	ResultdbWorkUnitId string `protobuf:"bytes,15,opt,name=resultdb_work_unit_id,json=resultdbWorkUnitId,proto3" json:"resultdb_work_unit_id,omitempty"`
+	// Input only. The ResultDB work unit update token for the session.
+	ResultdbWorkUnitUpdateToken string `protobuf:"bytes,16,opt,name=resultdb_work_unit_update_token,json=resultdbWorkUnitUpdateToken,proto3" json:"resultdb_work_unit_update_token,omitempty"`
 	// Optional. The type of the test.
 	Type Session_Type `protobuf:"varint,13,opt,name=type,proto3,enum=google.chromeos.moblab.v1beta1.Session_Type" json:"type,omitempty"`
 	// Optional. The display name of the test (e.g. dummy_suite, dummy_testplan).
@@ -1208,6 +1212,20 @@ func (x *Session) GetFinishTime() *timestamppb.Timestamp {
 func (x *Session) GetResultdbRootInvocationId() string {
 	if x != nil {
 		return x.ResultdbRootInvocationId
+	}
+	return ""
+}
+
+func (x *Session) GetResultdbWorkUnitId() string {
+	if x != nil {
+		return x.ResultdbWorkUnitId
+	}
+	return ""
+}
+
+func (x *Session) GetResultdbWorkUnitUpdateToken() string {
+	if x != nil {
+		return x.ResultdbWorkUnitUpdateToken
 	}
 	return ""
 }
@@ -2228,8 +2246,7 @@ const file_google_chromeos_moblab_v1beta1_resources_proto_rawDesc = "" +
 	"\x0eINTERNAL_ERROR\x10\x06\x12\v\n" +
 	"\aTIMEOUT\x10\a\x12\r\n" +
 	"\tCANCELLED\x10\b\x12\v\n" +
-	"\aEXPIRED\x10\t\"\xa4\n" +
-	"\n" +
+	"\aEXPIRED\x10\t\"\xa7\v\n" +
 	"\aSession\x12\x17\n" +
 	"\x04name\x18\x01 \x01(\tB\x03\xe0A\bR\x04name\x12 \n" +
 	"\tsatlab_id\x18\x02 \x01(\tB\x03\xe0A\x01R\bsatlabId\x12_\n" +
@@ -2249,7 +2266,9 @@ const file_google_chromeos_moblab_v1beta1_resources_proto_rawDesc = "" +
 	" \x01(\v2\x1a.google.protobuf.TimestampB\x03\xe0A\x03R\tstartTime\x12@\n" +
 	"\vfinish_time\x18\v \x01(\v2\x1a.google.protobuf.TimestampB\x03\xe0A\x03R\n" +
 	"finishTime\x12B\n" +
-	"\x1bresultdb_root_invocation_id\x18\f \x01(\tB\x03\xe0A\x01R\x18resultdbRootInvocationId\x12E\n" +
+	"\x1bresultdb_root_invocation_id\x18\f \x01(\tB\x03\xe0A\x01R\x18resultdbRootInvocationId\x126\n" +
+	"\x15resultdb_work_unit_id\x18\x0f \x01(\tB\x03\xe0A\x01R\x12resultdbWorkUnitId\x12I\n" +
+	"\x1fresultdb_work_unit_update_token\x18\x10 \x01(\tB\x03\xe0A\x04R\x1bresultdbWorkUnitUpdateToken\x12E\n" +
 	"\x04type\x18\r \x01(\x0e2,.google.chromeos.moblab.v1beta1.Session.TypeB\x03\xe0A\x01R\x04type\x12&\n" +
 	"\fdisplay_name\x18\x0e \x01(\tB\x03\xe0A\x01R\vdisplayName\x1a=\n" +
 	"\x0fDimensionsEntry\x12\x10\n" +
