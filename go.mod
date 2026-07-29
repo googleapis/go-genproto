@@ -98,6 +98,7 @@ require (
 	cloud.google.com/go/securitycenter v1.45.0
 	cloud.google.com/go/servicedirectory v1.17.0
 	cloud.google.com/go/shell v1.13.0
+	cloud.google.com/go/spanner v1.93.0
 	cloud.google.com/go/speech v1.36.0
 	cloud.google.com/go/storagetransfer v1.19.0
 	cloud.google.com/go/talent v1.14.0

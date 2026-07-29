@@ -188,6 +188,8 @@ cloud.google.com/go/servicedirectory v1.17.0 h1:yrohWkwM8t5JfEFCmmlyksKnpMpvxM8X
 cloud.google.com/go/servicedirectory v1.17.0/go.mod h1:CtgjXS1idj3s9Q6tB68021Rzk8Q6decV6+ldXC1BoBk=
 cloud.google.com/go/shell v1.13.0 h1:vJ/g4BXCwBRMmUxHoNjdbE0DRh5Aysw/+vrZ/aPl0yc=
 cloud.google.com/go/shell v1.13.0/go.mod h1:9WWf3xHQUElP5fL/lB9IJ/MMMnN2W/T86cBp+pXFFWo=
+cloud.google.com/go/spanner v1.93.0 h1:8cOXLMTECz1i906Nn500DuARUXrY8gH5dPSqqhQJZcY=
+cloud.google.com/go/spanner v1.93.0/go.mod h1:ywpqBwFGEG3jBgqTPqo2KDWL2GzmZ6w5plQdO6iTvM4=
 cloud.google.com/go/speech v1.36.0 h1:ZcmRKcY02vkF3o/Eaa9yI3i1baNFTF4ctyDZVRfnNS0=
 cloud.google.com/go/speech v1.36.0/go.mod h1:tiSA8MiX49o1ngq5Ww2JFTvfjKxtAuBKY/UIH6coCPg=
 cloud.google.com/go/storagetransfer v1.19.0 h1:jh+3SegMUulEhuJbkADCv8lmfRC8/pCpxja4oex2Ns8=
