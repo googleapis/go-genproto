@@ -6,7 +6,7 @@ require (
 	cloud.google.com/go/accessapproval v1.13.0
 	cloud.google.com/go/accesscontextmanager v1.15.0
 	cloud.google.com/go/aiplatform v1.126.0
-	cloud.google.com/go/analytics v0.35.0
+	cloud.google.com/go/analytics v0.36.1
 	cloud.google.com/go/apigateway v1.13.0
 	cloud.google.com/go/apigeeconnect v1.12.0
 	cloud.google.com/go/apigeeregistry v1.1.0
@@ -29,7 +29,7 @@ require (
 	cloud.google.com/go/cloudtasks v1.19.0
 	cloud.google.com/go/compute v1.65.0
 	cloud.google.com/go/contactcenterinsights v1.23.0
-	cloud.google.com/go/container v1.51.0
+	cloud.google.com/go/container v1.53.1
 	cloud.google.com/go/containeranalysis v0.19.0
 	cloud.google.com/go/datacatalog v1.33.0
 	cloud.google.com/go/dataflow v0.16.0
@@ -42,7 +42,7 @@ require (
 	cloud.google.com/go/datastream v1.21.0
 	cloud.google.com/go/deploy v1.33.0
 	cloud.google.com/go/dialogflow v1.85.0
-	cloud.google.com/go/dlp v1.34.0
+	cloud.google.com/go/dlp v1.36.1
 	cloud.google.com/go/documentai v1.49.0
 	cloud.google.com/go/domains v0.16.0
 	cloud.google.com/go/edgecontainer v1.10.0
@@ -66,7 +66,7 @@ require (
 	cloud.google.com/go/logging v1.19.0
 	cloud.google.com/go/longrunning v1.2.0
 	cloud.google.com/go/managedidentities v1.13.0
-	cloud.google.com/go/maps v1.38.0
+	cloud.google.com/go/maps v1.39.0
 	cloud.google.com/go/mediatranslation v0.13.0
 	cloud.google.com/go/memcache v1.17.0
 	cloud.google.com/go/metastore v1.20.0
@@ -116,8 +116,8 @@ require (
 	cloud.google.com/go/websecurityscanner v1.12.0
 	cloud.google.com/go/workflows v1.20.0
 	github.com/golang/protobuf v1.5.4
-	google.golang.org/genproto/googleapis/api v0.0.0-20260727163830-6c54dddc4772
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20260727163830-6c54dddc4772
+	google.golang.org/genproto/googleapis/api v0.0.0-20260729162451-8efbd57d26e0
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20260729162451-8efbd57d26e0
 	google.golang.org/grpc v1.82.1
 	google.golang.org/protobuf v1.36.11
 )
