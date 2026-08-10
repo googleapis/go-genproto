@@ -5,7 +5,7 @@ go 1.25.0
 require (
 	cloud.google.com/go/aiplatform v1.126.0
 	cloud.google.com/go/appengine v1.15.0
-	cloud.google.com/go/bigquery v1.79.0
+	cloud.google.com/go/bigquery v1.79.1
 	cloud.google.com/go/cloudtasks v1.19.0
 	cloud.google.com/go/container v1.53.1
 	cloud.google.com/go/containeranalysis v0.19.0
@@ -13,9 +13,9 @@ require (
 	cloud.google.com/go/dataproc/v2 v2.25.0
 	cloud.google.com/go/documentai v1.49.0
 	cloud.google.com/go/domains v0.16.0
-	cloud.google.com/go/iam v1.12.0
+	cloud.google.com/go/iam v1.13.0
 	cloud.google.com/go/language v1.18.0
-	cloud.google.com/go/logging v1.19.0
+	cloud.google.com/go/logging v1.19.1
 	cloud.google.com/go/longrunning v1.2.0
 	cloud.google.com/go/recommender v1.19.0
 	cloud.google.com/go/securitycenter v1.46.0
@@ -24,8 +24,8 @@ require (
 	cloud.google.com/go/video v1.33.0
 	cloud.google.com/go/videointelligence v1.17.0
 	github.com/golang/protobuf v1.5.4
-	google.golang.org/genproto/googleapis/api v0.0.0-20260729162451-8efbd57d26e0
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20260729162451-8efbd57d26e0
+	google.golang.org/genproto/googleapis/api v0.0.0-20260807164820-c8921c73eeea
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20260807164820-c8921c73eeea
 	google.golang.org/grpc v1.82.1
 	google.golang.org/protobuf v1.36.11
 )
