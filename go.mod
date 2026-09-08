@@ -5,7 +5,7 @@ go 1.25.0
 require (
 	cloud.google.com/go/aiplatform v1.126.0
 	cloud.google.com/go/appengine v1.15.0
-	cloud.google.com/go/bigquery v1.82.0
+	cloud.google.com/go/bigquery v1.83.0
 	cloud.google.com/go/cloudtasks v1.19.0
 	cloud.google.com/go/container v1.54.0
 	cloud.google.com/go/containeranalysis v0.19.0
@@ -24,8 +24,8 @@ require (
 	cloud.google.com/go/video v1.33.0
 	cloud.google.com/go/videointelligence v1.17.0
 	github.com/golang/protobuf v1.5.4
-	google.golang.org/genproto/googleapis/api v0.0.0-20260825221802-da73d73af1c5
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20260825221802-da73d73af1c5
+	google.golang.org/genproto/googleapis/api v0.0.0-20260904194346-d0f1323225a4
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20260904194346-d0f1323225a4
 	google.golang.org/grpc v1.83.1
 	google.golang.org/protobuf v1.36.12
 )
