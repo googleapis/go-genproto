@@ -398,9 +398,9 @@ func file_google_actions_sdk_v2_interactionmodel_intent_proto_rawDescGZIP() []by
 
 var file_google_actions_sdk_v2_interactionmodel_intent_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
 var file_google_actions_sdk_v2_interactionmodel_intent_proto_goTypes = []interface{}{
-	(*Intent)(nil),                                     // 0: google.actions.sdk.v2.interactionmodel.Intent
-	(*Intent_IntentParameter)(nil),                     // 1: google.actions.sdk.v2.interactionmodel.Intent.IntentParameter
-	(*Intent_IntentParameter_EntitySetReferences)(nil), // 2: google.actions.sdk.v2.interactionmodel.Intent.IntentParameter.EntitySetReferences
+	(*Intent)(nil),                                                        // 0: google.actions.sdk.v2.interactionmodel.Intent
+	(*Intent_IntentParameter)(nil),                                        // 1: google.actions.sdk.v2.interactionmodel.Intent.IntentParameter
+	(*Intent_IntentParameter_EntitySetReferences)(nil),                    // 2: google.actions.sdk.v2.interactionmodel.Intent.IntentParameter.EntitySetReferences
 	(*Intent_IntentParameter_EntitySetReferences_EntitySetReference)(nil), // 3: google.actions.sdk.v2.interactionmodel.Intent.IntentParameter.EntitySetReferences.EntitySetReference
 	(*_type.ClassReference)(nil),                                          // 4: google.actions.sdk.v2.interactionmodel.type.ClassReference
 }
