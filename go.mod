@@ -24,8 +24,8 @@ require (
 	cloud.google.com/go/video v1.33.0
 	cloud.google.com/go/videointelligence v1.17.0
 	github.com/golang/protobuf v1.5.4
-	google.golang.org/genproto/googleapis/api v0.0.0-20260917231906-eeb232e0883d
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20260917231906-eeb232e0883d
+	google.golang.org/genproto/googleapis/api v0.0.0-20260918162117-cecb64721679
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20260918162117-cecb64721679
 	google.golang.org/grpc v1.83.2
 	google.golang.org/protobuf v1.36.12
 )
