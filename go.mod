@@ -20,12 +20,12 @@ require (
 	cloud.google.com/go/recommender v1.20.0
 	cloud.google.com/go/securitycenter v1.47.0
 	cloud.google.com/go/servicedirectory v1.18.0
-	cloud.google.com/go/spanner v1.95.1
+	cloud.google.com/go/spanner v1.96.1
 	cloud.google.com/go/video v1.34.0
 	cloud.google.com/go/videointelligence v1.18.0
 	github.com/golang/protobuf v1.5.4
-	google.golang.org/genproto/googleapis/api v0.0.0-20260928230214-8a89bd6388cc
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20260928230214-8a89bd6388cc
+	google.golang.org/genproto/googleapis/api v0.0.0-20261005182115-fad411399dd8
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20261005182115-fad411399dd8
 	google.golang.org/grpc v1.83.2
 	google.golang.org/protobuf v1.36.12
 )
