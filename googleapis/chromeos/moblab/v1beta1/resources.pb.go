@@ -426,44 +426,73 @@ func (Session_Type) EnumDescriptor() ([]byte, []int) {
 }
 
 // The possible states of a test effort.
+//
+// `SUCCEEDED`, `NOT_APPLICABLE`, `FAILED` and `CANCELLED` are final (see
+// `FAILED` for an exception); all other values may still change. New
+// values may be added in the future. Clients should treat unrecognized
+// values as a state that is not final.
 type TestEffort_State int32
 
 const (
 	// No test effort state is specified.
 	TestEffort_STATE_UNSPECIFIED TestEffort_State = 0
-	// The test effort is created.
+	// Created. Superseded by `QUEUED`; clients should treat both values the
+	// same way.
 	TestEffort_CREATED TestEffort_State = 1
-	// The test effort has incomplete results.
+	// Has incomplete results. Superseded by `RUNNING` and `INVESTIGATING`:
+	// servers that do not report `INVESTIGATING` report those test efforts as
+	// `INCOMPLETE`; when set, `status_message` describes the actual state.
 	TestEffort_INCOMPLETE TestEffort_State = 2
-	// The test effort has failed.
+	// Failed. Servers that do not report `BLOCKED`, or that do not report a
+	// time-limit stop as `CANCELLED`, report those test efforts as `FAILED`;
+	// when set, `status_message` describes the actual state.
 	TestEffort_FAILED TestEffort_State = 3
 	// The test effort has unreported results.
 	TestEffort_UNREPORTED TestEffort_State = 4
 	// The test effort is not applicable.
 	TestEffort_NOT_APPLICABLE TestEffort_State = 5
-	// The test effort has passed.
+	// Passed.
 	TestEffort_SUCCEEDED TestEffort_State = 6
 	// The test effort is requested to be cancelled.
 	TestEffort_CANCEL_REQUESTED TestEffort_State = 7
-	// The test effort is cancelled.
+	// Stopped, either because the requester cancelled it or because it reached
+	// its time limit. See `status_message` for the reason.
 	TestEffort_CANCELLED TestEffort_State = 8
-	// The cancelling the test effort failed.
+	// Cancelling the test effort failed.
 	TestEffort_CANCEL_FAILED TestEffort_State = 9
+	// Waits to start; no test has run yet because it is waiting for pickup, for
+	// a free device, or for a previous stage to finish.
+	TestEffort_QUEUED TestEffort_State = 10
+	// Starts testing: tests are running, retrying, awaiting results, or being
+	// re-checked by Google, or a later stage is waiting to start after an
+	// earlier stage finished.
+	TestEffort_RUNNING TestEffort_State = 11
+	// Cannot make progress until the requester acts, for example by fixing the
+	// request settings or repairing a device.
+	TestEffort_BLOCKED TestEffort_State = 12
+	// Delayed by a problem on Google's side, such as a lab, test harness, or
+	// system problem, or its status is temporarily unknown. Google is
+	// investigating; no action is needed from the requester.
+	TestEffort_INVESTIGATING TestEffort_State = 13
 )
 
 // Enum value maps for TestEffort_State.
 var (
 	TestEffort_State_name = map[int32]string{
-		0: "STATE_UNSPECIFIED",
-		1: "CREATED",
-		2: "INCOMPLETE",
-		3: "FAILED",
-		4: "UNREPORTED",
-		5: "NOT_APPLICABLE",
-		6: "SUCCEEDED",
-		7: "CANCEL_REQUESTED",
-		8: "CANCELLED",
-		9: "CANCEL_FAILED",
+		0:  "STATE_UNSPECIFIED",
+		1:  "CREATED",
+		2:  "INCOMPLETE",
+		3:  "FAILED",
+		4:  "UNREPORTED",
+		5:  "NOT_APPLICABLE",
+		6:  "SUCCEEDED",
+		7:  "CANCEL_REQUESTED",
+		8:  "CANCELLED",
+		9:  "CANCEL_FAILED",
+		10: "QUEUED",
+		11: "RUNNING",
+		12: "BLOCKED",
+		13: "INVESTIGATING",
 	}
 	TestEffort_State_value = map[string]int32{
 		"STATE_UNSPECIFIED": 0,
@@ -476,6 +505,10 @@ var (
 		"CANCEL_REQUESTED":  7,
 		"CANCELLED":         8,
 		"CANCEL_FAILED":     9,
+		"QUEUED":            10,
+		"RUNNING":           11,
+		"BLOCKED":           12,
+		"INVESTIGATING":     13,
 	}
 )
 
@@ -1404,7 +1437,7 @@ type TestEffort struct {
 	//	*TestEffort_Android
 	//	*TestEffort_BuildTargetOverride
 	Os isTestEffort_Os `protobuf_oneof:"os"`
-	// Output only. Overall result of the test effort.
+	// Output only. Specifies the current state of the test effort.
 	State TestEffort_State `protobuf:"varint,8,opt,name=state,proto3,enum=google.chromeos.moblab.v1beta1.TestEffort_State" json:"state,omitempty"`
 	// Output only. The time when the test effort was created.
 	CreateTime *timestamppb.Timestamp `protobuf:"bytes,9,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
@@ -1423,8 +1456,13 @@ type TestEffort struct {
 	SkipBootPrerequisite bool `protobuf:"varint,15,opt,name=skip_boot_prerequisite,json=skipBootPrerequisite,proto3" json:"skip_boot_prerequisite,omitempty"`
 	// Optional. The number of static shards to use for this test effort.
 	StaticShardCount int32 `protobuf:"varint,16,opt,name=static_shard_count,json=staticShardCount,proto3" json:"static_shard_count,omitempty"`
-	unknownFields    protoimpl.UnknownFields
-	sizeCache        protoimpl.SizeCache
+	// Output only. Explains the current state in a human-readable sentence in
+	// English, for example "Waiting for a lab device" or "Stopped: time limit
+	// reached". Intended for display only and its wording may change; use `state`
+	// for programmatic decisions.
+	StatusMessage string `protobuf:"bytes,17,opt,name=status_message,json=statusMessage,proto3" json:"status_message,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
 }
 
 func (x *TestEffort) Reset() {
@@ -1600,6 +1638,13 @@ func (x *TestEffort) GetStaticShardCount() int32 {
 		return x.StaticShardCount
 	}
 	return 0
+}
+
+func (x *TestEffort) GetStatusMessage() string {
+	if x != nil {
+		return x.StatusMessage
+	}
+	return ""
 }
 
 type isTestEffort_TestTarget interface {
@@ -2223,16 +2268,16 @@ const file_google_chromeos_moblab_v1beta1_resources_proto_rawDesc = "" +
 	"\x06bucket\x18\x03 \x01(\tR\x06bucket\x12\x12\n" +
 	"\x04path\x18\x04 \x01(\tR\x04path\x12!\n" +
 	"\fobject_count\x18\x05 \x01(\rR\vobjectCount:\x80\x01\xeaA}\n" +
-	"+chromeosmoblab.googleapis.com/BuildArtifact\x12NbuildTargets/{build_target}/models/{model}/builds/{build}/artifacts/{artifact}\"\xd3\x03\n" +
+	"+chromeosmoblab.googleapis.com/BuildArtifact\x12NbuildTargets/{build_target}/models/{model}/builds/{build}/artifacts/{artifact}\"\xd8\x03\n" +
 	"\n" +
-	"CloudBuild\x12\x13\n" +
-	"\x02id\x18\x01 \x01(\tB\x03\xe0A\x03R\x02id\x12M\n" +
-	"\x06status\x18\x02 \x01(\x0e20.google.chromeos.moblab.v1beta1.CloudBuild.StateB\x03\xe0A\x03R\x06status\x12@\n" +
-	"\vcreate_time\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampB\x03\xe0A\x03R\n" +
-	"createTime\x12>\n" +
+	"CloudBuild\x12\x14\n" +
+	"\x02id\x18\x01 \x01(\tB\x04\xe2A\x01\x03R\x02id\x12N\n" +
+	"\x06status\x18\x02 \x01(\x0e20.google.chromeos.moblab.v1beta1.CloudBuild.StateB\x04\xe2A\x01\x03R\x06status\x12A\n" +
+	"\vcreate_time\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampB\x04\xe2A\x01\x03R\n" +
+	"createTime\x12?\n" +
 	"\n" +
-	"start_time\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampB\x03\xe0A\x03R\tstartTime\x12@\n" +
-	"\vfinish_time\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampB\x03\xe0A\x03R\n" +
+	"start_time\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampB\x04\xe2A\x01\x03R\tstartTime\x12A\n" +
+	"\vfinish_time\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampB\x04\xe2A\x01\x03R\n" +
 	"finishTime\"\x9c\x01\n" +
 	"\x05State\x12\x15\n" +
 	"\x11STATE_UNSPECIFIED\x10\x00\x12\n" +
@@ -2246,31 +2291,31 @@ const file_google_chromeos_moblab_v1beta1_resources_proto_rawDesc = "" +
 	"\x0eINTERNAL_ERROR\x10\x06\x12\v\n" +
 	"\aTIMEOUT\x10\a\x12\r\n" +
 	"\tCANCELLED\x10\b\x12\v\n" +
-	"\aEXPIRED\x10\t\"\xa7\v\n" +
-	"\aSession\x12\x17\n" +
-	"\x04name\x18\x01 \x01(\tB\x03\xe0A\bR\x04name\x12 \n" +
-	"\tsatlab_id\x18\x02 \x01(\tB\x03\xe0A\x01R\bsatlabId\x12_\n" +
+	"\aEXPIRED\x10\t\"\xb1\v\n" +
+	"\aSession\x12\x18\n" +
+	"\x04name\x18\x01 \x01(\tB\x04\xe2A\x01\bR\x04name\x12!\n" +
+	"\tsatlab_id\x18\x02 \x01(\tB\x04\xe2A\x01\x01R\bsatlabId\x12^\n" +
 	"\n" +
-	"dimensions\x18\x03 \x03(\v27.google.chromeos.moblab.v1beta1.Session.DimensionsEntryB\x06\xe0A\x02\xe0A\x04R\n" +
-	"dimensions\x12I\n" +
-	"\atimeout\x18\x04 \x01(\v2'.google.chromeos.moblab.v1beta1.TimeoutB\x06\xe0A\x01\xe0A\x04R\atimeout\x12'\n" +
-	"\vshard_count\x18\x05 \x01(\x05B\x06\xe0A\x01\xe0A\x04R\n" +
-	"shardCount\x12X\n" +
-	"\rtradefed_test\x18\x06 \x01(\v2,.google.chromeos.moblab.v1beta1.TradefedTestB\x03\xe0A\x04H\x00R\ftradefedTest\x12H\n" +
-	"\x05state\x18\a \x01(\x0e2-.google.chromeos.moblab.v1beta1.Session.StateB\x03\xe0A\x03R\x05state\x12K\n" +
-	"\x06result\x18\b \x01(\x0e2..google.chromeos.moblab.v1beta1.Session.ResultB\x03\xe0A\x03R\x06result\x12@\n" +
-	"\vcreate_time\x18\t \x01(\v2\x1a.google.protobuf.TimestampB\x03\xe0A\x03R\n" +
-	"createTime\x12>\n" +
+	"dimensions\x18\x03 \x03(\v27.google.chromeos.moblab.v1beta1.Session.DimensionsEntryB\x05\xe2A\x02\x02\x04R\n" +
+	"dimensions\x12H\n" +
+	"\atimeout\x18\x04 \x01(\v2'.google.chromeos.moblab.v1beta1.TimeoutB\x05\xe2A\x02\x01\x04R\atimeout\x12&\n" +
+	"\vshard_count\x18\x05 \x01(\x05B\x05\xe2A\x02\x01\x04R\n" +
+	"shardCount\x12Y\n" +
+	"\rtradefed_test\x18\x06 \x01(\v2,.google.chromeos.moblab.v1beta1.TradefedTestB\x04\xe2A\x01\x04H\x00R\ftradefedTest\x12I\n" +
+	"\x05state\x18\a \x01(\x0e2-.google.chromeos.moblab.v1beta1.Session.StateB\x04\xe2A\x01\x03R\x05state\x12L\n" +
+	"\x06result\x18\b \x01(\x0e2..google.chromeos.moblab.v1beta1.Session.ResultB\x04\xe2A\x01\x03R\x06result\x12A\n" +
+	"\vcreate_time\x18\t \x01(\v2\x1a.google.protobuf.TimestampB\x04\xe2A\x01\x03R\n" +
+	"createTime\x12?\n" +
 	"\n" +
 	"start_time\x18\n" +
-	" \x01(\v2\x1a.google.protobuf.TimestampB\x03\xe0A\x03R\tstartTime\x12@\n" +
-	"\vfinish_time\x18\v \x01(\v2\x1a.google.protobuf.TimestampB\x03\xe0A\x03R\n" +
-	"finishTime\x12B\n" +
-	"\x1bresultdb_root_invocation_id\x18\f \x01(\tB\x03\xe0A\x01R\x18resultdbRootInvocationId\x126\n" +
-	"\x15resultdb_work_unit_id\x18\x0f \x01(\tB\x03\xe0A\x01R\x12resultdbWorkUnitId\x12I\n" +
-	"\x1fresultdb_work_unit_update_token\x18\x10 \x01(\tB\x03\xe0A\x04R\x1bresultdbWorkUnitUpdateToken\x12E\n" +
-	"\x04type\x18\r \x01(\x0e2,.google.chromeos.moblab.v1beta1.Session.TypeB\x03\xe0A\x01R\x04type\x12&\n" +
-	"\fdisplay_name\x18\x0e \x01(\tB\x03\xe0A\x01R\vdisplayName\x1a=\n" +
+	" \x01(\v2\x1a.google.protobuf.TimestampB\x04\xe2A\x01\x03R\tstartTime\x12A\n" +
+	"\vfinish_time\x18\v \x01(\v2\x1a.google.protobuf.TimestampB\x04\xe2A\x01\x03R\n" +
+	"finishTime\x12C\n" +
+	"\x1bresultdb_root_invocation_id\x18\f \x01(\tB\x04\xe2A\x01\x01R\x18resultdbRootInvocationId\x127\n" +
+	"\x15resultdb_work_unit_id\x18\x0f \x01(\tB\x04\xe2A\x01\x01R\x12resultdbWorkUnitId\x12J\n" +
+	"\x1fresultdb_work_unit_update_token\x18\x10 \x01(\tB\x04\xe2A\x01\x04R\x1bresultdbWorkUnitUpdateToken\x12F\n" +
+	"\x04type\x18\r \x01(\x0e2,.google.chromeos.moblab.v1beta1.Session.TypeB\x04\xe2A\x01\x01R\x04type\x12'\n" +
+	"\fdisplay_name\x18\x0e \x01(\tB\x04\xe2A\x01\x01R\vdisplayName\x1a=\n" +
 	"\x0fDimensionsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
 	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"[\n" +
@@ -2297,80 +2342,81 @@ const file_google_chromeos_moblab_v1beta1_resources_proto_rawDesc = "" +
 	"\x05SUITE\x10\x01\x12\f\n" +
 	"\bTESTPLAN\x10\x02:I\xeaAF\n" +
 	"\x1dmoblab.googleapis.com/Session\x12\x12sessions/{session}*\bsessions2\asessionB\x06\n" +
-	"\x04test\"\xd2\x01\n" +
-	"\aTimeout\x12?\n" +
-	"\vjob_timeout\x18\x01 \x01(\v2\x19.google.protobuf.DurationB\x03\xe0A\x01R\n" +
-	"jobTimeout\x12A\n" +
-	"\ftest_timeout\x18\x02 \x01(\v2\x19.google.protobuf.DurationB\x03\xe0A\x01R\vtestTimeout\x12C\n" +
-	"\rstart_timeout\x18\x03 \x01(\v2\x19.google.protobuf.DurationB\x03\xe0A\x01R\fstartTimeout\"\xcc\x01\n" +
-	"\fTradefedTest\x12\x1d\n" +
-	"\acommand\x18\x01 \x01(\tB\x03\xe0A\x02R\acommand\x12_\n" +
+	"\x04test\"\xd5\x01\n" +
+	"\aTimeout\x12@\n" +
+	"\vjob_timeout\x18\x01 \x01(\v2\x19.google.protobuf.DurationB\x04\xe2A\x01\x01R\n" +
+	"jobTimeout\x12B\n" +
+	"\ftest_timeout\x18\x02 \x01(\v2\x19.google.protobuf.DurationB\x04\xe2A\x01\x01R\vtestTimeout\x12D\n" +
+	"\rstart_timeout\x18\x03 \x01(\v2\x19.google.protobuf.DurationB\x04\xe2A\x01\x01R\fstartTimeout\"\xce\x01\n" +
+	"\fTradefedTest\x12\x1e\n" +
+	"\acommand\x18\x01 \x01(\tB\x04\xe2A\x01\x02R\acommand\x12`\n" +
 	"\n" +
-	"shard_args\x18\x02 \x03(\v2;.google.chromeos.moblab.v1beta1.TradefedTest.ShardArgsEntryB\x03\xe0A\x01R\tshardArgs\x1a<\n" +
+	"shard_args\x18\x02 \x03(\v2;.google.chromeos.moblab.v1beta1.TradefedTest.ShardArgsEntryB\x04\xe2A\x01\x01R\tshardArgs\x1a<\n" +
 	"\x0eShardArgsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\x05R\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\xc7\x16\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\xcc\x17\n" +
 	"\n" +
-	"TestEffort\x12\x17\n" +
-	"\x04name\x18\x01 \x01(\tB\x03\xe0A\bR\x04name\x12)\n" +
-	"\x0etest_effort_id\x18\x02 \x01(\tB\x03\xe0A\x03R\ftestEffortId\x12 \n" +
-	"\tsatlab_id\x18\x03 \x01(\tB\x03\xe0A\x01R\bsatlabId\x12X\n" +
+	"TestEffort\x12\x18\n" +
+	"\x04name\x18\x01 \x01(\tB\x04\xe2A\x01\bR\x04name\x12*\n" +
+	"\x0etest_effort_id\x18\x02 \x01(\tB\x04\xe2A\x01\x03R\ftestEffortId\x12!\n" +
+	"\tsatlab_id\x18\x03 \x01(\tB\x04\xe2A\x01\x01R\bsatlabId\x12X\n" +
 	"\vboard_model\x18\x04 \x01(\v25.google.chromeos.moblab.v1beta1.TestEffort.BoardModelH\x00R\n" +
-	"boardModel\x12J\n" +
-	"\x05pools\x18\x05 \x03(\v2/.google.chromeos.moblab.v1beta1.TestEffort.PoolB\x03\xe0A\x02R\x05pools\x12 \n" +
-	"\ttest_plan\x18\x06 \x01(\tB\x03\xe0A\x02R\btestPlan\x12Y\n" +
+	"boardModel\x12K\n" +
+	"\x05pools\x18\x05 \x03(\v2/.google.chromeos.moblab.v1beta1.TestEffort.PoolB\x04\xe2A\x01\x02R\x05pools\x12!\n" +
+	"\ttest_plan\x18\x06 \x01(\tB\x04\xe2A\x01\x02R\btestPlan\x12Y\n" +
 	"\aandroid\x18\a \x01(\v2=.google.chromeos.moblab.v1beta1.TestEffort.AndroidBuildTargetH\x01R\aandroid\x128\n" +
-	"\x15build_target_override\x18\r \x01(\tB\x02\x18\x01H\x01R\x13buildTargetOverride\x12K\n" +
-	"\x05state\x18\b \x01(\x0e20.google.chromeos.moblab.v1beta1.TestEffort.StateB\x03\xe0A\x03R\x05state\x12@\n" +
-	"\vcreate_time\x18\t \x01(\v2\x1a.google.protobuf.TimestampB\x03\xe0A\x03R\n" +
-	"createTime\x12&\n" +
+	"\x15build_target_override\x18\r \x01(\tB\x02\x18\x01H\x01R\x13buildTargetOverride\x12L\n" +
+	"\x05state\x18\b \x01(\x0e20.google.chromeos.moblab.v1beta1.TestEffort.StateB\x04\xe2A\x01\x03R\x05state\x12A\n" +
+	"\vcreate_time\x18\t \x01(\v2\x1a.google.protobuf.TimestampB\x04\xe2A\x01\x03R\n" +
+	"createTime\x12'\n" +
 	"\ftesthaus_url\x18\n" +
-	" \x01(\tB\x03\xe0A\x03R\vtesthausUrl\x12i\n" +
-	"\x10firmware_configs\x18\v \x03(\v29.google.chromeos.moblab.v1beta1.TestEffort.FirmwareConfigB\x03\xe0A\x01R\x0ffirmwareConfigs\x12o\n" +
+	" \x01(\tB\x04\xe2A\x01\x03R\vtesthausUrl\x12j\n" +
+	"\x10firmware_configs\x18\v \x03(\v29.google.chromeos.moblab.v1beta1.TestEffort.FirmwareConfigB\x04\xe2A\x01\x01R\x0ffirmwareConfigs\x12o\n" +
 	"\x13android_test_target\x18\f \x01(\v2=.google.chromeos.moblab.v1beta1.TestEffort.AndroidBuildTargetH\x02R\x11androidTestTarget\x126\n" +
-	"\x14test_target_override\x18\x0e \x01(\tB\x02\x18\x01H\x02R\x12testTargetOverride\x129\n" +
-	"\x16skip_boot_prerequisite\x18\x0f \x01(\bB\x03\xe0A\x01R\x14skipBootPrerequisite\x121\n" +
-	"\x12static_shard_count\x18\x10 \x01(\x05B\x03\xe0A\x01R\x10staticShardCount\x1aB\n" +
+	"\x14test_target_override\x18\x0e \x01(\tB\x02\x18\x01H\x02R\x12testTargetOverride\x12:\n" +
+	"\x16skip_boot_prerequisite\x18\x0f \x01(\bB\x04\xe2A\x01\x01R\x14skipBootPrerequisite\x122\n" +
+	"\x12static_shard_count\x18\x10 \x01(\x05B\x04\xe2A\x01\x01R\x10staticShardCount\x12+\n" +
+	"\x0estatus_message\x18\x11 \x01(\tB\x04\xe2A\x01\x03R\rstatusMessage\x1aD\n" +
 	"\n" +
-	"BoardModel\x12\x19\n" +
-	"\x05board\x18\x01 \x01(\tB\x03\xe0A\x02R\x05board\x12\x19\n" +
-	"\x05model\x18\x02 \x01(\tB\x03\xe0A\x02R\x05model\x1a\xd1\x01\n" +
-	"\x04Pool\x12\x19\n" +
-	"\x05label\x18\x01 \x01(\tB\x03\xe0A\x02R\x05label\x12Q\n" +
-	"\x04type\x18\x02 \x01(\x0e28.google.chromeos.moblab.v1beta1.TestEffort.Pool.PoolTypeB\x03\xe0A\x02R\x04type\"[\n" +
+	"BoardModel\x12\x1a\n" +
+	"\x05board\x18\x01 \x01(\tB\x04\xe2A\x01\x02R\x05board\x12\x1a\n" +
+	"\x05model\x18\x02 \x01(\tB\x04\xe2A\x01\x02R\x05model\x1a\xd3\x01\n" +
+	"\x04Pool\x12\x1a\n" +
+	"\x05label\x18\x01 \x01(\tB\x04\xe2A\x01\x02R\x05label\x12R\n" +
+	"\x04type\x18\x02 \x01(\x0e28.google.chromeos.moblab.v1beta1.TestEffort.Pool.PoolTypeB\x04\xe2A\x01\x02R\x04type\"[\n" +
 	"\bPoolType\x12\x19\n" +
 	"\x15POOL_TYPE_UNSPECIFIED\x10\x00\x12\x10\n" +
 	"\fDEFAULT_POOL\x10\x01\x12\v\n" +
 	"\aFAFT_PD\x10\x02\x12\x15\n" +
-	"\x11EXTENDED_DURATION\x10\x03\x1a\xe3\x01\n" +
-	"\x12AndroidBuildTarget\x12\x1b\n" +
-	"\x06branch\x18\x01 \x01(\tB\x03\xe0A\x02R\x06branch\x12*\n" +
-	"\x0erelease_config\x18\x02 \x01(\tB\x03\xe0A\x01R\rreleaseConfig\x12(\n" +
-	"\rbuild_variant\x18\x03 \x01(\tB\x03\xe0A\x01R\fbuildVariant\x12\x1e\n" +
-	"\bbuild_id\x18\x04 \x01(\tB\x03\xe0A\x02R\abuildId\x12\x1d\n" +
-	"\aproduct\x18\x05 \x01(\tB\x03\xe0A\x01R\aproduct\x12\x1b\n" +
-	"\x06target\x18\x06 \x01(\tB\x03\xe0A\x01R\x06target\x1a\xae\x01\n" +
-	"\x19FirmwareTestEffortVersion\x12(\n" +
-	"\rmajor_version\x18\x01 \x01(\x05B\x03\xe0A\x02R\fmajorVersion\x12(\n" +
-	"\rminor_version\x18\x02 \x01(\x05B\x03\xe0A\x02R\fminorVersion\x12&\n" +
-	"\fpatch_number\x18\x03 \x01(\x05B\x03\xe0A\x02R\vpatchNumber\x12\x15\n" +
-	"\x03uri\x18\x04 \x01(\tB\x03\xe0A\x01R\x03uri\x1a\xa6\x01\n" +
-	"\x14GscTestEffortVersion\x12(\n" +
-	"\rmajor_version\x18\x01 \x01(\x05B\x03\xe0A\x02R\fmajorVersion\x12(\n" +
-	"\rminor_version\x18\x02 \x01(\x05B\x03\xe0A\x02R\fminorVersion\x12#\n" +
+	"\x11EXTENDED_DURATION\x10\x03\x1a\xe9\x01\n" +
+	"\x12AndroidBuildTarget\x12\x1c\n" +
+	"\x06branch\x18\x01 \x01(\tB\x04\xe2A\x01\x02R\x06branch\x12+\n" +
+	"\x0erelease_config\x18\x02 \x01(\tB\x04\xe2A\x01\x01R\rreleaseConfig\x12)\n" +
+	"\rbuild_variant\x18\x03 \x01(\tB\x04\xe2A\x01\x01R\fbuildVariant\x12\x1f\n" +
+	"\bbuild_id\x18\x04 \x01(\tB\x04\xe2A\x01\x02R\abuildId\x12\x1e\n" +
+	"\aproduct\x18\x05 \x01(\tB\x04\xe2A\x01\x01R\aproduct\x12\x1c\n" +
+	"\x06target\x18\x06 \x01(\tB\x04\xe2A\x01\x01R\x06target\x1a\xb2\x01\n" +
+	"\x19FirmwareTestEffortVersion\x12)\n" +
+	"\rmajor_version\x18\x01 \x01(\x05B\x04\xe2A\x01\x02R\fmajorVersion\x12)\n" +
+	"\rminor_version\x18\x02 \x01(\x05B\x04\xe2A\x01\x02R\fminorVersion\x12'\n" +
+	"\fpatch_number\x18\x03 \x01(\x05B\x04\xe2A\x01\x02R\vpatchNumber\x12\x16\n" +
+	"\x03uri\x18\x04 \x01(\tB\x04\xe2A\x01\x01R\x03uri\x1a\xaa\x01\n" +
+	"\x14GscTestEffortVersion\x12)\n" +
+	"\rmajor_version\x18\x01 \x01(\x05B\x04\xe2A\x01\x02R\fmajorVersion\x12)\n" +
+	"\rminor_version\x18\x02 \x01(\x05B\x04\xe2A\x01\x02R\fminorVersion\x12$\n" +
 	"\n" +
-	"generation\x18\x03 \x01(\x05B\x03\xe0A\x02R\n" +
-	"generation\x12\x15\n" +
-	"\x03uri\x18\x04 \x01(\tB\x03\xe0A\x01R\x03uri\x1a\xf9\x02\n" +
+	"generation\x18\x03 \x01(\x05B\x04\xe2A\x01\x02R\n" +
+	"generation\x12\x16\n" +
+	"\x03uri\x18\x04 \x01(\tB\x04\xe2A\x01\x01R\x03uri\x1a\xf9\x02\n" +
 	"\x0eFirmwareTarget\x12V\n" +
 	"\x02ec\x18\x01 \x01(\v2D.google.chromeos.moblab.v1beta1.TestEffort.FirmwareTestEffortVersionH\x00R\x02ec\x12V\n" +
 	"\x02ap\x18\x02 \x01(\v2D.google.chromeos.moblab.v1beta1.TestEffort.FirmwareTestEffortVersionH\x00R\x02ap\x12S\n" +
 	"\x03gsc\x18\x03 \x01(\v2?.google.chromeos.moblab.v1beta1.TestEffort.GscTestEffortVersionH\x00R\x03gsc\x12\\\n" +
 	"\x05fpmcu\x18\x04 \x01(\v2D.google.chromeos.moblab.v1beta1.TestEffort.FirmwareTestEffortVersionH\x00R\x05fpmcuB\x04\n" +
-	"\x02fw\x1a\xde\x01\n" +
-	"\x0eFirmwareConfig\x12g\n" +
-	"\x0ffirmware_target\x18\x01 \x01(\v29.google.chromeos.moblab.v1beta1.TestEffort.FirmwareTargetB\x03\xe0A\x02R\x0efirmwareTarget\x12c\n" +
-	"\x0efirmware_types\x18\x02 \x03(\x0e27.google.chromeos.moblab.v1beta1.TestEffort.FirmwareTypeB\x03\xe0A\x02R\rfirmwareTypes\"\xb2\x01\n" +
+	"\x02fw\x1a\xe0\x01\n" +
+	"\x0eFirmwareConfig\x12h\n" +
+	"\x0ffirmware_target\x18\x01 \x01(\v29.google.chromeos.moblab.v1beta1.TestEffort.FirmwareTargetB\x04\xe2A\x01\x02R\x0efirmwareTarget\x12d\n" +
+	"\x0efirmware_types\x18\x02 \x03(\x0e27.google.chromeos.moblab.v1beta1.TestEffort.FirmwareTypeB\x04\xe2A\x01\x02R\rfirmwareTypes\"\xeb\x01\n" +
 	"\x05State\x12\x15\n" +
 	"\x11STATE_UNSPECIFIED\x10\x00\x12\v\n" +
 	"\aCREATED\x10\x01\x12\x0e\n" +
@@ -2384,7 +2430,13 @@ const file_google_chromeos_moblab_v1beta1_resources_proto_rawDesc = "" +
 	"\tSUCCEEDED\x10\x06\x12\x14\n" +
 	"\x10CANCEL_REQUESTED\x10\a\x12\r\n" +
 	"\tCANCELLED\x10\b\x12\x11\n" +
-	"\rCANCEL_FAILED\x10\t\"L\n" +
+	"\rCANCEL_FAILED\x10\t\x12\n" +
+	"\n" +
+	"\x06QUEUED\x10\n" +
+	"\x12\v\n" +
+	"\aRUNNING\x10\v\x12\v\n" +
+	"\aBLOCKED\x10\f\x12\x11\n" +
+	"\rINVESTIGATING\x10\r\"L\n" +
 	"\fFirmwareType\x12\x1d\n" +
 	"\x19FIRMWARE_TYPE_UNSPECIFIED\x10\x00\x12\r\n" +
 	"\tREAD_ONLY\x10\x01\x12\x0e\n" +
