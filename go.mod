@@ -5,7 +5,7 @@ go 1.26.0
 require (
 	cloud.google.com/go/aiplatform v1.127.1
 	cloud.google.com/go/appengine v1.17.1
-	cloud.google.com/go/bigquery v1.86.2
+	cloud.google.com/go/bigquery v1.86.3
 	cloud.google.com/go/cloudtasks v1.21.1
 	cloud.google.com/go/container v1.56.1
 	cloud.google.com/go/containeranalysis v0.21.1
@@ -20,18 +20,18 @@ require (
 	cloud.google.com/go/recommender v1.21.1
 	cloud.google.com/go/securitycenter v1.49.1
 	cloud.google.com/go/servicedirectory v1.19.1
-	cloud.google.com/go/spanner v1.96.1
+	cloud.google.com/go/spanner v1.96.2
 	cloud.google.com/go/video v1.36.0
 	cloud.google.com/go/videointelligence v1.19.1
 	github.com/golang/protobuf v1.5.4
-	google.golang.org/genproto/googleapis/api v0.0.0-20261110000943-09e21b237f2c
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20261110000943-09e21b237f2c
-	google.golang.org/grpc v1.84.0
+	google.golang.org/genproto/googleapis/api v0.0.0-20261118221215-c8830f628b3f
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20261118221215-c8830f628b3f
+	google.golang.org/grpc v1.85.0
 	google.golang.org/protobuf v1.36.12
 )
 
 require (
-	golang.org/x/net v0.61.0 // indirect
+	golang.org/x/net v0.62.0 // indirect
 	golang.org/x/sys v0.49.0 // indirect
 	golang.org/x/text v0.43.0 // indirect
 )
