@@ -441,8 +441,13 @@ type ListSessionsRequest struct {
 	// Optional. A filter string to restrict the results.
 	// The following fields are supported:
 	//   - satlab_id
-	//
-	// For example: "satlab_id=12345"
+	//   - type
+	//   - pool
+	//   - display_name
+	//   - state
+	//   - result
+	//   - start_date
+	//   - end_date
 	Filter        string `protobuf:"bytes,3,opt,name=filter,proto3" json:"filter,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -564,54 +569,193 @@ func (x *ListSessionsResponse) GetTotalSize() int32 {
 	return 0
 }
 
+// Request message for listing preset assignments.
+type ListPresetAssignmentsRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Optional. The maximum number of preset assignments to return. The service
+	// may return fewer than this value. If unspecified, at most 50 preset
+	// assignments will be returned. The maximum value is 1000; values above 1000
+	// will be coerced to 1000.
+	PageSize int32 `protobuf:"varint,1,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
+	// Optional. A page token, received from a previous `ListPresetAssignments`
+	// call. Provide this to retrieve the subsequent page.
+	PageToken string `protobuf:"bytes,2,opt,name=page_token,json=pageToken,proto3" json:"page_token,omitempty"`
+	// Optional. A filter string to restrict the results.
+	// The following fields are supported:
+	//   - board
+	//   - model
+	//   - device_phase
+	//
+	// For example: "board=boardName AND device_phase=DVT"
+	Filter        string `protobuf:"bytes,3,opt,name=filter,proto3" json:"filter,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListPresetAssignmentsRequest) Reset() {
+	*x = ListPresetAssignmentsRequest{}
+	mi := &file_google_chromeos_moblab_v1beta1_test_service_proto_msgTypes[9]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListPresetAssignmentsRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListPresetAssignmentsRequest) ProtoMessage() {}
+
+func (x *ListPresetAssignmentsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_google_chromeos_moblab_v1beta1_test_service_proto_msgTypes[9]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListPresetAssignmentsRequest.ProtoReflect.Descriptor instead.
+func (*ListPresetAssignmentsRequest) Descriptor() ([]byte, []int) {
+	return file_google_chromeos_moblab_v1beta1_test_service_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *ListPresetAssignmentsRequest) GetPageSize() int32 {
+	if x != nil {
+		return x.PageSize
+	}
+	return 0
+}
+
+func (x *ListPresetAssignmentsRequest) GetPageToken() string {
+	if x != nil {
+		return x.PageToken
+	}
+	return ""
+}
+
+func (x *ListPresetAssignmentsRequest) GetFilter() string {
+	if x != nil {
+		return x.Filter
+	}
+	return ""
+}
+
+// Response message for listing preset assignments.
+type ListPresetAssignmentsResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The list of preset assignments: active, upcoming, and completed.
+	PresetAssignments []*PresetAssignment `protobuf:"bytes,1,rep,name=preset_assignments,json=presetAssignments,proto3" json:"preset_assignments,omitempty"`
+	// Token to retrieve the next page of preset assignments. If this field
+	// is omitted, there are no subsequent pages.
+	NextPageToken string `protobuf:"bytes,2,opt,name=next_page_token,json=nextPageToken,proto3" json:"next_page_token,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListPresetAssignmentsResponse) Reset() {
+	*x = ListPresetAssignmentsResponse{}
+	mi := &file_google_chromeos_moblab_v1beta1_test_service_proto_msgTypes[10]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListPresetAssignmentsResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListPresetAssignmentsResponse) ProtoMessage() {}
+
+func (x *ListPresetAssignmentsResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_google_chromeos_moblab_v1beta1_test_service_proto_msgTypes[10]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListPresetAssignmentsResponse.ProtoReflect.Descriptor instead.
+func (*ListPresetAssignmentsResponse) Descriptor() ([]byte, []int) {
+	return file_google_chromeos_moblab_v1beta1_test_service_proto_rawDescGZIP(), []int{10}
+}
+
+func (x *ListPresetAssignmentsResponse) GetPresetAssignments() []*PresetAssignment {
+	if x != nil {
+		return x.PresetAssignments
+	}
+	return nil
+}
+
+func (x *ListPresetAssignmentsResponse) GetNextPageToken() string {
+	if x != nil {
+		return x.NextPageToken
+	}
+	return ""
+}
+
 var File_google_chromeos_moblab_v1beta1_test_service_proto protoreflect.FileDescriptor
 
 const file_google_chromeos_moblab_v1beta1_test_service_proto_rawDesc = "" +
 	"\n" +
-	"1google/chromeos/moblab/v1beta1/test_service.proto\x12\x1egoogle.chromeos.moblab.v1beta1\x1a\x1cgoogle/api/annotations.proto\x1a\x17google/api/client.proto\x1a\x1fgoogle/api/field_behavior.proto\x1a\x19google/api/resource.proto\x1a.google/chromeos/moblab/v1beta1/resources.proto\"\x82\x01\n" +
-	"\x14CreateSessionRequest\x12F\n" +
-	"\asession\x18\x01 \x01(\v2'.google.chromeos.moblab.v1beta1.SessionB\x03\xe0A\x02R\asession\x12\"\n" +
+	"1google/chromeos/moblab/v1beta1/test_service.proto\x12\x1egoogle.chromeos.moblab.v1beta1\x1a\x1cgoogle/api/annotations.proto\x1a\x17google/api/client.proto\x1a\x1fgoogle/api/field_behavior.proto\x1a\x19google/api/resource.proto\x1a.google/chromeos/moblab/v1beta1/resources.proto\"\x84\x01\n" +
+	"\x14CreateSessionRequest\x12G\n" +
+	"\asession\x18\x01 \x01(\v2'.google.chromeos.moblab.v1beta1.SessionB\x04\xe2A\x01\x02R\asession\x12#\n" +
 	"\n" +
-	"session_id\x18\x02 \x01(\tB\x03\xe0A\x01R\tsessionId\"N\n" +
-	"\x11GetSessionRequest\x129\n" +
-	"\x04name\x18\x01 \x01(\tB%\xe0A\x02\xfaA\x1f\n" +
-	"\x1dmoblab.googleapis.com/SessionR\x04name\"{\n" +
-	"\x16ListTestEffortsRequest\x12 \n" +
-	"\tpage_size\x18\x01 \x01(\x05B\x03\xe0A\x01R\bpageSize\x12\"\n" +
+	"session_id\x18\x02 \x01(\tB\x04\xe2A\x01\x01R\tsessionId\"O\n" +
+	"\x11GetSessionRequest\x12:\n" +
+	"\x04name\x18\x01 \x01(\tB&\xe2A\x01\x02\xfaA\x1f\n" +
+	"\x1dmoblab.googleapis.com/SessionR\x04name\"~\n" +
+	"\x16ListTestEffortsRequest\x12!\n" +
+	"\tpage_size\x18\x01 \x01(\x05B\x04\xe2A\x01\x01R\bpageSize\x12#\n" +
 	"\n" +
-	"page_token\x18\x02 \x01(\tB\x03\xe0A\x01R\tpageToken\x12\x1b\n" +
-	"\x06filter\x18\x03 \x01(\tB\x03\xe0A\x01R\x06filter\"\xaf\x01\n" +
+	"page_token\x18\x02 \x01(\tB\x04\xe2A\x01\x01R\tpageToken\x12\x1c\n" +
+	"\x06filter\x18\x03 \x01(\tB\x04\xe2A\x01\x01R\x06filter\"\xaf\x01\n" +
 	"\x17ListTestEffortsResponse\x12M\n" +
 	"\ftest_efforts\x18\x01 \x03(\v2*.google.chromeos.moblab.v1beta1.TestEffortR\vtestEfforts\x12&\n" +
 	"\x0fnext_page_token\x18\x02 \x01(\tR\rnextPageToken\x12\x1d\n" +
 	"\n" +
-	"total_size\x18\x03 \x01(\x05R\ttotalSize\"_\n" +
-	"\x17CancelTestEffortRequest\x12D\n" +
-	"\x04name\x18\x01 \x01(\tB0\xe0A\x02\xfaA*\n" +
+	"total_size\x18\x03 \x01(\x05R\ttotalSize\"`\n" +
+	"\x17CancelTestEffortRequest\x12E\n" +
+	"\x04name\x18\x01 \x01(\tB1\xe2A\x01\x02\xfaA*\n" +
 	"(chromeosmoblab.googleapis.com/TestEffortR\x04name\"g\n" +
 	"\x18CancelTestEffortResponse\x12K\n" +
 	"\vtest_effort\x18\x01 \x01(\v2*.google.chromeos.moblab.v1beta1.TestEffortR\n" +
-	"testEffort\"\x96\x01\n" +
-	"\x17CreateTestEffortRequest\x12P\n" +
-	"\vtest_effort\x18\x01 \x01(\v2*.google.chromeos.moblab.v1beta1.TestEffortB\x03\xe0A\x02R\n" +
-	"testEffort\x12)\n" +
-	"\x0etest_effort_id\x18\x02 \x01(\tB\x03\xe0A\x01R\ftestEffortId\"x\n" +
-	"\x13ListSessionsRequest\x12 \n" +
-	"\tpage_size\x18\x01 \x01(\x05B\x03\xe0A\x01R\bpageSize\x12\"\n" +
+	"testEffort\"\x98\x01\n" +
+	"\x17CreateTestEffortRequest\x12Q\n" +
+	"\vtest_effort\x18\x01 \x01(\v2*.google.chromeos.moblab.v1beta1.TestEffortB\x04\xe2A\x01\x02R\n" +
+	"testEffort\x12*\n" +
+	"\x0etest_effort_id\x18\x02 \x01(\tB\x04\xe2A\x01\x01R\ftestEffortId\"{\n" +
+	"\x13ListSessionsRequest\x12!\n" +
+	"\tpage_size\x18\x01 \x01(\x05B\x04\xe2A\x01\x01R\bpageSize\x12#\n" +
 	"\n" +
-	"page_token\x18\x02 \x01(\tB\x03\xe0A\x01R\tpageToken\x12\x1b\n" +
-	"\x06filter\x18\x03 \x01(\tB\x03\xe0A\x01R\x06filter\"\xa2\x01\n" +
+	"page_token\x18\x02 \x01(\tB\x04\xe2A\x01\x01R\tpageToken\x12\x1c\n" +
+	"\x06filter\x18\x03 \x01(\tB\x04\xe2A\x01\x01R\x06filter\"\xa2\x01\n" +
 	"\x14ListSessionsResponse\x12C\n" +
 	"\bsessions\x18\x01 \x03(\v2'.google.chromeos.moblab.v1beta1.SessionR\bsessions\x12&\n" +
 	"\x0fnext_page_token\x18\x02 \x01(\tR\rnextPageToken\x12\x1d\n" +
 	"\n" +
-	"total_size\x18\x03 \x01(\x05R\ttotalSize2\xab\b\n" +
+	"total_size\x18\x03 \x01(\x05R\ttotalSize\"\x84\x01\n" +
+	"\x1cListPresetAssignmentsRequest\x12!\n" +
+	"\tpage_size\x18\x01 \x01(\x05B\x04\xe2A\x01\x01R\bpageSize\x12#\n" +
+	"\n" +
+	"page_token\x18\x02 \x01(\tB\x04\xe2A\x01\x01R\tpageToken\x12\x1c\n" +
+	"\x06filter\x18\x03 \x01(\tB\x04\xe2A\x01\x01R\x06filter\"\xa8\x01\n" +
+	"\x1dListPresetAssignmentsResponse\x12_\n" +
+	"\x12preset_assignments\x18\x01 \x03(\v20.google.chromeos.moblab.v1beta1.PresetAssignmentR\x11presetAssignments\x12&\n" +
+	"\x0fnext_page_token\x18\x02 \x01(\tR\rnextPageToken2\xe6\t\n" +
 	"\vTestService\x12\xa7\x01\n" +
 	"\rCreateSession\x124.google.chromeos.moblab.v1beta1.CreateSessionRequest\x1a'.google.chromeos.moblab.v1beta1.Session\"7\xdaA\x12session,session_id\x82\xd3\xe4\x93\x02\x1c:\asession\"\x11/v1beta1/sessions\x12\x93\x01\n" +
 	"\n" +
 	"GetSession\x121.google.chromeos.moblab.v1beta1.GetSessionRequest\x1a'.google.chromeos.moblab.v1beta1.Session\")\xdaA\x04name\x82\xd3\xe4\x93\x02\x1c\x12\x1a/v1beta1/{name=sessions/*}\x12\x94\x01\n" +
 	"\fListSessions\x123.google.chromeos.moblab.v1beta1.ListSessionsRequest\x1a4.google.chromeos.moblab.v1beta1.ListSessionsResponse\"\x19\x82\xd3\xe4\x93\x02\x13\x12\x11/v1beta1/sessions\x12\xa0\x01\n" +
-	"\x0fListTestEfforts\x126.google.chromeos.moblab.v1beta1.ListTestEffortsRequest\x1a7.google.chromeos.moblab.v1beta1.ListTestEffortsResponse\"\x1c\x82\xd3\xe4\x93\x02\x16\x12\x14/v1beta1/testEfforts\x12\xbd\x01\n" +
+	"\x0fListTestEfforts\x126.google.chromeos.moblab.v1beta1.ListTestEffortsRequest\x1a7.google.chromeos.moblab.v1beta1.ListTestEffortsResponse\"\x1c\x82\xd3\xe4\x93\x02\x16\x12\x14/v1beta1/testEfforts\x12\xb8\x01\n" +
+	"\x15ListPresetAssignments\x12<.google.chromeos.moblab.v1beta1.ListPresetAssignmentsRequest\x1a=.google.chromeos.moblab.v1beta1.ListPresetAssignmentsResponse\"\"\x82\xd3\xe4\x93\x02\x1c\x12\x1a/v1beta1/presetAssignments\x12\xbd\x01\n" +
 	"\x10CancelTestEffort\x127.google.chromeos.moblab.v1beta1.CancelTestEffortRequest\x1a8.google.chromeos.moblab.v1beta1.CancelTestEffortResponse\"6\xdaA\x04name\x82\xd3\xe4\x93\x02):\x01*\"$/v1beta1/{name=testEfforts/*}:cancel\x12\xbf\x01\n" +
 	"\x10CreateTestEffort\x127.google.chromeos.moblab.v1beta1.CreateTestEffortRequest\x1a*.google.chromeos.moblab.v1beta1.TestEffort\"F\xdaA\x1atest_effort,test_effort_id\x82\xd3\xe4\x93\x02#:\vtest_effort\"\x14/v1beta1/testEfforts\x1a \xcaA\x1dchromeosmoblab.googleapis.comB\x80\x01\n" +
 	"\"com.google.chromeos.moblab.v1beta1B\x10TestServiceProtoH\x01P\x01ZDgoogle.golang.org/genproto/googleapis/chromeos/moblab/v1beta1;moblabb\x06proto3"
@@ -628,43 +772,49 @@ func file_google_chromeos_moblab_v1beta1_test_service_proto_rawDescGZIP() []byte
 	return file_google_chromeos_moblab_v1beta1_test_service_proto_rawDescData
 }
 
-var file_google_chromeos_moblab_v1beta1_test_service_proto_msgTypes = make([]protoimpl.MessageInfo, 9)
+var file_google_chromeos_moblab_v1beta1_test_service_proto_msgTypes = make([]protoimpl.MessageInfo, 11)
 var file_google_chromeos_moblab_v1beta1_test_service_proto_goTypes = []any{
-	(*CreateSessionRequest)(nil),     // 0: google.chromeos.moblab.v1beta1.CreateSessionRequest
-	(*GetSessionRequest)(nil),        // 1: google.chromeos.moblab.v1beta1.GetSessionRequest
-	(*ListTestEffortsRequest)(nil),   // 2: google.chromeos.moblab.v1beta1.ListTestEffortsRequest
-	(*ListTestEffortsResponse)(nil),  // 3: google.chromeos.moblab.v1beta1.ListTestEffortsResponse
-	(*CancelTestEffortRequest)(nil),  // 4: google.chromeos.moblab.v1beta1.CancelTestEffortRequest
-	(*CancelTestEffortResponse)(nil), // 5: google.chromeos.moblab.v1beta1.CancelTestEffortResponse
-	(*CreateTestEffortRequest)(nil),  // 6: google.chromeos.moblab.v1beta1.CreateTestEffortRequest
-	(*ListSessionsRequest)(nil),      // 7: google.chromeos.moblab.v1beta1.ListSessionsRequest
-	(*ListSessionsResponse)(nil),     // 8: google.chromeos.moblab.v1beta1.ListSessionsResponse
-	(*Session)(nil),                  // 9: google.chromeos.moblab.v1beta1.Session
-	(*TestEffort)(nil),               // 10: google.chromeos.moblab.v1beta1.TestEffort
+	(*CreateSessionRequest)(nil),          // 0: google.chromeos.moblab.v1beta1.CreateSessionRequest
+	(*GetSessionRequest)(nil),             // 1: google.chromeos.moblab.v1beta1.GetSessionRequest
+	(*ListTestEffortsRequest)(nil),        // 2: google.chromeos.moblab.v1beta1.ListTestEffortsRequest
+	(*ListTestEffortsResponse)(nil),       // 3: google.chromeos.moblab.v1beta1.ListTestEffortsResponse
+	(*CancelTestEffortRequest)(nil),       // 4: google.chromeos.moblab.v1beta1.CancelTestEffortRequest
+	(*CancelTestEffortResponse)(nil),      // 5: google.chromeos.moblab.v1beta1.CancelTestEffortResponse
+	(*CreateTestEffortRequest)(nil),       // 6: google.chromeos.moblab.v1beta1.CreateTestEffortRequest
+	(*ListSessionsRequest)(nil),           // 7: google.chromeos.moblab.v1beta1.ListSessionsRequest
+	(*ListSessionsResponse)(nil),          // 8: google.chromeos.moblab.v1beta1.ListSessionsResponse
+	(*ListPresetAssignmentsRequest)(nil),  // 9: google.chromeos.moblab.v1beta1.ListPresetAssignmentsRequest
+	(*ListPresetAssignmentsResponse)(nil), // 10: google.chromeos.moblab.v1beta1.ListPresetAssignmentsResponse
+	(*Session)(nil),                       // 11: google.chromeos.moblab.v1beta1.Session
+	(*TestEffort)(nil),                    // 12: google.chromeos.moblab.v1beta1.TestEffort
+	(*PresetAssignment)(nil),              // 13: google.chromeos.moblab.v1beta1.PresetAssignment
 }
 var file_google_chromeos_moblab_v1beta1_test_service_proto_depIdxs = []int32{
-	9,  // 0: google.chromeos.moblab.v1beta1.CreateSessionRequest.session:type_name -> google.chromeos.moblab.v1beta1.Session
-	10, // 1: google.chromeos.moblab.v1beta1.ListTestEffortsResponse.test_efforts:type_name -> google.chromeos.moblab.v1beta1.TestEffort
-	10, // 2: google.chromeos.moblab.v1beta1.CancelTestEffortResponse.test_effort:type_name -> google.chromeos.moblab.v1beta1.TestEffort
-	10, // 3: google.chromeos.moblab.v1beta1.CreateTestEffortRequest.test_effort:type_name -> google.chromeos.moblab.v1beta1.TestEffort
-	9,  // 4: google.chromeos.moblab.v1beta1.ListSessionsResponse.sessions:type_name -> google.chromeos.moblab.v1beta1.Session
-	0,  // 5: google.chromeos.moblab.v1beta1.TestService.CreateSession:input_type -> google.chromeos.moblab.v1beta1.CreateSessionRequest
-	1,  // 6: google.chromeos.moblab.v1beta1.TestService.GetSession:input_type -> google.chromeos.moblab.v1beta1.GetSessionRequest
-	7,  // 7: google.chromeos.moblab.v1beta1.TestService.ListSessions:input_type -> google.chromeos.moblab.v1beta1.ListSessionsRequest
-	2,  // 8: google.chromeos.moblab.v1beta1.TestService.ListTestEfforts:input_type -> google.chromeos.moblab.v1beta1.ListTestEffortsRequest
-	4,  // 9: google.chromeos.moblab.v1beta1.TestService.CancelTestEffort:input_type -> google.chromeos.moblab.v1beta1.CancelTestEffortRequest
-	6,  // 10: google.chromeos.moblab.v1beta1.TestService.CreateTestEffort:input_type -> google.chromeos.moblab.v1beta1.CreateTestEffortRequest
-	9,  // 11: google.chromeos.moblab.v1beta1.TestService.CreateSession:output_type -> google.chromeos.moblab.v1beta1.Session
-	9,  // 12: google.chromeos.moblab.v1beta1.TestService.GetSession:output_type -> google.chromeos.moblab.v1beta1.Session
-	8,  // 13: google.chromeos.moblab.v1beta1.TestService.ListSessions:output_type -> google.chromeos.moblab.v1beta1.ListSessionsResponse
-	3,  // 14: google.chromeos.moblab.v1beta1.TestService.ListTestEfforts:output_type -> google.chromeos.moblab.v1beta1.ListTestEffortsResponse
-	5,  // 15: google.chromeos.moblab.v1beta1.TestService.CancelTestEffort:output_type -> google.chromeos.moblab.v1beta1.CancelTestEffortResponse
-	10, // 16: google.chromeos.moblab.v1beta1.TestService.CreateTestEffort:output_type -> google.chromeos.moblab.v1beta1.TestEffort
-	11, // [11:17] is the sub-list for method output_type
-	5,  // [5:11] is the sub-list for method input_type
-	5,  // [5:5] is the sub-list for extension type_name
-	5,  // [5:5] is the sub-list for extension extendee
-	0,  // [0:5] is the sub-list for field type_name
+	11, // 0: google.chromeos.moblab.v1beta1.CreateSessionRequest.session:type_name -> google.chromeos.moblab.v1beta1.Session
+	12, // 1: google.chromeos.moblab.v1beta1.ListTestEffortsResponse.test_efforts:type_name -> google.chromeos.moblab.v1beta1.TestEffort
+	12, // 2: google.chromeos.moblab.v1beta1.CancelTestEffortResponse.test_effort:type_name -> google.chromeos.moblab.v1beta1.TestEffort
+	12, // 3: google.chromeos.moblab.v1beta1.CreateTestEffortRequest.test_effort:type_name -> google.chromeos.moblab.v1beta1.TestEffort
+	11, // 4: google.chromeos.moblab.v1beta1.ListSessionsResponse.sessions:type_name -> google.chromeos.moblab.v1beta1.Session
+	13, // 5: google.chromeos.moblab.v1beta1.ListPresetAssignmentsResponse.preset_assignments:type_name -> google.chromeos.moblab.v1beta1.PresetAssignment
+	0,  // 6: google.chromeos.moblab.v1beta1.TestService.CreateSession:input_type -> google.chromeos.moblab.v1beta1.CreateSessionRequest
+	1,  // 7: google.chromeos.moblab.v1beta1.TestService.GetSession:input_type -> google.chromeos.moblab.v1beta1.GetSessionRequest
+	7,  // 8: google.chromeos.moblab.v1beta1.TestService.ListSessions:input_type -> google.chromeos.moblab.v1beta1.ListSessionsRequest
+	2,  // 9: google.chromeos.moblab.v1beta1.TestService.ListTestEfforts:input_type -> google.chromeos.moblab.v1beta1.ListTestEffortsRequest
+	9,  // 10: google.chromeos.moblab.v1beta1.TestService.ListPresetAssignments:input_type -> google.chromeos.moblab.v1beta1.ListPresetAssignmentsRequest
+	4,  // 11: google.chromeos.moblab.v1beta1.TestService.CancelTestEffort:input_type -> google.chromeos.moblab.v1beta1.CancelTestEffortRequest
+	6,  // 12: google.chromeos.moblab.v1beta1.TestService.CreateTestEffort:input_type -> google.chromeos.moblab.v1beta1.CreateTestEffortRequest
+	11, // 13: google.chromeos.moblab.v1beta1.TestService.CreateSession:output_type -> google.chromeos.moblab.v1beta1.Session
+	11, // 14: google.chromeos.moblab.v1beta1.TestService.GetSession:output_type -> google.chromeos.moblab.v1beta1.Session
+	8,  // 15: google.chromeos.moblab.v1beta1.TestService.ListSessions:output_type -> google.chromeos.moblab.v1beta1.ListSessionsResponse
+	3,  // 16: google.chromeos.moblab.v1beta1.TestService.ListTestEfforts:output_type -> google.chromeos.moblab.v1beta1.ListTestEffortsResponse
+	10, // 17: google.chromeos.moblab.v1beta1.TestService.ListPresetAssignments:output_type -> google.chromeos.moblab.v1beta1.ListPresetAssignmentsResponse
+	5,  // 18: google.chromeos.moblab.v1beta1.TestService.CancelTestEffort:output_type -> google.chromeos.moblab.v1beta1.CancelTestEffortResponse
+	12, // 19: google.chromeos.moblab.v1beta1.TestService.CreateTestEffort:output_type -> google.chromeos.moblab.v1beta1.TestEffort
+	13, // [13:20] is the sub-list for method output_type
+	6,  // [6:13] is the sub-list for method input_type
+	6,  // [6:6] is the sub-list for extension type_name
+	6,  // [6:6] is the sub-list for extension extendee
+	0,  // [0:6] is the sub-list for field type_name
 }
 
 func init() { file_google_chromeos_moblab_v1beta1_test_service_proto_init() }
@@ -679,7 +829,7 @@ func file_google_chromeos_moblab_v1beta1_test_service_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_google_chromeos_moblab_v1beta1_test_service_proto_rawDesc), len(file_google_chromeos_moblab_v1beta1_test_service_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   9,
+			NumMessages:   11,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

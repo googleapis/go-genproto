@@ -649,6 +649,242 @@ func (TestEffort_Pool_PoolType) EnumDescriptor() ([]byte, []int) {
 	return file_google_chromeos_moblab_v1beta1_resources_proto_rawDescGZIP(), []int{9, 1, 0}
 }
 
+// The possible states of a preset assignment.
+// Unknown values are treated as not launchable.
+type PresetAssignment_State int32
+
+const (
+	// No state is specified.
+	PresetAssignment_STATE_UNSPECIFIED PresetAssignment_State = 0
+	// The assignment is active.
+	PresetAssignment_ACTIVE PresetAssignment_State = 1
+	// The assignment is upcoming. It is shown but cannot be launched yet.
+	PresetAssignment_UPCOMING PresetAssignment_State = 2
+	// The assignment is completed. New launches are supplemental and do not
+	// replace the completed results.
+	PresetAssignment_COMPLETED PresetAssignment_State = 3
+)
+
+// Enum value maps for PresetAssignment_State.
+var (
+	PresetAssignment_State_name = map[int32]string{
+		0: "STATE_UNSPECIFIED",
+		1: "ACTIVE",
+		2: "UPCOMING",
+		3: "COMPLETED",
+	}
+	PresetAssignment_State_value = map[string]int32{
+		"STATE_UNSPECIFIED": 0,
+		"ACTIVE":            1,
+		"UPCOMING":          2,
+		"COMPLETED":         3,
+	}
+)
+
+func (x PresetAssignment_State) Enum() *PresetAssignment_State {
+	p := new(PresetAssignment_State)
+	*p = x
+	return p
+}
+
+func (x PresetAssignment_State) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (PresetAssignment_State) Descriptor() protoreflect.EnumDescriptor {
+	return file_google_chromeos_moblab_v1beta1_resources_proto_enumTypes[9].Descriptor()
+}
+
+func (PresetAssignment_State) Type() protoreflect.EnumType {
+	return &file_google_chromeos_moblab_v1beta1_resources_proto_enumTypes[9]
+}
+
+func (x PresetAssignment_State) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use PresetAssignment_State.Descriptor instead.
+func (PresetAssignment_State) EnumDescriptor() ([]byte, []int) {
+	return file_google_chromeos_moblab_v1beta1_resources_proto_rawDescGZIP(), []int{10, 0}
+}
+
+// The hardware development phases of a device.
+type PresetAssignment_DevicePhase int32
+
+const (
+	// No device phase is specified.
+	PresetAssignment_DEVICE_PHASE_UNSPECIFIED PresetAssignment_DevicePhase = 0
+	// Bring-up.
+	PresetAssignment_BRINGUP PresetAssignment_DevicePhase = 1
+	// Prototype.
+	PresetAssignment_PROTO PresetAssignment_DevicePhase = 2
+	// Engineering validation test.
+	PresetAssignment_EVT PresetAssignment_DevicePhase = 3
+	// Design validation test.
+	PresetAssignment_DVT PresetAssignment_DevicePhase = 4
+	// Production validation test.
+	PresetAssignment_PVT PresetAssignment_DevicePhase = 5
+	// Final software image release candidate.
+	PresetAssignment_FSI_RC PresetAssignment_DevicePhase = 6
+	// Mass production.
+	PresetAssignment_MP PresetAssignment_DevicePhase = 7
+)
+
+// Enum value maps for PresetAssignment_DevicePhase.
+var (
+	PresetAssignment_DevicePhase_name = map[int32]string{
+		0: "DEVICE_PHASE_UNSPECIFIED",
+		1: "BRINGUP",
+		2: "PROTO",
+		3: "EVT",
+		4: "DVT",
+		5: "PVT",
+		6: "FSI_RC",
+		7: "MP",
+	}
+	PresetAssignment_DevicePhase_value = map[string]int32{
+		"DEVICE_PHASE_UNSPECIFIED": 0,
+		"BRINGUP":                  1,
+		"PROTO":                    2,
+		"EVT":                      3,
+		"DVT":                      4,
+		"PVT":                      5,
+		"FSI_RC":                   6,
+		"MP":                       7,
+	}
+)
+
+func (x PresetAssignment_DevicePhase) Enum() *PresetAssignment_DevicePhase {
+	p := new(PresetAssignment_DevicePhase)
+	*p = x
+	return p
+}
+
+func (x PresetAssignment_DevicePhase) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (PresetAssignment_DevicePhase) Descriptor() protoreflect.EnumDescriptor {
+	return file_google_chromeos_moblab_v1beta1_resources_proto_enumTypes[10].Descriptor()
+}
+
+func (PresetAssignment_DevicePhase) Type() protoreflect.EnumType {
+	return &file_google_chromeos_moblab_v1beta1_resources_proto_enumTypes[10]
+}
+
+func (x PresetAssignment_DevicePhase) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use PresetAssignment_DevicePhase.Descriptor instead.
+func (PresetAssignment_DevicePhase) EnumDescriptor() ([]byte, []int) {
+	return file_google_chromeos_moblab_v1beta1_resources_proto_rawDescGZIP(), []int{10, 1}
+}
+
+// The operating system types of a preset.
+// Unknown values are treated as not launchable.
+type AssignedPreset_OsType int32
+
+const (
+	// No OS type is specified.
+	AssignedPreset_OS_TYPE_UNSPECIFIED AssignedPreset_OsType = 0
+	// Android desktop.
+	AssignedPreset_ANDROID_DESKTOP AssignedPreset_OsType = 1
+)
+
+// Enum value maps for AssignedPreset_OsType.
+var (
+	AssignedPreset_OsType_name = map[int32]string{
+		0: "OS_TYPE_UNSPECIFIED",
+		1: "ANDROID_DESKTOP",
+	}
+	AssignedPreset_OsType_value = map[string]int32{
+		"OS_TYPE_UNSPECIFIED": 0,
+		"ANDROID_DESKTOP":     1,
+	}
+)
+
+func (x AssignedPreset_OsType) Enum() *AssignedPreset_OsType {
+	p := new(AssignedPreset_OsType)
+	*p = x
+	return p
+}
+
+func (x AssignedPreset_OsType) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (AssignedPreset_OsType) Descriptor() protoreflect.EnumDescriptor {
+	return file_google_chromeos_moblab_v1beta1_resources_proto_enumTypes[11].Descriptor()
+}
+
+func (AssignedPreset_OsType) Type() protoreflect.EnumType {
+	return &file_google_chromeos_moblab_v1beta1_resources_proto_enumTypes[11]
+}
+
+func (x AssignedPreset_OsType) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use AssignedPreset_OsType.Descriptor instead.
+func (AssignedPreset_OsType) EnumDescriptor() ([]byte, []int) {
+	return file_google_chromeos_moblab_v1beta1_resources_proto_rawDescGZIP(), []int{11, 0}
+}
+
+// How the DUTs of a run are selected.
+// Unknown values are treated as not launchable.
+type AssignedPreset_SatlabRun_DutSelection int32
+
+const (
+	// No DUT selection is specified.
+	AssignedPreset_SatlabRun_DUT_SELECTION_UNSPECIFIED AssignedPreset_SatlabRun_DutSelection = 0
+	// The run is scheduled on any DUTs of a pool, which is picked at launch.
+	AssignedPreset_SatlabRun_POOL AssignedPreset_SatlabRun_DutSelection = 1
+	// The run uses a single DUT, which is picked at launch.
+	AssignedPreset_SatlabRun_SINGLE_DUT AssignedPreset_SatlabRun_DutSelection = 2
+)
+
+// Enum value maps for AssignedPreset_SatlabRun_DutSelection.
+var (
+	AssignedPreset_SatlabRun_DutSelection_name = map[int32]string{
+		0: "DUT_SELECTION_UNSPECIFIED",
+		1: "POOL",
+		2: "SINGLE_DUT",
+	}
+	AssignedPreset_SatlabRun_DutSelection_value = map[string]int32{
+		"DUT_SELECTION_UNSPECIFIED": 0,
+		"POOL":                      1,
+		"SINGLE_DUT":                2,
+	}
+)
+
+func (x AssignedPreset_SatlabRun_DutSelection) Enum() *AssignedPreset_SatlabRun_DutSelection {
+	p := new(AssignedPreset_SatlabRun_DutSelection)
+	*p = x
+	return p
+}
+
+func (x AssignedPreset_SatlabRun_DutSelection) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (AssignedPreset_SatlabRun_DutSelection) Descriptor() protoreflect.EnumDescriptor {
+	return file_google_chromeos_moblab_v1beta1_resources_proto_enumTypes[12].Descriptor()
+}
+
+func (AssignedPreset_SatlabRun_DutSelection) Type() protoreflect.EnumType {
+	return &file_google_chromeos_moblab_v1beta1_resources_proto_enumTypes[12]
+}
+
+func (x AssignedPreset_SatlabRun_DutSelection) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use AssignedPreset_SatlabRun_DutSelection.Descriptor instead.
+func (AssignedPreset_SatlabRun_DutSelection) EnumDescriptor() ([]byte, []int) {
+	return file_google_chromeos_moblab_v1beta1_resources_proto_rawDescGZIP(), []int{11, 0, 0}
+}
+
 // Resource that represents a build target.
 type BuildTarget struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -1700,6 +1936,282 @@ func (*TestEffort_AndroidTestTarget) isTestEffort_TestSource() {}
 
 func (*TestEffort_TestTargetOverride) isTestEffort_TestSource() {}
 
+// A checklist of presets assigned to one device (a board and model) of the
+// caller's partner account.
+type PresetAssignment struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Identifier. The resource name of the preset assignment.
+	// Format: presetAssignments/{preset_assignment}
+	// The last segment is the assignment ID that clients use in run tags.
+	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	// Output only. The title of the assigned checklist.
+	DisplayName string `protobuf:"bytes,2,opt,name=display_name,json=displayName,proto3" json:"display_name,omitempty"`
+	// Output only. The state of the preset assignment.
+	State PresetAssignment_State `protobuf:"varint,3,opt,name=state,proto3,enum=google.chromeos.moblab.v1beta1.PresetAssignment_State" json:"state,omitempty"`
+	// Output only. The board name.
+	Board string `protobuf:"bytes,4,opt,name=board,proto3" json:"board,omitempty"`
+	// Output only. The model name.
+	Model string `protobuf:"bytes,5,opt,name=model,proto3" json:"model,omitempty"`
+	// Output only. The phase of the device that the checklist is assigned for.
+	DevicePhase PresetAssignment_DevicePhase `protobuf:"varint,6,opt,name=device_phase,json=devicePhase,proto3,enum=google.chromeos.moblab.v1beta1.PresetAssignment_DevicePhase" json:"device_phase,omitempty"`
+	// Output only. The current cycle of the assignment, starting at 1. A new
+	// cycle starts the checklist over.
+	Cycle int32 `protobuf:"varint,7,opt,name=cycle,proto3" json:"cycle,omitempty"`
+	// Output only. The recommended OS build ID of the current cycle. If empty,
+	// the OS build is entered at launch. The partner can replace it at launch.
+	OsBuild string `protobuf:"bytes,8,opt,name=os_build,json=osBuild,proto3" json:"os_build,omitempty"`
+	// Output only. The presets of the assignment, in checklist order. Excluded
+	// presets are already removed.
+	Presets       []*AssignedPreset `protobuf:"bytes,9,rep,name=presets,proto3" json:"presets,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *PresetAssignment) Reset() {
+	*x = PresetAssignment{}
+	mi := &file_google_chromeos_moblab_v1beta1_resources_proto_msgTypes[10]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *PresetAssignment) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*PresetAssignment) ProtoMessage() {}
+
+func (x *PresetAssignment) ProtoReflect() protoreflect.Message {
+	mi := &file_google_chromeos_moblab_v1beta1_resources_proto_msgTypes[10]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use PresetAssignment.ProtoReflect.Descriptor instead.
+func (*PresetAssignment) Descriptor() ([]byte, []int) {
+	return file_google_chromeos_moblab_v1beta1_resources_proto_rawDescGZIP(), []int{10}
+}
+
+func (x *PresetAssignment) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *PresetAssignment) GetDisplayName() string {
+	if x != nil {
+		return x.DisplayName
+	}
+	return ""
+}
+
+func (x *PresetAssignment) GetState() PresetAssignment_State {
+	if x != nil {
+		return x.State
+	}
+	return PresetAssignment_STATE_UNSPECIFIED
+}
+
+func (x *PresetAssignment) GetBoard() string {
+	if x != nil {
+		return x.Board
+	}
+	return ""
+}
+
+func (x *PresetAssignment) GetModel() string {
+	if x != nil {
+		return x.Model
+	}
+	return ""
+}
+
+func (x *PresetAssignment) GetDevicePhase() PresetAssignment_DevicePhase {
+	if x != nil {
+		return x.DevicePhase
+	}
+	return PresetAssignment_DEVICE_PHASE_UNSPECIFIED
+}
+
+func (x *PresetAssignment) GetCycle() int32 {
+	if x != nil {
+		return x.Cycle
+	}
+	return 0
+}
+
+func (x *PresetAssignment) GetOsBuild() string {
+	if x != nil {
+		return x.OsBuild
+	}
+	return ""
+}
+
+func (x *PresetAssignment) GetPresets() []*AssignedPreset {
+	if x != nil {
+		return x.Presets
+	}
+	return nil
+}
+
+// One preset of a preset assignment, ready to launch.
+type AssignedPreset struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Output only. The ID of the preset. Unique within the assignment.
+	PresetId string `protobuf:"bytes,1,opt,name=preset_id,json=presetId,proto3" json:"preset_id,omitempty"`
+	// Output only. The version of the preset that the assignment uses.
+	PresetVersion int32 `protobuf:"varint,2,opt,name=preset_version,json=presetVersion,proto3" json:"preset_version,omitempty"`
+	// Output only. The title of the preset.
+	DisplayName string `protobuf:"bytes,3,opt,name=display_name,json=displayName,proto3" json:"display_name,omitempty"`
+	// Output only. Notes from the preset author, shown before launch.
+	Description string `protobuf:"bytes,4,opt,name=description,proto3" json:"description,omitempty"`
+	// Output only. Whether the preset is required for sign-off.
+	SignoffRequired bool `protobuf:"varint,5,opt,name=signoff_required,json=signoffRequired,proto3" json:"signoff_required,omitempty"`
+	// Output only. Whether the assignment overrides the preset spec for this
+	// device.
+	Overridden bool `protobuf:"varint,6,opt,name=overridden,proto3" json:"overridden,omitempty"`
+	// Output only. The OS type of the preset.
+	OsType AssignedPreset_OsType `protobuf:"varint,7,opt,name=os_type,json=osType,proto3,enum=google.chromeos.moblab.v1beta1.AssignedPreset_OsType" json:"os_type,omitempty"`
+	// How the preset is launched. If no known member is set, the preset is not
+	// launchable by this client.
+	//
+	// Types that are valid to be assigned to Launch:
+	//
+	//	*AssignedPreset_SatlabRun_
+	//	*AssignedPreset_Labqual_
+	Launch        isAssignedPreset_Launch `protobuf_oneof:"launch"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AssignedPreset) Reset() {
+	*x = AssignedPreset{}
+	mi := &file_google_chromeos_moblab_v1beta1_resources_proto_msgTypes[11]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AssignedPreset) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AssignedPreset) ProtoMessage() {}
+
+func (x *AssignedPreset) ProtoReflect() protoreflect.Message {
+	mi := &file_google_chromeos_moblab_v1beta1_resources_proto_msgTypes[11]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AssignedPreset.ProtoReflect.Descriptor instead.
+func (*AssignedPreset) Descriptor() ([]byte, []int) {
+	return file_google_chromeos_moblab_v1beta1_resources_proto_rawDescGZIP(), []int{11}
+}
+
+func (x *AssignedPreset) GetPresetId() string {
+	if x != nil {
+		return x.PresetId
+	}
+	return ""
+}
+
+func (x *AssignedPreset) GetPresetVersion() int32 {
+	if x != nil {
+		return x.PresetVersion
+	}
+	return 0
+}
+
+func (x *AssignedPreset) GetDisplayName() string {
+	if x != nil {
+		return x.DisplayName
+	}
+	return ""
+}
+
+func (x *AssignedPreset) GetDescription() string {
+	if x != nil {
+		return x.Description
+	}
+	return ""
+}
+
+func (x *AssignedPreset) GetSignoffRequired() bool {
+	if x != nil {
+		return x.SignoffRequired
+	}
+	return false
+}
+
+func (x *AssignedPreset) GetOverridden() bool {
+	if x != nil {
+		return x.Overridden
+	}
+	return false
+}
+
+func (x *AssignedPreset) GetOsType() AssignedPreset_OsType {
+	if x != nil {
+		return x.OsType
+	}
+	return AssignedPreset_OS_TYPE_UNSPECIFIED
+}
+
+func (x *AssignedPreset) GetLaunch() isAssignedPreset_Launch {
+	if x != nil {
+		return x.Launch
+	}
+	return nil
+}
+
+func (x *AssignedPreset) GetSatlabRun() *AssignedPreset_SatlabRun {
+	if x != nil {
+		if x, ok := x.Launch.(*AssignedPreset_SatlabRun_); ok {
+			return x.SatlabRun
+		}
+	}
+	return nil
+}
+
+func (x *AssignedPreset) GetLabqual() *AssignedPreset_Labqual {
+	if x != nil {
+		if x, ok := x.Launch.(*AssignedPreset_Labqual_); ok {
+			return x.Labqual
+		}
+	}
+	return nil
+}
+
+type isAssignedPreset_Launch interface {
+	isAssignedPreset_Launch()
+}
+
+type AssignedPreset_SatlabRun_ struct {
+	// Output only. Launch through `satlab run`.
+	SatlabRun *AssignedPreset_SatlabRun `protobuf:"bytes,8,opt,name=satlab_run,json=satlabRun,proto3,oneof"`
+}
+
+type AssignedPreset_Labqual_ struct {
+	// Output only. Launch through the LabQual path.
+	Labqual *AssignedPreset_Labqual `protobuf:"bytes,9,opt,name=labqual,proto3,oneof"`
+}
+
+func (*AssignedPreset_SatlabRun_) isAssignedPreset_Launch() {}
+
+func (*AssignedPreset_Labqual_) isAssignedPreset_Launch() {}
+
 // The board and model of the test effort.
 type TestEffort_BoardModel struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -1713,7 +2225,7 @@ type TestEffort_BoardModel struct {
 
 func (x *TestEffort_BoardModel) Reset() {
 	*x = TestEffort_BoardModel{}
-	mi := &file_google_chromeos_moblab_v1beta1_resources_proto_msgTypes[12]
+	mi := &file_google_chromeos_moblab_v1beta1_resources_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1725,7 +2237,7 @@ func (x *TestEffort_BoardModel) String() string {
 func (*TestEffort_BoardModel) ProtoMessage() {}
 
 func (x *TestEffort_BoardModel) ProtoReflect() protoreflect.Message {
-	mi := &file_google_chromeos_moblab_v1beta1_resources_proto_msgTypes[12]
+	mi := &file_google_chromeos_moblab_v1beta1_resources_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1768,7 +2280,7 @@ type TestEffort_Pool struct {
 
 func (x *TestEffort_Pool) Reset() {
 	*x = TestEffort_Pool{}
-	mi := &file_google_chromeos_moblab_v1beta1_resources_proto_msgTypes[13]
+	mi := &file_google_chromeos_moblab_v1beta1_resources_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1780,7 +2292,7 @@ func (x *TestEffort_Pool) String() string {
 func (*TestEffort_Pool) ProtoMessage() {}
 
 func (x *TestEffort_Pool) ProtoReflect() protoreflect.Message {
-	mi := &file_google_chromeos_moblab_v1beta1_resources_proto_msgTypes[13]
+	mi := &file_google_chromeos_moblab_v1beta1_resources_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1834,7 +2346,7 @@ type TestEffort_AndroidBuildTarget struct {
 
 func (x *TestEffort_AndroidBuildTarget) Reset() {
 	*x = TestEffort_AndroidBuildTarget{}
-	mi := &file_google_chromeos_moblab_v1beta1_resources_proto_msgTypes[14]
+	mi := &file_google_chromeos_moblab_v1beta1_resources_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1846,7 +2358,7 @@ func (x *TestEffort_AndroidBuildTarget) String() string {
 func (*TestEffort_AndroidBuildTarget) ProtoMessage() {}
 
 func (x *TestEffort_AndroidBuildTarget) ProtoReflect() protoreflect.Message {
-	mi := &file_google_chromeos_moblab_v1beta1_resources_proto_msgTypes[14]
+	mi := &file_google_chromeos_moblab_v1beta1_resources_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1921,7 +2433,7 @@ type TestEffort_FirmwareTestEffortVersion struct {
 
 func (x *TestEffort_FirmwareTestEffortVersion) Reset() {
 	*x = TestEffort_FirmwareTestEffortVersion{}
-	mi := &file_google_chromeos_moblab_v1beta1_resources_proto_msgTypes[15]
+	mi := &file_google_chromeos_moblab_v1beta1_resources_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1933,7 +2445,7 @@ func (x *TestEffort_FirmwareTestEffortVersion) String() string {
 func (*TestEffort_FirmwareTestEffortVersion) ProtoMessage() {}
 
 func (x *TestEffort_FirmwareTestEffortVersion) ProtoReflect() protoreflect.Message {
-	mi := &file_google_chromeos_moblab_v1beta1_resources_proto_msgTypes[15]
+	mi := &file_google_chromeos_moblab_v1beta1_resources_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1994,7 +2506,7 @@ type TestEffort_GscTestEffortVersion struct {
 
 func (x *TestEffort_GscTestEffortVersion) Reset() {
 	*x = TestEffort_GscTestEffortVersion{}
-	mi := &file_google_chromeos_moblab_v1beta1_resources_proto_msgTypes[16]
+	mi := &file_google_chromeos_moblab_v1beta1_resources_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2006,7 +2518,7 @@ func (x *TestEffort_GscTestEffortVersion) String() string {
 func (*TestEffort_GscTestEffortVersion) ProtoMessage() {}
 
 func (x *TestEffort_GscTestEffortVersion) ProtoReflect() protoreflect.Message {
-	mi := &file_google_chromeos_moblab_v1beta1_resources_proto_msgTypes[16]
+	mi := &file_google_chromeos_moblab_v1beta1_resources_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2068,7 +2580,7 @@ type TestEffort_FirmwareTarget struct {
 
 func (x *TestEffort_FirmwareTarget) Reset() {
 	*x = TestEffort_FirmwareTarget{}
-	mi := &file_google_chromeos_moblab_v1beta1_resources_proto_msgTypes[17]
+	mi := &file_google_chromeos_moblab_v1beta1_resources_proto_msgTypes[19]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2080,7 +2592,7 @@ func (x *TestEffort_FirmwareTarget) String() string {
 func (*TestEffort_FirmwareTarget) ProtoMessage() {}
 
 func (x *TestEffort_FirmwareTarget) ProtoReflect() protoreflect.Message {
-	mi := &file_google_chromeos_moblab_v1beta1_resources_proto_msgTypes[17]
+	mi := &file_google_chromeos_moblab_v1beta1_resources_proto_msgTypes[19]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2184,7 +2696,7 @@ type TestEffort_FirmwareConfig struct {
 
 func (x *TestEffort_FirmwareConfig) Reset() {
 	*x = TestEffort_FirmwareConfig{}
-	mi := &file_google_chromeos_moblab_v1beta1_resources_proto_msgTypes[18]
+	mi := &file_google_chromeos_moblab_v1beta1_resources_proto_msgTypes[20]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2196,7 +2708,7 @@ func (x *TestEffort_FirmwareConfig) String() string {
 func (*TestEffort_FirmwareConfig) ProtoMessage() {}
 
 func (x *TestEffort_FirmwareConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_google_chromeos_moblab_v1beta1_resources_proto_msgTypes[18]
+	mi := &file_google_chromeos_moblab_v1beta1_resources_proto_msgTypes[20]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2224,6 +2736,137 @@ func (x *TestEffort_FirmwareConfig) GetFirmwareTypes() []TestEffort_FirmwareType
 		return x.FirmwareTypes
 	}
 	return nil
+}
+
+// Launch inputs of a preset that runs through `satlab run`.
+type AssignedPreset_SatlabRun struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Output only. The `satlab run` flags of the preset, keyed by flag name
+	// without the leading dash, for example "skip-provisioning" -> "true". Each
+	// value is one flag argument as the flag parser accepts it: list values are
+	// joined by commas and map values are written as key=value. Never contains
+	// host-only flags, which the client sets itself, such as board, model,
+	// pool, build, target and dims. Clients validate the flags again before
+	// launch.
+	Flags map[string]string `protobuf:"bytes,1,rep,name=flags,proto3" json:"flags,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	// Output only. The `-target` value, already chosen for the user or
+	// userdebug image that the preset needs. Empty if and only if `flags` sets
+	// "skip-provisioning" to "true"; then the client passes neither `-target`
+	// nor `-build`.
+	OsTarget string `protobuf:"bytes,2,opt,name=os_target,json=osTarget,proto3" json:"os_target,omitempty"`
+	// Output only. How the DUTs of the run are selected.
+	DutSelection  AssignedPreset_SatlabRun_DutSelection `protobuf:"varint,3,opt,name=dut_selection,json=dutSelection,proto3,enum=google.chromeos.moblab.v1beta1.AssignedPreset_SatlabRun_DutSelection" json:"dut_selection,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AssignedPreset_SatlabRun) Reset() {
+	*x = AssignedPreset_SatlabRun{}
+	mi := &file_google_chromeos_moblab_v1beta1_resources_proto_msgTypes[21]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AssignedPreset_SatlabRun) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AssignedPreset_SatlabRun) ProtoMessage() {}
+
+func (x *AssignedPreset_SatlabRun) ProtoReflect() protoreflect.Message {
+	mi := &file_google_chromeos_moblab_v1beta1_resources_proto_msgTypes[21]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AssignedPreset_SatlabRun.ProtoReflect.Descriptor instead.
+func (*AssignedPreset_SatlabRun) Descriptor() ([]byte, []int) {
+	return file_google_chromeos_moblab_v1beta1_resources_proto_rawDescGZIP(), []int{11, 0}
+}
+
+func (x *AssignedPreset_SatlabRun) GetFlags() map[string]string {
+	if x != nil {
+		return x.Flags
+	}
+	return nil
+}
+
+func (x *AssignedPreset_SatlabRun) GetOsTarget() string {
+	if x != nil {
+		return x.OsTarget
+	}
+	return ""
+}
+
+func (x *AssignedPreset_SatlabRun) GetDutSelection() AssignedPreset_SatlabRun_DutSelection {
+	if x != nil {
+		return x.DutSelection
+	}
+	return AssignedPreset_SatlabRun_DUT_SELECTION_UNSPECIFIED
+}
+
+// Launch inputs of a LabQual preset. DUTs are picked at launch.
+type AssignedPreset_Labqual struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Output only. The OS build target. The client passes it only when the
+	// launch has an OS build, either the assignment's os_build or one entered
+	// at launch.
+	OsTarget string `protobuf:"bytes,1,opt,name=os_target,json=osTarget,proto3" json:"os_target,omitempty"`
+	// Output only. The firmware version without the "Google_<Board>." prefix,
+	// for example "12345.67.0". If empty, the stable version is used.
+	FirmwareVersion string `protobuf:"bytes,2,opt,name=firmware_version,json=firmwareVersion,proto3" json:"firmware_version,omitempty"`
+	unknownFields   protoimpl.UnknownFields
+	sizeCache       protoimpl.SizeCache
+}
+
+func (x *AssignedPreset_Labqual) Reset() {
+	*x = AssignedPreset_Labqual{}
+	mi := &file_google_chromeos_moblab_v1beta1_resources_proto_msgTypes[22]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AssignedPreset_Labqual) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AssignedPreset_Labqual) ProtoMessage() {}
+
+func (x *AssignedPreset_Labqual) ProtoReflect() protoreflect.Message {
+	mi := &file_google_chromeos_moblab_v1beta1_resources_proto_msgTypes[22]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AssignedPreset_Labqual.ProtoReflect.Descriptor instead.
+func (*AssignedPreset_Labqual) Descriptor() ([]byte, []int) {
+	return file_google_chromeos_moblab_v1beta1_resources_proto_rawDescGZIP(), []int{11, 1}
+}
+
+func (x *AssignedPreset_Labqual) GetOsTarget() string {
+	if x != nil {
+		return x.OsTarget
+	}
+	return ""
+}
+
+func (x *AssignedPreset_Labqual) GetFirmwareVersion() string {
+	if x != nil {
+		return x.FirmwareVersion
+	}
+	return ""
 }
 
 var File_google_chromeos_moblab_v1beta1_resources_proto protoreflect.FileDescriptor
@@ -2446,7 +3089,67 @@ const file_google_chromeos_moblab_v1beta1_resources_proto_rawDesc = "" +
 	"testEffortB\r\n" +
 	"\vtest_targetB\x04\n" +
 	"\x02osB\r\n" +
-	"\vtest_sourceB~\n" +
+	"\vtest_source\"\x93\x06\n" +
+	"\x10PresetAssignment\x12\x18\n" +
+	"\x04name\x18\x01 \x01(\tB\x04\xe2A\x01\bR\x04name\x12'\n" +
+	"\fdisplay_name\x18\x02 \x01(\tB\x04\xe2A\x01\x03R\vdisplayName\x12R\n" +
+	"\x05state\x18\x03 \x01(\x0e26.google.chromeos.moblab.v1beta1.PresetAssignment.StateB\x04\xe2A\x01\x03R\x05state\x12\x1a\n" +
+	"\x05board\x18\x04 \x01(\tB\x04\xe2A\x01\x03R\x05board\x12\x1a\n" +
+	"\x05model\x18\x05 \x01(\tB\x04\xe2A\x01\x03R\x05model\x12e\n" +
+	"\fdevice_phase\x18\x06 \x01(\x0e2<.google.chromeos.moblab.v1beta1.PresetAssignment.DevicePhaseB\x04\xe2A\x01\x03R\vdevicePhase\x12\x1a\n" +
+	"\x05cycle\x18\a \x01(\x05B\x04\xe2A\x01\x03R\x05cycle\x12\x1f\n" +
+	"\bos_build\x18\b \x01(\tB\x04\xe2A\x01\x03R\aosBuild\x12N\n" +
+	"\apresets\x18\t \x03(\v2..google.chromeos.moblab.v1beta1.AssignedPresetB\x04\xe2A\x01\x03R\apresets\"G\n" +
+	"\x05State\x12\x15\n" +
+	"\x11STATE_UNSPECIFIED\x10\x00\x12\n" +
+	"\n" +
+	"\x06ACTIVE\x10\x01\x12\f\n" +
+	"\bUPCOMING\x10\x02\x12\r\n" +
+	"\tCOMPLETED\x10\x03\"r\n" +
+	"\vDevicePhase\x12\x1c\n" +
+	"\x18DEVICE_PHASE_UNSPECIFIED\x10\x00\x12\v\n" +
+	"\aBRINGUP\x10\x01\x12\t\n" +
+	"\x05PROTO\x10\x02\x12\a\n" +
+	"\x03EVT\x10\x03\x12\a\n" +
+	"\x03DVT\x10\x04\x12\a\n" +
+	"\x03PVT\x10\x05\x12\n" +
+	"\n" +
+	"\x06FSI_RC\x10\x06\x12\x06\n" +
+	"\x02MP\x10\a:\x7f\xeaA|\n" +
+	".chromeosmoblab.googleapis.com/PresetAssignment\x12%presetAssignments/{preset_assignment}*\x11presetAssignments2\x10presetAssignment\"\xc1\b\n" +
+	"\x0eAssignedPreset\x12!\n" +
+	"\tpreset_id\x18\x01 \x01(\tB\x04\xe2A\x01\x03R\bpresetId\x12+\n" +
+	"\x0epreset_version\x18\x02 \x01(\x05B\x04\xe2A\x01\x03R\rpresetVersion\x12'\n" +
+	"\fdisplay_name\x18\x03 \x01(\tB\x04\xe2A\x01\x03R\vdisplayName\x12&\n" +
+	"\vdescription\x18\x04 \x01(\tB\x04\xe2A\x01\x03R\vdescription\x12/\n" +
+	"\x10signoff_required\x18\x05 \x01(\bB\x04\xe2A\x01\x03R\x0fsignoffRequired\x12$\n" +
+	"\n" +
+	"overridden\x18\x06 \x01(\bB\x04\xe2A\x01\x03R\n" +
+	"overridden\x12T\n" +
+	"\aos_type\x18\a \x01(\x0e25.google.chromeos.moblab.v1beta1.AssignedPreset.OsTypeB\x04\xe2A\x01\x03R\x06osType\x12_\n" +
+	"\n" +
+	"satlab_run\x18\b \x01(\v28.google.chromeos.moblab.v1beta1.AssignedPreset.SatlabRunB\x04\xe2A\x01\x03H\x00R\tsatlabRun\x12X\n" +
+	"\alabqual\x18\t \x01(\v26.google.chromeos.moblab.v1beta1.AssignedPreset.LabqualB\x04\xe2A\x01\x03H\x00R\alabqual\x1a\x84\x03\n" +
+	"\tSatlabRun\x12_\n" +
+	"\x05flags\x18\x01 \x03(\v2C.google.chromeos.moblab.v1beta1.AssignedPreset.SatlabRun.FlagsEntryB\x04\xe2A\x01\x03R\x05flags\x12!\n" +
+	"\tos_target\x18\x02 \x01(\tB\x04\xe2A\x01\x03R\bosTarget\x12p\n" +
+	"\rdut_selection\x18\x03 \x01(\x0e2E.google.chromeos.moblab.v1beta1.AssignedPreset.SatlabRun.DutSelectionB\x04\xe2A\x01\x03R\fdutSelection\x1a8\n" +
+	"\n" +
+	"FlagsEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"G\n" +
+	"\fDutSelection\x12\x1d\n" +
+	"\x19DUT_SELECTION_UNSPECIFIED\x10\x00\x12\b\n" +
+	"\x04POOL\x10\x01\x12\x0e\n" +
+	"\n" +
+	"SINGLE_DUT\x10\x02\x1a]\n" +
+	"\aLabqual\x12!\n" +
+	"\tos_target\x18\x01 \x01(\tB\x04\xe2A\x01\x03R\bosTarget\x12/\n" +
+	"\x10firmware_version\x18\x02 \x01(\tB\x04\xe2A\x01\x03R\x0ffirmwareVersion\"6\n" +
+	"\x06OsType\x12\x17\n" +
+	"\x13OS_TYPE_UNSPECIFIED\x10\x00\x12\x13\n" +
+	"\x0fANDROID_DESKTOP\x10\x01B\b\n" +
+	"\x06launchB~\n" +
 	"\"com.google.chromeos.moblab.v1beta1B\x0eResourcesProtoH\x01P\x01ZDgoogle.golang.org/genproto/googleapis/chromeos/moblab/v1beta1;moblabb\x06proto3"
 
 var (
@@ -2461,79 +3164,96 @@ func file_google_chromeos_moblab_v1beta1_resources_proto_rawDescGZIP() []byte {
 	return file_google_chromeos_moblab_v1beta1_resources_proto_rawDescData
 }
 
-var file_google_chromeos_moblab_v1beta1_resources_proto_enumTypes = make([]protoimpl.EnumInfo, 9)
-var file_google_chromeos_moblab_v1beta1_resources_proto_msgTypes = make([]protoimpl.MessageInfo, 19)
+var file_google_chromeos_moblab_v1beta1_resources_proto_enumTypes = make([]protoimpl.EnumInfo, 13)
+var file_google_chromeos_moblab_v1beta1_resources_proto_msgTypes = make([]protoimpl.MessageInfo, 24)
 var file_google_chromeos_moblab_v1beta1_resources_proto_goTypes = []any{
-	(Build_BuildStatus)(0),                // 0: google.chromeos.moblab.v1beta1.Build.BuildStatus
-	(Build_BuildType)(0),                  // 1: google.chromeos.moblab.v1beta1.Build.BuildType
-	(CloudBuild_State)(0),                 // 2: google.chromeos.moblab.v1beta1.CloudBuild.State
-	(Session_State)(0),                    // 3: google.chromeos.moblab.v1beta1.Session.State
-	(Session_Result)(0),                   // 4: google.chromeos.moblab.v1beta1.Session.Result
-	(Session_Type)(0),                     // 5: google.chromeos.moblab.v1beta1.Session.Type
-	(TestEffort_State)(0),                 // 6: google.chromeos.moblab.v1beta1.TestEffort.State
-	(TestEffort_FirmwareType)(0),          // 7: google.chromeos.moblab.v1beta1.TestEffort.FirmwareType
-	(TestEffort_Pool_PoolType)(0),         // 8: google.chromeos.moblab.v1beta1.TestEffort.Pool.PoolType
-	(*BuildTarget)(nil),                   // 9: google.chromeos.moblab.v1beta1.BuildTarget
-	(*Model)(nil),                         // 10: google.chromeos.moblab.v1beta1.Model
-	(*Milestone)(nil),                     // 11: google.chromeos.moblab.v1beta1.Milestone
-	(*Build)(nil),                         // 12: google.chromeos.moblab.v1beta1.Build
-	(*BuildArtifact)(nil),                 // 13: google.chromeos.moblab.v1beta1.BuildArtifact
-	(*CloudBuild)(nil),                    // 14: google.chromeos.moblab.v1beta1.CloudBuild
-	(*Session)(nil),                       // 15: google.chromeos.moblab.v1beta1.Session
-	(*Timeout)(nil),                       // 16: google.chromeos.moblab.v1beta1.Timeout
-	(*TradefedTest)(nil),                  // 17: google.chromeos.moblab.v1beta1.TradefedTest
-	(*TestEffort)(nil),                    // 18: google.chromeos.moblab.v1beta1.TestEffort
-	nil,                                   // 19: google.chromeos.moblab.v1beta1.Session.DimensionsEntry
-	nil,                                   // 20: google.chromeos.moblab.v1beta1.TradefedTest.ShardArgsEntry
-	(*TestEffort_BoardModel)(nil),         // 21: google.chromeos.moblab.v1beta1.TestEffort.BoardModel
-	(*TestEffort_Pool)(nil),               // 22: google.chromeos.moblab.v1beta1.TestEffort.Pool
-	(*TestEffort_AndroidBuildTarget)(nil), // 23: google.chromeos.moblab.v1beta1.TestEffort.AndroidBuildTarget
-	(*TestEffort_FirmwareTestEffortVersion)(nil), // 24: google.chromeos.moblab.v1beta1.TestEffort.FirmwareTestEffortVersion
-	(*TestEffort_GscTestEffortVersion)(nil),      // 25: google.chromeos.moblab.v1beta1.TestEffort.GscTestEffortVersion
-	(*TestEffort_FirmwareTarget)(nil),            // 26: google.chromeos.moblab.v1beta1.TestEffort.FirmwareTarget
-	(*TestEffort_FirmwareConfig)(nil),            // 27: google.chromeos.moblab.v1beta1.TestEffort.FirmwareConfig
-	(*timestamppb.Timestamp)(nil),                // 28: google.protobuf.Timestamp
-	(*durationpb.Duration)(nil),                  // 29: google.protobuf.Duration
+	(Build_BuildStatus)(0),                       // 0: google.chromeos.moblab.v1beta1.Build.BuildStatus
+	(Build_BuildType)(0),                         // 1: google.chromeos.moblab.v1beta1.Build.BuildType
+	(CloudBuild_State)(0),                        // 2: google.chromeos.moblab.v1beta1.CloudBuild.State
+	(Session_State)(0),                           // 3: google.chromeos.moblab.v1beta1.Session.State
+	(Session_Result)(0),                          // 4: google.chromeos.moblab.v1beta1.Session.Result
+	(Session_Type)(0),                            // 5: google.chromeos.moblab.v1beta1.Session.Type
+	(TestEffort_State)(0),                        // 6: google.chromeos.moblab.v1beta1.TestEffort.State
+	(TestEffort_FirmwareType)(0),                 // 7: google.chromeos.moblab.v1beta1.TestEffort.FirmwareType
+	(TestEffort_Pool_PoolType)(0),                // 8: google.chromeos.moblab.v1beta1.TestEffort.Pool.PoolType
+	(PresetAssignment_State)(0),                  // 9: google.chromeos.moblab.v1beta1.PresetAssignment.State
+	(PresetAssignment_DevicePhase)(0),            // 10: google.chromeos.moblab.v1beta1.PresetAssignment.DevicePhase
+	(AssignedPreset_OsType)(0),                   // 11: google.chromeos.moblab.v1beta1.AssignedPreset.OsType
+	(AssignedPreset_SatlabRun_DutSelection)(0),   // 12: google.chromeos.moblab.v1beta1.AssignedPreset.SatlabRun.DutSelection
+	(*BuildTarget)(nil),                          // 13: google.chromeos.moblab.v1beta1.BuildTarget
+	(*Model)(nil),                                // 14: google.chromeos.moblab.v1beta1.Model
+	(*Milestone)(nil),                            // 15: google.chromeos.moblab.v1beta1.Milestone
+	(*Build)(nil),                                // 16: google.chromeos.moblab.v1beta1.Build
+	(*BuildArtifact)(nil),                        // 17: google.chromeos.moblab.v1beta1.BuildArtifact
+	(*CloudBuild)(nil),                           // 18: google.chromeos.moblab.v1beta1.CloudBuild
+	(*Session)(nil),                              // 19: google.chromeos.moblab.v1beta1.Session
+	(*Timeout)(nil),                              // 20: google.chromeos.moblab.v1beta1.Timeout
+	(*TradefedTest)(nil),                         // 21: google.chromeos.moblab.v1beta1.TradefedTest
+	(*TestEffort)(nil),                           // 22: google.chromeos.moblab.v1beta1.TestEffort
+	(*PresetAssignment)(nil),                     // 23: google.chromeos.moblab.v1beta1.PresetAssignment
+	(*AssignedPreset)(nil),                       // 24: google.chromeos.moblab.v1beta1.AssignedPreset
+	nil,                                          // 25: google.chromeos.moblab.v1beta1.Session.DimensionsEntry
+	nil,                                          // 26: google.chromeos.moblab.v1beta1.TradefedTest.ShardArgsEntry
+	(*TestEffort_BoardModel)(nil),                // 27: google.chromeos.moblab.v1beta1.TestEffort.BoardModel
+	(*TestEffort_Pool)(nil),                      // 28: google.chromeos.moblab.v1beta1.TestEffort.Pool
+	(*TestEffort_AndroidBuildTarget)(nil),        // 29: google.chromeos.moblab.v1beta1.TestEffort.AndroidBuildTarget
+	(*TestEffort_FirmwareTestEffortVersion)(nil), // 30: google.chromeos.moblab.v1beta1.TestEffort.FirmwareTestEffortVersion
+	(*TestEffort_GscTestEffortVersion)(nil),      // 31: google.chromeos.moblab.v1beta1.TestEffort.GscTestEffortVersion
+	(*TestEffort_FirmwareTarget)(nil),            // 32: google.chromeos.moblab.v1beta1.TestEffort.FirmwareTarget
+	(*TestEffort_FirmwareConfig)(nil),            // 33: google.chromeos.moblab.v1beta1.TestEffort.FirmwareConfig
+	(*AssignedPreset_SatlabRun)(nil),             // 34: google.chromeos.moblab.v1beta1.AssignedPreset.SatlabRun
+	(*AssignedPreset_Labqual)(nil),               // 35: google.chromeos.moblab.v1beta1.AssignedPreset.Labqual
+	nil,                                          // 36: google.chromeos.moblab.v1beta1.AssignedPreset.SatlabRun.FlagsEntry
+	(*timestamppb.Timestamp)(nil),                // 37: google.protobuf.Timestamp
+	(*durationpb.Duration)(nil),                  // 38: google.protobuf.Duration
 }
 var file_google_chromeos_moblab_v1beta1_resources_proto_depIdxs = []int32{
 	0,  // 0: google.chromeos.moblab.v1beta1.Build.status:type_name -> google.chromeos.moblab.v1beta1.Build.BuildStatus
 	1,  // 1: google.chromeos.moblab.v1beta1.Build.type:type_name -> google.chromeos.moblab.v1beta1.Build.BuildType
 	2,  // 2: google.chromeos.moblab.v1beta1.CloudBuild.status:type_name -> google.chromeos.moblab.v1beta1.CloudBuild.State
-	28, // 3: google.chromeos.moblab.v1beta1.CloudBuild.create_time:type_name -> google.protobuf.Timestamp
-	28, // 4: google.chromeos.moblab.v1beta1.CloudBuild.start_time:type_name -> google.protobuf.Timestamp
-	28, // 5: google.chromeos.moblab.v1beta1.CloudBuild.finish_time:type_name -> google.protobuf.Timestamp
-	19, // 6: google.chromeos.moblab.v1beta1.Session.dimensions:type_name -> google.chromeos.moblab.v1beta1.Session.DimensionsEntry
-	16, // 7: google.chromeos.moblab.v1beta1.Session.timeout:type_name -> google.chromeos.moblab.v1beta1.Timeout
-	17, // 8: google.chromeos.moblab.v1beta1.Session.tradefed_test:type_name -> google.chromeos.moblab.v1beta1.TradefedTest
+	37, // 3: google.chromeos.moblab.v1beta1.CloudBuild.create_time:type_name -> google.protobuf.Timestamp
+	37, // 4: google.chromeos.moblab.v1beta1.CloudBuild.start_time:type_name -> google.protobuf.Timestamp
+	37, // 5: google.chromeos.moblab.v1beta1.CloudBuild.finish_time:type_name -> google.protobuf.Timestamp
+	25, // 6: google.chromeos.moblab.v1beta1.Session.dimensions:type_name -> google.chromeos.moblab.v1beta1.Session.DimensionsEntry
+	20, // 7: google.chromeos.moblab.v1beta1.Session.timeout:type_name -> google.chromeos.moblab.v1beta1.Timeout
+	21, // 8: google.chromeos.moblab.v1beta1.Session.tradefed_test:type_name -> google.chromeos.moblab.v1beta1.TradefedTest
 	3,  // 9: google.chromeos.moblab.v1beta1.Session.state:type_name -> google.chromeos.moblab.v1beta1.Session.State
 	4,  // 10: google.chromeos.moblab.v1beta1.Session.result:type_name -> google.chromeos.moblab.v1beta1.Session.Result
-	28, // 11: google.chromeos.moblab.v1beta1.Session.create_time:type_name -> google.protobuf.Timestamp
-	28, // 12: google.chromeos.moblab.v1beta1.Session.start_time:type_name -> google.protobuf.Timestamp
-	28, // 13: google.chromeos.moblab.v1beta1.Session.finish_time:type_name -> google.protobuf.Timestamp
+	37, // 11: google.chromeos.moblab.v1beta1.Session.create_time:type_name -> google.protobuf.Timestamp
+	37, // 12: google.chromeos.moblab.v1beta1.Session.start_time:type_name -> google.protobuf.Timestamp
+	37, // 13: google.chromeos.moblab.v1beta1.Session.finish_time:type_name -> google.protobuf.Timestamp
 	5,  // 14: google.chromeos.moblab.v1beta1.Session.type:type_name -> google.chromeos.moblab.v1beta1.Session.Type
-	29, // 15: google.chromeos.moblab.v1beta1.Timeout.job_timeout:type_name -> google.protobuf.Duration
-	29, // 16: google.chromeos.moblab.v1beta1.Timeout.test_timeout:type_name -> google.protobuf.Duration
-	29, // 17: google.chromeos.moblab.v1beta1.Timeout.start_timeout:type_name -> google.protobuf.Duration
-	20, // 18: google.chromeos.moblab.v1beta1.TradefedTest.shard_args:type_name -> google.chromeos.moblab.v1beta1.TradefedTest.ShardArgsEntry
-	21, // 19: google.chromeos.moblab.v1beta1.TestEffort.board_model:type_name -> google.chromeos.moblab.v1beta1.TestEffort.BoardModel
-	22, // 20: google.chromeos.moblab.v1beta1.TestEffort.pools:type_name -> google.chromeos.moblab.v1beta1.TestEffort.Pool
-	23, // 21: google.chromeos.moblab.v1beta1.TestEffort.android:type_name -> google.chromeos.moblab.v1beta1.TestEffort.AndroidBuildTarget
+	38, // 15: google.chromeos.moblab.v1beta1.Timeout.job_timeout:type_name -> google.protobuf.Duration
+	38, // 16: google.chromeos.moblab.v1beta1.Timeout.test_timeout:type_name -> google.protobuf.Duration
+	38, // 17: google.chromeos.moblab.v1beta1.Timeout.start_timeout:type_name -> google.protobuf.Duration
+	26, // 18: google.chromeos.moblab.v1beta1.TradefedTest.shard_args:type_name -> google.chromeos.moblab.v1beta1.TradefedTest.ShardArgsEntry
+	27, // 19: google.chromeos.moblab.v1beta1.TestEffort.board_model:type_name -> google.chromeos.moblab.v1beta1.TestEffort.BoardModel
+	28, // 20: google.chromeos.moblab.v1beta1.TestEffort.pools:type_name -> google.chromeos.moblab.v1beta1.TestEffort.Pool
+	29, // 21: google.chromeos.moblab.v1beta1.TestEffort.android:type_name -> google.chromeos.moblab.v1beta1.TestEffort.AndroidBuildTarget
 	6,  // 22: google.chromeos.moblab.v1beta1.TestEffort.state:type_name -> google.chromeos.moblab.v1beta1.TestEffort.State
-	28, // 23: google.chromeos.moblab.v1beta1.TestEffort.create_time:type_name -> google.protobuf.Timestamp
-	27, // 24: google.chromeos.moblab.v1beta1.TestEffort.firmware_configs:type_name -> google.chromeos.moblab.v1beta1.TestEffort.FirmwareConfig
-	23, // 25: google.chromeos.moblab.v1beta1.TestEffort.android_test_target:type_name -> google.chromeos.moblab.v1beta1.TestEffort.AndroidBuildTarget
-	8,  // 26: google.chromeos.moblab.v1beta1.TestEffort.Pool.type:type_name -> google.chromeos.moblab.v1beta1.TestEffort.Pool.PoolType
-	24, // 27: google.chromeos.moblab.v1beta1.TestEffort.FirmwareTarget.ec:type_name -> google.chromeos.moblab.v1beta1.TestEffort.FirmwareTestEffortVersion
-	24, // 28: google.chromeos.moblab.v1beta1.TestEffort.FirmwareTarget.ap:type_name -> google.chromeos.moblab.v1beta1.TestEffort.FirmwareTestEffortVersion
-	25, // 29: google.chromeos.moblab.v1beta1.TestEffort.FirmwareTarget.gsc:type_name -> google.chromeos.moblab.v1beta1.TestEffort.GscTestEffortVersion
-	24, // 30: google.chromeos.moblab.v1beta1.TestEffort.FirmwareTarget.fpmcu:type_name -> google.chromeos.moblab.v1beta1.TestEffort.FirmwareTestEffortVersion
-	26, // 31: google.chromeos.moblab.v1beta1.TestEffort.FirmwareConfig.firmware_target:type_name -> google.chromeos.moblab.v1beta1.TestEffort.FirmwareTarget
-	7,  // 32: google.chromeos.moblab.v1beta1.TestEffort.FirmwareConfig.firmware_types:type_name -> google.chromeos.moblab.v1beta1.TestEffort.FirmwareType
-	33, // [33:33] is the sub-list for method output_type
-	33, // [33:33] is the sub-list for method input_type
-	33, // [33:33] is the sub-list for extension type_name
-	33, // [33:33] is the sub-list for extension extendee
-	0,  // [0:33] is the sub-list for field type_name
+	37, // 23: google.chromeos.moblab.v1beta1.TestEffort.create_time:type_name -> google.protobuf.Timestamp
+	33, // 24: google.chromeos.moblab.v1beta1.TestEffort.firmware_configs:type_name -> google.chromeos.moblab.v1beta1.TestEffort.FirmwareConfig
+	29, // 25: google.chromeos.moblab.v1beta1.TestEffort.android_test_target:type_name -> google.chromeos.moblab.v1beta1.TestEffort.AndroidBuildTarget
+	9,  // 26: google.chromeos.moblab.v1beta1.PresetAssignment.state:type_name -> google.chromeos.moblab.v1beta1.PresetAssignment.State
+	10, // 27: google.chromeos.moblab.v1beta1.PresetAssignment.device_phase:type_name -> google.chromeos.moblab.v1beta1.PresetAssignment.DevicePhase
+	24, // 28: google.chromeos.moblab.v1beta1.PresetAssignment.presets:type_name -> google.chromeos.moblab.v1beta1.AssignedPreset
+	11, // 29: google.chromeos.moblab.v1beta1.AssignedPreset.os_type:type_name -> google.chromeos.moblab.v1beta1.AssignedPreset.OsType
+	34, // 30: google.chromeos.moblab.v1beta1.AssignedPreset.satlab_run:type_name -> google.chromeos.moblab.v1beta1.AssignedPreset.SatlabRun
+	35, // 31: google.chromeos.moblab.v1beta1.AssignedPreset.labqual:type_name -> google.chromeos.moblab.v1beta1.AssignedPreset.Labqual
+	8,  // 32: google.chromeos.moblab.v1beta1.TestEffort.Pool.type:type_name -> google.chromeos.moblab.v1beta1.TestEffort.Pool.PoolType
+	30, // 33: google.chromeos.moblab.v1beta1.TestEffort.FirmwareTarget.ec:type_name -> google.chromeos.moblab.v1beta1.TestEffort.FirmwareTestEffortVersion
+	30, // 34: google.chromeos.moblab.v1beta1.TestEffort.FirmwareTarget.ap:type_name -> google.chromeos.moblab.v1beta1.TestEffort.FirmwareTestEffortVersion
+	31, // 35: google.chromeos.moblab.v1beta1.TestEffort.FirmwareTarget.gsc:type_name -> google.chromeos.moblab.v1beta1.TestEffort.GscTestEffortVersion
+	30, // 36: google.chromeos.moblab.v1beta1.TestEffort.FirmwareTarget.fpmcu:type_name -> google.chromeos.moblab.v1beta1.TestEffort.FirmwareTestEffortVersion
+	32, // 37: google.chromeos.moblab.v1beta1.TestEffort.FirmwareConfig.firmware_target:type_name -> google.chromeos.moblab.v1beta1.TestEffort.FirmwareTarget
+	7,  // 38: google.chromeos.moblab.v1beta1.TestEffort.FirmwareConfig.firmware_types:type_name -> google.chromeos.moblab.v1beta1.TestEffort.FirmwareType
+	36, // 39: google.chromeos.moblab.v1beta1.AssignedPreset.SatlabRun.flags:type_name -> google.chromeos.moblab.v1beta1.AssignedPreset.SatlabRun.FlagsEntry
+	12, // 40: google.chromeos.moblab.v1beta1.AssignedPreset.SatlabRun.dut_selection:type_name -> google.chromeos.moblab.v1beta1.AssignedPreset.SatlabRun.DutSelection
+	41, // [41:41] is the sub-list for method output_type
+	41, // [41:41] is the sub-list for method input_type
+	41, // [41:41] is the sub-list for extension type_name
+	41, // [41:41] is the sub-list for extension extendee
+	0,  // [0:41] is the sub-list for field type_name
 }
 
 func init() { file_google_chromeos_moblab_v1beta1_resources_proto_init() }
@@ -2551,7 +3271,11 @@ func file_google_chromeos_moblab_v1beta1_resources_proto_init() {
 		(*TestEffort_AndroidTestTarget)(nil),
 		(*TestEffort_TestTargetOverride)(nil),
 	}
-	file_google_chromeos_moblab_v1beta1_resources_proto_msgTypes[17].OneofWrappers = []any{
+	file_google_chromeos_moblab_v1beta1_resources_proto_msgTypes[11].OneofWrappers = []any{
+		(*AssignedPreset_SatlabRun_)(nil),
+		(*AssignedPreset_Labqual_)(nil),
+	}
+	file_google_chromeos_moblab_v1beta1_resources_proto_msgTypes[19].OneofWrappers = []any{
 		(*TestEffort_FirmwareTarget_Ec)(nil),
 		(*TestEffort_FirmwareTarget_Ap)(nil),
 		(*TestEffort_FirmwareTarget_Gsc)(nil),
@@ -2562,8 +3286,8 @@ func file_google_chromeos_moblab_v1beta1_resources_proto_init() {
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_google_chromeos_moblab_v1beta1_resources_proto_rawDesc), len(file_google_chromeos_moblab_v1beta1_resources_proto_rawDesc)),
-			NumEnums:      9,
-			NumMessages:   19,
+			NumEnums:      13,
+			NumMessages:   24,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
