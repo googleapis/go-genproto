@@ -34,12 +34,13 @@ import (
 const _ = grpc.SupportPackageIsVersion7
 
 const (
-	TestService_CreateSession_FullMethodName    = "/google.chromeos.moblab.v1beta1.TestService/CreateSession"
-	TestService_GetSession_FullMethodName       = "/google.chromeos.moblab.v1beta1.TestService/GetSession"
-	TestService_ListSessions_FullMethodName     = "/google.chromeos.moblab.v1beta1.TestService/ListSessions"
-	TestService_ListTestEfforts_FullMethodName  = "/google.chromeos.moblab.v1beta1.TestService/ListTestEfforts"
-	TestService_CancelTestEffort_FullMethodName = "/google.chromeos.moblab.v1beta1.TestService/CancelTestEffort"
-	TestService_CreateTestEffort_FullMethodName = "/google.chromeos.moblab.v1beta1.TestService/CreateTestEffort"
+	TestService_CreateSession_FullMethodName         = "/google.chromeos.moblab.v1beta1.TestService/CreateSession"
+	TestService_GetSession_FullMethodName            = "/google.chromeos.moblab.v1beta1.TestService/GetSession"
+	TestService_ListSessions_FullMethodName          = "/google.chromeos.moblab.v1beta1.TestService/ListSessions"
+	TestService_ListTestEfforts_FullMethodName       = "/google.chromeos.moblab.v1beta1.TestService/ListTestEfforts"
+	TestService_ListPresetAssignments_FullMethodName = "/google.chromeos.moblab.v1beta1.TestService/ListPresetAssignments"
+	TestService_CancelTestEffort_FullMethodName      = "/google.chromeos.moblab.v1beta1.TestService/CancelTestEffort"
+	TestService_CreateTestEffort_FullMethodName      = "/google.chromeos.moblab.v1beta1.TestService/CreateTestEffort"
 )
 
 // TestServiceClient is the client API for TestService service.
@@ -54,6 +55,11 @@ type TestServiceClient interface {
 	ListSessions(ctx context.Context, in *ListSessionsRequest, opts ...grpc.CallOption) (*ListSessionsResponse, error)
 	// Lists test efforts.
 	ListTestEfforts(ctx context.Context, in *ListTestEffortsRequest, opts ...grpc.CallOption) (*ListTestEffortsResponse, error)
+	// Lists the preset assignments of the caller's partner account.
+	// The results are scoped to the caller's credentials. If the account has
+	// no preset assignments, the list is empty. If the assignments cannot be
+	// read, the method returns UNAVAILABLE, never an empty list.
+	ListPresetAssignments(ctx context.Context, in *ListPresetAssignmentsRequest, opts ...grpc.CallOption) (*ListPresetAssignmentsResponse, error)
 	// Cancels a test effort.
 	CancelTestEffort(ctx context.Context, in *CancelTestEffortRequest, opts ...grpc.CallOption) (*CancelTestEffortResponse, error)
 	// Creates a test effort.
@@ -104,6 +110,15 @@ func (c *testServiceClient) ListTestEfforts(ctx context.Context, in *ListTestEff
 	return out, nil
 }
 
+func (c *testServiceClient) ListPresetAssignments(ctx context.Context, in *ListPresetAssignmentsRequest, opts ...grpc.CallOption) (*ListPresetAssignmentsResponse, error) {
+	out := new(ListPresetAssignmentsResponse)
+	err := c.cc.Invoke(ctx, TestService_ListPresetAssignments_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *testServiceClient) CancelTestEffort(ctx context.Context, in *CancelTestEffortRequest, opts ...grpc.CallOption) (*CancelTestEffortResponse, error) {
 	out := new(CancelTestEffortResponse)
 	err := c.cc.Invoke(ctx, TestService_CancelTestEffort_FullMethodName, in, out, opts...)
@@ -134,6 +149,11 @@ type TestServiceServer interface {
 	ListSessions(context.Context, *ListSessionsRequest) (*ListSessionsResponse, error)
 	// Lists test efforts.
 	ListTestEfforts(context.Context, *ListTestEffortsRequest) (*ListTestEffortsResponse, error)
+	// Lists the preset assignments of the caller's partner account.
+	// The results are scoped to the caller's credentials. If the account has
+	// no preset assignments, the list is empty. If the assignments cannot be
+	// read, the method returns UNAVAILABLE, never an empty list.
+	ListPresetAssignments(context.Context, *ListPresetAssignmentsRequest) (*ListPresetAssignmentsResponse, error)
 	// Cancels a test effort.
 	CancelTestEffort(context.Context, *CancelTestEffortRequest) (*CancelTestEffortResponse, error)
 	// Creates a test effort.
@@ -156,6 +176,9 @@ func (UnimplementedTestServiceServer) ListSessions(context.Context, *ListSession
 }
 func (UnimplementedTestServiceServer) ListTestEfforts(context.Context, *ListTestEffortsRequest) (*ListTestEffortsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListTestEfforts not implemented")
+}
+func (UnimplementedTestServiceServer) ListPresetAssignments(context.Context, *ListPresetAssignmentsRequest) (*ListPresetAssignmentsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListPresetAssignments not implemented")
 }
 func (UnimplementedTestServiceServer) CancelTestEffort(context.Context, *CancelTestEffortRequest) (*CancelTestEffortResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CancelTestEffort not implemented")
@@ -248,6 +271,24 @@ func _TestService_ListTestEfforts_Handler(srv interface{}, ctx context.Context, 
 	return interceptor(ctx, in, info, handler)
 }
 
+func _TestService_ListPresetAssignments_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListPresetAssignmentsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TestServiceServer).ListPresetAssignments(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: TestService_ListPresetAssignments_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TestServiceServer).ListPresetAssignments(ctx, req.(*ListPresetAssignmentsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _TestService_CancelTestEffort_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(CancelTestEffortRequest)
 	if err := dec(in); err != nil {
@@ -306,6 +347,10 @@ var TestService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "ListTestEfforts",
 			Handler:    _TestService_ListTestEfforts_Handler,
+		},
+		{
+			MethodName: "ListPresetAssignments",
+			Handler:    _TestService_ListPresetAssignments_Handler,
 		},
 		{
 			MethodName: "CancelTestEffort",
